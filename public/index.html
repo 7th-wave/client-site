@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <link
+      type="image/png"
+      rel="shortcut icon"
+      href="<%= BASE_URL %>favicon.png"
+    />
+    <title><%= htmlWebpackPlugin.options.title %></title>
+  </head>
+  <body>
+    <noscript>
+      <strong
+        >We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work
+        properly without JavaScript enabled. Please enable it to
+        continue.</strong
+      >
+    </noscript>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-PRXJ65QJL4"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-PRXJ65QJL4");
+    </script>
+    		<script>
+          (function (d, t, g) {
+            var ph    = d.createElement(t), s = d.getElementsByTagName(t)[0];
+            ph.type   = 'text/javascript';
+            ph.async   = true;
+            ph.charset = 'UTF-8';
+            ph.src     = g + '&v=' + (new Date()).getTime();
+            s.parentNode.insertBefore(ph, s);
+          })(document, 'script', '//7thw.co/?p=1752&ph_apikey=e27c7b4fb593f02e301811c194c15b4b');
+        </script>
+  </body>
+</html>
