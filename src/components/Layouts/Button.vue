@@ -43,7 +43,7 @@ export default {
       switch (size) {
         case 'medium':
           return 'px-4 py-2 text-sm';
-        case 'large':
+        case '  ':
           return 'px-6 py-3 text-base';
         case 'small':
           return 'px-3 py-2 text-sm leading-4 font-medium';

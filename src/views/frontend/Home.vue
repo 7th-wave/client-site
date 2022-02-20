@@ -9,10 +9,10 @@
 
               <div class="flex mt-16">
                 <div class="mr-4">
-                  <Button :btn-style="'black'" :size="'large'"  @click="goCollections">Explore</Button>
+                  <Button :btn-style="'primary'" :size="'large'"  @click="goCollections">Explore</Button>
                 </div>
                 <div>
-                  <Button :btn-style="'primary'" :size="'large'" @click="goToLiveAuctions">Fractionalize</Button>
+                  <Button :btn-style="'outlined'" :size="'large'" @click="goToLiveAuctions">Fractionalize</Button>
                 </div>
               </div>
             </div>
