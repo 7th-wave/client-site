@@ -1,6 +1,8 @@
 <template>
 <div class="gog-app">
-
+  <metainfo>
+    <template v-slot:title="{ content }">{{ content ? `${content} | SITE_NAME` : `SITE_NAME` }}</template>
+  </metainfo>
   <Header />
   <div class="body">
     <router-view />
@@ -30,12 +32,6 @@ export default {
     Toast,
     Modal,
     Loading,
-  },
-  metaInfo: {
-    // if no subcomponents specify a metaInfo.title, this title will be used
-    title: 'Default Title',
-    // all titles will be injected into this template
-    titleTemplate: '%s | My Awesome Webapp'
   },
   setup() {
     

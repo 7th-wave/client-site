@@ -8,6 +8,7 @@ module.exports = {
       fontFamily: {
         inter: ["Inter", "sans-serif"],
         opensans: ["Open Sans", "sans-serif"],
+        body: ["Inter", "sans-serif"],
       },
       colors: {
         teal: {
@@ -31,7 +32,7 @@ module.exports = {
   plugins: [
     // require('@tailwindcss'),
     // require('@tailwindcss/forms'),
-    // require('@tailwindcss/typography'),
+    require('@tailwindcss/typography'),
     require("@tailwindcss/forms"),
     // require('@tailwindcss/line-clamp'),
     // require('@tailwindcss/aspect-ratio'),
