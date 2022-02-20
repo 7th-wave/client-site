@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <header>
-      <Popover class="relative " style="background-color: #374151">
+      <Popover class="relative">
         <div
           class="
             md:flex
@@ -51,13 +51,7 @@
             </div>
             <div class="px-4 py-2">
               <span class="sr-only">Workflow</span>
-              <a :href="'/artist/'+slugify(currentRouteName, {lower: true})">
-                <img
-                  class="h-8 w-auto m-auto sm:h-6 relative lg:top-0 top-4"
-                  src="/images/bar.svg"
-                  alt=""
-                />
-              </a>
+              <Button btn-style="outlined"> <ViewGridIcon class="h-5 w-5 mr-3"/> Fractionilize </Button>
             </div>
           </div>
         </div>
@@ -68,13 +62,17 @@
 <script>
 import { ref, computed } from "vue";
 import { Popover } from "@headlessui/vue";
+import { ViewGridIcon } from '@heroicons/vue/solid'
 import slugify from 'slugify';
 
 import { useStore } from "vuex";
 import { useRoute } from "vue-router";
+import Button from './Button.vue';
 export default {
   components: {
     Popover,
+    Button,
+    ViewGridIcon
   },
 
   setup() {

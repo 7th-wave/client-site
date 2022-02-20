@@ -49,11 +49,15 @@ import ArtistCollection from '@/components/ArtistCollection.vue'
 import Button from '../../components/Layouts/Button.vue'
 import { ref } from '@vue/reactivity';
 
-
 export default {
   components: {
     ArtistCollection,
     Button,
+  },
+  metaInfo: {
+    title: 'My Awesome Webapp',
+    // override the parent template and just use the above title only
+    titleTemplate: null
   },
   setup() {
     const images = ref([

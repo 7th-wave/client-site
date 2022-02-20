@@ -10,7 +10,7 @@
       custom
     ]"
   >
-    {{ name }}
+    <slot></slot>
   </button>
 </template>
 
@@ -59,7 +59,7 @@ export default {
         case 'primary':
           return 'bg-teal-400 text-white hover:bg-teal-500';
         case 'outlined':
-          return 'border border-teal-400 text-teal-400 hover:bg-teal-50';
+          return 'border border-teal-400 text-teal-400 hover:bg-teal-400 hover:text-white';
         case 'secondary':
           return 'border border-gray-300 bg-white hover:bg-gray-50';
         case 'black':
