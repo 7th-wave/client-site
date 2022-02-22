@@ -92,7 +92,7 @@
             </a>
           </div>
           <p class="mt-8 md:mt-0 md:order-1">
-            <a href="/" class="text-base text-gray-400">&copy; 2021 Gallery On Greene, Inc. All rights reserved.</a>
+            <a href="/" class="text-base text-gray-400">&copy; 2021 Nimbus, Inc. All rights reserved.</a>
           </p>
         </div>
       </div>
@@ -129,7 +129,7 @@ const footerNavigation = {
   social: [
     {
       name: 'Facebook',
-      href: 'https://www.facebook.com/The-Gallery-On-Greene-174703195932962',
+      href: '',
       icon: defineComponent({
         render: () =>
           h('svg', { fill: 'currentColor', viewBox: '0 0 24 24' }, [
@@ -144,7 +144,7 @@ const footerNavigation = {
     },
     {
       name: 'Instagram',
-      href: 'https://www.instagram.com/thegalleryongreene/',
+      href: '',
       icon: defineComponent({
         render: () =>
           h('svg', { fill: 'currentColor', viewBox: '0 0 24 24' }, [

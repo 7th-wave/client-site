@@ -13,6 +13,12 @@ const routes = [
     component: Home,
   },
   {
+    path: "/fractionalize",
+    name: "Fractionalize",
+
+    component: () => import("../views/frontend/Fractionalize.vue"),
+  },
+  {
     path: "/claim",
     name: "Claim",
 

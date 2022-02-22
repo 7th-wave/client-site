@@ -51,7 +51,7 @@
             </div>
             <div class="px-4 py-2">
               <span class="sr-only">Workflow</span>
-              <Button btn-style="outlined"> <ViewGridIcon class="h-5 w-5 mr-3"/> Fractionilize </Button>
+              <Button btn-style="outlined"> <ViewGridIcon class="h-5 w-5 mr-3"/> Fractionalize </Button>
             </div>
           </div>
         </div>
