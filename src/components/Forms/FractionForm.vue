@@ -1,7 +1,7 @@
 <template>
   <div>
     <h4>Create a Vault</h4>
-    <form>
+    <form method="post">
       <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
         <div class="sm:col-span-6">
           <label
@@ -29,8 +29,12 @@
               "
             />
           </div>
-          <div class=" pt-1"> 
-              <span class=" text-red-600 font-semibold font-inter text-base">Placeholder Error.</span>
+          <div class="pt-1">
+            <span
+              v-if="errors.vaultName"
+              class="text-red-600 font-inter text-sm font-normal"
+              >{{ errors.vaultName }}</span
+            >
           </div>
         </div>
         <div class="sm:col-span-3">
@@ -40,7 +44,7 @@
           <div class="mt-1 flex rounded-md shadow-sm">
             <input
               type="text"
-              v-model="data.bio_title"
+              v-model="data.supply"
               name="supply"
               id="v"
               autocomplete="100"
@@ -56,6 +60,11 @@
               "
             />
           </div>
+           <span
+              v-if="errors.supply"
+              class="text-red-600 font-inter text-sm font-normal"
+              >{{ errors.supply }}</span
+            >
         </div>
         <div class="sm:col-span-3">
           <label
@@ -67,7 +76,7 @@
           <div class="mt-1 flex rounded-md shadow-sm">
             <input
               type="text"
-              v-model="data.symbo"
+              v-model="data.Symbol"
               name="artist_name"
               id="symbol"
               autocomplete="symbol"
@@ -83,6 +92,11 @@
               "
             />
           </div>
+          <span
+              v-if="errors.Symbol"
+              class="text-red-600 font-inter text-sm font-normal"
+              >{{ errors.Symbol }}</span
+            >
         </div>
         <div class="sm:col-span-6">
           <label
@@ -107,6 +121,7 @@
                 >USDC
               </span>
               <input
+                v-model="data.Price"
                 type="text"
                 name="Price"
                 id="Price"
@@ -123,6 +138,11 @@
                 "
               />
             </div>
+             <span
+              v-if="errors.Price"
+              class="text-red-600 font-inter text-sm font-normal"
+              >{{ errors.Price }}</span
+            >
           </div>
         </div>
         <div class="sm:col-span-6">
@@ -148,6 +168,7 @@
                 >%
               </span>
               <input
+                v-model="data.Vault_Owner"
                 type="text"
                 name="Owner"
                 id="Owner"
@@ -164,6 +185,11 @@
                 "
               />
             </div>
+              <span
+              v-if="errors.Vault_Owner"
+              class="text-red-600 font-inter text-sm font-normal"
+              >{{ errors.Vault_Owner }}</span
+            >
           </div>
         </div>
         <div class="sm:col-span-6">
@@ -176,7 +202,7 @@
           <div class="mt-1 flex rounded-md shadow-sm">
             <input
               type="text"
-              v-model="data.vaultName"
+              v-model="data.Token_Owner"
               name="Token"
               id="Token"
               autocomplete="Token Owner"
@@ -192,6 +218,11 @@
               "
             />
           </div>
+           <span
+              v-if="errors.Token_Owner"
+              class="text-red-600 font-inter text-sm font-normal"
+              >{{ errors.Token_Owner }}</span
+            >
         </div>
         <div class="sm:col-span-6">
           <label
@@ -216,6 +247,7 @@
                 >%
               </span>
               <input
+                v-model="data.Max_Fractions"
                 type="text"
                 name=" Max_Fractions"
                 id="Max_Fractions"
@@ -232,6 +264,11 @@
                 "
               />
             </div>
+             <span
+              v-if="errors.Max_Fractions"
+              class="text-red-600 font-inter text-sm font-normal"
+              >{{ errors.Max_Fractions }}</span
+            >
           </div>
         </div>
         <div class="sm:col-span-6">
@@ -256,6 +293,7 @@
         </div>
         <div class="sm:col-span-6 px-4">
           <button
+            @click.prevent="CreateVault"
             class="
               w-full
               py-4
@@ -280,8 +318,70 @@ export default {
   components: {
     XCircleIcon,
   },
+  data() {
+    return {
+      errors: {
+        vaultName: "",
+        Vault_Owner: "",
+        Token_Owner: "",
+        Max_Fractions: "",
+        Price: "",
+        supply: "",
+        Symbol: "",
+      },
+    };
+  },
+  methods: {
+    CreateVault() {
+      this.validateForm();
+      console.log(this.errors);
+      if (this.errors.length == 0) {
+        //save data
+      }
+    },
+    validateForm() {
+      this.errors = {
+        vaultName: "",
+        Vault_Owner: "",
+        Token_Owner: "",
+        Max_Fractions: "",
+        Price: "",
+        supply: "",
+        Symbol: "",
+      };
+      if (this.data.vaultName == "") {
+        this.errors.vaultName = "Vault Name is required";
+      }
+      if (this.data.Vault_Owner == "") {
+        this.errors.Vault_Owner = "Vault Owner Fraction is required";
+      }
+      if (this.data.Token_Owner == "") {
+        this.errors.Token_Owner = "Token Owner Fraction is required";
+      }
+      if (this.data.Max_Fractions == "") {
+        this.errors.Max_Fractions = "Max Fractions for Sale per Buyer / Wallet is required";
+      }
+      if (this.data.Price == "") {
+        this.errors.Price = "Price is required";
+      }
+      if (this.data.supply == "") {
+        this.errors.supply = "Supply is required";
+      }
+      if (this.data.Symbol == "") {
+        this.errors.Symbol = "Symbol is required";
+      }
+    },
+  },
   setup() {
-    const data = ref({ vaultName: "", supply: "", bio: "" });
+    const data = ref({
+      vaultName: "",
+      supply: "",
+      Symbol: "",
+      Price: "",
+      Vault_Owner: "",
+      Token_Owner: "",
+      Max_Fractions: "",
+    });
     return { data };
   },
 };
