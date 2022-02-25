@@ -61,7 +61,7 @@
           </div>
         </div>
       </Popover>
-      <MainMenu v-show="showMenu" @closeMenu="closeMenu" />
+      <MainMenu  @closeMenu="closeMenu" :animate_menu="showMenu" />
     </header>
   </div>
 </template>

@@ -1,9 +1,10 @@
 <template>
   <div
+  :class="{' w-full':animate_menu,' w-0':!animate_menu}"
     class="
+      ease-in-out duration-300
       grid grid-cols-5
-      max-w-sm
-      w-full
+      max-w-sm overflow-hidden
       absolute
       z-50
       right-0
@@ -80,12 +81,13 @@
           </a>
         </div>
         <nav class="mt-5 flex-1 px-2 space-y-1" aria-label="Sidebar">
-          <a
+          <router-link
+            :to="{name: item.href}"
+            @click="closeMenu"
             v-for="item in navigation"
             :key="item.name"
-            :href="item.href"
             :class="[
-              item.current
+            currentRouteName === item.href 
                 ? 'bg-gray-100 text-gray-900'
                 : 'text-gray-600 hover:bg-gray-100',
               'group flex items-center px-2 py-2 text-sm font-medium rounded-md',
@@ -99,7 +101,7 @@
             <span class="flex-1">
               {{ item.name }}
             </span>
-          </a>
+          </router-link>
         </nav>
       </div>
       <div class="flex-shrink-0 flex bg-gray-100 p-4">
@@ -155,13 +157,24 @@ import {
 } from "@heroicons/vue/outline";
 
 const navigation = [
-  { name: "Explore Vaults", icon: SearchIcon, href: "#", current: true },
-  { name: "Create NFT", icon: CubeIcon, href: "#", current: false },
-  { name: "Fractionalize", icon: ViewGridIcon, href: "#", current: false },
-  { name: "Learn More", icon: LightBulbIcon, href: "#", current: false },
+  { name: "Explore Vaults", icon: SearchIcon, href: "Explore" },
+  { name: "Create NFT", icon: CubeIcon, href: "CreateNft" },
+  { name: "Fractionalize", icon: ViewGridIcon, href: "Fractionalize" },
+  { name: "Learn More", icon: LightBulbIcon, href: "LearnMore" },
 ];
 
 export default {
+  props: {
+    animate_menu: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  computed:{
+    currentRouteName() {
+        return this.$route.name;
+    }
+  },
   components: {
     DocumentDuplicateIcon,
     XIcon,
@@ -178,3 +191,6 @@ export default {
   },
 };
 </script>
+
+
+
