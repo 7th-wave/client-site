@@ -70,6 +70,21 @@ const routes = [
     name: "ClientPage",
     component: () => import("../views/frontend/Client.vue"),
   },
+  {
+    path: "/explore",
+    name: "Explore",
+    component: () => import("../views/frontend/Explore.vue"),
+  },
+  {
+    path: "/create-nft",
+    name: "CreateNft",
+    component: () => import("../views/frontend/CreateNft.vue"),
+  },
+  {
+    path: "/learn-more",
+    name: "LearnMore",
+    component: () => import("../views/frontend/LearnMore.vue"),
+  },
 
   //Client
   {
@@ -112,7 +127,7 @@ const routes = [
     name: "My_bids",
     component: () => import("../views/client/Mybids.vue"),
     beforeEnter: clientGuard,
-  }
+  },
 ];
 
 const router = createRouter({

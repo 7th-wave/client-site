@@ -50,29 +50,48 @@
               {{ currentRouteName }}
             </div>
             <div class="px-4 py-2">
-              <span class="sr-only">Workflow</span>
-              <Button btn-style="outlined"> <ViewGridIcon class="h-5 w-5 mr-3"/> Fractionalize </Button>
+              <span class="sr-only">Workflow </span>
+              <Button btn-style="outlined">
+                <ViewGridIcon class="h-5 w-5 mr-3" /> Fractionalize
+              </Button>
             </div>
+            <button @click="showMenu = true" class=" outline-none hover:text-black">
+              <MenuIcon class="h-6 w-8 mr-3" />
+            </button>
           </div>
         </div>
       </Popover>
+      <MainMenu  @closeMenu="closeMenu" :animate_menu="showMenu" />
     </header>
   </div>
 </template>
 <script>
 import { ref, computed } from "vue";
 import { Popover } from "@headlessui/vue";
-import { ViewGridIcon } from '@heroicons/vue/solid'
-import slugify from 'slugify';
+import { ViewGridIcon, MenuIcon } from "@heroicons/vue/solid";
+import MainMenu from "./MainMenu.vue";
+import slugify from "slugify";
 
 import { useStore } from "vuex";
 import { useRoute } from "vue-router";
-import Button from './Button.vue';
+import Button from "./Button.vue";
 export default {
   components: {
     Popover,
     Button,
-    ViewGridIcon
+    ViewGridIcon,
+    MenuIcon,
+    MainMenu,
+  },
+  methods: {
+    closeMenu() {
+      this.showMenu = false;
+    },
+  },
+  data() {
+    return {
+      showMenu: false,
+    };
   },
 
   setup() {
@@ -84,7 +103,7 @@ export default {
       if ("Artist,Artwork,Series".indexOf(route.name) !== -1) {
         return store.getters["collection/getName"];
       } else {
-        return ""; 
+        return "";
       }
     });
 
@@ -127,7 +146,7 @@ export default {
 `,
 
       currentRouteName,
-      slugify
+      slugify,
     };
   },
 };
