@@ -1,5 +1,5 @@
 <template>
-    <div class="grid grid-cols-3 gap-4">
+    <div class="grid grid-cols-2 gap-4">
         <div class="col-span-1" v-for="(item, key) of data" :key="key">
             <nft :nft="item"></nft>
         </div>

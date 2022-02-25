@@ -5,10 +5,19 @@
       </template>
 
       <template #body>
-          <p class="text-center">Choose the NFT(s) to send to a new vault, select your desired fraction type, set your vault’s details, then continue to fractionalize. Once complete, all fractions will appear in your wallet. Be aware, you cannot add to the NFTs in a vault once created. Read our guides for more information.</p>
+          <p class="text-center mb-8">Choose the NFT(s) to send to a new vault, select your desired fraction type, set your vault’s details, then continue to fractionalize. Once complete, all fractions will appear in your wallet. Be aware, you cannot add to the NFTs in a vault once created. Read our guides for more information.</p>
 
-          <nfts :data="nfts"></nfts>
+          <div class="flex">
+              <div class="w-2/3">
+                <nfts :data="nfts"></nfts>
+              </div>
+              <div class="w-1/2">
+                <fraction-form></fraction-form>
+              </div>
+          </div>
+          
       </template>
+
   </interior-page>
 </template>
  <style scoped>
@@ -32,6 +41,7 @@
 
 
 <script>
+import FractionForm from '../../components/Forms/FractionForm.vue';
 // @ is an alias to /src
 import InteriorPage from '../../components/Shared/InteriorPage.vue';
 import Nfts from '../../components/Shared/Nfts.vue';
@@ -77,7 +87,8 @@ import Nfts from '../../components/Shared/Nfts.vue';
 export default {
   components: {
     InteriorPage,
-    Nfts
+    Nfts,
+    FractionForm,
    
 
   },
