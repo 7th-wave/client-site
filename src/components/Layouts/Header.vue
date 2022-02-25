@@ -56,7 +56,7 @@
               </Button>
             </div>
             <button @click="showMenu = true" class=" outline-none hover:text-black">
-              <MenuIcon class="h-6 w-8 mr-3" />
+              <MenuIcon />
             </button>
           </div>
         </div>
@@ -68,9 +68,10 @@
 <script>
 import { ref, computed } from "vue";
 import { Popover } from "@headlessui/vue";
-import { ViewGridIcon, MenuIcon } from "@heroicons/vue/solid";
+import { ViewGridIcon } from "@heroicons/vue/solid";
 import MainMenu from "./MainMenu.vue";
 import slugify from "slugify";
+import MenuIcon from '../Icons/MenuIcon.vue';
 
 import { useStore } from "vuex";
 import { useRoute } from "vue-router";
