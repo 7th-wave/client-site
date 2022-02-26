@@ -1,5 +1,8 @@
 <template>
-  <div class="relative">
+ <div>
+   <InteriorPage>
+  <template class="relative" #body>
+    
     <!-- <div class="absolute inset-0">
       <div class="absolute inset-y-0 left-0 w-1/2 bg-gray-50" />
     </div> -->
@@ -318,7 +321,9 @@
         </div>
       </div>
     </div>
-  </div>
+  </template>
+  </InteriorPage>
+ </div>
 </template>
 
 <script>
@@ -326,6 +331,7 @@ import { MailIcon, PhoneIcon } from "@heroicons/vue/outline";
 import { useStore } from "vuex";
 import { ref, computed } from "vue";
 import { ExclamationCircleIcon } from "@heroicons/vue/solid";
+import InteriorPage from '../../components/Layouts/InteriorPage.vue'
 
 import api from "../../axios/api";
 
@@ -337,6 +343,7 @@ export default {
     MailIcon,
     PhoneIcon,
     ExclamationCircleIcon,
+    InteriorPage,
   },
 
   setup() {
