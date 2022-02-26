@@ -51,7 +51,7 @@
             </div>
             <div class="px-4 py-2">
               <span class="sr-only">Workflow </span>
-              <Button btn-style="outlined">
+              <Button btn-style="outlined" @click="goFractionalize()">
                 <ViewGridIcon class="h-5 w-5 mr-3" /> Fractionalize
               </Button>
             </div>
@@ -74,7 +74,7 @@ import slugify from "slugify";
 import MenuIcon from '../Icons/MenuIcon.vue';
 
 import { useStore } from "vuex";
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 import Button from "./Button.vue";
 export default {
   components: {
@@ -99,6 +99,7 @@ export default {
     const hovered = ref(null);
     const route = useRoute();
     const store = useStore();
+    const router = useRouter();
 
     const currentRouteName = computed(() => {
       if ("Artist,Artwork,Series".indexOf(route.name) !== -1) {
@@ -108,8 +109,13 @@ export default {
       }
     });
 
+    const goFractionalize = () => {
+      router.push({ path: '/fractionalize' });
+    }
+
     return {
       key: 0,
+      goFractionalize,
       hovered, // access a state in computed function
       logo: `<svg width="183" height="51" viewBox="0 0 183 51" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_2593_13223)">
