@@ -43,7 +43,7 @@
 <script>
 import FractionForm from '../../components/Forms/FractionForm.vue';
 // @ is an alias to /src
-import InteriorPage from '../../components/Shared/InteriorPage.vue';
+import InteriorPage from '../../components/Layouts/InteriorPage.vue';
 import Nfts from '../../components/Shared/Nfts.vue';
 
  /* const data = {
