@@ -1,7 +1,7 @@
 <template>
     <div class="">
-        <div class="slider">    
-            
+        <div class="slider relative">    
+            <div class="m-auto absolute z-10 bottom-4" style="left: 50%; transform:translate(-50%, 0);"><badge :color="'gray'" :label="vault.nfts.length + ' assets'" /></div>
             <swiper
                   :slides-per-view="1"
                   :space-between="50"
@@ -78,12 +78,15 @@ import { Swiper, SwiperSlide } from 'swiper/vue';
 
 // Import Swiper styles
 import 'swiper/swiper-bundle.min.css';
+import Badge from './Badge.vue';
 
 export default {
     components: {
       Swiper,
       SwiperSlide,
+      Badge
     },
+        
     setup() {
 
         return {

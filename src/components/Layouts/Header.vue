@@ -1,5 +1,5 @@
 <template>
-  <div class="header">
+  <div class="header bg-white">
     <header>
       <Popover class="relative">
         <div
@@ -8,7 +8,6 @@
             justify-between
             text-center
             items-center
-            max-w-7xl
             mx-auto
             px-4
             py-6
