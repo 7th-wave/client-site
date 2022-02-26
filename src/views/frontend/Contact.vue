@@ -64,10 +64,13 @@
           <dl class="mt-8 text-base text-gray-500">
             <div>
               <dt class="sr-only">Postal address</dt>
-              <dd>
-                <p>606 Greene Street</p>
-                <p>Key West, FL 33040</p>
-              </dd>
+              <div class=" flex flex-col items-start space-y-1 text-base text-gray-500 font-inter font-normal">
+                <span>San Gwann SGN</span>
+                <span>9030</span>
+                <span>C 94666</span>
+                <span>Malta</span>
+                <span>Key West, FL 33040</span>
+              </div>
             </div>
             <div class="mt-6">
               <dt class="sr-only">Phone number</dt>
@@ -76,7 +79,7 @@
                   class="flex-shrink-0 h-6 w-6 text-gray-400"
                   aria-hidden="true"
                 />
-                <a class="ml-3" target="_blank" rel="noopener noreferrer" href="tel:(305)304.2323"> (305) 304.2323 </a>
+                <a class="ml-3 text-base text-gray-500 font-inter font-normal" target="_blank" rel="noopener noreferrer" href="tel:+1 (000) 000.0000"> +1 (000) 000.0000 </a>
               </dd>
             </div>
             <div class="mt-3">
@@ -86,7 +89,7 @@
                   class="flex-shrink-0 h-6 w-6 text-gray-400"
                   aria-hidden="true"
                 />
-                <a class="ml-3" target="_blank" rel="noopener noreferrer" href="mailto:info@galleryongreene.com"> info@galleryongreene.com </a>
+                <a class="ml-3 text-base text-gray-500 font-inter font-normal" target="_blank" rel="noopener noreferrer" href="mailto:info@galleryongreene.com"> info@nimbusplatform.io </a>
               </dd>
             </div>
           </dl>
