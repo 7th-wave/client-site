@@ -4,7 +4,7 @@
     <template v-slot:title="{ content }">{{ content ? `${content} | SITE_NAME` : `SITE_NAME` }}</template>
   </metainfo>
   <Header />
-  <div class="body">
+  <div class="body bg-gray-100">
     <router-view />
     <Modal />
     <toast />
