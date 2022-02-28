@@ -31,6 +31,89 @@
         <BuyFractionCard />
       </div>
     </div>
+    <div class="w-full px-8 py-4 grid grid-cols-4 gap-4">
+      <!-- left -->
+      <div class="col-span-3 w-full flex flex-col items-start space-y-5"></div>
+      <!-- right -->
+      <div class="w-full">
+        <span class="text-2xl text-black font-inter font-medium"
+          >Activities</span
+        >
+        <line-chart-alternate
+          class="w-full .chart"
+          :data="arrAuctions"
+        ></line-chart-alternate>
+        <div class="w-full">
+          <Events />
+        </div>
+      </div>
+    </div>
+    <div class="w-full px-8">
+      <div class="w-full py-2 bg-white border-2 rounded-md flex">
+        <div class="flex items-center space-x-2 m-auto">
+          <span class="text-base text-gray-700 font-semibold font-inter"
+            >VIEW ALL OWNERS & EVENTS</span
+          >
+          <div>
+            <svg
+              width="17"
+              height="14"
+              viewBox="0 0 17 14"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M10.1667 1.16663L16 6.99996M16 6.99996L10.1667 12.8333M16 6.99996L1 6.99996"
+                stroke="#9CA3AF"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="w-full space-y-4 px-8">
+      <div>
+        <span class="text-2xl text-black font-inter font-medium"
+          >All Assets inside {Vault Name} Vault</span
+        >
+      </div>
+       <div class=" grid grid-cols-3 gap-14 ">
+  <CategoryCard
+          @click="GoToCategory"
+          v-for="(category, index, key) in categories"
+          :key="key"
+          :category="category"
+        >
+          <template #image>
+            <img
+              class="w-full h-full object-cover"
+              :src="category.image"
+              alt=""
+            />
+          </template>
+
+          <template #subtitle>
+            <span
+              class="
+                text-sm
+                font-inter font-medium
+                text-teal-500
+                cursor-pointer
+              "
+              >{{ category.title }}</span
+            >
+          </template>
+          <template #title>
+            <span class="text-gray-900 text-xl font-semibold font-inter">{{
+              category.name
+            }}</span>
+          </template>
+        </CategoryCard>
+       </div>
+    </div>
   </div>
 </template>
 
@@ -40,15 +123,63 @@
 import FractionCard from "../../components/cards/FractionCard.vue";
 import BuyFractionCard from "../../components/cards/BuyFractionCard.vue";
 import VaultSlideShow from "../../components/SlideShow/VaultSlideShow.vue";
+import LineChartAlternate from "../../components/Layouts/LineChartAlternate.vue";
+import Events from "../../components/cards/Events.vue";
+import CategoryCard from "../../components/cards/CategoryCard.vue";
+
 export default {
   components: {
     FractionCard,
     //InteriorPage,
     VaultSlideShow,
     BuyFractionCard,
+    LineChartAlternate,
+    CategoryCard,
+    Events,
   },
   data() {
     return {
+      arrAuctions: [],
+       categories: [
+        {
+          name: "Sneakers",
+          image:
+            "https://cdn.corporatefinanceinstitute.com/assets/types-of-assets-1024x575.jpeg",
+          title: 'Sneakers',
+        },
+         {
+          name: "Sneakers",
+          image:
+            "https://cdn.corporatefinanceinstitute.com/assets/types-of-assets-1024x575.jpeg",
+          title: 'Sneakers',
+        },
+         {
+          name: "Sneakers",
+          image:
+            "https://cdn.corporatefinanceinstitute.com/assets/types-of-assets-1024x575.jpeg",
+          title: 'Sneakers',
+        },
+         {
+          name: "Sneakers",
+          image:
+            "https://cdn.corporatefinanceinstitute.com/assets/types-of-assets-1024x575.jpeg",
+          title: 'Sneakers',
+        },
+         {
+          name: "Sneakers",
+          image:
+            "https://cdn.corporatefinanceinstitute.com/assets/types-of-assets-1024x575.jpeg",
+          title: 'Sneakers',
+        },
+         {
+          name: "Sneakers",
+          image:
+            "https://cdn.corporatefinanceinstitute.com/assets/types-of-assets-1024x575.jpeg",
+          title: 'Sneakers',
+        },
+      
+     
+      ],
       slides: [
         {
           image:
