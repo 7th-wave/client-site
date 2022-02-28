@@ -23,6 +23,11 @@ import { useStore } from 'vuex';
 import { useRouter } from 'vue-router';
 import Modal from './components/Modals/Modal.vue';
 import Loading from './components/Shared/Loading.vue';
+import WalletConnectClient from "@walletconnect/client";
+
+import { CLIENT_EVENTS } from "@walletconnect/client";
+import QRCodeModal from "@walletconnect/qrcode-modal";
+
 
 
 export default {
@@ -54,6 +59,32 @@ export default {
         });
 
       }
+
+      const client = await WalletConnectClient.init({
+        projectId: "c77630296e835e9f15911e4957965e64",
+        relayUrl: "wss://relay.walletconnect.com",
+        metadata: {
+          name: "Jupiter Exchange",
+          description: "Jupiter Exchange",
+          url: "#",
+          icons: ["https://walletconnect.com/walletconnect-logo.png"],
+        },
+      });
+
+      client.on(
+        CLIENT_EVENTS.pairing.proposal,
+        async (proposal) => {
+          // uri should be shared with the Wallet either through QR Code scanning or mobile deep linking
+          const { uri } = proposal.signal.params;
+          console.log(uri);
+          QRCodeModal.open(uri, () => {
+            console.log("EVENT", "QR Code Modal closed");
+          });
+          
+        }
+      );
+
+      
     })
     
   }
