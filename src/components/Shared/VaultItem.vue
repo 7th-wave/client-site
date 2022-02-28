@@ -1,97 +1,59 @@
 <template>
-    <div class="">
+    <div class="rounded-lg overflow-hidden shadow-lg w-90">
         <div class="slider relative">    
             <div class="m-auto absolute z-10 bottom-4" style="left: 50%; transform:translate(-50%, 0);"><badge :color="'gray'" :label="vault.nfts.length + ' assets'" /></div>
             <swiper
                   :slides-per-view="1"
-                  :space-between="50"
-                  :effect-fade="true"   
+                  :space-between="0"
                 >
                   <swiper-slide v-for="(item, index) of vault.nfts" :key="index">
-                      <img :src="'/images/sneakers/'+item.image" />
+                      <img class="w-full" :src="'/images/sneakers/'+item.image" />
                   </swiper-slide>
                 </swiper>
         </div>
-        <div class="content">
-            <div class="data">
-                <h4>{{ vault.creator }}</h4>
-                <h2>{{ vault.name }}</h2>
-                <div class="grid grid-cols-3 gap-0">
-                    <div class="col-span-1">
-                        <span>Fractions</span>
-                        <h3>{{ vault.fractions }}</h3>
-                    </div>
-                    <div class="col-span-1">
-                        <span>Available</span>
-                        <h3>{{ vault.available }}</h3>
-                    </div>
-                    <div class="col-span-1">
-                        <span>Valuation</span>
-                        <h3>{{ vault.valuation }}</h3>
-                    </div>
-                </div>
+        <div class="content w-full pt-6">
+            <div class="data w-full">
+                <h4 class="w-72 text-sm font-medium leading-tight text-teal-800 px-6">{{ vault.creator }}</h4>
+                <h2 class="w-full text-xl font-semibold leading-8 text-gray-900 px-6">{{ vault.name }}</h2>
+                <div class="h-6" />
+                <stats />
             </div>
         </div>
     </div>
 </template>
 <script>
 
-const vault = {
-    name: "Nike Sneakers",
-    token: 'SNEAKER',
-    creator: 'Nike',
-    fractions: 58,
-    available: '49%',
-    valuation: '$2M',
-    nfts: [
-        {
-            name: "Nft1",
-            image: "01.png"
-        },
-        {
-            name: "Nft2",
-            image: "02.png"
-        },
-        {
-            name: "Nft3",
-            image: "03.png"
-        },
-        {
-            name: "Nft4",
-            image: "04.png"
-        },
-        {
-            name: "Nft5",
-            image: "05.png"
-        },
-        {
-            name: "Nft6",
-            image: "06.png"
-        }
-    ]
-}
 
 import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 
 
-import { Swiper, SwiperSlide } from 'swiper/vue';
+import { Swiper, SwiperSlide } from 'swiper/vue/swiper-vue.js';
 
 // Import Swiper styles
 import 'swiper/swiper-bundle.min.css';
 import Badge from './Badge.vue';
+import Stats from './Stats.vue';
+import { onMounted } from '@vue/runtime-core';
 
 export default {
+    props: ['vault'],
+
     components: {
-      Swiper,
-      SwiperSlide,
-      Badge
+        Swiper,
+        SwiperSlide,
+        Badge,
+        Stats
     },
         
-    setup() {
+    setup(props) {
+
+        onMounted(() => {
+            console.log(props.value);
+        })
 
         return {
             modules: [Navigation, Pagination, Scrollbar, A11y],
-            vault
+            
         }
     }
 }
