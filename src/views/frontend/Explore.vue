@@ -10,6 +10,7 @@
 
       <div class="grid lg:grid-cols-3 grid-cols-1 md:grid-cols-2 gap-10">
         <CategoryCard
+          @click="GoToCategory"
           v-for="(category, index, key) in categories"
           :key="key"
           :category="category"
@@ -119,5 +120,12 @@ export default {
       ],
     };
   },
+   methods:{
+      GoToCategory(){
+        this.$router.push('/vault/1');
+      }
+    }
 };
+  
+
 </script>
