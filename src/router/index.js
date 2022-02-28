@@ -85,6 +85,11 @@ const routes = [
     name: "LearnMore",
     component: () => import("../views/frontend/LearnMore.vue"),
   },
+  {
+    path: "/vault/:id",
+    name: "Vault",
+    component: () => import("../views/frontend/Vault.vue"),
+  },
 
   //Client
   {
