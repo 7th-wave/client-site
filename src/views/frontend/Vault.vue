@@ -1,5 +1,5 @@
 <template>
-  <div class=" py-8 space-y-24">
+  <div class="py-8 space-y-24">
     <div class="flex">
       <span
         class="m-auto text-4xl text-center font-normal font-inter text-black"
@@ -13,46 +13,22 @@
 
     <div class="w-full px-8 py-4 grid grid-cols-4 gap-4">
       <!-- left -->
-      <div class=" col-span-3 w-full flex flex-col items-start space-y-5">
-        <span class=" text-2xl text-black font-inter font-medium">{Vault Sub-Title}</span>
-        <div class=" w-full bg-white p-4 shadow-md rounded-md space-y-4">
-          <div class=" w-full flex justify-between items-center">
-            <span class=" text-xl font-inter font-medium text-gray-900">{Vault Name} {Vault Ticker} Fraction Data</span>
-            <div class=" py-2 px-4 rounded-md shadow-sm bg-white flex items-center cursor-pointer border-2">
-              <span class=" font-inter text-sm  text-gray-700 font-medium">VIEW VAULT ASSETS</span>
-              <ArrowDownIcon class=" w-5 h-3" />
-            </div>
-          </div>
-          <div class=" w-full border-2 rounded-md flex border-r-0">
-            <div class=" w-28 flex flex-col items-start border-r-2  p-4 ">
-              <span class=" text-base text-gray-500 font-inter whitespace-nowrap">Fractions</span>
-              <span class=" text-black font-inter text-2xl">2M </span>
-            </div>
-             <div class=" w-40 flex flex-col items-start border-r-2  p-4">
-              <span class=" text-base text-gray-500 font-inter whitespace-nowrap">Uique Owners</span>
-              <span class=" text-black font-inter text-2xl whitespace-nowrap">2530 </span>
-            </div>
-             <div class=" w-48 flex flex-col items-start border-r-2  p-4">
-              <span class=" text-base text-gray-500 font-inter whitespace-nowrap">Collectable Supply</span>
-              <span class=" text-black font-inter text-2xl">49% </span>
-              <span class=" text-sm text-gray-500 font-inter whitespace-nowrap">980,000 NIKE</span>
-            </div>
-             <div class=" w-full flex flex-col items-start border-r-2  p-4">
-              <span class=" text-base text-gray-500 font-inter whitespace-nowrap">Implied Vault Valuation</span>
-              <span class=" text-black font-inter text-2xl whitespace-nowrap">≈ $ 2,000,000.00 </span>
-               <span class=" text-sm text-gray-500 font-inter whitespace-nowrap">≈ $1 / NIKE</span>
-
-            </div>
-          </div>
-           <div class=" w-52 py-2 px-4 rounded-md shadow-sm bg-white flex items-center cursor-pointer border-2 space-x-2">
-              <span class=" font-inter text-sm  text-gray-700 font-medium whitespace-nowrap">VIEW ON ETHER SCAN</span>
-              <DatabaseIcon class=" w-4 h-4" />
-            </div>
-        </div>
+      <div class="col-span-3 w-full flex flex-col items-start space-y-5">
+        <span class="text-2xl text-black font-inter font-medium"
+          >{Vault Sub-Title}</span
+        >
+        <FractionCard />
+        <p class="text-lg font-normal font-inter text-black">
+          {Vault Description} Lorem ipsum dolor sit amet, consectetur adipiscing
+          elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+          aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+          laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+          in reprehenderit in voluptate velit esse cillum dolore eu fugiat.
+        </p>
       </div>
       <!-- right -->
-      <div class="  w-full space-y-5">
-sf
+      <div class="w-full">
+        <BuyFractionCard />
       </div>
     </div>
   </div>
@@ -61,14 +37,15 @@ sf
 
 <script>
 // import InteriorPage from "../../components/Layouts/InteriorPage.vue";
+import FractionCard from "../../components/cards/FractionCard.vue";
+import BuyFractionCard from "../../components/cards/BuyFractionCard.vue";
 import VaultSlideShow from "../../components/SlideShow/VaultSlideShow.vue";
-import {ArrowDownIcon,DatabaseIcon} from "@heroicons/vue/solid";
 export default {
   components: {
+    FractionCard,
     //InteriorPage,
     VaultSlideShow,
-    ArrowDownIcon,
-    DatabaseIcon,
+    BuyFractionCard,
   },
   data() {
     return {
