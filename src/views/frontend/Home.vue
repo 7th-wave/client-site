@@ -17,17 +17,27 @@
               </div>
             </div>
             <div class="col-span-2">
-                 <swiper
-                  :slides-per-view="3"
-                  :space-between="50"
+                 <swiper :effect="'coverflow'"
+                    :coverflowEffect="{
+                    rotate: 50,
+                    stretch: 0,
+                    depth: 100,
+                    modifier: 1,
+                    slideShadows: true,
+                  }"
+                  :modules="modules"
+                  :slides-per-view="'auto'"
+                  :space-between="0"
+                  :centeredSlides="true"
                   @swiper="onSwiper"
                   @slideChange="onSlideChange"
                 >
-                  <swiper-slide> 
-                    <vault-item />
+                  <swiper-slide class="w-96" v-for="(vault, index) in vaults" :key="index"> 
+                    <div class="w-full p-6 flex items-center">
+                    <vault-item :vault="vault" />
+                    </div>
                   </swiper-slide>
-                  <swiper-slide>Slide 2</swiper-slide>
-                  <swiper-slide>Slide 3</swiper-slide>
+                  
                 </swiper>
             </div>
           </div>
@@ -39,13 +49,79 @@
 </template>
 
 <script>
-import Button from '../../components/Layouts/Button.vue'
-import { Swiper, SwiperSlide } from 'swiper/vue';
+import Button from '../../components/Layouts/Button.vue';
+import { EffectCoverflow, Pagination } from "swiper";
+
+import { Swiper, SwiperSlide } from 'swiper/vue/swiper-vue.js';
+
+
+
+
 
 // Import Swiper styles
 import 'swiper/swiper-bundle.min.css';
+import "swiper/modules/effect-coverflow/effect-coverflow.min.css"
+
 import VaultItem from '@/components/Shared/VaultItem.vue';
 import { useRouter } from 'vue-router';
+
+const vaults = [{
+    name: "Nike Sneakers",
+    token: 'SNEAKER',
+    creator: 'Nike',
+    fractions: 58,
+    available: '49%',
+    valuation: '$2M',
+    nfts: [
+        {
+            name: "Nft1",
+            image: "01.png"
+        },
+        {
+            name: "Nft2",
+            image: "02.png"
+        },
+        {
+            name: "Nft3",
+            image: "03.png"
+        },
+        {
+            name: "Nft4",
+            image: "04.png"
+        },
+        {
+            name: "Nft5",
+            image: "05.png"
+        },
+        {
+            name: "Nft6",
+            image: "06.png"
+        }
+    ]
+},
+{
+    name: "Nike Shoes",
+    token: 'SNEAKER',
+    creator: 'Nike',
+    fractions: 58,
+    available: '49%',
+    valuation: '$2M',
+    nfts: [
+        
+        {
+            name: "Nft2",
+            image: "02.png"
+        },
+        {
+            name: "Nft3",
+            image: "03.png"
+        },
+        {
+            name: "Nft4",
+            image: "04.png"
+        }
+    ]
+}]
 
 export default {
 
@@ -71,9 +147,11 @@ export default {
       }
 
       return {
+        modules: [EffectCoverflow, Pagination],
         onSwiper,
         onSlideChange,
-        fractionalize
+        fractionalize,
+        vaults
       };
   },
 }

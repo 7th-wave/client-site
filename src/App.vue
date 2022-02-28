@@ -39,6 +39,7 @@ export default {
     const router = useRouter();
  
     onMounted(async () => {
+
       await store.dispatch('blockchain/initWallets');
       await store.dispatch('blockchain/getBlockChain');
       //const address = store.getters['blockchain/getCurrentAddress'];

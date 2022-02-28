@@ -12,10 +12,9 @@ import { DatePicker, TimePicker } from 'ant-design-vue';
 import "firebaseui/dist/firebaseui.css";
 
 import store from "./store";
-import { createMetaManager } from 'vue-meta'
 
 
-createApp(App).use(router).use(VueEasyLightbox).use(store).use(DatePicker).use(TimePicker).use(VueClipboard).use(createMetaManager()).mount("#app");
+createApp(App).use(router).use(VueEasyLightbox).use(store).use(DatePicker).use(TimePicker).use(VueClipboard).mount("#app");
 
 // auth.onAuthStateChanged((user) => {
 //   if (user) {
