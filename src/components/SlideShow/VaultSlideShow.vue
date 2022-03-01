@@ -1,6 +1,6 @@
 <template>
   <div class="w-full flex">
-    <div class="flex items-center space-x-4 m-auto">
+    <div class="flex items-center space-x-4 m-auto w-full">
       <swiper
         :effect="'coverflow'"
         :coverflowEffect="{
@@ -19,7 +19,7 @@
       >
         <swiper-slide class="w-96" v-for="(item,index,key) in slides" :key="key">
           <div
-            class="w-80 h-80 bg-blue-400 bg-opacity-30 relative"
+            class="w-full h-80 bg-blue-400 bg-opacity-30 relative"
           
           >
             <img
@@ -41,6 +41,7 @@
 
 
 <script>
+
 // import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/vue/solid";
 import { EffectCoverflow, Pagination } from "swiper";
 
