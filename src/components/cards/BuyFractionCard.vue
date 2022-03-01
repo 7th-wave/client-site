@@ -137,6 +137,10 @@ export default {
       },
       Buy(){
             this.$refs.ConnectWallet.open = true;
+            setTimeout(() => {
+                            document.getElementsByTagName('html')[0].style.overflow = 'auto';
+                            document.getElementsByTagName('html')[0].style.padding = '0';
+            }, 100);
       }
   }
 };
