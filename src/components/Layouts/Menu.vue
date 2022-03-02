@@ -20,7 +20,7 @@
           v-for="item in navigation"
           :key="item.name"
           :class="[
-            currentRouteName === item.href.name
+            currentRouteName === item.href.name || currentRouteName === item.subname
               ? 'bg-gray-100 text-gray-900'
               : 'text-gray-900 hover:bg-gray-100',
             'group flex items-center px-2 py-2 text-base font-semibold rounded-md',
@@ -131,11 +131,11 @@ import { useRoute, useRouter } from "vue-router";
 import { auth, storage } from "../../firebase/firebase";
 
 const navigation = [
-  { name: "My Account", href: {name:'MyAccount',params:{address:'gfdg'}} },
-  { name: "My NFT", href:  {name:'My_collections'}  },
-  { name: "My Vaults", href:  {name:'MyAccount',params:{address:'gfdg'}}  },
-  { name: "My Fractions", href:  {name:'My_history'}  },
-  { name: "My Purchase History", href:  {name:'MyAccount',params:{address:'gfdg'}}  },
+  { name: "My Account", href: {name:'MyAccount',params:{address:'gfdg'}},subname:'' },
+  { name: "My NFT", href:  {name:'My_collections'},subname:'CollectionDetails'  },
+  { name: "My Vaults", href:  {name:'MyAccount',params:{address:'gfdg'}},subname:''  },
+  { name: "My Fractions", href:  {name:'My_history'},subname:''  },
+  { name: "My Purchase History", href:  {name:'MyAccount',params:{address:'gfdg'}},subname:''  },
 ];
 export default {
   components: {
