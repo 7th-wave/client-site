@@ -92,10 +92,21 @@ const routes = [
   },
 
   //Client
+ 
   {
     path: "/register/:address",
     name: "ClientRegister",
     component: () => import("../views/client/Register.vue"),
+  },
+  {
+    path: "/register/:address",
+    name: "ClientRegister",
+    component: () => import("../views/client/Register.vue"),
+  },
+  {
+    path: "/my_history",
+    name: "My_history",
+    component: () => import("../views/client/MyFractions.vue"),
   },
   {
     path: "/my-account/:address",
@@ -108,6 +119,11 @@ const routes = [
     name: "My_collections",
     component: () => import("../views/client/Mycollections.vue"),
     beforeEnter: clientGuard,
+  },
+  {
+    path: "/collection/:id/details",
+    name: "CollectionDetails",
+    component: () => import("../views/client/Artistdetail.vue"),
   },
   // {
   //   path: "/my-collection",
