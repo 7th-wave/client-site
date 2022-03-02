@@ -3,7 +3,7 @@
     <Dialog
       as="div"
       static
-      class="fixed z-10 inset-0 overflow-y-auto"
+      class="fixed z-10 inset-0"
       :open="openModal"
     >
       <div

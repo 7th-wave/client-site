@@ -3,7 +3,7 @@
 		<Dialog
 			as="div"
 			static
-			class="fixed z-10 inset-0 overflow-y-auto"
+			class="fixed z-10 inset-0 "
 			
 			:open="openModal"
 		>
@@ -537,4 +537,11 @@ export default {
 .mx-datepicker {
 	width: auto;
 }
+</style>
+
+
+<style>
+ html {
+	 overflow: auto !important;
+ }
 </style>
