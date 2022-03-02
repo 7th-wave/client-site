@@ -188,7 +188,7 @@ const navigation = [
   { name: "My Account", href: {name:'MyAccount',params:{address:'gfdg'}} },
   { name: "My NFT", href:  {name:'My_collections'}  },
   { name: "My Vaults", href:  {name:'MyAccount',params:{address:'gfdg'}}  },
-  { name: "My Fractions", href:  {name:'MyAccount',params:{address:'gfdg'}}  },
+  { name: "My Fractions", href:  {name:'My_history'}  },
   { name: "My Purchase History", href:  {name:'MyAccount',params:{address:'gfdg'}}  },
 ];
 export default {

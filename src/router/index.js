@@ -99,6 +99,16 @@ const routes = [
     component: () => import("../views/client/Register.vue"),
   },
   {
+    path: "/register/:address",
+    name: "ClientRegister",
+    component: () => import("../views/client/Register.vue"),
+  },
+  {
+    path: "/my_history",
+    name: "My_history",
+    component: () => import("../views/client/MyFractions.vue"),
+  },
+  {
     path: "/my-account/:address",
     name: "MyAccount",
     component: () => import("../views/client/Myaccount.vue"),
