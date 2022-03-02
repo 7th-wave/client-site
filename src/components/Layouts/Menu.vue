@@ -74,7 +74,7 @@
           v-for="item in navigation"
           :key="item.name"
           :class="[
-            currentRouteName === item.href
+            currentRouteName === item.href.name
               ? 'bg-gray-100 text-gray-900'
               : 'text-gray-900 hover:bg-gray-100',
             'group flex items-center px-2 py-2 text-base font-medium rounded-md',
@@ -186,7 +186,7 @@ import { auth, storage } from "../../firebase/firebase";
 
 const navigation = [
   { name: "My Account", href: {name:'MyAccount',params:{address:'gfdg'}} },
-  { name: "My NFT", href:  {name:'MyAccount',params:{address:'gfdg'}}  },
+  { name: "My NFT", href:  {name:'My_collections'}  },
   { name: "My Vaults", href:  {name:'MyAccount',params:{address:'gfdg'}}  },
   { name: "My Fractions", href:  {name:'MyAccount',params:{address:'gfdg'}}  },
   { name: "My Purchase History", href:  {name:'MyAccount',params:{address:'gfdg'}}  },
@@ -194,6 +194,11 @@ const navigation = [
 export default {
   components: {
     // LockClosedIcon
+  },
+  computed:{
+    currentRouteName() {
+        return this.$route.name;
+    }
   },
   setup(props) {
     const store = useStore();
