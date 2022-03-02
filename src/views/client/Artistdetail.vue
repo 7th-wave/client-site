@@ -2,7 +2,7 @@
   <div class="artist bg-gray-100 font-inter">
     <div class="relative font-inter py-8 sm:py-8 lg:py-8">
       <div class="relative">
-        <Navbar :type="'admin'" />
+        <Navbar :type="'admin'" class=" lg:hidden" />
         <div
           class="
             text-center
@@ -30,7 +30,7 @@
     </div>
     <div class="lg:grid lg:grid-cols-7 lg:gap-6 rounded-lg sm:px-10">
       <div class="lg:col-span-2 lg:block flex flex-col items-start space-y-8">
-        <Menu />
+        <Menu class=" hidden lg:block" />
         <div>
           <NftCard>
             <template #image>
@@ -40,7 +40,41 @@
                 alt=""
               />
             </template>
-
+            <template #badge>
+              <div
+                class="
+                  bg-white
+                  py-1
+                  px-1
+                  rounded-full
+                  absolute
+                  top-3
+                  right-3
+                  flex
+                  items-center
+                  space-x-1.5
+                "
+              >
+                <div>
+                  <svg
+                    width="21"
+                    height="21"
+                    viewBox="0 0 21 21"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle cx="10.4258" cy="10.5" r="10" fill="#1ACE99" />
+                    <path
+                      fill-rule="evenodd"
+                      clip-rule="evenodd"
+                      d="M4.23802 6.54959C6.61428 6.51735 8.77936 5.61072 10.4261 4.13684C12.0728 5.61072 14.2379 6.51735 16.6142 6.54959C16.7005 7.06364 16.7454 7.59172 16.7454 8.1303C16.7454 12.2575 14.1077 15.7686 10.4261 17.0698C6.74451 15.7686 4.10681 12.2575 4.10681 8.1303C4.10681 7.59172 4.15173 7.06364 4.23802 6.54959ZM13.5029 9.62729C13.8935 9.23677 13.8935 8.6036 13.5029 8.21308C13.1124 7.82255 12.4793 7.82255 12.0887 8.21308L9.63619 10.6656L8.76347 9.7929C8.37295 9.40238 7.73979 9.40238 7.34926 9.7929C6.95874 10.1834 6.95874 10.8166 7.34926 11.2071L8.92908 12.7869C9.11662 12.9745 9.37097 13.0798 9.63619 13.0798C9.90141 13.0798 10.1558 12.9745 10.3433 12.7869L13.5029 9.62729Z"
+                      fill="white"
+                    />
+                  </svg>
+                </div>
+               
+              </div>
+            </template>
             <template #title>
               <span class="text-gray-900 text-xl font-semibold font-inter"
                 >Nike Waffle Sneakers</span
@@ -78,6 +112,33 @@
                         sm:grid-cols-6
                       "
                     >
+                      <div class="sm:col-span-6">
+                        <label
+                          for="title"
+                          class="block text-sm font-medium text-gray-700"
+                        >
+                          Collection
+                        </label>
+                        <div class="mt-1 flex rounded-md shadow-sm">
+                          <input
+                            type="text"
+                            v-model="data.title"
+                            name="Collection"
+                            id="Collection"
+                            autocomplete="Title"
+                            class="
+                              flex-1
+                              focus:ring-teal-500 focus:border-teal-500
+                              block
+                              w-full
+                              min-w-0
+                              rounded-none rounded-md
+                              sm:text-sm
+                              border-gray-300
+                            "
+                          />
+                        </div>
+                      </div>
                       <div class="sm:col-span-6">
                         <label
                           for="title"
@@ -211,7 +272,7 @@
                           />
                         </div>
                       </div>
-                      <div class="sm:col-span-6">
+                      <!-- <div class="sm:col-span-6 ">
                         <label
                           for="photo"
                           class="block text-sm font-medium text-gray-700"
@@ -276,7 +337,7 @@
                                     class="sr-only"
                                   />
                                 </label>
-                                <!-- <p class="pl-1">or drag and drop</p> -->
+                                <p class="pl-1">or drag and drop</p>
                               </div>
                               <p class="text-xs text-gray-500">
                                 PNG, JPG, GIF up to 10MB
@@ -336,7 +397,7 @@
                           </div>
                         </div>
 
-                        <!-- <div class="mt-1 lg:flex items-center">
+                        <div class="mt-1 lg:flex items-center">
                         <span class="h-auto w-48 overflow-hidden bg-gray-100">
                           <img src="/images/art-7.jpg" alt="">
                         </span>
@@ -360,12 +421,12 @@
                                 <img :src="selectedFoto" />
                             </div>
                         </div>
-                      </div> -->
                       </div>
+                      </div> -->
                     </div>
                   </div>
                   <div>
-                    <div class="sm:flex justify-between mt-4">
+                    <div class="sm:flex justify-between mt-4 items-center">
                       <div>
                         <fieldset>
                           <div>
@@ -459,46 +520,78 @@
                           </div>
                         </fieldset>
                       </div>
-                      <div class="m-8 md:m-0 relative">
-                        <img
-                          :src="data.qrCodeImage"
-                          class="bg-white hover:opacity-25 focus:opacity-15"
-                          alt=""
-                        />
-                        <a
-                          href="#"
-                          class="
-                            absolute
-                            inset-0
-                            z-10
-                            bg-white
-                            text-center
-                            flex flex-col
-                            items-center
-                            justify-center
-                            opacity-0
-                            hover:opacity-100
-                            bg-opacity-90
-                            duration-100
-                          "
-                        >
-                          <h1
+                      <div class="flex flex-col items-start space-y-2">
+                        <div class="mt-1 sm:mt-0 sm:col-span-2 w-full">
+                          <div class="w-full flex rounded-md shadow-sm">
+                            <span
+                              class="
+                                inline-flex
+                                items-center
+                                px-3
+                                rounded-l-md
+                                border border-r-0 border-gray-300
+                                bg-gray-50
+                                text-gray-500
+                                sm:text-sm
+                              "
+                            >
+                              https://</span
+                            >
+                            <input
+                              type="url"
+                              name="username"
+                              id="username"
+                              autocomplete="username"
+                              class="
+                                flex-1
+                                block
+                                w-full
+                                focus:ring-indigo-500 focus:border-indigo-500
+                                min-w-0
+                                rounded-none rounded-r-md
+                                sm:text-sm
+                                border-gray-300
+                              "
+                            />
+                          </div>
+                        </div>
+
+                        <div class="m-8 md:m-0 relative p-6 border">
+                          <img
+                            src="https://boofcv.org/images/3/35/Example_rendered_qrcode.png"
+                            class="bg-white w-80 h-80"
+                            alt=""
+                          />
+                        </div>
+                        <div class="flex items-center space-x-2 w-full">
+                          <button
                             class="
-                              text-base
-                              bg-gray-600
-                              px-4
+                              border
+                              text-sm text-gray-700
+                              font-inter font-medium
+                              bg-white
+                              w-full
                               py-2
-                              rounded-sm
-                              text-white
-                              font-medium
-                              leading-6
-                              tracking-wider
-                              uppercase
+                              rounded-md
                             "
                           >
-                            print / save
-                          </h1>
-                        </a>
+                            PRINT
+                          </button>
+                          <button
+                            class="
+                              border
+                              text-sm
+                              font-inter font-medium
+                              bg-black
+                              w-full
+                              py-2
+                              rounded-md
+                              text-white
+                            "
+                          >
+                            SAVE
+                          </button>
+                        </div>
                       </div>
                     </div>
                     <div
@@ -526,7 +619,7 @@
                     </div>
                   </div>
                 </div>
-                <div class=" divide-y divide-gray-200">
+                <div class="divide-y divide-gray-200">
                   <div class="flex items-center space-x-2 py-4 cursor-pointer">
                     <div>
                       <svg
@@ -546,7 +639,9 @@
                         />
                       </svg>
                     </div>
-                    <span class=" text-sm font-inter font-normal  text-teal-400">HASHNUMBERNJSDNFKJSDNFKJNSDFSDFSDF</span>
+                    <span class="text-sm font-inter font-normal text-teal-400"
+                      >HASHNUMBERNJSDNFKJSDNFKJNSDFSDFSDF</span
+                    >
                   </div>
                 </div>
                 <div class="pt-5">
