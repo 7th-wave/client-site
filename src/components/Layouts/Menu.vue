@@ -69,7 +69,7 @@
       </div>
       <nav class="mt-5 flex-1 px-2 space-y-1" aria-label="Sidebar">
         <router-link
-          :to="{ name: item.href }"
+          :to=" item.href"
           @click="closeMenu"
           v-for="item in navigation"
           :key="item.name"
@@ -185,11 +185,11 @@ import { useRoute, useRouter } from "vue-router";
 import { auth, storage } from "../../firebase/firebase";
 
 const navigation = [
-  { name: "My Account", href: "MyAccount" },
-  { name: "My NFT", href: "MyAccount" },
-  { name: "My Vaults", href: "MyAccount" },
-  { name: "My Fractions", href: "MyAccount" },
-  { name: "My Purchase History", href: "MyAccount" },
+  { name: "My Account", href: {name:'MyAccount',params:{address:'gfdg'}} },
+  { name: "My NFT", href:  {name:'MyAccount',params:{address:'gfdg'}}  },
+  { name: "My Vaults", href:  {name:'MyAccount',params:{address:'gfdg'}}  },
+  { name: "My Fractions", href:  {name:'MyAccount',params:{address:'gfdg'}}  },
+  { name: "My Purchase History", href:  {name:'MyAccount',params:{address:'gfdg'}}  },
 ];
 export default {
   components: {

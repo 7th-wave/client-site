@@ -109,12 +109,12 @@ const routes = [
     component: () => import("../views/client/Mycollections.vue"),
     beforeEnter: clientGuard,
   },
-  {
-    path: "/my-collection",
-    name: "My_collection",
-    component: () => import("../views/client/Mycollection.vue"),
-    beforeEnter: clientGuard,
-  },
+  // {
+  //   path: "/my-collection",
+  //   name: "My_collection",
+  //   component: () => import("../views/client/Mycollection.vue"),
+  //   beforeEnter: clientGuard,
+  // },
   {
     path: "/my-collections/artwork/:collection/:ref",
     name: "ClientArtwork",
