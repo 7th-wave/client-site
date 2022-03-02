@@ -78,6 +78,33 @@
                         sm:grid-cols-6
                       "
                     >
+                     <div class="sm:col-span-6">
+                        <label
+                          for="title"
+                          class="block text-sm font-medium text-gray-700"
+                        >
+                          Collection
+                        </label>
+                        <div class="mt-1 flex rounded-md shadow-sm">
+                          <input
+                            type="text"
+                            v-model="data.title"
+                            name="Collection"
+                            id="Collection"
+                            autocomplete="Title"
+                            class="
+                              flex-1
+                              focus:ring-teal-500 focus:border-teal-500
+                              block
+                              w-full
+                              min-w-0
+                              rounded-none rounded-md
+                              sm:text-sm
+                              border-gray-300
+                            "
+                          />
+                        </div>
+                      </div>
                       <div class="sm:col-span-6">
                         <label
                           for="title"
@@ -211,7 +238,7 @@
                           />
                         </div>
                       </div>
-                      <div class="sm:col-span-6">
+                      <!-- <div class="sm:col-span-6 ">
                         <label
                           for="photo"
                           class="block text-sm font-medium text-gray-700"
@@ -276,7 +303,7 @@
                                     class="sr-only"
                                   />
                                 </label>
-                                <!-- <p class="pl-1">or drag and drop</p> -->
+                                <p class="pl-1">or drag and drop</p>
                               </div>
                               <p class="text-xs text-gray-500">
                                 PNG, JPG, GIF up to 10MB
@@ -336,7 +363,7 @@
                           </div>
                         </div>
 
-                        <!-- <div class="mt-1 lg:flex items-center">
+                        <div class="mt-1 lg:flex items-center">
                         <span class="h-auto w-48 overflow-hidden bg-gray-100">
                           <img src="/images/art-7.jpg" alt="">
                         </span>
@@ -360,12 +387,12 @@
                                 <img :src="selectedFoto" />
                             </div>
                         </div>
-                      </div> -->
                       </div>
+                      </div> -->
                     </div>
                   </div>
                   <div>
-                    <div class="sm:flex justify-between mt-4">
+                    <div class="sm:flex justify-between mt-4 items-center">
                       <div>
                         <fieldset>
                           <div>
@@ -459,46 +486,78 @@
                           </div>
                         </fieldset>
                       </div>
-                      <div class="m-8 md:m-0 relative">
-                        <img
-                          :src="data.qrCodeImage"
-                          class="bg-white hover:opacity-25 focus:opacity-15"
-                          alt=""
-                        />
-                        <a
-                          href="#"
-                          class="
-                            absolute
-                            inset-0
-                            z-10
-                            bg-white
-                            text-center
-                            flex flex-col
-                            items-center
-                            justify-center
-                            opacity-0
-                            hover:opacity-100
-                            bg-opacity-90
-                            duration-100
-                          "
-                        >
-                          <h1
+                      <div class="flex flex-col items-start space-y-2">
+                        <div class="mt-1 sm:mt-0 sm:col-span-2 w-full">
+                          <div class=" w-full flex rounded-md shadow-sm">
+                            <span
+                              class="
+                                inline-flex
+                                items-center
+                                px-3
+                                rounded-l-md
+                                border border-r-0 border-gray-300
+                                bg-gray-50
+                                text-gray-500
+                                sm:text-sm
+                              "
+                            >
+                              https://</span
+                            >
+                            <input
+                              type="url"
+                              name="username"
+                              id="username"
+                              autocomplete="username"
+                              class="
+                                flex-1
+                                block
+                                w-full
+                                focus:ring-indigo-500 focus:border-indigo-500
+                                min-w-0
+                                rounded-none rounded-r-md
+                                sm:text-sm
+                                border-gray-300
+                              "
+                            />
+                          </div>
+                        </div>
+
+                        <div class="m-8 md:m-0 relative p-6 border">
+                          <img
+                            src="https://boofcv.org/images/3/35/Example_rendered_qrcode.png"
+                            class="bg-white w-80 h-80"
+                            alt=""
+                          />
+                        </div>
+                        <div class="flex items-center space-x-2 w-full">
+                          <button
                             class="
-                              text-base
-                              bg-gray-600
-                              px-4
+                              border
+                              text-sm text-gray-700
+                              font-inter font-medium
+                              bg-white
+                              w-full
                               py-2
-                              rounded-sm
-                              text-white
-                              font-medium
-                              leading-6
-                              tracking-wider
-                              uppercase
+                              rounded-md
                             "
                           >
-                            print / save
-                          </h1>
-                        </a>
+                            PRINT
+                          </button>
+                          <button
+                            class="
+                              border
+                              text-sm
+                              font-inter font-medium
+                              bg-black
+                              w-full
+                              py-2
+                              rounded-md
+                              text-white
+                            "
+                          >
+                            SAVE
+                          </button>
+                        </div>
                       </div>
                     </div>
                     <div
@@ -526,7 +585,7 @@
                     </div>
                   </div>
                 </div>
-                <div class=" divide-y divide-gray-200">
+                <div class="divide-y divide-gray-200">
                   <div class="flex items-center space-x-2 py-4 cursor-pointer">
                     <div>
                       <svg
@@ -546,7 +605,9 @@
                         />
                       </svg>
                     </div>
-                    <span class=" text-sm font-inter font-normal  text-teal-400">HASHNUMBERNJSDNFKJSDNFKJNSDFSDFSDF</span>
+                    <span class="text-sm font-inter font-normal text-teal-400"
+                      >HASHNUMBERNJSDNFKJSDNFKJNSDFSDFSDF</span
+                    >
                   </div>
                 </div>
                 <div class="pt-5">
