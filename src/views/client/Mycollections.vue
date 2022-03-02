@@ -25,7 +25,7 @@
           <Menu />
         </div>
         <div class="mt-5 md:mt-0 lg:col-span-5 grid grid-cols-2 gap-4">
-          <NftCard v-for="(Nft, index, key) in Nfts" :key="key">
+          <NftCard v-for="(Nft, index, key) in Nfts" :key="key" @click="goDetails(Nft.id)">
             <template #image>
               <img class="w-full h-full object-cover" :src="Nft.image" alt="" />
             </template>
@@ -131,6 +131,7 @@ export default {
     return {
       Nfts: [
         {
+          id: "1",
           name: "Sneakers",
           image:
             "https://cdn.corporatefinanceinstitute.com/assets/types-of-assets-1024x575.jpeg",
@@ -138,6 +139,7 @@ export default {
           badge: "NIKE",
         },
         {
+          id: "2",
           name: "Sneakers",
           image:
             "https://cdn.corporatefinanceinstitute.com/assets/types-of-assets-1024x575.jpeg",
@@ -145,6 +147,7 @@ export default {
           badge: "NIKE",
         },
         {
+          id: "3",
           name: "Sneakers",
           image:
             "https://cdn.corporatefinanceinstitute.com/assets/types-of-assets-1024x575.jpeg",
@@ -154,6 +157,16 @@ export default {
       ],
     };
   },
+  methods:{
+    goDetails(id){
+      this.$router.push({
+        name: "CollectionDetails",
+        params: {
+          id: id
+        }
+      })
+    }
+  }
   // setup() {
   //   const artworks = ref([]);
 
