@@ -10,6 +10,7 @@
       font-medium
       rounded-lg
       shadow-lg
+      w-full
     "
   >
     <div class="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">

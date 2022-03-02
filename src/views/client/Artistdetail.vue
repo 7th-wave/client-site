@@ -2,7 +2,7 @@
   <div class="artist bg-gray-100 font-inter">
     <div class="relative font-inter py-8 sm:py-8 lg:py-8">
       <div class="relative">
-        <Navbar :type="'admin'" />
+        <Navbar :type="'admin'" class=" lg:hidden" />
         <div
           class="
             text-center
@@ -30,7 +30,7 @@
     </div>
     <div class="lg:grid lg:grid-cols-7 lg:gap-6 rounded-lg sm:px-10">
       <div class="lg:col-span-2 lg:block flex flex-col items-start space-y-8">
-        <Menu />
+        <Menu class=" hidden lg:block" />
         <div>
           <NftCard>
             <template #image>
