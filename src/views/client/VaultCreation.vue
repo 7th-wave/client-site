@@ -71,6 +71,13 @@
                   placeholder="Banksy’s Caveman"
                 />
               </div>
+              <div class="pt-1">
+                <span
+                  v-if="errors.Name"
+                  class="text-red-600 font-inter text-sm font-normal"
+                  >{{ errors.Name }}</span
+                >
+              </div>
             </div>
             <div class="w-full">
               <label
@@ -102,6 +109,11 @@
                 <option selected value="cat_2">cat 2</option>
                 <option value="cat_3">cat 3</option>
               </select>
+              <span
+                v-if="errors.Category"
+                class="text-red-600 font-inter text-sm font-normal"
+                >{{ errors.Category }}</span
+              >
             </div>
             <div class="w-full">
               <label for="email" class="block text-sm font-medium text-gray-700"
@@ -125,6 +137,11 @@
                   placeholder="100,000,000"
                 />
               </div>
+              <span
+                v-if="errors.Supply"
+                class="text-red-600 font-inter text-sm font-normal"
+                >{{ errors.Supply }}</span
+              >
             </div>
 
             <div class="w-full">
@@ -168,6 +185,11 @@
                   placeholder="10,000,000"
                 />
               </div>
+              <span
+                v-if="errors.Price"
+                class="text-red-600 font-inter text-sm font-normal"
+                >{{ errors.Price }}</span
+              >
             </div>
             <div class="w-full">
               <label for="email" class="block text-sm font-medium text-gray-700"
@@ -191,6 +213,11 @@
                   placeholder="NIKE"
                 />
               </div>
+              <span
+                v-if="errors.Ticker"
+                class="text-red-600 font-inter text-sm font-normal"
+                >{{ errors.Ticker }}</span
+              >
             </div>
             <div class="w-full">
               <label
@@ -233,6 +260,11 @@
                   placeholder="5"
                 />
               </div>
+              <span
+              v-if="errors.Fractions"
+              class="text-red-600 font-inter text-sm font-normal"
+              >{{ errors.Fractions }}</span
+            >
             </div>
             <div class="w-full">
               <label
@@ -264,6 +296,11 @@
                   {Asset Owner Name} {0xab...124E}
                 </option>
               </select>
+               <span
+              v-if="errors.Owner"
+              class="text-red-600 font-inter text-sm font-normal"
+              >{{ errors.Owner }}</span
+            >
             </div>
             <div class="w-full">
               <label
@@ -306,9 +343,14 @@
                   placeholder="51"
                 />
               </div>
-              <span class="text-sm font-normal text-gray-500">
-                <span class="font-semibold">Token</span>: 51,000,000</span
+              <div class="text-sm font-normal text-gray-500">
+                <span class="font-semibold">Token</span>: 51,000,000</div
               >
+               <span
+              v-if="errors.Fractions_owner"
+              class="text-red-600 font-inter text-sm font-normal"
+              >{{ errors.Fractions_owner }}</span
+            >
             </div>
             <div class="w-full">
               <label
@@ -351,9 +393,14 @@
                   placeholder="3"
                 />
               </div>
-              <span class="text-sm font-normal text-gray-500">
-                <span class="font-semibold">Token</span>: 7,000,000</span
+              <div class="text-sm font-normal text-gray-500 ">
+                <span class="font-semibold">Token</span>: 7,000,000</div
               >
+               <span
+              v-if="errors.Jx"
+              class="text-red-600 font-inter text-sm font-normal"
+              >{{ errors.Jx }}</span
+            >
             </div>
           </div>
           <div class="w-full bg-gray-300 h-px"></div>
@@ -395,6 +442,7 @@
           <div class="w-full bg-gray-300 h-px"></div>
           <div class="w-full py-4">
             <button
+              @click="Continue"
               class="
                 text-base
                 font-inter font-medium
@@ -411,16 +459,19 @@
         </div>
       </div>
     </div>
+    <VaultStepModal ref="steps" />
   </div>
 </template>
  
 <script>
 import IconCircle from "@/components/Icons/IconCircle.vue";
 import VaultCard from "@/components/cards/VaultCard.vue";
+import VaultStepModal from "@/components/Modals/VaultStepModal.vue";
 export default {
   components: {
     VaultCard,
     IconCircle,
+    VaultStepModal,
   },
   data() {
     return {
@@ -470,58 +521,65 @@ export default {
   },
   methods: {
     validate() {
-        var isValid = true;
-        this.errors = {
-          Name: "",
-          Category: "",
-          Supply: "",
-          Price: "",
-          Ticker: "",
-          Fractions: "",
-          Jx: "",
-          Owner: "",
-          Fractions_owner: "",
-        };
-        if (this.form.Name == '') {
-          this.errors.Name = "Vault Name is required";
-            isValid = false;
-        }
-        if (this.form.Category == '') {
-          this.errors.Category = "Vault Category is required";
-            isValid = false;
-        }
-        if (this.form.Supply == '') {
-          this.errors.Supply = "Supply is required";
-            isValid = false;
-        }
-        if (this.form.Price == '') {
-          this.errors.Price = "Reserve Price is required";
-            isValid = false;
-        }
-        if (this.form.Ticker == '') {
-          this.errors.Ticker = "Ticker is required";
-            isValid = false;
-        }
-        if (this.form.Fractions == '') {
-          this.errors.Fractions = "Max Fractions is required";
-            isValid = false;
-        }
-        if (this.form.Jx == '') {
-          this.errors.Jx = "JX Fractions is required";
-            isValid = false;
-        }
-        if (this.form.Owner == '') {
-          this.errors.Owner = "Asset Owner is required";
-            isValid = false;
-        }
-        if (this.form.Fractions_owner == '') {
-          this.errors.Fractions_owner = "Fractions owner is required";
-            isValid = false;
-        }
-        return isValid;
+      var isValid = true;
+      this.errors = {
+        Name: "",
+        Category: "",
+        Supply: "",
+        Price: "",
+        Ticker: "",
+        Fractions: "",
+        Jx: "",
+        Owner: "",
+        Fractions_owner: "",
+      };
+      if (this.form.Name == "") {
+        this.errors.Name = "Vault Name is required";
+        isValid = false;
+      }
+      if (this.form.Category == "") {
+        this.errors.Category = "Vault Category is required";
+        isValid = false;
+      }
+      if (this.form.Supply == "") {
+        this.errors.Supply = "Supply is required";
+        isValid = false;
+      }
+      if (this.form.Price == "") {
+        this.errors.Price = "Reserve Price is required";
+        isValid = false;
+      }
+      if (this.form.Ticker == "") {
+        this.errors.Ticker = "Ticker is required";
+        isValid = false;
+      }
+      if (this.form.Fractions == "") {
+        this.errors.Fractions = "Max Fractions is required";
+        isValid = false;
+      }
+      if (this.form.Jx == "") {
+        this.errors.Jx = "JX Fractions is required";
+        isValid = false;
+      }
+      if (this.form.Owner == "") {
+        this.errors.Owner = "Asset Owner is required";
+        isValid = false;
+      }
+      if (this.form.Fractions_owner == "") {
+        this.errors.Fractions_owner = "Fractions owner is required";
+        isValid = false;
+      }
+      return isValid;
     },
+
     RemoveItem(item) {
       item.selected = false;
+    },
+    Continue() {
+      if (this.validate()) {
+        this.$refs.steps.open = true;
+        this.$refs.steps.step = 1;
+      }
     },
   },
   computed: {
