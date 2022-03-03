@@ -27,11 +27,22 @@
         </p>
       </div>
       <div
-        class="w-full grid grid-cols-1 lg:grid-cols-7 lg:gap-4 space-y-4 lg:space-y-0 max-w-7xl mx-auto"
+        class="
+          w-full
+          grid grid-cols-1
+          lg:grid-cols-7 lg:gap-4
+          space-y-4
+          lg:space-y-0
+          max-w-7xl
+          mx-auto
+        "
       >
         <div class="col-span-5 w-full grid lg:grid-cols-2 gap-8">
-          <VaultCard v-for="(item,index,key) in Vaults" :key="key" :vault="item" />
-         
+          <VaultCard
+            v-for="(item, index, key) in Vaults"
+            :key="key"
+            :vault="item"
+          />
         </div>
         <div class="bg-white w-full col-span-2 py-4 px-2 rounded-md shadow-md">
           <span class="text-lg font-inter text-gray-900 font-medium"
@@ -359,13 +370,24 @@
           </div>
           <div class="w-full bg-gray-300 h-px"></div>
           <div class="flex w-full py-4">
-            <div class="m-auto " :class="{'grid grid-cols-3 gap-2':selectedVaults.length > 1}">
-              <div class="relative w-28 h-28" v-for="(item,index,key) in selectedVaults" :key="key">
+            <div
+              class="m-auto"
+              :class="{ 'grid grid-cols-3 gap-2': selectedVaults.length > 1 }"
+            >
+              <div
+                class="relative w-28 h-28"
+                v-for="(item, index, key) in selectedVaults"
+                :key="key"
+              >
                 <div class="border rounded-md overflow-hidden w-full h-full">
-                  <img :src="'/images/' + item.img" alt="" class="w-full h-full" />
+                  <img
+                    :src="'/images/' + item.img"
+                    alt=""
+                    class="w-full h-full"
+                  />
                 </div>
                 <div
-                    @click="RemoveItem(item)"
+                  @click="RemoveItem(item)"
                   class="
                     cursor-pointer
                     absolute
@@ -376,7 +398,7 @@
                     rounded-full
                   "
                 >
-                  <IconCircle  />
+                  <IconCircle />
                 </div>
               </div>
             </div>
@@ -385,6 +407,7 @@
           <div class="w-full bg-gray-300 h-px"></div>
           <div class="w-full py-4">
             <button
+              @click="Continue"
               class="
                 text-base
                 font-inter font-medium
@@ -401,16 +424,19 @@
         </div>
       </div>
     </div>
+    <VaultStepModal ref="steps" />
   </div>
 </template>
  
 <script>
 import IconCircle from "@/components/Icons/IconCircle.vue";
 import VaultCard from "@/components/cards/VaultCard.vue";
+import VaultStepModal from "@/components/Modals/VaultStepModal.vue";
 export default {
   components: {
     VaultCard,
     IconCircle,
+    VaultStepModal,
   },
   data() {
     return {
@@ -436,16 +462,19 @@ export default {
       ],
     };
   },
-  methods:{
-      RemoveItem(item){
-          item.selected = false;
-      }
+  methods: {
+    RemoveItem(item) {
+      item.selected = false;
+    },
+    Continue() {
+      this.$refs.steps.open = true;
+      this.$refs.steps.step = 1;
+    },
   },
-  computed:{
-    selectedVaults(){
-      return this.Vaults.filter(vault => vault.selected);
-    }
+  computed: {
+    selectedVaults() {
+      return this.Vaults.filter((vault) => vault.selected);
+    },
   },
- 
 };
 </script>
