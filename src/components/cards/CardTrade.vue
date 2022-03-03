@@ -4,7 +4,7 @@
       <span class="text-base font-medium text-gray-700"
         >Your owned fractions</span
       >
-      <span class="text-sm font-semibold text-teal-300 cursor-pointer"
+      <span class="text-sm font-semibold text-primary-300 cursor-pointer"
         >View your vault purchases</span
       >
     </div>
@@ -35,7 +35,7 @@
         <span class="text-gray-500 font-normal text-xs">≈ $20,345.00</span>
       </div>
       <div >
-          <button class=" bg-teal-300 px-6 py-2.5 rounded-md text-white text-base font-inter font-medium">TRADE ON EXCHANGE MARKET</button>
+          <button class=" bg-primary-300 px-6 py-2.5 rounded-md text-white text-base font-inter font-medium">TRADE ON EXCHANGE MARKET</button>
       </div>
     </div>
   </div>

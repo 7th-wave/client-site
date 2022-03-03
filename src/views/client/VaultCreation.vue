@@ -392,7 +392,7 @@
                 py-2
                 w-full
                 rounded-md
-                bg-teal-1000
+                bg-primary-1000
               "
             >
               CONTINUE

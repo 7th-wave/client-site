@@ -39,7 +39,7 @@
         />
         <button
           class="
-            bg-teal-300
+            bg-primary-300
             px-6
             py-2
             whitespace-nowrap

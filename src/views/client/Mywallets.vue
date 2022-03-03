@@ -37,7 +37,7 @@
               focus-within:ring-2
               focus-within:ring-offset-2
               focus-within:ring-offset-gray-100
-              focus-within:ring-teal-500
+              focus-within:ring-primary-500
               overflow-hidden space-y-4
             "
           >
@@ -56,7 +56,7 @@
             <div class="flex cursor-pointer">
               <div class=" flex items-center space-x-1 m-auto">
                 <span
-                  class="text-teal-300 font-medium font-inter text-sm m-auto"
+                  class="text-primary-300 font-medium font-inter text-sm m-auto"
                   >0xE881...4567</span
                 >
                 <div class="">
