@@ -10,8 +10,8 @@
             items-center
             mx-auto
             px-4
-            py-4
-            lg:py-4
+            py-6
+            lg:py-6
             sm:px-6
             md:justify-start md:space-x-10
             lg:px-8
