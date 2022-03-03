@@ -3,7 +3,7 @@
   <div
     class="
       account
-      sm:px-8
+      sm:px-2
       py-4
       lg:py-16
       relative
@@ -27,11 +27,22 @@
         </p>
       </div>
       <div
-        class="w-full grid grid-cols-1 lg:grid-cols-7 lg:gap-4 space-y-4 lg:space-y-0 max-w-7xl mx-auto"
+        class="
+          w-full
+          grid grid-cols-1
+          lg:grid-cols-7 lg:gap-4
+          space-y-4
+          lg:space-y-0
+          max-w-7xl
+          mx-auto
+        "
       >
         <div class="col-span-5 w-full grid lg:grid-cols-2 gap-8">
-          <VaultCard v-for="(item,index,key) in Vaults" :key="key" :vault="item" />
-         
+          <VaultCard
+            v-for="(item, index, key) in Vaults"
+            :key="key"
+            :vault="item"
+          />
         </div>
         <div class="bg-white w-full col-span-2 py-4 px-2 rounded-md shadow-md">
           <span class="text-lg font-inter text-gray-900 font-medium"
@@ -44,6 +55,7 @@
               >
               <div class="mt-1">
                 <input
+                  v-model="form.Name"
                   type="text"
                   name="name"
                   id="name"
@@ -67,6 +79,7 @@
                 >Vault Category</label
               >
               <select
+                v-model="form.Category"
                 id="Category"
                 name="Category"
                 class="
@@ -96,6 +109,7 @@
               >
               <div class="mt-1">
                 <input
+                  v-model="form.Supply"
                   type="text"
                   name="Supply"
                   id="Supply"
@@ -112,28 +126,7 @@
                 />
               </div>
             </div>
-            <div class="w-full">
-              <label for="email" class="block text-sm font-medium text-gray-700"
-                >Supply</label
-              >
-              <div class="mt-1">
-                <input
-                  type="text"
-                  name="Supply"
-                  id="Supply"
-                  class="
-                    shadow-sm
-                    focus:ring-indigo-500 focus:border-indigo-500
-                    block
-                    w-full
-                    sm:text-sm
-                    border-gray-300
-                    rounded-md
-                  "
-                  placeholder="100,000,000"
-                />
-              </div>
-            </div>
+
             <div class="w-full">
               <label
                 for="company-website"
@@ -156,6 +149,7 @@
                   >USDC</span
                 >
                 <input
+                  v-model="form.Price"
                   type="text"
                   name="Price"
                   id="Price"
@@ -181,6 +175,7 @@
               >
               <div class="mt-1">
                 <input
+                  v-model="form.Ticker"
                   type="text"
                   name="Ticker"
                   id="Ticker"
@@ -219,6 +214,7 @@
                   >%</span
                 >
                 <input
+                  v-model="form.Fractions"
                   type="text"
                   name="Fractions"
                   id="Fractions"
@@ -245,6 +241,7 @@
                 >Asset Owner</label
               >
               <select
+                v-model="form.Owner"
                 id="Asset_Owner"
                 name="Asset_Owner"
                 class="
@@ -290,6 +287,7 @@
                   >%</span
                 >
                 <input
+                  v-model="form.Fractions_owner"
                   type="text"
                   name="Fractions"
                   id="Fractions"
@@ -334,6 +332,7 @@
                   >%</span
                 >
                 <input
+                  v-model="form.Jx"
                   type="text"
                   name="JX"
                   id="JX"
@@ -359,13 +358,24 @@
           </div>
           <div class="w-full bg-gray-300 h-px"></div>
           <div class="flex w-full py-4">
-            <div class="m-auto " :class="{'grid grid-cols-3 gap-2':selectedVaults.length > 1}">
-              <div class="relative w-28 h-28" v-for="(item,index,key) in selectedVaults" :key="key">
+            <div
+              class="m-auto"
+              :class="{ 'grid grid-cols-3 gap-2': selectedVaults.length > 1 }"
+            >
+              <div
+                class="relative w-28 h-28"
+                v-for="(item, index, key) in selectedVaults"
+                :key="key"
+              >
                 <div class="border rounded-md overflow-hidden w-full h-full">
-                  <img :src="'/images/' + item.img" alt="" class="w-full h-full" />
+                  <img
+                    :src="'/images/' + item.img"
+                    alt=""
+                    class="w-full h-full"
+                  />
                 </div>
                 <div
-                    @click="RemoveItem(item)"
+                  @click="RemoveItem(item)"
                   class="
                     cursor-pointer
                     absolute
@@ -376,7 +386,7 @@
                     rounded-full
                   "
                 >
-                  <IconCircle  />
+                  <IconCircle />
                 </div>
               </div>
             </div>
@@ -414,6 +424,28 @@ export default {
   },
   data() {
     return {
+      errors: {
+        Name: "",
+        Category: "",
+        Supply: "",
+        Price: "",
+        Ticker: "",
+        Fractions: "",
+        Jx: "",
+        Owner: "",
+        Fractions_owner: "",
+      },
+      form: {
+        Name: "",
+        Category: "",
+        Supply: "",
+        Price: "",
+        Ticker: "",
+        Fractions: "",
+        Jx: "",
+        Owner: "",
+        Fractions_owner: "",
+      },
       Vaults: [
         {
           selected: false,
@@ -436,16 +468,66 @@ export default {
       ],
     };
   },
-  methods:{
-      RemoveItem(item){
-          item.selected = false;
-      }
+  methods: {
+    validate() {
+        var isValid = true;
+        this.errors = {
+          Name: "",
+          Category: "",
+          Supply: "",
+          Price: "",
+          Ticker: "",
+          Fractions: "",
+          Jx: "",
+          Owner: "",
+          Fractions_owner: "",
+        };
+        if (this.form.Name == '') {
+          this.errors.Name = "Vault Name is required";
+            isValid = false;
+        }
+        if (this.form.Category == '') {
+          this.errors.Category = "Vault Category is required";
+            isValid = false;
+        }
+        if (this.form.Supply == '') {
+          this.errors.Supply = "Supply is required";
+            isValid = false;
+        }
+        if (this.form.Price == '') {
+          this.errors.Price = "Reserve Price is required";
+            isValid = false;
+        }
+        if (this.form.Ticker == '') {
+          this.errors.Ticker = "Ticker is required";
+            isValid = false;
+        }
+        if (this.form.Fractions == '') {
+          this.errors.Fractions = "Max Fractions is required";
+            isValid = false;
+        }
+        if (this.form.Jx == '') {
+          this.errors.Jx = "JX Fractions is required";
+            isValid = false;
+        }
+        if (this.form.Owner == '') {
+          this.errors.Owner = "Asset Owner is required";
+            isValid = false;
+        }
+        if (this.form.Fractions_owner == '') {
+          this.errors.Fractions_owner = "Fractions owner is required";
+            isValid = false;
+        }
+        return isValid;
+    },
+    RemoveItem(item) {
+      item.selected = false;
+    },
   },
-  computed:{
-    selectedVaults(){
-      return this.Vaults.filter(vault => vault.selected);
-    }
+  computed: {
+    selectedVaults() {
+      return this.Vaults.filter((vault) => vault.selected);
+    },
   },
- 
 };
 </script>
