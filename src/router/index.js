@@ -104,7 +104,7 @@ const routes = [
     component: () => import("../views/client/Register.vue"),
   },
   {
-    path: "/my_history",
+    path: "/my-history",
     name: "My_history",
     component: () => import("../views/client/MyFractions.vue"),
   },
@@ -126,9 +126,14 @@ const routes = [
     component: () => import("../views/client/Artistdetail.vue"),
   },
    {
-    path: "/my_fractions",
+    path: "/my-fractions",
     name: "My_fractions",
     component: () => import("../views/client/MyNftFractions.vue"),
+  },
+  {
+    path: "/my-fractions/:id/details",
+    name: "My_fractions_details",
+    component: () => import("../views/client/NftfractionDetails.vue"),
   },
   // {
   //   path: "/my-collection",
