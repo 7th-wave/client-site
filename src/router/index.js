@@ -16,7 +16,7 @@ const routes = [
     path: "/fractionalize",
     name: "Fractionalize",
 
-    component: () => import("../views/frontend/Fractionalize.vue"),
+    component: () => import("../views/client/VaultCreation.vue"),
   },
   {
     path: "/claim",
@@ -120,11 +120,6 @@ const routes = [
     name: "MyVault",
     component: () => import("../views/client/Myaccount.vue"),
     beforeEnter: clientGuard,
-  },
-  {
-    path: "/vault/create",
-    name: "CreateVault",
-    component: () => import("../views/client/VaultCreation.vue"),
   },
   {
     path: "/purchasse-history",

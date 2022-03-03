@@ -139,15 +139,15 @@ export default {
         console.log('slide change');
       };
 
-      const fractionalize = () => {
-        router.push({ name:'CreateVault' })
+      const goCollections = () => {
+        router.push({ name:'Explore' })
       }
 
       return {
         modules: [EffectCoverflow, Pagination],
         onSwiper,
         onSlideChange,
-        fractionalize,
+        goCollections,
         vaults
       };
   },
