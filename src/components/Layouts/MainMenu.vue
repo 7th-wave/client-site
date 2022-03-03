@@ -105,7 +105,7 @@
         </nav>
       </div>
       <div class="flex-shrink-0 flex bg-gray-100 p-4">
-        <a href="#" class="flex-shrink-0 w-full group block">
+        <router-link :to="{name:'MyAccount',params:{address:'dfdf'}}"  class="flex-shrink-0 w-full group block">
           <div class="flex items-center">
             <div>
               <img
@@ -124,11 +124,11 @@
               </div>
             </div>
           </div>
-        </a>
+        </router-link>
       </div>
       <div class="flex flex-col items-start space-y-2 p-4">
-        <a href="#" class="text-gray-900 font-medium text-base font-inter"
-          >My Assets</a
+        <router-link :to="{name:'My_collections'}" class="text-gray-900 font-medium text-base font-inter"
+          >My Assets</router-link
         >
         <a href="#" class="text-gray-600 font-medium text-base font-inter"
           >Disconect</a

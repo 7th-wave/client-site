@@ -2,12 +2,11 @@
   <div
     class="
       account
-      sm:px-2
+      sm:px-8
       py-4
       sm:py-4
       lg:py-16
       relative
-      max-w-7xl
       mx-auto
       bg-gray-100
       font-inter
