@@ -61,7 +61,7 @@ export default {
         case 'outlined':
           return 'border border-primary-400 text-primary-400 hover:bg-primary-400 hover:text-white';
         case 'secondary':
-          return 'border border-gray-300 bg-white hover:bg-gray-50';
+          return 'bg-secondary-400 text-white hover:bg-secondary-500';
         case 'black':
           return 'bg-gray-900 text-white hover:bg-gray-900';
         default:
