@@ -122,6 +122,11 @@ const routes = [
     beforeEnter: clientGuard,
   },
   {
+    path: "/vault/create",
+    name: "CreateVault",
+    component: () => import("../views/client/VaultCreation.vue"),
+  },
+  {
     path: "/purchasse-history",
     name: "PurchasseHistory",
     component: () => import("../views/client/Myaccount.vue"),
