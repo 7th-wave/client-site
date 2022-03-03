@@ -3,7 +3,7 @@
     :type="typeBtn"
     @click="submit"
     :class="[
-      'focus:outline-none inline-flex items-center justify-center shadow-sm uppercase',
+      'focus:outline-none inline-flex items-center justify-center shadow-sm uppercase font-bold',
       sizeClass,
       styleClass,
       typeClass,
@@ -43,7 +43,7 @@ export default {
       switch (size) {
         case 'medium':
           return 'px-4 py-2 text-sm';
-        case '  ':
+        case 'large':
           return 'px-6 py-3 text-base';
         case 'small':
           return 'px-3 py-2 text-sm leading-4 font-medium';
