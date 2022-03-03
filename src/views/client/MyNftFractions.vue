@@ -36,6 +36,13 @@
           "
         >
           <VaultItem
+            class=" cursor-pointer"
+            @click="
+              $router.push({
+                name: 'My_fractions_details',
+                params: { id: item.id },
+              })
+            "
             v-for="(item, index, key) in vaults"
             :key="key"
             :vault="item"
@@ -44,7 +51,7 @@
             <template #badge>
               <div
                 class="
-                    z-50
+                  z-50
                   bg-white
                   py-1
                   px-2
@@ -107,6 +114,7 @@ export default {
     return {
       vaults: [
         {
+          id: "1",
           name: "Nike Sneakers",
           token: "SNEAKER",
           creator: "Nike",
@@ -141,6 +149,7 @@ export default {
           ],
         },
         {
+          id: "2",
           name: "Nike Shoes",
           token: "SNEAKER",
           creator: "Nike",
@@ -163,6 +172,7 @@ export default {
           ],
         },
         {
+          id: "3",
           name: "Nike Shoes",
           token: "SNEAKER",
           creator: "Nike",
