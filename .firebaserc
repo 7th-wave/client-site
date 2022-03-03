@@ -1,5 +1,14 @@
 {
   "projects": {
-    "default": "fractional"
+    "default": "prod"
+  },
+  "targets": {
+    "numbusfrac": {
+      "hosting": {
+        "prod": [
+          "fractional"
+        ]
+      }
+    }
   }
 }
