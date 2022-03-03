@@ -13,7 +13,7 @@
     "
   >
     <div class="lg:hidden">
-      <Navbar :type="'customer'" />
+      <Navbar />
     </div>
     <div class="py-0 sm:py-4 md:pb-8 md:pt-4 lg:pt-0 lg:pb-8 text-center">
       <h1 class="text-4xl font-medium">My NFT Assets</h1>
@@ -92,27 +92,10 @@
     </div>
   </div>
 </template>
-<style scoped>
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
-/* Add the lines below */
-@layer utilities {
-  @variants responsive {
-    .masonry {
-      column-count: 2;
-      column-gap: 1.25em;
-    }
-    .break-inside {
-      break-inside: avoid;
-    }
-  }
-}
-</style>
 <script>
 import Menu from "@/components/Layouts/Menu.vue";
-import Navbar from "@/components/Layouts/Navbar_mobile.vue";
+import Navbar from "@/components/Layouts/Navbar.vue";
 import NftCard from "@/components/cards/NftCard.vue";
 // import GalleryClient from "@/components/Gallery/GalleryClient.vue";
 // import { ref, computed } from "vue";

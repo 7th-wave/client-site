@@ -2,7 +2,7 @@
   <div class="artist bg-gray-100 font-inter">
     <div class="relative font-inter py-8 sm:py-8 lg:py-8">
       <div class="relative">
-        <Navbar :type="'admin'" class=" lg:hidden" />
+        <Navbar class=" lg:hidden" />
         <div
           class="
             text-center
@@ -1655,22 +1655,7 @@
 </template>
 
 <style scoped>
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 
-/* Add the lines below */
-@layer utilities {
-  @variants responsive {
-    .masonry {
-      column-count: 3;
-      column-gap: 1.5em;
-    }
-    .break-inside {
-      break-inside: avoid;
-    }
-  }
-}
 .card:nth-child(4),
 .card:nth-child(3) {
   margin-top: 0 !important;
