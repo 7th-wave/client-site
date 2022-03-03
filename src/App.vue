@@ -67,7 +67,7 @@ export default {
       // Check if connection is already established
       if (!connector.connected) {
         // create new session
-        connector.createSession();
+        //connector.createSession();
       }
 
       
