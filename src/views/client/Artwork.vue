@@ -76,7 +76,7 @@
                                 autocomplete="Title"
                                 class="
                                   flex-1
-                                  focus:ring-teal-500 focus:border-teal-500
+                                  focus:ring-primary-500 focus:border-primary-500
                                   block
                                   w-full
                                   min-w-0
@@ -105,7 +105,7 @@
                                 autocomplete="Sub Title"
                                 class="
                                   flex-1
-                                  focus:ring-teal-500 focus:border-teal-500
+                                  focus:ring-primary-500 focus:border-primary-500
                                   block
                                   w-full
                                   min-w-0
@@ -134,7 +134,7 @@
                                 autocomplete="Dimensions"
                                 class="
                                   flex-1
-                                  focus:ring-teal-500 focus:border-teal-500
+                                  focus:ring-primary-500 focus:border-primary-500
                                   block
                                   w-full
                                   min-w-0
@@ -163,7 +163,7 @@
                                 autocomplete="Medium"
                                 class="
                                   flex-1
-                                  focus:ring-teal-500 focus:border-teal-500
+                                  focus:ring-primary-500 focus:border-primary-500
                                   block
                                   w-full
                                   min-w-0
@@ -190,7 +190,7 @@
                                 rows="5"
                                 class="
                                   shadow-sm
-                                  focus:ring-teal-500 focus:border-teal-500
+                                  focus:ring-primary-500 focus:border-primary-500
                                   block
                                   w-full
                                   sm:text-sm
@@ -222,11 +222,11 @@
                                       checked
                                       type="radio"
                                       class="
-                                        focus:ring-teal-400
+                                        focus:ring-primary-400
                                         h-4
                                         w-4
-                                        text-teal-600
-                                        border-teal-300
+                                        text-primary-600
+                                        border-primary-300
                                       "
                                     />
                                   </div>
@@ -249,11 +249,11 @@
                                       name="push_notifications"
                                       type="radio"
                                       class="
-                                        focus:ring-teal-500
+                                        focus:ring-primary-500
                                         h-4
                                         w-4
-                                        text-teal-600
-                                        border-teal-300
+                                        text-primary-600
+                                        border-primary-300
                                       "
                                     />
                                   </div>
@@ -276,11 +276,11 @@
                                       name="push_notifications"
                                       type="radio"
                                       class="
-                                        focus:ring-teal-500
+                                        focus:ring-primary-500
                                         h-4
                                         w-4
-                                        text-teal-600
-                                        border-teal-300
+                                        text-primary-600
+                                        border-primary-300
                                       "
                                     />
                                   </div>
@@ -343,9 +343,9 @@
                         </div>
                         <div class="mt-4 divide-y-8 devide-y divide-gray-300" v-if="data.ipfs">
                           <div>
-                            <a :href="data.ipfs" target="_blank" class="text-teal-400 flex">
+                            <a :href="data.ipfs" target="_blank" class="text-primary-400 flex">
                               <LinkIcon
-                                class="h-4 w-4 mt-1 mr-2 text-teal-400"
+                                class="h-4 w-4 mt-1 mr-2 text-primary-400"
                                 aria-hidden="true"
                               />
                               {{data.ipfs.replace('https://gateway.pinata.cloud/ipfs/', '')}}
@@ -474,11 +474,11 @@
                     shadow-sm
                     px-4
                     py-2
-                    bg-teal-400
+                    bg-primary-400
                     text-base
                     font-medium
                     text-white
-                    hover:bg-teal-600
+                    hover:bg-primary-600
                     focus:outline-none
                     sm:ml-3 sm:mt-0 sm:w-auto sm:text-sm
                   "

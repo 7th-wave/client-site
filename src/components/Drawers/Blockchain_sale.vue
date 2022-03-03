@@ -27,7 +27,7 @@
             <div class="flex items-baseline text-base font-bold text-gray-500 overflow-hidden">
                 IPFS: 
                 <a 
-                    class="mx-2 text-base font-normal text-teal-400 hover:text-teal-400" 
+                    class="mx-2 text-base font-normal text-primary-400 hover:text-primary-400" 
                     :href="data.ipfs"
                     target="_blank"
                 >{{data.ipfs ? data.ipfs.replace(data.ipfs.substring(0,data.ipfs.length - 6), "****") : 'N/A'}}</a>

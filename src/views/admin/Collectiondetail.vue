@@ -64,7 +64,7 @@
                         autocomplete="Artist Name"
                         class="
                           flex-1
-                          focus:ring-teal-500 focus:border-teal-500
+                          focus:ring-primary-500 focus:border-primary-500
                           block
                           w-full
                           min-w-0
@@ -91,7 +91,7 @@
                         autocomplete="Artist Name"
                         class="
                           flex-1
-                          focus:ring-teal-500 focus:border-teal-500
+                          focus:ring-primary-500 focus:border-primary-500
                           block
                           w-full
                           min-w-0
@@ -118,7 +118,7 @@
                         autocomplete="Artist Bio Title"
                         class="
                           flex-1
-                          focus:ring-teal-500 focus:border-teal-500
+                          focus:ring-primary-500 focus:border-primary-500
                           block
                           w-full
                           min-w-0
@@ -143,7 +143,7 @@
                         rows="10"
                         class="
                           shadow-sm
-                          focus:ring-teal-500 focus:border-teal-500
+                          focus:ring-primary-500 focus:border-primary-500
                           block
                           w-full
                           sm:text-sm
@@ -201,12 +201,12 @@
                                 bg-white
                                 rounded-md
                                 font-medium
-                                text-teal-400
-                                hover:text-teal-500
+                                text-primary-400
+                                hover:text-primary-500
                                 focus-within:outline-none
                                 focus-within:ring-2
                                 focus-within:ring-offset-2
-                                focus-within:ring-teal-500
+                                focus-within:ring-primary-500
                                 ml-5
                               "
                             >
@@ -252,12 +252,12 @@
                                 rounded-full
                                 shadow-sm
                                 text-white
-                                bg-teal-400
-                                hover:bg-teal-500
+                                bg-primary-400
+                                hover:bg-primary-500
                                 focus:outline-none
                                 focus:ring-2
                                 focus:ring-offset-2
-                                focus:ring-teal-500
+                                focus:ring-primary-500
                               "
                               @click="deleteImg"
                             >
@@ -305,7 +305,7 @@
                             focus:ring-green-500
                             h-4
                             w-4
-                            text-teal-400
+                            text-primary-400
                             border-gray-300
                           "
                         />
@@ -327,7 +327,7 @@
                             focus:ring-green-500
                             h-4
                             w-4
-                            text-teal-400
+                            text-primary-400
                             border-gray-300
                           "
                         />
@@ -349,7 +349,7 @@
                             focus:ring-green-500
                             h-4
                             w-4
-                            text-teal-400
+                            text-primary-400
                             border-gray-300
                           "
                         />
@@ -366,11 +366,11 @@
                 <div class="mt-4 divide-y-8 devide-y divide-gray-300">
                   <div>
                     <a @click="doCopy"
-                      class="text-teal-400 flex cursor-pointer"
+                      class="text-primary-400 flex cursor-pointer"
                       
                     >
                       <LinkIcon
-                        class="h-4 w-4 mt-1 mr-2 text-teal-400"
+                        class="h-4 w-4 mt-1 mr-2 text-primary-400"
                         aria-hidden="true"
                       />
                       Copy Link
@@ -420,8 +420,8 @@
                     font-medium
                     rounded-md
                     text-white
-                    bg-teal-400
-                    hover:bg-teal-400
+                    bg-primary-400
+                    hover:bg-primary-400
                     focus:outline-none
                   "
                   @click="onSave"
@@ -555,11 +555,11 @@
                   shadow-sm
                   px-4
                   py-2
-                  bg-teal-400
+                  bg-primary-400
                   text-base
                   font-medium
                   text-white
-                  hover:bg-teal-600
+                  hover:bg-primary-600
                   focus:outline-none
                   sm:ml-3 sm:mt-0 sm:w-auto sm:text-sm
                 "

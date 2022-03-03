@@ -126,7 +126,7 @@
                   py-3
                   px-4
                   placeholder-gray-500
-                  focus:ring-teal-500 focus:border-teal-500
+                  focus:ring-primary-500 focus:border-primary-500
                   border-gray-300
                   rounded-md
                 "
@@ -174,7 +174,7 @@
                   py-3
                   px-4
                   placeholder-gray-500
-                  focus:ring-teal-500 focus:border-teal-500
+                  focus:ring-primary-500 focus:border-primary-500
                   border-gray-300
                   rounded-md
                 "
@@ -222,7 +222,7 @@
                   py-3
                   px-4
                   placeholder-gray-500
-                  focus:ring-teal-500 focus:border-teal-500
+                  focus:ring-primary-500 focus:border-primary-500
                   border-gray-300
                   rounded-md
                 "
@@ -269,7 +269,7 @@
                   py-3
                   px-4
                   placeholder-gray-500
-                  focus:ring-teal-500 focus:border-teal-500
+                  focus:ring-primary-500 focus:border-primary-500
                   border border-gray-300
                   rounded-md
                 "
@@ -312,8 +312,8 @@
                   font-medium
                   rounded-md
                   text-white
-                  bg-teal-400
-                  hover:bg-teal-500
+                  bg-primary-400
+                  hover:bg-primary-500
                   focus:outline-none
                 "
               >

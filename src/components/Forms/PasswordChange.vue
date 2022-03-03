@@ -66,7 +66,7 @@
                     id="username"
                     autocomplete="username"
                     :class="[
-                      'flex-1 block w-full focus:ring-teal-500 focus:border-teal-500 min-w-0 rounded-none rounded-r-md  sm:text-sm  border-gray-300',
+                      'flex-1 block w-full focus:ring-primary-500 focus:border-primary-500 min-w-0 rounded-none rounded-r-md  sm:text-sm  border-gray-300',
                       validations.username &&
                         'focus:outline-none focus:ring-red-500 focus:border-red-500 border-red-300',
                     ]"
@@ -129,7 +129,7 @@
                   shadow-sm
                   block
                   w-full
-                  focus:ring-teal-500 focus:border-teal-500
+                  focus:ring-primary-500 focus:border-primary-500
                   sm:text-sm
                   border-gray-300
                   rounded-md
@@ -254,7 +254,7 @@
                   id="first_name"
                   autocomplete="given-name"
                   :class="[
-                    'relative max-w-lg block w-full shadow-sm focus:ring-teal-500 focus:border-teal-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md ',
+                    'relative max-w-lg block w-full shadow-sm focus:ring-primary-500 focus:border-primary-500 sm:max-w-xs sm:text-sm border-gray-300 rounded-md ',
                     validations.firstName &&
                       'focus:outline-none focus:ring-red-500 focus:border-red-500 border-red-300',
                   ]"
@@ -333,7 +333,7 @@
                     block
                     w-full
                     shadow-sm
-                    focus:ring-teal-500 focus:border-teal-500
+                    focus:ring-primary-500 focus:border-primary-500
                     sm:max-w-xs sm:text-sm
                     border-gray-300
                     rounded-md
@@ -415,7 +415,7 @@
                     w-full
                     shadow-sm
                     r
-                    focus:ring-teal-500 focus:border-teal-500
+                    focus:ring-primary-500 focus:border-primary-500
                     sm:text-sm
                     border-gray-300
                     rounded-md
@@ -494,7 +494,7 @@
                     block
                     w-full
                     shadow-sm
-                    focus:ring-teal-500 focus:border-teal-500
+                    focus:ring-primary-500 focus:border-primary-500
                     sm:max-w-xs sm:text-sm
                     border-gray-300
                     rounded-md
@@ -565,7 +565,7 @@
                     max-w-lg
                     w-full
                     shadow-sm
-                    focus:ring-teal-500 focus:border-teal-500
+                    focus:ring-primary-500 focus:border-primary-500
                     sm:text-sm
                     border-gray-300
                     rounded-md
@@ -626,7 +626,7 @@
                 class="
                   max-w-lg
                   block
-                  focus:ring-teal-500 focus:border-teal-500
+                  focus:ring-primary-500 focus:border-primary-500
                   w-full
                   shadow-sm
                   sm:max-w-xs sm:text-sm
@@ -669,7 +669,7 @@
                   max-w-lg
                   w-full
                   shadow-sm
-                  focus:ring-teal-500 focus:border-teal-500
+                  focus:ring-primary-500 focus:border-primary-500
                   sm:text-sm
                   border-gray-300
                   rounded-md
@@ -705,7 +705,7 @@
                   block
                   w-full
                   shadow-sm
-                  focus:ring-teal-500 focus:border-teal-500
+                  focus:ring-primary-500 focus:border-primary-500
                   sm:max-w-xs sm:text-sm
                   border-gray-300
                   rounded-md
@@ -741,7 +741,7 @@
                   block
                   w-full
                   shadow-sm
-                  focus:ring-teal-500 focus:border-teal-500
+                  focus:ring-primary-500 focus:border-primary-500
                   sm:max-w-xs sm:text-sm
                   border-gray-300
                   rounded-md
@@ -778,7 +778,7 @@
                   block
                   w-full
                   shadow-sm
-                  focus:ring-teal-500 focus:border-teal-500
+                  focus:ring-primary-500 focus:border-primary-500
                   sm:max-w-xs sm:text-sm
                   border-gray-300
                   rounded-md
@@ -828,10 +828,10 @@
                           name="comments"
                           type="checkbox"
                           class="
-                            focus:ring-teal-500
+                            focus:ring-primary-500
                             h-4
                             w-4
-                            text-teal-600
+                            text-primary-600
                             border-gray-300
                             rounded
                           "
@@ -856,10 +856,10 @@
                             v-model="user.candidates"
                             type="checkbox"
                             class="
-                              focus:ring-teal-500
+                              focus:ring-primary-500
                               h-4
                               w-4
-                              text-teal-600
+                              text-primary-600
                               border-gray-300
                               rounded
                             "
@@ -886,10 +886,10 @@
                             v-model="user.offers"
                             type="checkbox"
                             class="
-                              focus:ring-teal-500
+                              focus:ring-primary-500
                               h-4
                               w-4
-                              text-teal-600
+                              text-primary-600
                               border-gray-300
                               rounded
                             "
@@ -941,10 +941,10 @@
                           value="push_everything"
                           type="radio"
                           class="
-                            focus:ring-teal-500
+                            focus:ring-primary-500
                             h-4
                             w-4
-                            text-teal-600
+                            text-primary-600
                             border-gray-300
                           "
                         />
@@ -963,10 +963,10 @@
                           value="push_email"
                           type="radio"
                           class="
-                            focus:ring-teal-500
+                            focus:ring-primary-500
                             h-4
                             w-4
-                            text-teal-600
+                            text-primary-600
                             border-gray-300
                           "
                         />
@@ -985,10 +985,10 @@
                           type="radio"
                           value="push_nothing"
                           class="
-                            focus:ring-teal-500
+                            focus:ring-primary-500
                             h-4
                             w-4
-                            text-teal-600
+                            text-primary-600
                             border-gray-300
                           "
                         />
@@ -1048,8 +1048,8 @@
             font-medium
             rounded-md
             text-white
-            bg-teal-400
-            hover:bg-teal-500
+            bg-primary-400
+            hover:bg-primary-500
             focus:outline-none
           "
         >

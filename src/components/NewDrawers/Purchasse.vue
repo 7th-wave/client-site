@@ -4,7 +4,7 @@
     :class="{'max-h-14':!open,'max-h-80':open}"
   >
     <div class="flex items-center justify-between w-full cursor-pointer" @click=" open = !open">
-      <span class="text-lg text-teal-200 font-medium">Nike Collection</span>
+      <span class="text-lg text-primary-200 font-medium">Nike Collection</span>
       <IconChevron :class="{ top: !open }" class="ease-in-out duration-300" />
     </div>
     <div class="flex flex-col items-start w-full space-y-2  ease-in-out duration-300" :class="{'hidden':!open}">

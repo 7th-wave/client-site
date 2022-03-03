@@ -57,14 +57,14 @@
                 id="emailAddress"
                 required 
                 autocomplete="email" 
-                class="appearance-none min-w-0 w-full bg-white border border-gray-300 rounded-md shadow-sm py-2 px-4 text-base text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-teal-500 focus:border-teal-500 focus:placeholder-gray-400" 
+                class="appearance-none min-w-0 w-full bg-white border border-gray-300 rounded-md shadow-sm py-2 px-4 text-base text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-primary-500 focus:border-primary-500 focus:placeholder-gray-400" 
                 placeholder="Enter your email"
               />
               <div class="mt-3 rounded-md sm:mt-0 sm:ml-3 sm:flex-shrink-0">
                 <button 
                   type="button"
                   @click="openModal"
-                  class="w-full flex items-center justify-center px-4 py-2 border border-transparent text-base uppercase font-medium leading-6 rounded-md shadow-sm text-white bg-teal-400 hover:bg-teal-500"
+                  class="w-full flex items-center justify-center px-4 py-2 border border-transparent text-base uppercase font-medium leading-6 rounded-md shadow-sm text-white bg-primary-400 hover:bg-primary-500"
                 >
                   Subscribe
                 </button>

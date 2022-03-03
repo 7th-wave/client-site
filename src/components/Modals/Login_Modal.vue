@@ -17,7 +17,7 @@
                         <img src="/images/wallet1.jpg" class="mb-8" alt="">
                     </a>
                     <a
-                      class="py-3 px-5 border border-teal-400 hover:bg-teal-400 hover:text-white rounded-md" 
+                      class="py-3 px-5 border border-primary-400 hover:bg-primary-400 hover:text-white rounded-md" 
                       href="https://metamask.io/download.html" 
                       target="_blank" 
                       rel="noopener noreferrer"

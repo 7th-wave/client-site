@@ -14,7 +14,7 @@
 		<div class="w-5/6">
 			<Button @click="makeOffer()" customClass="w-full" name="MAKE OFFER" />
 		</div>
-		<div class="mt-2 text-teal-400">
+		<div class="mt-2 text-primary-400">
 			<button @click="openModal" class="focus:outline-none">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"

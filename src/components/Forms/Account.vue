@@ -80,7 +80,7 @@
                   id="username"
                   autocomplete="username"
                   :class="[
-                    'flex-1 block w-full focus:ring-teal-500 focus:border-teal-500 min-w-0 rounded-none rounded-r-md  sm:text-sm  border-gray-300',
+                    'flex-1 block w-full focus:ring-primary-500 focus:border-primary-500 min-w-0 rounded-none rounded-r-md  sm:text-sm  border-gray-300',
                     validations.username &&
                       'focus:outline-none focus:ring-red-500 focus:border-red-500 border-red-300',
                   ]"
@@ -140,7 +140,7 @@
                 id="email"
                 autocomplete="given-name"
                 :class="[
-                  'relative  block w-full shadow-sm focus:ring-teal-500 focus:border-teal-500  sm:text-sm border-gray-300 rounded-md ',
+                  'relative  block w-full shadow-sm focus:ring-primary-500 focus:border-primary-500  sm:text-sm border-gray-300 rounded-md ',
                   validations.firstName &&
                     'focus:outline-none focus:ring-red-500 focus:border-red-500 border-red-300',
                 ]"
@@ -201,7 +201,7 @@
                 shadow-sm
                 block
                 w-full
-                focus:ring-teal-500 focus:border-teal-500
+                focus:ring-primary-500 focus:border-primary-500
                 sm:text-sm
                 border-gray-300
                 rounded-md
@@ -321,7 +321,7 @@
                   id="first_name"
                   autocomplete="given-name"
                   :class="[
-                    'relative  block w-full shadow-sm focus:ring-teal-500 focus:border-teal-500  sm:text-sm border-gray-300 rounded-md ',
+                    'relative  block w-full shadow-sm focus:ring-primary-500 focus:border-primary-500  sm:text-sm border-gray-300 rounded-md ',
                     validations.firstName &&
                       'focus:outline-none focus:ring-red-500 focus:border-red-500 border-red-300',
                   ]"
@@ -397,7 +397,7 @@
                     block
                     w-full
                     shadow-sm
-                    focus:ring-teal-500 focus:border-teal-500
+                    focus:ring-primary-500 focus:border-primary-500
                     sm:text-sm
                     border-gray-300
                     rounded-md
@@ -476,7 +476,7 @@
                     block
                     w-full
                     shadow-sm
-                    focus:ring-teal-500 focus:border-teal-500
+                    focus:ring-primary-500 focus:border-primary-500
                      sm:text-sm
                     border-gray-300
                     rounded-md
@@ -546,7 +546,7 @@
                     block
                     w-full
                     shadow-sm
-                    focus:ring-teal-500 focus:border-teal-500
+                    focus:ring-primary-500 focus:border-primary-500
                     sm:text-sm
                     border-gray-300
                     rounded-md
@@ -607,7 +607,7 @@
                 class="
                  
                   block
-                  focus:ring-teal-500 focus:border-teal-500
+                  focus:ring-primary-500 focus:border-primary-500
                   w-full
                   shadow-sm
                    sm:text-sm
@@ -650,7 +650,7 @@
                   max-w-lg
                   w-full
                   shadow-sm
-                  focus:ring-teal-500 focus:border-teal-500
+                  focus:ring-primary-500 focus:border-primary-500
                   sm:text-sm
                   border-gray-300
                   rounded-md
@@ -686,7 +686,7 @@
                   block
                   w-full
                   shadow-sm
-                  focus:ring-teal-500 focus:border-teal-500
+                  focus:ring-primary-500 focus:border-primary-500
                    sm:text-sm
                   border-gray-300
                   rounded-md
@@ -722,7 +722,7 @@
                   block
                   w-full
                   shadow-sm
-                  focus:ring-teal-500 focus:border-teal-500
+                  focus:ring-primary-500 focus:border-primary-500
                    sm:text-sm
                   border-gray-300
                   rounded-md
@@ -759,7 +759,7 @@
                   block
                   w-full
                   shadow-sm
-                  focus:ring-teal-500 focus:border-teal-500
+                  focus:ring-primary-500 focus:border-primary-500
                   sm:text-sm
                   border-gray-300
                   rounded-md
@@ -805,8 +805,8 @@
                   font-medium
                   rounded-md
                   text-white
-                  bg-teal-400
-                  hover:bg-teal-500
+                  bg-primary-400
+                  hover:bg-primary-500
                   focus:outline-none
                 "
                 @click="connectToBlockChain"
@@ -815,7 +815,7 @@
               </button>
 
               <div v-if="currentAdminAddress">
-                <h5 class="font-bold text-teal-500">Current Address</h5>
+                <h5 class="font-bold text-primary-500">Current Address</h5>
                 <p>{{ user.defaultOperatorAddress ?? currentAdminAddress }}</p>
               </div>
             </div>
@@ -859,10 +859,10 @@
                 name="newsletter"
                 type="checkbox"
                 class="
-                  focus:ring-teal-500
+                  focus:ring-primary-500
                   h-4
                   w-4
-                  text-teal-600
+                  text-primary-600
                   border-gray-300
                   rounded
                 "
@@ -884,10 +884,10 @@
                 name="newsletter"
                 type="checkbox"
                 class="
-                  focus:ring-teal-500
+                  focus:ring-primary-500
                   h-4
                   w-4
-                  text-teal-600
+                  text-primary-600
                   border-gray-300
                   rounded
                 "
@@ -909,10 +909,10 @@
                 name="newsletter"
                 type="checkbox"
                 class="
-                  focus:ring-teal-500
+                  focus:ring-primary-500
                   h-4
                   w-4
-                  text-teal-600
+                  text-primary-600
                   border-gray-300
                   rounded
                 "
@@ -950,10 +950,10 @@
                 name="newsletter"
                 type="checkbox"
                 class="
-                  focus:ring-teal-500
+                  focus:ring-primary-500
                   h-4
                   w-4
-                  text-teal-600
+                  text-primary-600
                   border-gray-300
                   rounded
                 "
@@ -972,10 +972,10 @@
                 name="newsletter"
                 type="checkbox"
                 class="
-                  focus:ring-teal-500
+                  focus:ring-primary-500
                   h-4
                   w-4
-                  text-teal-600
+                  text-primary-600
                   border-gray-300
                   rounded
                 "
@@ -994,10 +994,10 @@
                 name="newsletter"
                 type="checkbox"
                 class="
-                  focus:ring-teal-500
+                  focus:ring-primary-500
                   h-4
                   w-4
-                  text-teal-600
+                  text-primary-600
                   border-gray-300
                   rounded
                 "
@@ -1051,7 +1051,7 @@
             rounded-md
             text-white
             
-            hover:bg-teal-500
+            hover:bg-primary-500
             focus:outline-none
           "
           style="background-color:#049AFF"

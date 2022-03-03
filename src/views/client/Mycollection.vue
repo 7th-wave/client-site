@@ -85,7 +85,7 @@
                 <div class="bg-white rounded-lg">
                   <div class="max-w-7xl mx-auto  ">
                     <div class="max-w-3xl mx-auto divide-y-2 divide-gray-200">
-                      <dl class="bg-teal-400 h-48  flex flex-wrap content-center justify-center">
+                      <dl class="bg-primary-400 h-48  flex flex-wrap content-center justify-center">
                         <a href="#" @click.prevent="create_auction = true">
                           <img src="/images/plus_circle.svg" class="mx-auto" alt="">
                         </a>
@@ -118,7 +118,7 @@
         <TransitionChild as="template" enter="ease-out duration-300" enter-from="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" enter-to="opacity-100 translate-y-0 sm:scale-100" leave="ease-in duration-200" leave-from="opacity-100 translate-y-0 sm:scale-100" leave-to="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95">
           <div class="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle lg:max-w-lg  w-full sm:p-6">
             <div class="hidden sm:block absolute top-0 right-0 pt-4 pr-4">
-              <button type="button" class="bg-white rounded-md text-teal-400 hover:text-teal-400 focus:outline-none" @click="create_auction = false">
+              <button type="button" class="bg-white rounded-md text-primary-400 hover:text-primary-400 focus:outline-none" @click="create_auction = false">
                 <span class="sr-only">Close</span>
                 <XIcon class="h-6 w-6" aria-hidden="true" />
               </button>
@@ -236,7 +236,7 @@
             </div>
        
             <div class="mt-5 sm:mt-4 sm:flex sm:flex-row-reverse border-t border-gray-300 pt-5">
-              <button type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-teal-400 text-base font-medium text-white hover:bg-teal-600 focus:outline-none sm:ml-3 sm:w-auto sm:text-sm" @click="create_auction = false">
+              <button type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-primary-400 text-base font-medium text-white hover:bg-primary-600 focus:outline-none sm:ml-3 sm:w-auto sm:text-sm" @click="create_auction = false">
                 Create
               </button>
               <button type="button" class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-500 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:text-gray-500 hover:bg-gray-50 focus:outline-none sm:mt-0 sm:w-auto sm:text-sm" @click="create_auction = false">

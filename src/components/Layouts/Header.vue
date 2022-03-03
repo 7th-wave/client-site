@@ -20,10 +20,7 @@
           <div
             class="flex md:justify-start justify-center lg:w-0 lg:flex-1 w-full"
           >
-            <a href="/">
-              <span class="sr-only">Workflow</span>
-              <div v-html="logo"></div>
-            </a>
+            <logo />
           </div>
 
           <div
@@ -75,6 +72,7 @@ import MenuIcon from '../Icons/MenuIcon.vue';
 import { useStore } from "vuex";
 import { useRoute, useRouter } from "vue-router";
 import Button from "./Button.vue";
+import Logo from './Logo.vue';
 export default {
   components: {
     Popover,
@@ -82,6 +80,7 @@ export default {
     ViewGridIcon,
     MenuIcon,
     MainMenu,
+    Logo,
   },
   methods: {
     closeMenu() {

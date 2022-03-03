@@ -44,8 +44,8 @@
               </button>
             </div>
             <div>
-              <div class="hidden mx-auto flex items-center justify-center h-12 w-12 rounded-full text-teal-400">
-                <CheckIcon class="h-6 w-6 text-teal-400" aria-hidden="true" />
+              <div class="hidden mx-auto flex items-center justify-center h-12 w-12 rounded-full text-primary-400">
+                <CheckIcon class="h-6 w-6 text-primary-400" aria-hidden="true" />
               </div>
               <div class="mt-3 text-center sm:mt-5">
                 <DialogTitle as="h3" class="text-lg leading-6 font-medium text-gray-900">

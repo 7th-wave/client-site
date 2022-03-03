@@ -74,8 +74,8 @@
                 class="
                   bg-white
                   rounded-md
-                  text-teal-400
-                  hover:text-teal-400
+                  text-primary-400
+                  hover:text-primary-400
                   focus:outline-none
                 "
                 @click="showForm = false"
@@ -267,11 +267,11 @@
                   shadow-sm
                   px-4
                   py-2
-                  bg-teal-400
+                  bg-primary-400
                   text-base
                   font-medium
                   text-white
-                  hover:bg-teal-600
+                  hover:bg-primary-600
                   focus:outline-none
                   sm:ml-3 sm:w-auto sm:text-sm
                 "

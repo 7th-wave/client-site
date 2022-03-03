@@ -5,8 +5,8 @@
             Change published status
         </ListboxLabel>
         <div class="relative">
-            <div class="inline-flex shadow-sm rounded-md divide-x divide-teal-600">
-            <div class="relative z-0 inline-flex shadow-sm rounded-md divide-x divide-teal-600">
+            <div class="inline-flex shadow-sm rounded-md divide-x divide-primary-600">
+            <div class="relative z-0 inline-flex shadow-sm rounded-md divide-x divide-primary-600">
                 <ListboxButton class="relative inline-flex items-center text-gray-400 bg-white p-2 rounded-md text-sm font-medium hover:bg-gray-100 focus:outline-none focus:z-10 focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-gray-100">
                 <span class="sr-only">Change published status</span>
                 <MenuIcon class="h-5 w-5 text-gray-400" aria-hidden="true" />

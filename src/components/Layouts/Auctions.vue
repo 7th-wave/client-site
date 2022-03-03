@@ -68,7 +68,7 @@
               <div class="max-w-3xl mx-auto divide-y-2 divide-gray-200">
                 <dl
                   class="
-                    bg-teal-400
+                    bg-primary-400
                     h-48
                     flex flex-wrap
                     content-center

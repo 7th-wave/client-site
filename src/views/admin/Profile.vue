@@ -37,7 +37,7 @@
                       {{currentUser.name}}
                     </div>
                   </div>
-                  <div class="mt-2 flex text-md font-normal items-center justify-start text-teal-400">
+                  <div class="mt-2 flex text-md font-normal items-center justify-start text-primary-400">
                     <BadgeCheckIcon class="h-5 w-5 mr-2 rounded-full text-gray-400" /> 
                     <a v-if="galleryType != 'admin'" :href="'/client-page/' + currentUser.username" class="cursor-pointer">
                       {{currentUser.username}}
@@ -46,13 +46,13 @@
                       {{currentUser.username}}
                     </div>
                   </div>
-                  <div class="mt-2 flex flex-wrap text-md font-normal items-center justify-start text-teal-400">
+                  <div class="mt-2 flex flex-wrap text-md font-normal items-center justify-start text-primary-400">
                     <MailIcon class="h-5 w-5 mr-2 rounded-full text-gray-400" /> 
                     <a :href="'mailto:'+currentUser.email" target="_blank" :class="currentUser.email.length < 20 ? 'text-sm' : 'text-xs'" rel="noopener noreferrer">
                       {{currentUser.email}} 
                     </a>
                   </div>
-                  <div class="mt-2 flex flex-wrap text-md font-normal items-center justify-start text-teal-400">
+                  <div class="mt-2 flex flex-wrap text-md font-normal items-center justify-start text-primary-400">
                     <PhoneIcon class="h-5 w-5 mr-2 rounded-full text-gray-400" /> 
                     <a :href="'tel:'+currentUser.phone" target="_blank" rel="noopener noreferrer">
                       {{currentUser.phone}}
@@ -120,7 +120,7 @@
                 <div class="my-3">
                   <!-- metamask -->
                   <div v-if="wallet.metamask">
-                    <div class="flex xl:hidden flex-wrap flex-col items-center font-normal text-teal-400">
+                    <div class="flex xl:hidden flex-wrap flex-col items-center font-normal text-primary-400">
                       <div class= "flex w-full font-normal items-center justify-start text-gray-400">
                         <CashIcon class="h-5 w-5 mr-2 rounded-full" /> 
                         <div class="col-span-2">
@@ -132,7 +132,7 @@
                       </a>
                     </div>
 
-                    <div class="xl:flex hidden flex-wrap flex-col items-start font-normal text-teal-400">
+                    <div class="xl:flex hidden flex-wrap flex-col items-start font-normal text-primary-400">
                       <div class= "flex w-full font-normal items-center justify-start text-gray-400">
                         <CashIcon class="h-5 w-5 mr-2 rounded-full" /> 
                         <div class="col-span-2">
@@ -147,7 +147,7 @@
 
                   <!-- fortmatic -->
                   <div v-if="wallet.fortmatic">
-                    <div class="flex xl:hidden flex-wrap flex-col items-center font-normal text-teal-400 mt-2"> 
+                    <div class="flex xl:hidden flex-wrap flex-col items-center font-normal text-primary-400 mt-2"> 
                       <div class= "flex w-full font-normal items-center justify-start text-gray-400">
                         <CashIcon class="h-5 w-5 mr-2 rounded-full" /> 
                         <div class="col-span-2">
@@ -159,7 +159,7 @@
                       </a>
                     </div>
 
-                    <div class="xl:flex hidden flex-wrap flex-col items-start font-normal text-teal-400 mt-2"> 
+                    <div class="xl:flex hidden flex-wrap flex-col items-start font-normal text-primary-400 mt-2"> 
                       <div class= "flex w-full font-normal items-center justify-start text-gray-400">
                         <CashIcon class="h-5 w-5 mr-2 rounded-full" /> 
                         <div class="col-span-2">
@@ -174,7 +174,7 @@
 
                   <!-- portis -->
                   <div v-if="wallet.portis">
-                    <div class="flex xl:hidden flex-wrap flex-col items-center font-normal text-teal-400 mt-2"> 
+                    <div class="flex xl:hidden flex-wrap flex-col items-center font-normal text-primary-400 mt-2"> 
                       <div class= "flex w-full font-normal items-center justify-start text-gray-400">
                         <CashIcon class="h-5 w-5 mr-2 rounded-full" /> 
                         <div class="col-span-2">
@@ -186,7 +186,7 @@
                       </a>
                     </div>
 
-                    <div class="xl:flex hidden flex-wrap flex-col items-start font-normal text-teal-400 mt-2"> 
+                    <div class="xl:flex hidden flex-wrap flex-col items-start font-normal text-primary-400 mt-2"> 
                       <div class= "flex w-full font-normal items-center justify-start text-gray-400">
                         <CashIcon class="h-5 w-5 mr-2 rounded-full" /> 
                         <div class="col-span-2">
@@ -260,7 +260,7 @@
           ]"
         >
           <div class="hidden sm:block absolute top-0 right-0 pt-4 pr-4 focus:outline-none">
-            <button type="button" class="bg-white rounded-md text-teal-400 focus:outline-none" @click="open = false">
+            <button type="button" class="bg-white rounded-md text-primary-400 focus:outline-none" @click="open = false">
               <span class="sr-only">Close</span>
               <XIcon class="h-6 w-6" aria-hidden="true" />
             </button>
@@ -293,14 +293,14 @@
                 >
                   <div 
                     :class="[
-                      checked ? 'bg-teal-50 border-teal-200 z-10' : 'border-gray-200', 
+                      checked ? 'bg-primary-50 border-primary-200 z-10' : 'border-gray-200', 
                       'relative border p-4 flex cursor-pointer focus:outline-none'
                     ]"
                   >
                     <div class="w-1/12">
                       <span 
-                        :class="[checked ? 'bg-teal-600 border-transparent' : 'bg-white border-gray-300', 
-                        active ? 'ring-2 ring-offset-2 ring-teal-500' : '', 
+                        :class="[checked ? 'bg-primary-600 border-transparent' : 'bg-white border-gray-300', 
+                        active ? 'ring-2 ring-offset-2 ring-primary-500' : '', 
                         'h-4 w-4 mt-0.5 cursor-pointer rounded-full border flex items-center justify-center'
                         ]" 
                         aria-hidden="true"
@@ -309,10 +309,10 @@
                       </span>
                     </div>
                     <div class="ml-3 w-11/12 flex flex-col">
-                      <RadioGroupLabel as="span" :class="[checked ? 'text-teal-900' : 'text-gray-900', 'block text-sm font-medium']">
+                      <RadioGroupLabel as="span" :class="[checked ? 'text-primary-900' : 'text-gray-900', 'block text-sm font-medium']">
                         {{ setting.name }}
                       </RadioGroupLabel>
-                      <RadioGroupDescription as="span" :class="[checked ? 'text-teal-700' : 'text-gray-500', 'block text-sm']">
+                      <RadioGroupDescription as="span" :class="[checked ? 'text-primary-700' : 'text-gray-500', 'block text-sm']">
                         {{ setting.description }}
                       </RadioGroupDescription>
                     </div>
@@ -340,8 +340,8 @@
               type="button"
               :class="[
                 'w-2/5 inline-flex justify-center rounded-md border border-gray-200 shadow-sm',
-                'bg-teal-400 text-base font-medium text-white sm:text-sm',
-                'focus:outline-none hover:bg-teal-500',
+                'bg-primary-400 text-base font-medium text-white sm:text-sm',
+                'focus:outline-none hover:bg-primary-500',
                 'mt-3 px-4 py-2  sm:mt-0'
               ]"
               @click="open = false"

@@ -68,8 +68,8 @@
                   class="
                     bg-white
                     rounded-md
-                    text-teal-400
-                    hover:text-teal-500
+                    text-primary-400
+                    hover:text-primary-500
                     focus:outline-none
                   "
                   @click="

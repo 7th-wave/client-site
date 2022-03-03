@@ -24,7 +24,7 @@
           href="#"
           @click.prevent="new_artist = true"
         >
-          <div class="bg-teal-400 h-50 flex flex-wrap content-center">
+          <div class="bg-primary-400 h-50 flex flex-wrap content-center">
             <img :src="collection.imageUrl" class="mx-auto" alt="" />
           </div>
         </a>
@@ -38,7 +38,7 @@
       </div>
       <div class=" bg-white p-6 flex flex-col justify-between">
         <div class="flex-1">
-          <p class="text-sm font-medium text-teal-400">
+          <p class="text-sm font-medium text-primary-400">
             <router-link :to="collection.href">
               <span class="hover:underline">
                 {{ collection.items }}
@@ -48,7 +48,7 @@
           <a class="block mt-2">
             <p
               v-if="collection.title === 'add'"
-              class="text-xl font-semibold text-teal-400"
+              class="text-xl font-semibold text-primary-400"
             >
               <a href="#" @click.prevent="new_artist = true"
                 >Add a new collection</a
@@ -139,8 +139,8 @@
                 class="
                   bg-white
                   rounded-md
-                  text-teal-400
-                  hover:text-teal-500
+                  text-primary-400
+                  hover:text-primary-500
                   focus:outline-none
                 "
                 @click="new_artist = false"
@@ -187,7 +187,7 @@
                             autocomplete="Artist Name"
                             class="
                               flex-1
-                              focus:ring-teal-500 focus:border-teal-500
+                              focus:ring-primary-500 focus:border-primary-500
                               block
                               w-full
                               min-w-0
@@ -214,7 +214,7 @@
                             autocomplete="Artist Name"
                             class="
                               flex-1
-                              focus:ring-teal-500 focus:border-teal-500
+                              focus:ring-primary-500 focus:border-primary-500
                               block
                               w-full
                               min-w-0
@@ -241,7 +241,7 @@
                             autocomplete="Artist Bio Title"
                             class="
                               flex-1
-                              focus:ring-teal-500 focus:border-teal-500
+                              focus:ring-primary-500 focus:border-primary-500
                               block
                               w-full
                               min-w-0
@@ -267,7 +267,7 @@
                             rows="5"
                             class="
                               shadow-sm
-                              focus:ring-teal-500 focus:border-teal-500
+                              focus:ring-primary-500 focus:border-primary-500
                               block
                               w-full
                               sm:text-sm
@@ -327,12 +327,12 @@
                                   bg-white
                                   rounded-md
                                   font-medium
-                                  text-teal-400
-                                  hover:text-teal-500
+                                  text-primary-400
+                                  hover:text-primary-500
                                   focus-within:outline-none
                                   focus-within:ring-2
                                   focus-within:ring-offset-2
-                                  focus-within:ring-teal-500
+                                  focus-within:ring-primary-500
                                 "
                               >
                                 <span>Upload a file</span>
@@ -372,11 +372,11 @@
                               value="public"
                               type="radio"
                               class="
-                                focus:ring-teal-500
+                                focus:ring-primary-500
                                 h-4
                                 w-4
-                                text-teal-400
-                                border-teal-500
+                                text-primary-400
+                                border-primary-500
                               "
                             />
                             <label
@@ -400,11 +400,11 @@
                               value="private"
                               type="radio"
                               class="
-                                focus:ring-teal-500
+                                focus:ring-primary-500
                                 h-4
                                 w-4
-                                text-teal-400
-                                border-teal-500
+                                text-primary-400
+                                border-primary-500
                               "
                             />
                             <label
@@ -428,11 +428,11 @@
                               type="radio"
                               value="private_to"
                               class="
-                                focus:ring-teal-500
+                                focus:ring-primary-500
                                 h-4
                                 w-4
-                                text-teal-400
-                                border-teal-500
+                                text-primary-400
+                                border-primary-500
                               "
                             />
                             <label
@@ -453,9 +453,9 @@
                     </div>
                     <div class="mt-4 divide-y-8 devide-y divide-gray-300">
                       <div>
-                        <a href="#" class="text-teal-400 flex">
+                        <a href="#" class="text-primary-400 flex">
                           <LinkIcon
-                            class="h-4 w-4 mt-1 mr-2 text-teal-400"
+                            class="h-4 w-4 mt-1 mr-2 text-primary-400"
                             aria-hidden="true"
                           />
                           Copy Link
@@ -502,8 +502,8 @@
                         font-medium
                         rounded-md
                         text-white
-                        bg-teal-400
-                        hover:bg-teal-400
+                        bg-primary-400
+                        hover:bg-primary-400
                         focus:outline-none
                       "
                     >

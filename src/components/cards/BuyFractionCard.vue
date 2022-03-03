@@ -2,14 +2,14 @@
   <div class="w-full space-y-5 flex flex-col items-start">
     <div class="w-full flex justify-between items-center">
       <div class="flex items-center space-x-2">
-        <EyeIcon class="w-5 h-4 text-teal-500 cursor-pointer" />
+        <EyeIcon class="w-5 h-4 text-primary-500 cursor-pointer" />
         <span class="text-base text-black font-normal font-inter"
           >238 QR VIEWS</span
         >
       </div>
       <div class="flex space-x-2 items-center">
-        <RefreshIcon class="w-5 h-4 text-teal-500 cursor-pointer" />
-        <ShareIcon class="w-5 h-4 text-teal-500 cursor-pointer" />
+        <RefreshIcon class="w-5 h-4 text-primary-500 cursor-pointer" />
+        <ShareIcon class="w-5 h-4 text-primary-500 cursor-pointer" />
       </div>
     </div>
     <div
@@ -110,7 +110,7 @@
         </div>
       </div>
       <div class="w-full h-px bg-gray-200"></div>
-      <button @click="Buy" class=" w-full py-2 text-center text-base text-white font-medium font-inter bg-teal-500 rounded-md">REVIEW MY ORDER</button>
+      <button @click="Buy" class=" w-full py-2 text-center text-base text-white font-medium font-inter bg-primary-500 rounded-md">REVIEW MY ORDER</button>
     </div>
 
     <ConnectWallet ref="ConnectWallet" @ConfirmOrder="ConfirmOrder" />

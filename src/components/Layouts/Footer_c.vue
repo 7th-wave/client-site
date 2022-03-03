@@ -42,9 +42,9 @@
             </p>
             <form class="mt-4 sm:flex sm:max-w-md">
               <label for="emailAddress" class="sr-only">Email address</label>
-              <input type="email" name="emailAddress" id="emailAddress" autocomplete="email" required="" class="appearance-none min-w-0 w-full bg-white border border-gray-300 rounded-md shadow-sm py-2 px-4 text-base text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-teal-500 focus:border-teal-500 focus:placeholder-gray-400" placeholder="Enter your email" />
+              <input type="email" name="emailAddress" id="emailAddress" autocomplete="email" required="" class="appearance-none min-w-0 w-full bg-white border border-gray-300 rounded-md shadow-sm py-2 px-4 text-base text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-primary-500 focus:border-primary-500 focus:placeholder-gray-400" placeholder="Enter your email" />
               <div class="mt-3 rounded-md sm:mt-0 sm:ml-3 sm:flex-shrink-0">
-                <button type="submit" class="w-full flex items-center justify-center px-4 py-2 border border-transparent text-xl uppercase font-normal rounded-md shadow-sm text-white text-teal-400 hover:text-teal-400">
+                <button type="submit" class="w-full flex items-center justify-center px-4 py-2 border border-transparent text-xl uppercase font-normal rounded-md shadow-sm text-white text-primary-400 hover:text-primary-400">
                   Subscribe
                 </button>
               </div>

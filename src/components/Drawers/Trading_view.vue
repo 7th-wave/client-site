@@ -15,8 +15,8 @@
                 <div>
                     <Menu as="div" class="relative inline-block text-right">
                         <div class="flex">
-                            <span class="text-teal-400 mr-2">60 days</span>
-                            <MenuButton class=" rounded-full flex items-center text-teal-400  ">
+                            <span class="text-primary-400 mr-2">60 days</span>
+                            <MenuButton class=" rounded-full flex items-center text-primary-400  ">
                             <span class="sr-only">Open options</span>
                             <ChevronDownIcon class="h-5 w-5" aria-hidden="true" />
                             </MenuButton>
@@ -76,7 +76,7 @@
                 <div class="flex items-baseline text-base font-bold text-gray-500">
                     Event: 
                     <span class="mx-2 text-md font-normal text-gray-500">List  </span>
-                    <span class="mx-2 text-md font-normal text-teal-600">{{auction.tx}}  </span>
+                    <span class="mx-2 text-md font-normal text-primary-600">{{auction.tx}}  </span>
                 </div>
             </div>  
             <div class="mt-1 flex items-baseline md:block lg:flex">

@@ -97,7 +97,7 @@
               <span class="sr-only">Views</span>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-6 w-6 text-teal-400 mr-2"
+                class="h-6 w-6 text-primary-400 mr-2"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -121,7 +121,7 @@
               >
             </a>
             <div class="w-full justify-end flex">
-              <a class="text-teal-400 mr-2  cursor-pointer" @click="refresh">
+              <a class="text-primary-400 mr-2  cursor-pointer" @click="refresh">
                 <span class="sr-only">Refresh</span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"

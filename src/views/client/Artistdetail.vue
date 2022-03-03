@@ -128,7 +128,7 @@
                             autocomplete="Title"
                             class="
                               flex-1
-                              focus:ring-teal-500 focus:border-teal-500
+                              focus:ring-primary-500 focus:border-primary-500
                               block
                               w-full
                               min-w-0
@@ -155,7 +155,7 @@
                             autocomplete="Title"
                             class="
                               flex-1
-                              focus:ring-teal-500 focus:border-teal-500
+                              focus:ring-primary-500 focus:border-primary-500
                               block
                               w-full
                               min-w-0
@@ -182,7 +182,7 @@
                             autocomplete="Sub Title"
                             class="
                               flex-1
-                              focus:ring-teal-500 focus:border-teal-500
+                              focus:ring-primary-500 focus:border-primary-500
                               block
                               w-full
                               min-w-0
@@ -209,7 +209,7 @@
                             autocomplete="Dimensions"
                             class="
                               flex-1
-                              focus:ring-teal-500 focus:border-teal-500
+                              focus:ring-primary-500 focus:border-primary-500
                               block
                               w-full
                               min-w-0
@@ -236,7 +236,7 @@
                             autocomplete="Medium"
                             class="
                               flex-1
-                              focus:ring-teal-500 focus:border-teal-500
+                              focus:ring-primary-500 focus:border-primary-500
                               block
                               w-full
                               min-w-0
@@ -261,7 +261,7 @@
                             rows="5"
                             class="
                               shadow-sm
-                              focus:ring-teal-500 focus:border-teal-500
+                              focus:ring-primary-500 focus:border-primary-500
                               block
                               w-full
                               sm:text-sm
@@ -317,12 +317,12 @@
                                     bg-white
                                     rounded-md
                                     font-medium
-                                    text-teal-400
-                                    hover:text-teal-500
+                                    text-primary-400
+                                    hover:text-primary-500
                                     focus-within:outline-none
                                     focus-within:ring-2
                                     focus-within:ring-offset-2
-                                    focus-within:ring-teal-500
+                                    focus-within:ring-primary-500
                                     ml-5
                                   "
                                 >
@@ -368,12 +368,12 @@
                                     rounded-full
                                     shadow-sm
                                     text-white
-                                    bg-teal-400
-                                    hover:bg-teal-500
+                                    bg-primary-400
+                                    hover:bg-primary-500
                                     focus:outline-none
                                     focus:ring-2
                                     focus:ring-offset-2
-                                    focus:ring-teal-500
+                                    focus:ring-primary-500
                                   "
                                   @click="deleteImg"
                                 >
@@ -407,7 +407,7 @@
                                   <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                               </svg>
                               <div class="flex text-sm text-gray-600">
-                                  <label for="file-upload" class="relative cursor-pointer bg-white rounded-md font-medium text-teal-400 hover:text-teal-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-teal-500">
+                                  <label for="file-upload" class="relative cursor-pointer bg-white rounded-md font-medium text-primary-400 hover:text-primary-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-primary-500">
                                   <span>Upload a file</span>
                                   <input v-bind="getInputProps()" />
                                   </label>
@@ -443,11 +443,11 @@
                                   checked
                                   type="radio"
                                   class="
-                                    focus:ring-teal-400
+                                    focus:ring-primary-400
                                     h-4
                                     w-4
-                                    text-teal-600
-                                    border-teal-300
+                                    text-primary-600
+                                    border-primary-300
                                   "
                                 />
                               </div>
@@ -470,11 +470,11 @@
                                   name="push_notifications"
                                   type="radio"
                                   class="
-                                    focus:ring-teal-500
+                                    focus:ring-primary-500
                                     h-4
                                     w-4
-                                    text-teal-600
-                                    border-teal-300
+                                    text-primary-600
+                                    border-primary-300
                                   "
                                 />
                               </div>
@@ -497,11 +497,11 @@
                                   name="push_notifications"
                                   type="radio"
                                   class="
-                                    focus:ring-teal-500
+                                    focus:ring-primary-500
                                     h-4
                                     w-4
-                                    text-teal-600
-                                    border-teal-300
+                                    text-primary-600
+                                    border-primary-300
                                   "
                                 />
                               </div>
@@ -602,10 +602,10 @@
                         <a
                           :href="data.ipfs"
                           target="_blank"
-                          class="text-teal-400 flex"
+                          class="text-primary-400 flex"
                         >
                           <LinkIcon
-                            class="h-4 w-4 mt-1 mr-2 text-teal-400"
+                            class="h-4 w-4 mt-1 mr-2 text-primary-400"
                             aria-hidden="true"
                           />
                           {{
@@ -639,7 +639,7 @@
                         />
                       </svg>
                     </div>
-                    <span class="text-sm font-inter font-normal text-teal-400"
+                    <span class="text-sm font-inter font-normal text-primary-400"
                       >HASHNUMBERNJSDNFKJSDNFKJNSDFSDFSDF</span
                     >
                   </div>
@@ -684,8 +684,8 @@
                         font-medium
                         rounded-md
                         text-white
-                        bg-teal-400
-                        hover:bg-teal-500
+                        bg-primary-400
+                        hover:bg-primary-500
                         focus:outline-none
                       "
                     >
@@ -708,8 +708,8 @@
                         font-medium
                         rounded-md
                         text-white
-                        bg-teal-400
-                        hover:bg-teal-500
+                        bg-primary-400
+                        hover:bg-primary-500
                         focus:outline-none
                       "
                       v-if="isSaved && !data.isMinted"
@@ -795,7 +795,7 @@
                   <div class="max-w-3xl mx-auto divide-y-2 divide-gray-200">
                     <dl
                       class="
-                        bg-teal-400
+                        bg-primary-400
                         h-48
                         flex flex-wrap
                         content-center
@@ -862,7 +862,7 @@
                         autocomplete="Amount"
                         class="
                           mt-1
-                          focus:ring-teal-500 focus:border-teal-500
+                          focus:ring-primary-500 focus:border-primary-500
                           block
                           w-full
                           shadow-sm
@@ -886,7 +886,7 @@
                         autocomplete="starting_value"
                         class="
                           mt-1
-                          focus:ring-teal-500 focus:border-teal-500
+                          focus:ring-primary-500 focus:border-primary-500
                           block
                           w-full
                           shadow-sm
@@ -910,7 +910,7 @@
                         autocomplete="increase"
                         class="
                           mt-1
-                          focus:ring-teal-500 focus:border-teal-500
+                          focus:ring-primary-500 focus:border-primary-500
                           block
                           w-full
                           shadow-sm
@@ -934,7 +934,7 @@
                         autocomplete="street-address"
                         class="
                           mt-1
-                          focus:ring-teal-500 focus:border-teal-500
+                          focus:ring-primary-500 focus:border-primary-500
                           block
                           w-full
                           shadow-sm
@@ -959,7 +959,7 @@
                           rows="5"
                           class="
                             shadow-sm
-                            focus:ring-teal-500 focus:border-teal-500
+                            focus:ring-primary-500 focus:border-primary-500
                             mt-1
                             block
                             w-full
@@ -991,7 +991,7 @@
                       inline-flex
                       uppercase
                       justify-center
-                      bg-teal-400
+                      bg-primary-400
                       mt-5
                       py-2
                       px-4
@@ -1001,7 +1001,7 @@
                       font-medium
                       rounded-md
                       text-white
-                      hover:text-white hover:text-teal-500
+                      hover:text-white hover:text-primary-500
                       focus:outline-none
                       focus:ring-2
                       focus:ring-offset-2
@@ -1100,8 +1100,8 @@
                       class="
                         bg-white
                         rounded-md
-                        text-teal-400
-                        hover:text-teal-400
+                        text-primary-400
+                        hover:text-primary-400
                         focus:outline-none
                       "
                       @click="create_auction = false"
@@ -1607,11 +1607,11 @@
                       shadow-sm
                       px-4
                       py-2
-                      bg-teal-400
+                      bg-primary-400
                       text-base
                       font-medium
                       text-white
-                      hover:bg-teal-600
+                      hover:bg-primary-600
                       focus:outline-none
                       sm:ml-3 sm:mt-0 sm:w-auto sm:text-sm
                     "
