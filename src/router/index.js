@@ -125,6 +125,11 @@ const routes = [
     name: "CollectionDetails",
     component: () => import("../views/client/Artistdetail.vue"),
   },
+   {
+    path: "/my_fractions",
+    name: "My_fractions",
+    component: () => import("../views/client/MyNftFractions.vue"),
+  },
   // {
   //   path: "/my-collection",
   //   name: "My_collection",
