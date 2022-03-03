@@ -1,118 +1,145 @@
  
 <template>
-<div class="account sm:px-2 py-4 lg:py-16 relative bg-gray-100 max-w-7xl mx-auto font-inter ">
-  <div class="lg:hidden">
-    <navbar :type="'customer'" />
-  </div>
-  <div class="py-0 sm:py-2  lg:pt-0 lg:pb-8 text-center">
-    <h1 class="text-4xl font-normal">My Wallets</h1>
-  </div>
-  <div>
-    <div class="lg:grid lg:grid-cols-7 lg:gap-6">
-      <div class="hidden lg:col-span-2 lg:block" >
-        <Menu />
-      </div>
-      <div class="mt-5 lg:mt-0 lg:col-span-5 bg-white p-4 lg:p-8 rounded-lg">
-         <ul role="list" class="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-3 xl:gap-x-8">
-          <li class="relative">
-            <div class="group block w-full aspect-w-10 aspect-h-7 bg-gray-100 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-teal-500 overflow-hidden">
-              <a @click.prevent="doMetaMaskLogin()">
-              <img src="/images/wallet1.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75 w-full" />
-             </a>
-            </div>
-
-              <div v-if="currentProvider == 'metamask'">
-                <p class="mt-2 block text-teal-400 text-center text-md uppercase font-medium truncate pointer-events-none">CONNECTED</p>
-                <a href="#" @click.prevent="doMetaMaskLogin()" class="focus:outline-none flex justify-center">
-                  <p class="block text-teal-400 text-center font-medium text-md  pointer-events-none">{{ currentAddress.replace(currentAddress.substring(8,currentAddress.length - 3), "****") }}</p>
-                </a>
-              </div>
-              <div v-else class="text-center mt-6">
-                <a
-                  class="py-3 px-5 border border-teal-400 hover:bg-teal-400 hover:text-white rounded-md" 
-                  href="https://metamask.io/download.html" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
+  <div
+    class="
+      account
+      sm:px-8
+      py-4
+      lg:py-16
+      relative
+      bg-gray-100
+      w-full
+      mx-auto
+      font-inter
+    "
+  >
+    <div class="lg:hidden">
+      <navbar :type="'customer'" />
+    </div>
+    <div class="py-0 sm:py-2 lg:pt-0 lg:pb-8 text-center">
+      <h1 class="text-4xl font-normal">My Wallet</h1>
+    </div>
+    <div>
+      <div class="lg:grid lg:grid-cols-7 lg:gap-6">
+        <div class="hidden lg:col-span-2 lg:block">
+          <Menu />
+        </div>
+        <div class=" lg:mt-0 lg:col-span-5  rounded-lg flex lg:flex-row flex-col space-y-6 lg:space-y-0 items-start lg:space-x-4 ">
+          <div
+            class="
+              p-6 lg:max-w-xs lg:max-h-80
+              h-full
+              bg-white
+              group
+              block
+              w-full
+              aspect-w-10 aspect-h-7
+              focus-within:ring-2
+              focus-within:ring-offset-2
+              focus-within:ring-offset-gray-100
+              focus-within:ring-teal-500
+              overflow-hidden space-y-4
+            "
+          >
+            <a @click.prevent="doMetaMaskLogin()">
+              <img
+                src="/images/wallet1.jpg"
+                alt=""
+                class="
+                  object-cover
+                  pointer-events-none
+                  group-hover:opacity-75
+                  w-full
+                "
+              />
+            </a>
+            <div class="flex cursor-pointer">
+              <div class=" flex items-center space-x-1 m-auto">
+                <span
+                  class="text-teal-300 font-medium font-inter text-sm m-auto"
+                  >0xE881...4567</span
                 >
-                  donwload
-                </a>
+                <div class="">
+                  <svg
+                    width="13"
+                    height="15"
+                    viewBox="0 0 13 15"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M3.75913 3.95573V9.28906C3.75913 10.0254 4.35609 10.6224 5.09247 10.6224H9.09247M3.75913 3.95573V2.6224C3.75913 1.88602 4.35609 1.28906 5.09247 1.28906H8.14966C8.32647 1.28906 8.49604 1.3593 8.62106 1.48432L11.5639 4.42713C11.6889 4.55216 11.7591 4.72173 11.7591 4.89854V9.28906C11.7591 10.0254 11.1622 10.6224 10.4258 10.6224H9.09247M3.75913 3.95573H3.09247C1.9879 3.95573 1.09247 4.85116 1.09247 5.95573V11.9557C1.09247 12.6921 1.68942 13.2891 2.4258 13.2891H7.09247C8.19704 13.2891 9.09247 12.3936 9.09247 11.2891V10.6224"
+                      stroke="#049AFF"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </div>
               </div>
-          </li>
-          <li  class="relative">
-            <div class="group block w-full aspect-w-10 aspect-h-7      bg-gray-100 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-teal-500 overflow-hidden">
-              <a href="#" @click.prevent="doFortmaticLogin()">
-              <img src="/images/wallet2.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75 w-full" />
-             </a>
             </div>
-             <div v-if="currentProvider == 'fortmatic'">
-                <p class="mt-2 block text-teal-400 text-center text-md uppercase font-medium truncate pointer-events-none">CONNECTED</p>
-                <a href="#" @click.prevent="doFortmaticLogin()" class="focus:outline-none flex justify-center">
-                  <p class="block text-teal-400 text-center font-medium text-md  pointer-events-none">{{ currentAddress.replace(currentAddress.substring(8,currentAddress.length - 3), "****") }}</p>
-                </a>
-              </div>
-          </li>
-          <li  class="relative">
-            <div class="group block w-full aspect-w-10 aspect-h-7  bg-gray-100 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-offset-gray-100 focus-within:ring-teal-500 overflow-hidden">
-              <a @click.prevent="doPortisLogin()">
-              <img src="/images/wallet3.jpg" alt="" class="object-cover pointer-events-none group-hover:opacity-75 w-full" />
-             </a>
-            </div>
-             <div v-if="currentProvider == 'portis'">
-                <p class="mt-2 block text-teal-400 text-center text-md uppercase font-medium truncate pointer-events-none">CONNECTED</p>
-                <a href="#" @click.prevent="doPortisLogin()" class="focus:outline-none flex justify-center">
-                  <p class="block text-teal-400 text-center font-medium text-md  pointer-events-none">{{ currentAddress.replace(currentAddress.substring(8,currentAddress.length - 3), "****") }}</p>
-                </a>
-              </div>
-          </li>
-        </ul>
+          </div>
+         <div class=" flex flex-col items-start space-y-2 w-full lg:col-span-2">
+          <WalletConnectCard :open="true"/>
+          <WalletConnectCard :open="false"/>
+          <WalletConnectCard :open="true"/>
+          <WalletConnectCard :open="false"/>
+         </div>
+        </div>
       </div>
     </div>
   </div>
- </div>
-
- 
 </template>
  
 <script>
-import Menu from '@/components/Layouts/Menu.vue'
-import Navbar from '@/components/Layouts/Navbar_mobile.vue'
-import { computed } from 'vue'
-import { useStore } from 'vuex'
-import Fortmatic from 'fortmatic'
+import Menu from "@/components/Layouts/Menu.vue";
+import Navbar from "@/components/Layouts/Navbar.vue";
+import { computed } from "vue";
+import { useStore } from "vuex";
+import Fortmatic from "fortmatic";
 import Portis from "@portis/web3";
+import WalletConnectCard from "@/components/cards/WalletConnectCard.vue";
 
 export default {
-   components: {
-     Menu,
-     Navbar
+  components: {
+    Menu,
+    Navbar,
+    WalletConnectCard,
   },
 
   setup() {
-    const fm = new Fortmatic('pk_test_74DE84F478732B84');
-    const portis = new Portis('a8b095a1-4da6-49ab-8073-9a8bddaf8a85', 'rinkeby');
+    const fm = new Fortmatic("pk_test_74DE84F478732B84");
+    const portis = new Portis(
+      "a8b095a1-4da6-49ab-8073-9a8bddaf8a85",
+      "rinkeby"
+    );
     const store = useStore();
-    const currentAddress = computed(() => store.getters['blockchain/getCurrentAddress']);
-    const currentProvider = computed(() => store.getters['blockchain/getCurrentProvider']);
+    const currentAddress = computed(
+      () => store.getters["blockchain/getCurrentAddress"]
+    );
+    const currentProvider = computed(
+      () => store.getters["blockchain/getCurrentProvider"]
+    );
 
     const doFortmaticLogin = async () => {
-      if(currentProvider.value !== 'fortmatic') {
-        return await store.dispatch('blockchain/new', {type: 'fortmatic'});
+      if (currentProvider.value !== "fortmatic") {
+        return await store.dispatch("blockchain/new", { type: "fortmatic" });
       }
-      return fm.user.deposit()
-    }
+      return fm.user.deposit();
+    };
 
     const doPortisLogin = async () => {
-      if(currentProvider.value !== 'portis') {
-        return await store.dispatch('blockchain/new', {type: 'portis'});
+      if (currentProvider.value !== "portis") {
+        return await store.dispatch("blockchain/new", { type: "portis" });
       }
       return portis.showPortis();
-    }
+    };
 
     const doMetaMaskLogin = async () => {
-      if(currentProvider.value !== 'metamask') {
-        return await store.dispatch('blockchain/new', {type: 'metamask'});
+      if (currentProvider.value !== "metamask") {
+        return await store.dispatch("blockchain/new", { type: "metamask" });
       }
-    }
+    };
 
     return {
       currentAddress,
@@ -120,7 +147,7 @@ export default {
       doFortmaticLogin,
       doPortisLogin,
       doMetaMaskLogin,
-    }
+    };
   },
-}
+};
 </script>
