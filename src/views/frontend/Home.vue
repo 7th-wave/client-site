@@ -143,7 +143,7 @@ export default {
       };
 
       const fractionalize = () => {
-        router.push({ path: '/fractionalize' })
+        router.push({ name:'CreateVault' })
       }
 
       return {
