@@ -16,7 +16,7 @@
             <transition leave-active-class="transition ease-in duration-100" leave-from-class="opacity-100" leave-to-class="opacity-0">
             <ListboxOptions class="origin-top-left absolute z-10  mt-2 w-72 rounded-md shadow-lg overflow-hidden bg-white divide-y divide-gray-200 ring-1 ring-black ring-opacity-5 focus:outline-none">
                 <ListboxOption  >
-                <li class="text-gray-900 cursor-default select-none relative p-4 text-sm">
+                <!-- <li class="text-gray-900 cursor-default select-none relative p-4 text-sm">
                     <div class="flex flex-col">
                     <div class="flex justify-between">
                         <router-link to="/admin/my-account">
@@ -87,7 +87,9 @@
                             </a>
                         </div>
                     </div>
-                </li>
+                </li> -->
+            
+              <Menu />
                 </ListboxOption>
                 
             </ListboxOptions>
@@ -100,22 +102,21 @@
 <script>
 // @ is an alias to /src
 import { Listbox, ListboxButton, ListboxLabel, ListboxOption, ListboxOptions } from '@headlessui/vue'
-import {  MenuIcon,LockClosedIcon } from '@heroicons/vue/solid'
+import {  MenuIcon } from '@heroicons/vue/solid'
 import { auth, storage } from "../../firebase/firebase";
-
+import Menu from './Menu.vue'
 import { useRouter } from 'vue-router'
 import { computed, onMounted, ref } from 'vue'
 import { useStore } from 'vuex';
 
 export default {
   components: {
-    LockClosedIcon,
      Listbox,
     ListboxButton,
     ListboxLabel,
     ListboxOption,
     ListboxOptions,
-    
+    Menu,
     MenuIcon,
   },
   props: ['type'],

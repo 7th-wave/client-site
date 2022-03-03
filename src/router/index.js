@@ -92,10 +92,21 @@ const routes = [
   },
 
   //Client
+ 
   {
     path: "/register/:address",
     name: "ClientRegister",
     component: () => import("../views/client/Register.vue"),
+  },
+  {
+    path: "/register/:address",
+    name: "ClientRegister",
+    component: () => import("../views/client/Register.vue"),
+  },
+  {
+    path: "/my_history",
+    name: "My_history",
+    component: () => import("../views/client/MyFractions.vue"),
   },
   {
     path: "/my-account/:address",
@@ -110,11 +121,21 @@ const routes = [
     beforeEnter: clientGuard,
   },
   {
-    path: "/my-collection",
-    name: "My_collection",
-    component: () => import("../views/client/Mycollection.vue"),
-    beforeEnter: clientGuard,
+    path: "/collection/:id/details",
+    name: "CollectionDetails",
+    component: () => import("../views/client/Artistdetail.vue"),
   },
+   {
+    path: "/my_fractions",
+    name: "My_fractions",
+    component: () => import("../views/client/MyNftFractions.vue"),
+  },
+  // {
+  //   path: "/my-collection",
+  //   name: "My_collection",
+  //   component: () => import("../views/client/Mycollection.vue"),
+  //   beforeEnter: clientGuard,
+  // },
   {
     path: "/my-collections/artwork/:collection/:ref",
     name: "ClientArtwork",

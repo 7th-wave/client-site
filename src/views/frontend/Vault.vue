@@ -33,7 +33,132 @@
     </div>
     <div class="w-full px-8 py-4 grid grid-cols-4 gap-4">
       <!-- left -->
-      <div class="col-span-3 w-full flex flex-col items-start space-y-5"></div>
+      <div class="col-span-3 w-full flex flex-col items-start space-y-5">
+        <span class="text-2xl text-black font-inter font-medium"
+          >Top 10 Vault Owner</span
+        >
+        <Table :headers="tableData.headers" :data="tableData.data">
+          <template #body>
+            <tbody class="bg-white divide-y divide-gray-200" v-for="n in 10" :key="n">
+              <td
+                class="
+                  px-6
+                  py-4
+                  whitespace-nowrap
+                  text-sm
+                  font-medium
+                  text-gray-900
+                "
+              >
+                #1
+              </td>
+              <td
+                class="
+                  px-6
+                  py-4
+                  whitespace-nowrap
+                  text-sm
+                  font-medium
+                  text-gray-900
+                "
+              >
+                <div class="flex items-center -space-x-2">
+                  <div
+                    class="w-10 h-10 rounded-full bg-gray-400 overflow-hidden"
+                  >
+                    <img
+                      class="w-full h-full object-cover"
+                      src="https://pbs.twimg.com/media/ElhoCAFVoAA8ZlS.jpg"
+                      alt=""
+                    />
+                  </div>
+                  <div class="flex flex-col items-start -space-y-8">
+                    <span
+                      class="
+                        px-6
+                        py-4
+                        whitespace-nowrap
+                        text-sm
+                        font-medium
+                        text-gray-900
+                      "
+                      >0xb7BC...eA21</span
+                    >
+                    <span
+                      class="
+                        px-6
+                        py-4
+                        whitespace-nowrap
+                        text-sm
+                        font-medium
+                        text-gray-500
+                      "
+                      >0xb7BC...eA21</span
+                    >
+                  </div>
+                </div>
+              </td>
+              <td
+                class="
+                  px-6
+                  py-4
+                  whitespace-nowrap
+                  text-sm
+                  font-medium
+                  text-gray-900
+                "
+              >
+                48,640,595.584
+              </td>
+              <td
+                class="
+                  px-6
+                  py-4
+                  whitespace-nowrap
+                  text-sm
+                  font-medium
+                  text-gray-900
+                "
+              >
+                <span
+                  class="
+                    whitespace-nowrap
+                    text-sm
+                    font-medium
+                    text-green-800
+                    bg-green-100
+                    rounded-2xl
+                    py-1
+                    px-6
+                  "
+                  >48.640%</span
+                >
+              </td>
+              <td
+                class="
+                  px-6
+                  py-4
+                  whitespace-nowrap
+                  text-sm
+                  font-medium
+                  text-gray-900
+                "
+              >
+                <div class="flex flex-col items-start space-y-1">
+                  <span
+                    class="whitespace-nowrap text-sm font-medium text-gray-900"
+                    >Ξ 8,166.345</span
+                  >
+                  <span
+                    class="whitespace-nowrap text-sm font-medium text-gray-500"
+                    >≈ $19,917,308.65</span
+                  >
+                </div>
+              </td>
+            </tbody>
+          </template>
+        </Table>
+      </div>
       <!-- right -->
       <div class="w-full">
         <span class="text-2xl text-black font-inter font-medium"
@@ -80,8 +205,8 @@
           >All Assets inside {Vault Name} Vault</span
         >
       </div>
-       <div class=" grid grid-cols-3 gap-14 ">
-  <CategoryCard
+      <div class="grid grid-cols-3 gap-14">
+        <CategoryCard
           @click="GoToCategory"
           v-for="(category, index, key) in categories"
           :key="key"
@@ -112,7 +237,7 @@
             }}</span>
           </template>
         </CategoryCard>
-       </div>
+      </div>
     </div>
   </div>
 </template>
@@ -126,6 +251,7 @@ import VaultSlideShow from "../../components/SlideShow/VaultSlideShow.vue";
 import LineChartAlternate from "../../components/Layouts/LineChartAlternate.vue";
 import Events from "../../components/cards/Events.vue";
 import CategoryCard from "../../components/cards/CategoryCard.vue";
+import Table from "../../components/tables/table.vue";
 
 export default {
   components: {
@@ -136,49 +262,144 @@ export default {
     LineChartAlternate,
     CategoryCard,
     Events,
+    Table,
   },
   data() {
     return {
+      tableData: {
+        headers: [
+          {
+            text: "RANK",
+            key: "rank",
+          },
+          {
+            text: "OWNERS",
+            key: "owner",
+          },
+          {
+            text: "QUANTITY",
+            key: "quantity",
+          },
+          {
+            text: "PERCENTAGE",
+            key: "percentage",
+          },
+          {
+            text: "VALUE",
+            key: "value",
+          },
+        ],
+        data: [
+          {
+            rank: "1",
+            owner: "0x1",
+            quantity: "6",
+            percentage: "2",
+            value: "100",
+          },
+          {
+            rank: "2",
+            owner: "0x2",
+            quantity: "0",
+            percentage: "0",
+            value: "0",
+          },
+          {
+            rank: "3",
+            owner: "0x3",
+            quantity: "0",
+            percentage: "0",
+            value: "0",
+          },
+          {
+            rank: "4",
+            owner: "0x4",
+            quantity: "0",
+            percentage: "0",
+            value: "0",
+          },
+          {
+            rank: "5",
+            owner: "0x5",
+            quantity: "0",
+            percentage: "0",
+            value: "0",
+          },
+          {
+            rank: "6",
+            owner: "0x6",
+            quantity: "0",
+            percentage: "0",
+            value: "0",
+          },
+          {
+            rank: "7",
+            owner: "0x7",
+            quantity: "0",
+            percentage: "0",
+            value: "0",
+          },
+          {
+            rank: "8",
+            owner: "0x8",
+            quantity: "0",
+            percentage: "0",
+            value: "0",
+          },
+          {
+            rank: "9",
+            owner: "0x9",
+            quantity: "0",
+            percentage: "0",
+            value: "0",
+          },
+          {
+            rank: "10",
+            owner: "0x10",
+            quantity: "0",
+            percentage: "0",
+            value: "0",
+          },
+        ],
+      },
       arrAuctions: [],
-       categories: [
+      categories: [
         {
           name: "Sneakers",
           image:
             "https://cdn.corporatefinanceinstitute.com/assets/types-of-assets-1024x575.jpeg",
-          title: 'Sneakers',
+          title: "Sneakers",
         },
-         {
+        {
           name: "Sneakers",
           image:
             "https://cdn.corporatefinanceinstitute.com/assets/types-of-assets-1024x575.jpeg",
-          title: 'Sneakers',
+          title: "Sneakers",
         },
-         {
+        {
           name: "Sneakers",
           image:
             "https://cdn.corporatefinanceinstitute.com/assets/types-of-assets-1024x575.jpeg",
-          title: 'Sneakers',
+          title: "Sneakers",
         },
-         {
+        {
           name: "Sneakers",
           image:
             "https://cdn.corporatefinanceinstitute.com/assets/types-of-assets-1024x575.jpeg",
-          title: 'Sneakers',
+          title: "Sneakers",
         },
-         {
+        {
           name: "Sneakers",
           image:
             "https://cdn.corporatefinanceinstitute.com/assets/types-of-assets-1024x575.jpeg",
-          title: 'Sneakers',
+          title: "Sneakers",
         },
-         {
+        {
           name: "Sneakers",
           image:
             "https://cdn.corporatefinanceinstitute.com/assets/types-of-assets-1024x575.jpeg",
-          title: 'Sneakers',
+          title: "Sneakers",
         },
-      
-     
       ],
       slides: [
         {
