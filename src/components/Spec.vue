@@ -11,7 +11,7 @@
 							Artist:
 							<router-link
 								:to="'/artist/' + slugify(nft.artistName, { lower: true })"
-								class="mx-2 text-md font-normal text-teal-400"
+								class="mx-2 text-md font-normal text-primary-400"
 							>
 								{{ nft.artistName }}
 							</router-link>
@@ -48,7 +48,7 @@
 							<span>
 								<a
 									:href="'https://etherscan.io/address/' + auction.wonBy"
-									class="text-teal-400"
+									class="text-primary-400"
 									target="_blank"
 									>{{
 										auction.wonBy.replace(
@@ -184,14 +184,14 @@
 										px-7
 										w-md
 										py-2
-										border border-teal-400
+										border border-primary-400
 										shadow-sm
 										text-base
 										font-medium
 										rounded-md
 										text-white
-										bg-teal-400
-										hover:bg-teal-600
+										bg-primary-400
+										hover:bg-primary-600
 										justify-center
 										focus:outline-none
 									"
@@ -201,7 +201,7 @@
 								</button>
 							</div>
 
-							<div class="mt-2 text-teal-400">
+							<div class="mt-2 text-primary-400">
 								<button @click="openInfoModal" class="focus:outline-none">
 									<svg
 										xmlns="http://www.w3.org/2000/svg"

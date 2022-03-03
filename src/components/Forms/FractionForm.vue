@@ -19,7 +19,7 @@
               autocomplete="Vault Name"
               class="
                 flex-1
-                focus:ring-teal-500 focus:border-teal-500
+                focus:ring-primary-500 focus:border-primary-500
                 block
                 w-full
                 min-w-0
@@ -50,7 +50,7 @@
               autocomplete="100"
               class="
                 flex-1
-                focus:ring-teal-500 focus:border-teal-500
+                focus:ring-primary-500 focus:border-primary-500
                 block
                 w-full
                 min-w-0
@@ -82,7 +82,7 @@
               autocomplete="symbol"
               class="
                 flex-1
-                focus:ring-teal-500 focus:border-teal-500
+                focus:ring-primary-500 focus:border-primary-500
                 block
                 w-full
                 min-w-0
@@ -208,7 +208,7 @@
               autocomplete="Token Owner"
               class="
                 flex-1
-                focus:ring-teal-500 focus:border-teal-500
+                focus:ring-primary-500 focus:border-primary-500
                 block
                 w-full
                 min-w-0
@@ -285,7 +285,7 @@
             />
           </div>
           <div class="absolute -top-4 -right-4 cursor-pointer">
-            <XCircleIcon class="w-7 h-7 text-teal-500" />
+            <XCircleIcon class="w-7 h-7 text-primary-500" />
           </div>
         </div>
         <div class="sm:col-span-6">
@@ -298,8 +298,8 @@
               w-full
               py-4
               rounded-md
-              bg-teal-500
-              hover:bg-teal-600
+              bg-primary-500
+              hover:bg-primary-600
               text-white text-base
               font-inter font-medium
             "

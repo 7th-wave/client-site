@@ -227,7 +227,7 @@
           ]"
         >
           <div class="hidden sm:block absolute top-0 right-0 pt-4 pr-4 focus:outline-none">
-            <button type="button" class="bg-white rounded-md text-teal-400 focus:outline-none" @click="openAddUser = false">
+            <button type="button" class="bg-white rounded-md text-primary-400 focus:outline-none" @click="openAddUser = false">
               <span class="sr-only">Close</span>
               <XIcon class="h-6 w-6" aria-hidden="true" />
             </button>
@@ -259,8 +259,8 @@
               type="button"
               :class="[
                 'w-full sm:w-full inline-flex justify-center rounded-md border border-gray-200 shadow-sm',
-                'bg-teal-400 text-base font-medium text-white sm:text-sm',
-                'focus:outline-none hover:bg-teal-500',
+                'bg-primary-400 text-base font-medium text-white sm:text-sm',
+                'focus:outline-none hover:bg-primary-500',
                 'mt-3 px-4 py-2  sm:mt-0'
               ]"
               @click="inviteAdmin()"

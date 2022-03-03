@@ -23,6 +23,10 @@ import { useStore } from 'vuex';
 import { useRouter } from 'vue-router';
 import Modal from './components/Modals/Modal.vue';
 import Loading from './components/Shared/Loading.vue';
+import WalletConnect from "@walletconnect/client";
+
+import QRCodeModal from "@walletconnect/qrcode-modal";
+
 
 
 export default {
@@ -54,6 +58,19 @@ export default {
         });
 
       }
+
+      const connector = new WalletConnect({
+        bridge: "https://bridge.walletconnect.org", // Required
+        qrcodeModal: QRCodeModal,
+      });
+
+      // Check if connection is already established
+      if (!connector.connected) {
+        // create new session
+        //connector.createSession();
+      }
+
+      
     })
     
   }

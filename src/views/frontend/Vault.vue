@@ -225,7 +225,7 @@
               class="
                 text-sm
                 font-inter font-medium
-                text-teal-500
+                text-primary-500
                 cursor-pointer
               "
               >{{ category.title }}</span

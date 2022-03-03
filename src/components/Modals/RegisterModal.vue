@@ -41,8 +41,8 @@
                 class="
                   bg-white
                   rounded-md
-                  text-teal-400
-                  hover:text-teal-500
+                  text-primary-400
+                  hover:text-primary-500
                   focus:outline-none
                 "
                 @click="closeModal"
@@ -86,7 +86,7 @@
                       :id="input.name"
                       autocomplete="off"
                       :class="[
-                        'flex-1 block w-full focus:ring-teal-500 focus:border-teal-500 min-w-0 rounded-none sm:text-sm  border-gray-300',
+                        'flex-1 block w-full focus:ring-primary-500 focus:border-primary-500 min-w-0 rounded-none sm:text-sm  border-gray-300',
                         validations[input.name] && 'focus:outline-none focus:ring-red-500 focus:border-red-500 border-red-300',
                         input.name == 'username' ? 'rounded-r-md' : 'rounded-md'
                       ]"

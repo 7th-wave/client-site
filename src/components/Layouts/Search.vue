@@ -8,7 +8,7 @@
         type="text" 
         name="search" 
         id="search" 
-        class="focus:ring-teal-500 focus:border-teal-500 block w-full pl-10 sm:text-sm border-gray-300 rounded-md" 
+        class="focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 sm:text-sm border-gray-300 rounded-md" 
         placeholder="Search"
         v-on:keyup="$emit('on:change', $event)"
       />

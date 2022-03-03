@@ -57,15 +57,15 @@ export default {
     function defineStyleClass(style) {
       switch (style) {
         case 'primary':
-          return 'bg-teal-400 text-white hover:bg-teal-500';
+          return 'bg-primary-400 text-white hover:bg-primary-500';
         case 'outlined':
-          return 'border border-teal-400 text-teal-400 hover:bg-teal-400 hover:text-white';
+          return 'border border-primary-400 text-primary-400 hover:bg-primary-400 hover:text-white';
         case 'secondary':
           return 'border border-gray-300 bg-white hover:bg-gray-50';
         case 'black':
           return 'bg-gray-900 text-white hover:bg-gray-900';
         default:
-          return 'bg-teal-400 text-white hover:bg-teal-500';
+          return 'bg-primary-400 text-white hover:bg-primary-500';
       }
     }
 

@@ -13,7 +13,7 @@
             </div>
              <div class=" flex items-center space-x-1.5">
                 <span class=" text-gray-900 font-bold text-base font-inter">By:</span>
-                <span class=" text-teal-500 font-semibold text-base font-inter"> 0xaBF1...395d</span>
+                <span class=" text-primary-500 font-semibold text-base font-inter"> 0xaBF1...395d</span>
             </div >
              <div class=" flex items-center space-x-1.5">
                 <span class=" text-gray-900 font-bold text-base font-inter">Price:</span>
@@ -36,7 +36,7 @@
             </div>
              <div class=" flex items-center space-x-1.5">
                 <span class=" text-gray-900 font-bold text-base font-inter">By:</span>
-                <span class=" text-teal-500 font-semibold text-base font-inter"> 0xaBF1...395d</span>
+                <span class=" text-primary-500 font-semibold text-base font-inter"> 0xaBF1...395d</span>
             </div >
              <div class=" flex items-center space-x-1.5">
                 <span class=" text-gray-900 font-bold text-base font-inter">Price:</span>
@@ -59,7 +59,7 @@
             </div>
              <div class=" flex items-center space-x-1.5">
                 <span class=" text-gray-900 font-bold text-base font-inter">By:</span>
-                <span class=" text-teal-500 font-semibold text-base font-inter"> 0xaBF1...395d</span>
+                <span class=" text-primary-500 font-semibold text-base font-inter"> 0xaBF1...395d</span>
             </div >
              <div class=" flex items-center space-x-1.5">
                 <span class=" text-gray-900 font-bold text-base font-inter">Price:</span>

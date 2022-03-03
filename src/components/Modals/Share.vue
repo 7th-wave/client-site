@@ -1,5 +1,5 @@
 <template>
-  <a class="w-max text-teal-400 cursor-pointer" @click="open = true">
+  <a class="w-max text-primary-400 cursor-pointer" @click="open = true">
     <span class="sr-only">Share</span>
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -140,7 +140,7 @@
                       {{shareLink}}
                     </div>
                     <div>
-                      <DocumentDuplicateIcon class="h-7 w-7 text-teal-600"/>
+                      <DocumentDuplicateIcon class="h-7 w-7 text-primary-600"/>
                     </div>
                   </div>
                 </div>

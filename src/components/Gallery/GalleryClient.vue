@@ -5,7 +5,7 @@
     class="relative rounded-lg break-inside mx-3 mb-8 md:mx-0 md:mb-5 md:mt-0"
   >
     <div
-      class="bg-teal-400 content-center"
+      class="bg-primary-400 content-center"
       :class="{ 'flex h-48': art.id == 1 }"
     >
       <router-link
@@ -27,7 +27,7 @@
         "
       >
         <h1
-          class="text-2xl font-semibold tracking-wider uppercase text-teal-400"
+          class="text-2xl font-semibold tracking-wider uppercase text-primary-400"
         >
           {{ art.title }}
         </h1>

@@ -89,7 +89,7 @@
                 :item="item"
                 :class="[
                   'relative bg-white pt-5 px-4 pb-8 sm:pt-6 sm:px-6 shadow rounded-lg overflow-hidden',
-                  (item.status == 'selected')?'bg-teal-50 w-full':'bg-white w-full',
+                  (item.status == 'selected')?'bg-primary-50 w-full':'bg-white w-full',
                   item.status !== 'sold' ? 'cursor-pointer' : 'cursor-not-allowed',
                 ]"
                 v-on:click="
@@ -105,13 +105,13 @@
                   <p class="text-md font-bold text-gray-500">
                     Owner:
                   </p>
-                  <p class="text-md font-bold  text-teal-400">
+                  <p class="text-md font-bold  text-primary-400">
                     {{ item.owner }}
                   </p>
                   <p class="text-md font-bold text-gray-500">
                     Token ID:
                   </p>
-                  <p class="text-md font-boldm  text-teal-400">
+                  <p class="text-md font-boldm  text-primary-400">
                     {{ item.token_id}}
                   </p>
                 </dd>
@@ -185,8 +185,8 @@
               >
               <!-- title -->
                 <div class="flex items-center md:mb-0 mb-2">
-                  <p class="flex font-medium text-teal truncate">
-                    <span class="text-teal-400 mr-0.5"> {{arrSelected.length}} </span> SELECTED <img class="ml-2" src="/images/selected_icon.svg" alt="">
+                  <p class="flex font-medium text-primary truncate">
+                    <span class="text-primary-400 mr-0.5"> {{arrSelected.length}} </span> SELECTED <img class="ml-2" src="/images/selected_icon.svg" alt="">
                   </p>
                 </div>
                 <!-- series -->
@@ -223,12 +223,12 @@
                       'px-8 py-2',
                       'focus:outline-none border border-gray-400 shadow-sm',
                       'text-sm leading-5 font-medium cursor-pointer',
-                      'text-white hover:text-white hover:bg-teal-500 border-teal-400 bg-teal-400'
+                      'text-white hover:text-white hover:bg-primary-500 border-primary-400 bg-primary-400'
                     ]"
                   >
                     BUY NOW
                   </button>
-                  <div class="mt-2 text-teal-400 justify-self-center">
+                  <div class="mt-2 text-primary-400 justify-self-center">
                       <button class="focus:outline-none" @click="nft_modal = true">
                       <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -369,7 +369,7 @@ import { useStore } from 'vuex'
 import USDC from '../../components/Shared/USDC.vue'
 
 const buttonColor = {
-  sold: 'bg-gray-400 hover:bg-teal-500',
+  sold: 'bg-gray-400 hover:bg-primary-500',
   selected: 'bg-gray-900 hover:bg-black',
   'for sale': 'text-white hover:text-white hover:bg-green-500 border-green-400 bg-green-400',
 }

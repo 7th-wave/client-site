@@ -45,7 +45,7 @@
           <div class="ml-3">
             <p class="text-sm font-medium text-gray-700">User Name</p>
             <div class="flex items-center space-x-1">
-              <p class="text-xs font-medium text-teal-500 hover:underline">
+              <p class="text-xs font-medium text-primary-500 hover:underline">
                 0xE881...4567
               </p>
               <DocumentDuplicateIcon class="h-4 w-4" />

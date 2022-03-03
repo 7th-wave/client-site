@@ -26,7 +26,7 @@
         "
       >
         <h1
-          class="text-2xl font-semibold tracking-wider uppercase text-teal-400"
+          class="text-2xl font-semibold tracking-wider uppercase text-primary-400"
         >
           {{ art.title }}
         </h1>

@@ -4,7 +4,7 @@
         <div class="relative">
           <div class="max-w-7xl m-auto bg-white grid grid-cols-4 gap-4 py-12">
             <div class="col-span-2">
-              <h1 class="text-6xl leading-none font-inter "><span class="text-teal-500">Mint</span> and <span class="text-teal-500">Trade</span> <br />NFT Fractions of <br />Tangile Assets  </h1>
+              <h1 class="text-6xl leading-none font-inter "><span class="text-primary-500">Mint</span> and <span class="text-primary-500">Trade</span> <br />NFT Fractions of <br />Tangile Assets  </h1>
               <p class="text-gray-500 mt-4">Fractional ownership of the world’s most sought after NFTs. Fractional reduces entry costs, increases access, and enables new communities.</p>
 
               <div class="flex mt-16">

@@ -81,7 +81,7 @@
                   class="p-1 bg-white rounded-md shadow-sm cursor-pointer"
                   @click="open = false"
                 >
-                  <XIcon class="w-5 h-5 text-teal-500" />
+                  <XIcon class="w-5 h-5 text-primary-500" />
                 </div>
               </div>
             </div>
@@ -149,7 +149,7 @@
                   py-4
                   text-center text-base text-white
                   font-medium font-inter
-                  bg-teal-500
+                  bg-primary-500
                   rounded-md
                 "
               >

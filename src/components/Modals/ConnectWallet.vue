@@ -78,7 +78,7 @@
                   >Connect or create your wallet</span
                 >
                 <div class="p-1 bg-white rounded-md shadow-sm cursor-pointer" @click="open = false">
-                  <XIcon class="w-5 h-5 text-teal-500" />
+                  <XIcon class="w-5 h-5 text-primary-500" />
                 </div>
               </div>
             </div>

@@ -3,7 +3,7 @@
   <div class="flex md:flex-row flex-wrap flex-column justify-between"> 
     <div class="flex items-center text-2xl font-medium leading-8 text-white">
       Shuffling Sam Pegged + NFT Series
-      <span class="mx-2 text-sm font-medium text-teal-400 cursor-pointer" @click="openModal"> 
+      <span class="mx-2 text-sm font-medium text-primary-400 cursor-pointer" @click="openModal"> 
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>  
