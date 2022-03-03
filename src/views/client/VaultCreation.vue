@@ -44,7 +44,8 @@
             :vault="item"
           />
         </div>
-        <div class="bg-white w-full col-span-2 py-4 px-2 rounded-md shadow-md">
+       <div class="col-span-2">
+          <div class="bg-white w-full  py-4 px-2 rounded-md shadow-md">
           <span class="text-lg font-inter text-gray-900 font-medium"
             >Create a NFT Vault</span
           >
@@ -261,10 +262,10 @@
                 />
               </div>
               <span
-              v-if="errors.Fractions"
-              class="text-red-600 font-inter text-sm font-normal"
-              >{{ errors.Fractions }}</span
-            >
+                v-if="errors.Fractions"
+                class="text-red-600 font-inter text-sm font-normal"
+                >{{ errors.Fractions }}</span
+              >
             </div>
             <div class="w-full">
               <label
@@ -296,11 +297,11 @@
                   {Asset Owner Name} {0xab...124E}
                 </option>
               </select>
-               <span
-              v-if="errors.Owner"
-              class="text-red-600 font-inter text-sm font-normal"
-              >{{ errors.Owner }}</span
-            >
+              <span
+                v-if="errors.Owner"
+                class="text-red-600 font-inter text-sm font-normal"
+                >{{ errors.Owner }}</span
+              >
             </div>
             <div class="w-full">
               <label
@@ -344,13 +345,13 @@
                 />
               </div>
               <div class="text-sm font-normal text-gray-500">
-                <span class="font-semibold">Token</span>: 51,000,000</div
+                <span class="font-semibold">Token</span>: 51,000,000
+              </div>
+              <span
+                v-if="errors.Fractions_owner"
+                class="text-red-600 font-inter text-sm font-normal"
+                >{{ errors.Fractions_owner }}</span
               >
-               <span
-              v-if="errors.Fractions_owner"
-              class="text-red-600 font-inter text-sm font-normal"
-              >{{ errors.Fractions_owner }}</span
-            >
             </div>
             <div class="w-full">
               <label
@@ -393,14 +394,14 @@
                   placeholder="3"
                 />
               </div>
-              <div class="text-sm font-normal text-gray-500 ">
-                <span class="font-semibold">Token</span>: 7,000,000</div
+              <div class="text-sm font-normal text-gray-500">
+                <span class="font-semibold">Token</span>: 7,000,000
+              </div>
+              <span
+                v-if="errors.Jx"
+                class="text-red-600 font-inter text-sm font-normal"
+                >{{ errors.Jx }}</span
               >
-               <span
-              v-if="errors.Jx"
-              class="text-red-600 font-inter text-sm font-normal"
-              >{{ errors.Jx }}</span
-            >
             </div>
           </div>
           <div class="w-full bg-gray-300 h-px"></div>
@@ -415,11 +416,7 @@
                 :key="key"
               >
                 <div class="border rounded-md overflow-hidden w-full h-full">
-                  <img
-                    :src="'/images/' + item.img"
-                    alt=""
-                    class="w-full h-full"
-                  />
+                  <img :src="item.img" alt="" class="w-full h-full" />
                 </div>
                 <div
                   @click="RemoveItem(item)"
@@ -457,6 +454,7 @@
             </button>
           </div>
         </div>
+       </div>
       </div>
     </div>
     <VaultStepModal ref="steps" />
@@ -500,19 +498,37 @@ export default {
       Vaults: [
         {
           selected: false,
-          img: "art-1.jpg",
+          img: "/images/sneakers/01.png",
           collection: "Sneakers Collection",
           name: "Nike Waffle Sneakers",
         },
         {
           selected: false,
-          img: "art-2.jpg",
+          img: "/images/sneakers/02.png",
           collection: "Sneakers Collection",
           name: "Nike Waffle Sneakers",
         },
         {
           selected: false,
-          img: "art-3.jpg",
+          img: "/images/sneakers/03.png",
+          collection: "Sneakers Collection",
+          name: "Nike Waffle Sneakers",
+        },
+        {
+          selected: false,
+          img: "/images/sneakers/04.png",
+          collection: "Sneakers Collection",
+          name: "Nike Waffle Sneakers",
+        },
+        {
+          selected: false,
+          img: "/images/sneakers/05.png",
+          collection: "Sneakers Collection",
+          name: "Nike Waffle Sneakers",
+        },
+        {
+          selected: false,
+          img: "/images/sneakers/06.png",
           collection: "Sneakers Collection",
           name: "Nike Waffle Sneakers",
         },

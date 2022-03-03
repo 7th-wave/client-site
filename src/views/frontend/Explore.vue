@@ -60,63 +60,46 @@ export default {
         {
           name: "Sneakers",
           image:
-            "https://cdn.corporatefinanceinstitute.com/assets/types-of-assets-1024x575.jpeg",
+            "/images/sneakers/01.png",
           items: 2,
         },
         {
           name: "Boots",
           image:
-            "https://cdn.corporatefinanceinstitute.com/assets/types-of-assets-1024x575.jpeg",
+            "/images/sneakers/02.png",
           items: 2,
         },
         {
           name: "Sandals",
           image:
-            "https://cdn.corporatefinanceinstitute.com/assets/types-of-assets-1024x575.jpeg",
+            "/images/sneakers/03.png",
           items: 2,
         },
         {
           name: "Flip Flops",
           image:
-            "https://cdn.corporatefinanceinstitute.com/assets/types-of-assets-1024x575.jpeg",
+            "/images/sneakers/04.png",
           items: 2,
         },
         {
           name: "Sneakers",
           image:
-            "https://cdn.corporatefinanceinstitute.com/assets/types-of-assets-1024x575.jpeg",
+            "/images/sneakers/05.png",
           items: 2,
         },
         {
           name: "Boots",
           image:
-            "https://cdn.corporatefinanceinstitute.com/assets/types-of-assets-1024x575.jpeg",
+            "/images/sneakers/06.png",
           items: 2,
         },
         {
           name: "Sandals",
           image:
-            "https://cdn.corporatefinanceinstitute.com/assets/types-of-assets-1024x575.jpeg",
+            "/images/sneakers/07.png",
           items: 2,
         },
-        {
-          name: "Flip Flops",
-          image:
-            "https://cdn.corporatefinanceinstitute.com/assets/types-of-assets-1024x575.jpeg",
-          items: 2,
-        },
-        {
-          name: "Sneakers",
-          image:
-            "https://cdn.corporatefinanceinstitute.com/assets/types-of-assets-1024x575.jpeg",
-          items: 2,
-        },
-        {
-          name: "Boots",
-          image:
-            "https://cdn.corporatefinanceinstitute.com/assets/types-of-assets-1024x575.jpeg",
-          items: 2,
-        },
+       
       ],
     };
   },
