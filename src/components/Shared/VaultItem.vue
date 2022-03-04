@@ -13,9 +13,9 @@
             </swiper>   
         </div>
         
-        <div class="content w-full pt-6">
+        <div class="content w-full pt-6 bg-white">
             <div class="data w-full">
-                <h4 class="w-72 text-sm font-medium leading-tight text-primary-800 px-6">{{ vault.creator }}</h4>
+                <h4 class="w-72 text-sm font-medium leading-tight text-primary-link px-6">{{ vault.creator }}</h4>
                 <h2 class="w-full text-xl font-semibold leading-8 text-gray-900 px-6">{{ vault.name }}</h2>
                 <div class="h-6" />
                 <stats />
