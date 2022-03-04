@@ -1,6 +1,6 @@
 <!-- This example requires Tailwind CSS v2.0+ -->
 <template>
-  <div class="lg:border-t lg:border-b lg:border-gray-200 bg-white">
+  <div class="lg:border-t lg:border-b lg:border-gray-200 bg-white shadow-md">
     <nav class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8" aria-label="Progress">
       <ol role="list" class="rounded-md overflow-hidden lg:flex lg:border-l lg:border-r lg:border-gray-200 lg:rounded-none">
         <li v-for="(step, stepIdx) in steps" :key="step.id" class="relative overflow-hidden lg:flex-1">
@@ -73,8 +73,29 @@ const steps = [
 ]
 //upcoming,complete,current
 export default {
+  props:{
+      step: {
+        type: [String,Number],
+        required: true,
+        default: 1
+      },
+  },
   components: {
     CheckIcon,
+  },
+  watch:{
+      step(){
+            this.steps.forEach((step)=>{
+                if(step.id == this.step){
+                    step.status = 'current'
+                }else{
+                    step.status = 'upcoming'
+                }
+                if(this.step > step.id){
+                    step.status = 'complete'
+                }
+            })
+      }
   },
   setup() {
     return {
