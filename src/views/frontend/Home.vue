@@ -56,7 +56,7 @@
                           <template #image>
                             <img
                               class="w-full h-full object-cover"
-                              :src="category.image"
+                              :src="'/images/categories/'+category.image"
                               alt=""
                             />
                           </template>
@@ -195,19 +195,19 @@ const categories = [
         {
           name: "Sneakers",
           image:
-            "https://cdn.corporatefinanceinstitute.com/assets/types-of-assets-1024x575.jpeg",
-          items: 2,
+            "sneakers.png",
+          items: 9,
         },
         {
-          name: "Boots",
+          name: "Rare Gems & Jewellery",
           image:
-            "https://cdn.corporatefinanceinstitute.com/assets/types-of-assets-1024x575.jpeg",
-          items: 2,
+            "gems.png",
+          items: 1,
         },
         {
-          name: "Sandals",
+          name: "Fine Art",
           image:
-            "https://cdn.corporatefinanceinstitute.com/assets/types-of-assets-1024x575.jpeg",
+            "caveman.png",
           items: 2,
         },
         {
