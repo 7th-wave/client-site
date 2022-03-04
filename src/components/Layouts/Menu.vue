@@ -134,7 +134,7 @@ import { auth, storage } from "../../firebase/firebase";
 
 const navigation = [
   { name: "My Account", href: {name:'MyAccount',params:{address:'gfdg'}},subname:'',subname1:'' },
-  { name: "My NFT", href:  {name:'My_collections'},subname:'CollectionDetails',subname1:''  },
+  { name: "My NFT", href:  {name:'My_collections'},subname:'CollectionDetails',subname1:'Fractionalize'  },
   { name: "My Vaults", href:  {name:'MyVault'},subname:'',subname1:''  },
   { name: "My Fractions", href:  {name:'My_history'},subname:'My_fractions',subname1:'My_fractions_details'  },
   { name: "My Purchase History", href:  {name:'PurchasseHistory'},subname:'',subname1:''  },
