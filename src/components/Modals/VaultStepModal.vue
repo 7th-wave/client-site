@@ -178,7 +178,7 @@
                     w-full
                     outline-none
                   "
-                  :class="{'bg-primary-1000':step === 1,'bg-gray-300':step !== 1}"
+                  :class="{'bg-primary-link':step === 1,'bg-gray-300':step !== 1}"
                 >
                   APPROVE
                 </button>
@@ -262,7 +262,7 @@
                     w-full
                     outline-none
                   "
-                  :class="{'bg-primary-1000':step === 2,'bg-gray-300':step != 2}"
+                  :class="{'bg-primary-link':step === 2,'bg-gray-300':step != 2}"
                 >
                   PLACE BID
                 </button>

@@ -43,7 +43,7 @@ export default {
     props: {
         goDown: {
             type: Boolean,
-            required: true
+            default: true
         }
     },
     components: {ArrowDownIcon,DatabaseIcon},

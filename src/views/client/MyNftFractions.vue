@@ -51,7 +51,7 @@
             <template #badge>
               <div
                 class="
-                  z-50
+                  z-10
                   bg-white
                   py-1
                   px-2
