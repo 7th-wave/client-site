@@ -148,12 +148,12 @@ const routes = [
     name: "My_fractions_details",
     component: () => import("../views/client/NftfractionDetails.vue"),
   },
-  // {
-  //   path: "/my-collection",
-  //   name: "My_collection",
-  //   component: () => import("../views/client/Mycollection.vue"),
-  //   beforeEnter: clientGuard,
-  // },
+  {
+    path: "/vault-category/:category",
+    name: "vault_category",
+    component: () => import("../views/client/VaultCatgory.vue"),
+    beforeEnter: clientGuard,
+  },
   {
     path: "/my-collections/artwork/:collection/:ref",
     name: "ClientArtwork",

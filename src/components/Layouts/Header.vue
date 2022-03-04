@@ -57,7 +57,7 @@
           </div>
         </div>
       </Popover>
-      <MainMenu  @closeMenu="closeMenu" :animate_menu="showMenu" />
+      <MainMenu  @closeMenu="closeMenu" :animate_menu="showMenu" ref="MainMenu" />
     </header>
   </div>
 </template>

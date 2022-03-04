@@ -52,7 +52,7 @@
           </router-link>
         </nav>
       </div>
-      <div class="flex-shrink-0 flex bg-gray-100 p-4">
+      <div class="flex-shrink-0 flex bg-gray-100 p-4" v-if="currentRouteName != 'Home'">
         <router-link :to="{name:'MyAccount',params:{address:'dfdf'}}"  class="flex-shrink-0 w-full group block">
           <div class="flex items-center">
             <div>
@@ -74,12 +74,20 @@
           </div>
         </router-link>
       </div>
-      <div class="flex flex-col items-start space-y-2 p-4">
+      <div class="flex flex-col items-start space-y-2 p-4" v-if="currentRouteName != 'Home'">
         <router-link :to="{name:'My_collections'}" class="text-gray-900 font-medium text-base font-inter"
           >My Assets</router-link
         >
         <a href="#" class="text-gray-600 font-medium text-base font-inter"
           >Disconect</a
+        >
+      </div>
+       <div class="flex  items-center space-x-2 p-4 border-t bg-gray-50" v-else >
+        
+           <UserIcon  class=" w-6 h-5  userIcon"/>
+       
+        <a href="javascript:void(0)" class="text-gray-900 font-medium text-base font-inter"
+          >Login</a
         >
       </div>
     </div>
@@ -96,20 +104,23 @@
 
 <script>
 import {
-  LightBulbIcon,
+  // LightBulbIcon,
   ViewGridIcon,
-  SearchIcon,
-  CubeIcon,
+  // SearchIcon,
+  // CubeIcon,
   DocumentDuplicateIcon,
   XIcon,
+  ChartSquareBarIcon,
+  UserIcon,
+  BookOpenIcon,
+  MailIcon,
 } from "@heroicons/vue/outline";
   import LogoSmall from './LogoSmall.vue';
-
 const navigation = [
-  { name: "Explore Vaults", icon: SearchIcon, href: "Explore" },
-  { name: "Create NFT", icon: CubeIcon, href: "CreateNft" },
+  { name: "Buy Fractions", icon: ChartSquareBarIcon, href: "Explore" },
   { name: "Fractionalize", icon: ViewGridIcon, href: "Fractionalize" },
-  { name: "Learn More", icon: LightBulbIcon, href: "LearnMore" },
+  { name: "Learn More", icon: BookOpenIcon, href: "LearnMore" },
+  { name: "Contact Us", icon: MailIcon, href: "Contact" },
 ];
 
 export default {
@@ -118,6 +129,8 @@ export default {
       type: Boolean,
       default: false,
     },
+    
+   
   },
   computed:{
     currentRouteName() {
@@ -127,7 +140,10 @@ export default {
   components: {
     DocumentDuplicateIcon,
     XIcon,
-    LogoSmall
+    UserIcon,
+    ChartSquareBarIcon,
+    LogoSmall,
+    BookOpenIcon
   },
 
       
@@ -144,5 +160,9 @@ export default {
 };
 </script>
 
-
+<style scoped>
+  .userIcon {
+    color:#9CA3AF;
+  }
+</style>
 

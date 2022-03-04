@@ -10,7 +10,7 @@
 
       <div class="grid lg:grid-cols-3 grid-cols-1 md:grid-cols-2 gap-10">
         <CategoryCard
-          @click="GoToCategory"
+          @click="GoToCategory(category.name)"
           v-for="(category, index, key) in categories"
           :key="key"
           :category="category"
@@ -58,9 +58,9 @@ export default {
     return {
       categories: [
         {
-          name: "Sneakers",
+          name: "Fine Art",
           image:
-            "/images/sneakers/01.png",
+            "/images/categories/caveman.png",
           items: 2,
         },
         {
@@ -96,7 +96,7 @@ export default {
         {
           name: "Sandals",
           image:
-            "/images/sneakers/07.png",
+            "/images/sneakers/01.png",
           items: 2,
         },
        
@@ -104,8 +104,8 @@ export default {
     };
   },
    methods:{
-      GoToCategory(){
-        this.$router.push('/vault/1');
+      GoToCategory(cat){
+        this.$router.push({name: "vault_category",params:{category:cat}});
       }
     }
 };
