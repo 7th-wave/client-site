@@ -1,5 +1,6 @@
 <template>
    <div
+ 
     class="
       account
       sm:px-8
@@ -8,8 +9,8 @@
       lg:py-16
       relative
       mx-auto
-      bg-gray-100
-      font-inter
+      bg-gray-100 2xl:max-w-8xl w-full
+      font-inter 
     "
   >
     <div class="lg:hidden">

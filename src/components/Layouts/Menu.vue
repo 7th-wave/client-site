@@ -55,7 +55,8 @@
       </a>
     </div>
     <div class="flex flex-col items-start space-y-2 p-4">
-      <a
+      <router-link
+      :to="{name: 'My_wallets'}"
         href="#"
         class="
           text-gray-900
@@ -89,10 +90,10 @@
             />
           </svg>
         </div>
-        <span> My Wallet</span></a
+        <span> My Wallet</span></router-link
       >
       <a
-        href="#"
+        href="/"
         class="
           text-gray-600
           font-medium

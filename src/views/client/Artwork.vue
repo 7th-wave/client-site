@@ -9,10 +9,10 @@
       sm:py-4
       lg:py-16
       relative
-      max-w-7xl
       mx-auto
       bg-gray-100
       font-inter
+      2xl:max-w-8xl w-full
     "
   >
     <div class="lg:hidden">

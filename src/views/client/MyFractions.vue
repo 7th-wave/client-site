@@ -8,7 +8,7 @@
       lg:py-16
       relative
       mx-auto
-      bg-gray-100
+      bg-gray-100 2xl:max-w-8xl w-full
       font-inter
     "
   >
