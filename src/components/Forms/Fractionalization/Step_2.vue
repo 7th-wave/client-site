@@ -1,5 +1,6 @@
 <template>
   <div class="w-full font-inter space-y-4">
+    <Steps :step="steps" />
     <div class="w-full bg-blue-link bg-opacity-20 flex py-8">
       <div class="m-auto flex items-center space-x-1">
         <div>
@@ -135,37 +136,8 @@
         </div>
       </div>
     </div>
-    <div class="bg-white py-4 px-4 rounded-md shadow-md space-y-4">
-      <div class=" pb-5">
-        <label for="comment" class="block text-sm font-medium text-gray-700"
-          >Message us for questions and comments</label
-        >
-        <div class="mt-1">
-          <textarea
-            rows="4"
-            name="comment"
-            id="comment"
-            class="
-              shadow-sm
-              focus:ring-indigo-500 focus:border-indigo-500
-              block
-              w-full
-              sm:text-sm
-              border-gray-300
-              rounded-md
-            "
-          />
-        </div>
-      </div>
-      <div class=" bg-gray-100 w-full h-px">
-
-      </div>
-
-      <div>
-          <button class=" text-white font-medium font-inter text-sm bg-black px-6 py-2 rounded-md">COMMENT</button>
-      </div>
-    </div>
-    <div class="bg-white py-4 px-4 rounded-md shadow-md">
+    
+    <div class="">
     <Feed />
 
     </div>
@@ -175,9 +147,22 @@
 
 <script>
 import Feed from '../../Drawers/Feed.vue'
+import Steps from "../../Drawers/Steps.vue";
+const steps = [
+  { id: '1', name: 'Propose New Asset', description: 'Vitae sed mi luctus laoreet.', href: '#', status: 'complete' },
+  { id: '2', name: 'Approve Curated Asset', description: 'Cursus semper viverra.', href: '#', status: 'upcoming' },
+  { id: '3', name: 'Mint Asset', description: 'Penatibus eu quis ante.', href: '#', status: 'upcoming' },
+   { id: '4', name: 'Create a Vault', description: 'Penatibus eu quis ante.', href: '#', status: 'upcoming' },
+]
 export default {
+   setup() {
+    return {
+      steps,
+    }
+  },
     components: {
-        Feed
+        Feed,
+        Steps
     }
 };
 </script>

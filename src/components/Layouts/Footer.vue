@@ -9,19 +9,22 @@
               <!-- My account -->
               <div>
                 <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">
-                 <a href="/my-account" class="text-sm font-semibold text-gray-400 tracking-wider uppercase"> My Account</a>
+                 <a href="javascript:void(0)" class="text-sm font-semibold text-gray-400 tracking-wider uppercase"> My Account</a>
                 </h3>
                 <ul class="mt-4 space-y-4">
-                  <li>
-                    <a href="#" @click.prevent="login_modal = true" v-if="!currentAddress && user.email == ''" class="text-base text-gray-400 hover:text-gray-100">
-                      Login / Signup
+                  <li v-for="item in footerNavigation.account" :key="item.name">
+                     <a :href="item.href" class="text-base text-gray-400 hover:text-gray-100">
+                      {{ item.name }}
                     </a>
-                    <router-link :to="`/my-account/${currentAddress}`" v-if="currentAddress && user.email !== ''" class="text-base text-gray-400 hover:text-gray-100">
+                    <!-- <a href="#" @click.prevent="login_modal = true" v-if="!currentAddress && user.email == ''" class="text-base text-gray-400 hover:text-gray-100">
+                      Login / Signup
+                    </a> -->
+                    <!-- <router-link :to="`/my-account/${currentAddress}`" v-if="currentAddress && user.email !== ''" class="text-base text-gray-400 hover:text-gray-100">
                       My Account
                     </router-link>
                     <router-link :to="`/register/${currentAddress}`" v-if="currentAddress && user.email == ''" class="text-base text-gray-400 hover:text-gray-100">
                       Signup
-                    </router-link>
+                    </router-link> -->
                   </li>
                 </ul>
               </div>
@@ -117,7 +120,10 @@ import LoginModal from '@/components/Modals/Login_Modal.vue'
 
 const footerNavigation = {
   account: [
-    { name: 'Login / Signup', href: '#' },
+    { name: 'Login / Signup', href: '/my-account/sfd'},
+    { name: 'Admin', href: '/my-account/sfd' },
+    { name: 'Client', href: '/my-account/sfd' },
+    { name: 'Buyer', href: '/my-account/sfd' },
  
   ],
   support: [
