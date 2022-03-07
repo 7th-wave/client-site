@@ -42,7 +42,7 @@ export default {
     function defineSizeClass(size) {
       switch (size) {
         case 'medium':
-          return 'px-4 py-2 text-sm';
+          return 'px-4 py-2 text-sm leading-6 font-medium';
         case 'large':
           return 'text-lg leading-7 font-bold px-6 py-4';
         case 'small':
@@ -57,15 +57,15 @@ export default {
     function defineStyleClass(style) {
       switch (style) {
         case 'primary':
-          return 'bg-primary-400 text-white hover:bg-primary-500';
+          return 'bg-primary-500 text-white hover:bg-primary-600';
         case 'outlined':
-          return 'border border-primary-400 text-primary-400 hover:bg-primary-400 hover:text-white';
+          return 'border border-primary-500 text-primary-500 hover:bg-primary-600 hover:text-white';
         case 'secondary':
-          return 'bg-secondary-400 text-white hover:bg-secondary-500';
+          return 'bg-secondary-500 text-white hover:bg-secondary-600';
         case 'black':
           return 'bg-gray-900 text-white hover:bg-gray-900';
         default:
-          return 'bg-primary-400 text-white hover:bg-primary-500';
+          return 'bg-primary-500 text-white hover:bg-primary-600';
       }
     }
 
