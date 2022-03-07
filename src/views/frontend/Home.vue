@@ -1,5 +1,5 @@
 <template>
-  <div class="home font-inter py-4 ">
+  <div class="home font-inter py-4  2xl:max-w-8xl 2xl:mx-auto w-full ">
     <div class="relative  ">
         <div class="relative">
           <div class="m-auto grid grid-cols-1 lg:grid-cols-6 gap-12 px-12">

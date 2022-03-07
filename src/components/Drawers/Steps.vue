@@ -65,42 +65,24 @@
 <script>
 import { CheckIcon } from '@heroicons/vue/solid'
 
-const steps = [
-  { id: '1', name: 'Propose New Asset', description: 'Vitae sed mi luctus laoreet.', href: '#', status: 'current' },
-  { id: '2', name: 'Approve Curated Asset', description: 'Cursus semper viverra.', href: '#', status: 'upcoming' },
-  { id: '3', name: 'Mint Asset', description: 'Penatibus eu quis ante.', href: '#', status: 'upcoming' },
-   { id: '4', name: 'Create a Vault', description: 'Penatibus eu quis ante.', href: '#', status: 'upcoming' },
-]
+
 //upcoming,complete,current
 export default {
   props:{
       step: {
-        type: [String,Number],
+        type: [Object, Array],
         required: true,
-        default: 1
       },
+  },
+  data(){
+    return  {
+      steps:this.step,
+    }
   },
   components: {
     CheckIcon,
   },
-  watch:{
-      step(){
-            this.steps.forEach((step)=>{
-                if(step.id == this.step){
-                    step.status = 'current'
-                }else{
-                    step.status = 'upcoming'
-                }
-                if(this.step > step.id){
-                    step.status = 'complete'
-                }
-            })
-      }
-  },
-  setup() {
-    return {
-      steps,
-    }
-  },
+ 
+ 
 }
 </script>
