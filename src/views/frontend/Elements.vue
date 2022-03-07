@@ -28,6 +28,11 @@
           <Button @click="makeOffer()" name="Normal Button" custom-class="mr-2">Button Default type</Button>
           <Button @click="makeOffer()" name="Normal Button" btn-style="primary" custom-class="mr-2" type="none">Button None Type</Button>
           <Button @click="makeOffer()" name="Normal Button" btn-style="secondary" custom-class="mr-2" type="full">Button Full Type</Button>
+
+          <div class="h-6" />
+          <p>Lorem ipsum dolor sit amet, <a href="#">consectetur adipiscing elit</a>. Pellentesque ut massa a arcu aliquam condimentum. Fusce maximus quam in ex pretium laoreet. Donec tristique elit nec diam volutpat, sed pretium enim ullamcorper. Duis a lacus dictum, convallis sem nec, aliquet ex. Proin non neque aliquet, aliquet leo ut, dictum felis. Vestibulum commodo vulputate justo a luctus. Nullam tortor erat, laoreet at enim in, eleifend scelerisque sapien. Nulla tincidunt, urna in sollicitudin tempor, massa erat tempor arcu, et efficitur tellus nisl eget metus. Duis sed nisl tincidunt, pretium neque et, luctus odio. Maecenas fringilla commodo dolor, congue efficitur est maximus a.</p>
+
+          <p>Nam ut est sem. Sed erat diam, porta ut mattis cursus, dignissim eu ex. Vivamus posuere enim in orci tincidunt, vitae faucibus orci malesuada. Suspendisse fermentum consequat volutpat. Morbi condimentum ultricies vestibulum. Sed a venenatis purus. Mauris placerat sem lobortis risus tempus eleifend non eu lacus. Sed eu ornare erat. Aliquam at gravida enim, in dignissim lorem.</p>
             
         </template>
   </InteriorPage>
