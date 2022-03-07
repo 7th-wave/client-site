@@ -49,6 +49,12 @@ const routes = [
     component: () => import("../views/frontend/Swap.vue"),
   },
   {
+    path: "/elements",
+    name: "Elements",
+
+    component: () => import("../views/frontend/Elements.vue"),
+  },
+  {
     path: "/contact",
     name: "Contact",
 
