@@ -1,5 +1,5 @@
 <template>
-  <div class="py-8 space-y-24">
+  <div class="py-8 space-y-24  2xl:max-w-8xl w-full 2xl:mx-auto">
     <div class="flex">
       <span
         class="m-auto text-4xl text-center font-normal font-inter text-black"

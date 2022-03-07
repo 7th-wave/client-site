@@ -1,6 +1,6 @@
  
 <template>
-<div class="account sm:px-8   py-4 relative lg:py-16 bg-gray-100 font-inter mx-auto">
+<div class="account sm:px-8 2xl:max-w-8xl w-full   py-4 relative lg:py-16 bg-gray-100 font-inter mx-auto">
   <div class="lg:hidden">
     <Navbar :type="'customer'" />
   </div>

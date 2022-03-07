@@ -10,6 +10,9 @@ module.exports = {
         opensans: ["Open Sans", "sans-serif"],
         body: ["Inter", "sans-serif"],
       },
+      maxWidth: {
+          '8xl': '100rem',
+       },
       colors: {
         primary: {
           '50': '#31C7FF',
@@ -53,6 +56,9 @@ module.exports = {
           '700': '#88070E',
           '800': '#520408',
           '900': '#1D0203'
+        },
+        blue:{
+          link:'#84f4ee',
         }
       },
     },

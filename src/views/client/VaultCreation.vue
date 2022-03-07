@@ -8,9 +8,8 @@
       lg:py-16
       relative
       bg-gray-100
-      w-full
       mx-auto
-      font-inter
+      font-inter 2xl:max-w-8xl w-full
     "
   >
     <div class="py-0 sm:py-2 lg:pt-0 lg:pb-8 text-center">

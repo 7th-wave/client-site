@@ -1,5 +1,6 @@
 <template>
    <div
+ 
     class="
       account
       sm:px-8
@@ -8,8 +9,8 @@
       lg:py-16
       relative
       mx-auto
-      bg-gray-100
-      font-inter
+      bg-gray-100 2xl:max-w-8xl w-full
+      font-inter 
     "
   >
     <div class="lg:hidden">
@@ -24,8 +25,9 @@
           <Menu />
         </div>
         <div class=" sm:col-span-5 space-y-2">
-            <Steps />
-            <Step1 />
+            <Steps :step="step" />
+            <Step1 v-if="step == 1" />
+            <Step2 v-if="step == 2"/>
         </div>
       </div>
     </div>
@@ -36,15 +38,40 @@
 
 <script>
 import Step1 from '@/components/Forms/Fractionalization/Step_1.vue'
+import Step2 from '@/components/Forms/Fractionalization/Step_2.vue'
 import Menu from "@/components/Layouts/Menu.vue";
 import Navbar from "@/components/Layouts/Navbar.vue";
 import Steps from '@/components/Drawers/Steps.vue'
 export default {
     components:{
         Step1,
+        Step2,
         Menu,
         Navbar,
         Steps
     },
+    data(){
+        return {
+            step:1,
+        }
+    },
+    created(){
+        
+        document.addEventListener('keydown', (e) => {
+            if (e.keyCode == 78 ) {
+                if(this.step < 4) {
+                    this.step++;
+                }
+               
+            }
+            if (e.keyCode == 66) {
+                if(this.step > 1) {
+                    this.step--;
+                }
+                
+            }
+        })
+       
+    }
 }
 </script>

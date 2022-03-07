@@ -130,7 +130,7 @@ const routes = [
   {
     path: "/purchasse-history",
     name: "PurchasseHistory",
-    component: () => import("../views/client/Myaccount.vue"),
+    component: () => import("../views/client/MyFractions.vue"),
     beforeEnter: clientGuard,
   },
   {
