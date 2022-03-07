@@ -28,6 +28,39 @@
           <Button @click="makeOffer()" name="Normal Button" custom-class="mr-2">Button Default type</Button>
           <Button @click="makeOffer()" name="Normal Button" btn-style="primary" custom-class="mr-2" type="none">Button None Type</Button>
           <Button @click="makeOffer()" name="Normal Button" btn-style="secondary" custom-class="mr-2" type="full">Button Full Type</Button>
+
+          <div class="h-6" />
+          <p>Lorem ipsum dolor sit amet, <a href="#">consectetur adipiscing elit</a>. Pellentesque ut massa a arcu aliquam condimentum. Fusce maximus quam in ex pretium laoreet. Donec tristique elit nec diam volutpat, sed pretium enim ullamcorper. Duis a lacus dictum, convallis sem nec, aliquet ex. Proin non neque aliquet, aliquet leo ut, dictum felis. Vestibulum commodo vulputate justo a luctus. Nullam tortor erat, laoreet at enim in, eleifend scelerisque sapien. Nulla tincidunt, urna in sollicitudin tempor, massa erat tempor arcu, et efficitur tellus nisl eget metus. Duis sed nisl tincidunt, pretium neque et, luctus odio. Maecenas fringilla commodo dolor, congue efficitur est maximus a.</p>
+
+          <p>Nam ut est sem. Sed erat diam, porta ut mattis cursus, dignissim eu ex. Vivamus posuere enim in orci tincidunt, vitae faucibus orci malesuada. Suspendisse fermentum consequat volutpat. Morbi condimentum ultricies vestibulum. Sed a venenatis purus. Mauris placerat sem lobortis risus tempus eleifend non eu lacus. Sed eu ornare erat. Aliquam at gravida enim, in dignissim lorem.</p>
+
+          <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+                <div class="sm:col-span-3">
+                  <label
+                    for="first-name"
+                    class="block text-sm font-medium text-gray-700"
+                  >
+                    First name
+                  </label>
+                  <div class="mt-1">
+                    <input
+                      type="text"
+                      name="first-name"
+                      id="first-name"
+                      autocomplete="given-name"
+                      class="
+                        shadow-sm
+                        focus:ring-indigo-500 focus:border-indigo-500
+                        block
+                        w-full
+                        sm:text-sm
+                        border-gray-300
+                        rounded-md
+                      "
+                    />
+                  </div>
+                </div>
+          </div>
             
         </template>
   </InteriorPage>
