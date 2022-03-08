@@ -1,7 +1,7 @@
 <template>
   <div class="w-full font-inter space-y-4">
     <Steps :step="steps" />
-    <div class="w-full bg-blue-link bg-opacity-20 flex py-8">
+    <div class="w-full bg-blue-link bg-opacity-20 flex py-8 cursor-pointer" @click="nextStep">
       <div class="m-auto flex items-center space-x-1">
         <div>
           <svg
@@ -163,6 +163,11 @@ export default {
     components: {
         Feed,
         Steps
+    },
+    methods:{
+      nextStep(){
+        this.$emit('nextStep')
+      }
     }
 };
 </script>

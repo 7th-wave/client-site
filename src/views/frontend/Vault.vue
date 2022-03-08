@@ -8,7 +8,7 @@
     </div>
 
     <div class="w-full">
-      <VaultSlideShow :slides="slides" />
+      <VaultSlideShow :slides="getSlides" />
     </div>
 
     <div class="w-full px-8 py-4 grid grid-cols-4 gap-4">
@@ -17,8 +17,8 @@
         <span class="text-2xl text-black font-inter font-medium"
           >{Vault Sub-Title}</span
         >
-        <FractionCard />
-        <p class="text-lg font-normal font-inter text-black">
+        <FractionCard :goDown="getParams != 'FineArt' ? true : false" />
+        <p class="text-lg font-normal font-inter text-black bg-white py-2 px-4 shadow-md rounded-md">
           {Vault Description} Lorem ipsum dolor sit amet, consectetur adipiscing
           elit, sed do eiusmod tempor incididunt ut labore et dolore magna
           aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
@@ -199,13 +199,13 @@
         </div>
       </div>
     </div>
-    <div class="w-full space-y-4 px-8">
+    <div class="w-full space-y-4 px-8" v-if="getParams != 'FineArt'">
       <div>
         <span class="text-2xl text-black font-inter font-medium"
           >All Assets inside {Vault Name} Vault</span
         >
       </div>
-      <div class="grid grid-cols-3 gap-14">
+      <div class="grid grid-cols-3 gap-14" >
         <CategoryCard
           @click="GoToCategory"
           v-for="(category, index, key) in categories"
@@ -263,6 +263,17 @@ export default {
     CategoryCard,
     Events,
     Table,
+  },
+  computed:{
+    getParams(){
+      return this.$route.params.id;
+    },
+    getSlides(){
+      if(this.getParams == 'FineArt'){
+        return this.slide;
+      }
+      return this.slides
+    },
   },
   data() {
     return {
@@ -365,74 +376,68 @@ export default {
       arrAuctions: [],
       categories: [
         {
-          name: "Sneakers",
+          name: "Nike Waffle Sneakers",
           image:
             "/images/sneakers/01.png",
-          title: "Sneakers",
+          title: "Sneakers Collection",
         },
         {
-          name: "Sneakers",
+          name: "Basket Name",
           image:
             "/images/sneakers/02.png",
-          title: "Sneakers",
+          title: "Sneakers Collection",
         },
         {
-          name: "Sneakers",
+          name: "Basket Name",
           image:
             "/images/sneakers/03.png",
-          title: "Sneakers",
+          title: "Sneakers Collection",
         },
         {
-          name: "Sneakers",
+          name: "Air Mags",
           image:
             "/images/sneakers/04.png",
-          title: "Sneakers",
+          title: "Sneakers Collection",
         },
         {
-          name: "Sneakers",
+          name: "Springers",
           image:
-            "/images/sneakers/05.png",
-          title: "Sneakers",
+            "/images/sneakers/red.png",
+          title: "Sneakers Collection",
         },
         {
-          name: "Sneakers",
+          name: "Jordans",
           image:
             "/images/sneakers/06.png",
-          title: "Sneakers",
+          title: "Sneakers Collection",
         },
       ],
       slides: [
-        {
-          image:
-            "/images/sneakers/07.png",
-          name: "Sneakers",
-        },
-        {
-          image:
-            "/images/sneakers/05.png",
-          name: "Games",
-        },
-        {
-          image:
-            "/images/sneakers/01.png",
-          name: "Boots",
-        },
-        {
-          image:
-            "/images/sneakers/04.png",
-          name: "Books",
-        },
+      
+        
          {
           image:
-            "/images/sneakers/06.png",
+            "/images/sneakers/01.png",
           name: "Books",
         },
          {
           image:
             "/images/sneakers/01.png",
+          name: "Books",
+        },
+         {
+          image:
+            "/images/sneakers/red.png",
           name: "Books",
         },
       ],
+      slide:[
+         {
+          image:
+            "/images/sneakers/caveman1.png",
+          name: "Books",
+        },
+      ]
     };
   },
 };
