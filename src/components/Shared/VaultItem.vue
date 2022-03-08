@@ -2,13 +2,13 @@
     <div class="rounded-lg overflow-hidden shadow-lg w-90 relative" :class="bg">
          <slot name="badge"/>
         <div class="slider relative">    
-            <div class="m-auto absolute z-10 bottom-4" style="left: 50%; transform:translate(-50%, 0);"><badge :color="'gray'" :label="vault.nfts.length + ' assets'" /></div>
+            <div class="m-auto absolute z-10 bottom-4" style="left: 50%; transform:translate(-50%, 0);"><badge :color="badgecolor" :label="vault.nfts.length + ' assets'" /></div>
             <swiper
                   :slides-per-view="1"
                   :space-between="0"
                 >
                   <swiper-slide v-for="(item, index) of vault.nfts" :key="index">
-                      <img class="w-full" :src="'/images/sneakers/'+item.image" />
+                      <img class="w-full h-80 object-cover" :src="'/images/sneakers/'+item.image" />
                   </swiper-slide>
             </swiper>   
         </div>
@@ -38,7 +38,7 @@ import Stats from './Stats.vue';
 import { onMounted } from '@vue/runtime-core';
 
 export default {
-    props: ['vault','bg'],
+    props: ['vault','bg','badgecolor'],
 
     components: {
         Swiper,

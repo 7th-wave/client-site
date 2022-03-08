@@ -25,7 +25,7 @@
           items-center
           justify-between
           px-2 py-2
-          cursor-pointer
+          cursor-pointer space-x-6
         "
       >
         <div class="flex items-center space-x-2">
@@ -76,7 +76,7 @@
       <span class="text-base text-white font-semibold">
         In doubt EDIT and <br> request a revision
       </span>
-      <button class=" text-white font-medium text-base font-inter border border-white py-2 px-4 rounded-sm">EDIT</button>
+      <button @click="nextStep" class=" text-white font-medium text-base font-inter border border-white py-2 px-4 rounded-sm">EDIT</button>
     </div>
      <div class=" flex items-center space-x-2" v-if="cardtype == 'edit'">
       <div>
@@ -126,6 +126,9 @@ export default {
   methods:{
       MintIt(){
         this.$emit("isminted");
+      },
+      nextStep(){
+        this.$emit("nextStep");
       }
   }
 };

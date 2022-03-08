@@ -88,6 +88,7 @@
           :key="key"
           :vault="item"
           bg="bg-white"
+          badgecolor="green"
         >
           <template #badge>
             <div

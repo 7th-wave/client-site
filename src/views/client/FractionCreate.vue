@@ -27,8 +27,8 @@
         </div>
         <div class="sm:col-span-5 space-y-2">
         
-          <Step1 v-if="step == 1" />
-          <Step2 v-if="step == 2" />
+          <Step1 v-if="step == 1" @nextStep="nextStep" />
+          <Step2 v-if="step == 2" @nextStep="nextStep" />
           <Step3 v-if="step == 3" :isminted="minted" />
           <Step4   v-if="step == 4" />
         </div>
@@ -36,7 +36,7 @@
       <div class="space-y-2" v-if="step != 1 & step != 2">
         <MintsInfosCards  />
        
-        <MintCard @isminted="isminted"   :cardtype="step != 4 ? 'mint' :  'edit'" v-show="!minted" />
+        <MintCard @isminted="isminted" @nextStep="nextStep"   :cardtype="step != 4 ? 'mint' :  'edit'" v-show="!minted" />
         <Feed v-show="!minted" />
        
       </div>
@@ -79,6 +79,9 @@ export default {
   methods:{
     isminted(){
       this.minted = true
+    },
+    nextStep(){
+      this.step++
     }
   },
   created() {
