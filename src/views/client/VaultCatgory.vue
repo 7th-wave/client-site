@@ -151,7 +151,7 @@ export default {
       vaults: [
         {
           id: "1",
-          name: "Nike Sneakers",
+          name: "Nike Collection",
           token: "SNEAKER",
           creator: "Nike",
           fractions: 58,
@@ -185,8 +185,55 @@ export default {
           ],
         },
         {
+          id: "6",
+          name: "Basket Name",
+          token: "SNEAKER",
+          creator: "Nike",
+          fractions: 58,
+          available: "49%",
+          valuation: "$2M",
+          nfts: [
+            {
+              name: "Nft2",
+              image: "02.png",
+            },
+            {
+              name: "Nft3",
+              image: "03.png",
+            },
+            {
+              name: "Nft4",
+              image: "04.png",
+            },
+          ],
+        },
+
+        {
+          id: "5",
+          name: "Basket Name",
+          token: "SNEAKER",
+          creator: "Nike",
+          fractions: 58,
+          available: "49%",
+          valuation: "$2M",
+          nfts: [
+            {
+              name: "Nft2",
+              image: "03.png",
+            },
+            {
+              name: "Nft3",
+              image: "03.png",
+            },
+            {
+              name: "Nft4",
+              image: "04.png",
+            },
+          ],
+        },
+         {
           id: "2",
-          name: "Nike Shoes",
+          name: "Air Mags",
           token: "SNEAKER",
           creator: "Nike",
           fractions: 58,
@@ -209,7 +256,7 @@ export default {
         },
         {
           id: "3",
-          name: "Nike Shoes",
+          name: "Springers",
           token: "SNEAKER",
           creator: "Nike",
           fractions: 58,
@@ -232,7 +279,7 @@ export default {
         },
         {
           id: "4",
-          name: "Nike Shoes",
+          name: "Jordans",
           token: "SNEAKER",
           creator: "Nike",
           fractions: 58,
@@ -253,57 +300,12 @@ export default {
             },
           ],
         },
-        {
-          id: "5",
-          name: "Nike Shoes",
-          token: "SNEAKER",
-          creator: "Nike",
-          fractions: 58,
-          available: "49%",
-          valuation: "$2M",
-          nfts: [
-            {
-              name: "Nft2",
-              image: "03.png",
-            },
-            {
-              name: "Nft3",
-              image: "03.png",
-            },
-            {
-              name: "Nft4",
-              image: "04.png",
-            },
-          ],
-        },
-        {
-          id: "6",
-          name: "Nike Shoes",
-          token: "SNEAKER",
-          creator: "Nike",
-          fractions: 58,
-          available: "49%",
-          valuation: "$2M",
-          nfts: [
-            {
-              name: "Nft2",
-              image: "02.png",
-            },
-            {
-              name: "Nft3",
-              image: "03.png",
-            },
-            {
-              name: "Nft4",
-              image: "04.png",
-            },
-          ],
-        },
+       
       ],
       FineArt: [
         {
-          id: "1",
-          name: "Nike Sneakers",
+          id: "FineArt",
+          name: "The caveman, ca. 2008",
           token: "SNEAKER",
           creator: "caveman",
           fractions: 58,
@@ -317,8 +319,8 @@ export default {
           ],
         },
         {
-          id: "2",
-          name: "Nike Shoes",
+          id: "FineArt",
+          name: "Damien Hirst",
           token: "SNEAKER",
           creator: "HIRST",
           fractions: 58,
@@ -327,14 +329,13 @@ export default {
           nfts: [
             {
               name: "Nft4",
-              image: "04.png",
+              image: "art.png",
             },
-           
           ],
         },
         {
-          id: "3",
-          name: "Nike Shoes",
+          id: "FineArt",
+          name: "Basket Name",
           token: "SNEAKER",
           creator: "DALI",
           fractions: 58,
@@ -343,13 +344,12 @@ export default {
           nfts: [
             {
               name: "Nft2",
-              image: "05.png",
+              image: "face.jpg",
             },
             {
               name: "Nft3",
               image: "03.png",
             },
-           
           ],
         },
       ],
