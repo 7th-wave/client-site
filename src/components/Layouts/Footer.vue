@@ -12,10 +12,10 @@
                  <a href="javascript:void(0)" class="text-sm font-semibold text-gray-400 tracking-wider uppercase"> My Account</a>
                 </h3>
                 <ul class="mt-4 space-y-4">
-                  <li v-for="item in footerNavigation.account" :key="item.name">
-                     <a :href="item.href" class="text-base text-gray-400 hover:text-gray-100">
+                  <li v-for="item in footerNavigation.account" :key="item.name" @click="ChangeUserRole(item.name)">
+                     <router-link :to="item.href"  class="text-base text-gray-400 hover:text-gray-100">
                       {{ item.name }}
-                    </a>
+                     </router-link>
                     <!-- <a href="#" @click.prevent="login_modal = true" v-if="!currentAddress && user.email == ''" class="text-base text-gray-400 hover:text-gray-100">
                       Login / Signup
                     </a> -->
@@ -169,6 +169,11 @@ const footerNavigation = {
 
 
 export default {
+  methods:{
+    ChangeUserRole(role){
+      this.$store.commit('user/changeType', role)
+    }
+  },
   components: {
  
       Disclosure,
