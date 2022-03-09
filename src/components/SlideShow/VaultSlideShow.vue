@@ -19,8 +19,8 @@
       >
         <swiper-slide class="w-96" v-for="(item,index,key) in slides" :key="key">
           <div
-            class="w-full h-80 bg-blue-400 bg-opacity-30 relative"
-          
+            class="w-full h-full  bg-blue-400 bg-opacity-30 relative"
+            style="max-height: 663px;"
           >
             <img
               class="w-full h-full object-cover "

@@ -434,7 +434,7 @@ export default {
       ],
       slide: [
         {
-          image: "/images/sneakers/caveman1.png",
+          image: "/images/sneakers/Cave_Man_Banksy.jpg",
           name: "Books",
         },
       ],
