@@ -1,5 +1,5 @@
 <template>
-  <div class="py-8 space-y-24  2xl:max-w-8xl w-full 2xl:mx-auto">
+  <div class="py-8 space-y-24 2xl:max-w-8xl w-full 2xl:mx-auto">
     <div class="flex">
       <span
         class="m-auto text-4xl text-center font-normal font-inter text-black"
@@ -18,7 +18,18 @@
           >{Vault Sub-Title}</span
         >
         <FractionCard :goDown="getParams != 'FineArt' ? true : false" />
-        <p class="text-lg font-normal font-inter text-black bg-white py-2 px-4 shadow-md rounded-md">
+        <p
+          class="
+            text-lg
+            font-normal font-inter
+            text-black
+            bg-white
+            py-2
+            px-4
+            shadow-md
+            rounded-md
+          "
+        >
           {Vault Description} Lorem ipsum dolor sit amet, consectetur adipiscing
           elit, sed do eiusmod tempor incididunt ut labore et dolore magna
           aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
@@ -39,7 +50,11 @@
         >
         <Table :headers="tableData.headers" :data="tableData.data">
           <template #body>
-            <tbody class="bg-white divide-y divide-gray-200" v-for="n in 7" :key="n">
+            <tbody
+              class="bg-white divide-y divide-gray-200"
+              v-for="n in 7"
+              :key="n"
+            >
               <td
                 class="
                   px-6
@@ -164,11 +179,8 @@
         <span class="text-2xl text-black font-inter font-medium"
           >Activities</span
         >
-        <line-chart-alternate
-          class="w-full .chart"
-          :data="arrAuctions"
-        ></line-chart-alternate>
-        <div class="w-full">
+       <LineChart />
+        <div class="w-full pt-4">
           <Events />
         </div>
       </div>
@@ -205,7 +217,7 @@
           >All Assets inside {Vault Name} Vault</span
         >
       </div>
-      <div class="grid grid-cols-3 gap-14" >
+      <div class="grid grid-cols-3 gap-14">
         <CategoryCard
           @click="GoToCategory"
           v-for="(category, index, key) in categories"
@@ -248,31 +260,31 @@
 import FractionCard from "../../components/cards/FractionCard.vue";
 import BuyFractionCard from "../../components/cards/BuyFractionCard.vue";
 import VaultSlideShow from "../../components/SlideShow/VaultSlideShow.vue";
-import LineChartAlternate from "../../components/Layouts/LineChartAlternate.vue";
 import Events from "../../components/cards/Events.vue";
 import CategoryCard from "../../components/cards/CategoryCard.vue";
 import Table from "../../components/tables/table.vue";
-
+import LineChart from '@/components/Drawers/LineChart.vue';
 export default {
+ 
   components: {
     FractionCard,
     //InteriorPage,
     VaultSlideShow,
     BuyFractionCard,
-    LineChartAlternate,
     CategoryCard,
     Events,
     Table,
+    LineChart,
   },
-  computed:{
-    getParams(){
+  computed: {
+    getParams() {
       return this.$route.params.id;
     },
-    getSlides(){
-      if(this.getParams == 'FineArt'){
+    getSlides() {
+      if (this.getParams == "FineArt") {
         return this.slide;
       }
-      return this.slides
+      return this.slides;
     },
   },
   data() {
@@ -373,71 +385,59 @@ export default {
           },
         ],
       },
-      arrAuctions: [],
+
       categories: [
         {
           name: "Nike Waffle Sneakers",
-          image:
-            "/images/sneakers/01.png",
+          image: "/images/sneakers/01.png",
           title: "Sneakers Collection",
         },
         {
           name: "Basket Name",
-          image:
-            "/images/sneakers/02.png",
+          image: "/images/sneakers/02.png",
           title: "Sneakers Collection",
         },
         {
           name: "Basket Name",
-          image:
-            "/images/sneakers/03.png",
+          image: "/images/sneakers/03.png",
           title: "Sneakers Collection",
         },
         {
           name: "Air Mags",
-          image:
-            "/images/sneakers/04.png",
+          image: "/images/sneakers/04.png",
           title: "Sneakers Collection",
         },
         {
           name: "Springers",
-          image:
-            "/images/sneakers/red.png",
+          image: "/images/sneakers/red.png",
           title: "Sneakers Collection",
         },
         {
           name: "Jordans",
-          image:
-            "/images/sneakers/06.png",
+          image: "/images/sneakers/06.png",
           title: "Sneakers Collection",
         },
       ],
       slides: [
-      
-        
-         {
-          image:
-            "/images/sneakers/01.png",
+        {
+          image: "/images/sneakers/01.png",
           name: "Books",
         },
-         {
-          image:
-            "/images/sneakers/01.png",
+        {
+          image: "/images/sneakers/01.png",
           name: "Books",
         },
-         {
-          image:
-            "/images/sneakers/red.png",
+        {
+          image: "/images/sneakers/red.png",
           name: "Books",
         },
       ],
-      slide:[
-         {
-          image:
-            "/images/sneakers/caveman1.png",
+      slide: [
+        {
+          image: "/images/sneakers/caveman1.png",
           name: "Books",
         },
-      ]
+      ],
     };
   },
 };
