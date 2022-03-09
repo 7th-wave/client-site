@@ -44,9 +44,14 @@
 
 <script>
 export default {
+  computed:{
+    getParams(){
+      return this.$route.params.id;
+    }
+  },
   methods:{
     PurchaseDetails(){
-      this.$router.push({ name: 'PurchasseHistory' });
+      this.$router.push({ name: 'PurchasseHistoryDetails', params:{id:this.getParams} });
     }
   }
 }

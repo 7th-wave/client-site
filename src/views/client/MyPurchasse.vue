@@ -16,7 +16,7 @@
       <Navbar :type="'customer'" />
     </div>
     <div class="py-0 sm:py-4 md:pb-8 md:pt-4 lg:pt-0 lg:pb-8 text-center">
-      <h1 class="text-4xl font-medium">NIKE Purchasse History</h1>
+      <h1 class="text-4xl font-medium">Your {{ getParams == 'FineArt' ? 'CVMAN' : 'NIKE'}} Purchasse History</h1>
     </div>
     <div>
       <div class="lg:grid lg:grid-cols-7 lg:gap-6 rounded-lg">
@@ -36,13 +36,18 @@
 <script>
 import Menu from "@/components/Layouts/Menu.vue";
 import Navbar from "@/components/Layouts/Navbar_mobile.vue";
-import Purchasse from "@/components/NewDrawers/Purchasse.vue";
+import Purchasse from "@/components/Drawers/Purchasse.vue";
 // @ is an alias to /src
 export default {
   components: {
     Purchasse,
     Menu,
     Navbar,
+  },
+  computed:{
+    getParams(){
+      return this.$route.params.id;
+    }
   },
  
 

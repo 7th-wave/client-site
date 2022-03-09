@@ -63,7 +63,7 @@
       "
     >
       <span class="text-black font-inter text-xl font-semibold"
-        >{Cattegory Description} Collecting sneakers became a
+        >Collecting sneakers became a
         multi-billion-dollar industry</span
       >
       <p class="text-black font-inter text-xl font-normal">
@@ -74,7 +74,7 @@
         money on rare shoes
       </p>
     </div>
-    <div class="sm:px-40 w-full">
+    <div class="sm:px-72 w-full">
       <div class="grid lg:grid-cols-3 grid-cols-1 md:grid-cols-2 gap-10">
         <VaultItem
           class="cursor-pointer"
@@ -154,7 +154,7 @@ export default {
           id: "1",
           name: "Nike Collection",
           token: "SNEAKER",
-          creator: "Nike",
+        
           fractions: 58,
           available: "49%",
           valuation: "$2M",
@@ -189,7 +189,6 @@ export default {
           id: "6",
           name: "Basket Name",
           token: "SNEAKER",
-          creator: "Nike",
           fractions: 58,
           available: "49%",
           valuation: "$2M",
@@ -213,7 +212,6 @@ export default {
           id: "5",
           name: "Basket Name",
           token: "SNEAKER",
-          creator: "Nike",
           fractions: 58,
           available: "49%",
           valuation: "$2M",
@@ -236,7 +234,6 @@ export default {
           id: "2",
           name: "Air Mags",
           token: "SNEAKER",
-          creator: "Nike",
           fractions: 58,
           available: "49%",
           valuation: "$2M",
@@ -259,7 +256,6 @@ export default {
           id: "3",
           name: "Springers",
           token: "SNEAKER",
-          creator: "Nike",
           fractions: 58,
           available: "49%",
           valuation: "$2M",
@@ -282,7 +278,6 @@ export default {
           id: "4",
           name: "Jordans",
           token: "SNEAKER",
-          creator: "Nike",
           fractions: 58,
           available: "49%",
           valuation: "$2M",
@@ -308,7 +303,6 @@ export default {
           id: "FineArt",
           name: "The caveman, ca. 2008",
           token: "SNEAKER",
-          creator: "caveman",
           fractions: 58,
           available: "49%",
           valuation: "$2M",
@@ -323,7 +317,6 @@ export default {
           id: "FineArt",
           name: "Damien Hirst",
           token: "SNEAKER",
-          creator: "HIRST",
           fractions: 58,
           available: "49%",
           valuation: "$2M",
@@ -338,7 +331,6 @@ export default {
           id: "FineArt",
           name: "Basket Name",
           token: "SNEAKER",
-          creator: "DALI",
           fractions: 58,
           available: "49%",
           valuation: "$2M",

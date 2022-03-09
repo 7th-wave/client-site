@@ -1,8 +1,9 @@
 <template>
-  <div class="home font-inter py-4 2xl:max-w-8xl 2xl:mx-auto w-full">
-    <div class="relative">
-      <div class="relative">
-        <div class="m-auto grid grid-cols-1 lg:grid-cols-6 gap-12 px-12">
+  <div class="home font-inter py-4   w-full">
+    <div class="relative  ">
+      <div class="relative ">
+        <div class=" w-full bg-gray-100">
+           <div class="m-auto grid grid-cols-1 lg:grid-cols-6 gap-12 px-12  2xl:max-w-8xl 2xl:mx-auto  ">
           <div class="col-span-1 lg:col-span-2 flex flex-col justify-center">
             <h1 class="text-6xl leading-none font-inter font-semibold">
               <span class="text-primary-500">Mint</span> and
@@ -30,7 +31,7 @@
           <div class="col-span-1 lg:col-span-4 lg:pl-12 pb-6 pt-6">
             <swiper
               class="main-slider"
-              :slides-per-view="2"
+              :slides-per-view="3"
               :space-between="-100"
               :centeredSlides="true"
               :modules="modules"
@@ -53,6 +54,8 @@
             </swiper>
           </div>
         </div>
+        </div>
+       
 
         <div class="pb-12 bg-white">
           <Title text="Featured Collections" />

@@ -121,6 +121,21 @@ export default {
             },
           ],
         },
+         {
+          id: "Nike",
+          name: "Nike Waffle Sneakers",
+          token: "Sneakers Collection",
+          creator: "Sneakers Collection",
+          fractions: 58,
+          available: "49%",
+          valuation: "$2M",
+          nfts: [
+            {
+              name: "Nft1",
+              image: "01.png",
+            },
+          ],
+        },
       
         
       ],
