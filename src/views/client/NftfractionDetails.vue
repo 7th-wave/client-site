@@ -17,7 +17,7 @@
       <Navbar :type="'customer'" />
     </div>
     <div class="py-0 sm:py-4 md:pb-8 md:pt-4 lg:pt-0 lg:pb-8 text-center">
-      <h1 class="text-4xl font-medium">Your NIKE Fractions</h1>
+      <h1 class="text-4xl font-medium">Your {{ getParams == 'FineArt' ? 'CVMAN' : 'NIKE'}} Fractions</h1>
     </div>
     <div>
       <div class="lg:grid lg:grid-cols-7 lg:gap-6 rounded-lg">
@@ -31,8 +31,9 @@
                 params: { id: vaults.id },
               })
             "
-            :vault="vaults"
+            :vault="getData"
             bg="bg-white"
+          badgecolor="green"
           >
             <template #badge>
               <div
@@ -73,7 +74,7 @@
                     font-medium font-inter
                     text-gray-900 text-center
                   "
-                  >{{ vaults.creator }}</span
+                  >{{ getData.creator }}</span
                 >
               </div>
             </template>
@@ -113,6 +114,17 @@ export default {
     CardTrade,
     CardVaultDao
   },
+  computed:{
+    getParams(){
+      return this.$route.params.id;
+    },
+    getData(){
+      if(this.getParams == 'FineArt'){
+        return this.vaults;
+      }
+      return this.vaults1;
+    }
+  },
   data() {
     return {
        vaults: 
@@ -120,7 +132,7 @@ export default {
           id: "1",
           name: "The caveman, ca. 2008",
           token: "SNEAKER",
-          creator: "Fine Art Collection",
+          creator: "CVMAN",
           fractions: 58,
           available: "49%",
           valuation: "$2M",
@@ -128,6 +140,23 @@ export default {
             {
               name: "caveman.png",
               image: "caveman.png",
+            },
+         
+          ],
+        },
+     vaults1: 
+        {
+          id: "2",
+          name: "NIKE",
+          token: "NIKE",
+          creator: "NIKE",
+          fractions: 58,
+          available: "49%",
+          valuation: "$2M",
+          nfts: [
+            {
+              name: "01.png",
+              image: "01.png",
             },
          
           ],

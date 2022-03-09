@@ -131,6 +131,12 @@ const routes = [
   {
     path: "/purchasse-history",
     name: "PurchasseHistory",
+    component: () => import("../views/client/MyAllPurchasse.vue"),
+    beforeEnter: clientGuard,
+  },
+  {
+    path: "/purchasse-history/:id",
+    name: "PurchasseHistoryDetails",
     component: () => import("../views/client/MyPurchasse.vue"),
     beforeEnter: clientGuard,
   },
