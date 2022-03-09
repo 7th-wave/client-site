@@ -2,6 +2,7 @@
   <div class="w-full flex">
     <div class="flex items-center space-x-4 m-auto w-full">
       <swiper
+      v-if="slides.length > 1"
         :effect="'coverflow'"
         :coverflowEffect="{
           rotate: 50,
@@ -19,8 +20,8 @@
       >
         <swiper-slide class="w-96" v-for="(item,index,key) in slides" :key="key">
           <div
-            class="w-full h-full  bg-blue-400 bg-opacity-30 relative"
-            style="max-height: 663px;"
+            class="w-full bg-blue-400 bg-opacity-30 relative"
+            style="max-hight: 663px;"
           >
             <img
               class="w-full h-full object-cover "
@@ -33,7 +34,20 @@
       
       </swiper>
 
-    
+     <div
+          v-if="slides.length == 1"
+            class="w-96 m-auto  bg-blue-400 bg-opacity-30 relative"
+             style="height: 660px;"
+           
+          >
+            <img
+            
+              class="w-full h-full object-cover "
+              :src="slides[0].image"
+              alt=""
+            />
+           
+          </div>
      
     </div>
   </div>

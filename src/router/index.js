@@ -83,7 +83,7 @@ const routes = [
     component: () => import("../views/frontend/Client.vue"),
   },
   {
-    path: "/explore",
+    path: "/categories",
     name: "Explore",
     component: () => import("../views/frontend/Explore.vue"),
   },
@@ -163,7 +163,7 @@ const routes = [
     component: () => import("../views/client/NftfractionDetails.vue"),
   },
   {
-    path: "/vault-category/:category",
+    path: "/category/:category",
     name: "vault_category",
     component: () => import("../views/client/VaultCatgory.vue"),
     beforeEnter: clientGuard,
