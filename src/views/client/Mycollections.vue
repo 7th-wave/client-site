@@ -114,26 +114,26 @@ export default {
       Nfts: [
         {
           id: "1",
-          name: "Sneakers",
+          name: "The caveman, ca. 2008",
           image:
-            "https://cdn.corporatefinanceinstitute.com/assets/types-of-assets-1024x575.jpeg",
-          title: "Sneakers",
+            "/images/sneakers/caveman.png",
+          title: "Fine Art Collection",
           badge: "NIKE",
         },
         {
           id: "2",
-          name: "Sneakers",
+          name: "SneakRs",
           image:
-            "https://cdn.corporatefinanceinstitute.com/assets/types-of-assets-1024x575.jpeg",
-          title: "Sneakers",
+            "/images/sneakers/01.png",
+          title: "Sneakers Collection",
           badge: "NIKE",
         },
         {
           id: "3",
-          name: "Sneakers",
+          name: "Nike Waffle Sneakers",
           image:
-            "https://cdn.corporatefinanceinstitute.com/assets/types-of-assets-1024x575.jpeg",
-          title: "Sneakers",
+             "/images/sneakers/06.png",
+          title: "Sneakers Collection",
           badge: "NIKE",
         },
       ],
