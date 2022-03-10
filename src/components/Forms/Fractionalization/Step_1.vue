@@ -911,9 +911,10 @@ export default {
       this.form.assets[index].Images.splice(RemoveImage, 1);
     },
     SubmitForm() {
-      if (this.validateForm()) {
-        console.log(this.form);
-      }
+      // if (this.validateForm()) {
+      //   console.log(this.form);
+      // }
+      this.$emit('nextStep');
     },
   },
 };

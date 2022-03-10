@@ -4,7 +4,7 @@
     <template v-slot:title="{ content }">{{ content ? `${content} | SITE_NAME` : `SITE_NAME` }}</template>
   </metainfo>
   <Header />
-  <div class="body bg-gray-100">
+  <div class="body " :class="{'bg-white':getRouteName == 'Home','bg-gray-100':getRouteName != 'Home'}">
     <router-view />
     <Modal />
     <toast />
@@ -30,6 +30,11 @@ import QRCodeModal from "@walletconnect/qrcode-modal";
 
 
 export default {
+  computed:{
+    getRouteName(){
+      return this.$route.name;
+    }
+  },
   components: {
     Header,
     Footer,

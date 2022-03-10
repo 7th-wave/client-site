@@ -14,15 +14,16 @@
     "
   >
     <div class="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
-     
-      <nav class=" flex-1 px-2 space-y-1" aria-label="Sidebar">
+      <nav class="flex-1 px-2 space-y-1" aria-label="Sidebar">
         <router-link
-          :to=" item.href"
+          :to="item.href"
           @click="closeMenu"
-          v-for="item in navigation"
+          v-for="item in getData"
           :key="item.name"
           :class="[
-            currentRouteName === item.href.name || currentRouteName === item.subname || currentRouteName === item.subname1
+            currentRouteName === item.href.name ||
+            currentRouteName === item.subname ||
+            currentRouteName === item.subname1
               ? 'bg-gray-100 text-gray-900'
               : 'text-gray-900 hover:bg-gray-100',
             'group flex items-center px-2 py-2 text-base font-semibold rounded-md',
@@ -56,7 +57,7 @@
     </div>
     <div class="flex flex-col items-start space-y-2 p-4">
       <router-link
-      :to="{name: 'My_wallets'}"
+        :to="{ name: 'My_wallets' }"
         href="#"
         class="
           text-gray-900
@@ -133,21 +134,121 @@ import { useStore } from "vuex";
 import { useRoute, useRouter } from "vue-router";
 import { auth, storage } from "../../firebase/firebase";
 
-const navigation = [
-  { name: "My Account", href: {name:'MyAccount',params:{address:'gfdg'}},subname:'',subname1:'' },
-  { name: "My NFT", href:  {name:'My_collections'},subname:'CollectionDetails',subname1:'Fractionalize'  },
-  { name: "My Vaults", href:  {name:'MyVault'},subname:'',subname1:''  },
-  { name: "My Fractions", href:  {name:'My_history'},subname:'My_fractions',subname1:'My_fractions_details'  },
-  { name: "My Purchase History", href:  {name:'PurchasseHistory'},subname:'',subname1:''  },
+const Client = [
+  {
+    name: "My Account",
+    href: { name: "MyAccount", params: { address: "gfdg" } },
+    subname: "",
+    subname1: "",
+  },
+  {
+    name: "My NFT",
+    href: { name: "My_collections" },
+    subname: "CollectionDetails",
+    subname1: "Fractionalize",
+  },
+  { name: "My Vaults", href: { name: "MyVault" }, subname: "", subname1: "" },
+  {
+    name: "My Fractions",
+    href: { name: "My_fractions" },
+    subname: "My_fractions",
+    subname1: "My_fractions_details",
+  },
+  {
+    name: "My Purchase History",
+    href: { name: "PurchasseHistory" },
+    subname: "",
+    subname1: "",
+  },
+];
+const Buyer = [
+  {
+    name: "My Account",
+    href: { name: "MyAccount", params: { address: "gfdg" } },
+    subname: "",
+    subname1: "",
+  },
+  {
+    name: "My Fractions",
+    href: { name: "My_fractions" },
+    subname: "My_fractions",
+    subname1: "My_fractions_details",
+  },
+  {
+    name: "My Purchase History",
+    href: { name: "PurchasseHistory" },
+    subname: "",
+    subname1: "",
+  },
+];
+const Admin = [
+  {
+    name: "My Account",
+    href: { name: "MyAccount", params: { address: "gfdg" } },
+    subname: "",
+    subname1: "",
+  },
+  {
+    name: "Vault Categories",
+    href: { name: "My_collections" },
+    subname: "CollectionDetails",
+    subname1: "Fractionalize",
+  },
+  { name: "Vaults", href: { name: "MyVault" }, subname: "", subname1: "" },
+  {
+    name: "NFTs",
+    href: { name: "My_fractions" },
+    subname: "My_fractions",
+    subname1: "My_fractions_details",
+  },
+  {
+    name: "Clients",
+    href: { name: "PurchasseHistory" },
+    subname: "",
+    subname1: "",
+  },
+  {
+    name: "Emails",
+    href: { name: "PurchasseHistory" },
+    subname: "",
+    subname1: "",
+  },
+  {
+    name: "Team",
+    href: { name: "PurchasseHistory" },
+    subname: "",
+    subname1: "",
+  },
 ];
 export default {
+  created(){ 
+  //  this.$store.commit('user/changeType', "Admin")
+   // alert(this.$store.state.user.user.type);
+  },
+  props:{
+    userType: {
+      type: String,
+      default: "Client",
+      required: true,
+    },
+  },
   components: {
     // LockClosedIcon
   },
-  computed:{
+  computed: {
     currentRouteName() {
-        return this.$route.name;
-    }
+      return this.$route.name;
+    },
+    getData(){
+      if(this.$store.state.user.user.type === "Client"){
+        return Client;
+      }else if(this.$store.state.user.user.type === "Buyer"){
+        return Buyer;
+      }
+        return Admin;
+      
+    },
+
   },
   setup(props) {
     const store = useStore();
@@ -213,7 +314,9 @@ export default {
     });
 
     return {
-      navigation,
+      Client,
+      Buyer,
+      Admin,
       route,
       currentAddress: computed(
         () => store.getters["blockchain/getCurrentAddress"]

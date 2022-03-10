@@ -57,47 +57,60 @@ export default {
   data() {
     return {
       categories: [
-        {
-          name: "Fine Art",
-          image:
-            "/images/categories/caveman.png",
-          items: 2,
-        },
-        {
-          name: "Boots",
-          image:
-            "/images/sneakers/02.png",
-          items: 2,
-        },
-        {
-          name: "Sandals",
-          image:
-            "/images/sneakers/03.png",
-          items: 2,
-        },
-        {
-          name: "Flip Flops",
-          image:
-            "/images/sneakers/04.png",
-          items: 2,
-        },
+      
         {
           name: "Sneakers",
           image:
-            "/images/sneakers/05.png",
+            "/images/categories/sneakers.png",
+          items: 9,
+        },
+        {
+          name: "Rare Gems & Jewellery",
+          image:
+           "/images/categories/gems.png",
+          items: 1,
+        },
+          {
+          name: "Fine Art",
+          image:
+            "/images/categories/caveman.png",
+          items: 3,
+        },
+        {
+          name: "Automotive",
+          image:
+            "/images/categories/car.png",
           items: 2,
         },
         {
-          name: "Boots",
+          name: "Domains",
           image:
-            "/images/sneakers/06.png",
+            "/images/categories/keys.jpg",
           items: 2,
         },
         {
-          name: "Sandals",
+          name: "Collectibles",
           image:
-            "/images/sneakers/01.png",
+            "/images/categories/pball.jpg",
+          items: 100,
+        },
+        {
+          name: "Memorabillia",
+          image:
+            "/images/categories/memorabill.jpg",
           items: 2,
+        },
+         {
+          name: "Real Estate",
+          image:
+            "/images/categories/Estate.jpg",
+          items: 1,
+        },
+         {
+          name: "Watches",
+          image:
+            "/images/categories/Watches.jpg",
+          items: 100,
         },
        
       ],

@@ -4,6 +4,7 @@ import { db, getClientByBlockChain } from "../../firebase/firebase";
 // initial state
 const state = () => ({
   user: {
+    type:'Client',
     dbRef: "",
     username: "",
     about: "",
@@ -196,6 +197,9 @@ const actions = {
 
 // mutations
 const mutations = {
+  changeType(state, payload) {
+    state.user.type = payload;
+  },
   setUser(state, payload) {
     state.user = payload;
   },
