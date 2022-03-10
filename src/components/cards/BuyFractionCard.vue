@@ -98,7 +98,7 @@
         </div>
         <div class="space-y-2 pt-5">
           <label for="email" class="block text-sm font-medium text-gray-700"
-            >NIKE</label
+            >{{getParams == 'cvman' ? 'CVMAN' :'NIKE'}}</label
           >
           <div class="w-8 h-8 rounded-full overflow-hidden bg-gray-500">
             <img
