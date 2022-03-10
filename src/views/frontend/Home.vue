@@ -30,7 +30,7 @@
           </div>
           <div class="col-span-1 lg:col-span-4 lg:pl-12 pb-6 pt-6">
             <CarouselCard ref="carouselCardRef" :interval="7000" :autoplay="false" height="500px" type="card" arrow="always" @change="changeHandle">
-              <CarouselCardItem class="w-64" v-for="(vault, index) in vaults"
+              <CarouselCardItem v-for="(vault, index) in vaults"
                 :key="index" :name="`cc_${index}`">
                 <vault-item  badgecolor="green" :vault="vault" />
               </CarouselCardItem>
