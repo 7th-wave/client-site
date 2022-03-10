@@ -57,7 +57,7 @@
                 <category-card @click="GoToCategory" :category="category">
                   <template #image>
                     <img
-                      class="w-full h-full object-cover"
+                      class="w-full h-full object-cover max-w-xl"
                       :src="'/images/categories/' + category.image"
                       alt=""
                     />
@@ -109,7 +109,7 @@ import { ref } from '@vue/reactivity';
 
 const vaults = [
   {
-    id:"FineArt",
+    id:"cvman",
     name: "The caveman, ca. 2008",
     token: "SNEAKER",
     creator: "Nike",
@@ -132,7 +132,7 @@ const vaults = [
     ],
   },
   {
-    id:"Sneakers",
+    id:"sneakers",
     name: "Nike Sneakers",
     token: "SNEAKER",
     creator: "Nike",
@@ -167,7 +167,7 @@ const vaults = [
     ],
   },
   {
-    id:"Sneakers",
+    id:"sneakers",
     name: "Nike Shoes",
     token: "SNEAKER",
     creator: "Nike",
@@ -194,14 +194,14 @@ const vaults = [
 
 const categories = [
   {
-    id:"Sneakers",
+    id:"sneakers",
     name: "Sneakers",
     image: "sneakers.png",
-    items: 9,
+    items: 6,
   },
 
   {
-    id:"Fine Art",
+    id:"cvman",
     name: "Fine Art",
     image: "caveman.png",
     items: 2,

@@ -1,7 +1,7 @@
 <template>
-    <div class=" w-full rounded-md bg-white flex flex-col items-start py-4 px-4 space-y-4">
+    <div class=" w-full rounded-md bg-white shadow-md flex flex-col items-start py-4 px-4 space-y-4">
         <div class=" w-full flex items-center justify-between">
-            <span>Events</span>
+            <span class=" text-lg font-inter font-medium text-black">Events</span>
             <div class=" cursor-pointer">
                 <ChevronDownIcon class=" h-6 w-6 text-gray-400" />
             </div>

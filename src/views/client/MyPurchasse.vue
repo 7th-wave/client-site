@@ -24,7 +24,7 @@
           <Menu />
         </div>
         <div class="mt-5 md:mt-0 lg:col-span-5 grid lg:grid-cols-3 grid-cols-1 gap-4">
-          <Purchasse  v-for=" n in 3" :key="n"/>
+          <Purchasse  v-for=" n in 3" :key="n" type="NIKE"/>
         </div>
       </div>
     </div>

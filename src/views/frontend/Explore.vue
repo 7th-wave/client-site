@@ -8,7 +8,7 @@
         >
       </div>
 
-      <div class="grid lg:grid-cols-3 grid-cols-1 md:grid-cols-2 gap-10">
+      <div class="grid lg:grid-cols-3 grid-cols-1 md:grid-cols-2 gap-8">
         <CategoryCard
           @click="GoToCategory(category.name)"
           v-for="(category, index, key) in categories"
@@ -62,7 +62,7 @@ export default {
           name: "Sneakers",
           image:
             "/images/categories/sneakers.png",
-          items: 9,
+          items: 6,
         },
         {
           name: "Rare Gems & Jewellery",
@@ -71,7 +71,7 @@ export default {
           items: 1,
         },
           {
-          name: "Fine Art",
+          name: "cvman",
           image:
             "/images/categories/caveman.png",
           items: 3,

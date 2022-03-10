@@ -112,7 +112,7 @@ export default {
     return {
       FineArt: [
         {
-          id: "FineArt",
+          id: "cvman",
           name: "The caveman, ca. 2008",
           token: "SNEAKER",
           creator: "caveman",
@@ -127,7 +127,7 @@ export default {
           ],
         },
         {
-          id: "FineArt",
+          id: "nike",
           name: "Damien Hirst",
           token: "SNEAKER",
           creator: "HIRST",

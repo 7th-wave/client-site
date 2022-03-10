@@ -74,8 +74,8 @@
         money on rare shoes
       </p>
     </div>
-    <div class="sm:px-72 w-full">
-      <div class="grid lg:grid-cols-3 grid-cols-1 md:grid-cols-2 gap-10">
+    <div class="sm:px-96  w-full">
+      <div class="grid lg:grid-cols-3 grid-cols-1 md:grid-cols-2 gap-8">
         <VaultItem
           class="cursor-pointer"
           @click="
@@ -300,7 +300,7 @@ export default {
       ],
       FineArt: [
         {
-          id: "FineArt",
+          id: "cvman",
           name: "The caveman, ca. 2008",
           token: "SNEAKER",
           fractions: 58,
@@ -314,7 +314,7 @@ export default {
           ],
         },
         {
-          id: "FineArt",
+          id: "cvman",
           name: "Damien Hirst",
           token: "SNEAKER",
           fractions: 58,
@@ -328,7 +328,7 @@ export default {
           ],
         },
         {
-          id: "FineArt",
+          id: "cvman",
           name: "Basket Name",
           token: "SNEAKER",
           fractions: 58,
@@ -350,7 +350,7 @@ export default {
   },
   computed: {
     getData() {
-      if (this.$route.params.category == "Fine Art") {
+      if (this.$route.params.category == "cvman") {
         return this.FineArt;
       } else {
         return this.vaults;
