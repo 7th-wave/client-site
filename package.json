@@ -44,6 +44,7 @@
     "uuid": "^8.3.2",
     "v-calendar": "^3.0.0-alpha.5",
     "vue": "^3.0.0",
+    "vue-carousel-card": "^2.0.0",
     "vue-chartjs": "^3.5.1",
     "vue-collage-slideshow": "^0.2.8",
     "vue-datepicker-next": "^1.0.2",

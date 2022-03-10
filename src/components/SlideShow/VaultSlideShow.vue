@@ -1,24 +1,8 @@
 <template>
-  <div class="w-full flex">
-    <div class="flex items-center space-x-4 m-auto w-full">
-      <swiper
-      v-if="slides.length > 1"
-        :effect="'coverflow'"
-        :coverflowEffect="{
-          rotate: 50,
-          stretch: 0,
-          depth: 100,
-          modifier: 1,
-          slideShadows: true,
-        }"
-        :modules="modules"
-        :slides-per-view="'auto'"
-        :space-between="0"
-        :centeredSlides="true"
-        @swiper="onSwiper"
-        @slideChange="onSlideChange"
-      >
-        <swiper-slide class="w-96" v-for="(item,index,key) in slides" :key="key">
+  <div class="w-full flex items-center">
+    <div class=" w-2/3 m-auto">
+       <CarouselCard ref="carouselCardRef" :interval="7000" :autoplay="false" height="400px" type="card" arrow="always" @change="changeHandle"  v-if="slides.length > 1">
+        <CarouselCardItem  v-for="(item,index,key) in slides" :key="key" :name="`cc_${key}`">
           <div
             class="w-full bg-blue-400 bg-opacity-30 relative"
             style="max-hight: 663px;"
@@ -30,12 +14,12 @@
             />
            
           </div>
-        </swiper-slide>
+        </CarouselCardItem>
+      </CarouselCard>
       
-      </swiper>
 
      <div
-          v-if="slides.length == 1"
+          v-else
             class="w-96 m-auto  bg-blue-400 bg-opacity-30 relative"
              style="height: 660px;"
            
@@ -55,14 +39,8 @@
 
 
 <script>
+import { ref } from '@vue/reactivity';
 
-// import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/vue/solid";
-import { EffectCoverflow, Pagination } from "swiper";
-
-import { Swiper, SwiperSlide } from "swiper/vue/swiper-vue.js";
-// Import Swiper styles
-import "swiper/swiper-bundle.min.css";
-import "swiper/modules/effect-coverflow/effect-coverflow.min.css";
 export default {
   data() {
     return {
@@ -78,24 +56,17 @@ export default {
   components: {
     // ArrowLeftIcon,
     // ArrowRightIcon,
-    Swiper,
-    SwiperSlide,
   },
   setup() {
 
-    const onSwiper = (swiper) => {
-      console.log(swiper);
-    };
-    const onSlideChange = () => {
-      console.log("slide change");
-    };
+    const carouselCardRef = ref();
+
+  
 
   
 
     return {
-      modules: [EffectCoverflow, Pagination],
-      onSwiper,
-      onSlideChange,
+      carouselCardRef
 
     };
   },
@@ -111,8 +82,33 @@ export default {
 </script>
 
 
-<style scoped>
+<style >
 .opImage {
   opacity: 0.3;
+}
+
+.carousel-card-item-card {
+  opacity: .5;
+}
+
+.carousel-card-item-card.is-active {
+  opacity: 1;
+}
+
+.carousel-card-arrow {
+  width: 56px;
+  height: 56px;
+  background-color: transparent;
+  background-size: 100%
+}
+
+.carousel-card-arrow-right i {
+  background-image: url('/images/arrow_next.svg')!important;
+  background-repeat: no-repeat;
+}
+
+.carousel-card-arrow-left i {
+  background-image: url('/images/arrow_left.svg')!important;
+  background-repeat: no-repeat;
 }
 </style>
