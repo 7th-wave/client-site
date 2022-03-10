@@ -293,6 +293,13 @@ export default {
       return this.slides;
     },
   },
+  methods:{
+    GoToCategory(){
+      if(this.getParams == 'cvman'){
+        this.$router.push({ name: 'VaultView',params:{id: 'cvman'}});
+      }
+    }
+  },
   data() {
     return {
       tableData: {

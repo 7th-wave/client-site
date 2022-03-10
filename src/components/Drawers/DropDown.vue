@@ -12,12 +12,12 @@
       <transition leave-active-class="transition ease-in duration-100" leave-from-class="opacity-100" leave-to-class="opacity-0">
         <ListboxOptions class="absolute z-10 mt-1 w-full bg-white shadow-lg max-h-60 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm">
           <ListboxOption as="template" v-for="person in people" :key="person.id" :value="person" v-slot="{ active, selected }">
-            <li :class="[active ? 'text-white bg-primary-500' : 'text-gray-900', 'cursor-default select-none relative py-2 pl-8 pr-4']">
+            <li :class="[active ? ' bg-gray-100 text-gray-900' : 'text-gray-900', 'cursor-default select-none relative py-2 pl-8 pr-4']">
               <span :class="[selected ? 'font-semibold' : 'font-normal', 'block truncate']">
                 {{ person.name }}
               </span>
 
-              <span v-if="selected" :class="[active ? 'text-white' : 'text-primary-500', 'absolute inset-y-0 left-0 flex items-center pl-1.5']">
+              <span v-if="selected" :class="[active ? 'text-gray-900' : 'text-gray-900', 'absolute inset-y-0 left-0 flex items-center pl-1.5']">
                 <CheckIcon class="h-5 w-5" aria-hidden="true" />
               </span>
             </li>
@@ -29,7 +29,7 @@
 </template>
 
 <script>
-// import { ref } from 'vue'
+import { ref } from 'vue'
 import { Listbox, ListboxButton, ListboxOption, ListboxOptions } from '@headlessui/vue'
 import { CheckIcon, SelectorIcon } from '@heroicons/vue/solid'
 
@@ -50,7 +50,7 @@ export default {
     SelectorIcon,
   },
   setup() {
-    const selected = "";
+    const selected = ref("");
 
     return {
       people,

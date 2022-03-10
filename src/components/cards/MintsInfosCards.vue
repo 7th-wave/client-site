@@ -9,6 +9,7 @@
         bg-white
         rounded-md
         shadow-md
+        py-2
         px-2
       "
     >

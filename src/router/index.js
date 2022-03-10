@@ -102,9 +102,14 @@ const routes = [
     name: "Vault",
     component: () => import("../views/frontend/Vault.vue"),
   },
+ 
 
   //Client
- 
+  {
+    path: "/vault/:id/view",
+    name: "VaultView",
+    component: () => import("../views/client/VaultView.vue"),
+  },
   {
     path: "/register/:address",
     name: "ClientRegister",
