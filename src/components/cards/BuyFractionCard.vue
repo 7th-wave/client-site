@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full space-y-5 flex flex-col items-start">
+  <div class="w-full space-y-7 flex flex-col items-start">
     <div class="w-full flex justify-between items-center">
       <div class="flex items-center space-x-2">
         <EyeIcon class="w-5 h-4 text-primary-500 cursor-pointer" />
@@ -21,7 +21,7 @@
         p-4
         flex flex-col
         items-start
-        space-y-6
+        space-y-4
       "
     >
       <span class="text-lg font-semibold text-gray-900 font-inter"
@@ -110,7 +110,10 @@
         </div>
       </div>
       <div class="w-full h-px bg-gray-200"></div>
-      <button @click="Buy" class=" w-full py-2 text-center text-base text-white font-medium font-inter bg-primary-500 rounded-md">REVIEW MY ORDER</button>
+      <div class=" w-full py-3">
+              <button @click="Buy" class=" w-full py-2 text-center text-base text-white font-medium font-inter bg-primary-500 rounded-md">REVIEW MY ORDER</button>
+
+      </div>
     </div>
 
     <ConnectWallet ref="ConnectWallet" @ConfirmOrder="ConfirmOrder" />

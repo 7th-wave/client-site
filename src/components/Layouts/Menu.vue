@@ -14,7 +14,7 @@
     "
   >
     <div class="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
-      <nav class="flex-1 px-2 space-y-1" aria-label="Sidebar">
+      <nav class="flex-1 px-2 space-y-2.5" aria-label="Sidebar">
         <router-link
           :to="item.href"
           @click="closeMenu"
@@ -23,10 +23,11 @@
           :class="[
             currentRouteName === item.href.name ||
             currentRouteName === item.subname ||
-            currentRouteName === item.subname1
+            currentRouteName === item.subname1 || 
+            currentRouteName === item.subname2 
               ? 'bg-gray-100 text-gray-900'
               : 'text-gray-900 hover:bg-gray-100',
-            'group flex items-center px-2 py-2 text-base font-semibold rounded-md',
+            'group flex items-center px-2 py-2 text-base font-medium rounded-md',
           ]"
         >
           {{ item.name }}
@@ -146,6 +147,7 @@ const Client = [
     href: { name: "My_collections" },
     subname: "CollectionDetails",
     subname1: "Fractionalize",
+    subname2:'',
   },
   { name: "My Vaults", href: { name: "MyVault" }, subname: "", subname1: "" },
   {
@@ -153,12 +155,14 @@ const Client = [
     href: { name: "My_fractions" },
     subname: "My_fractions",
     subname1: "My_fractions_details",
+    subname2:'PurchasseHistoryDetails',
   },
   {
     name: "My Purchase History",
     href: { name: "PurchasseHistory" },
     subname: "",
     subname1: "",
+     subname2:'',
   },
 ];
 const Buyer = [
@@ -167,18 +171,21 @@ const Buyer = [
     href: { name: "MyAccount", params: { address: "gfdg" } },
     subname: "",
     subname1: "",
+     subname2:'',
   },
   {
     name: "My Fractions",
     href: { name: "My_fractions" },
     subname: "My_fractions",
     subname1: "My_fractions_details",
+     subname2:'PurchasseHistoryDetails',
   },
   {
     name: "My Purchase History",
     href: { name: "PurchasseHistory" },
     subname: "",
     subname1: "",
+     subname2:'',
   },
 ];
 const Admin = [
@@ -187,12 +194,14 @@ const Admin = [
     href: { name: "MyAccount", params: { address: "gfdg" } },
     subname: "",
     subname1: "",
+     subname2:'',
   },
   {
     name: "Vault Categories",
     href: { name: "My_collections" },
     subname: "CollectionDetails",
     subname1: "Fractionalize",
+     subname2:'',
   },
   { name: "Vaults", href: { name: "MyVault" }, subname: "", subname1: "" },
   {
@@ -200,24 +209,28 @@ const Admin = [
     href: { name: "My_fractions" },
     subname: "My_fractions",
     subname1: "My_fractions_details",
+    subname2:'PurchasseHistoryDetails',
   },
   {
     name: "Clients",
     href: { name: "PurchasseHistory" },
     subname: "",
     subname1: "",
+     subname2:'',
   },
   {
     name: "Emails",
     href: { name: "PurchasseHistory" },
     subname: "",
     subname1: "",
+     subname2:'',
   },
   {
     name: "Team",
     href: { name: "PurchasseHistory" },
     subname: "",
     subname1: "",
+     subname2:'',
   },
 ];
 export default {

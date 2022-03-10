@@ -11,21 +11,28 @@
       ease-in-out
       duration-300  
     "
-    :class="{'max-h-14':!open,'max-h-96':open}"
+    :class="{'max-h-20':!open}"
   >
     <div
       class="flex items-center justify-between w-full cursor-pointer"
       @click="open = !open"
     >
-      <span class="text-lg text-primary-200 font-medium">Nike Collection</span>
+    <div class=" flex items-start flex-col space-y-1">
+        <span class="text-lg text-primary-500 font-medium">{{getParams == 'cvman' ? 'CVMAN' : type}}</span>
+      <div class="flex items-center space-x-1" v-show="!open">
+        <span class="text-sm text-black font-semibold">Date:</span>
+        <span class="text-sm font-normal text-black">02/25/2020</span>
+      </div>
+    </div>
       <IconChevron :class="{ top: !open }" class="ease-in-out duration-300" />
     </div>
     <div
       class="
+       pt-2
         flex flex-col
         items-start
         w-full
-        space-y-2
+        space-y-4
         ease-in-out
         duration-300
       "
@@ -46,7 +53,7 @@
       <div class="flex flex-col items-start space-y-1">
         <span class="text-gray-500 text-xs">YOU RECEIVE</span>
         <p class="text-sm text-black font-normal">
-          10,000.00 <span class="font-semibold"> {{getParams == 'FineArt' ? 'CVMAN' : 'NIKE'}}</span>
+          10,000.00 <span class="font-semibold"> {{getParams == 'cvman' ? 'CVMAN' : type}}</span>
         </p>
       </div>
       <div class="w-full flex flex-col items-start space-y-3">
@@ -90,9 +97,9 @@
         </div>
       </div>
       <div class="w-full h-px bg-gray-300"></div>
-      <div class="w-full flex flex-col items-start space-y-3">
-        <span class="text-sm text-gray-500 font-normal">ONCHAIN RECORD</span>
-        <div class="flex items-center space-x-4">
+      <div class="w-full flex flex-col items-start space-y-3 pb-4">
+        <span class="text-xs text-gray-500 font-normal">ONCHAIN RECORD</span>
+        <div class="flex items-center space-x-4 pt-2">
           <span class="text-xs text-gray-500 font-normal">Txn Hash</span>
           <span class="text-primary-500 font-medium text-base"
             >0xb56....671f774d257c6</span
@@ -125,6 +132,7 @@
 import IconChevron from "../Icons/IconChevron .vue";
 
 export default {
+  props:['type'],
   data() {
     return {
       open: true,

@@ -17,7 +17,7 @@
       <Navbar :type="'customer'" />
     </div>
     <div class="py-0 sm:py-4 md:pb-8 md:pt-4 lg:pt-0 lg:pb-8 text-center">
-      <h1 class="text-4xl font-medium">Your {{ getParams == 'FineArt' ? 'CVMAN' : 'NIKE'}} Fractions</h1>
+      <h1 class="text-4xl font-medium">Your {{ getParams == 'cvman' ? 'CVMAN' : 'NIKE'}} Fractions</h1>
     </div>
     <div>
       <div class="lg:grid lg:grid-cols-7 lg:gap-6 rounded-lg">
@@ -27,8 +27,8 @@
             class=" cursor-pointer"
             @click="
               $router.push({
-                name: 'My_fractions_details',
-                params: { id: vaults.id },
+                name: 'Vault',
+                params: { id: getData.id },
               })
             "
             :vault="getData"
@@ -119,7 +119,7 @@ export default {
       return this.$route.params.id;
     },
     getData(){
-      if(this.getParams == 'FineArt'){
+      if(this.getParams == 'cvman'){
         return this.vaults;
       }
       return this.vaults1;
@@ -129,13 +129,13 @@ export default {
     return {
        vaults: 
         {
-          id: "1",
+          id: "cvman",
           name: "The caveman, ca. 2008",
           token: "SNEAKER",
           creator: "CVMAN",
           fractions: 58,
           available: "49%",
-          valuation: "$2M",
+          valuation: "$100M",
           nfts: [
             {
               name: "caveman.png",
@@ -146,8 +146,8 @@ export default {
         },
      vaults1: 
         {
-          id: "2",
-          name: "NIKE",
+          id: "nike",
+          name: "Nike Waffle Sneakers",
           token: "NIKE",
           creator: "NIKE",
           fractions: 58,

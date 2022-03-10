@@ -38,7 +38,7 @@
         </div>
 
         <span class="text-xl font-inter font-medium text-gray-900">
-          Fraction Data</span
+          {{getParams == 'cvman' ? 'The caveman, ca. 2008 Collection CVMAN Fraction Data' : 'Nike Collection NIKE Fraction Data' }}</span
         >
       </div>
 
@@ -60,7 +60,7 @@
         <span class="font-inter text-sm text-gray-700 font-medium"
           >VIEW VAULT ASSETS</span
         >
-        <ArrowDownIcon class="w-5 h-3" />
+        <ArrowDownIcon class="w-5 h-3 text-primary-500" />
       </div>
     </div>
     <div
@@ -68,9 +68,15 @@
     >
       <div class="w-28 flex flex-col items-start lg:border-r-2 p-4">
         <span class="text-base text-gray-500 font-inter whitespace-nowrap"
+          >{{getParams == 'cvman' ? 'NFT' : 'NFTs' }}</span
+        >
+        <span class="text-black font-inter text-2xl"> {{getParams == 'cvman' ? '1' : '6' }} </span>
+      </div>
+      <div class="w-28 flex flex-col items-start lg:border-r-2 p-4">
+        <span class="text-base text-gray-500 font-inter whitespace-nowrap"
           >Fractions</span
         >
-        <span class="text-black font-inter text-2xl">2M </span>
+        <span class="text-black font-inter text-2xl">{{getParams == 'cvman' ? '100M' : '2M' }} </span>
       </div>
       <div class="w-40 flex flex-col items-start lg:border-r-2 p-4">
         <span class="text-base text-gray-500 font-inter whitespace-nowrap"
@@ -86,7 +92,7 @@
         >
         <span class="text-black font-inter text-2xl">49% </span>
         <span class="text-sm text-gray-500 font-inter whitespace-nowrap"
-          >980,000 NIKE</span
+          >980,000  {{getParams == 'cvman' ? 'CVMAN' : 'NIKE' }}</span
         >
       </div>
       <div class="w-full flex flex-col items-start lg:border-r-2 p-4">
@@ -94,10 +100,10 @@
           >Implied Vault Valuation</span
         >
         <span class="text-black font-inter text-2xl whitespace-nowrap"
-          >≈ $ 2,000,000.00
+          > {{getParams == 'cvman' ? '≈ $ 10,000,000.00' : '≈ $ 2,000,000.00' }}
         </span>
         <span class="text-sm text-gray-500 font-inter whitespace-nowrap"
-          >≈ $1 / NIKE</span
+          >≈ $1 / {{getParams == 'cvman' ? 'CVMAN' : 'NIKE' }}</span
         >
       </div>
     </div>
@@ -149,8 +155,25 @@
 
 <script>
 import { ArrowDownIcon } from "@heroicons/vue/solid";
-
+import { computed } from "vue";
+import { useRoute } from "vue-router";
 export default {
+  setup() {
+    const route = useRoute();
+    const getParams = computed(() => route.params.id);
+
+    function gotoVaults() {
+      //scroll down
+      window.scrollTo({
+        top: 2400,
+        behavior: "smooth",
+      });
+    }
+    return {
+      gotoVaults,
+      getParams,
+    };
+  },
   props: {
     goDown: {
       type: Boolean,
@@ -158,14 +181,5 @@ export default {
     },
   },
   components: { ArrowDownIcon },
-  methods: {
-    gotoVaults() {
-      //scroll down
-      window.scrollTo({
-        top: 2400,
-        behavior: "smooth",
-      });
-    },
-  },
 };
 </script>
