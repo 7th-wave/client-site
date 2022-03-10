@@ -103,16 +103,27 @@
           <div class="w-8 h-8 rounded-full overflow-hidden bg-gray-500">
             <img
               class="w-full h-full object-cover"
-              src="https://static8.depositphotos.com/1016682/1065/i/600/depositphotos_10655332-stock-photo-nike-logo.jpg"
+              :src="getParams == 'cvman' ? '/images/sneakers/caveman.png' : '/images/sneakers/01.png'"
               alt=""
             />
           </div>
         </div>
       </div>
       <div class="w-full h-px bg-gray-200"></div>
-      <div class=" w-full py-3">
-              <button @click="Buy" class=" w-full py-2 text-center text-base text-white font-medium font-inter bg-primary-500 rounded-md">REVIEW MY ORDER</button>
-
+      <div class="w-full py-3">
+        <button
+          @click="Buy"
+          class="
+            w-full
+            py-2
+            text-center text-base text-white
+            font-medium font-inter
+            bg-primary-500
+            rounded-md
+          "
+        >
+          REVIEW MY ORDER
+        </button>
       </div>
     </div>
 
@@ -128,23 +139,27 @@ import { EyeIcon, RefreshIcon, ShareIcon } from "@heroicons/vue/solid";
 import ConnectWallet from "../../components/Modals/ConnectWallet";
 import ConfirmOrder from "../../components/Modals/ConfirmOrder";
 export default {
-  components: { EyeIcon, RefreshIcon, ShareIcon,ConnectWallet,ConfirmOrder},
-  data(){
-      return {
-      }
+  components: { EyeIcon, RefreshIcon, ShareIcon, ConnectWallet, ConfirmOrder },
+  data() {
+    return {};
   },
-  methods:{
-      ConfirmOrder(){
-         this.$refs.ConnectWallet.open = false;
-         this.$refs.ConfirmOrder.open = true;
-      },
-      Buy(){
-            this.$refs.ConnectWallet.open = true;
-            setTimeout(() => {
-                            document.getElementsByTagName('html')[0].style.overflow = 'auto';
-                            document.getElementsByTagName('html')[0].style.padding = '0';
-            }, 100);
-      }
-  }
+  computed: {
+    getParams() {
+      return this.$route.params.id;
+    },
+  },
+  methods: {
+    ConfirmOrder() {
+      this.$refs.ConnectWallet.open = false;
+      this.$refs.ConfirmOrder.open = true;
+    },
+    Buy() {
+      this.$refs.ConnectWallet.open = true;
+      setTimeout(() => {
+        document.getElementsByTagName("html")[0].style.overflow = "auto";
+        document.getElementsByTagName("html")[0].style.padding = "0";
+      }, 100);
+    },
+  },
 };
 </script>

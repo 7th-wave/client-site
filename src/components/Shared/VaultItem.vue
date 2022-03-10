@@ -88,7 +88,7 @@ import Stats from "./Stats.vue";
 import { onMounted } from "@vue/runtime-core";
 
 export default {
-  props: ["vault", "bg", "badgecolor"],
+  props: ["vault", "bg", "badgecolor","url"],
 
   components: {
     Swiper,
