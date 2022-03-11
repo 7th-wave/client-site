@@ -154,7 +154,7 @@
     </div>
 
     <MintsInfosCards  />
-    <FractionCard :goBack="true"/>
+    <FractionCard :goBack="true" :goDown="false"/>
   </div>
 </template>
 

@@ -58,7 +58,7 @@
           cursor-pointer
           border-2
         "
-        v-if="goDown && !goBack"
+        v-if="goDown == true"
         @click="gotoVaults"
       >
         <span class="font-inter text-sm text-gray-700 font-medium"
@@ -66,7 +66,7 @@
         >
         <ArrowDownIcon class="w-5 h-3 text-primary-500" />
       </div>
-        <div
+       <div
         class="
           py-2
           px-4

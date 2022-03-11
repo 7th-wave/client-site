@@ -17,7 +17,7 @@
         <span class="text-2xl text-black font-inter font-medium"
           >{Vault Sub-Title}</span
         >
-        <FractionCard :goDown="getParams != 'cvman' ? true : false" />
+        <FractionCard :goDown="true" />
         <p
           class="
             text-lg
