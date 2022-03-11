@@ -17,7 +17,7 @@
               autocomplete="Title"
               class="
                 shadow-sm
-                focus:ring-indigo-500 focus:border-indigo-500
+                focus:ring-primary-500 focus:border-primary-500
                 block
                 w-full
                 sm:text-sm
@@ -52,7 +52,7 @@
               autocomplete="Sub-Title"
               class="
                 shadow-sm
-                focus:ring-indigo-500 focus:border-indigo-500
+                focus:ring-primary-500 focus:border-primary-500
                 block
                 w-full
                 sm:text-sm
@@ -82,7 +82,7 @@
               id="comment"
               class="
                 shadow-sm
-                focus:ring-indigo-500 focus:border-indigo-500
+                focus:ring-primary-500 focus:border-primary-500
                 block
                 w-full
                 sm:text-sm
@@ -150,12 +150,12 @@
                     bg-white
                     rounded-md
                     font-medium
-                    text-indigo-600
-                    hover:text-indigo-500
+                    text-primary-500
+                    hover:text-primary-500
                     focus-within:outline-none
                     focus-within:ring-2
                     focus-within:ring-offset-2
-                    focus-within:ring-indigo-500
+                    focus-within:ring-primary-500
                   "
                 >
                   <span>Upload a file</span>
@@ -192,7 +192,7 @@
                 py-2
                 text-base
                 border-gray-300
-                focus:outline-none focus:ring-indigo-500 focus:border-indigo-500
+                focus:outline-none focus:ring-primary-500 focus:border-primary-500
                 sm:text-sm
                 rounded-md
               "
@@ -262,7 +262,7 @@
                     autocomplete="given-name"
                     class="
                       shadow-sm
-                      focus:ring-indigo-500 focus:border-indigo-500
+                      focus:ring-primary-500 focus:border-primary-500
                       block
                       w-full
                       sm:text-sm
@@ -294,7 +294,7 @@
                     autocomplete="Value"
                     class="
                       shadow-sm
-                      focus:ring-indigo-500 focus:border-indigo-500
+                      focus:ring-primary-500 focus:border-primary-500
                       block
                       w-full
                       sm:text-sm
@@ -490,7 +490,7 @@
                   px-3
                   py-2
                   rounded-none rounded-r-md
-                  focus:ring-indigo-500 focus:border-indigo-500
+                  focus:ring-primary-500 focus:border-primary-500
                   sm:text-sm
                   border-gray-300
                 "
