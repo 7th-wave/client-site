@@ -32,7 +32,7 @@
         item-center
         space-y-4
         bg-white
-        xl:px-96
+        xl:px-96 md:px-40 sm:px-20 px-2
         py-5
         text-center
       "
@@ -57,7 +57,7 @@
         item-center
         space-y-4
         bg-white
-        xl:px-96
+        xl:px-96 md:px-40 sm:px-20 px-2 
         py-5
         text-center
       "
@@ -74,7 +74,7 @@
         money on rare shoes
       </p>
     </div>
-    <div class="2xl:px-96  w-full">
+    <div class="2xl:px-96 md:px-40 sm:px-20 px-2  w-full">
       <div class="grid lg:grid-cols-3 grid-cols-1 md:grid-cols-2 gap-8">
         <VaultItem
          :url="{
