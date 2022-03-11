@@ -29,29 +29,13 @@
             </div>
           </div>
           <div class="col-span-1 lg:col-span-4 lg:pl-12 pb-6 pt-6">
-            <swiper
-              class="main-slider"
-              :slides-per-view="3"
-              :space-between="-100"
-              :centeredSlides="true"
-              :modules="modules"
-              :autoplay="{
-                delay: 3000,
-              }"
-              @swiper="onSwiper"
-              @slideChange="onSlideChange"
-            >
-              <swiper-slide
-                class="w-64"
-                v-for="(vault, index) in vaults"
-                :key="index"
-                @click="goVault(vault.id)"
-              >
-                <div class="w-full p-2 flex items-center">
-                  <vault-item  badgecolor="green" :vault="vault" />
-                </div>
-              </swiper-slide>
-            </swiper>
+            <CarouselCard ref="carouselCardRef" :interval="7000" :autoplay="false" height="500px" type="card" arrow="always" @change="changeHandle">
+              <CarouselCardItem v-for="(vault, index) in vaults"
+                :key="index" :name="`cc_${index}`">
+                <vault-item  badgecolor="green" :vault="vault" />
+              </CarouselCardItem>
+            </CarouselCard>
+            
           </div>
         </div>
         </div>
@@ -63,6 +47,7 @@
             :slides-per-view="3.5"
             :space-between="20"
             :centeredSlides="true"
+            :loop="true"
             :modules="modules"
             @swiper="onSwiper"
             @slideChange="onSlideChange"
@@ -72,7 +57,7 @@
                 <category-card @click="GoToCategory" :category="category">
                   <template #image>
                     <img
-                      class="w-full h-full object-cover"
+                      class="w-full h-full object-cover max-w-xl"
                       :src="'/images/categories/' + category.image"
                       alt=""
                     />
@@ -120,9 +105,11 @@ import { useRouter } from "vue-router";
 import CategoryCard from "../../components/cards/CategoryCard.vue";
 import Title from "../../components/Shared/Title.vue";
 
+import { ref } from '@vue/reactivity';
+
 const vaults = [
   {
-    id:"FineArt",
+    id:"cvman",
     name: "The caveman, ca. 2008",
     token: "SNEAKER",
     creator: "Nike",
@@ -145,7 +132,7 @@ const vaults = [
     ],
   },
   {
-    id:"Sneakers",
+    id:"sneakers",
     name: "Nike Sneakers",
     token: "SNEAKER",
     creator: "Nike",
@@ -180,7 +167,7 @@ const vaults = [
     ],
   },
   {
-    id:"Sneakers",
+    id:"sneakers",
     name: "Nike Shoes",
     token: "SNEAKER",
     creator: "Nike",
@@ -207,14 +194,14 @@ const vaults = [
 
 const categories = [
   {
-    id:"Sneakers",
+    id:"sneakers",
     name: "Sneakers",
     image: "sneakers.png",
-    items: 9,
+    items: 6,
   },
 
   {
-    id:"Fine Art",
+    id:"cvman",
     name: "Fine Art",
     image: "caveman.png",
     items: 2,
@@ -247,6 +234,7 @@ export default {
   },
   setup() {
     const router = useRouter();
+    const carouselCardRef = ref();
 
     const onSwiper = (swiper) => {
       console.log(swiper);
@@ -258,6 +246,7 @@ export default {
     const goCollections = () => {
       router.push({ name: "Explore" });
     };
+    
 
     return {
       modules: [Pagination, Autoplay],
@@ -266,11 +255,21 @@ export default {
       goCollections,
       vaults,
       categories,
+      carouselCardRef,
     };
   },
 };
 </script>
 <style scoped>
+
+.carousel-card-item-card {
+  opacity: .5;
+}
+
+.carousel-card-item-card.is-active {
+  opacity: 1;
+}
+
 .slides {
   height: 710px;
 }

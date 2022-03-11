@@ -1,13 +1,13 @@
 <template>
-  <div class="py-8 space-y-24 2xl:max-w-8xl w-full 2xl:mx-auto">
-    <div class="flex">
+  <div class="py-8  2xl:max-w-8xl w-full 2xl:mx-auto">
+    <div class="flex pb-14">
       <span
         class="m-auto text-4xl text-center font-normal font-inter text-black"
-        >Vault name</span
+        >{{getParams == 'cvman' ? 'The caveman, ca. 2008' : 'Nike Collection'}}</span
       >
     </div>
 
-    <div class="w-full">
+    <div class="w-full pb-24">
       <VaultSlideShow :slides="getSlides" />
     </div>
 
@@ -17,14 +17,14 @@
         <span class="text-2xl text-black font-inter font-medium"
           >{Vault Sub-Title}</span
         >
-        <FractionCard :goDown="getParams != 'FineArt' ? true : false" />
+        <FractionCard :goDown="getParams != 'cvman' ? true : false" />
         <p
           class="
             text-lg
             font-normal font-inter
             text-black
             bg-white
-            py-2
+            py-3
             px-4
             shadow-md
             rounded-md
@@ -51,14 +51,14 @@
         <Table :headers="tableData.headers" :data="tableData.data">
           <template #body>
             <tbody
-              class="bg-white divide-y divide-gray-200"
+              class="bg-white divide-y divide-gray-200 shadow-md"
               v-for="n in 7"
               :key="n"
             >
               <td
                 class="
                   px-6
-                  py-4
+                  py-2
                   whitespace-nowrap
                   text-sm
                   font-medium
@@ -70,7 +70,7 @@
               <td
                 class="
                   px-6
-                  py-4
+                 py-2
                   whitespace-nowrap
                   text-sm
                   font-medium
@@ -116,7 +116,7 @@
               <td
                 class="
                   px-6
-                  py-4
+                  py-2
                   whitespace-nowrap
                   text-sm
                   font-medium
@@ -128,7 +128,7 @@
               <td
                 class="
                   px-6
-                  py-4
+                  py-2
                   whitespace-nowrap
                   text-sm
                   font-medium
@@ -152,7 +152,7 @@
               <td
                 class="
                   px-6
-                  py-4
+                  py-2
                   whitespace-nowrap
                   text-sm
                   font-medium
@@ -180,15 +180,15 @@
           >Activities</span
         >
        <LineChart />
-        <div class="w-full pt-4">
+        <div class="w-full pt-2">
           <Events />
         </div>
       </div>
     </div>
-    <div class="w-full px-8">
+    <div class="w-full px-8 pt-2">
       <div class="w-full py-2 bg-white border-2 rounded-md flex">
         <div class="flex items-center space-x-2 m-auto">
-          <span class="text-base text-gray-700 font-semibold font-inter"
+          <span class="text-base text-gray-700 font-medium font-inter"
             >VIEW ALL OWNERS & EVENTS</span
           >
           <div>
@@ -211,16 +211,16 @@
         </div>
       </div>
     </div>
-    <div class="w-full space-y-4 px-8" v-if="getParams != 'FineArt'">
+    <div class="w-full space-y-4 px-8 pt-8">
       <div>
         <span class="text-2xl text-black font-inter font-medium"
-          >All Assets inside {Vault Name} Vault</span
+          >All {{ getParams == 'cvman' ? 'CVMAN' : 'NIKE'}} Vault Assets</span
         >
       </div>
-      <div class="grid grid-cols-3 gap-14">
+      <div class="grid grid-cols-3 gap-8">
         <CategoryCard
           @click="GoToCategory"
-          v-for="(category, index, key) in categories"
+          v-for="(category, index, key) in getData"
           :key="key"
           :category="category"
         >
@@ -280,12 +280,25 @@ export default {
     getParams() {
       return this.$route.params.id;
     },
+    getData(){
+      if (this.getParams == "cvman") {
+        return this.categories1;
+      }
+      return this.categories; 
+    },
     getSlides() {
-      if (this.getParams == "FineArt") {
+      if (this.getParams == "cvman") {
         return this.slide;
       }
       return this.slides;
     },
+  },
+  methods:{
+    GoToCategory(){
+      if(this.getParams == 'cvman'){
+        this.$router.push({ name: 'VaultView',params:{id: 'cvman'}});
+      }
+    }
   },
   data() {
     return {
@@ -416,6 +429,13 @@ export default {
           name: "Jordans",
           image: "/images/sneakers/06.png",
           title: "Sneakers Collection",
+        },
+      ],
+      categories1:[
+  {
+          name: "The caveman, ca. 2008",
+          image: "/images/sneakers/caveman.png",
+          title: "Fine Art ",
         },
       ],
       slides: [

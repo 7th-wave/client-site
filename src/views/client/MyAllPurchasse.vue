@@ -27,7 +27,18 @@
           <Menu />
         </div>
         <div class="w-full mt-5 md:mt-0 lg:col-span-5 space-y-4">
-          <div class="w-full p-4 rounded-md shadow-md bg-white grid sm:grid-cols-6 gap-2">
+          <div
+            class="
+              w-full
+              p-4
+              rounded-md
+              shadow-md
+              bg-white
+              grid
+              sm:grid-cols-6
+              gap-2
+            "
+          >
             <div class="mt-1 relative rounded-md shadow-sm col-span-4">
               <div
                 class="
@@ -60,7 +71,7 @@
                 name="Search"
                 id="Search"
                 class="
-                  focus:ring-indigo-500 focus:border-indigo-500
+                  focus:ring-primary-500 focus:border-primary-500 
                   block
                   w-full
                   pl-10
@@ -71,8 +82,9 @@
                 placeholder="Search"
               />
             </div>
-            <div class=" w-full col-span-2">
-              <select
+            <div class="w-full col-span-2">
+              <DropDown />
+              <!-- <select
                 id="location"
                 name="location"
                 class="
@@ -92,11 +104,19 @@
                 "
               >
                 <option>Vault Ticker</option>
-              </select>
+              </select> -->
             </div>
           </div>
           <div class="grid lg:grid-cols-3 grid-cols-1 gap-4">
-            <Purchasse v-for="n in 9" :key="n" />
+            <Purchasse type="NIKE" />
+            <Purchasse type="NIKE" />
+            <Purchasse type="CVMAN" />
+            <Purchasse type="CVMAN" />
+            <Purchasse type="NIKE" />
+            <Purchasse type="Banksy" />
+            <Purchasse type="NIKE" />
+            <Purchasse type="NIKE" />
+            <Purchasse type="Banksy" />
           </div>
         </div>
       </div>
@@ -109,12 +129,14 @@
 import Menu from "@/components/Layouts/Menu.vue";
 import Navbar from "@/components/Layouts/Navbar_mobile.vue";
 import Purchasse from "@/components/Drawers/Purchasse.vue";
+import DropDown from "@/components/Drawers/DropDown.vue";
 // @ is an alias to /src
 export default {
   components: {
     Purchasse,
     Menu,
     Navbar,
+    DropDown,
   },
   computed: {
     getParams() {

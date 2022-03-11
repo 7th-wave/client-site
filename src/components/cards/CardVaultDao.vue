@@ -35,7 +35,7 @@
             border-gray-300
             rounded-md
           "
-          placeholder="100,000.00"
+          :placeholder="getParams == 'cvman' ? '200,000.00' : '100,000.00'"
         />
         <button
           class="
@@ -54,3 +54,19 @@
     </div>
   </div>
 </template>
+
+
+<script>
+import { computed } from "vue";
+import {  useRoute } from "vue-router";
+
+export default {
+  setup(){
+    const route = useRoute();
+    const getParams = computed(() => route.params.id);
+    return {
+      getParams
+    };
+  }
+}
+</script>

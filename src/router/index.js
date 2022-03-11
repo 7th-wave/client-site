@@ -102,9 +102,14 @@ const routes = [
     name: "Vault",
     component: () => import("../views/frontend/Vault.vue"),
   },
+ 
 
   //Client
- 
+  {
+    path: "/vault/:id/view",
+    name: "VaultView",
+    component: () => import("../views/client/VaultView.vue"),
+  },
   {
     path: "/register/:address",
     name: "ClientRegister",
@@ -129,13 +134,13 @@ const routes = [
     beforeEnter: clientGuard,
   },
   {
-    path: "/purchasse-history",
+    path: "/purchase-history",
     name: "PurchasseHistory",
     component: () => import("../views/client/MyAllPurchasse.vue"),
     beforeEnter: clientGuard,
   },
   {
-    path: "/purchasse-history/:id",
+    path: "/my-fractions/:id/purchases",
     name: "PurchasseHistoryDetails",
     component: () => import("../views/client/MyPurchasse.vue"),
     beforeEnter: clientGuard,
@@ -158,7 +163,7 @@ const routes = [
     component: () => import("../views/client/MyFractions.vue"),
   },
   {
-    path: "/my-fractions/:id/details",
+    path: "/my-fractions/:id",
     name: "My_fractions_details",
     component: () => import("../views/client/NftfractionDetails.vue"),
   },
