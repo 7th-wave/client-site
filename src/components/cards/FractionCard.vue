@@ -84,7 +84,7 @@
         <span class="font-inter text-sm text-gray-700 font-medium"
           >VIEW VAULT</span
         >
-        <ArrowDownIcon class="w-5 h-3 text-primary-500" />
+        <ArrowDownIcon class="w-5 h-3" :class="IconColor" />
       </div>
     </div>
     <div
@@ -137,7 +137,7 @@
     </div>
     <div
       class="
-        w-52
+          w-56
         py-2
         px-4
         rounded-md
@@ -152,10 +152,11 @@
     >
       <span
         class="font-inter text-sm text-gray-700 font-medium whitespace-nowrap"
-        >VIEW ON ETHER SCAN</span
+        >VIEW SMART CONTRACT</span
       >
       <div>
         <svg
+         class=" fill-current " :class="IconColor"
           width="14"
           height="17"
           viewBox="0 0 14 17"
@@ -164,15 +165,15 @@
         >
           <path
             d="M0 10.4762V13.4762C0 15.1331 3.13401 16.4762 7 16.4762C10.866 16.4762 14 15.1331 14 13.4762V10.4762C14 12.1331 10.866 13.4762 7 13.4762C3.13401 13.4762 0 12.1331 0 10.4762Z"
-            fill="#049AFF"
+            
           />
           <path
             d="M0 5.4762V8.4762C0 10.1331 3.13401 11.4762 7 11.4762C10.866 11.4762 14 10.1331 14 8.4762V5.4762C14 7.13305 10.866 8.4762 7 8.4762C3.13401 8.4762 0 7.13305 0 5.4762Z"
-            fill="#049AFF"
+           
           />
           <path
             d="M14 3.4762C14 5.13305 10.866 6.4762 7 6.4762C3.13401 6.4762 0 5.13305 0 3.4762C0 1.81934 3.13401 0.476196 7 0.476196C10.866 0.476196 14 1.81934 14 3.4762Z"
-            fill="#049AFF"
+            
           />
         </svg>
       </div>
@@ -186,7 +187,8 @@ import { ArrowDownIcon } from "@heroicons/vue/solid";
 import { computed } from "vue";
 import { useRoute, useRouter } from "vue-router";
 export default {
-  setup() {
+ 
+  setup(props) {
     const route = useRoute();
     const getParams = computed(() => route.params.id);
     const router = useRouter();
@@ -197,7 +199,12 @@ export default {
       });
     }
     function Back(){
-      router.back();
+      if(props.url != ""){
+        router.push(props.url);
+      }else {
+        router.back();
+      }
+     
     }
     return {
       gotoVaults,
@@ -214,6 +221,14 @@ export default {
       type: Boolean,
       default: false,
     },
+     IconColor:{
+      type:String,
+      default:"text-primary-500"
+    },
+    url:{
+      type:String,
+      default:""
+    }
   },
   components: { ArrowDownIcon },
 };

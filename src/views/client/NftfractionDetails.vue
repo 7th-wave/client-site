@@ -25,12 +25,10 @@
           <Menu />
           <VaultItem
             class=" cursor-pointer"
-            @click="
-              $router.push({
+             :url="{
                 name: 'Vault',
                 params: { id: getData.id },
-              })
-            "
+              }"
             :vault="getData"
             bg="bg-white"
           badgecolor="green"
@@ -89,7 +87,10 @@
         >
          <CardTrade />
          <CardVaultDao />
-         <FractionCard :goDown="false" />
+         <FractionCard :goDown="false"  :goBack="true" IconColor=" text-gray-400" :url="{
+                name: 'Vault',
+                params: { id: getData.id },
+              }" />
         </div>
       </div>
     </div>
