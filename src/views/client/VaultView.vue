@@ -13,7 +13,8 @@
           shadow-md
           overflow-hidden
           img-container
-          col-span-3
+          lg:col-span-3
+          col-span-5
         "
       >
         <img
@@ -22,7 +23,7 @@
           alt=""
         />
       </div>
-      <div class="w-full flex items-start flex-col space-y-2 col-span-2">
+      <div class="w-full flex items-start flex-col space-y-2 lg:col-span-2  col-span-5">
         <div
           class="
             w-full

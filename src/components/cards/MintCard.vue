@@ -1,20 +1,20 @@
 <template>
   <div
     class="
-      w-full justify-between
+      w-full lg:justify-between
       rounded-md
       shadow-md
       bg-primary-500
       py-4
       px-3
       flex
-      items-cente
-      font-inter
+      lg:items-center
+      font-inter lg:flex-row lg:space-y-0 flex-col space-y-4 items-start
     "
   >
-    <div class=" flex items-center space-x-4">
+    <div class=" flex lg:items-center lg:space-x-4 lg:flex-row lg:space-y-0 flex-col items-start space-y-4">
       <p class="text-base text-white font-semibold">
-        Which Blockchain do you <br> want to use for your NFT?
+        Which Blockchain do you <br class=" hidden lg:block"> want to use for your NFT?
       </p>
       <div
         class="
@@ -35,7 +35,7 @@
         <IconChevron class="top" />
       </div>
       <p class="text-base text-white font-semibold">
-        Ready to create your NFT? <br> Minting is IRREVERSABLE
+        Ready to create your NFT? <br class=" hidden lg:block"> Minting is IRREVERSABLE
       </p>
       <button
       @click="MintIt"
@@ -55,7 +55,7 @@
       </button>
     </div>
     <div class=" flex items-center space-x-2" v-if="cardtype == 'mint'">
-      <div>
+      <div class=" hidden lg:block">
         <svg
           width="3"
           height="50"
@@ -74,7 +74,7 @@
         </svg>
       </div>
       <span class="text-base text-white font-semibold">
-        In doubt EDIT and <br> request a revision
+        In doubt EDIT and <br class=" hidden lg:block"> request a revision
       </span>
       <button @click="nextStep" class=" text-white font-medium text-base font-inter border border-white py-2 px-4 rounded-sm">EDIT</button>
     </div>

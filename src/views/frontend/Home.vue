@@ -43,7 +43,7 @@
 
         <div class="pb-12 bg-white">
           <Title text="Featured Collections" />
-          <swiper
+          <swiper class=" hidden lg:block"
             :slides-per-view="3.5"
             :space-between="20"
             :centeredSlides="true"
@@ -52,7 +52,7 @@
             @swiper="onSwiper"
             @slideChange="onSlideChange"
           >
-            <swiper-slide v-for="(category, index) in categories" :key="index" @click="goToDetails(category.id)">
+            <swiper-slide class="card"  v-for="(category, index,key) in categories" :key="key" @click="goToDetails(category.id)">
               <div class="w-full p-2 flex items-center">
                 <category-card @click="GoToCategory" :category="category">
                   <template #image>
@@ -84,6 +84,39 @@
               </div>
             </swiper-slide>
           </swiper>
+          <div class=" w-full grid md:grid-cols-2 grid-cols-1 gap-4 lg:hidden">
+    
+              <div class="w-full p-2 flex items-center"  v-for="(category, index,key) in categories" :key="key" @click="goToDetails(category.id)">
+                <category-card @click="GoToCategory" :category="category">
+                  <template #image>
+                    <img
+                      class="w-full h-full object-cover max-w-xl"
+                      :src="'/images/categories/' + category.image"
+                      alt=""
+                    />
+                  </template>
+
+                  <template #subtitle>
+                    <span
+                      class="
+                        text-sm
+                        font-inter font-medium
+                        text-primary-500
+                        cursor-pointer
+                      "
+                      >{{ category.items }} items</span
+                    >
+                  </template>
+                  <template #title>
+                    <span
+                      class="text-gray-900 text-xl font-semibold font-inter"
+                      >{{ category.name }}</span
+                    >
+                  </template>
+                </category-card>
+              </div>
+           
+          </div>
         </div>
       </div>
     </div>
@@ -258,6 +291,11 @@ export default {
   opacity: .5;
 }
 
+
+.card {
+      width: 529.429px !important;
+}
+
 .carousel-card-item-card.is-active {
   opacity: 1;
 }
@@ -282,4 +320,10 @@ export default {
   z-index: 1;
   transform: scale(1);
 }
+.swiper-slide  {
+       width: 529.429px !important;
+
+}
 </style>
+
+

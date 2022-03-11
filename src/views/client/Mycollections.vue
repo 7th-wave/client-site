@@ -23,7 +23,7 @@
         <div class="lg:col-span-2 hidden lg:block">
           <Menu />
         </div>
-        <div class="mt-5 md:mt-0 lg:col-span-5 grid grid-cols-2 gap-4">
+        <div class="mt-5 md:mt-0 lg:col-span-5 grid md:grid-cols-2 grid-cols-1 gap-4">
           <NftCard v-for="(Nft, index, key) in Nfts" :key="key" @click="goDetails(Nft.id)">
             <template #image>
               <img class="w-full h-full object-cover" :src="Nft.image" alt="" />

@@ -20,7 +20,7 @@
 
      <div
           v-else
-            class="w-96 m-auto  bg-blue-400 bg-opacity-30 relative"
+            class="lg:w-96 w-full m-auto  bg-blue-400 bg-opacity-30 relative"
              style="height: 660px;"
            
           >

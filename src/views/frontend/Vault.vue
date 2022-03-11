@@ -11,9 +11,9 @@
       <VaultSlideShow :slides="getSlides" />
     </div>
 
-    <div class="w-full px-8 py-4 grid grid-cols-4 gap-4">
+    <div class="w-full px-8 py-4 grid lg:grid-cols-4 gap-4">
       <!-- left -->
-      <div class="col-span-3 w-full flex flex-col items-start space-y-5">
+      <div class="lg:col-span-3 col-span-4 w-full flex flex-col items-start space-y-5">
         <span class="text-2xl text-black font-inter font-medium"
           >{Vault Sub-Title}</span
         >
@@ -38,20 +38,20 @@
         </p>
       </div>
       <!-- right -->
-      <div class="w-full">
+      <div class="w-full col-span-4 lg:col-span-1">
         <BuyFractionCard />
       </div>
     </div>
-    <div class="w-full px-8 py-4 grid grid-cols-4 gap-4">
+    <div class="w-full px-8 py-4 grid lg:grid-cols-4 gap-4 overflow-y-auto">
       <!-- left -->
-      <div class="col-span-3 w-full flex flex-col items-start space-y-5">
+      <div class="lg:col-span-3 col-span-4 w-full flex flex-col items-start space-y-5">
         <span class="text-2xl text-black font-inter font-medium"
           >Top 10 Vault Owner</span
         >
         <Table :headers="tableData.headers" :data="tableData.data">
           <template #body>
             <tbody
-              class="bg-white divide-y divide-gray-200 shadow-md"
+              class="bg-white divide-y divide-gray-200 shadow-md w-full"
               v-for="n in 7"
               :key="n"
             >
@@ -175,7 +175,7 @@
         </Table>
       </div>
       <!-- right -->
-      <div class="w-full">
+      <div class="w-full col-span-4 lg:col-span-1">
         <span class="text-2xl text-black font-inter font-medium"
           >Activities</span
         >
@@ -217,7 +217,7 @@
           >All {{ getParams == 'cvman' ? 'CVMAN' : 'NIKE'}} Vault Assets</span
         >
       </div>
-      <div class="grid grid-cols-3 gap-8">
+      <div class="grid   lg:grid-cols-3 gap-8">
         <CategoryCard
           @click="GoToCategory"
           v-for="(category, index, key) in getData"

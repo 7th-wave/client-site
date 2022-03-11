@@ -1,5 +1,5 @@
 <template>
-  <div class="rounded-lg overflow-hidden shadow-lg w-90 z-50 relative" :class="bg">
+  <div class="rounded-lg overflow-hidden shadow-lg w-90  relative" :class="bg">
     <slot name="badge" />
     <div class="slider relative">
       <div

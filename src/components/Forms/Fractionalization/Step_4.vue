@@ -224,7 +224,7 @@
                 />
               </svg>
             </div>
-            <span class="text-sm text-primary-500 font-normal"
+            <span class="text-sm text-primary-500 font-normal break-all"
               >HASHNUMBERNJSDNFKJSDNFKJNSDFSDFSDF</span
             >
           </div>
@@ -346,7 +346,7 @@
           </button>
         </div>
       </div>
-      <div class="grid grid-cols-6 gap-8">
+      <div class="grid lg:grid-cols-6 gap-8">
         <div class="sm:col-span-2 space-y-2">
           <div class="w-full h-60 rounded-md overflow-hidden border py-4 px-2">
             <img

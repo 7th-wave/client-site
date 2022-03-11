@@ -2,7 +2,7 @@
 <template>
 <div class="account sm:px-8 2xl:max-w-8xl w-full   py-4 relative lg:py-16 bg-gray-100 font-inter mx-auto">
   <div class="lg:hidden">
-    <Navbar :type="'customer'" />
+    <Navbar  />
   </div>
   <div class="py-0 pb-2 sm:py-4 lg:pt-0 lg:pb-8 text-center">
     <h1 class="text-4xl font-medium">My Account</h1>
@@ -24,7 +24,7 @@
 </template>
 <script>
   import Menu from '@/components/Layouts/Menu.vue'
-  import Navbar from '@/components/Layouts/Navbar_mobile.vue'
+  import Navbar from '@/components/Layouts/Navbar.vue'
   import Account from '@/components/Forms/Account'
 import { useStore } from 'vuex'
 import { onMounted, ref } from '@vue/runtime-core'
