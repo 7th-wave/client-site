@@ -19,11 +19,11 @@
       <h1 class="text-4xl font-medium">Your {{ getParams == 'FineArt' ? 'CVMAN' : 'NIKE'}} Purchasse History</h1>
     </div>
     <div>
-      <div class="lg:grid lg:grid-cols-7 lg:gap-6  rounded-lg space-y-4s">
-        <div class="lg:col-span-2 hidden lg:block ">
+      <div class="flex items-start space-x-4 w-full  rounded-lg">
+        <div class="xl:col-span-2 hidden xl:block ">
           <Menu />
         </div>
-        <div class="mt-5 md:mt-0 lg:col-span-5 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1  gap-4">
+        <div class="mt-5 md:mt-0 lg:col-span-5 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1  gap-4 w-full">
           <Purchasse  v-for=" n in 3" :key="n" type="NIKE"/>
         </div>
       </div>

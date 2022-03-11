@@ -20,9 +20,9 @@
       <h1 class="text-4xl font-medium">Your {{ getParams == 'cvman' ? 'CVMAN' : 'NIKE'}} Fractions</h1>
     </div>
     <div>
-      <div class="lg:grid lg:grid-cols-7 lg:gap-6 rounded-lg">
-        <div class="lg:col-span-2 space-y-4">
-          <Menu />
+      <div class="flex xl:flex-row lg:items-start lg:space-x-4 w-full lg:space-y-0 flex-col items-start space-y-4 ">
+        <div class="lg:col-span-2 space-y-4 xl:w-m-1xl w-full">
+          <Menu class=" hidden  xl:block" />
           <VaultItem
             class=" cursor-pointer"
              :url="{
@@ -82,7 +82,7 @@
           class="
             mt-5
             md:mt-0
-            flex flex-col items-start space-y-4 lg:col-span-5
+            flex flex-col items-start space-y-4 lg:col-span-5 w-full
           "
         >
          <CardTrade />

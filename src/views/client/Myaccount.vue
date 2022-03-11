@@ -8,13 +8,13 @@
     <h1 class="text-4xl font-medium">My Account</h1>
   </div>
   <div>
-    <div class="lg:grid lg:grid-cols-7 lg:gap-6 rounded-lg ">
+    <div class="flex items-start space-x-4 w-full ">
       <div class="lg:col-span-2">
         <div class="hidden lg:block">
           <Menu />
         </div>
       </div>
-      <div class="mt-5 lg:mt-0 lg:col-span-5">
+      <div class="mt-5 lg:mt-0 lg:col-span-5 w-full">
         <Account :is-admin="false" :is-edit="true" v-if="isLoaded" />
       </div>
     </div>

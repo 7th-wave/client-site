@@ -10,8 +10,9 @@
       font-medium
       rounded-lg
       shadow-lg
-      w-full
+      w-m-1xl
     "
+  
   >
     <div class="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
       <nav class="flex-1 px-2 space-y-2.5" aria-label="Sidebar">
@@ -23,8 +24,8 @@
           :class="[
             currentRouteName === item.href.name ||
             currentRouteName === item.subname ||
-            currentRouteName === item.subname1 || 
-            currentRouteName === item.subname2 
+            currentRouteName === item.subname1 ||
+            currentRouteName === item.subname2
               ? 'bg-gray-100 text-gray-900'
               : 'text-gray-900 hover:bg-gray-100',
             'group flex items-center px-2 py-2 text-base font-medium rounded-md',
@@ -47,8 +48,25 @@
           <div class="ml-3">
             <p class="text-sm font-medium text-gray-700">User Name</p>
             <div class="flex items-center space-x-1">
-              <p class="text-xs font-medium text-primary-500 hover:underline">
-                0xE881...4567
+              <p class="text-xs font-medium text-primary-500 hover:underline flex items-center space-x-2">
+                <span>0xE881...4567</span>
+                <span>
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 14 14"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M4.6341 3.66667V9C4.6341 9.73638 5.23106 10.3333 5.96744 10.3333H9.96744M4.6341 3.66667V2.33333C4.6341 1.59695 5.23106 1 5.96744 1H9.02463C9.20144 1 9.37101 1.07024 9.49603 1.19526L12.4388 4.13807C12.5639 4.2631 12.6341 4.43266 12.6341 4.60948V9C12.6341 9.73638 12.0372 10.3333 11.3008 10.3333H9.96744M4.6341 3.66667H3.96744C2.86287 3.66667 1.96744 4.5621 1.96744 5.66667V11.6667C1.96744 12.403 2.56439 13 3.30077 13H7.96744C9.07201 13 9.96744 12.1046 9.96744 11V10.3333"
+                      stroke="#049AFF"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </span>
               </p>
               <DocumentDuplicateIcon class="h-4 w-4" />
             </div>
@@ -147,7 +165,7 @@ const Client = [
     href: { name: "My_collections" },
     subname: "CollectionDetails",
     subname1: "Fractionalize",
-    subname2:'',
+    subname2: "",
   },
   { name: "My Vaults", href: { name: "MyVault" }, subname: "", subname1: "" },
   {
@@ -155,14 +173,14 @@ const Client = [
     href: { name: "My_fractions" },
     subname: "My_fractions",
     subname1: "My_fractions_details",
-    subname2:'PurchasseHistoryDetails',
+    subname2: "PurchasseHistoryDetails",
   },
   {
     name: "My Purchase History",
     href: { name: "PurchasseHistory" },
     subname: "",
     subname1: "",
-     subname2:'',
+    subname2: "",
   },
 ];
 const Buyer = [
@@ -171,21 +189,21 @@ const Buyer = [
     href: { name: "MyAccount", params: { address: "gfdg" } },
     subname: "",
     subname1: "",
-     subname2:'',
+    subname2: "",
   },
   {
     name: "My Fractions",
     href: { name: "My_fractions" },
     subname: "My_fractions",
     subname1: "My_fractions_details",
-     subname2:'PurchasseHistoryDetails',
+    subname2: "PurchasseHistoryDetails",
   },
   {
     name: "My Purchase History",
     href: { name: "PurchasseHistory" },
     subname: "",
     subname1: "",
-     subname2:'',
+    subname2: "",
   },
 ];
 const Admin = [
@@ -194,14 +212,14 @@ const Admin = [
     href: { name: "MyAccount", params: { address: "gfdg" } },
     subname: "",
     subname1: "",
-     subname2:'',
+    subname2: "",
   },
   {
     name: "Vault Categories",
     href: { name: "My_collections" },
     subname: "CollectionDetails",
     subname1: "Fractionalize",
-     subname2:'',
+    subname2: "",
   },
   { name: "Vaults", href: { name: "MyVault" }, subname: "", subname1: "" },
   {
@@ -209,36 +227,36 @@ const Admin = [
     href: { name: "My_fractions" },
     subname: "My_fractions",
     subname1: "My_fractions_details",
-    subname2:'PurchasseHistoryDetails',
+    subname2: "PurchasseHistoryDetails",
   },
   {
     name: "Clients",
     href: { name: "PurchasseHistory" },
     subname: "",
     subname1: "",
-     subname2:'',
+    subname2: "",
   },
   {
     name: "Emails",
     href: { name: "PurchasseHistory" },
     subname: "",
     subname1: "",
-     subname2:'',
+    subname2: "",
   },
   {
     name: "Team",
     href: { name: "PurchasseHistory" },
     subname: "",
     subname1: "",
-     subname2:'',
+    subname2: "",
   },
 ];
 export default {
-  created(){ 
-  //  this.$store.commit('user/changeType', "Admin")
-   // alert(this.$store.state.user.user.type);
+  created() {
+    //  this.$store.commit('user/changeType', "Admin")
+    // alert(this.$store.state.user.user.type);
   },
-  props:{
+  props: {
     userType: {
       type: String,
       default: "Client",
@@ -252,16 +270,14 @@ export default {
     currentRouteName() {
       return this.$route.name;
     },
-    getData(){
-      if(this.$store.state.user.user.type === "Client"){
+    getData() {
+      if (this.$store.state.user.user.type === "Client") {
         return Client;
-      }else if(this.$store.state.user.user.type === "Buyer"){
+      } else if (this.$store.state.user.user.type === "Buyer") {
         return Buyer;
       }
-        return Admin;
-      
+      return Admin;
     },
-
   },
   setup(props) {
     const store = useStore();

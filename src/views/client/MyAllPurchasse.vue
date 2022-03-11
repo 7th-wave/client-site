@@ -22,7 +22,7 @@
     </div>
 
     <div>
-      <div class="lg:grid lg:grid-cols-7 lg:gap-6 rounded-lg">
+      <div class="flex items-start space-x-4 w-full">
         <div class="lg:col-span-2 hidden lg:block">
           <Menu />
         </div>

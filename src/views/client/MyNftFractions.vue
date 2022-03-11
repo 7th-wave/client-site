@@ -20,7 +20,7 @@
       <h1 class="text-4xl font-medium">My NFT Fractions</h1>
     </div>
     <div>
-      <div class="lg:grid lg:grid-cols-7 lg:gap-6 rounded-lg">
+      <div class="flex items-start space-x-4 w-full rounded-lg">
         <div class="lg:col-span-2">
           <Menu />
         </div>
@@ -32,7 +32,7 @@
             grid
             lg:grid-cols-3
             grid-cols-1
-            gap-4
+            gap-4 w-full
           "
         >
           <VaultItem
