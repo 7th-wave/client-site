@@ -77,13 +77,11 @@
     <div class="sm:px-96  w-full">
       <div class="grid lg:grid-cols-3 grid-cols-1 md:grid-cols-2 gap-8">
         <VaultItem
-          class="cursor-pointer"
-          @click="
-            $router.push({
+         :url="{
               name: 'Vault',
               params: { id: item.id },
-            })
-          "
+            }"
+          class="cursor-pointer"
           v-for="(item, index, key) in getData"
           :key="key"
           :vault="item"

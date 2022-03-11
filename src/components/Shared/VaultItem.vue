@@ -1,12 +1,12 @@
 <template>
-  <div class="rounded-lg overflow-hidden shadow-lg w-90 relative" :class="bg">
+  <div class="rounded-lg overflow-hidden shadow-lg w-90 z-50 relative" :class="bg">
     <slot name="badge" />
     <div class="slider relative">
       <div
        v-if="vault.nfts.length > 1"
         class="z-10 absolute left-0 bottom-2 px-4  w-full flex justify-between items-center"
       >
-        <button class="bg-white shadow-sm rounded-full flex w-10 h-10 hover:bg-gray-100">
+        <button  class="bg-white shadow-sm rounded-full flex w-10 h-10 hover:bg-gray-100">
           <svg
             class="m-auto"
             width="15"
@@ -49,7 +49,7 @@
       >
         <badge :color="badgecolor" :label="vault.nfts.length + ' assets'" />
       </div>
-      <swiper :slides-per-view="1" :space-between="0">
+      <swiper :slides-per-view="1" :space-between="0" @click="goToDetails">
         <swiper-slide v-for="(item, index) of vault.nfts" :key="index">
           <img
             class="w-full h-80 object-cover"
@@ -59,7 +59,7 @@
       </swiper>
     </div>
 
-    <div class="content w-full pt-6 bg-white">
+    <div class="content w-full pt-6 bg-white" @click="goToDetails">
       <div class="data w-full">
         <h4
           class="w-72 text-sm font-medium leading-tight text-primary-link px-6"
@@ -86,6 +86,7 @@ import "swiper/swiper-bundle.min.css";
 import Badge from "./Badge.vue";
 import Stats from "./Stats.vue";
 import { onMounted } from "@vue/runtime-core";
+// import { useRouter } from 'vue-router'
 
 export default {
   props: ["vault", "bg", "badgecolor","url"],
@@ -96,11 +97,18 @@ export default {
     Badge,
     Stats,
   },
+  methods:{
+    goToDetails(){
+     this.$router.push(this.url)
+    }
+  },
 
   setup(props) {
+    // const router = useRouter()
     onMounted(() => {
       console.log(props.value);
     });
+   
 
     return {
       modules: [Navigation, Pagination, Scrollbar, A11y],

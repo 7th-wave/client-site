@@ -37,12 +37,10 @@
         >
           <VaultItem
             class=" cursor-pointer"
-            @click="
-              $router.push({
+            :url="{
                 name: 'My_fractions_details',
                 params: { id: item.id },
-              })
-            "
+              }"
             v-for="(item, index, key) in vaults"
             :key="key"
             :vault="item"

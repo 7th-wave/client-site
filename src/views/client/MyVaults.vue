@@ -28,12 +28,10 @@
         <div class="mt-5 md:mt-0 lg:col-span-5 grid grid-cols-2 gap-4">
           <VaultItem
             class="cursor-pointer"
-            @click="
-              $router.push({
+            :url="{
                 name: 'Vault',
                 params: { id: item.id },
-              })
-            "
+              }"
             v-for="(item, index, key) in FineArt"
             :key="key"
             :vault="item"

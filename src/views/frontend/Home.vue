@@ -32,7 +32,7 @@
             <CarouselCard ref="carouselCardRef" :interval="7000" :autoplay="false" height="500px" type="card" arrow="always" @change="changeHandle">
               <CarouselCardItem v-for="(vault, index) in vaults"
                 :key="index" :name="`cc_${index}`">
-                <vault-item  badgecolor="green" :vault="vault" />
+                <vault-item :url="{name:'Vault',params:{id:vault.id}}"  badgecolor="green" :vault="vault" />
               </CarouselCardItem>
             </CarouselCard>
             
