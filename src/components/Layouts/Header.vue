@@ -45,39 +45,95 @@
             >
               {{ currentRouteName }}
             </div>
-            <div class="px-4 py-2">
+            <div class="px-8 py-2">
               <span class="sr-only">Workflow </span>
-              <Button btn-style="outlined" @click="goFractionalize()">
-                <ViewGridIcon class="h-5 w-5 mr-3" /> Fractionalize
-              </Button>
+              <button
+                @click="goFractionalize()"
+                class="
+                  flex
+                  items-center
+                  space-x-2
+                  border
+                  py-2.5
+                  px-4
+                  rounded-md
+                  text-primary-500
+                  border-primary-500
+                "
+              >
+                <div>
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M1.3335 2.70378C1.3335 1.7833 2.07969 1.03711 3.00016 1.03711H4.66683C5.5873 1.03711 6.3335 1.7833 6.3335 2.70378V4.37044C6.3335 5.29092 5.5873 6.03711 4.66683 6.03711H3.00016C2.07969 6.03711 1.3335 5.29092 1.3335 4.37044V2.70378Z"
+                      stroke="#1ACE99"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M9.66683 2.70378C9.66683 1.7833 10.413 1.03711 11.3335 1.03711H13.0002C13.9206 1.03711 14.6668 1.7833 14.6668 2.70378V4.37044C14.6668 5.29092 13.9206 6.03711 13.0002 6.03711H11.3335C10.413 6.03711 9.66683 5.29092 9.66683 4.37044V2.70378Z"
+                      stroke="#1ACE99"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M1.3335 11.0371C1.3335 10.1166 2.07969 9.37044 3.00016 9.37044H4.66683C5.5873 9.37044 6.3335 10.1166 6.3335 11.0371V12.7038C6.3335 13.6242 5.5873 14.3704 4.66683 14.3704H3.00016C2.07969 14.3704 1.3335 13.6242 1.3335 12.7038V11.0371Z"
+                      stroke="#1ACE99"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                    <path
+                      d="M9.66683 11.0371C9.66683 10.1166 10.413 9.37044 11.3335 9.37044H13.0002C13.9206 9.37044 14.6668 10.1166 14.6668 11.0371V12.7038C14.6668 13.6242 13.9206 14.3704 13.0002 14.3704H11.3335C10.413 14.3704 9.66683 13.6242 9.66683 12.7038V11.0371Z"
+                      stroke="#1ACE99"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </div>
+                <span class="text-base font-medium font-inter">
+                  Fractionalize</span
+                >
+              </button>
             </div>
-            <button @click="showMenu = true" class=" outline-none hover:text-black">
+            <button
+              @click="showMenu = true"
+              class="outline-none hover:text-black"
+            >
               <MenuIcon />
             </button>
           </div>
         </div>
       </Popover>
-      <MainMenu  @closeMenu="closeMenu" :animate_menu="showMenu" ref="MainMenu" />
+      <MainMenu
+        @closeMenu="closeMenu"
+        :animate_menu="showMenu"
+        ref="MainMenu"
+      />
     </header>
   </div>
 </template>
 <script>
 import { ref, computed } from "vue";
 import { Popover } from "@headlessui/vue";
-import { ViewGridIcon } from "@heroicons/vue/solid";
 import MainMenu from "./MainMenu.vue";
 import slugify from "slugify";
-import MenuIcon from '../Icons/MenuIcon.vue';
+import MenuIcon from "../Icons/MenuIcon.vue";
 
 import { useStore } from "vuex";
 import { useRoute, useRouter } from "vue-router";
-import Button from "./Button.vue";
-import Logo from './Logo.vue';
+import Logo from "./Logo.vue";
 export default {
   components: {
     Popover,
-    Button,
-    ViewGridIcon,
     MenuIcon,
     MainMenu,
     Logo,
@@ -108,8 +164,8 @@ export default {
     });
 
     const goFractionalize = () => {
-      router.push({ path: '/fractionalize' });
-    }
+      router.push({ path: "/fractionalize" });
+    };
 
     return {
       key: 0,
