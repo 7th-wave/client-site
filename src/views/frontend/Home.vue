@@ -121,14 +121,6 @@ const vaults = [
         name: "caveman",
         image: "caveman.png",
       },
-     {
-        name: "caveman",
-        image: "caveman.png",
-      },
-     {
-        name: "caveman",
-        image: "caveman.png",
-      },
     ],
   },
   {
