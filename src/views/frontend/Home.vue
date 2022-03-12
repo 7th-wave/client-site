@@ -37,7 +37,7 @@
               
             </CarouselCard>
 
-            <div class=" w-full flex justify-between items-center absolute top-56 -right-4 z-10">
+            <div class=" w-full flex justify-between items-center absolute top-56 -right-5 z-10">
                 <button @click="prev"  class="bg-white shadow-md rounded-full flex w-10 h-10 hover:bg-gray-100">
           <svg
             class="m-auto"
@@ -84,11 +84,11 @@
 
         <div class="pb-12 bg-white">
           <Title text="Featured Collections" />
-          <swiper class=" hidden lg:block"
+          <swiper
             :slides-per-view="3.5"
             :space-between="20"
             :centeredSlides="true"
-            :loop="true"
+            :loop="false"
             :modules="modules"
             @swiper="onSwiper"
             @slideChange="onSlideChange"
@@ -125,7 +125,7 @@
               </div>
             </swiper-slide>
           </swiper>
-          <div class=" w-full grid md:grid-cols-2 grid-cols-1 gap-4 lg:hidden">
+          <!-- <div class=" w-full grid md:grid-cols-2 grid-cols-1 gap-4 lg:hidden">
     
               <div class="w-full p-2 flex items-center"  v-for="(category, index,key) in categories" :key="key" @click="goToDetails(category.id)">
                 <category-card @click="GoToCategory" :category="category">
@@ -157,7 +157,7 @@
                 </category-card>
               </div>
            
-          </div>
+          </div> -->
         </div>
       </div>
     </div>
