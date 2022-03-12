@@ -6,7 +6,7 @@
        v-if="vault.nfts.length > 1"
         class="z-10 absolute left-0 bottom-2 px-4  w-full flex justify-between items-center"
       >
-        <button  class="bg-white shadow-sm rounded-full flex w-10 h-10 hover:bg-gray-100">
+        <button  class="bg-white shadow-md rounded-full flex w-10 h-10 hover:bg-gray-100">
           <svg
             class="m-auto"
             width="15"
@@ -24,7 +24,7 @@
             />
           </svg>
         </button>
-        <button class="bg-white shadow-sm rounded-full flex w-10 h-10 hover:bg-gray-100">
+        <button class="bg-white shadow-md rounded-full flex w-10 h-10 hover:bg-gray-100">
           <svg
            class=" m-auto"
             width="15"

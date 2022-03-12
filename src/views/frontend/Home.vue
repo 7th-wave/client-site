@@ -28,13 +28,54 @@
               </div>
             </div>
           </div>
-          <div class="col-span-1 lg:col-span-4 lg:pl-12 pb-6 pt-6">
+          <div class="col-span-1 lg:col-span-4 lg:pl-12 pb-6 pt-6 relative">
             <CarouselCard ref="carouselCardRef" :interval="7000" :autoplay="false" height="500px" type="card" arrow="always" @change="changeHandle">
               <CarouselCardItem v-for="(vault, index) in vaults"
                 :key="index" :name="`cc_${index}`">
                 <vault-item :url="{name:'Vault',params:{id:vault.id}}"  badgecolor="green" :vault="vault" />
               </CarouselCardItem>
+              
             </CarouselCard>
+
+            <div class=" w-full flex justify-between items-center absolute top-56 -right-4 z-10">
+                <button @click="prev"  class="bg-white shadow-md rounded-full flex w-10 h-10 hover:bg-gray-100">
+          <svg
+            class="m-auto"
+            width="15"
+            height="12"
+            viewBox="0 0 15 12"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M6.13346 10.9835L1.4668 6.31687M1.4668 6.31687L6.13346 1.65021M1.4668 6.31687L13.4668 6.31687"
+              stroke="#9CA3AF"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
+        <button @click="next" class="bg-white shadow-md rounded-full flex w-10 h-10 hover:bg-gray-100">
+          <svg
+           class=" m-auto"
+            width="15"
+            height="12"
+            viewBox="0 0 15 12"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M8.80013 1.65021L13.4668 6.31687M13.4668 6.31687L8.80013 10.9835M13.4668 6.31687L1.4668 6.31687"
+              stroke="#9CA3AF"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
+    
+             </div>
             
           </div>
         </div>
@@ -271,7 +312,18 @@ export default {
     const goCollections = () => {
       router.push({ name: "Explore" });
     };
-    
+     const changeHandle = (index) => {
+      console.log(index)
+    }
+    const next = () => {
+      carouselCardRef.value.next()
+    }
+    const prev = () => {
+      carouselCardRef.value.prev()
+    }
+    const setToFirst = () => {
+      carouselCardRef.value.setActiveItem(0)
+    }
 
     return {
       modules: [Pagination, Autoplay],
@@ -281,6 +333,11 @@ export default {
       vaults,
       categories,
       carouselCardRef,
+      changeHandle,
+      next,
+      prev,
+      setToFirst
+
     };
   },
 };
@@ -324,6 +381,16 @@ export default {
        width: 529.429px !important;
 
 }
+
 </style>
 
+
+<style>
+.carousel-card-arrow {
+  display: none;
+}
+.carousel-card-indicators {
+  display: none;
+}
+</style>
 
