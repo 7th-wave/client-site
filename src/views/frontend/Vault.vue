@@ -51,8 +51,8 @@
         <Table :headers="tableData.headers" :data="tableData.data">
           <template #body>
             <tbody
-              class="bg-white divide-y divide-gray-200 shadow-md w-full"
-              v-for="n in 7"
+              class="bg-white divide-y divide-gray-200 shadow-md w-full h-full"
+              v-for="n in 9"
               :key="n"
             >
               <td
@@ -186,7 +186,7 @@
       </div>
     </div>
     <div class="w-full px-8 pt-2">
-      <div class="w-full py-2 bg-white border-2 rounded-md flex">
+      <div class="w-full py-3 bg-white border-2 rounded-md flex">
         <div class="flex items-center space-x-2 m-auto">
           <span class="text-base text-gray-700 font-medium font-inter"
             >VIEW ALL OWNERS & EVENTS</span
@@ -226,7 +226,7 @@
         >
           <template #image>
             <img
-              class="w-full h-full object-cover"
+              class="w-full h-full object-cover border-b"
               :src="category.image"
               alt=""
             />
