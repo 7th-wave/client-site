@@ -9,7 +9,7 @@
           height="400px"
           type="card"
           arrow="always"
-          @change="changeHandle" class=" space-x-20"
+          @change="changeHandle"
         >
           <CarouselCardItem
             v-for="(item, index, key) in slides"
