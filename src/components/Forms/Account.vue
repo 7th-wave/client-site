@@ -274,15 +274,199 @@
           </div>
         </div>
       </div>
-
+     <!-- Security -->
+      <div>
+        <div
+          class="
+            text-base
+            font-medium
+            text-gray-900
+            sm:text-sm sm:text-gray-700
+            py-4
+          "
+          id="label-email"
+        >
+          <h3 class="text-lg leading-6 font-medium text-gray-900">Security</h3>
+        </div>
+        <div
+          class="
+            sm:grid
+            sm:grid-cols-3
+            sm:gap-4
+            sm:items-start
+            sm:border-t
+            sm:border-gray-200
+            sm:pt-5
+            space-y-4
+          "
+        >
+          <label
+            for="last_name"
+            class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
+          >
+            New Password <span class="text-red-700 text-lg"></span>
+          </label>
+          <div class="col-span-2">
+            <div
+              class="
+                mt-1
+                relative
+                w-full
+                rounded-md
+                shadow-sm
+                sm:mt-0 sm:col-span-2
+              "
+            >
+              <input
+                type="password"
+                name="last_name"
+                id="last_name"
+                autocomplete="family-name"
+                class="
+                  block
+                  w-full
+                  shadow-sm
+                  focus:ring-primary-500 focus:border-primary-500
+                  sm:text-sm
+                  border-gray-300
+                  rounded-md
+                "
+              />
+            </div>
+          </div>
+          <label
+            for="last_name"
+            class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
+          >
+            Confirm New Password <span class="text-red-700 text-lg"></span>
+          </label>
+          <div class="col-span-2">
+            <div
+              class="
+                mt-1
+                relative
+                w-full
+                rounded-md
+                shadow-sm
+                sm:mt-0 sm:col-span-2
+              "
+            >
+              <input
+                type="password"
+                name="last_name"
+                id="last_name"
+                autocomplete="family-name"
+                class="
+                  block
+                  w-full
+                  shadow-sm
+                  focus:ring-primary-500 focus:border-primary-500
+                  sm:text-sm
+                  border-gray-300
+                  rounded-md
+                "
+              />
+            </div>
+          </div>
+          <div class="">
+            <span class="text-gray-700 font-medium font-inter text-sm"
+              >Two Way Authenticator</span
+            >
+          </div>
+          <div class="max-w-lg space-y-4 col-span-2">
+            <div class="flex items-start">
+              <div class="flex items-center h-5">
+                <input
+                  id="newsletter"
+                  name="newsletter"
+                  type="checkbox"
+                  class="
+                    focus:ring-primary-500
+                    h-4
+                    w-4
+                    text-primary-600
+                    border-gray-300
+                    rounded
+                  "
+                />
+              </div>
+              <div class="ml-3 text-sm flex flex-col items-start">
+                <label for="offers" class="font-medium text-gray-700"
+                  >Google Authenticator</label
+                >
+                <span class="text-sm font-inter text-gray-500"
+                  >Provide stronger security Download APP</span
+                >
+              </div>
+            </div>
+            <div class="flex items-start">
+              <div class="flex items-center h-5">
+                <input
+                  id="newsletter"
+                  name="newsletter"
+                  type="checkbox"
+                  class="
+                    focus:ring-primary-500
+                    h-4
+                    w-4
+                    text-primary-600
+                    border-gray-300
+                    rounded
+                  "
+                />
+              </div>
+              <div class="ml-3 text-sm flex flex-col items-start">
+                <label for="offers" class="font-medium text-gray-700"
+                  >SMS Authenticator
+                </label>
+                <span class="text-sm font-inter text-gray-500"
+                  >Get a code on your phone.</span
+                >
+              </div>
+            </div>
+          </div>
+          <label
+            for="phonesms"
+            class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
+          >
+            Phone SMS
+            <span class="text-red-700 text-lg"></span>
+          </label>
+          <div class="col-span-2">
+            <div
+              class="
+                mt-1
+                relative
+                w-full
+                rounded-md
+                shadow-sm
+                sm:mt-0 sm:col-span-2
+              "
+            >
+              <input
+                type="text"
+                name="phonesms"
+                id="phonesms"
+                autocomplete="phonesms"
+                class="
+                  block
+                  w-full
+                  shadow-sm
+                  focus:ring-primary-500 focus:border-primary-500
+                  sm:text-sm
+                  border-gray-300
+                  rounded-md
+                "
+              />
+            </div>
+          </div>
+        </div>
+      </div>
       <!-- Personal Information -->
       <div class="pt-8 space-y-6 sm:pt-10 sm:space-y-5">
         <h3 class="text-lg leading-6 font-medium text-gray-900">
           Personal Information
         </h3>
-        <p class="mt-1 max-w-2xl text-sm text-gray-500">
-          Use a permanent address where you can receive mail.
-        </p>
         <div
           class="space-y-6 sm:space-y-5 divide-solid divide-y-1 divide-gray-300"
         >
@@ -301,7 +485,7 @@
               for="first_name"
               class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
             >
-              First name <span class="text-red-700 text-lg">*</span>
+              First name <span class="text-red-700 text-lg"></span>
             </label>
             <div class="col-span-2">
               <div
@@ -370,7 +554,7 @@
               for="last_name"
               class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
             >
-              Last name <span class="text-red-700 text-lg">*</span>
+              Last name <span class="text-red-700 text-lg"></span>
             </label>
             <div class="col-span-2">
               <div
@@ -433,8 +617,6 @@
             </div>
           </div>
 
-         
-
           <div
             v-if="isAdmin && !isEdit"
             class="
@@ -453,16 +635,8 @@
             >
               Password <span class="text-red-700 text-lg">*</span>
             </label>
-            <div class=" col-span-2">
-              <div
-                class="
-                  mt-1
-                  relative
-                  rounded-md
-                  shadow-sm
-                  w-full
-                "
-              >
+            <div class="col-span-2">
+              <div class="mt-1 relative rounded-md shadow-sm w-full">
                 <input
                   type="password"
                   v-model="passwordAdmin"
@@ -477,7 +651,7 @@
                     w-full
                     shadow-sm
                     focus:ring-primary-500 focus:border-primary-500
-                     sm:text-sm
+                    sm:text-sm
                     border-gray-300
                     rounded-md
                   "
@@ -491,7 +665,7 @@
                     pr-3
                     sm:mt-px sm:pt-2
                     items-center
-                     sm:mt-0 
+                    sm:mt-0
                     pointer-events-none
                   "
                 >
@@ -526,9 +700,9 @@
               for="phone"
               class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
             >
-              Phone <span class="text-red-700 text-lg">*</span>
+              Phone <span class="text-red-700 text-lg"></span>
             </label>
-            <div class=" col-span-2">
+            <div class="col-span-2">
               <div
                 class="mt-1 relative rounded-md shadow-sm sm:mt-0 sm:col-span-2"
               >
@@ -561,7 +735,7 @@
                     right-0
                     sm:mt-px sm:pt-2
                     items-center
-                     sm:mt-0 sm:col-span-2
+                    sm:mt-0 sm:col-span-2
                     pointer-events-none
                   "
                 >
@@ -605,12 +779,11 @@
                 v-model="user.country"
                 autocomplete="country"
                 class="
-                 
                   block
                   focus:ring-primary-500 focus:border-primary-500
                   w-full
                   shadow-sm
-                   sm:text-sm
+                  sm:text-sm
                   border-gray-300
                   rounded-md
                 "
@@ -682,12 +855,11 @@
                 v-model="user.city"
                 id="city"
                 class="
-                  
                   block
                   w-full
                   shadow-sm
                   focus:ring-primary-500 focus:border-primary-500
-                   sm:text-sm
+                  sm:text-sm
                   border-gray-300
                   rounded-md
                 "
@@ -718,12 +890,11 @@
                 name="state"
                 id="state"
                 class="
-                  
                   block
                   w-full
                   shadow-sm
                   focus:ring-primary-500 focus:border-primary-500
-                   sm:text-sm
+                  sm:text-sm
                   border-gray-300
                   rounded-md
                 "
@@ -755,7 +926,6 @@
                 id="zip"
                 autocomplete="postal-code"
                 class="
-                
                   block
                   w-full
                   shadow-sm
@@ -824,193 +994,87 @@
       </div>
 
       <!-- Notifications -->
-      <div
-        class="
-          text-base
-          font-medium
-          text-gray-900
-          sm:text-sm sm:text-gray-700
-          py-4
-        "
-        id="label-email"
-      >
-        <h3 class="text-lg leading-6 font-medium text-gray-900">
-          Notifications
-        </h3>
-        <p class="mt-1 max-w-2xl text-sm text-gray-500">
-          We'll always let you know about important changes, but you pick what
-          else you want to hear about.
-        </p>
-      </div>
-      <div
-        class="pt-6 sm:pt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-baseline"
-      >
-        <div class="">
-          <span class="text-gray-700 font-medium font-inter text-sm"
-            >By Email</span
-          >
-        </div>
 
-        <div class="max-w-lg space-y-4 col-span-2">
-          <div class="flex items-start">
-            <div class="flex items-center h-5">
-              <input
-                id="newsletter"
-                name="newsletter"
-                type="checkbox"
-                class="
-                  focus:ring-primary-500
-                  h-4
-                  w-4
-                  text-primary-600
-                  border-gray-300
-                  rounded
-                "
-              />
-            </div>
-            <div class="ml-3 text-sm flex flex-col items-start">
-              <label for="offers" class="font-medium text-gray-700"
-                >Comments</label
-              >
-              <span class="text-sm font-inter text-gray-500"
-                >Get notified when someones posts a comment on a posting.</span
-              >
-            </div>
-          </div>
-          <div class="flex items-start">
-            <div class="flex items-center h-5">
-              <input
-                id="newsletter"
-                name="newsletter"
-                type="checkbox"
-                class="
-                  focus:ring-primary-500
-                  h-4
-                  w-4
-                  text-primary-600
-                  border-gray-300
-                  rounded
-                "
-              />
-            </div>
-            <div class="ml-3 text-sm flex flex-col items-start">
-              <label for="offers" class="font-medium text-gray-700"
-                >Candidates</label
-              >
-              <span class="text-sm font-inter text-gray-500"
-                >Get notified when a candidate applies for a job.</span
-              >
-            </div>
-          </div>
-          <div class="flex items-start">
-            <div class="flex items-center h-5">
-              <input
-                id="newsletter"
-                name="newsletter"
-                type="checkbox"
-                class="
-                  focus:ring-primary-500
-                  h-4
-                  w-4
-                  text-primary-600
-                  border-gray-300
-                  rounded
-                "
-              />
-            </div>
-            <div class="ml-3 text-sm flex flex-col items-start">
-              <label for="offers" class="font-medium text-gray-700"
-                >Offers</label
-              >
-              <span class="text-sm font-inter text-gray-500"
-                >Get notified when a candidate accepts or rejects an
-                offer.</span
-              >
-            </div>
-          </div>
+      <div>
+        <div
+          class="
+            text-base
+            font-medium
+            text-gray-900
+            sm:text-sm sm:text-gray-700
+            py-4
+          "
+          id="label-email"
+        >
+          <h3 class="text-lg leading-6 font-medium text-gray-900">
+            Notifications
+          </h3>
         </div>
-      </div>
-      <div
-        class="pt-6 sm:pt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-baseline"
-      >
-        <div class="">
-          <span class="text-gray-700 font-medium font-inter text-sm"
-            >Push Notifications</span
-          >
-        </div>
+        <div
+          class="pt-6 sm:pt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-baseline"
+        >
+          <div class="">
+            <span class="text-gray-700 font-medium font-inter text-sm"
+              >By Email</span
+            >
+          </div>
 
-        <div class="max-w-lg space-y-4 col-span-2">
-          <span class="text-sm font-inter text-gray-500"
-            >These are delivered via SMS to your mobile phone.</span
-          >
-          <div class="flex items-start">
-            <div class="flex items-center h-5">
-              <input
-                id="newsletter"
-                name="newsletter"
-                type="checkbox"
-                class="
-                  focus:ring-primary-500
-                  h-4
-                  w-4
-                  text-primary-600
-                  border-gray-300
-                  rounded
-                "
-              />
+          <div class="max-w-lg space-y-4 col-span-2">
+            <div class="flex items-start">
+              <div class="flex items-center h-5">
+                <input
+                  id="newsletter"
+                  name="newsletter"
+                  type="checkbox"
+                  class="
+                    focus:ring-primary-500
+                    h-4
+                    w-4
+                    text-primary-600
+                    border-gray-300
+                    rounded
+                  "
+                />
+              </div>
+              <div class="ml-3 text-sm flex flex-col items-start">
+                <label for="offers" class="font-medium text-gray-700"
+                  >Promotions</label
+                >
+                <span class="text-sm font-inter text-gray-500"
+                  >Get notified when new product and fractions are listed.</span
+                >
+              </div>
             </div>
-            <div class="ml-3 text-sm flex flex-col items-start">
-              <label for="offers" class="font-medium text-gray-700"
-                >Everything</label
-              >
-            </div>
-          </div>
-          <div class="flex items-start">
-            <div class="flex items-center h-5">
-              <input
-                id="newsletter"
-                name="newsletter"
-                type="checkbox"
-                class="
-                  focus:ring-primary-500
-                  h-4
-                  w-4
-                  text-primary-600
-                  border-gray-300
-                  rounded
-                "
-              />
-            </div>
-            <div class="ml-3 text-sm flex flex-col items-start">
-              <label for="offers" class="font-medium text-gray-700"
-                >Same as email</label
-              >
-            </div>
-          </div>
-          <div class="flex items-start">
-            <div class="flex items-center h-5">
-              <input
-                id="newsletter"
-                name="newsletter"
-                type="checkbox"
-                class="
-                  focus:ring-primary-500
-                  h-4
-                  w-4
-                  text-primary-600
-                  border-gray-300
-                  rounded
-                "
-              />
-            </div>
-            <div class="ml-3 text-sm flex flex-col items-start">
-              <label for="offers" class="font-medium text-gray-700"
-                >No push notifications</label
-              >
+            <div class="flex items-start">
+              <div class="flex items-center h-5">
+                <input
+                  id="newsletter"
+                  name="newsletter"
+                  type="checkbox"
+                  class="
+                    focus:ring-primary-500
+                    h-4
+                    w-4
+                    text-primary-600
+                    border-gray-300
+                    rounded
+                  "
+                />
+              </div>
+              <div class="ml-3 text-sm flex flex-col items-start">
+                <label for="offers" class="font-medium text-gray-700"
+                  >Security & New Features</label
+                >
+                <span class="text-sm font-inter text-gray-500"
+                  >Get notified about security updates and when new features are
+                  added.</span
+                >
+              </div>
             </div>
           </div>
         </div>
       </div>
+
       <!-- Actions -->
       <div class="pt-5 lg:flex justify-start">
         <!-- <button
@@ -1050,11 +1114,10 @@
             font-medium
             rounded-md
             text-white
-            
             hover:bg-primary-500
             focus:outline-none
           "
-          style="background-color:#049AFF"
+          style="background-color: #049aff"
         >
           Save
         </button>
@@ -1097,18 +1160,18 @@ export default {
           user.value.username.trim() == "" &&
           "Username required."
       ),
-      firstName: computed(
-        () =>
-          !isValid.value &&
-          user.value.firstName.trim() == "" &&
-          "First name required."
-      ),
-      lastName: computed(
-        () =>
-          !isValid.value &&
-          user.value.lastName.trim() == "" &&
-          "Last name required."
-      ),
+      // firstName: computed(
+      //   () =>
+      //     !isValid.value &&
+      //     user.value.firstName.trim() == "" &&
+      //     "First name required."
+      // ),
+      // lastName: computed(
+      //   () =>
+      //     !isValid.value &&
+      //     user.value.lastName.trim() == "" &&
+      //     "Last name required."
+      // ),
       email: computed(
         () =>
           (!isValid.value &&
@@ -1127,10 +1190,10 @@ export default {
             passwordAdmin.value.trim().length < 6 &&
             "Password must be greater than 6 digits")
       ),
-      phone: computed(
-        () =>
-          !isValid.value && user.value.phone.trim() == "" && "Phone required."
-      ),
+      // phone: computed(
+      //   () =>
+      //     !isValid.value && user.value.phone.trim() == "" && "Phone required."
+      // ),
     });
 
     const isValid = ref(true);
