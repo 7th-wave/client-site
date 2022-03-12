@@ -32,16 +32,16 @@
         item-center
         space-y-4
         bg-white
-        xl:px-96 md:px-40 sm:px-20 px-2
+         px-2
         py-5
         text-center
       "
     >
-      <span class="text-black font-inter text-xl font-semibold"
+      <span class="text-black font-inter text-xl font-semibold max-w-6xl mx-auto"
         >The global fine art market was valued at 50 billion U.S. dollars in
         2020.
       </span>
-      <p class="text-black font-inter text-xl font-normal">
+      <p class="text-black font-inter text-xl font-normal max-w-6xl mx-auto">
         The audience for buyers will continue to expand in 2021 as rapid
         technological transformation and the embrace of digital channels will
         remain ever present. The comprehensive set of digital tools clients can
@@ -57,16 +57,16 @@
         item-center
         space-y-4
         bg-white
-        xl:px-96 md:px-40 sm:px-20 px-2 
+        px-2
         py-5
         text-center
       "
     >
-      <span class="text-black font-inter text-xl font-semibold"
+      <span class="text-black font-inter text-xl font-semibold max-w-6xl mx-auto"
         >Collecting sneakers became a
         multi-billion-dollar industry</span
       >
-      <p class="text-black font-inter text-xl font-normal">
+      <p class="text-black font-inter text-xl font-normal max-w-6xl mx-auto">
         Over the past five years, there's been an "explosion" in collectors
         spending big money on rare shoes. Over the past five years, there's been
         an "explosion" in collectors spending big money on rare shoes Over the
@@ -74,7 +74,7 @@
         money on rare shoes
       </p>
     </div>
-    <div class="2xl:px-96 md:px-40 sm:px-20 px-2  w-full">
+    <div class=" max-w-6xl mx-auto px-2  w-full">
       <div class="grid lg:grid-cols-3 grid-cols-1 md:grid-cols-2 gap-8">
         <VaultItem
          :url="{
