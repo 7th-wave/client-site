@@ -1,16 +1,16 @@
 <template>
   <div class="w-full rounded-md shadow-md p-4 font-inter bg-white">
     <div class="flex justify-between w-full items-center">
-      <span class="text-base font-medium text-gray-700"
+      <span class="text-base font-medium text-gray-900"
         >Your owned fractions</span
       >
       <span
         @click="PurchaseDetails"
-        class="text-sm font-semibold text-primary-300 cursor-pointer"
+        class="text-sm font-semibold text-primary-500 cursor-pointer"
         >View your vault purchases</span
       >
     </div>
-    <div class="flex items-start flex-col space-y-1 pb-4">
+    <div class="flex items-start flex-col space-y-1 pb-4 pt-4">
       <span class="text-black font-normal text-sm"
         >  {{ getParams == 'cvman' ? '1,000' : '10,000.00'}}  <span class="font-semibold"> {{ getParams == 'cvman' ? 'CVMAN' : 'NIKE'}}</span></span
       >
