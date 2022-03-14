@@ -772,11 +772,11 @@ export default {
     };
   },
   methods: {
+    RemoveItem(item) {
+      this.form.assets.splice(item, 1);
+    },
     AddAssets() {
       this.$refs.AddAssetsModal.open = true;
-    },
-    RemoveAsset(index) {
-      this.form.assets.splice(index, 1);
     },
     AddAsset() {
       if (this.validateForm()) {

@@ -226,6 +226,7 @@ export default {
   methods: {
     nextStep() {
      // this.$emit("nextStep");
+     this.$router.push({name:'VaultsCreateStep3'});
     },
   },
 };
