@@ -290,4 +290,21 @@ export default {
   z-index: 1;
   transform: scale(1);
 }
+
+.carousel-card-arrow {
+  width: 56px;
+  height: 56px;
+  background-color: transparent;
+  background-size: 100%
+}
+
+.carousel-card-arrow-right i {
+  background-image: url('/images/arrow_next.svg')!important;
+  background-repeat: no-repeat;
+}
+
+.carousel-card-arrow-left i {
+  background-image: url('/images/arrow_left.svg')!important;
+  background-repeat: no-repeat;
+}
 </style>
