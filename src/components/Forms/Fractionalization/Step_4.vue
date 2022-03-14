@@ -231,7 +231,7 @@
         </div>
       </div>
       <div>
-        <div class="space-y-4 pt-4">
+        <div class="space-y-4 pt-4 w-full">
           <div
             class="w-full rounded-md py-2 px-4 bg-gray-100"
             v-for="(asset, index, key) in form.assets"
@@ -311,6 +311,7 @@
               </div>
             </div>
           </div>
+           
         </div>
         <div class="py-14">
           <button
@@ -345,169 +346,224 @@
             </span>
           </button>
         </div>
+       
       </div>
-      <div class="grid lg:grid-cols-6 gap-8">
-        <div class="sm:col-span-2 space-y-2">
-          <div class="w-full h-60 rounded-md overflow-hidden border py-4 px-2">
-            <img
-              class="w-full h-full object-cover"
-              src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/QR_code_for_mobile_English_Wikipedia.svg/1200px-QR_code_for_mobile_English_Wikipedia.svg.png"
-              alt=""
-            />
-          </div>
-          <button
-            class="
-              text-sm text-gray-700
-              font-medium
-              border
-              w-full
-              py-2.5
-              rounded-md
-            "
-          >
-            PRINT
-          </button>
-        </div>
-        <div class="sm:col-span-4 space-y-2 sm:mt-16">
-          <fieldset>
-            <legend class="sr-only">Settings</legend>
-            <div class="space-y-5">
-              <div class="relative flex items-start">
-                <div class="flex items-center h-5">
-                  <input
-                    v-model="form.access"
-                    id="small"
-                    aria-describedby="small-description"
-                    name="plan"
-                    type="radio"
+       <div class=" w-full py-8">
+         <div class=" w-full bg-gray-200 h-px"></div>
+       </div>
+        <div class="grid lg:grid-cols-6 gap-8 pt-4">
+              <div class="sm:col-span-2 flex items-start space-x-16">
+                <div class="w-full space-y-2">
+                  <div class="mt-1 flex rounded-md shadow-sm">
+                    <span
+                      class="
+                        inline-flex
+                        items-center
+                        px-3
+                        rounded-l-md
+                        border border-r-0 border-gray-300
+                        bg-gray-50
+                        text-gray-500
+                        sm:text-sm
+                      "
+                    >
+                      QR SHA
+                    </span>
+                    <input
+                      value="0x648C......ECA32F3C"
+                      type="text"
+                      name="asset_launch"
+                      id="asset_launch"
+                      autocomplete="asset_launch"
+                      class="
+                        flex-1
+                        text-primary-500
+                        focus:ring-primary-500 focus:border-primary-500
+                        block
+                        w-full
+                        min-w-0
+                        rounded-none rounded-r-md
+                        sm:text-sm
+                        border-gray-300
+                      "
+                    />
+                  </div>
+                  <div
                     class="
-                      focus:ring-gray-800
-                      h-4
-                      w-4
-                      text-black
-                      border-gray-300
+                      w-full
+                      h-60
+                      rounded-md
+                      overflow-hidden
+                      border
+                      py-4
+                      px-2
                     "
-                  />
-                </div>
-                <div class="ml-3 text-sm">
-                  <label for="small" class="font-medium text-gray-700"
-                    >Public access</label
                   >
-                  <p id="small-description" class="text-gray-500">
-                    Will display on the website artist list
-                  </p>
-                </div>
-              </div>
-
-              <div class="relative flex items-start">
-                <div class="flex items-center h-5">
-                  <input
-                    v-model="form.access"
-                    id="medium"
-                    aria-describedby="medium-description"
-                    name="plan"
-                    type="radio"
+                    <img
+                      class="w-full h-full object-cover"
+                      src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d0/QR_code_for_mobile_English_Wikipedia.svg/1200px-QR_code_for_mobile_English_Wikipedia.svg.png"
+                      alt=""
+                    />
+                  </div>
+                  <button
                     class="
-                      focus:ring-gray-800
-                      h-4
-                      w-4
-                      text-black
-                      border-gray-300
+                      text-sm text-gray-700
+                      font-medium
+                      border
+                      w-full
+                      py-2.5
+                      rounded-md
                     "
-                  />
-                </div>
-                <div class="ml-3 text-sm">
-                  <label for="medium" class="font-medium text-gray-700"
-                    >Private to you</label
                   >
-                  <p id="medium-description" class="text-gray-500">
-                    Only you can see this draft collection
-                  </p>
+                    PRINT
+                  </button>
                 </div>
+                <div class="h-full w-px bg-gray-200 hidden lg:block"></div>
               </div>
-
-              <div class="relative flex items-start">
-                <div class="flex items-center h-5">
-                  <input
-                    v-model="form.access"
-                    id="large"
-                    aria-describedby="large-description"
-                    name="plan"
-                    type="radio"
-                    class="
-                      focus:ring-gray-800
-                      h-4
-                      w-4
-                      text-black
-                      border-gray-300
-                    "
-                  />
+              <div class="sm:col-span-4 space-y-2">
+                <div class="sm:pb-10">
+                  <span class="text-base text-gray-700 font-medium"
+                    >Vault Page Privacy</span
+                  >
                 </div>
-                <div class="ml-3 text-sm">
-                  <label for="large" class="font-medium text-gray-700"
-                    >Private to
-                  </label>
-                  <p id="large-description" class="text-gray-500">
-                    Only people you share link with
-                  </p>
+                <fieldset>
+                  <legend class="sr-only">Settings</legend>
+                  <div class="space-y-5">
+                    <div class="relative flex items-start">
+                      <div class="flex items-center h-5">
+                        <input
+                          v-model="form.access"
+                          id="small"
+                          aria-describedby="small-description"
+                          name="plan"
+                          type="radio"
+                          class="
+                            focus:ring-gray-800
+                            h-4
+                            w-4
+                            text-black
+                            border-gray-300
+                          "
+                        />
+                      </div>
+                      <div class="ml-3 text-sm">
+                        <label for="small" class="font-medium text-gray-700"
+                          >Public access</label
+                        >
+                        <p id="small-description" class="text-gray-500">
+                          Will display on the website artist list
+                        </p>
+                      </div>
+                    </div>
+
+                    <div class="relative flex items-start">
+                      <div class="flex items-center h-5">
+                        <input
+                          v-model="form.access"
+                          id="medium"
+                          aria-describedby="medium-description"
+                          name="plan"
+                          type="radio"
+                          class="
+                            focus:ring-gray-800
+                            h-4
+                            w-4
+                            text-black
+                            border-gray-300
+                          "
+                        />
+                      </div>
+                      <div class="ml-3 text-sm">
+                        <label for="medium" class="font-medium text-gray-700"
+                          >Private to you</label
+                        >
+                        <p id="medium-description" class="text-gray-500">
+                          Only you can see this draft collection
+                        </p>
+                      </div>
+                    </div>
+
+                    <div class="relative flex items-start">
+                      <div class="flex items-center h-5">
+                        <input
+                          v-model="form.access"
+                          id="large"
+                          aria-describedby="large-description"
+                          name="plan"
+                          type="radio"
+                          class="
+                            focus:ring-gray-800
+                            h-4
+                            w-4
+                            text-black
+                            border-gray-300
+                          "
+                        />
+                      </div>
+                      <div class="ml-3 text-sm">
+                        <label for="large" class="font-medium text-gray-700"
+                          >Private to
+                        </label>
+                        <p id="large-description" class="text-gray-500">
+                          Only people you share link with
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </fieldset>
+                <div class="pt-1">
+                  <span
+                    v-if="errors.access"
+                    class="text-red-600 font-inter text-sm font-normal"
+                    >{{ errors.access }}</span
+                  >
+                </div>
+                <div class="sm:pt-10">
+                  <div class="mt-1 flex rounded-md shadow-sm">
+                    <span
+                      class="
+                        inline-flex
+                        items-center
+                        px-3
+                        rounded-l-md
+                        border border-r-0 border-gray-300
+                        bg-gray-50
+                        text-gray-500
+                        sm:text-sm
+                      "
+                    >
+                      VAULT
+                    </span>
+                    <input
+                      v-model="form.url"
+                      type="text"
+                      name="company-website"
+                      id="company-website"
+                      class="
+                        flex-1
+                        min-w-0
+                        block
+                        w-full
+                        px-3
+                        py-2
+                        rounded-none rounded-r-md
+                        focus:ring-primary-500 focus:border-primary-500
+                        sm:text-sm
+                        border-gray-300
+                      "
+                      placeholder="http://"
+                    />
+                  </div>
+                  <div class="pt-1">
+                    <span
+                      v-if="errors.url"
+                      class="text-red-600 font-inter text-sm font-normal"
+                      >{{ errors.url }}</span
+                    >
+                  </div>
                 </div>
               </div>
             </div>
-          </fieldset>
-          <div class="pt-1">
-            <span
-              v-if="errors.access"
-              class="text-red-600 font-inter text-sm font-normal"
-              >{{ errors.access }}</span
-            >
-          </div>
-          <div>
-            <div class="mt-1 flex rounded-md shadow-sm">
-              <span
-                class="
-                  inline-flex
-                  items-center
-                  px-3
-                  rounded-l-md
-                  border border-r-0 border-gray-300
-                  bg-gray-50
-                  text-gray-500
-                  sm:text-sm
-                "
-              >
-                http://
-              </span>
-              <input
-                v-model="form.url"
-                type="text"
-                name="company-website"
-                id="company-website"
-                class="
-                  flex-1
-                  min-w-0
-                  block
-                  w-full
-                  px-3
-                  py-2
-                  rounded-none rounded-r-md
-                  focus:ring-primary-500 focus:border-primary-500
-                  sm:text-sm
-                  border-gray-300
-                "
-                placeholder="www.example.com"
-              />
-              
-            </div>
-            <div class="pt-1">
-                <span
-                  v-if="errors.url"
-                  class="text-red-600 font-inter text-sm font-normal"
-                  >{{ errors.url }}</span
-                >
-              </div>
-          </div>
-        </div>
-      </div>
       <div class="pt-10">
         <hr />
       </div>

@@ -5,7 +5,7 @@
     </div>
     <div class="w-full h-px bg-gray-300"></div>
     <div class="bg-white flex-col flex items-start space-y-2 p-5">
-      <span class="text-primary-1000 text-sm font-inter font-normal"
+      <span class=" text-primary-500 text-sm font-inter font-normal"
         >{{Vault.collection}}</span
       >
       <span class="text-gray-900 font-inter font-semibold text-xl"

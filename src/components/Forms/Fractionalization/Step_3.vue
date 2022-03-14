@@ -185,7 +185,7 @@ const steps_1 = [
     id: "3",
     name: "Create a Vault",
     description: "Penatibus eu quis ante.",
-    href: "#",
+    href: "/vault/create",
     status: "current",
   },
 ];
