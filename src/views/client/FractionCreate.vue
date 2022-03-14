@@ -21,8 +21,15 @@
       <h1 class="text-4xl font-medium">Asset NFT Fractionalization</h1>
     </div>
     <div class="space-y-2">
-      <div class="lg:grid lg:grid-cols-7 lg:gap-6 rounded-lg">
-        <div class="lg:col-span-2 hidden lg:block">
+      <div class=" flex
+        xl:flex-row
+        lg:items-start lg:space-x-4
+        w-full
+        lg:space-y-0
+        flex-col
+        items-start
+        space-y-4">
+        <div class="lg:col-span-2 hidden xl:block">
           <Menu />
         </div>
         <div class="sm:col-span-5 space-y-2">
