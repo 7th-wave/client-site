@@ -46,63 +46,37 @@
           >
             Username <span class="text-red-700 text-lg">*</span>
           </label>
-          <div class="col-span-2">
-            <div
-              class="
-                mt-1
-                w-full
-                relative
-                rounded-md
-                shadow-s
-                sm:mt-0
-                col-span-2
-              "
-            >
-              <div class="w-full flex rounded-md shadow-sm">
-                <span
-                  class="
-                    inline-flex
-                    items-center
-                    px-3
-                    rounded-l-md
-                    border border-r-0 border-gray-300
-                    bg-gray-50
-                    text-gray-500
-                    sm:text-sm
-                  "
-                >
-                  @
-                </span>
-                <input
-                  type="text"
-                  v-model="user.username"
-                  name="username"
-                  id="username"
-                  autocomplete="username"
-                  :class="[
-                    'flex-1 block w-full focus:ring-primary-500 focus:border-primary-500 min-w-0 rounded-none rounded-r-md  sm:text-sm  border-gray-300',
-                    validations.username &&
-                      'focus:outline-none focus:ring-red-500 focus:border-red-500 border-red-300',
-                  ]"
+          <div class="col-span-2 w-full">
+            <div class="mt-1 w-full relative rounded-md shadow-sm sm:mt-0">
+              <input
+                type="text"
+                v-model="user.username"
+                name="username"
+                id="username"
+                autocomplete="given-name"
+                :class="[
+                  'relative  block w-full shadow-sm focus:ring-primary-500 focus:border-primary-500  sm:text-sm border-gray-300 rounded-md ',
+                  validations.username &&
+                    'focus:outline-none focus:ring-red-500 focus:border-red-500 border-red-300',
+                ]"
+              />
+              <div
+                v-if="validations.username"
+                class="
+                  absolute
+                  inset-y-0
+                  pr-3
+                  right-0
+                  sm:mt-px sm:pt-2
+                  items-center
+                  sm:max-w-xs sm:mt-0 sm:col-span-2
+                  pointer-events-none
+                "
+              >
+                <ExclamationCircleIcon
+                  class="h-5 w-5 text-red-500"
+                  aria-hidden="true"
                 />
-                <div
-                  v-if="validations.username"
-                  class="
-                    absolute
-                    inset-y-0
-                    pr-3
-                    right-0
-                    sm:mt-px sm:pt-2
-                    items-center
-                    sm:max-w-xs sm:mt-0 sm:col-span-2
-                    pointer-events-none
-                  "
-                >
-                  <ExclamationCircleIcon
-                    class="h-5 w-5 text-red-500"
-                    aria-hidden="true"
-                  />
-                </div>
               </div>
             </div>
             <p
@@ -131,45 +105,71 @@
           >
             Email address* <span class="text-red-700 text-lg">*</span>
           </label>
-          <div class="col-span-2 w-full">
-            <div class="mt-1 w-full relative rounded-md shadow-sm sm:mt-0">
-              <input
-                type="email"
-                v-model="user.email"
-                name="email"
-                id="email"
-                autocomplete="given-name"
-                :class="[
-                  'relative  block w-full shadow-sm focus:ring-primary-500 focus:border-primary-500  sm:text-sm border-gray-300 rounded-md ',
-                  validations.firstName &&
-                    'focus:outline-none focus:ring-red-500 focus:border-red-500 border-red-300',
-                ]"
-              />
-              <div
-                v-if="validations.firstName"
-                class="
-                  absolute
-                  inset-y-0
-                  pr-3
-                  right-0
-                  sm:mt-px sm:pt-2
-                  items-center
-                  sm:max-w-xs sm:mt-0 sm:col-span-2
-                  pointer-events-none
-                "
-              >
-                <ExclamationCircleIcon
-                  class="h-5 w-5 text-red-500"
-                  aria-hidden="true"
+          <div class="col-span-2">
+            <div
+              class="
+                mt-1
+                w-full
+                relative
+                rounded-md
+                shadow-s
+                sm:mt-0
+                col-span-2
+              "
+            >
+              <div class="w-full flex rounded-md shadow-sm">
+                <span
+                  class="
+                    inline-flex
+                    items-center
+                    px-3
+                    rounded-l-md
+                    border border-r-0 border-gray-300
+                    bg-gray-50
+                    text-gray-500
+                    sm:text-sm
+                  "
+                >
+                  @
+                </span>
+                <input
+                  type="email"
+                  v-model="user.email"
+                  name="email"
+                  id="email"
+                  autocomplete="email"
+                  :class="[
+                    'flex-1 block w-full focus:ring-primary-500 focus:border-primary-500 min-w-0 rounded-none rounded-r-md  sm:text-sm  border-gray-300',
+                    validations.email &&
+                      'focus:outline-none focus:ring-red-500 focus:border-red-500 border-red-300',
+                  ]"
                 />
+                <div
+                  v-if="validations.email"
+                  class="
+                    absolute
+                    inset-y-0
+                    pr-3
+                    right-0
+                    sm:mt-px sm:pt-2
+                    items-center
+                    sm:max-w-xs sm:mt-0 sm:col-span-2
+                    pointer-events-none
+                  "
+                >
+                  <ExclamationCircleIcon
+                    class="h-5 w-5 text-red-500"
+                    aria-hidden="true"
+                  />
+                </div>
               </div>
             </div>
             <p
-              v-if="validations.firstName"
+              v-if="validations.email"
               class="mt-2 text-sm text-red-600"
               id="email-error"
             >
-              {{ validations.firstName }}
+              {{ validations.email }}
             </p>
           </div>
         </div>
@@ -274,7 +274,7 @@
           </div>
         </div>
       </div>
-     <!-- Security -->
+      <!-- Security -->
       <div>
         <div
           class="
@@ -820,7 +820,7 @@
                 autocomplete="street-address"
                 class="
                   block
-                  max-w-lg
+                  max-w-full
                   w-full
                   shadow-sm
                   focus:ring-primary-500 focus:border-primary-500
@@ -1023,7 +1023,7 @@
             <div class="flex items-start">
               <div class="flex items-center h-5">
                 <input
-                  id="newsletter"
+                  id="Promotions"
                   name="newsletter"
                   type="checkbox"
                   class="
@@ -1037,7 +1037,7 @@
                 />
               </div>
               <div class="ml-3 text-sm flex flex-col items-start">
-                <label for="offers" class="font-medium text-gray-700"
+                <label for="Promotions" class="font-medium text-gray-700"
                   >Promotions</label
                 >
                 <span class="text-sm font-inter text-gray-500"
@@ -1048,7 +1048,7 @@
             <div class="flex items-start">
               <div class="flex items-center h-5">
                 <input
-                  id="newsletter"
+                  id="Security"
                   name="newsletter"
                   type="checkbox"
                   class="
@@ -1062,7 +1062,7 @@
                 />
               </div>
               <div class="ml-3 text-sm flex flex-col items-start">
-                <label for="offers" class="font-medium text-gray-700"
+                <label for="Security" class="font-medium text-gray-700"
                   >Security & New Features</label
                 >
                 <span class="text-sm font-inter text-gray-500"
@@ -1074,9 +1074,45 @@
           </div>
         </div>
       </div>
+        <div class="w-full py-8">
+        <div
+          class="pt-6 sm:pt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-baseline"
+        >
+          <div class="">
+            <span class="text-gray-700 font-medium font-inter text-sm"
+              >Delete your Account</span
+            >
+          </div>
+
+          <div class="w-full">
+            <button
+              @click="Cancel"
+              type="button"
+              class="
+                bg-black
+                py-2
+                px-4
+                border border-gray-300
+                rounded-md
+                shadow-sm
+                text-sm
+                font-medium
+                text-white
+                hover:bg-gray-900
+                focus:outline-none
+                focus:ring-2
+                focus:ring-offset-2
+                focus:ring-gray-900
+              "
+            >
+              REQUEST ACCOUNT DELETION
+            </button>
+          </div>
+        </div>
+      </div>
 
       <!-- Actions -->
-      <div class="pt-5 lg:flex justify-start">
+      <div class="pt-5 lg:flex justify-end">
         <!-- <button
           type="button"
           class="
@@ -1097,6 +1133,7 @@
         >
           Cancel
         </button> -->
+
         <button
           type="submit"
           class="
