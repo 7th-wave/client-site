@@ -145,20 +145,13 @@ const steps = [
   },
   {
     id: "2",
-    name: "Mint your NFT",
-    description: "Cursus semper viverra.",
+    name: "Mint Asset",
+    description: "Penatibus eu quis ante.",
     href: "#",
     status: "current",
   },
   {
     id: "3",
-    name: "Mint Asset",
-    description: "Penatibus eu quis ante.",
-    href: "#",
-    status: "upcoming",
-  },
-  {
-    id: "4",
     name: "Create a Vault",
     description: "Penatibus eu quis ante.",
     href: "#",
