@@ -327,7 +327,7 @@
               float-right
             "
           >
-            <span>ADD ASSET</span>
+            <span>ADD ATTRIBUTE</span>
             <span
               ><svg
                 width="33"
