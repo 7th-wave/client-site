@@ -211,6 +211,7 @@
                     class="
                       absolute
                       -right-4
+                      lg:right-4
                       bg-white
                       shadow-md
                       rounded-full
