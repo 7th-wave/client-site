@@ -1,7 +1,7 @@
 <template>
   <div
     class="
-      px-4
+      px-0
       sm:px-0
       font-inter
       flex-1 flex flex-col
