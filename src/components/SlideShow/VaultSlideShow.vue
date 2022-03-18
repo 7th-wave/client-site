@@ -1,14 +1,41 @@
 <template>
   <div class="w-full flex items-center">
-    <div class="w-2/3 m-auto">
-      <div v-if="slides.length > 1" class="relative">
-        <CarouselCard
+    <div class="xl:w-2/3 w-full xl:m-auto xl:px-0 px-4">
+      <div v-if="slides.length > 1" class="relative w-full">
+        <CarouselCard class=" hidden lg:block"
           ref="carouselCardRef"
           :interval="7000"
           :autoplay="false"
           height="400px"
           type="card"
-          arrow="always"
+          arrow="never"
+          @change="changeHandle"
+        >
+          <CarouselCardItem
+            v-for="(item, index, key) in slides"
+            :key="key"
+            :name="`cc_${key}`"
+          >
+            <div
+              class="w-full bg-blue-400 bg-opacity-30 relative"
+              style="max-hight: 663px"
+            >
+              <img
+                class="w-full h-full object-cover"
+                :src="item.image"
+                alt=""
+              />
+            </div>
+          </CarouselCardItem>
+        </CarouselCard>
+           <CarouselCard
+          class=" lg:hidden"
+          ref="carouselCardRef1"
+          :interval="7000"
+          :autoplay="false"
+          height="400px"
+         
+          arrow="never"
           @change="changeHandle"
         >
           <CarouselCardItem
@@ -29,18 +56,18 @@
           </CarouselCardItem>
         </CarouselCard>
         <div
-        style="width: 69rem"
+        
           class="
+        
             w-full
-            flex
-            justify-between
-            items-center
             absolute top-44
-            -right-4
             z-10
           "
         >
-          <button
+         <div class=" w-full relative flex
+            justify-between
+            items-center">
+            <button
             @click="prev"
             class="
               bg-white
@@ -49,7 +76,7 @@
               flex
               w-10
               h-10
-              hover:bg-gray-100
+              hover:bg-gray-100 absolute -left-4
             "
           >
             <svg
@@ -72,6 +99,7 @@
           <button
             @click="next"
             class="
+             absolute -right-4 
               bg-white
               shadow-md
               rounded-full
@@ -98,6 +126,7 @@
               />
             </svg>
           </button>
+         </div>
         </div>
       </div>
 
@@ -134,15 +163,17 @@ export default {
   },
   setup() {
     const carouselCardRef = ref();
-
+    const carouselCardRef1 = ref();
     const changeHandle = (index) => {
       console.log(index);
     };
     const next = () => {
       carouselCardRef.value.next();
+      carouselCardRef1.value.next();
     };
     const prev = () => {
       carouselCardRef.value.prev();
+      carouselCardRef1.value.prev();
     };
     const setToFirst = () => {
       carouselCardRef.value.setActiveItem(0);
@@ -150,6 +181,7 @@ export default {
 
     return {
       carouselCardRef,
+      carouselCardRef1,
       changeHandle,
       next,
       prev,
@@ -169,6 +201,16 @@ export default {
 
 
 <style >
+
+@media (min-width: 1024px) {
+    .MyButton {
+       width: 69rem
+    }
+  }
+
+
+
+
 .opImage {
   opacity: 0.3;
 }

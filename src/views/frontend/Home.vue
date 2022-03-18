@@ -3,7 +3,7 @@
     <div class="relative  ">
       <div class="relative ">
         <div class=" w-full bg-gray-100">
-           <div class="m-auto grid grid-cols-1 lg:grid-cols-6 gap-12 px-12  2xl:max-w-8xl 2xl:mx-auto  ">
+           <div class="m-auto grid grid-cols-1 xl:grid-cols-6 gap-12 px-12  2xl:max-w-8xl 2xl:mx-auto  ">
           <div class="col-span-1 lg:col-span-2 flex flex-col justify-center">
             <h1 class="text-6xl leading-none font-inter font-semibold">
               <span class="text-primary-500">Mint</span> and
@@ -28,8 +28,58 @@
               </div>
             </div>
           </div>
-          <div class="col-span-1 lg:col-span-4 lg:pl-12 pb-6 pt-6 relative">
+          <div class="col-span-1 lg:col-span-4 lg:pl-12 pb-6 pt-6 relative hidden xl:block">
             <CarouselCard ref="carouselCardRef" :interval="7000" :autoplay="false" height="500px" type="card" arrow="always" @change="changeHandle">
+              <CarouselCardItem v-for="(vault, index) in vaults"
+                :key="index" :name="`cc_${index}`">
+                <vault-item :url="{name:'Vault',params:{id:vault.id}}"  badgecolor="green" :vault="vault" />
+              </CarouselCardItem>
+              
+            </CarouselCard>
+
+            <div class=" w-full flex justify-between items-center absolute top-56 -right-5 z-10">
+                <button @click="prev"  class="bg-white shadow-md rounded-full flex w-10 h-10 hover:bg-gray-100">
+          <svg
+            class="m-auto"
+            width="15"
+            height="12"
+            viewBox="0 0 15 12"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M6.13346 10.9835L1.4668 6.31687M1.4668 6.31687L6.13346 1.65021M1.4668 6.31687L13.4668 6.31687"
+              stroke="#9CA3AF"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
+        <button @click="next" class="bg-white shadow-md rounded-full flex w-10 h-10 hover:bg-gray-100">
+          <svg
+           class=" m-auto"
+            width="15"
+            height="12"
+            viewBox="0 0 15 12"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M8.80013 1.65021L13.4668 6.31687M13.4668 6.31687L8.80013 10.9835M13.4668 6.31687L1.4668 6.31687"
+              stroke="#9CA3AF"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
+    
+             </div>
+            
+          </div>
+           <div class="col-span-1 lg:col-span-4 lg:pl-12 pb-6 pt-6 relative xl:hidden">
+            <CarouselCard ref="carouselCardRef1" :interval="7000" :autoplay="false" height="500px" arrow="always" @change="changeHandle">
               <CarouselCardItem v-for="(vault, index) in vaults"
                 :key="index" :name="`cc_${index}`">
                 <vault-item :url="{name:'Vault',params:{id:vault.id}}"  badgecolor="green" :vault="vault" />
@@ -301,6 +351,7 @@ export default {
   setup() {
     const router = useRouter();
     const carouselCardRef = ref();
+    const carouselCardRef1 = ref();
 
     const onSwiper = (swiper) => {
       console.log(swiper);
@@ -317,12 +368,15 @@ export default {
     }
     const next = () => {
       carouselCardRef.value.next()
+      carouselCardRef1.value.next()
     }
     const prev = () => {
       carouselCardRef.value.prev()
+      carouselCardRef1.value.prev()
     }
     const setToFirst = () => {
       carouselCardRef.value.setActiveItem(0)
+      carouselCardRef1.value.setActiveItem(0)
     }
 
     return {
@@ -333,6 +387,7 @@ export default {
       vaults,
       categories,
       carouselCardRef,
+      carouselCardRef1,
       changeHandle,
       next,
       prev,
