@@ -3,7 +3,7 @@
   <div
     class="
       account
-      sm:px-8
+      sm:px-8 pr-4
       py-4
       lg:py-16
       relative
@@ -16,14 +16,14 @@
       <navbar :type="'customer'" />
     </div>
     <div class="py-0 sm:py-2 lg:pt-0 lg:pb-8 text-center">
-      <h1 class="text-4xl font-normal">My Wallet</h1>
+      <h1 class="sm:text-4xl text-2xl font-normal">My Wallet</h1>
     </div>
     <div>
-      <div class="lg:grid lg:grid-cols-7 lg:gap-6">
-        <div class="hidden lg:col-span-2 lg:block">
+      <div class="flex items-start space-x-4 w-full">
+        <div class="hidden lg:col-span-2 lg:block ">
           <Menu />
         </div>
-        <div class=" lg:mt-0 lg:col-span-5  rounded-lg flex lg:flex-row flex-col space-y-6 lg:space-y-0 items-start lg:space-x-4 ">
+        <div class=" w-full lg:mt-0 lg:col-span-5  rounded-lg flex lg:flex-row flex-col space-y-6 lg:space-y-0 items-start lg:space-x-4 ">
           <div
             class="
               p-6 lg:max-w-xs lg:max-h-80
@@ -37,7 +37,7 @@
               focus-within:ring-offset-2
               focus-within:ring-offset-gray-100
               focus-within:ring-primary-500
-              overflow-hidden space-y-4
+              overflow-hidden space-y-4 rounded-md shadow-lg
             "
           >
             <a @click.prevent="doMetaMaskLogin()">

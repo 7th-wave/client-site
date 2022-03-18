@@ -13,6 +13,9 @@ module.exports = {
       maxWidth: {
           '8xl': '100rem',
        },
+       width: {
+        'm-1xl':'376px',
+       },
       colors: {
         primary: {
           '50': '#BCE4FF',

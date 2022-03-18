@@ -1,23 +1,47 @@
 <template>
-  <div class="py-8  2xl:max-w-8xl w-full 2xl:mx-auto">
-    <div class="flex pb-14">
+  <div
+    class="
+      py-8
+      2xl:max-w-8xl
+      w-full
+      2xl:mx-auto
+      account
+      sm:py-4
+      lg:py-16
+      relative
+      font-inter
+      space-y-4
+    "
+  >
+    <div class="flex md:pb-14 py-0 sm:py-4 md:pt-4 lg:pt-0 lg:pb-8 text-center">
       <span
-        class="m-auto text-4xl text-center font-normal font-inter text-black"
-        >{{getParams == 'cvman' ? 'The caveman, ca. 2008' : 'Nike Collection'}}</span
+        class="m-auto sm:text-4xl text-2xl text-center font-normal font-inter text-black"
+        >{{
+          getParams == "cvman" ? "The caveman, ca. 2008" : "Nike Collection"
+        }}</span
       >
     </div>
 
-    <div class="w-full pb-24">
+    <div class="w-full md:pb-24">
       <VaultSlideShow :slides="getSlides" />
     </div>
 
-    <div class="w-full px-8 py-4 grid grid-cols-4 gap-4">
+    <div class="w-full px-4 py-4 grid lg:grid-cols-4 gap-4">
       <!-- left -->
-      <div class="col-span-3 w-full flex flex-col items-start space-y-5">
+      <div
+        class="
+          lg:col-span-3
+          col-span-4
+          w-full
+          flex flex-col
+          items-start
+          space-y-5
+        "
+      >
         <span class="text-2xl text-black font-inter font-medium"
           >{Vault Sub-Title}</span
         >
-        <FractionCard :goDown="getParams != 'cvman' ? true : false" />
+        <FractionCard :goDown="true" :goBack="false" />
         <p
           class="
             text-lg
@@ -30,163 +54,39 @@
             rounded-md
           "
         >
-          {Vault Description} Lorem ipsum dolor sit amet, consectetur adipiscing
-          elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-          aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-          laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-          in reprehenderit in voluptate velit esse cillum dolore eu fugiat.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat.
         </p>
       </div>
       <!-- right -->
-      <div class="w-full">
+      <div class="w-full col-span-4 lg:col-span-1">
         <BuyFractionCard />
       </div>
     </div>
-    <div class="w-full px-8 py-4 grid grid-cols-4 gap-4">
+    <div class="px-4 md:hidden">
+      <span class="text-2xl text-black font-inter font-medium"
+        >Top 10 Vault Owner</span
+      >
+    </div>
+    <div class="w-full px-4 py-4 grid lg:grid-cols-4 gap-4">
       <!-- left -->
-      <div class="col-span-3 w-full flex flex-col items-start space-y-5">
-        <span class="text-2xl text-black font-inter font-medium"
-          >Top 10 Vault Owner</span
-        >
-        <Table :headers="tableData.headers" :data="tableData.data">
-          <template #body>
-            <tbody
-              class="bg-white divide-y divide-gray-200 shadow-md"
-              v-for="n in 7"
-              :key="n"
-            >
-              <td
-                class="
-                  px-6
-                  py-2
-                  whitespace-nowrap
-                  text-sm
-                  font-medium
-                  text-gray-900
-                "
-              >
-                #1
-              </td>
-              <td
-                class="
-                  px-6
-                 py-2
-                  whitespace-nowrap
-                  text-sm
-                  font-medium
-                  text-gray-900
-                "
-              >
-                <div class="flex items-center -space-x-2">
-                  <div
-                    class="w-10 h-10 rounded-full bg-gray-400 overflow-hidden"
-                  >
-                    <img
-                      class="w-full h-full object-cover"
-                      src="/images/avatar.png"
-                      alt=""
-                    />
-                  </div>
-                  <div class="flex flex-col items-start -space-y-8">
-                    <span
-                      class="
-                        px-6
-                        py-4
-                        whitespace-nowrap
-                        text-sm
-                        font-medium
-                        text-gray-900
-                      "
-                      >0xb7BC...eA21</span
-                    >
-                    <span
-                      class="
-                        px-6
-                        py-4
-                        whitespace-nowrap
-                        text-sm
-                        font-medium
-                        text-gray-500
-                      "
-                      >0xb7BC...eA21</span
-                    >
-                  </div>
-                </div>
-              </td>
-              <td
-                class="
-                  px-6
-                  py-2
-                  whitespace-nowrap
-                  text-sm
-                  font-medium
-                  text-gray-900
-                "
-              >
-                48,640,595.584
-              </td>
-              <td
-                class="
-                  px-6
-                  py-2
-                  whitespace-nowrap
-                  text-sm
-                  font-medium
-                  text-gray-900
-                "
-              >
-                <span
-                  class="
-                    whitespace-nowrap
-                    text-sm
-                    font-medium
-                    text-green-800
-                    bg-green-100
-                    rounded-2xl
-                    py-1
-                    px-6
-                  "
-                  >48.640%</span
-                >
-              </td>
-              <td
-                class="
-                  px-6
-                  py-2
-                  whitespace-nowrap
-                  text-sm
-                  font-medium
-                  text-gray-900
-                "
-              >
-                <div class="flex flex-col items-start space-y-1">
-                  <span
-                    class="whitespace-nowrap text-sm font-medium text-gray-900"
-                    >Ξ 8,166.345</span
-                  >
-                  <span
-                    class="whitespace-nowrap text-sm font-medium text-gray-500"
-                    >≈ $19,917,308.65</span
-                  >
-                </div>
-              </td>
-            </tbody>
-          </template>
-        </Table>
-      </div>
+      <FractionTable />
       <!-- right -->
-      <div class="w-full">
+      <div class="w-full col-span-4 lg:col-span-1 overflow-y-auto max-w-7xl">
         <span class="text-2xl text-black font-inter font-medium"
           >Activities</span
         >
-       <LineChart />
+        <LineChart />
         <div class="w-full pt-2">
           <Events />
         </div>
       </div>
     </div>
-    <div class="w-full px-8 pt-2">
-      <div class="w-full py-2 bg-white border-2 rounded-md flex">
+    <div class="w-full px-4 pt-2">
+      <div class="w-full py-3 bg-white border-2 rounded-md flex">
         <div class="flex items-center space-x-2 m-auto">
           <span class="text-base text-gray-700 font-medium font-inter"
             >VIEW ALL OWNERS & EVENTS</span
@@ -211,13 +111,13 @@
         </div>
       </div>
     </div>
-    <div class="w-full space-y-4 px-8 pt-8">
+    <div class="w-full space-y-4 px-4 pt-8">
       <div>
         <span class="text-2xl text-black font-inter font-medium"
-          >All {{ getParams == 'cvman' ? 'CVMAN' : 'NIKE'}} Vault Assets</span
+          >All {{ getParams == "cvman" ? "CVMAN" : "NIKE" }} Vault Assets</span
         >
       </div>
-      <div class="grid grid-cols-3 gap-8">
+      <div class="grid lg:grid-cols-3 gap-8" id="CategoryCards">
         <CategoryCard
           @click="GoToCategory"
           v-for="(category, index, key) in getData"
@@ -226,7 +126,7 @@
         >
           <template #image>
             <img
-              class="w-full h-full object-cover"
+              class="w-full h-full object-cover border-b"
               :src="category.image"
               alt=""
             />
@@ -262,10 +162,9 @@ import BuyFractionCard from "../../components/cards/BuyFractionCard.vue";
 import VaultSlideShow from "../../components/SlideShow/VaultSlideShow.vue";
 import Events from "../../components/cards/Events.vue";
 import CategoryCard from "../../components/cards/CategoryCard.vue";
-import Table from "../../components/tables/table.vue";
-import LineChart from '@/components/Drawers/LineChart.vue';
+import LineChart from "@/components/Drawers/LineChart.vue";
+import FractionTable from "@/components/tables/FractionTable.vue";
 export default {
- 
   components: {
     FractionCard,
     //InteriorPage,
@@ -273,18 +172,18 @@ export default {
     BuyFractionCard,
     CategoryCard,
     Events,
-    Table,
     LineChart,
+    FractionTable,
   },
   computed: {
     getParams() {
       return this.$route.params.id;
     },
-    getData(){
+    getData() {
       if (this.getParams == "cvman") {
         return this.categories1;
       }
-      return this.categories; 
+      return this.categories;
     },
     getSlides() {
       if (this.getParams == "cvman") {
@@ -293,112 +192,15 @@ export default {
       return this.slides;
     },
   },
-  methods:{
-    GoToCategory(){
-      if(this.getParams == 'cvman'){
-        this.$router.push({ name: 'VaultView',params:{id: 'cvman'}});
+  methods: {
+    GoToCategory() {
+      if (this.getParams == "cvman") {
+        this.$router.push({ name: "VaultView", params: { id: "cvman" } });
       }
-    }
+    },
   },
   data() {
     return {
-      tableData: {
-        headers: [
-          {
-            text: "RANK",
-            key: "rank",
-          },
-          {
-            text: "OWNERS",
-            key: "owner",
-          },
-          {
-            text: "QUANTITY",
-            key: "quantity",
-          },
-          {
-            text: "PERCENTAGE",
-            key: "percentage",
-          },
-          {
-            text: "VALUE",
-            key: "value",
-          },
-        ],
-        data: [
-          {
-            rank: "1",
-            owner: "0x1",
-            quantity: "6",
-            percentage: "2",
-            value: "100",
-          },
-          {
-            rank: "2",
-            owner: "0x2",
-            quantity: "0",
-            percentage: "0",
-            value: "0",
-          },
-          {
-            rank: "3",
-            owner: "0x3",
-            quantity: "0",
-            percentage: "0",
-            value: "0",
-          },
-          {
-            rank: "4",
-            owner: "0x4",
-            quantity: "0",
-            percentage: "0",
-            value: "0",
-          },
-          {
-            rank: "5",
-            owner: "0x5",
-            quantity: "0",
-            percentage: "0",
-            value: "0",
-          },
-          {
-            rank: "6",
-            owner: "0x6",
-            quantity: "0",
-            percentage: "0",
-            value: "0",
-          },
-          {
-            rank: "7",
-            owner: "0x7",
-            quantity: "0",
-            percentage: "0",
-            value: "0",
-          },
-          {
-            rank: "8",
-            owner: "0x8",
-            quantity: "0",
-            percentage: "0",
-            value: "0",
-          },
-          {
-            rank: "9",
-            owner: "0x9",
-            quantity: "0",
-            percentage: "0",
-            value: "0",
-          },
-          {
-            rank: "10",
-            owner: "0x10",
-            quantity: "0",
-            percentage: "0",
-            value: "0",
-          },
-        ],
-      },
-
       categories: [
         {
           name: "Nike Waffle Sneakers",
@@ -431,8 +233,8 @@ export default {
           title: "Sneakers Collection",
         },
       ],
-      categories1:[
-  {
+      categories1: [
+        {
           name: "The caveman, ca. 2008",
           image: "/images/sneakers/caveman.png",
           title: "Fine Art ",

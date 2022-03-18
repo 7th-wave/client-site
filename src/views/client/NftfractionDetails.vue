@@ -2,7 +2,7 @@
   <div
     class="
       account
-      sm:px-8
+      px-4
       py-4
       sm:py-4
       lg:py-16
@@ -17,20 +17,18 @@
       <Navbar :type="'customer'" />
     </div>
     <div class="py-0 sm:py-4 md:pb-8 md:pt-4 lg:pt-0 lg:pb-8 text-center">
-      <h1 class="text-4xl font-medium">Your {{ getParams == 'cvman' ? 'CVMAN' : 'NIKE'}} Fractions</h1>
+      <h1 class="sm:text-4xl text-2xl font-medium">Your {{ getParams == 'cvman' ? 'CVMAN' : 'NIKE'}} Fractions</h1>
     </div>
     <div>
-      <div class="lg:grid lg:grid-cols-7 lg:gap-6 rounded-lg">
-        <div class="lg:col-span-2 space-y-4">
-          <Menu />
+      <div class="flex xl:flex-row lg:items-start xl:space-x-4 w-full lg:space-y-0 flex-col items-start space-y-4 ">
+        <div class="xl:col-span-2 space-y-0 xl:space-y-4 xl:w-m-1xl w-full py-5 xl:py-0">
+          <Menu class=" hidden  xl:block" />
           <VaultItem
             class=" cursor-pointer"
-            @click="
-              $router.push({
+             :url="{
                 name: 'Vault',
                 params: { id: getData.id },
-              })
-            "
+              }"
             :vault="getData"
             bg="bg-white"
           badgecolor="green"
@@ -84,12 +82,15 @@
           class="
             mt-5
             md:mt-0
-            flex flex-col items-start space-y-4 lg:col-span-5
+            flex flex-col items-start space-y-4 lg:col-span-5 w-full
           "
         >
          <CardTrade />
          <CardVaultDao />
-         <FractionCard :goDown="false" />
+         <FractionCard :goDown="false"  :goBack="true" IconColor=" text-gray-400" :url="{
+                name: 'Vault',
+                params: { id: getData.id },
+              }" />
         </div>
       </div>
     </div>

@@ -1,5 +1,5 @@
 <template>
-  <div class="artist bg-gray-100 font-inter">
+  <div class="artist bg-gray-100 font-inter px-4">
     <div class="relative font-inter py-8 sm:py-8 lg:py-8">
       <div class="relative">
         <Navbar class=" lg:hidden" />
@@ -15,11 +15,11 @@
         >
           <p
             class="
-              text-3xl
+             sm:text-4xl text-2xl
               font-semibold
               text-gray-900
               tracking-tight
-              sm:text-4xl
+              
             "
           >
             Nike Waffle Sneaker
@@ -28,10 +28,10 @@
         <div></div>
       </div>
     </div>
-    <div class="lg:grid lg:grid-cols-7 lg:gap-6 rounded-lg sm:px-10">
-      <div class="lg:col-span-2 lg:block flex flex-col items-start space-y-8">
+    <div class="flex lg:items-start lg:space-x-4 w-full rounded-lg sm:px-10 lg:flex-row flex-col items-start space-y-4 lg:space-y-0">
+      <div class="lg:col-span-2 lg:block flex flex-col items-start space-y-8 lg:w-m-1xl w-full">
         <Menu class=" hidden lg:block" />
-        <div>
+        <div class=" w-full">
           <NftCard>
             <template #image>
               <img
@@ -84,7 +84,7 @@
         </div>
       </div>
 
-      <div class="mt-5 md:mt-0 lg:col-span-5">
+      <div class="mt-5 md:mt-0 lg:col-span-5 w-full">
         <div
           class="relative bg-white py-8 rounded-md sm:py-24 lg:pt-8 lg:pb-16"
         >
@@ -818,7 +818,7 @@
         </div>
       </div>
 
-      <div class="px-2 mb-2" v-if="nftRef && showPegged">
+      <div class="px-2 mb-2 w-full" v-if="nftRef && showPegged">
         <NFTBox />
         <div class="mx-auto px-4 lg:mt-8 bg-gray-500 sm:px-6 lg:px-8 w-full">
           <div class="pb-12">

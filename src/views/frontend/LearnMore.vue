@@ -1,17 +1,17 @@
 <template>
   <div class="w-full font-inter">
     <div class="w-full bg-gray-100 text-center py-8">
-      <span class="text-gray-900 font-inter font-medium text-4xl"
+      <span class="text-gray-900 font-inter font-medium sm:text-4xl text-2xl"
         >Learn More</span
       >
     </div>
-    <div class="grid grid-cols-2 gap-20 w-full py-14">
-      <div class="w-full flex flex-col items-start pt-24 pr-28 pl-36 space-y-8">
+    <div class="grid lg:grid-cols-2 gap-20 w-full py-14">
+      <div class="w-full flex flex-col items-start pt-24  pl-10 sm:pl-44 space-y-8">
         <div class="w-full flex flex-col items-start space-y-2">
           <span class="text-gray-900 font-inter font-extrabold text-3xl"
             >NFT Asset</span
           >
-          <p class="text-gray-500 font-inter font-normal text-lg">
+          <p class="text-gray-500 font-inter font-normal text-lg text-left">
             Semper curabitur ullamcorper posuere nunc sed. Ornare iaculis
             bibendum malesuada faucibus lacinia porttitor. Pulvinar laoreet
             sagittis viverra duis. In venenatis sem arcu pretium pharetra at.
@@ -42,7 +42,7 @@
       </div>
       <div class="w-full relative overflow-hidden" style="height: 526px">
         <div
-          class="w-full h-full overflow-hidden absolute -right-28 rounded-md"
+          class="w-full h-full overflow-hidden absolute -right-10 rounded-md"
         >
           <img
             src="images/sneakers/Container1.jpg"
@@ -52,9 +52,9 @@
         </div>
       </div>
     </div>
-    <div class="grid grid-cols-2 gap-20 w-full py-14">
+    <div class="grid lg:grid-cols-2 gap-20 w-full py-14">
       <div class="w-full relative overflow-hidden" style="height: 526px">
-        <div class="w-full overflow-hidden h-full absolute -left-28 rounded-md">
+        <div class="w-full overflow-hidden h-full absolute -left-5 rounded-md">
           <img
             src="images/sneakers/Container2.png"
             class="w-full h-full"
@@ -62,7 +62,7 @@
           />
         </div>
       </div>
-      <div class="w-full flex flex-col items-start pt-28 pl-36 px-44 space-y-8">
+      <div class="w-full flex flex-col items-start pt-28 pl-10 px-5 sm:pl-10 sm:px-44 space-y-8">
         <div class="w-full flex flex-col items-start space-y-2">
           <span class="text-gray-900 font-inter font-extrabold text-3xl"
             >NFT Fractionalization</span
@@ -130,8 +130,8 @@
         </div>
       </div>
     </div>
-    <div class="grid grid-cols-2 gap-20 w-full py-14">
-      <div class="w-full flex flex-col items-start pt-24 pr-28 pl-36 space-y-8">
+    <div class="grid lg:grid-cols-2 gap-20 w-full py-14">
+      <div class="w-full flex flex-col items-start pt-24  pl-10 sm:pl-44 space-y-8">
         <div class="w-full flex flex-col items-start space-y-2">
           <span class="text-gray-900 font-inter font-extrabold text-3xl"
             >Exchange</span
@@ -182,7 +182,7 @@
       </div>
       <div class="w-full relative overflow-hidden" style="height: 526px">
         <div
-          class="w-full overflow-hidden absolute h-full -right-28 rounded-md"
+          class="w-full overflow-hidden absolute h-full -right-10 rounded-md"
         >
           <img
             src="images/sneakers/Container3.png"
@@ -192,9 +192,9 @@
         </div>
       </div>
     </div>
-    <div class="grid grid-cols-2 gap-20 w-full py-14">
+    <div class="grid lg:grid-cols-2 gap-20 w-full py-14">
       <div class="w-full relative overflow-hidden" style="height: 526px">
-        <div class="w-full overflow-hidden absolute h-full -left-28 rounded-md">
+        <div class="w-full overflow-hidden absolute h-full -left-6 rounded-md">
           <img
             src="images/sneakers/Container4.png"
             class="w-full h-full"
@@ -202,7 +202,7 @@
           />
         </div>
       </div>
-      <div class="w-full flex flex-col items-start pt-28 pl-36 px-44 space-y-8">
+      <div class="w-full flex flex-col items-start pt-1  lg:pt-28 pl-10 px-5 sm:pl-10 sm:px-44 space-y-8">
         <div class="w-full flex flex-col items-start space-y-2">
           <span class="text-gray-900 font-inter font-extrabold text-3xl"
             >DAO</span

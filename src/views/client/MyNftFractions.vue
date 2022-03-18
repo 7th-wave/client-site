@@ -2,7 +2,7 @@
   <div
     class="
       account
-      sm:px-8
+     sm:px-8 pr-4
       py-4
       sm:py-4
       lg:py-16
@@ -17,10 +17,10 @@
       <Navbar :type="'customer'" />
     </div>
     <div class="py-0 sm:py-4 md:pb-8 md:pt-4 lg:pt-0 lg:pb-8 text-center">
-      <h1 class="text-4xl font-medium">My NFT Fractions</h1>
+      <h1 class="sm:text-4xl text-2xl font-medium">My NFT Fractions</h1>
     </div>
     <div>
-      <div class="lg:grid lg:grid-cols-7 lg:gap-6 rounded-lg">
+      <div class="flex items-start space-x-4 w-full rounded-lg">
         <div class="lg:col-span-2">
           <Menu />
         </div>
@@ -32,17 +32,15 @@
             grid
             lg:grid-cols-3
             grid-cols-1
-            gap-4
+            gap-4 w-full
           "
         >
           <VaultItem
             class=" cursor-pointer"
-            @click="
-              $router.push({
+            :url="{
                 name: 'My_fractions_details',
                 params: { id: item.id },
-              })
-            "
+              }"
             v-for="(item, index, key) in vaults"
             :key="key"
             :vault="item"

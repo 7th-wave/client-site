@@ -1,6 +1,6 @@
 <template>
   <div class="mt-5 py-2.5 px-2 bg-white shadow-md rounded-md space-y-4  w-full">
-    <div class="flex items-center w-full justify-between">
+    <div class="flex items-center w-full justify-between px-2">
       <div class="flex items-center space-x-2">
         <span class="text-primary-500 font-medium text-sm">60DAYS</span>
         <svg

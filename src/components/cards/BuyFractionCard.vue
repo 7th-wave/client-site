@@ -48,27 +48,8 @@
             "
             placeholder="you@example.com"
           />
-          <select
-            id="location"
-            name="location"
-            class="
-              block
-              w-24
-              pl-3
-              pr-10
-              py-2
-              text-base
-              border-gray-300
-              focus:outline-none focus:ring-indigo-500 focus:border-indigo-500
-              sm:text-sm
-              rounded-md
-            "
-          >
-            <option value="ETH">ETH</option>
-            <option value="BTC">BTC</option>
-            <option value="USDC">USDC</option>
-            <option value="USDT" selected>USDT</option>
-          </select>
+         
+            <DropDown :Myitems="Items" Myplaceholder="USDC" />
         </div>
       </div>
       <div class="w-full h-px bg-gray-200"></div>
@@ -138,10 +119,19 @@
 import { EyeIcon, RefreshIcon, ShareIcon } from "@heroicons/vue/solid";
 import ConnectWallet from "../../components/Modals/ConnectWallet";
 import ConfirmOrder from "../../components/Modals/ConfirmOrder";
+import DropDown from "@/components/Drawers/DropDown.vue";
+
 export default {
-  components: { EyeIcon, RefreshIcon, ShareIcon, ConnectWallet, ConfirmOrder },
+  components: { EyeIcon, RefreshIcon, ShareIcon, ConnectWallet, ConfirmOrder,DropDown },
   data() {
-    return {};
+    return {
+       Items: [
+        { id: 1, name: "ETH" },
+        { id: 2, name: "BTC" },
+        { id: 3, name: "USDC" },
+        { id: 3, name: "USDT" },
+      ],
+    };
   },
   computed: {
     getParams() {

@@ -3,12 +3,12 @@
     <template #body>
       <div class="flex pb-10">
         <span
-          class="m-auto text-4xl text-center font-normal font-inter text-black"
+          class="m-auto sm:text-4xl text-2xl text-center font-normal font-inter text-black"
           >Vault Categories</span
         >
       </div>
 
-      <div class="grid lg:grid-cols-3 grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="grid lg:grid-cols-3 grid-cols-1 md:grid-cols-2 gap-8 px-2 ">
         <CategoryCard
           @click="GoToCategory(category.name)"
           v-for="(category, index, key) in categories"
@@ -65,7 +65,7 @@ export default {
           items: 6,
         },
         {
-          name: "Rare Gems & Jewellery",
+          name: "Rare Gems & Jewelry",
           image:
            "/images/categories/gems.png",
           items: 1,
