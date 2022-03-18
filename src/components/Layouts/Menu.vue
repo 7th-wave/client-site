@@ -1,7 +1,7 @@
 <template>
   <div
     class="
-      px-4
+      px-0
       sm:px-0
       font-inter
       flex-1 flex flex-col
@@ -10,7 +10,7 @@
       font-medium
       rounded-lg
       shadow-lg
-      w-m-1xl
+      lg:w-m-1xl
     "
   
   >
@@ -159,6 +159,7 @@ const Client = [
     href: { name: "MyAccount", params: { address: "gfdg" } },
     subname: "",
     subname1: "",
+    subname2:''
   },
   {
     name: "My NFT",
@@ -167,7 +168,7 @@ const Client = [
     subname1: "Fractionalize",
     subname2: "",
   },
-  { name: "My Vaults", href: { name: "MyVault" }, subname: "", subname1: "" },
+  { name: "My Vaults", href: { name: "MyVault" }, subname: "", subname1: "",subname2:'' },
   {
     name: "My Fractions",
     href: { name: "My_fractions" },
@@ -209,7 +210,7 @@ const Buyer = [
 const Admin = [
   {
     name: "My Account",
-    href: { name: "MyAccount", params: { address: "gfdg" } },
+    href: { name: "MyAccount", params: { address: "gfdg" },subname2:'' },
     subname: "",
     subname1: "",
     subname2: "",
@@ -221,7 +222,7 @@ const Admin = [
     subname1: "Fractionalize",
     subname2: "",
   },
-  { name: "Vaults", href: { name: "MyVault" }, subname: "", subname1: "" },
+  { name: "Vaults", href: { name: "MyVault" }, subname: "", subname1: "" ,subname2:''},
   {
     name: "NFTs",
     href: { name: "My_fractions" },

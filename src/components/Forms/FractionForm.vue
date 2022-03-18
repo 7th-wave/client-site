@@ -368,7 +368,7 @@
             <div class="flex w-full py-4">
               <div
                 class="m-auto"
-                :class="{ 'grid grid-cols-3 gap-2': selectedVaults.length > 1 }"
+                :class="{ 'grid 2xl:grid-cols-3 lg:grid-cols-2  sm:grid-cols-3  gap-2': selectedVaults.length > 1 }"
               >
                 <div
                   class="relative w-28 h-28"
@@ -521,10 +521,14 @@ export default {
       item.selected = false;
     },
     Continue() {
-      if (this.validate()) {
-        this.$refs.steps.open = true;
-        this.$refs.steps.step = 1;
-      }
+      // if (this.validate()) {
+      //   // this.$refs.steps.open = true;
+      //   // this.$refs.steps.step = 1;
+       
+      // }
+       this.$router.push({
+          name: "VaultsCreateStep2",
+        });
     },
   },
  

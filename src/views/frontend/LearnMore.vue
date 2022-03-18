@@ -1,7 +1,7 @@
 <template>
   <div class="w-full font-inter">
     <div class="w-full bg-gray-100 text-center py-8">
-      <span class="text-gray-900 font-inter font-medium text-4xl"
+      <span class="text-gray-900 font-inter font-medium sm:text-4xl text-2xl"
         >Learn More</span
       >
     </div>

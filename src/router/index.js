@@ -12,12 +12,22 @@ const routes = [
     name: "Home",
     component: Home,
   },
-  // {
-  //   path: "/vault/create",
-  //   name: "Fractionalize",
+  {
+    path: "/vault/create",
+    name: "VaultsCreate",
 
-  //   component: () => import("../views/client/VaultCreation.vue"),
-  // },
+    component: () => import("../views/client/VaultCreation.vue"),
+  },
+  {
+    path: "/vault/create/step/2",
+    name: "VaultsCreateStep2",
+    component: () => import("../views/client/VaultCreationStep_2.vue"),
+  },
+  {
+    path: "/vault/create/step/3",
+    name: "VaultsCreateStep3",
+    component: () => import("../views/client/VaultCreationStep_3.vue"),
+  },
   {
     path: "/fractionalize",
     name: "Fractionalize",

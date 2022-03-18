@@ -3,6 +3,7 @@
     class="
       account
       sm:px-8
+      pr-4
       py-4
       sm:py-4
       lg:py-16
@@ -18,7 +19,7 @@
       <Navbar :type="'customer'" />
     </div>
     <div class="py-0 sm:py-4 md:pb-8 md:pt-4 lg:pt-0 lg:pb-8 text-center">
-      <h1 class="text-4xl font-medium">Purchasse History</h1>
+      <h1 class="sm:text-4xl text-2xl font-medium">Purchasse History</h1>
     </div>
 
     <div>
@@ -39,7 +40,16 @@
               gap-2
             "
           >
-            <div class="mt-1 relative rounded-md shadow-sm lg:col-span-4 col-span-6">
+            <div
+              class="
+                mt-1
+                relative
+                rounded-md
+                shadow-sm
+                lg:col-span-4
+                col-span-6
+              "
+            >
               <div
                 class="
                   absolute
@@ -71,7 +81,7 @@
                 name="Search"
                 id="Search"
                 class="
-                  focus:ring-primary-500 focus:border-primary-500 
+                  focus:ring-primary-500 focus:border-primary-500
                   block
                   w-full
                   pl-10
@@ -83,7 +93,7 @@
               />
             </div>
             <div class="w-full lg:col-span-2 col-span-6">
-              <DropDown />
+              <DropDown :Myitems="Items" Myplaceholder="Vault Ticker" />
               <!-- <select
                 id="location"
                 name="location"
@@ -107,7 +117,7 @@
               </select> -->
             </div>
           </div>
-          <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4">
+          <div class="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4">
             <Purchasse type="NIKE" />
             <Purchasse type="NIKE" />
             <Purchasse type="CVMAN" />
@@ -132,6 +142,15 @@ import Purchasse from "@/components/Drawers/Purchasse.vue";
 import DropDown from "@/components/Drawers/DropDown.vue";
 // @ is an alias to /src
 export default {
+  data() {
+    return {
+      Items: [
+        { id: 1, name: "NIKE" },
+        { id: 2, name: "CVMAN" },
+        { id: 3, name: "DMAIN" },
+      ],
+    };
+  },
   components: {
     Purchasse,
     Menu,

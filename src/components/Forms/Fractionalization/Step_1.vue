@@ -762,20 +762,13 @@ const steps = [
   },
   {
     id: "2",
-    name: "Approve Curated Asset",
-    description: "Cursus semper viverra.",
-    href: "#",
-    status: "upcoming",
-  },
-  {
-    id: "3",
     name: "Mint Asset",
     description: "Penatibus eu quis ante.",
     href: "#",
     status: "upcoming",
   },
   {
-    id: "4",
+    id: "3",
     name: "Create a Vault",
     description: "Penatibus eu quis ante.",
     href: "#",

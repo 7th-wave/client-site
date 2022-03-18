@@ -78,8 +78,8 @@
       </span>
       <button @click="nextStep" class=" text-white font-medium text-base font-inter border border-white py-2 px-4 rounded-sm">EDIT</button>
     </div>
-     <div class=" flex items-center space-x-2" v-if="cardtype == 'edit'">
-      <div>
+     <div class=" flex lg:flex-row flex-col items-start space-y-2 lg:space-y-0 lg:items-center lg:space-x-2" v-if="cardtype == 'edit'">
+      <div class=" hidden lg:block">
         <svg
           width="3"
           height="50"

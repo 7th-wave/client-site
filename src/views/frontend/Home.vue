@@ -1,99 +1,283 @@
 <template>
-  <div class="home font-inter py-4   w-full">
-    <div class="relative  ">
-      <div class="relative ">
-        <div class=" w-full bg-gray-100">
-           <div class="m-auto grid grid-cols-1 lg:grid-cols-6 gap-12 px-12  2xl:max-w-8xl 2xl:mx-auto  ">
-          <div class="col-span-1 lg:col-span-2 flex flex-col justify-center">
-            <h1 class="text-6xl leading-none font-inter font-semibold">
-              <span class="text-primary-500">Mint</span> and
-              <span class="text-secondary-500">Trade</span> <br />NFT Fractions
-              of <br />Tangile Assets
-            </h1>
-            <p class="text-gray-500 mt-4 text-xl leading-7 font-normal">
-              Fractional ownership of the world’s most sought after NFTs.
-              Fractional reduces entry costs, increases access, and enables new
-              communities.
-            </p>
+  <div class="home font-inter py-4 w-full">
+    <div class="relative">
+      <div class="relative">
+        <div class="w-full bg-gray-100">
+          <div
+            class="
+              m-auto
+              grid grid-cols-1
+              xl:grid-cols-6
+              gap-12
+              px-12
+              2xl:max-w-8xl 2xl:mx-auto
+            "
+          >
+            <div class="col-span-1 lg:col-span-2 flex flex-col justify-center mt-10 lg:mt-0">
+              <h1
+                class="
+                  md:text-6xl
+                  text-3xl
+                  leading-none
+                  font-inter font-semibold
+                "
+              >
+                <span class="text-primary-500">Mint</span> and
+                <span class="text-secondary-500">Trade</span> <br />NFT
+                Fractions of <br />Tangile Assets
+              </h1>
+              <p
+                class="
+                  text-gray-500
+                  mt-4
+                  md:text-xl
+                  text-lg
+                  leading-7
+                  font-normal
+                "
+              >
+                Fractional ownership of the world’s most sought after NFTs.
+                Fractional reduces entry costs, increases access, and enables
+                new communities.
+              </p>
 
-            <div class="flex mt-16">
-              <div class="mr-4 w-full">
-                <Button
-                  :btn-style="'secondary'"
-                  :size="'large'"
-                  class="w-full"
-                  @click="goCollections"
-                  >Buy Fractions</Button
+              <div class="flex lg:mt-16 mt-6">
+                <div class="mr-4 w-full">
+                  <Button
+                    :btn-style="'secondary'"
+                    :size="'large'"
+                    class="w-full"
+                    @click="goCollections"
+                    >Buy Fractions</Button
+                  >
+                </div>
+              </div>
+            </div>
+            <div
+              class="
+                col-span-1
+                lg:col-span-4 lg:pl-12
+                pb-6
+                pt-6
+                relative
+                hidden
+                xl:block
+              "
+            >
+              <CarouselCard
+                ref="carouselCardRef"
+                :interval="7000"
+                :autoplay="false"
+                height="500px"
+                type="card"
+                arrow="always"
+                @change="changeHandle"
+              >
+                <CarouselCardItem
+                  v-for="(vault, index) in vaults"
+                  :key="index"
+                  :name="`cc_${index}`"
                 >
+                  <vault-item
+                    style="width: 435.5px"
+                    :url="{ name: 'Vault', params: { id: vault.id } }"
+                    badgecolor="green"
+                    :vault="vault"
+                  />
+                </CarouselCardItem>
+              </CarouselCard>
+
+              <div
+                class="
+                  w-full
+                  flex
+                  justify-between
+                  items-center
+                  absolute
+                  top-56
+                  -right-2.5
+                  z-10
+                "
+              >
+                <button
+                  @click="prev"
+                  class="
+                    bg-white
+                    shadow-md
+                    rounded-full
+                    flex
+                    w-10
+                    h-10
+                    hover:bg-gray-100
+                  "
+                >
+                  <svg
+                    class="m-auto"
+                    width="15"
+                    height="12"
+                    viewBox="0 0 15 12"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M6.13346 10.9835L1.4668 6.31687M1.4668 6.31687L6.13346 1.65021M1.4668 6.31687L13.4668 6.31687"
+                      stroke="#9CA3AF"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </button>
+                <button
+                  @click="next"
+                  class="
+                    bg-white
+                    shadow-md
+                    rounded-full
+                    flex
+                    w-10
+                    h-10
+                    hover:bg-gray-100
+                  "
+                >
+                  <svg
+                    class="m-auto"
+                    width="15"
+                    height="12"
+                    viewBox="0 0 15 12"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M8.80013 1.65021L13.4668 6.31687M13.4668 6.31687L8.80013 10.9835M13.4668 6.31687L1.4668 6.31687"
+                      stroke="#9CA3AF"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+            <div
+              class="
+                col-span-1
+                lg:col-span-4 lg:pl-12
+                pb-6
+                pt-6
+                relative
+                xl:hidden
+              "
+            >
+              <CarouselCard
+                ref="carouselCardRef1"
+                :interval="7000"
+                :autoplay="false"
+                height="500px"
+                arrow="always"
+                @change="changeHandle"
+              >
+                <CarouselCardItem
+                  v-for="(vault, index) in vaults"
+                  :key="index"
+                  :name="`cc_${index}`"
+                >
+                  <vault-item
+                    :url="{ name: 'Vault', params: { id: vault.id } }"
+                    badgecolor="green"
+                    :vault="vault"
+                  />
+                </CarouselCardItem>
+              </CarouselCard>
+
+              <div class="w-full absolute bottom-0 z-10 pb-6">
+                <div class="w-full relative flex justify-between items-center">
+                  <button
+                    @click="prev"
+                    class="
+                      bg-white
+                      shadow-md
+                      rounded-full
+                      flex
+                      w-10
+                      h-10
+                      hover:bg-gray-100
+                      absolute
+                      -left-4
+                    "
+                  >
+                    <svg
+                      class="m-auto"
+                      width="15"
+                      height="12"
+                      viewBox="0 0 15 12"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M6.13346 10.9835L1.4668 6.31687M1.4668 6.31687L6.13346 1.65021M1.4668 6.31687L13.4668 6.31687"
+                        stroke="#9CA3AF"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </button>
+                  <button
+                    @click="next"
+                    class="
+                      absolute
+                      -right-4
+                      lg:right-4
+                      bg-white
+                      shadow-md
+                      rounded-full
+                      flex
+                      w-10
+                      h-10
+                      hover:bg-gray-100
+                    "
+                  >
+                    <svg
+                      class="m-auto"
+                      width="15"
+                      height="12"
+                      viewBox="0 0 15 12"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M8.80013 1.65021L13.4668 6.31687M13.4668 6.31687L8.80013 10.9835M13.4668 6.31687L1.4668 6.31687"
+                        stroke="#9CA3AF"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </svg>
+                  </button>
+                </div>
               </div>
             </div>
           </div>
-          <div class="col-span-1 lg:col-span-4 lg:px-24 pb-6 pt-6 relative">
-            <CarouselCard ref="carouselCardRef" :interval="7000" :autoplay="false" height="500px" type="card" arrow="always" @change="changeHandle">
-              <CarouselCardItem v-for="(vault, index) in vaults"
-                :key="index" :name="`cc_${index}`">
-                <vault-item :url="{name:'Vault',params:{id:vault.id}}"  badgecolor="green" :vault="vault" />
-              </CarouselCardItem>
-              
-            </CarouselCard>
-
-            <div class=" w-full flex justify-between items-center absolute top-56 -right-5 z-10">
-                <button @click="prev"  class="bg-white shadow-md rounded-full flex w-10 h-10 hover:bg-gray-100">
-          <svg
-            class="m-auto"
-            width="15"
-            height="12"
-            viewBox="0 0 15 12"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M6.13346 10.9835L1.4668 6.31687M1.4668 6.31687L6.13346 1.65021M1.4668 6.31687L13.4668 6.31687"
-              stroke="#9CA3AF"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-        </button>
-        <button @click="next" class="bg-white shadow-md rounded-full flex w-10 h-10 hover:bg-gray-100">
-          <svg
-           class=" m-auto"
-            width="15"
-            height="12"
-            viewBox="0 0 15 12"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M8.80013 1.65021L13.4668 6.31687M13.4668 6.31687L8.80013 10.9835M13.4668 6.31687L1.4668 6.31687"
-              stroke="#9CA3AF"
-              stroke-width="2"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            />
-          </svg>
-        </button>
-    
-             </div>
-            
-          </div>
         </div>
-        </div>
-       
 
         <div class="pb-12 bg-white">
           <Title text="Featured Collections" />
           <swiper
-            :slides-per-view="3.5"
+            :slides-per-view="width > 534 ? 3.5 : 1"
             :space-between="20"
-            :centeredSlides="true"
+            :centeredSlides="false"
             :loop="false"
             :modules="modules"
             @swiper="onSwiper"
             @slideChange="onSlideChange"
           >
-            <swiper-slide class="card"  v-for="(category, index,key) in categories" :key="key" @click="goToDetails(category.id)">
+            <swiper-slide
+              class="card"
+              v-for="(category, index, key) in categories"
+              :key="key"
+              @click="goToDetails(category.id)"
+            >
               <div class="w-full p-2 flex items-center">
                 <category-card @click="GoToCategory" :category="category">
                   <template #image>
@@ -179,11 +363,11 @@ import { useRouter } from "vue-router";
 import CategoryCard from "../../components/cards/CategoryCard.vue";
 import Title from "../../components/Shared/Title.vue";
 
-import { ref } from '@vue/reactivity';
+import { ref } from "@vue/reactivity";
 
 const vaults = [
   {
-    id:"cvman",
+    id: "cvman",
     name: "The caveman, ca. 2008",
     token: "SNEAKER",
     creator: "Nike",
@@ -198,7 +382,7 @@ const vaults = [
     ],
   },
   {
-    id:"sneakers",
+    id: "sneakers",
     name: "Nike Sneakers",
     token: "SNEAKER",
     creator: "Nike",
@@ -233,7 +417,7 @@ const vaults = [
     ],
   },
   {
-    id:"sneakers",
+    id: "sneakers",
     name: "Nike Shoes",
     token: "SNEAKER",
     creator: "Nike",
@@ -255,25 +439,36 @@ const vaults = [
       },
     ],
   },
-  
 ];
 
 const categories = [
   {
-    id:"sneakers",
+    id: "sneakers",
     name: "Sneakers",
     image: "sneakers.png",
     items: 6,
   },
 
   {
-    id:"cvman",
+    id: "cvman",
     name: "Fine Art",
     image: "caveman.png",
     items: 2,
   },
   {
-    id:"Gems",
+    id: "Gems",
+    name: "Rare Gems & Jewellery",
+    image: "gems.png",
+    items: 1,
+  },
+  {
+    id: "Gems",
+    name: "Rare Gems & Jewellery",
+    image: "gems.png",
+    items: 1,
+  },
+  {
+    id: "Gems",
     name: "Rare Gems & Jewellery",
     image: "gems.png",
     items: 1,
@@ -281,6 +476,18 @@ const categories = [
 ];
 
 export default {
+  data() {
+    return {
+      width: window.innerWidth,
+    };
+  },
+  created() {
+    setTimeout(() => {
+      this.width = window.innerWidth;
+    }, 100);
+    //534
+  },
+
   components: {
     Button,
     Swiper,
@@ -289,18 +496,18 @@ export default {
     CategoryCard,
     Title,
   },
-  methods:{
-    goToDetails(id){
+  methods: {
+    goToDetails(id) {
       this.$router.push({ name: "vault_category", params: { category: id } });
     },
-    goVault(id){
-      this.$router.push({ name: "Vault" ,params: { id: id } });
+    goVault(id) {
+      this.$router.push({ name: "Vault", params: { id: id } });
     },
-
   },
   setup() {
     const router = useRouter();
     const carouselCardRef = ref();
+    const carouselCardRef1 = ref();
 
     const onSwiper = (swiper) => {
       console.log(swiper);
@@ -312,18 +519,21 @@ export default {
     const goCollections = () => {
       router.push({ name: "Explore" });
     };
-     const changeHandle = (index) => {
-      console.log(index)
-    }
+    const changeHandle = (index) => {
+      console.log(index);
+    };
     const next = () => {
-      carouselCardRef.value.next()
-    }
+      carouselCardRef.value.next();
+      carouselCardRef1.value.next();
+    };
     const prev = () => {
-      carouselCardRef.value.prev()
-    }
+      carouselCardRef.value.prev();
+      carouselCardRef1.value.prev();
+    };
     const setToFirst = () => {
-      carouselCardRef.value.setActiveItem(0)
-    }
+      carouselCardRef.value.setActiveItem(0);
+      carouselCardRef1.value.setActiveItem(0);
+    };
 
     return {
       modules: [Pagination, Autoplay],
@@ -333,24 +543,22 @@ export default {
       vaults,
       categories,
       carouselCardRef,
+      carouselCardRef1,
       changeHandle,
       next,
       prev,
-      setToFirst
-
+      setToFirst,
     };
   },
 };
 </script>
 <style scoped>
-
 .carousel-card-item-card {
-  opacity: .5;
+  opacity: 0.5;
 }
 
-
 .card {
-      width: 529.429px !important;
+  width: 529.429px !important;
 }
 
 .carousel-card-item-card.is-active {
@@ -396,7 +604,17 @@ export default {
 }
 .swiper-slide  {
        width: 529.429px !important;
+}
 
+.swiper-slide {
+  width: 329.429px !important;
+ 
+}
+@media (min-width: 768px) {
+  .swiper-slide {
+    width: 529.429px !important;
+    /* 329.429px !important */
+  }
 }
 
 

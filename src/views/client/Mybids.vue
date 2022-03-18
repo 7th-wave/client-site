@@ -5,7 +5,7 @@
       <Navbar :type="'customer'" />
     </div>
     <div class="py-0 pb-6 sm:pt-2 sm:pb-6 lg:pt-0 lg:pb-8 text-center">
-      <h1 class="text-4xl font-medium">My Bids</h1>
+      <h1 class="sm:text-4xl text-2xl font-medium">My Bids</h1>
     </div>
     <div>
       <div class="lg:grid lg:grid-cols-7 lg:gap-6 rounded-lg ">

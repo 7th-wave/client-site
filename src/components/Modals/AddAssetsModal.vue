@@ -59,7 +59,7 @@
               shadow-xl
               transform
               transition-all
-              sm:my-8 sm:align-middle sm:max-w-sm w-full
+              sm:my-8 sm:align-middle sm:max-w-5xl sm:w-full
             "
           >
             <div class="bg-white w-full">
@@ -75,7 +75,7 @@
                 "
               >
                 <span class="text-lg text-gray-900 font-inter"
-                  >Confirm Deletion</span
+                  >Add / Remove Assets from the Vault</span
                 >
                 <div
                   class="p-1 bg-white rounded-md shadow-sm cursor-pointer"
@@ -85,9 +85,12 @@
                 </div>
               </div>
             </div>
-            <div class="w-full flex items-center py-5  pl-20 sm:pl-40 space-x-4">
-                    <button @click="Cancel" class=" text-sm text-gray-700 bg-white border font-medium font-inter py-2.5 px-4 rounded-md outline-none">CANCEL</button>
-                    <button @click="Delete" class="text-sm text-white bg-black border font-medium font-inter py-2.5 px-4 rounded-md outline-none">DELETE</button>
+            <div class="w-full grid lg:grid-cols-3 py-2 px-4 gap-4">
+              <VaultCard
+                v-for="(item, index, key) in Vaults"
+                :key="key"
+                :vault="item"
+              />
             </div>
           </div>
         </TransitionChild>
@@ -97,6 +100,8 @@
 </template>
 
 <script>
+import VaultCard from "@/components/cards/VaultCard.vue";
+
 import { ref } from "vue";
 import {
   Dialog,
@@ -112,6 +117,49 @@ export default {
     TransitionChild,
     TransitionRoot,
     XIcon,
+    VaultCard,
+  },
+  data() {
+    return {
+      Vaults: [
+        {
+          selected: false,
+          img: "/images/sneakers/01.png",
+          collection: "Sneakers Collection",
+          name: "Nike Waffle Sneakers",
+        },
+        {
+          selected: false,
+          img: "/images/sneakers/02.png",
+          collection: "Sneakers Collection",
+          name: "Nike Waffle Sneakers",
+        },
+        {
+          selected: false,
+          img: "/images/sneakers/03.png",
+          collection: "Sneakers Collection",
+          name: "Nike Waffle Sneakers",
+        },
+        {
+          selected: false,
+          img: "/images/sneakers/04.png",
+          collection: "Sneakers Collection",
+          name: "Nike Waffle Sneakers",
+        },
+        {
+          selected: false,
+          img: "/images/sneakers/05.png",
+          collection: "Sneakers Collection",
+          name: "Nike Waffle Sneakers",
+        },
+        {
+          selected: false,
+          img: "/images/sneakers/06.png",
+          collection: "Sneakers Collection",
+          name: "Nike Waffle Sneakers",
+        },
+      ],
+    };
   },
   setup() {
     const open = ref(false);
@@ -120,14 +168,7 @@ export default {
       open,
     };
   },
+
  
-  methods:{
-      Delete(){
-         this.$emit('deleteItem')
-      },
-      Cancel(){
-        this.open = false
-      }
-  }
 };
 </script>

@@ -4,31 +4,27 @@
       <Popover class="relative overflow-visible">
         <div
           class="
-            md:flex
+            flex
             justify-between
             text-center
             items-center
-            mx-auto
+            
             px-4
             py-6
-            lg:py-6
-            sm:px-6
-            md:justify-start md:space-x-10
-            lg:px-8
+            
           "
         >
           <div
-            class="flex md:justify-start justify-center lg:w-0 lg:flex-1 w-full"
+            class="flex"
           >
             <logo />
           </div>
 
           <div
             class="
-              md:flex
-              items-center
+              flex
               justify-end
-              md:flex-1
+             
               lg:w-0
               md:m-0
               mt-4

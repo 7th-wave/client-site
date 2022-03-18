@@ -59,7 +59,8 @@
               shadow-xl
               transform
               transition-all
-              sm:my-8 sm:align-middle sm:max-w-sm w-full
+              sm:my-8 sm:align-middle sm:max-w-sm
+              w-full
             "
           >
             <div class="bg-white w-full">
@@ -75,7 +76,7 @@
                 "
               >
                 <span class="text-lg text-gray-900 font-inter"
-                  >Confirm Deletion</span
+                  >Account Deletion</span
                 >
                 <div
                   class="p-1 bg-white rounded-md shadow-sm cursor-pointer"
@@ -85,9 +86,41 @@
                 </div>
               </div>
             </div>
-            <div class="w-full flex items-center py-5  pl-20 sm:pl-40 space-x-4">
+            <div class="w-full px-4 py-4 space-y-4">
+              <div>
+                <label
+                  for="about"
+                  class="block text-sm font-medium text-gray-700"
+                >
+                  Reason for your account deletion request
+                </label>
+                <div class="mt-1">
+                  <textarea
+                    id="about"
+                    name="about"
+                    rows="3"
+                    class="
+                      shadow-sm
+                      focus:ring-primary-500 focus:border-primary-500
+                      mt-1
+                      block
+                      w-full
+                      sm:text-sm
+                      border border-gray-300
+                      rounded-md
+                    "
+                    
+                  ></textarea>
+                </div>
+              </div>
+              <div class="col-span-6 sm:col-span-4">
+                <label for="email-address" class="block text-sm font-medium text-gray-700">Type DELETE to confirm</label>
+                <input type="text" name="email-address" id="email-address" autocomplete="email" class="mt-1 focus:ring-primary-500 focus:border-primary-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+              </div>
+               <div class="w-full flex items-center py-2   space-x-4">
                     <button @click="Cancel" class=" text-sm text-gray-700 bg-white border font-medium font-inter py-2.5 px-4 rounded-md outline-none">CANCEL</button>
-                    <button @click="Delete" class="text-sm text-white bg-black border font-medium font-inter py-2.5 px-4 rounded-md outline-none">DELETE</button>
+                    <button @click="Delete" class="text-sm text-white bg-black border font-medium font-inter py-2.5 px-4 rounded-md outline-none">DELETE ACCOUNT</button>
+            </div>
             </div>
           </div>
         </TransitionChild>
@@ -120,14 +153,14 @@ export default {
       open,
     };
   },
- 
-  methods:{
-      Delete(){
-         this.$emit('deleteItem')
-      },
-      Cancel(){
-        this.open = false
-      }
-  }
+
+  methods: {
+    Delete() {
+      this.open = false
+    },
+    Cancel() {
+      this.open = false;
+    },
+  },
 };
 </script>

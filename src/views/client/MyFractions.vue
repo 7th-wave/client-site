@@ -2,7 +2,7 @@
   <div
     class="
       account
-      sm:px-8
+      sm:px-8 pr-4
       py-4
       sm:py-4
       lg:py-16
@@ -16,7 +16,7 @@
       <Navbar />
     </div>
     <div class="py-0 sm:py-4 md:pb-8 md:pt-4 lg:pt-0 lg:pb-8 text-center">
-      <h1 class="text-4xl font-medium">My NFT Fractions</h1>
+      <h1 class="sm:text-4xl text-2xl font-medium">My NFT Fractions</h1>
     </div>
     <div>
       <div class="flex items-start space-x-4 w-full">
