@@ -2,7 +2,7 @@
   <div
     class="
       account
-      sm:px-8
+     sm:px-8 pr-4
       py-4
       sm:py-4
       lg:py-16
@@ -107,7 +107,7 @@
               </select> -->
             </div>
           </div>
-          <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4">
+          <div class="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4">
             <Purchasse type="NIKE" />
             <Purchasse type="NIKE" />
             <Purchasse type="CVMAN" />

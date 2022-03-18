@@ -2,7 +2,7 @@
   <div
     class="
       account
-      sm:px-8
+      sm:px-8 pr-4
       py-4
       sm:py-4
       lg:py-16

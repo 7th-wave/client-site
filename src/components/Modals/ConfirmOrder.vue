@@ -59,7 +59,7 @@
               shadow-xl
               transform
               transition-all
-              sm:my-8 sm:align-middle sm:max-w-sm sm:w-full
+              sm:my-8 sm:align-middle sm:max-w-sm w-full
             "
           >
             <div class="bg-white w-full">

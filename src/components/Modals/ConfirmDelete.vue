@@ -59,7 +59,7 @@
               shadow-xl
               transform
               transition-all
-              sm:my-8 sm:align-middle sm:max-w-sm sm:w-full
+              sm:my-8 sm:align-middle sm:max-w-sm w-full
             "
           >
             <div class="bg-white w-full">
@@ -85,7 +85,7 @@
                 </div>
               </div>
             </div>
-            <div class="w-full flex items-center py-5  pl-40 space-x-4">
+            <div class="w-full flex items-center py-5  pl-20 sm:pl-40 space-x-4">
                     <button @click="Cancel" class=" text-sm text-gray-700 bg-white border font-medium font-inter py-2.5 px-4 rounded-md outline-none">CANCEL</button>
                     <button @click="Delete" class="text-sm text-white bg-black border font-medium font-inter py-2.5 px-4 rounded-md outline-none">DELETE</button>
             </div>

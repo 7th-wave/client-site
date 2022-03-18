@@ -1,6 +1,6 @@
 <template>
   <div
-    class="account sm:px-8 py-4 lg:py-16 relative bg-gray-100 font-inter w-full"
+    class="account px-4 py-4 lg:py-16 relative bg-gray-100 font-inter w-full"
   >
     <div class="py-0 sm:py-2 lg:pt-0 lg:pb-8 text-center">
       <h1 class="text-4xl font-normal">Vault Creation</h1>
@@ -379,7 +379,7 @@
                     xl:grid-cols-8
                     lg:grid-cols-8
                     md:grid-cols-5
-                    grid-cols-3
+                    grid-cols-2
                     gap-2
                     pt-3
                   "

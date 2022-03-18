@@ -8,7 +8,7 @@
         >
       </div>
 
-      <div class="grid lg:grid-cols-3 grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="grid lg:grid-cols-3 grid-cols-1 md:grid-cols-2 gap-8 px-2 ">
         <CategoryCard
           @click="GoToCategory(category.name)"
           v-for="(category, index, key) in categories"

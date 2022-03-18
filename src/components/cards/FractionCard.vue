@@ -1,7 +1,7 @@
 <template>
   <div class="w-full bg-white p-4 shadow-md rounded-md space-y-4">
-    <div class="w-full flex justify-between items-center">
-      <div class="flex items-center space-x-2">
+    <div class="w-full flex sm:flex-row flex-col space-y-2 sm:space-y-0 justify-between items-start sm:items-center">
+      <div class="flex sm:items-center items-start sm:flex-row sm:space-y-0 flex-col space-y-2 sm:space-x-2">
         <div
           class="
             z-10
@@ -45,7 +45,6 @@
           }}</span
         >
       </div>
-
       <div
         class="
           py-2
@@ -90,7 +89,7 @@
     <div
       class="w-full border-2 rounded-md flex lg:flex-row flex-col lg:border-r-0"
     >
-      <div class="w-28 flex flex-col items-start lg:border-r-2 p-4">
+      <div class="lg:w-28 w-full flex flex-col items-start lg:border-r-2 lg:border-b-0 border-b-2 p-4">
         <span class="text-base text-gray-500 font-inter whitespace-nowrap">{{
           getParams == "cvman" ? "NFT" : "NFTs"
         }}</span>
@@ -98,7 +97,7 @@
           {{ getParams == "cvman" ? "1" : "6" }}
         </span>
       </div>
-      <div class="w-28 flex flex-col items-start lg:border-r-2 p-4">
+      <div class="lg:w-28 w-full flex flex-col items-start lg:border-r-2 lg:border-b-0 border-b-2  p-4">
         <span class="text-base text-gray-500 font-inter whitespace-nowrap"
           >Fractions</span
         >
@@ -106,7 +105,7 @@
           >{{ getParams == "cvman" ? "100M" : "2M" }}
         </span>
       </div>
-      <div class="w-40 flex flex-col items-start lg:border-r-2 p-4">
+      <div class="lg:w-40 w-full flex flex-col items-start lg:border-r-2 lg:border-b-0 border-b-2 p-4">
         <span class="text-base text-gray-500 font-inter whitespace-nowrap"
           >Uique Owners</span
         >
@@ -114,7 +113,7 @@
           >2530
         </span>
       </div>
-      <div class="w-48 flex flex-col items-start lg:border-r-2 p-4">
+      <div class="lg:w-40 w-full flex flex-col items-start lg:border-r-2 lg:border-b-0 border-b-2 p-4">
         <span class="text-base text-gray-500 font-inter whitespace-nowrap"
           >Collectable Supply</span
         >
