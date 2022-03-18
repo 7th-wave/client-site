@@ -65,7 +65,7 @@ export default {
           items: 6,
         },
         {
-          name: "Rare Gems & Jewellery",
+          name: "Rare Gems & Jewelry",
           image:
            "/images/categories/gems.png",
           items: 1,
