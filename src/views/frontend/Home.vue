@@ -14,12 +14,12 @@
             "
           >
             <div class="col-span-1 lg:col-span-2 flex flex-col justify-center">
-              <h1 class="text-6xl leading-none font-inter font-semibold">
+              <h1 class="md:text-6xl text-3xl leading-none font-inter font-semibold">
                 <span class="text-primary-500">Mint</span> and
                 <span class="text-secondary-500">Trade</span> <br />NFT
                 Fractions of <br />Tangile Assets
               </h1>
-              <p class="text-gray-500 mt-4 text-xl leading-7 font-normal">
+              <p class="text-gray-500 mt-4 md:text-xl text-lg leading-7 font-normal">
                 Fractional ownership of the world’s most sought after NFTs.
                 Fractional reduces entry costs, increases access, and enables
                 new communities.
