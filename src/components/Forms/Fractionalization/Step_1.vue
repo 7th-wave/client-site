@@ -1,5 +1,5 @@
 <template>
-  <div class=" space-y-4">
+  <div class="space-y-4">
     <Steps :step="steps" />
     <div class="w-full font-inter divide-gray-200 space-y-4">
       <div
@@ -35,7 +35,7 @@
                     autocomplete="given-name"
                     class="
                       shadow-sm
-                      focus:ring-indigo-500 focus:border-indigo-500
+                      focus:ring-primary-500 focus:border-primary-500
                       block
                       w-full
                       sm:text-sm
@@ -69,7 +69,7 @@
                     autocomplete="family-name"
                     class="
                       shadow-sm
-                      focus:ring-indigo-500 focus:border-indigo-500
+                      focus:ring-primary-500 focus:border-primary-500
                       block
                       w-full
                       sm:text-sm
@@ -117,7 +117,7 @@
                     name="email"
                     id="email"
                     class="
-                      focus:ring-indigo-500 focus:border-indigo-500
+                      focus:ring-primary-500 focus:border-primary-500
                       block
                       w-full
                       pl-10
@@ -165,7 +165,7 @@
                     name="Phone"
                     id="Phone"
                     class="
-                      focus:ring-indigo-500 focus:border-indigo-500
+                      focus:ring-primary-500 focus:border-primary-500
                       block
                       w-full
                       pl-10
@@ -224,7 +224,7 @@
                     name="Crypto"
                     id="Crypto"
                     class="
-                      focus:ring-indigo-500 focus:border-indigo-500
+                      focus:ring-primary-500 focus:border-primary-500
                       block
                       w-full
                       pl-10
@@ -269,8 +269,8 @@
                     rounded-md
                     shadow-sm
                     focus:outline-none
-                    focus:ring-indigo-500
-                    focus:border-indigo-500
+                    focus:ring-primary-500
+                    focus:border-primary-500
                     sm:text-sm
                   "
                 >
@@ -302,7 +302,7 @@
                     autocomplete="given-name"
                     class="
                       shadow-sm
-                      focus:ring-indigo-500 focus:border-indigo-500
+                      focus:ring-primary-500 focus:border-primary-500
                       block
                       w-full
                       sm:text-sm
@@ -335,7 +335,7 @@
                     autocomplete="City"
                     class="
                       shadow-sm
-                      focus:ring-indigo-500 focus:border-indigo-500
+                      focus:ring-primary-500 focus:border-primary-500
                       block
                       w-full
                       sm:text-sm
@@ -369,10 +369,10 @@
                       name="wallet"
                       type="radio"
                       class="
-                        focus:ring-indigo-500
+                        focus:ring-primary-500
                         h-4
                         w-4
-                        text-indigo-600
+                        text-primary-600
                         border-gray-300
                       "
                       value="yes"
@@ -391,10 +391,10 @@
                       name="wallet"
                       type="radio"
                       class="
-                        focus:ring-indigo-500
+                        focus:ring-primary-500
                         h-4
                         w-4
-                        text-indigo-600
+                        text-primary-600
                         border-gray-300
                       "
                       value="no"
@@ -430,10 +430,10 @@
                       name="trading"
                       type="radio"
                       class="
-                        focus:ring-indigo-500
+                        focus:ring-primary-500
                         h-4
                         w-4
-                        text-indigo-600
+                        text-primary-600
                         border-gray-300
                       "
                       value="yes"
@@ -452,10 +452,10 @@
                       name="trading"
                       type="radio"
                       class="
-                        focus:ring-indigo-500
+                        focus:ring-primary-500
                         h-4
                         w-4
-                        text-indigo-600
+                        text-primary-600
                         border-gray-300
                       "
                       value="no"
@@ -517,7 +517,7 @@
                     autocomplete="given-name"
                     class="
                       shadow-sm
-                      focus:ring-indigo-500 focus:border-indigo-500
+                      focus:ring-primary-500 focus:border-primary-500
                       block
                       w-full
                       sm:text-sm
@@ -549,7 +549,7 @@
                     autocomplete="family-name"
                     class="
                       shadow-sm
-                      focus:ring-indigo-500 focus:border-indigo-500
+                      focus:ring-primary-500 focus:border-primary-500
                       block
                       w-full
                       sm:text-sm
@@ -583,7 +583,7 @@
                       shadow-sm
                       block
                       w-full
-                      focus:ring-indigo-500 focus:border-indigo-500
+                      focus:ring-primary-500 focus:border-primary-500
                       sm:text-sm
                       border border-gray-300
                       rounded-md
@@ -635,12 +635,12 @@
                           bg-white
                           rounded-md
                           font-medium
-                          text-indigo-600
-                          hover:text-indigo-500
+                          text-primary-500
+                          hover:text-primary-500
                           focus-within:outline-none
                           focus-within:ring-2
                           focus-within:ring-offset-2
-                          focus-within:ring-indigo-500
+                          focus-within:ring-primary-500
                         "
                       >
                         <span>Upload a file</span>
@@ -665,14 +665,18 @@
                   >{{ asset.errors.Images }}</span
                 >
               </div>
-              <div class="sm:col-span-4 grid grid-cols-1 sm:grid-cols-6 gap-1">
+              <div class="sm:col-span-4 grid grid-cols-1 sm:grid-cols-4 gap-4">
                 <div
                   class="relative w-full sm:w-32 h-36 bg-gray-300 rounded-md"
                   v-for="(image, imageIndex, imagekey) in asset.Images"
                   :key="imagekey"
                 >
-                  <div class="rounded-md overflow-hidden">
-                    <img :src="image" alt="" />
+                  <div class="rounded-md overflow-hidden w-full h-full">
+                    <img
+                      :src="image"
+                      alt=""
+                      class="w-full h-full object-cover"
+                    />
                   </div>
                   <button
                     class="absolute -top-3 -right-3 cursor-pointer"
@@ -737,6 +741,7 @@
         </div>
       </div>
     </div>
+    <ConfirmDelete ref="deleteModal" @deleteItem="DeleteImage" />
   </div>
 </template>
 
@@ -746,26 +751,54 @@
 import { MailIcon, PhoneIcon } from "@heroicons/vue/solid";
 import IconClose from "../../Icons/IconCloseBlack.vue";
 import Steps from "../../Drawers/Steps.vue";
+import ConfirmDelete from "../../Modals/ConfirmDelete.vue";
 const steps = [
-  { id: '1', name: 'Propose New Asset', description: 'Vitae sed mi luctus laoreet.', href: '#', status: 'current' },
-  { id: '2', name: 'Approve Curated Asset', description: 'Cursus semper viverra.', href: '#', status: 'upcoming' },
-  { id: '3', name: 'Mint Asset', description: 'Penatibus eu quis ante.', href: '#', status: 'upcoming' },
-   { id: '4', name: 'Create a Vault', description: 'Penatibus eu quis ante.', href: '#', status: 'upcoming' },
-]
+  {
+    id: "1",
+    name: "Propose New Asset",
+    description: "Vitae sed mi luctus laoreet.",
+    href: "#",
+    status: "current",
+  },
+  {
+    id: "2",
+    name: "Approve Curated Asset",
+    description: "Cursus semper viverra.",
+    href: "#",
+    status: "upcoming",
+  },
+  {
+    id: "3",
+    name: "Mint Asset",
+    description: "Penatibus eu quis ante.",
+    href: "#",
+    status: "upcoming",
+  },
+  {
+    id: "4",
+    name: "Create a Vault",
+    description: "Penatibus eu quis ante.",
+    href: "#",
+    status: "upcoming",
+  },
+];
 export default {
-   setup() {
+  setup() {
     return {
       steps,
-    }
+    };
   },
   components: {
     MailIcon,
     PhoneIcon,
     IconClose,
     Steps,
+    ConfirmDelete,
   },
   data() {
     return {
+      indexDelete: null,
+      RemoveImageIndex: null,
       errors: {
         First_name: "",
         Last_name: "",
@@ -794,6 +827,15 @@ export default {
     };
   },
   methods: {
+    DeleteImage() {
+      this.form.assets[this.indexDelete].Images.splice(
+        this.RemoveImageIndex,
+        1
+      );
+      this.$refs.deleteModal.open = false
+      this.indexDelete = null;
+      this.RemoveImageIndex = null;
+    },
     clearErrors() {
       this.errors = {
         First_name: "",
@@ -908,13 +950,15 @@ export default {
       reader.readAsDataURL(file);
     },
     RemoveImage(RemoveImage, index) {
-      this.form.assets[index].Images.splice(RemoveImage, 1);
+      this.indexDelete = index;
+      this.RemoveImageIndex = RemoveImage;
+      this.$refs.deleteModal.open = true;
     },
     SubmitForm() {
       // if (this.validateForm()) {
       //   console.log(this.form);
       // }
-      this.$emit('nextStep');
+      this.$emit("nextStep");
     },
   },
 };

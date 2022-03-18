@@ -59,7 +59,7 @@
               shadow-xl
               transform
               transition-all
-              sm:my-8 sm:align-middle sm:max-w-sm sm:w-full
+              sm:my-8 sm:align-middle sm:max-w-xs  sm:w-full
             "
           >
             <div class="bg-white w-full">
@@ -83,7 +83,7 @@
               </div>
             </div>
             <div class="w-full flex flex-col items-start py-10 px-10 space-y-4">
-              <div class="w-full cursor-pointer" @click="Connect">
+              <div class=" mx-auto cursor-pointer " style="width:200px;" @click="Connect">
                 <div class="border-2 border-b-0 rounded-t-md flex py-4 w-full">
                   <div class="m-auto rounded-full border-2 w-16 h-16 flex">
                     <div class="m-auto">
@@ -109,7 +109,7 @@
                   >
                 </div>
               </div>
-              <div class="w-full cursor-pointer" @click="Connect">
+              <div  class=" mx-auto cursor-pointer " style="width:200px;" @click="Connect">
                 <div class="border-2 border-b-0 rounded-t-md flex py-4 w-full">
                   <div class="m-auto rounded-full border-2 w-16 h-16 flex">
                     <div class="m-auto">
@@ -155,7 +155,7 @@
                   >
                 </div>
               </div>
-              <div class="w-full cursor-pointer" @click="Connect">
+              <div  class=" mx-auto cursor-pointer " style="width:200px;" @click="Connect">
                 <div class="border-2 border-b-0 rounded-t-md flex py-4 w-full">
                   <div class="m-auto rounded-full border-2 w-16 h-16 flex">
                     <div class="m-auto">

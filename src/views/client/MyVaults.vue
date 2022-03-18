@@ -21,19 +21,17 @@
       <h1 class="text-4xl font-medium">My Vaults</h1>
     </div>
     <div>
-      <div class="lg:grid lg:grid-cols-7 lg:gap-6 rounded-lg">
+      <div class="flex items-start space-x-4 w-full">
         <div class="lg:col-span-2 hidden lg:block">
           <Menu />
         </div>
-        <div class="mt-5 md:mt-0 lg:col-span-5 grid grid-cols-2 gap-4">
+        <div class="mt-5 md:mt-0 lg:col-span-5 grid md:grid-cols-2 grid-cols-1 gap-4 w-full">
           <VaultItem
             class="cursor-pointer"
-            @click="
-              $router.push({
+            :url="{
                 name: 'Vault',
                 params: { id: item.id },
-              })
-            "
+              }"
             v-for="(item, index, key) in FineArt"
             :key="key"
             :vault="item"
@@ -112,7 +110,7 @@ export default {
     return {
       FineArt: [
         {
-          id: "FineArt",
+          id: "cvman",
           name: "The caveman, ca. 2008",
           token: "SNEAKER",
           creator: "caveman",
@@ -127,7 +125,7 @@ export default {
           ],
         },
         {
-          id: "FineArt",
+          id: "nike",
           name: "Damien Hirst",
           token: "SNEAKER",
           creator: "HIRST",

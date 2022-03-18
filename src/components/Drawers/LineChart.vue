@@ -1,6 +1,6 @@
 <template>
-  <div class="mt-5 py-4 px-2 bg-white shadow-sm rounded-md space-y-4">
-    <div class="flex items-center space-x-4">
+  <div class="mt-5 py-2.5 lg:px-2 bg-white shadow-md rounded-md space-y-4  w-full">
+    <div class="flex items-center w-full justify-between">
       <div class="flex items-center space-x-2">
         <span class="text-primary-500 font-medium text-sm">60DAYS</span>
         <svg
@@ -15,7 +15,7 @@
       </div>
       <div class="flex items-center space-x-2">
         <span class="text-gray-500 font-medium text-sm"
-          >Implied Vault Valuation</span
+          > Vault Valuation</span
         >
         <span class="text-black font-medium text-sm">≈ $2,000,000.00</span>
       </div>

@@ -1,6 +1,6 @@
 <template>
   <div class="w-full rounded-md shadow-md p-4 bg-white font-inter space-y-4">
-    <span class="text-sm font-medium text-gray-500">Vault DAO</span>
+    <span class="text-base font-medium text-gray-900">Vault DAO</span>
     <div class="flex flex-col items-start space-y-1">
       <span class="text-sm text-black font-normal"
         >As a fraction owner you can set a reserve price to allow an auction to
@@ -35,11 +35,11 @@
             border-gray-300
             rounded-md
           "
-          placeholder="100,000.00"
+          :placeholder="getParams == 'cvman' ? '200,000.00' : '100,000.00'"
         />
         <button
           class="
-            bg-primary-300
+            bg-black
             px-6
             py-2
             whitespace-nowrap
@@ -54,3 +54,19 @@
     </div>
   </div>
 </template>
+
+
+<script>
+import { computed } from "vue";
+import {  useRoute } from "vue-router";
+
+export default {
+  setup(){
+    const route = useRoute();
+    const getParams = computed(() => route.params.id);
+    return {
+      getParams
+    };
+  }
+}
+</script>

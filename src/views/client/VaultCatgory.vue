@@ -32,16 +32,16 @@
         item-center
         space-y-4
         bg-white
-        px-96
+         px-2
         py-5
         text-center
       "
     >
-      <span class="text-black font-inter text-xl font-semibold"
+      <span class="text-black font-inter text-xl font-semibold max-w-6xl mx-auto"
         >The global fine art market was valued at 50 billion U.S. dollars in
         2020.
       </span>
-      <p class="text-black font-inter text-xl font-normal">
+      <p class="text-black font-inter text-xl font-normal max-w-6xl mx-auto">
         The audience for buyers will continue to expand in 2021 as rapid
         technological transformation and the embrace of digital channels will
         remain ever present. The comprehensive set of digital tools clients can
@@ -57,16 +57,16 @@
         item-center
         space-y-4
         bg-white
-        px-96
+        px-2
         py-5
         text-center
       "
     >
-      <span class="text-black font-inter text-xl font-semibold"
+      <span class="text-black font-inter text-xl font-semibold max-w-6xl mx-auto"
         >Collecting sneakers became a
         multi-billion-dollar industry</span
       >
-      <p class="text-black font-inter text-xl font-normal">
+      <p class="text-black font-inter text-xl font-normal max-w-6xl mx-auto">
         Over the past five years, there's been an "explosion" in collectors
         spending big money on rare shoes. Over the past five years, there's been
         an "explosion" in collectors spending big money on rare shoes Over the
@@ -74,16 +74,14 @@
         money on rare shoes
       </p>
     </div>
-    <div class="sm:px-72 w-full">
-      <div class="grid lg:grid-cols-3 grid-cols-1 md:grid-cols-2 gap-10">
+    <div class=" max-w-6xl mx-auto px-2  w-full">
+      <div class="grid lg:grid-cols-3 grid-cols-1 md:grid-cols-2 gap-8">
         <VaultItem
-          class="cursor-pointer"
-          @click="
-            $router.push({
+         :url="{
               name: 'Vault',
               params: { id: item.id },
-            })
-          "
+            }"
+          class="cursor-pointer"
           v-for="(item, index, key) in getData"
           :key="key"
           :vault="item"
@@ -300,7 +298,7 @@ export default {
       ],
       FineArt: [
         {
-          id: "FineArt",
+          id: "cvman",
           name: "The caveman, ca. 2008",
           token: "SNEAKER",
           fractions: 58,
@@ -314,7 +312,7 @@ export default {
           ],
         },
         {
-          id: "FineArt",
+          id: "cvman",
           name: "Damien Hirst",
           token: "SNEAKER",
           fractions: 58,
@@ -328,7 +326,7 @@ export default {
           ],
         },
         {
-          id: "FineArt",
+          id: "cvman",
           name: "Basket Name",
           token: "SNEAKER",
           fractions: 58,
@@ -350,7 +348,7 @@ export default {
   },
   computed: {
     getData() {
-      if (this.$route.params.category == "Fine Art") {
+      if (this.$route.params.category == "cvman") {
         return this.FineArt;
       } else {
         return this.vaults;

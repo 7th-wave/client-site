@@ -19,11 +19,11 @@
       <h1 class="text-4xl font-normal">My Wallet</h1>
     </div>
     <div>
-      <div class="lg:grid lg:grid-cols-7 lg:gap-6">
-        <div class="hidden lg:col-span-2 lg:block">
+      <div class="flex items-start space-x-4 w-full">
+        <div class="hidden lg:col-span-2 lg:block ">
           <Menu />
         </div>
-        <div class=" lg:mt-0 lg:col-span-5  rounded-lg flex lg:flex-row flex-col space-y-6 lg:space-y-0 items-start lg:space-x-4 ">
+        <div class=" w-full lg:mt-0 lg:col-span-5  rounded-lg flex lg:flex-row flex-col space-y-6 lg:space-y-0 items-start lg:space-x-4 ">
           <div
             class="
               p-6 lg:max-w-xs lg:max-h-80

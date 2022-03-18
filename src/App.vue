@@ -4,7 +4,7 @@
     <template v-slot:title="{ content }">{{ content ? `${content} | SITE_NAME` : `SITE_NAME` }}</template>
   </metainfo>
   <Header />
-  <div class="body " :class="{'bg-white':getRouteName == 'Home','bg-gray-100':getRouteName != 'Home'}">
+  <div class="body " :class="{'bg-white':getRouteName == 'Home' || getRouteName == 'LearnMore','bg-gray-100':getRouteName != 'Home' && getRouteName != 'LearnMore'}">
     <router-view />
     <Modal />
     <toast />

@@ -22,13 +22,24 @@
     </div>
 
     <div>
-      <div class="lg:grid lg:grid-cols-7 lg:gap-6 rounded-lg">
-        <div class="lg:col-span-2">
+      <div class="flex items-start space-x-4 w-full">
+        <div class="lg:col-span-2 hidden lg:block">
           <Menu />
         </div>
         <div class="w-full mt-5 md:mt-0 lg:col-span-5 space-y-4">
-          <div class="w-full p-4 rounded-md shadow-md bg-white grid sm:grid-cols-6 gap-2">
-            <div class="mt-1 relative rounded-md shadow-sm col-span-4">
+          <div
+            class="
+              w-full
+              p-4
+              rounded-md
+              shadow-md
+              bg-white
+              grid
+              sm:grid-cols-6
+              gap-2
+            "
+          >
+            <div class="mt-1 relative rounded-md shadow-sm lg:col-span-4 col-span-6">
               <div
                 class="
                   absolute
@@ -60,7 +71,7 @@
                 name="Search"
                 id="Search"
                 class="
-                  focus:ring-indigo-500 focus:border-indigo-500
+                  focus:ring-primary-500 focus:border-primary-500 
                   block
                   w-full
                   pl-10
@@ -71,8 +82,9 @@
                 placeholder="Search"
               />
             </div>
-            <div class=" w-full col-span-2">
-              <select
+            <div class="w-full lg:col-span-2 col-span-6">
+              <DropDown />
+              <!-- <select
                 id="location"
                 name="location"
                 class="
@@ -92,11 +104,19 @@
                 "
               >
                 <option>Vault Ticker</option>
-              </select>
+              </select> -->
             </div>
           </div>
-          <div class="grid lg:grid-cols-3 grid-cols-1 gap-4">
-            <Purchasse v-for="n in 9" :key="n" />
+          <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4">
+            <Purchasse type="NIKE" />
+            <Purchasse type="NIKE" />
+            <Purchasse type="CVMAN" />
+            <Purchasse type="CVMAN" />
+            <Purchasse type="NIKE" />
+            <Purchasse type="Banksy" />
+            <Purchasse type="NIKE" />
+            <Purchasse type="NIKE" />
+            <Purchasse type="Banksy" />
           </div>
         </div>
       </div>
@@ -107,14 +127,16 @@
 </style>
 <script>
 import Menu from "@/components/Layouts/Menu.vue";
-import Navbar from "@/components/Layouts/Navbar_mobile.vue";
+import Navbar from "@/components/Layouts/Navbar.vue";
 import Purchasse from "@/components/Drawers/Purchasse.vue";
+import DropDown from "@/components/Drawers/DropDown.vue";
 // @ is an alias to /src
 export default {
   components: {
     Purchasse,
     Menu,
     Navbar,
+    DropDown,
   },
   computed: {
     getParams() {

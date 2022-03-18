@@ -19,11 +19,11 @@
       <h1 class="text-4xl font-medium">My NFT Assets</h1>
     </div>
     <div>
-      <div class="lg:grid lg:grid-cols-7 lg:gap-6 rounded-lg">
+      <div class="flex items-start space-x-4 w-full rounded-lg">
         <div class="lg:col-span-2 hidden lg:block">
           <Menu />
         </div>
-        <div class="mt-5 md:mt-0 lg:col-span-5 grid grid-cols-2 gap-4">
+        <div class="mt-5 md:mt-0 lg:col-span-5 grid md:grid-cols-2 grid-cols-1 gap-4 w-full">
           <NftCard v-for="(Nft, index, key) in Nfts" :key="key" @click="goDetails(Nft.id)">
             <template #image>
               <img class="w-full h-full object-cover" :src="Nft.image" alt="" />

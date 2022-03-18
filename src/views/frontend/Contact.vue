@@ -47,24 +47,14 @@
         "
       >
         <div class="max-w-lg mx-auto">
-          <h2
-            class="
-              text-2xl
-              font-extrabold
-              tracking-tight
-              text-gray-900
-              sm:text-3xl
-            "
-          >
-            Get in touch
-          </h2>
-          <p class="mt-3 text-lg leading-6 text-gray-500">
-            Please let us know if you have any questions
+        
+          <p class="mt-3 text-lg leading-6 text-gray-900 font-semibold">
+          Please let us know if you have any questions
           </p>
           <dl class="mt-8 text-base text-gray-500">
             <div>
               <dt class="sr-only">Postal address</dt>
-              <div class=" flex flex-col items-start space-y-1 text-base text-gray-500 font-inter font-normal">
+              <div class=" flex flex-col items-start space-y-1 text-base text-gray-900 font-inter font-normal">
                 <span>San Gwann SGN</span>
                 <span>9030</span>
                 <span>C 94666</span>
@@ -79,7 +69,7 @@
                   class="flex-shrink-0 h-6 w-6 text-gray-400"
                   aria-hidden="true"
                 />
-                <a class="ml-3 text-base text-gray-500 font-inter font-normal" target="_blank" rel="noopener noreferrer" href="tel:+1 (000) 000.0000"> +1 (000) 000.0000 </a>
+                <a class="ml-3 text-base  text-primary-500 font-inter font-normal" target="_blank" rel="noopener noreferrer" href="tel:+1 (000) 000.0000"> +1 (000) 000.0000 </a>
               </dd>
             </div>
             <div class="mt-3">
@@ -89,7 +79,7 @@
                   class="flex-shrink-0 h-6 w-6 text-gray-400"
                   aria-hidden="true"
                 />
-                <a class="ml-3 text-base text-gray-500 font-inter font-normal" target="_blank" rel="noopener noreferrer" href="mailto:info@galleryongreene.com"> info@nimbusplatform.io </a>
+                <a class="ml-3 text-base text-primary-500 font-inter font-normal" target="_blank" rel="noopener noreferrer" href="mailto:info@galleryongreene.com"> info@nimbusplatform.io </a>
               </dd>
             </div>
           </dl>

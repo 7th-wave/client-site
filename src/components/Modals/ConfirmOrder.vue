@@ -100,7 +100,7 @@
                 >YOU RECEIVE</span
               >
               <span class="text-sm font-inter text-black font-normal"
-                >10,000.00 <span class="font-semibold">{{this.getParams == 'FineArt' ? 'CVMAN' : 'NIKE'}}</span></span
+                >10,000.00 <span class="font-semibold">{{this.getParams == 'cvman' ? 'CVMAN' : 'NIKE'}}</span></span
               >
               <div class="w-full flex flex-col items-start space-y-3">
                 <div class="flex items-center space-x-2 w-full">
@@ -196,8 +196,8 @@ export default {
       Confirm(){
          this.open = false;
          this.$store.commit('user/changeType', 'Buyer')
-        if(this.getParams == 'FineArt'){
-          this.$router.push({name:'My_fractions_details',params:{id:'FineArt'}});
+        if(this.getParams == 'cvman'){
+          this.$router.push({name:'My_fractions_details',params:{id:'cvman'}});
         }else{
           this.$router.push({name:'MyAccount',params:{address:'sdf'}});
         }

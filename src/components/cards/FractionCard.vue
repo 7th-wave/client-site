@@ -38,7 +38,11 @@
         </div>
 
         <span class="text-xl font-inter font-medium text-gray-900">
-          Fraction Data</span
+          {{
+            getParams == "cvman"
+              ? "The caveman, ca. 2008 Collection CVMAN Fraction Data"
+              : "Nike Collection NIKE Fraction Data"
+          }}</span
         >
       </div>
 
@@ -54,23 +58,53 @@
           cursor-pointer
           border-2
         "
-        v-if="goDown"
+        v-if="goDown == true"
         @click="gotoVaults"
       >
         <span class="font-inter text-sm text-gray-700 font-medium"
           >VIEW VAULT ASSETS</span
         >
-        <ArrowDownIcon class="w-5 h-3" />
+        <ArrowDownIcon class="w-5 h-3 text-primary-500" />
+      </div>
+       <div
+        class="
+          py-2
+          px-4
+          rounded-md
+          shadow-sm
+          bg-white
+          flex
+          items-center
+          cursor-pointer
+          border-2
+        "
+        v-else
+        @click="Back"
+      >
+        <span class="font-inter text-sm text-gray-700 font-medium"
+          >VIEW VAULT</span
+        >
+        <ArrowDownIcon class="w-5 h-3" :class="IconColor" />
       </div>
     </div>
     <div
       class="w-full border-2 rounded-md flex lg:flex-row flex-col lg:border-r-0"
     >
       <div class="w-28 flex flex-col items-start lg:border-r-2 p-4">
+        <span class="text-base text-gray-500 font-inter whitespace-nowrap">{{
+          getParams == "cvman" ? "NFT" : "NFTs"
+        }}</span>
+        <span class="text-black font-inter text-2xl">
+          {{ getParams == "cvman" ? "1" : "6" }}
+        </span>
+      </div>
+      <div class="w-28 flex flex-col items-start lg:border-r-2 p-4">
         <span class="text-base text-gray-500 font-inter whitespace-nowrap"
           >Fractions</span
         >
-        <span class="text-black font-inter text-2xl">2M </span>
+        <span class="text-black font-inter text-2xl"
+          >{{ getParams == "cvman" ? "100M" : "2M" }}
+        </span>
       </div>
       <div class="w-40 flex flex-col items-start lg:border-r-2 p-4">
         <span class="text-base text-gray-500 font-inter whitespace-nowrap"
@@ -86,24 +120,24 @@
         >
         <span class="text-black font-inter text-2xl">49% </span>
         <span class="text-sm text-gray-500 font-inter whitespace-nowrap"
-          >980,000 NIKE</span
+          >980,000 {{ getParams == "cvman" ? "CVMAN" : "NIKE" }}</span
         >
       </div>
       <div class="w-full flex flex-col items-start lg:border-r-2 p-4">
         <span class="text-base text-gray-500 font-inter whitespace-nowrap"
           >Implied Vault Valuation</span
         >
-        <span class="text-black font-inter text-2xl whitespace-nowrap"
-          >≈ $ 2,000,000.00
+        <span class="text-black font-inter text-2xl whitespace-nowrap">
+          {{ getParams == "cvman" ? "≈ $ 10,000,000.00" : "≈ $ 2,000,000.00" }}
         </span>
         <span class="text-sm text-gray-500 font-inter whitespace-nowrap"
-          >≈ $1 / NIKE</span
+          >≈ $1 / {{ getParams == "cvman" ? "CVMAN" : "NIKE" }}</span
         >
       </div>
     </div>
     <div
       class="
-        w-52
+          w-56
         py-2
         px-4
         rounded-md
@@ -118,10 +152,11 @@
     >
       <span
         class="font-inter text-sm text-gray-700 font-medium whitespace-nowrap"
-        >VIEW ON ETHER SCAN</span
+        >VIEW SMART CONTRACT</span
       >
       <div>
         <svg
+         class=" fill-current " :class="IconColor"
           width="14"
           height="17"
           viewBox="0 0 14 17"
@@ -130,15 +165,15 @@
         >
           <path
             d="M0 10.4762V13.4762C0 15.1331 3.13401 16.4762 7 16.4762C10.866 16.4762 14 15.1331 14 13.4762V10.4762C14 12.1331 10.866 13.4762 7 13.4762C3.13401 13.4762 0 12.1331 0 10.4762Z"
-            fill="#049AFF"
+            
           />
           <path
             d="M0 5.4762V8.4762C0 10.1331 3.13401 11.4762 7 11.4762C10.866 11.4762 14 10.1331 14 8.4762V5.4762C14 7.13305 10.866 8.4762 7 8.4762C3.13401 8.4762 0 7.13305 0 5.4762Z"
-            fill="#049AFF"
+           
           />
           <path
             d="M14 3.4762C14 5.13305 10.866 6.4762 7 6.4762C3.13401 6.4762 0 5.13305 0 3.4762C0 1.81934 3.13401 0.476196 7 0.476196C10.866 0.476196 14 1.81934 14 3.4762Z"
-            fill="#049AFF"
+            
           />
         </svg>
       </div>
@@ -149,23 +184,52 @@
 
 <script>
 import { ArrowDownIcon } from "@heroicons/vue/solid";
-
+import { computed } from "vue";
+import { useRoute, useRouter } from "vue-router";
 export default {
+ 
+  setup(props) {
+    const route = useRoute();
+    const getParams = computed(() => route.params.id);
+    const router = useRouter();
+    function gotoVaults() {
+      window.scrollTo({
+        top: 2400,
+        behavior: "smooth",
+      });
+    }
+    function Back(){
+      if(props.url != ""){
+        router.push(props.url);
+      }else {
+        router.back();
+      }
+     
+    }
+    return {
+      gotoVaults,
+      getParams,
+      Back,
+    };
+  },
   props: {
     goDown: {
       type: Boolean,
       default: true,
     },
+    goBack: {
+      type: Boolean,
+      default: false,
+    },
+     IconColor:{
+      type:String,
+      default:"text-primary-500"
+    },
+    url:{
+      type:String,
+      default:""
+    }
   },
   components: { ArrowDownIcon },
-  methods: {
-    gotoVaults() {
-      //scroll down
-      window.scrollTo({
-        top: 2400,
-        behavior: "smooth",
-      });
-    },
-  },
 };
 </script>

@@ -28,13 +28,54 @@
               </div>
             </div>
           </div>
-          <div class="col-span-1 lg:col-span-4 lg:pl-12 pb-6 pt-6">
+          <div class="col-span-1 lg:col-span-4 lg:px-24 pb-6 pt-6 relative">
             <CarouselCard ref="carouselCardRef" :interval="7000" :autoplay="false" height="500px" type="card" arrow="always" @change="changeHandle">
               <CarouselCardItem v-for="(vault, index) in vaults"
                 :key="index" :name="`cc_${index}`">
-                <vault-item  badgecolor="green" :vault="vault" />
+                <vault-item :url="{name:'Vault',params:{id:vault.id}}"  badgecolor="green" :vault="vault" />
               </CarouselCardItem>
+              
             </CarouselCard>
+
+            <div class=" w-full flex justify-between items-center absolute top-56 -right-5 z-10">
+                <button @click="prev"  class="bg-white shadow-md rounded-full flex w-10 h-10 hover:bg-gray-100">
+          <svg
+            class="m-auto"
+            width="15"
+            height="12"
+            viewBox="0 0 15 12"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M6.13346 10.9835L1.4668 6.31687M1.4668 6.31687L6.13346 1.65021M1.4668 6.31687L13.4668 6.31687"
+              stroke="#9CA3AF"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
+        <button @click="next" class="bg-white shadow-md rounded-full flex w-10 h-10 hover:bg-gray-100">
+          <svg
+           class=" m-auto"
+            width="15"
+            height="12"
+            viewBox="0 0 15 12"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M8.80013 1.65021L13.4668 6.31687M13.4668 6.31687L8.80013 10.9835M13.4668 6.31687L1.4668 6.31687"
+              stroke="#9CA3AF"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
+    
+             </div>
             
           </div>
         </div>
@@ -47,17 +88,17 @@
             :slides-per-view="3.5"
             :space-between="20"
             :centeredSlides="true"
-            :loop="true"
+            :loop="false"
             :modules="modules"
             @swiper="onSwiper"
             @slideChange="onSlideChange"
           >
-            <swiper-slide v-for="(category, index) in categories" :key="index" @click="goToDetails(category.id)">
+            <swiper-slide class="card"  v-for="(category, index,key) in categories" :key="key" @click="goToDetails(category.id)">
               <div class="w-full p-2 flex items-center">
                 <category-card @click="GoToCategory" :category="category">
                   <template #image>
                     <img
-                      class="w-full h-full object-cover"
+                      class="w-full h-full object-cover max-w-xl"
                       :src="'/images/categories/' + category.image"
                       alt=""
                     />
@@ -84,6 +125,39 @@
               </div>
             </swiper-slide>
           </swiper>
+          <!-- <div class=" w-full grid md:grid-cols-2 grid-cols-1 gap-4 lg:hidden">
+    
+              <div class="w-full p-2 flex items-center"  v-for="(category, index,key) in categories" :key="key" @click="goToDetails(category.id)">
+                <category-card @click="GoToCategory" :category="category">
+                  <template #image>
+                    <img
+                      class="w-full h-full object-cover max-w-xl"
+                      :src="'/images/categories/' + category.image"
+                      alt=""
+                    />
+                  </template>
+
+                  <template #subtitle>
+                    <span
+                      class="
+                        text-sm
+                        font-inter font-medium
+                        text-primary-500
+                        cursor-pointer
+                      "
+                      >{{ category.items }} items</span
+                    >
+                  </template>
+                  <template #title>
+                    <span
+                      class="text-gray-900 text-xl font-semibold font-inter"
+                      >{{ category.name }}</span
+                    >
+                  </template>
+                </category-card>
+              </div>
+           
+          </div> -->
         </div>
       </div>
     </div>
@@ -109,7 +183,7 @@ import { ref } from '@vue/reactivity';
 
 const vaults = [
   {
-    id:"FineArt",
+    id:"cvman",
     name: "The caveman, ca. 2008",
     token: "SNEAKER",
     creator: "Nike",
@@ -121,18 +195,10 @@ const vaults = [
         name: "caveman",
         image: "caveman.png",
       },
-     {
-        name: "caveman",
-        image: "caveman.png",
-      },
-     {
-        name: "caveman",
-        image: "caveman.png",
-      },
     ],
   },
   {
-    id:"Sneakers",
+    id:"sneakers",
     name: "Nike Sneakers",
     token: "SNEAKER",
     creator: "Nike",
@@ -167,7 +233,7 @@ const vaults = [
     ],
   },
   {
-    id:"Sneakers",
+    id:"sneakers",
     name: "Nike Shoes",
     token: "SNEAKER",
     creator: "Nike",
@@ -194,14 +260,14 @@ const vaults = [
 
 const categories = [
   {
-    id:"Sneakers",
+    id:"sneakers",
     name: "Sneakers",
     image: "sneakers.png",
-    items: 9,
+    items: 6,
   },
 
   {
-    id:"Fine Art",
+    id:"cvman",
     name: "Fine Art",
     image: "caveman.png",
     items: 2,
@@ -246,7 +312,18 @@ export default {
     const goCollections = () => {
       router.push({ name: "Explore" });
     };
-    
+     const changeHandle = (index) => {
+      console.log(index)
+    }
+    const next = () => {
+      carouselCardRef.value.next()
+    }
+    const prev = () => {
+      carouselCardRef.value.prev()
+    }
+    const setToFirst = () => {
+      carouselCardRef.value.setActiveItem(0)
+    }
 
     return {
       modules: [Pagination, Autoplay],
@@ -256,6 +333,11 @@ export default {
       vaults,
       categories,
       carouselCardRef,
+      changeHandle,
+      next,
+      prev,
+      setToFirst
+
     };
   },
 };
@@ -264,6 +346,11 @@ export default {
 
 .carousel-card-item-card {
   opacity: .5;
+}
+
+
+.card {
+      width: 529.429px !important;
 }
 
 .carousel-card-item-card.is-active {
@@ -307,4 +394,16 @@ export default {
   background-image: url('/images/arrow_left.svg')!important;
   background-repeat: no-repeat;
 }
+.swiper-slide  {
+       width: 529.429px !important;
+
+}
+
+
 </style>
+<style >
+.carousel-card-arrow, .carousel-card-indicators {
+  display: none;
+}
+</style>
+
