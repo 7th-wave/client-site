@@ -10,7 +10,7 @@
       font-medium
       rounded-lg
       shadow-lg
-      w-m-1xl
+      lg:w-m-1xl
     "
   
   >

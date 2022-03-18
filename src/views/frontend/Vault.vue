@@ -1,19 +1,43 @@
 <template>
-  <div class="py-8  2xl:max-w-8xl w-full 2xl:mx-auto">
-    <div class="flex pb-14">
+  <div
+    class="
+      py-8
+      2xl:max-w-8xl
+      w-full
+      2xl:mx-auto
+      account
+      sm:py-4
+      lg:py-16
+      relative
+      font-inter
+      space-y-4
+    "
+  >
+    <div class="flex md:pb-14 py-0 sm:py-4 md:pt-4 lg:pt-0 lg:pb-8 text-center">
       <span
-        class="m-auto text-4xl text-center font-normal font-inter text-black"
-        >{{getParams == 'cvman' ? 'The caveman, ca. 2008' : 'Nike Collection'}}</span
+        class="m-auto sm:text-4xl text-2xl text-center font-normal font-inter text-black"
+        >{{
+          getParams == "cvman" ? "The caveman, ca. 2008" : "Nike Collection"
+        }}</span
       >
     </div>
 
-    <div class="w-full pb-24">
+    <div class="w-full md:pb-24">
       <VaultSlideShow :slides="getSlides" />
     </div>
 
-    <div class="w-full px-8 py-4 grid lg:grid-cols-4 gap-4">
+    <div class="w-full px-4 py-4 grid lg:grid-cols-4 gap-4">
       <!-- left -->
-      <div class="lg:col-span-3 col-span-4 w-full flex flex-col items-start space-y-5">
+      <div
+        class="
+          lg:col-span-3
+          col-span-4
+          w-full
+          flex flex-col
+          items-start
+          space-y-5
+        "
+      >
         <span class="text-2xl text-black font-inter font-medium"
           >{Vault Sub-Title}</span
         >
@@ -30,11 +54,11 @@
             rounded-md
           "
         >
-          {Vault Description} Lorem ipsum dolor sit amet, consectetur adipiscing
-          elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-          aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-          laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-          in reprehenderit in voluptate velit esse cillum dolore eu fugiat.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat.
         </p>
       </div>
       <!-- right -->
@@ -42,26 +66,26 @@
         <BuyFractionCard />
       </div>
     </div>
-    <div class=" px-8 md:hidden">
+    <div class="px-4 md:hidden">
       <span class="text-2xl text-black font-inter font-medium"
-          >Top 10 Vault Owner</span
-        >
+        >Top 10 Vault Owner</span
+      >
     </div>
-    <div class="w-full px-8 py-4 grid lg:grid-cols-4 gap-4 ">
+    <div class="w-full px-4 py-4 grid lg:grid-cols-4 gap-4">
       <!-- left -->
       <FractionTable />
       <!-- right -->
-      <div class="w-full col-span-4 lg:col-span-1 overflow-y-auto  max-w-7xl">
+      <div class="w-full col-span-4 lg:col-span-1 overflow-y-auto max-w-7xl">
         <span class="text-2xl text-black font-inter font-medium"
           >Activities</span
         >
-       <LineChart />
+        <LineChart />
         <div class="w-full pt-2">
           <Events />
         </div>
       </div>
     </div>
-    <div class="w-full px-8 pt-2">
+    <div class="w-full px-4 pt-2">
       <div class="w-full py-3 bg-white border-2 rounded-md flex">
         <div class="flex items-center space-x-2 m-auto">
           <span class="text-base text-gray-700 font-medium font-inter"
@@ -87,13 +111,13 @@
         </div>
       </div>
     </div>
-    <div class="w-full space-y-4 px-8 pt-8">
+    <div class="w-full space-y-4 px-4 pt-8">
       <div>
         <span class="text-2xl text-black font-inter font-medium"
-          >All {{ getParams == 'cvman' ? 'CVMAN' : 'NIKE'}} Vault Assets</span
+          >All {{ getParams == "cvman" ? "CVMAN" : "NIKE" }} Vault Assets</span
         >
       </div>
-      <div class="grid   lg:grid-cols-3 gap-8">
+      <div class="grid lg:grid-cols-3 gap-8" id="CategoryCards">
         <CategoryCard
           @click="GoToCategory"
           v-for="(category, index, key) in getData"
@@ -138,10 +162,9 @@ import BuyFractionCard from "../../components/cards/BuyFractionCard.vue";
 import VaultSlideShow from "../../components/SlideShow/VaultSlideShow.vue";
 import Events from "../../components/cards/Events.vue";
 import CategoryCard from "../../components/cards/CategoryCard.vue";
-import LineChart from '@/components/Drawers/LineChart.vue';
+import LineChart from "@/components/Drawers/LineChart.vue";
 import FractionTable from "@/components/tables/FractionTable.vue";
 export default {
- 
   components: {
     FractionCard,
     //InteriorPage,
@@ -156,11 +179,11 @@ export default {
     getParams() {
       return this.$route.params.id;
     },
-    getData(){
+    getData() {
       if (this.getParams == "cvman") {
         return this.categories1;
       }
-      return this.categories; 
+      return this.categories;
     },
     getSlides() {
       if (this.getParams == "cvman") {
@@ -169,17 +192,15 @@ export default {
       return this.slides;
     },
   },
-  methods:{
-    GoToCategory(){
-      if(this.getParams == 'cvman'){
-        this.$router.push({ name: 'VaultView',params:{id: 'cvman'}});
+  methods: {
+    GoToCategory() {
+      if (this.getParams == "cvman") {
+        this.$router.push({ name: "VaultView", params: { id: "cvman" } });
       }
-    }
+    },
   },
   data() {
     return {
-    
-
       categories: [
         {
           name: "Nike Waffle Sneakers",
@@ -212,8 +233,8 @@ export default {
           title: "Sneakers Collection",
         },
       ],
-      categories1:[
-  {
+      categories1: [
+        {
           name: "The caveman, ca. 2008",
           image: "/images/sneakers/caveman.png",
           title: "Fine Art ",

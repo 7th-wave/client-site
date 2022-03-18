@@ -192,10 +192,17 @@ export default {
     const getParams = computed(() => route.params.id);
     const router = useRouter();
     function gotoVaults() {
+    //scroll down to element with id #vaults
       window.scrollTo({
-        top: 2400,
-        behavior: "smooth",
-      });
+        top: document.getElementById("CategoryCards").offsetTop,
+        behavior: "smooth"
+      }); 
+
+      
+
+
+
+     
     }
     function Back(){
       if(props.url != ""){

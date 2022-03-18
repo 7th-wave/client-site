@@ -2,7 +2,7 @@
   <div
     class="
       account
-      sm:px-8 pr-4
+      px-4
       py-4
       sm:py-4
       lg:py-16
@@ -17,7 +17,7 @@
       <Navbar :type="'customer'" />
     </div>
     <div class="py-0 sm:py-4 md:pb-8 md:pt-4 lg:pt-0 lg:pb-8 text-center">
-      <h1 class="text-4xl font-medium">Your {{ getParams == 'cvman' ? 'CVMAN' : 'NIKE'}} Fractions</h1>
+      <h1 class="sm:text-4xl text-2xl font-medium">Your {{ getParams == 'cvman' ? 'CVMAN' : 'NIKE'}} Fractions</h1>
     </div>
     <div>
       <div class="flex xl:flex-row lg:items-start xl:space-x-4 w-full lg:space-y-0 flex-col items-start space-y-4 ">

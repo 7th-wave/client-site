@@ -18,7 +18,7 @@
       <Navbar />
     </div>
     <div class="py-0 sm:py-4 md:pb-8 md:pt-4 lg:pt-0 lg:pb-8 text-center">
-      <h1 class="text-4xl font-medium">Asset NFT Fractionalization</h1>
+      <h1 class="sm:text-4xl text-2xl font-medium">Asset NFT Fractionalization</h1>
     </div>
     <div class="space-y-2">
       <div class=" flex

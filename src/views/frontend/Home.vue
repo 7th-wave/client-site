@@ -13,19 +13,35 @@
               2xl:max-w-8xl 2xl:mx-auto
             "
           >
-            <div class="col-span-1 lg:col-span-2 flex flex-col justify-center">
-              <h1 class="md:text-6xl text-3xl leading-none font-inter font-semibold">
+            <div class="col-span-1 lg:col-span-2 flex flex-col justify-center mt-10 lg:mt-0">
+              <h1
+                class="
+                  md:text-6xl
+                  text-3xl
+                  leading-none
+                  font-inter font-semibold
+                "
+              >
                 <span class="text-primary-500">Mint</span> and
                 <span class="text-secondary-500">Trade</span> <br />NFT
                 Fractions of <br />Tangile Assets
               </h1>
-              <p class="text-gray-500 mt-4 md:text-xl text-lg leading-7 font-normal">
+              <p
+                class="
+                  text-gray-500
+                  mt-4
+                  md:text-xl
+                  text-lg
+                  leading-7
+                  font-normal
+                "
+              >
                 Fractional ownership of the world’s most sought after NFTs.
                 Fractional reduces entry costs, increases access, and enables
                 new communities.
               </p>
 
-              <div class="flex mt-16">
+              <div class="flex lg:mt-16 mt-6">
                 <div class="mr-4 w-full">
                   <Button
                     :btn-style="'secondary'"
@@ -63,6 +79,7 @@
                   :name="`cc_${index}`"
                 >
                   <vault-item
+                    style="width: 435.5px"
                     :url="{ name: 'Vault', params: { id: vault.id } }"
                     badgecolor="green"
                     :vault="vault"
@@ -78,7 +95,7 @@
                   items-center
                   absolute
                   top-56
-                  -right-5
+                  -right-2.5
                   z-10
                 "
               >
@@ -173,7 +190,7 @@
                 </CarouselCardItem>
               </CarouselCard>
 
-              <div class="w-full absolute top-44 z-10">
+              <div class="w-full absolute bottom-0 z-10 pb-6">
                 <div class="w-full relative flex justify-between items-center">
                   <button
                     @click="prev"
@@ -247,7 +264,7 @@
         <div class="pb-12 bg-white">
           <Title text="Featured Collections" />
           <swiper
-            :slides-per-view="3.5"
+            :slides-per-view="width > 534 ? 3.5 : 1"
             :space-between="20"
             :centeredSlides="true"
             :loop="false"
@@ -447,6 +464,18 @@ const categories = [
 ];
 
 export default {
+  data() {
+    return {
+      width: window.innerWidth,
+    };
+  },
+  created() {
+    setTimeout(() => {
+      this.width = window.innerWidth;
+    }, 100);
+    //534
+  },
+
   components: {
     Button,
     Swiper,
@@ -544,8 +573,16 @@ export default {
   z-index: 1;
   transform: scale(1);
 }
+
 .swiper-slide {
-  width: 529.429px !important;
+  width: 329.429px !important;
+ 
+}
+@media (min-width: 768px) {
+  .swiper-slide {
+    width: 529.429px !important;
+    /* 329.429px !important */
+  }
 }
 </style>
 

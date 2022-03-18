@@ -1,5 +1,5 @@
 <template>
-  <div class="artist bg-gray-100 font-inter">
+  <div class="artist bg-gray-100 font-inter px-4">
     <div class="relative font-inter py-8 sm:py-8 lg:py-8">
       <div class="relative">
         <Navbar class=" lg:hidden" />
@@ -15,11 +15,11 @@
         >
           <p
             class="
-              text-3xl
+             sm:text-4xl text-2xl
               font-semibold
               text-gray-900
               tracking-tight
-              sm:text-4xl
+              
             "
           >
             Nike Waffle Sneaker

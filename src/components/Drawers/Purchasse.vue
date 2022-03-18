@@ -135,7 +135,7 @@ export default {
   props:['type'],
   data() {
     return {
-      open: true,
+      open: false,
     };
   },
   components: {

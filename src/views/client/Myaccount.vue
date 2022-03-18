@@ -3,7 +3,7 @@
   <div
     class="
       account
-      sm:px-8
+      sm:px-2
       pr-4
       2xl:max-w-8xl
       w-full
@@ -19,7 +19,7 @@
       <Navbar />
     </div>
     <div class="py-0 pb-2 sm:py-4 lg:pt-0 lg:pb-8 text-center">
-      <h1 class="text-4xl font-medium">My Account</h1>
+      <h1 class="sm:text-4xl text-2xl font-medium">My Account</h1>
     </div>
     <div>
       <div class="flex items-start space-x-4 w-full">

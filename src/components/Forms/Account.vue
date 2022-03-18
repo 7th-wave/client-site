@@ -1,7 +1,7 @@
 <template>
   <form
     @submit.prevent="onSave"
-    class="space-y-8 divide-y divide-gray-200 bg-white py-10 px-10 rounded-md"
+    class="space-y-8 divide-y divide-gray-200 bg-white py-10 px-4 rounded-md"
   >
     <div
       :class="[
@@ -1086,7 +1086,6 @@
 
           <div class="w-full">
             <button
-              @click="Cancel"
               type="button"
               class="
                 bg-black
@@ -1104,6 +1103,7 @@
                 focus:ring-offset-2
                 focus:ring-gray-900
               "
+              @click="deleteAccount"
             >
               REQUEST ACCOUNT DELETION
             </button>
@@ -1152,14 +1152,15 @@
             rounded-md
             text-white
             hover:bg-primary-500
-            focus:outline-none
+            focus:outline-none uppercase
           "
           style="background-color: #049aff"
         >
-          Save
+          SAVE
         </button>
       </div>
     </div>
+    <DeleteAccountModal ref="deleteAccountRef" />
   </form>
 </template>
 <script>
@@ -1168,12 +1169,19 @@ import { storage, auth } from "../../firebase/firebase";
 import { useStore } from "vuex";
 import { ExclamationCircleIcon } from "@heroicons/vue/solid";
 import { useRouter } from "vue-router";
+import DeleteAccountModal from "@/components/Modals/DeleteAccountModal.vue";
 var reEmail =
   /^([a-zA-Z0-9_\-/.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9/-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})$/;
 
 export default {
+  methods:{
+  deleteAccount(){
+  this.$refs.deleteAccountRef.open = true
+  }
+  },
   components: {
     ExclamationCircleIcon,
+    DeleteAccountModal,
   },
   props: {
     isAdmin: { type: Boolean, default: false },
@@ -1181,7 +1189,6 @@ export default {
   },
   setup(props) {
     const passwordAdmin = ref("");
-
     const user = ref();
     const isInitied = ref(false);
     const currentAdminAddress = computed(
@@ -1364,7 +1371,7 @@ export default {
         }
       }
     };
-
+    
     const onSave = async () => {
       isValid.value = false;
       let pass = true;

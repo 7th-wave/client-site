@@ -1,5 +1,5 @@
 <template>
-    <div class=" w-full bg-white rounded-md overflow-hidden shadow-lg">
+    <div class=" w-full bg-white rounded-md overflow-hidden shadow-md">
         <div class=" w-full h-72 cursor-pointer">
             <slot name="image"/>
         </div>

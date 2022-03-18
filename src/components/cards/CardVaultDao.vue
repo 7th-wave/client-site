@@ -21,7 +21,7 @@
       <label for="email" class="block text-sm font-medium text-gray-700"
         >Set a reserve price</label
       >
-      <div class="mt-1 flex items-center space-x-2">
+      <div class="mt-1 flex lg:flex-row flex-col items-start space-y-2 lg:space-y-0 lg:items-center lg:space-x-2">
         <input
           type="text"
           name="price"

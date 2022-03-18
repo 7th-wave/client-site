@@ -17,12 +17,12 @@
     </div> -->
     <div class="py-0 sm:py-4 md:pb-8 md:pt-4 lg:pt-0 lg:pb-8 text-center">
       <h1
-        class="text-4xl font-medium"
-        v-if="$route.params.category == 'Fine Art'"
+        class="sm:text-4xl text-2xl font-medium"
+        v-if="$route.params.category == 'cvman'"
       >
         Fine Art
       </h1>
-      <h1 class="text-4xl font-medium" v-else>Sneakers Collection</h1>
+      <h1 class="sm:text-4xl text-2xl font-medium" v-else>Sneakers Collection</h1>
     </div>
     <div
       v-if="$route.params.category == 'Fine Art'"
@@ -32,7 +32,7 @@
         item-center
         space-y-4
         bg-white
-         px-2
+         px-4
         py-5
         text-center
       "
@@ -57,7 +57,7 @@
         item-center
         space-y-4
         bg-white
-        px-2
+        px-4
         py-5
         text-center
       "
@@ -74,7 +74,7 @@
         money on rare shoes
       </p>
     </div>
-    <div class=" max-w-6xl mx-auto px-2  w-full">
+    <div class=" max-w-6xl mx-auto px-4  w-full">
       <div class="grid lg:grid-cols-3 grid-cols-1 md:grid-cols-2 gap-8">
         <VaultItem
          :url="{
