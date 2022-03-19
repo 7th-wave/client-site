@@ -82,6 +82,7 @@
                     style="width: 435.5px"
                     :url="{ name: 'Vault', params: { id: vault.id } }"
                     badgecolor="green"
+                    :show-arrows="false"
                     :vault="vault"
                   />
                 </CarouselCardItem>
@@ -94,7 +95,7 @@
                   justify-between
                   items-center
                   absolute
-                  top-56
+                  top-1/2 transform -translate-y-1/2
                   -right-2.5
                   z-10
                 "
@@ -185,12 +186,13 @@
                   <vault-item
                     :url="{ name: 'Vault', params: { id: vault.id } }"
                     badgecolor="green"
+                    :show-arrows="false"
                     :vault="vault"
                   />
                 </CarouselCardItem>
               </CarouselCard>
 
-              <div class="w-full absolute bottom-0 z-10 pb-6">
+              <div class="w-full absolute bottom-0 z-10 pb-6 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
                 <div class="w-full relative flex justify-between items-center">
                   <button
                     @click="prev"
@@ -203,6 +205,7 @@
                       h-10
                       hover:bg-gray-100
                       absolute
+                      top-0
                       -left-4
                     "
                   >
@@ -229,6 +232,7 @@
                       absolute
                       -right-4
                       lg:right-4
+                      top-0
                       bg-white
                       shadow-md
                       rounded-full
@@ -266,7 +270,7 @@
           <swiper
             :slides-per-view="width > 534 ? 3.5 : 1"
             :space-between="20"
-            :centeredSlides="true"
+            :centeredSlides="false"
             :loop="false"
             :modules="modules"
             @swiper="onSwiper"
@@ -461,6 +465,18 @@ const categories = [
     image: "gems.png",
     items: 1,
   },
+  {
+    id: "Gems",
+    name: "Rare Gems & Jewellery",
+    image: "gems.png",
+    items: 1,
+  },
+  {
+    id: "Gems",
+    name: "Rare Gems & Jewellery",
+    image: "gems.png",
+    items: 1,
+  },
 ];
 
 export default {
@@ -574,6 +590,26 @@ export default {
   transform: scale(1);
 }
 
+.carousel-card-arrow {
+  width: 56px;
+  height: 56px;
+  background-color: transparent;
+  background-size: 100%
+}
+
+.carousel-card-arrow-right i {
+  background-image: url('/images/arrow_next.svg')!important;
+  background-repeat: no-repeat;
+}
+
+.carousel-card-arrow-left i {
+  background-image: url('/images/arrow_left.svg')!important;
+  background-repeat: no-repeat;
+}
+.swiper-slide  {
+       width: 529.429px !important;
+}
+
 .swiper-slide {
   width: 329.429px !important;
  
@@ -584,14 +620,11 @@ export default {
     /* 329.429px !important */
   }
 }
+
+
 </style>
-
-
-<style>
-.carousel-card-arrow {
-  display: none;
-}
-.carousel-card-indicators {
+<style >
+.carousel-card-arrow, .carousel-card-indicators {
   display: none;
 }
 </style>
