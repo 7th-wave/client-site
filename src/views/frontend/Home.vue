@@ -82,6 +82,7 @@
                     style="width: 435.5px"
                     :url="{ name: 'Vault', params: { id: vault.id } }"
                     badgecolor="green"
+                    :show-arrows="false"
                     :vault="vault"
                   />
                 </CarouselCardItem>
@@ -94,7 +95,7 @@
                   justify-between
                   items-center
                   absolute
-                  top-56
+                  top-1/2 transform -translate-y-1/2
                   -right-2.5
                   z-10
                 "
@@ -185,12 +186,13 @@
                   <vault-item
                     :url="{ name: 'Vault', params: { id: vault.id } }"
                     badgecolor="green"
+                    :show-arrows="false"
                     :vault="vault"
                   />
                 </CarouselCardItem>
               </CarouselCard>
 
-              <div class="w-full absolute bottom-0 z-10 pb-6">
+              <div class="w-full absolute bottom-0 z-10 pb-6 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
                 <div class="w-full relative flex justify-between items-center">
                   <button
                     @click="prev"
@@ -203,6 +205,7 @@
                       h-10
                       hover:bg-gray-100
                       absolute
+                      top-0
                       -left-4
                     "
                   >
@@ -229,6 +232,7 @@
                       absolute
                       -right-4
                       lg:right-4
+                      top-0
                       bg-white
                       shadow-md
                       rounded-full

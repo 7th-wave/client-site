@@ -2,11 +2,28 @@
   <div class="rounded-lg overflow-hidden shadow-lg w-90  relative" :class="bg">
     <slot name="badge" />
     <div class="slider relative">
+      
       <div
+        class="m-auto absolute z-10 bottom-4"
+        style="left: 50%; transform: translate(-50%, 0)"
+      >
+        <badge :color="badgecolor" :label="vault.nfts.length + ' assets'" />
+      </div>
+      <swiper :modules="modules" :navigation="{
+            nextEl: '.next-button',
+            prevEl: '.prev-button',
+          }" :slides-per-view="1" :space-between="0" >
+        <swiper-slide v-for="(item, index) of vault.nfts" :key="index" >
+          <img @click="goToDetails"
+            class="w-full h-80 object-cover"
+            :src="'/images/sneakers/' + item.image"
+          />
+        </swiper-slide>
+        <div
        v-if="vault.nfts.length > 1"
         class="z-10 absolute left-0 bottom-2 px-4  w-full flex justify-between items-center"
       >
-        <button  class="bg-white shadow-md rounded-full flex w-10 h-10 hover:bg-gray-100">
+        <button  class="bg-white shadow-md rounded-full flex w-10 h-10 hover:bg-gray-100 prev-button">
           <svg
             class="m-auto"
             width="15"
@@ -24,7 +41,7 @@
             />
           </svg>
         </button>
-        <button class="bg-white shadow-md rounded-full flex w-10 h-10 hover:bg-gray-100">
+        <button class="bg-white shadow-md rounded-full flex w-10 h-10 hover:bg-gray-100 next-button">
           <svg
            class=" m-auto"
             width="15"
@@ -43,19 +60,6 @@
           </svg>
         </button>
       </div>
-      <div
-        class="m-auto absolute z-10 bottom-4"
-        style="left: 50%; transform: translate(-50%, 0)"
-      >
-        <badge :color="badgecolor" :label="vault.nfts.length + ' assets'" />
-      </div>
-      <swiper :slides-per-view="1" :space-between="0" @click="goToDetails">
-        <swiper-slide v-for="(item, index) of vault.nfts" :key="index">
-          <img
-            class="w-full h-80 object-cover"
-            :src="'/images/sneakers/' + item.image"
-          />
-        </swiper-slide>
       </swiper>
     </div>
 
@@ -79,7 +83,7 @@
 <script>
 import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
 
-import { Swiper, SwiperSlide } from "swiper/vue/swiper-vue.js";
+import { Swiper, SwiperSlide, useSwiper } from "swiper/vue/swiper-vue.js";
 
 // Import Swiper styles
 import "swiper/swiper-bundle.min.css";
@@ -89,7 +93,7 @@ import { onMounted } from "@vue/runtime-core";
 // import { useRouter } from 'vue-router'
 
 export default {
-  props: ["vault", "bg", "badgecolor","url"],
+  props: ["vault", "bg", "badgecolor", "url", 'showArrows'],
 
   components: {
     Swiper,
@@ -104,6 +108,8 @@ export default {
   },
 
   setup(props) {
+
+    const swiper = useSwiper();
     // const router = useRouter()
     onMounted(() => {
       console.log(props.value);
@@ -112,6 +118,7 @@ export default {
 
     return {
       modules: [Navigation, Pagination, Scrollbar, A11y],
+      swiper
     };
   },
 };
