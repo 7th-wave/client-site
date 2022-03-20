@@ -1,5 +1,5 @@
 <template>
-  <div class="rounded-lg overflow-hidden shadow-lg w-90  relative" :class="bg">
+  <div class="rounded-lg overflow-hidden shadow-lg w-full  relative" :class="bg">
     <slot name="badge" />
     <div class="slider relative">
       
@@ -21,7 +21,7 @@
         </swiper-slide>
         <div
        v-if="vault.nfts.length > 1"
-        class="z-10 absolute left-0 bottom-2 px-4  w-full flex justify-between items-center"
+        class="z-50 absolute left-0 bottom-2 px-4  w-full flex justify-between items-center"
       >
         <button  class="bg-white shadow-md rounded-full flex w-10 h-10 hover:bg-gray-100 prev-button">
           <svg

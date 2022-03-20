@@ -3,7 +3,7 @@
     class="account px-4 py-4 lg:py-16 relative bg-gray-100 font-inter w-full"
   >
     <div class="py-0 sm:py-2 lg:pt-0 lg:pb-8 text-center">
-      <h1 class="text-4xl font-normal">Vault Creation</h1>
+      <h1 class="sm:text-4xl text-2xl font-normal">Vault Creation</h1>
     </div>
 
     <div

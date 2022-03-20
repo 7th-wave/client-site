@@ -1,7 +1,7 @@
 <template>
   <div class="space-y-4 w-full font-inter py-14 px-6">
     <div class="w-full text-center pb-4">
-      <span class="text-4xl font-medium text-gray-900"
+      <span class="sm:text-4xl text-2xl font-medium text-gray-900"
         >The caveman, ca. 2008</span
       >
     </div>
