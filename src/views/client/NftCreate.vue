@@ -4,7 +4,7 @@
       <Navbar />
     </div>
     <div class="py-0 sm:py-4 md:pb-8 md:pt-4 lg:pt-0 lg:pb-8 text-center">
-      <h1 class="sm:text-4xl text-2xl font-medium">Asset NFT Fractionalization</h1>
+      <h1 class="sm:text-4xl text-2xl font-medium">NFT Mint New Asset(s)</h1>
     </div>
     <div class="space-y-2">
       <div class=" flex
@@ -19,7 +19,7 @@
           <Menu />
         </div>
         <div class="sm:col-span-5 space-y-2">
-          
+        
           <Step1 v-if="step == 1" @nextStep="nextStep" />
           <Step2 v-if="step == 2" @nextStep="nextStep" />
           <Step3 v-if="step == 3" :isminted="minted" />
@@ -27,7 +27,6 @@
         </div>
       </div>
       <div class="space-y-2" v-if="step != 1 & step != 2">
-        
         <MintsInfosCards  />
        
         <MintCard @isminted="isminted" @nextStep="nextStep"   :cardtype="step != 4 ? 'mint' :  'edit'" v-show="!minted" />

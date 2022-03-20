@@ -1,20 +1,6 @@
  
 <template>
-  <div
-    class="
-      account
-      sm:px-2
-      pr-4
-      2xl:max-w-8xl
-      w-full
-      py-4
-      relative
-      lg:py-16
-      bg-gray-100
-      font-inter
-      mx-auto
-    "
-  >
+  <account-layout>
     <div class="lg:hidden">
       <Navbar />
     </div>
@@ -33,7 +19,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </account-layout>
 </template>
 <script>
 import Menu from "@/components/Layouts/Menu.vue";
@@ -41,11 +27,13 @@ import Navbar from "@/components/Layouts/Navbar.vue";
 import Account from "@/components/Forms/Account";
 import { useStore } from "vuex";
 import { onMounted, ref } from "@vue/runtime-core";
+import AccountLayout from '../../components/Layouts/AccountLayout.vue';
 export default {
   components: {
     Account,
     Menu,
     Navbar,
+    AccountLayout,
   },
   setup() {
     const store = useStore();

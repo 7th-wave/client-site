@@ -1,18 +1,6 @@
 <template>
   <div
-    class="
-      px-0
-      sm:px-0
-      font-inter
-      flex-1 flex flex-col
-      min-h-0
-      bg-white
-      font-medium
-      rounded-lg
-      shadow-lg
-      lg:w-m-1xl
-    "
-  
+    class="px-0 sm:px-0 font-inter flex-1 flex flex-col min-h-0 bg-white font-medium rounded-lg shadow-lg lg:w-m-1xl"
   >
     <div class="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
       <nav class="flex-1 px-2 space-y-2.5" aria-label="Sidebar">
@@ -48,7 +36,9 @@
           <div class="ml-3">
             <p class="text-sm font-medium text-gray-700">User Name</p>
             <div class="flex items-center space-x-1">
-              <p class="text-xs font-medium text-primary-500 hover:underline flex items-center space-x-2">
+              <p
+                class="text-xs font-medium text-primary-500 hover:underline flex items-center space-x-2"
+              >
                 <span>0xE881...4567</span>
                 <span>
                   <svg
@@ -78,15 +68,7 @@
       <router-link
         :to="{ name: 'My_wallets' }"
         href="#"
-        class="
-          text-gray-900
-          font-medium
-          text-base
-          font-inter
-          flex
-          items-center
-          space-x-4
-        "
+        class="text-gray-900 font-medium text-base font-inter flex items-center space-x-4"
       >
         <div>
           <svg
@@ -114,15 +96,7 @@
       >
       <a
         href="/"
-        class="
-          text-gray-600
-          font-medium
-          text-base
-          font-inter
-          flex
-          items-center
-          space-x-4
-        "
+        class="text-gray-600 font-medium text-base font-inter flex items-center space-x-4"
       >
         <div>
           <svg
@@ -159,16 +133,21 @@ const Client = [
     href: { name: "MyAccount", params: { address: "gfdg" } },
     subname: "",
     subname1: "",
-    subname2:''
+    subname2: "",
   },
   {
     name: "My NFT",
     href: { name: "My_collections" },
     subname: "CollectionDetails",
-    subname1: "Fractionalize",
     subname2: "",
   },
-  { name: "My Vaults", href: { name: "MyVault" }, subname: "", subname1: "",subname2:'' },
+  {
+    name: "My Vaults",
+    href: { name: "MyVault" },
+    subname: "Fractionalize",
+    subname1: "",
+    subname2: "",
+  },
   {
     name: "My Fractions",
     href: { name: "My_fractions" },
@@ -210,7 +189,7 @@ const Buyer = [
 const Admin = [
   {
     name: "My Account",
-    href: { name: "MyAccount", params: { address: "gfdg" },subname2:'' },
+    href: { name: "MyAccount", params: { address: "gfdg" }, subname2: "" },
     subname: "",
     subname1: "",
     subname2: "",
@@ -222,7 +201,13 @@ const Admin = [
     subname1: "Fractionalize",
     subname2: "",
   },
-  { name: "Vaults", href: { name: "MyVault" }, subname: "", subname1: "" ,subname2:''},
+  {
+    name: "Vaults",
+    href: { name: "MyVault" },
+    subname: "",
+    subname1: "",
+    subname2: "",
+  },
   {
     name: "NFTs",
     href: { name: "My_fractions" },

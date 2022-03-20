@@ -1,20 +1,5 @@
 <template>
-  <div
-    class="
-      account
-      sm:px-8
-      pr-4
-      py-4
-      sm:py-4
-      lg:py-16
-      relative
-      mx-auto
-      bg-gray-100
-      2xl:max-w-8xl
-      w-full
-      font-inter
-    "
-  >
+  <account-layout>
     <div class="lg:hidden">
       <Navbar :type="'customer'" />
     </div>
@@ -29,37 +14,13 @@
         </div>
         <div class="w-full mt-5 md:mt-0 lg:col-span-5 space-y-4">
           <div
-            class="
-              w-full
-              p-4
-              rounded-md
-              shadow-md
-              bg-white
-              grid
-              sm:grid-cols-6
-              gap-2
-            "
+            class="w-full p-4 rounded-md shadow-md bg-white grid sm:grid-cols-6 gap-2"
           >
             <div
-              class="
-                mt-1
-                relative
-                rounded-md
-                shadow-sm
-                lg:col-span-4
-                col-span-6
-              "
+              class="mt-1 relative rounded-md shadow-sm lg:col-span-4 col-span-6"
             >
               <div
-                class="
-                  absolute
-                  inset-y-0
-                  left-0
-                  pl-3
-                  flex
-                  items-center
-                  pointer-events-none
-                "
+                class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
               >
                 <svg
                   width="17"
@@ -80,15 +41,7 @@
                 type="text"
                 name="Search"
                 id="Search"
-                class="
-                  focus:ring-primary-500 focus:border-primary-500
-                  block
-                  w-full
-                  pl-10
-                  sm:text-sm
-                  border-gray-300
-                  rounded-md
-                "
+                class="focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 sm:text-sm border-gray-300 rounded-md"
                 placeholder="Search"
               />
             </div>
@@ -131,15 +84,15 @@
         </div>
       </div>
     </div>
-  </div>
+  </account-layout>
 </template>
-<style scoped>
-</style>
+<style scoped></style>
 <script>
 import Menu from "@/components/Layouts/Menu.vue";
 import Navbar from "@/components/Layouts/Navbar.vue";
 import Purchasse from "@/components/Drawers/Purchasse.vue";
 import DropDown from "@/components/Drawers/DropDown.vue";
+import AccountLayout from '../../components/Layouts/AccountLayout.vue';
 // @ is an alias to /src
 export default {
   data() {
@@ -156,6 +109,7 @@ export default {
     Menu,
     Navbar,
     DropDown,
+    AccountLayout,
   },
   computed: {
     getParams() {

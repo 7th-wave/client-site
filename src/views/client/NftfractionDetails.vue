@@ -1,53 +1,34 @@
 <template>
-  <div
-    class="
-      account
-      px-4
-      py-4
-      sm:py-4
-      lg:py-16
-      relative
-      mx-auto
-      bg-gray-100
-      font-inter
-      2xl:max-w-8xl w-full
-    "
-  >
+ <account-layout>
     <div class="lg:hidden">
       <Navbar :type="'customer'" />
     </div>
     <div class="py-0 sm:py-4 md:pb-8 md:pt-4 lg:pt-0 lg:pb-8 text-center">
-      <h1 class="sm:text-4xl text-2xl font-medium">Your {{ getParams == 'cvman' ? 'CVMAN' : 'NIKE'}} Fractions</h1>
+      <h1 class="sm:text-4xl text-2xl font-medium">
+        Your {{ getParams == "cvman" ? "CVMAN" : "NIKE" }} Fractions
+      </h1>
     </div>
     <div>
-      <div class="flex xl:flex-row lg:items-start xl:space-x-4 w-full lg:space-y-0 flex-col items-start space-y-4 ">
-        <div class="xl:col-span-2 space-y-0 xl:space-y-4 xl:w-m-1xl w-full py-5 xl:py-0">
-          <Menu class=" hidden  xl:block" />
+      <div
+        class="flex xl:flex-row lg:items-start xl:space-x-4 w-full lg:space-y-0 flex-col items-start space-y-4"
+      >
+        <div
+          class="xl:col-span-2 space-y-0 xl:space-y-4 xl:w-m-1xl w-full py-5 xl:py-0"
+        >
+          <Menu class="hidden xl:block" />
           <VaultItem
-            class=" cursor-pointer"
-             :url="{
-                name: 'Vault',
-                params: { id: getData.id },
-              }"
+            class="cursor-pointer"
+            :url="{
+              name: 'Vault',
+              params: { id: getData.id },
+            }"
             :vault="getData"
             bg="bg-white"
-          badgecolor="green"
+            badgecolor="green"
           >
             <template #badge>
               <div
-                class="
-                  z-10
-                  bg-white
-                  py-1
-                  px-2
-                  rounded-3xl
-                  absolute
-                  top-3
-                  right-3
-                  flex
-                  items-center
-                  space-x-1.5
-                "
+                class="z-10 bg-white py-1 px-2 rounded-3xl absolute top-3 right-3 flex items-center space-x-1.5"
               >
                 <div>
                   <svg
@@ -67,11 +48,7 @@
                   </svg>
                 </div>
                 <span
-                  class="
-                    text-sm
-                    font-medium font-inter
-                    text-gray-900 text-center
-                  "
+                  class="text-sm font-medium font-inter text-gray-900 text-center"
                   >{{ getData.creator }}</span
                 >
               </div>
@@ -79,25 +56,25 @@
           </VaultItem>
         </div>
         <div
-          class="
-            mt-5
-            md:mt-0
-            flex flex-col items-start space-y-4 lg:col-span-5 w-full
-          "
+          class="mt-5 md:mt-0 flex flex-col items-start space-y-4 lg:col-span-5 w-full"
         >
-         <CardTrade />
-         <CardVaultDao />
-         <FractionCard :goDown="false"  :goBack="true" IconColor=" text-gray-400" :url="{
-                name: 'Vault',
-                params: { id: getData.id },
-              }" />
+          <CardTrade />
+          <CardVaultDao />
+          <FractionCard
+            :goDown="false"
+            :goBack="true"
+            IconColor=" text-gray-400"
+            :url="{
+              name: 'Vault',
+              params: { id: getData.id },
+            }"
+          />
         </div>
       </div>
     </div>
-  </div>
+  </account-layout>
 </template>
-<style scoped>
-</style>
+<style scoped></style>
 <script>
 import Menu from "@/components/Layouts/Menu.vue";
 import Navbar from "@/components/Layouts/Navbar_mobile.vue";
@@ -105,65 +82,61 @@ import FractionCard from "@/components/cards/FractionCard.vue";
 import CardTrade from "@/components/cards/CardTrade.vue";
 import CardVaultDao from "@/components/cards/CardVaultDao.vue";
 import VaultItem from "@/components/Shared/VaultItem.vue";
+import AccountLayout from '../../components/Layouts/AccountLayout.vue';
 // @ is an alias to /src
 export default {
   components: {
     Menu,
     Navbar,
-     VaultItem,
+    VaultItem,
     FractionCard,
     CardTrade,
-    CardVaultDao
+    CardVaultDao,
+    AccountLayout,
   },
-  computed:{
-    getParams(){
+  computed: {
+    getParams() {
       return this.$route.params.id;
     },
-    getData(){
-      if(this.getParams == 'cvman'){
+    getData() {
+      if (this.getParams == "cvman") {
         return this.vaults;
       }
       return this.vaults1;
-    }
+    },
   },
   data() {
     return {
-       vaults: 
-        {
-          id: "cvman",
-          name: "The caveman, ca. 2008",
-          token: "SNEAKER",
-          creator: "CVMAN",
-          fractions: 58,
-          available: "49%",
-          valuation: "$100M",
-          nfts: [
-            {
-              name: "caveman.png",
-              image: "caveman.png",
-            },
-         
-          ],
-        },
-     vaults1: 
-        {
-          id: "nike",
-          name: "Nike Waffle Sneakers",
-          token: "NIKE",
-          creator: "NIKE",
-          fractions: 58,
-          available: "49%",
-          valuation: "$2M",
-          nfts: [
-            {
-              name: "01.png",
-              image: "01.png",
-            },
-         
-          ],
-        },
-       
-      
+      vaults: {
+        id: "cvman",
+        name: "The caveman, ca. 2008",
+        token: "SNEAKER",
+        creator: "CVMAN",
+        fractions: 58,
+        available: "49%",
+        valuation: "$100M",
+        nfts: [
+          {
+            name: "caveman.png",
+            image: "caveman.png",
+          },
+        ],
+      },
+      vaults1: {
+        id: "nike",
+        name: "Nike Waffle Sneakers",
+        token: "NIKE",
+        creator: "NIKE",
+        fractions: 58,
+        available: "49%",
+        valuation: "$2M",
+        nfts: [
+          {
+            name: "01.png",
+            image: "01.png",
+          },
+        ],
+      },
     };
   },
 };
