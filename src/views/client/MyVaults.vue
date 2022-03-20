@@ -1,19 +1,5 @@
 <template>
-  <div
-    class="
-      account
-      sm:px-8 pr-4
-      py-4
-      sm:py-4
-      lg:py-16
-      relative
-      mx-auto
-      bg-gray-100
-      font-inter
-      2xl:max-w-8xl
-      w-full
-    "
-  >
+  <account-layout>
     <div class="lg:hidden">
       <Navbar />
     </div>
@@ -25,34 +11,37 @@
         <div class="lg:col-span-2 hidden lg:block">
           <Menu />
         </div>
-        <div class="mt-5 md:mt-0 lg:col-span-5 grid md:grid-cols-2 grid-cols-1 gap-4 w-full">
+        <div
+          class="mt-5 md:mt-0 lg:col-span-5 grid md:grid-cols-2 grid-cols-1 gap-4 w-full"
+        >
+          <div  v-for="(item, index, key) in FineArt"
+            :key="key">
+            <create-nft-button v-if="!index" @click="newVault">
+              <template #subtitle>
+                <span
+                  class="text-sm font-inter font-medium text-primary-500 cursor-pointer"
+                  >{{ FineArt.length }} Vaults</span
+                >
+              </template>
+              <template #title>
+              <span class="text-gray-900 text-xl font-semibold font-inter">Create a New Vault</span>
+            </template>
+            </create-nft-button>
           <VaultItem
+            v-if="index"
             class="cursor-pointer"
             :url="{
-                name: 'Vault',
-                params: { id: item.id },
-              }"
-            v-for="(item, index, key) in FineArt"
-            :key="key"
+              name: 'Vault',
+              params: { id: item.id },
+            }"
+           
             :vault="item"
             bg="bg-white"
             badgecolor="green"
           >
             <template #badge>
               <div
-                class="
-                  z-10
-                  bg-white
-                  py-1
-                  px-2
-                  rounded-3xl
-                  absolute
-                  top-3
-                  right-3
-                  flex
-                  items-center
-                  space-x-1.5
-                "
+                class="z-10 bg-white py-1 px-2 rounded-3xl absolute top-3 right-3 flex items-center space-x-1.5"
               >
                 <div>
                   <svg
@@ -72,26 +61,26 @@
                   </svg>
                 </div>
                 <span
-                  class="
-                    text-sm
-                    font-medium font-inter
-                    text-gray-900 text-center
-                  "
+                  class="text-sm font-medium font-inter text-gray-900 text-center"
                   >{{ item.creator }}</span
                 >
               </div>
             </template>
           </VaultItem>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </account-layout>
 </template>
 
 <script>
 import Menu from "@/components/Layouts/Menu.vue";
 import Navbar from "@/components/Layouts/Navbar.vue";
 import VaultItem from "@/components/Shared/VaultItem.vue";
+import AccountLayout from '../../components/Layouts/AccountLayout.vue';
+import CreateNftButton from '../../components/cards/CreateNftButton.vue';
+import { useRouter } from 'vue-router';
 
 // import GalleryClient from "@/components/Gallery/GalleryClient.vue";
 // import { ref, computed } from "vue";
@@ -103,12 +92,28 @@ export default {
     // GalleryClient,
     Menu,
     Navbar,
-
     VaultItem,
+    AccountLayout,
+    CreateNftButton,
+  },
+  setup() {
+
+    const router = useRouter();
+
+    const newVault = () => {
+      router.push('/fractionalize');
+    }
+
+    return {
+      newVault
+    }
   },
   data() {
     return {
       FineArt: [
+        {
+         id: 0
+        },
         {
           id: "cvman",
           name: "The caveman, ca. 2008",

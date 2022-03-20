@@ -4,12 +4,13 @@
       <div class="relative">
         <div class="w-full bg-gray-100">
           <div
-            class="
+            class=" pt-10
               m-auto
-              grid grid-cols-1
+              xl:grid grid-cols-1
               xl:grid-cols-6
               gap-12
-              px-12
+              sm:px-8
+              px-4
               2xl:max-w-8xl 2xl:mx-auto
             "
           >
@@ -41,8 +42,8 @@
                 new communities.
               </p>
 
-              <div class="flex lg:mt-16 mt-6">
-                <div class="mr-4 w-full">
+              <div class="flex lg:mt-16 mt-6 w-full">
+                <div class=" w-full">
                   <Button
                     :btn-style="'secondary'"
                     :size="'large'"
@@ -79,7 +80,7 @@
                   :name="`cc_${index}`"
                 >
                   <vault-item
-                    style="width: 435.5px"
+                    style="width: 100%"
                     :url="{ name: 'Vault', params: { id: vault.id } }"
                     badgecolor="green"
                     :show-arrows="false"
@@ -163,7 +164,7 @@
             <div
               class="
                 col-span-1
-                lg:col-span-4 lg:pl-12
+                lg:col-span-4 
                 pb-6
                 pt-6
                 relative
@@ -176,6 +177,7 @@
                 :autoplay="false"
                 height="500px"
                 arrow="always"
+                 type="card"
                 @change="changeHandle"
               >
                 <CarouselCardItem
@@ -192,7 +194,7 @@
                 </CarouselCardItem>
               </CarouselCard>
 
-              <div class="w-full absolute bottom-0 z-10 pb-6 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+              <div class="w-full absolute bottom-0 z-10 pb-6  left-1/2 transform -translate-x-1/2 -translate-y-1/2" style=" top: 32rem/*;">
                 <div class="w-full relative flex justify-between items-center">
                   <button
                     @click="prev"
@@ -231,7 +233,7 @@
                     class="
                       absolute
                       -right-4
-                      lg:right-4
+                      lg:right-0
                       top-0
                       bg-white
                       shadow-md
@@ -627,5 +629,39 @@ export default {
 .carousel-card-arrow, .carousel-card-indicators {
   display: none;
 }
+
+.carousel-card-item-card {
+       left: -69px !important;
+    width: 309px !important;
+  }
+
+
+@media only screen and (min-width: 768px) {
+ 
+.carousel-card-item-card {
+    left: -49px !important;
+    width: 418px !important;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+
+.carousel-card-item-card {
+  left: 17px !important;
+   width: 410px !important;
+}
+
+}
+
+  
+ 
+
+
+
+
+
+
+
+
 </style>
 

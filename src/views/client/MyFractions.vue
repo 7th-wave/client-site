@@ -1,17 +1,5 @@
 <template>
-  <div
-    class="
-      account
-      sm:px-8 pr-4
-      py-4
-      sm:py-4
-      lg:py-16
-      relative
-      mx-auto
-      bg-gray-100
-      font-inter 2xl:max-w-8xl w-full
-    "
-  >
+  <account-layout>
     <div class="lg:hidden">
       <Navbar />
     </div>
@@ -81,13 +69,14 @@
         </div>
       </div>
     </div>
-  </div>
+  </account-layout>
 </template>
 
 <script>
 import Menu from "@/components/Layouts/Menu.vue";
 import Navbar from "@/components/Layouts/Navbar.vue";
 import VaultItem from "@/components/Shared/VaultItem.vue";
+import AccountLayout from '../../components/Layouts/AccountLayout.vue';
 
 // import GalleryClient from "@/components/Gallery/GalleryClient.vue";
 // import { ref, computed } from "vue";
@@ -100,7 +89,8 @@ export default {
     Menu,
     Navbar,
  
-    VaultItem
+    VaultItem,
+    AccountLayout
   },
   data() {
     return {

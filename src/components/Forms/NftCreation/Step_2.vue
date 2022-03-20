@@ -153,21 +153,21 @@ import Steps from "../../Drawers/Steps.vue";
 const steps = [
   {
     id: "1",
-    name: "Propose New Vault",
+    name: "Propose New Asset",
     description: "Vitae sed mi luctus laoreet.",
     href: "#",
     status: "current",
   },
   {
     id: "2",
-    name: "Approve Vault",
+    name: "Mint Asset",
     description: "Penatibus eu quis ante.",
     href: "#",
     status: "upcoming",
   },
   {
     id: "3",
-    name: "Fractionalize",
+    name: "Create a Vault",
     description: "Penatibus eu quis ante.",
     href: "#",
     status: "upcoming",
