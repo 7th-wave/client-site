@@ -9,25 +9,10 @@
     <div class="relative lg:py-12 py-4 lg:pt-12 lg:pb-4">
       <div class="relative">
         <div
-          class="
-            text-center
-            mx-auto
-            max-w-md
-            px-4
-            sm:max-w-3xl sm:px-6
-            lg:px-8 lg:max-w-7xl
-          "
+          class="text-center mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-8 lg:max-w-7xl"
         >
           <p
-            class="
-              mt-2
-              text-4xl
-              font-medium font-inter
-              leading-10
-              text-black
-              tracking-tight
-              sm:text-4xl
-            "
+            class="mt-2 text-4xl font-medium font-inter leading-10 text-black tracking-tight sm:text-4xl"
           >
             {{ nft.title }}
           </p>
@@ -39,15 +24,7 @@
           ]"
         >
           <div
-            class="
-              flex flex-col
-              items-center
-              justify-center
-              h-max
-              object-contain
-              shadow-lg
-              overflow-hidden
-            "
+            class="flex flex-col items-center justify-center h-max object-contain shadow-lg overflow-hidden"
           >
             <div class="flex-shrink-0">
               <img
@@ -63,35 +40,15 @@
     </div>
 
     <div
-      class="
-        flex
-        md:flex-nowrap
-        flex-wrap
-        md:px-6
-        lg:px-12
-        px-2
-        pb-3
-        mt-10
-        justify-between
-        items-center
-      "
+      class="flex md:flex-nowrap flex-wrap md:px-6 lg:px-12 px-2 pb-3 mt-10 justify-between items-center"
     >
       <div class="w-full md:pl-2">
         <div class="flex justify-between">
-
-          <h2 class=" pl-0 text-2xl font-medium m-0 text-black sm:text-2xl">
-            {{nft.sub_title}}
+          <h2 class="pl-0 text-2xl font-medium m-0 text-black sm:text-2xl">
+            {{ nft.sub_title }}
           </h2>
           <div
-            class="
-              flex flex-nowrap
-              md:px-2
-              px-0
-              justify-between
-              md:w-1/4
-              lg:w-1/4
-              w-full
-            "
+            class="flex flex-nowrap md:px-2 px-0 justify-between md:w-1/4 lg:w-1/4 w-full"
           >
             <a class="w-full flex" v-if="nft.qrViews">
               <span class="sr-only">Views</span>
@@ -117,11 +74,11 @@
               </svg>
               <span
                 class="w-max text-base leading-6 font-normal font-inter text-black"
-                >{{nft.qrViews}} QR views</span
+                >{{ nft.qrViews }} QR views</span
               >
             </a>
             <div class="w-full justify-end flex">
-              <a class="text-primary-400 mr-2  cursor-pointer" @click="refresh">
+              <a class="text-primary-400 mr-2 cursor-pointer" @click="refresh">
                 <span class="sr-only">Refresh</span>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -142,40 +99,18 @@
             </div>
           </div>
         </div>
-        <p class="text-sm text-gray-500" v-html="nft.description.replace(/\n/g, '<br>\n')">
-        </p>
+        <p
+          class="text-sm text-gray-500"
+          v-html="nft.description.replace(/\n/g, '<br>\n')"
+        ></p>
       </div>
-      
-
-      
     </div>
 
     <div
-      class="
-        lg:pb-4 lg:pt-2
-        sm:py-0 sm:px-6
-        lg:px-12
-        md:grid
-        grid-cols-1
-        gap-2
-        sm:grid-cols-2
-        lg:grid-cols-3
-        xl:grid-cols-4
-        min-w-full
-        flex flex-col-reverse
-        justify-start
-        items-start
-      "
+      class="lg:pb-4 lg:pt-2 sm:py-0 sm:px-6 lg:px-12 md:grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 min-w-full flex flex-col-reverse justify-start items-start"
     >
       <div
-        class="
-          flex flex-wrap
-          justify-end
-          items-start
-          xl:grid xl:grid-cols-3 xl:gap-1 xl:col-span-3
-          lg:col-span-2 lg:row-span-1
-          gap-2
-        "
+        class="flex flex-wrap justify-end items-start xl:grid xl:grid-cols-3 xl:gap-1 xl:col-span-3 lg:col-span-2 lg:row-span-1 gap-2"
       >
         <div v-for="card in cards" :key="card.id" :class="card.class">
           <div class="bg-white rounded-lg">
@@ -227,17 +162,7 @@
       :open="nft_modal"
     >
       <div
-        class="
-          flex
-          items-end
-          justify-center
-          min-h-screen
-          pt-4
-          px-2
-          pb-20
-          text-center
-          sm:block sm:p-0
-        "
+        class="flex items-end justify-center min-h-screen pt-4 px-2 pb-20 text-center sm:block sm:p-0"
       >
         <TransitionChild
           as="template"
@@ -267,24 +192,7 @@
           leave-to="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
         >
           <div
-            class="
-              inline-block
-              align-bottom
-              bg-white
-              rounded-lg
-              px-4
-              pt-5
-              pb-4
-              text-left
-              overflow-hidden
-              shadow-xl
-              transform
-              transition-all
-              sm:my-8 sm:align-middle
-              lg:max-w-sm
-              w-full
-              sm:p-6
-            "
+            class="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle lg:max-w-sm w-full sm:p-6"
           >
             <div class="sm:flex sm:items-start justify-center">
               <div class="mt-3 text-center sm:mt-0 sm:text-center">
@@ -301,24 +209,7 @@
             <div class="mt-5 sm:mt-4">
               <button
                 type="button"
-                class="
-                  mt-3
-                  w-full
-                  inline-flex
-                  justify-center
-                  rounded-md
-                  border border-gray-200
-                  shadow-sm
-                  px-4
-                  py-2
-                  bg-white
-                  text-base
-                  font-medium
-                  text-gray-700
-                  hover:bg-gray-50 hover:text-gray-900
-                  focus:outline-none
-                  sm:mt-0 sm:w-full sm:text-sm
-                "
+                class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-200 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900 focus:outline-none sm:mt-0 sm:w-full sm:text-sm"
                 @click="nft_modal = false"
               >
                 Ok
@@ -340,17 +231,7 @@
       :open="placebid_note"
     >
       <div
-        class="
-          flex
-          items-end
-          justify-center
-          min-h-screen
-          pt-4
-          px-2
-          pb-20
-          text-center
-          sm:block sm:p-0
-        "
+        class="flex items-end justify-center min-h-screen pt-4 px-2 pb-20 text-center sm:block sm:p-0"
       >
         <TransitionChild
           as="template"
@@ -382,24 +263,7 @@
           leave-to="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
         >
           <div
-            class="
-              inline-block
-              align-bottom
-              bg-white
-              rounded-lg
-              px-4
-              pt-5
-              pb-4
-              text-left
-              overflow-hidden
-              shadow-xl
-              transform
-              transition-all
-              sm:my-8 sm:align-middle
-              lg:max-w-sm
-              w-full
-              sm:p-6
-            "
+            class="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle lg:max-w-sm w-full sm:p-6"
           >
             <div class="sm:flex sm:items-start justify-center">
               <div class="mt-3 text-center sm:mt-0 sm:text-center">
@@ -412,35 +276,19 @@
               </div>
             </div>
             <div class="mt-5 sm:mt-4 font-medium text-center text-gray-500">
-              The Highest Bidder will win the item at the end of the auction. 
+              The Highest Bidder will win the item at the end of the auction.
               Auctions are placed in WETH which are a 1:1 equivalent with ETH.
               <br />
               <br />
-              WETH allows you to place multiple bids with the same funds simultaneously.
-              As soon as one of your bids is won, other auctions will be automatically cancel if using the same funds.
+              WETH allows you to place multiple bids with the same funds
+              simultaneously. As soon as one of your bids is won, other auctions
+              will be automatically cancel if using the same funds.
             </div>
 
             <div class="mt-5 sm:mt-4">
               <button
                 type="button"
-                class="
-                  mt-3
-                  w-full
-                  inline-flex
-                  justify-center
-                  rounded-md
-                  border border-gray-200
-                  shadow-sm
-                  px-4
-                  py-2
-                  bg-white
-                  text-base
-                  font-medium
-                  text-gray-700
-                  hover:bg-gray-50 hover:text-gray-900
-                  focus:outline-none
-                  sm:mt-0 sm:w-full sm:text-sm
-                "
+                class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-200 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900 focus:outline-none sm:mt-0 sm:w-full sm:text-sm"
                 @click="placebid_note = false"
               >
                 Ok
@@ -487,7 +335,7 @@ import Blockchain from "@/components/Drawers/Blockchain_data";
 import Trading from "@/components/Drawers/Trading_view";
 import Spec from "@/components/Spec";
 import Bids from "@/components/Drawers/Bids";
-import OffersCard from "@/components/Drawers/OffersCard"
+import OffersCard from "@/components/Drawers/OffersCard";
 import NFTBox from "@/components/NFTBox";
 import LightBox from "../../components/Layouts/LightBox.vue";
 import { useRoute } from "vue-router";
@@ -528,7 +376,7 @@ export default {
     const cards = ref([
       {
         id: 1,
-        component: <Blockchain  />,
+        component: <Blockchain />,
         class:
           "xl:w-full lg:w-6/12 w-full pb-2 self-start xl:order-1 lg:order-2 order-3",
       },
@@ -536,8 +384,7 @@ export default {
         id: 2,
         component: <Trading />,
         class: "xl:w-full lg:w-6/12 w-full pb-2 self-start order-2",
-      }
-      
+      },
     ]);
 
     const bid = ref(0);
@@ -560,8 +407,12 @@ export default {
       auctions: [],
     });
     const auction = computed(() => store.state.auctionStore.auction);
-    const currentAddress = computed(() => store.getters['blockchain/getCurrentAddress']);
-    const isOwner = computed(() => nft.value.blockChainOwner == currentAddress.value)
+    const currentAddress = computed(
+      () => store.getters["blockchain/getCurrentAddress"]
+    );
+    const isOwner = computed(
+      () => nft.value.blockChainOwner == currentAddress.value
+    );
     const auctionref = ref();
 
     const artistName = ref("");
@@ -583,25 +434,29 @@ export default {
 
       if (nft.value.auctions.length > 0) {
         const lastAuction = nft.value.auctions[nft.value.auctions.length - 1];
-        if (lastAuction.status == 'active') {
+        if (lastAuction.status == "active") {
           auctionref.value = nft.value.auctions[nft.value.auctions.length - 1];
           await store.dispatch("auctionStore/getAuction", auctionref.value);
 
           cards.value.push({
             id: 3,
             component: <Bids />,
-            class: "xl:w-full lg:w-6/12 w-full pb-2 xl:order-3 lg:order-1 order-1",
+            class:
+              "xl:w-full lg:w-6/12 w-full pb-2 xl:order-3 lg:order-1 order-1",
           });
-
         }
-
       }
 
-      if (nft.value.offers && nft.value.offers.length > 0 && currentAddress.value) {
+      if (
+        nft.value.offers &&
+        nft.value.offers.length > 0 &&
+        currentAddress.value
+      ) {
         cards.value.push({
           id: 4,
           component: <OffersCard />,
-          class: "xl:w-full lg:w-6/12 w-full pb-2 xl:order-3 lg:order-1 order-1",
+          class:
+            "xl:w-full lg:w-6/12 w-full pb-2 xl:order-3 lg:order-1 order-1",
         });
       }
 
@@ -619,13 +474,11 @@ export default {
     const refresh = () => {
       return location.reload();
     };
-    
+
     const placedBid = () => {
       updateData.value = true;
-      setTimeout(() => updateData.value = false, 1000);
-    }
-
-    
+      setTimeout(() => (updateData.value = false), 1000);
+    };
 
     return {
       nft,
@@ -646,7 +499,7 @@ export default {
       placedBid,
       updateData,
       nftRef,
-      isOwner
+      isOwner,
     };
   },
 };

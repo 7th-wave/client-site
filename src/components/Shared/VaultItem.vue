@@ -93,7 +93,7 @@ import { onMounted } from "@vue/runtime-core";
 // import { useRouter } from 'vue-router'
 
 export default {
-  props: ["vault", "bg", "badgecolor", "url", 'showArrows'],
+  props: ["vault", "bg", "badgecolor", "url", 'showArrows', 'create'],
 
   components: {
     Swiper,

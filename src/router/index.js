@@ -29,6 +29,12 @@ const routes = [
     component: () => import("../views/client/VaultCreationStep_3.vue"),
   },
   {
+    path: "/nft-create",
+    name: "CreateNftadmin",
+
+    component: () => import("../views/client/NftCreate.vue"),
+  },
+  {
     path: "/fractionalize",
     name: "Fractionalize",
 

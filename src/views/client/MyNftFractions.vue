@@ -1,18 +1,5 @@
 <template>
-  <div
-    class="
-      account
-     sm:px-8 pr-4
-      py-4
-      sm:py-4
-      lg:py-16
-      relative
-      mx-auto
-      bg-gray-100
-      font-inter 2xl:max-w-8xl 
-      w-full
-    "
-  >
+  <account-layout>
     <div class="lg:hidden">
       <Navbar :type="'customer'" />
     </div>
@@ -25,22 +12,14 @@
           <Menu />
         </div>
         <div
-          class="
-            mt-5
-            md:mt-0
-            lg:col-span-5
-            grid
-            lg:grid-cols-3
-            grid-cols-1
-            gap-4 w-full
-          "
+          class="mt-5 md:mt-0 lg:col-span-5 grid lg:grid-cols-3 grid-cols-1 gap-4 w-full"
         >
           <VaultItem
-            class=" cursor-pointer"
+            class="cursor-pointer"
             :url="{
-                name: 'My_fractions_details',
-                params: { id: item.id },
-              }"
+              name: 'My_fractions_details',
+              params: { id: item.id },
+            }"
             v-for="(item, index, key) in vaults"
             :key="key"
             :vault="item"
@@ -48,19 +27,7 @@
           >
             <template #badge>
               <div
-                class="
-                  z-10
-                  bg-white
-                  py-1
-                  px-2
-                  rounded-3xl
-                  absolute
-                  top-3
-                  right-3
-                  flex
-                  items-center
-                  space-x-1.5
-                "
+                class="z-10 bg-white py-1 px-2 rounded-3xl absolute top-3 right-3 flex items-center space-x-1.5"
               >
                 <div>
                   <svg
@@ -80,11 +47,7 @@
                   </svg>
                 </div>
                 <span
-                  class="
-                    text-sm
-                    font-medium font-inter
-                    text-gray-900 text-center
-                  "
+                  class="text-sm font-medium font-inter text-gray-900 text-center"
                   >{{ item.creator }}</span
                 >
               </div>
@@ -93,20 +56,21 @@
         </div>
       </div>
     </div>
-  </div>
+  </account-layout>
 </template>
-<style scoped>
-</style>
+<style scoped></style>
 <script>
 import Menu from "@/components/Layouts/Menu.vue";
 import Navbar from "@/components/Layouts/Navbar_mobile.vue";
 import VaultItem from "@/components/Shared/VaultItem.vue";
+import AccountLayout from '../../components/Layouts/AccountLayout.vue';
 // @ is an alias to /src
 export default {
   components: {
     Menu,
     Navbar,
     VaultItem,
+    AccountLayout,
   },
   data() {
     return {

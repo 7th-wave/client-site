@@ -1,5 +1,5 @@
 <template>
- <div class="bg-white w-full py-4 px-2 rounded-md shadow-md">
+ <div class="bg-white w-full py-6 px-4 rounded-md shadow-md">
             <span class="text-lg font-inter text-gray-900 font-medium"
               >Create a NFT Vault</span
             >
