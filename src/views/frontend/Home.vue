@@ -177,6 +177,7 @@
                 :autoplay="false"
                 height="500px"
                 arrow="always"
+                 type="card"
                 @change="changeHandle"
               >
                 <CarouselCardItem
@@ -628,5 +629,39 @@ export default {
 .carousel-card-arrow, .carousel-card-indicators {
   display: none;
 }
+
+.carousel-card-item-card {
+       left: -69px !important;
+    width: 309px !important;
+  }
+
+
+@media only screen and (min-width: 768px) {
+ 
+.carousel-card-item-card {
+    left: -49px !important;
+    width: 418px !important;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+
+.carousel-card-item-card {
+  left: 17px !important;
+   width: 410px !important;
+}
+
+}
+
+  
+ 
+
+
+
+
+
+
+
+
 </style>
 
