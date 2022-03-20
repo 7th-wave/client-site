@@ -17,7 +17,7 @@
             <div class="col-span-1 lg:col-span-2 flex flex-col justify-center mt-10 lg:mt-0">
               <h1
                 class="
-                  md:text-6xl
+                  md:text-5xl
                   text-3xl
                   leading-none
                   font-inter font-semibold
@@ -25,7 +25,7 @@
               >
                 <span class="text-primary-500">Mint</span> and
                 <span class="text-secondary-500">Trade</span> <br />NFT
-                Fractions of <br />Tangile Assets
+                Fractions of <br />Tangible Assets
               </h1>
               <p
                 class="
@@ -96,7 +96,7 @@
                   justify-between
                   items-center
                   absolute
-                  top-1/2 transform -translate-y-1/2
+                  bottom-0 transform -translate-y-1/2
                   -right-2.5
                   z-10
                 "
@@ -190,7 +190,11 @@
                     badgecolor="green"
                     :show-arrows="false"
                     :vault="vault"
-                  />
+                  >
+                    <template #badge>
+                      {{vault.token}}
+                    </template>
+                  </vault-item>
                 </CarouselCardItem>
               </CarouselCard>
 
@@ -375,9 +379,9 @@ const vaults = [
   {
     id: "cvman",
     name: "The caveman, ca. 2008",
-    token: "SNEAKER",
-    creator: "Nike",
-    fractions: 58,
+    token: "CVMAN",
+    creator: "Fine Art",
+    fractions: "yo",
     available: "49%",
     valuation: "$2M",
     nfts: [
@@ -389,9 +393,9 @@ const vaults = [
   },
   {
     id: "sneakers",
-    name: "Nike Sneakers",
-    token: "SNEAKER",
-    creator: "Nike",
+    name: "Rare Sneakers",
+    token: "SNKR",
+    creator: "Sneakers",
     fractions: 58,
     available: "49%",
     valuation: "$2M",
@@ -402,46 +406,23 @@ const vaults = [
       },
       {
         name: "Nft2",
-        image: "02.png",
+        image: "01.png",
       },
-      {
-        name: "Nft3",
-        image: "03.png",
-      },
-      {
-        name: "Nft4",
-        image: "04.png",
-      },
-      {
-        name: "Nft5",
-        image: "05.png",
-      },
-      {
-        name: "Nft6",
-        image: "06.png",
-      },
+      
     ],
   },
   {
     id: "sneakers",
-    name: "Nike Shoes",
-    token: "SNEAKER",
-    creator: "Nike",
+    name: "Patek",
+    token: "PATEK",
+    creator: "Watches",
     fractions: 58,
     available: "49%",
-    valuation: "$2M",
+    valuation: "$500K",
     nfts: [
       {
         name: "Nft2",
-        image: "colors.png",
-      },
-      {
-        name: "Nft3",
-        image: "03.png",
-      },
-      {
-        name: "Nft4",
-        image: "04.png",
+        image: "patek.jpg",
       },
     ],
   },
