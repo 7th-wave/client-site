@@ -368,7 +368,7 @@
             <div class="flex w-full py-4">
               <div
                 class="m-auto"
-                :class="{ 'grid 2xl:grid-cols-3 lg:grid-cols-2  sm:grid-cols-3  gap-2': selectedVaults.length > 1 }"
+                :class="{ 'grid 2xl:grid-cols-1 lg:grid-cols-1  sm:grid-cols-3  gap-2': selectedVaults.length > 1 }"
               >
                 <div
                   class="relative w-28 h-28"

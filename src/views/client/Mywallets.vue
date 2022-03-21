@@ -1,26 +1,16 @@
  
 <template>
-  <div
-    class="
-      account
-      sm:px-8 pr-4
-      py-4
-      lg:py-16
-      relative
-      bg-gray-100
-      mx-auto
-      font-inter 2xl:max-w-8xl w-full
-    "
-  >
-    <div class="lg:hidden">
-      <navbar :type="'customer'" />
+<AccountLayout>
+ 
+    <div class="xl:hidden">
+      <Navbar />
     </div>
-    <div class="py-0 sm:py-2 lg:pt-0 lg:pb-8 text-center">
+    <div class="py-0 sm:py-4 md:pb-8 md:pt-4 lg:pt-0 lg:pb-8 text-center">
       <h1 class="sm:text-4xl text-2xl font-normal">My Wallet</h1>
     </div>
     <div>
-      <div class="flex items-start space-x-4 w-full">
-        <div class="hidden lg:col-span-2 lg:block ">
+       <div class=" xl:grid xl:grid-cols-7 xl:gap-8 sm:m-auto">
+        <div class="sm:col-span-2 hidden xl:block">
           <Menu />
         </div>
         <div class=" w-full lg:mt-0 lg:col-span-5  rounded-lg flex lg:flex-row flex-col space-y-6 lg:space-y-0 items-start lg:space-x-4 ">
@@ -87,7 +77,8 @@
         </div>
       </div>
     </div>
-  </div>
+ 
+</AccountLayout>
 </template>
  
 <script>
@@ -98,12 +89,14 @@ import { useStore } from "vuex";
 import Fortmatic from "fortmatic";
 import Portis from "@portis/web3";
 import WalletConnectCard from "@/components/cards/WalletConnectCard.vue";
+import AccountLayout from '../../components/Layouts/AccountLayout.vue';
 
 export default {
   components: {
     Menu,
     Navbar,
     WalletConnectCard,
+    AccountLayout,
   },
 
   setup() {

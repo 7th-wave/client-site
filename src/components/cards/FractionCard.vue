@@ -107,7 +107,7 @@
       </div>
       <div class="lg:w-40 w-full flex flex-col items-start lg:border-r-2 lg:border-b-0 border-b-2 p-4">
         <span class="text-base text-gray-500 font-inter whitespace-nowrap"
-          >Uique Owners</span
+          >Unique Owners</span
         >
         <span class="text-black font-inter text-2xl whitespace-nowrap"
           >2530

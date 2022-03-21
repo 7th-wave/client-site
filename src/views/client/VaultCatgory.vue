@@ -1,17 +1,5 @@
 <template>
-  <div
-    class="
-      account
-      py-4
-      sm:py-4
-      lg:py-16
-      relative
-      mx-auto
-      bg-gray-100
-      font-inter
-      space-y-4
-    "
-  >
+   <account-layout>
     <!-- <div class="lg:hidden">
       <Navbar />
     </div> -->
@@ -130,18 +118,19 @@
         </VaultItem>
       </div>
     </div>
-  </div>
+  </account-layout>
 </template>
 
 <script>
 // import Navbar from "@/components/Layouts/Navbar.vue";
 import VaultItem from "@/components/Shared/VaultItem.vue";
+import AccountLayout from '../../components/Layouts/AccountLayout.vue';
 
 // @ is an alias to /src
 export default {
   components: {
     // GalleryClient,
-
+   AccountLayout,
     // Navbar,
     VaultItem,
   },

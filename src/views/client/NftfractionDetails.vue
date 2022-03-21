@@ -1,7 +1,7 @@
 <template>
   <account-layout>
-    <div class="lg:hidden">
-      <Navbar :type="'customer'" />
+    <div class="xl:hidden">
+      <Navbar  />
     </div>
     <div class="py-0 sm:py-4 md:pb-8 md:pt-4 lg:pt-0 lg:pb-8 text-center">
       <h1 class="sm:text-4xl text-2xl font-medium">
@@ -9,29 +9,8 @@
       </h1>
     </div>
     <div>
-      <div
-        class="
-          flex
-          xl:flex-row
-          lg:items-start
-          xl:space-x-4
-          w-full
-          lg:space-y-0
-          flex-col
-          items-start
-          space-y-4
-        "
-      >
-        <div
-          class="
-            xl:col-span-2
-            space-y-0
-            xl:space-y-4 xl:w-m-1xl
-            w-full
-            py-5
-            xl:py-0
-          "
-        >
+        <div class=" xl:grid xl:grid-cols-7 xl:gap-8 gap-2 sm:m-auto">
+        <div class="sm:col-span-2 sm:pb-4  space-y-4">
           <Menu class="hidden xl:block" />
           <VaultItem
             class="cursor-pointer"
@@ -118,7 +97,7 @@
 <style scoped></style>
 <script>
 import Menu from "@/components/Layouts/Menu.vue";
-import Navbar from "@/components/Layouts/Navbar_mobile.vue";
+import Navbar from "@/components/Layouts/Navbar.vue";
 import FractionCard from "@/components/cards/FractionCard.vue";
 import CardTrade from "@/components/cards/CardTrade.vue";
 import CardVaultDao from "@/components/cards/CardVaultDao.vue";

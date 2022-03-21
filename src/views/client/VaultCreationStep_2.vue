@@ -1,24 +1,14 @@
 <template>
-  <div
-    class="account px-4 py-4 lg:py-16 relative bg-gray-100 font-inter w-full"
-  >
-    <div class="py-0 sm:py-2 lg:pt-0 lg:pb-8 text-center">
+ <account-layout>
+    <div class="xl:hidden">
+      <Navbar />
+    </div>
+    <div class="py-0 sm:py-4 md:pb-8 md:pt-4 lg:pt-0 lg:pb-8 text-center">
       <h1 class="sm:text-4xl text-2xl font-normal">Vault Creation</h1>
     </div>
 
-    <div
-      class="
-        flex
-        xl:flex-row
-        lg:items-start lg:space-x-4
-        w-full
-        lg:space-y-0
-        flex-col
-        items-start
-        space-y-4
-      "
-    >
-      <div class="hidden xl:block">
+  <div class=" xl:grid xl:grid-cols-7 xl:gap-8 sm:m-auto">
+        <div class="sm:col-span-2 hidden xl:block">
         <Menu />
       </div>
       <div
@@ -179,7 +169,7 @@
         </div>
       </div>
     </div>
-  </div>
+    </account-layout>
 </template>
 
 
@@ -187,6 +177,8 @@
 import Feed from "@/components/Drawers/Feed.vue";
 import Steps from "@/components/Drawers/Steps.vue";
 import Menu from "@/components/Layouts/Menu.vue";
+import AccountLayout from '../../components/Layouts/AccountLayout.vue';
+import Navbar from "@/components/Layouts/Navbar.vue";
 
 const steps = [
   {
@@ -222,6 +214,8 @@ export default {
     Feed,
     Steps,
     Menu,
+    Navbar,
+    AccountLayout,
   },
   methods: {
     nextStep() {
