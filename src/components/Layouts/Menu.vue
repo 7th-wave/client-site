@@ -139,7 +139,7 @@ const Client = [
     name: "My NFT",
     href: { name: "My_collections" },
     subname: "CollectionDetails",
-    subname2: "",
+    subname2: "CreateNftadmin",
   },
   {
     name: "My Vaults",

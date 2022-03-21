@@ -40,10 +40,10 @@
 
 
 <script>
-import Step1 from "@/components/Forms/Fractionalization/Step_1.vue";
-import Step2 from "@/components/Forms/Fractionalization/Step_2.vue";
-import Step3 from "@/components/Forms/Fractionalization/Step_3.vue";
-import Step4 from "@/components/Forms/Fractionalization/Step_4.vue";
+import Step1 from "@/components/Forms/NftCreation/Step_1.vue";
+import Step2 from "@/components/Forms/NftCreation/Step_2.vue";
+import Step3 from "@/components/Forms/NftCreation/Step_3.vue";
+import Step4 from "@/components/Forms/NftCreation/Step_4.vue";
 
 import MintsInfosCards from "@/components/cards/MintsInfosCards.vue";
 import MintCard from "@/components/cards/MintCard.vue";

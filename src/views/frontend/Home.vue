@@ -635,6 +635,11 @@ export default {
     width: 309px !important;
   }
 
+/* 
+.carousel-card-item.is-active, .carousel-card-item-card.is-active {
+    width:323px !important;
+} */
+
 
 @media only screen and (min-width: 768px) {
  
