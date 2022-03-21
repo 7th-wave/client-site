@@ -1,5 +1,5 @@
 <template>
- <account-layout>
+  <account-layout>
     <div class="lg:hidden">
       <Navbar :type="'customer'" />
     </div>
@@ -10,10 +10,27 @@
     </div>
     <div>
       <div
-        class="flex xl:flex-row lg:items-start xl:space-x-4 w-full lg:space-y-0 flex-col items-start space-y-4"
+        class="
+          flex
+          xl:flex-row
+          lg:items-start
+          xl:space-x-4
+          w-full
+          lg:space-y-0
+          flex-col
+          items-start
+          space-y-4
+        "
       >
         <div
-          class="xl:col-span-2 space-y-0 xl:space-y-4 xl:w-m-1xl w-full py-5 xl:py-0"
+          class="
+            xl:col-span-2
+            space-y-0
+            xl:space-y-4 xl:w-m-1xl
+            w-full
+            py-5
+            xl:py-0
+          "
         >
           <Menu class="hidden xl:block" />
           <VaultItem
@@ -28,7 +45,19 @@
           >
             <template #badge>
               <div
-                class="z-10 bg-white py-1 px-2 rounded-3xl absolute top-3 right-3 flex items-center space-x-1.5"
+                class="
+                  z-10
+                  bg-white
+                  py-1
+                  px-2
+                  rounded-3xl
+                  absolute
+                  top-3
+                  right-3
+                  flex
+                  items-center
+                  space-x-1.5
+                "
               >
                 <div>
                   <svg
@@ -48,7 +77,11 @@
                   </svg>
                 </div>
                 <span
-                  class="text-sm font-medium font-inter text-gray-900 text-center"
+                  class="
+                    text-sm
+                    font-medium font-inter
+                    text-gray-900 text-center
+                  "
                   >{{ getData.creator }}</span
                 >
               </div>
@@ -56,7 +89,15 @@
           </VaultItem>
         </div>
         <div
-          class="mt-5 md:mt-0 flex flex-col items-start space-y-4 lg:col-span-5 w-full"
+          class="
+            mt-5
+            md:mt-0
+            flex flex-col
+            items-start
+            space-y-4
+            lg:col-span-5
+            w-full
+          "
         >
           <CardTrade />
           <CardVaultDao />
@@ -82,7 +123,7 @@ import FractionCard from "@/components/cards/FractionCard.vue";
 import CardTrade from "@/components/cards/CardTrade.vue";
 import CardVaultDao from "@/components/cards/CardVaultDao.vue";
 import VaultItem from "@/components/Shared/VaultItem.vue";
-import AccountLayout from '../../components/Layouts/AccountLayout.vue';
+import AccountLayout from "../../components/Layouts/AccountLayout.vue";
 // @ is an alias to /src
 export default {
   components: {
@@ -112,9 +153,9 @@ export default {
         name: "The caveman, ca. 2008",
         token: "SNEAKER",
         creator: "CVMAN",
-        fractions: 58,
+        fractions: "100M",
         available: "49%",
-        valuation: "$100M",
+        valuation: "$10M",
         nfts: [
           {
             name: "caveman.png",
@@ -127,9 +168,9 @@ export default {
         name: "Nike Waffle Sneakers",
         token: "NIKE",
         creator: "NIKE",
-        fractions: 58,
+        fractions: "1M",
         available: "49%",
-        valuation: "$2M",
+        valuation: "$5M",
         nfts: [
           {
             name: "01.png",

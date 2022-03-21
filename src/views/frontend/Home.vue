@@ -491,9 +491,9 @@ const vaults = [
     name: "The caveman, ca. 2008",
     token: "CVMAN",
     creator: "Fine Art",
-    fractions: "yo",
+    fractions: "100M",
     available: "49%",
-    valuation: "$100M",
+    valuation: "$10M",
     nfts: [
       {
         name: "caveman",
@@ -506,9 +506,9 @@ const vaults = [
     name: "Rare Sneakers",
     token: "SNKR",
     creator: "Sneakers",
-    fractions: 58,
+    fractions: "1M",
     available: "49%",
-    valuation: "$5B",
+    valuation: "$5M",
     nfts: [
       {
         name: "Nft1",
@@ -525,9 +525,9 @@ const vaults = [
     name: "Patek",
     token: "PATEK",
     creator: "Watches",
-    fractions: 58,
+    fractions: "1M",
     available: "49%",
-    valuation: "$500K",
+    valuation: "$300K",
     nfts: [
       {
         name: "Nft2",
