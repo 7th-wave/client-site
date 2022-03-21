@@ -97,8 +97,8 @@
           />
         </svg>
       </div>
-      <span class="text-base text-white font-semibold">
-        We will review your changes and send it back for  you to <br> MINT your NFT Assets. You may also contact us below 
+      <span class="text-base leading-6 font-semibold text-white">
+        We will review your changes and send it back for you to MINT your NFT Assets. You may also contact us below 
       </span>
       <button class=" text-white font-medium text-base font-inter border border-white py-2 px-4 rounded-sm">SEND FOR REVISION</button>
     </div>
