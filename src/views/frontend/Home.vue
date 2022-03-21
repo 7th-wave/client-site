@@ -493,7 +493,7 @@ const vaults = [
     creator: "Fine Art",
     fractions: "yo",
     available: "49%",
-    valuation: "$2M",
+    valuation: "$100M",
     nfts: [
       {
         name: "caveman",
@@ -508,7 +508,7 @@ const vaults = [
     creator: "Sneakers",
     fractions: 58,
     available: "49%",
-    valuation: "$2M",
+    valuation: "$5B",
     nfts: [
       {
         name: "Nft1",
