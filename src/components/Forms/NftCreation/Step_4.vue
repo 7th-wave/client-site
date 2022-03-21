@@ -612,7 +612,7 @@ const steps = [
     id: "3",
     name: "Create a Vault",
     description: "Penatibus eu quis ante.",
-    href: "#",
+    href: "/fractionalize",
     status: "upcoming",
   },
 ];

@@ -7,15 +7,8 @@
       <h1 class="sm:text-4xl text-2xl font-medium">NFT Mint New Asset(s)</h1>
     </div>
     <div class="space-y-2">
-      <div class=" flex
-        xl:flex-row
-        lg:items-start lg:space-x-4
-        w-full
-        lg:space-y-0
-        flex-col
-        items-start
-        space-y-4">
-        <div class="lg:col-span-2 hidden xl:block">
+      <div class=" sm:grid sm:grid-cols-7 gap-8">
+        <div class="sm:col-span-2 hidden xl:block">
           <Menu />
         </div>
         <div class="sm:col-span-5 space-y-2">

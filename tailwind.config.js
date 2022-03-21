@@ -11,7 +11,7 @@ module.exports = {
         body: ["Inter", "sans-serif"],
       },
       maxWidth: {
-          '8xl': '100rem',
+          '7xl': '84.125rem',
        },
        width: {
         'm-1xl':'376px',
