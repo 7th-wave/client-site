@@ -688,7 +688,7 @@
       </div>
     </div>
     <div class="pt-6 space-y-4">
-      <MintCard cardtype="edit" />
+      <MintCard cardtype="edit" :url="{name:'VaultsCreateStep4'}" />
       <Feed />
     </div>
     <AddAssetsModal ref="AddAssetsModal" />
