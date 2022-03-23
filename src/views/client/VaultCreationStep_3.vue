@@ -692,6 +692,7 @@
       <Feed />
     </div>
     <AddAssetsModal ref="AddAssetsModal" />
+      <ConfirmDelete ref="deleteModal" @deleteItem="DeleteAssets" />
   </account-layout>
 </template>
 
@@ -704,6 +705,8 @@ import MintCard from "@/components/cards/MintCard.vue";
 import AddAssetsModal from  "@/components/Modals/AddAssetsModal.vue";
 import AccountLayout from '../../components/Layouts/AccountLayout.vue';
 import Navbar from "@/components/Layouts/Navbar.vue";
+import ConfirmDelete from "@/components/Modals/ConfirmDelete.vue";
+
 const steps = [
   {
     id: "1",
@@ -731,6 +734,7 @@ export default {
   setup() {
     return {
       steps,
+      AssetIndex:null,
     };
   },
   data() {
@@ -766,7 +770,13 @@ export default {
   },
   methods: {
     RemoveItem(item) {
-      this.form.assets.splice(item, 1);
+      this.AssetIndex = item;
+      this.$refs.deleteModal.open = true;
+    },
+    DeleteAssets(){
+       this.form.assets.splice(this.AssetIndex, 1);
+       this.AssetIndex = null;
+       this.$refs.deleteModal.open = false;
     },
     AddAssets() {
       this.$refs.AddAssetsModal.open = true;
@@ -786,6 +796,7 @@ export default {
     AddAssetsModal,
     AccountLayout,
     Navbar,
+    ConfirmDelete,
   },
 };
 </script>

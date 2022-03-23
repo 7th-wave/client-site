@@ -5,14 +5,16 @@
       rounded-md
       shadow-md
       bg-primary-500
-      py-4
+      py-5
       px-3
       flex
       lg:items-center
       font-inter lg:flex-row lg:space-y-0 flex-col space-y-4 items-start
     "
   >
-    <div class=" flex lg:items-center lg:space-x-4 lg:flex-row lg:space-y-0 flex-col items-start space-y-4">
+    <div class="  flex lg:items-center lg:space-x-4 lg:flex-row lg:space-y-0 flex-col items-start space-y-4"
+    :class="{' lg:w-11/12':cardtype == 'edit'}"
+    >
       <p class="text-base text-white font-semibold">
         Which Blockchain do you <br class=" hidden lg:block"> want to use for your NFT?
       </p>
@@ -34,7 +36,7 @@
         </div>
         <IconChevron class="top" />
       </div>
-      <p class="text-base text-white font-semibold">
+      <p class="text-base text-white font-semibold" v-if="cardtype == 'mint'">
         Ready to create your NFT? <br class=" hidden lg:block"> Minting is IRREVERSABLE
       </p>
       <button
@@ -78,7 +80,7 @@
       </span>
       <button @click="nextStep" class=" text-white font-medium text-base font-inter border border-white py-2 px-4 rounded-sm">EDIT</button>
     </div>
-     <div class=" flex lg:flex-row flex-col items-start space-y-2 lg:space-y-0 lg:items-center lg:space-x-2" v-if="cardtype == 'edit'">
+     <div class=" w-full flex lg:flex-row flex-col items-start space-y-2 lg:space-y-0 lg:items-center lg:space-x-2" v-if="cardtype == 'edit'">
       <div class=" hidden lg:block">
         <svg
           width="3"
@@ -100,7 +102,7 @@
       <span class="text-base leading-6 font-semibold text-white">
         We will review your changes and send it back for you to MINT your NFT Assets. You may also contact us below 
       </span>
-      <button class=" text-white font-medium text-base font-inter border border-white py-2 px-4 rounded-sm">SEND FOR REVISION</button>
+      <button class=" text-white font-medium text-base font-inter border border-white py-2 px-4 rounded-sm whitespace-nowrap">SEND FOR REVISION</button>
     </div>
   </div>
 </template>
