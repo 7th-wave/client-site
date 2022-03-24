@@ -154,7 +154,7 @@
 
    <div class=" py-4 space-y-4">
       <MintsInfosCards  />
-    <FractionCard :goBack="true" :goDown="false"/>
+      <FractionCard :goBack="true" :goDown="false"/>
    </div>
   </account-layout>
 </template>

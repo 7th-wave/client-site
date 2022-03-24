@@ -1,9 +1,21 @@
 <template>
-   <account-layout class=" space-y-8">
+  <div
+    class="
+      account
+      py-4
+      sm:py-4
+      lg:py-16
+      relative
+      mx-auto
+      bg-gray-100
+      font-inter
+      space-y-4
+    "
+  >
     <!-- <div class="lg:hidden">
       <Navbar />
     </div> -->
-    <div class="py-0 sm:py-4 md:pb-8 md:pt-4 lg:pt-0 lg:pb-8 text-center space-y-4">
+    <div class="py-0 sm:py-4 md:pb-8 md:pt-4 lg:pt-0 lg:pb-8 text-center">
       <h1
         class="sm:text-4xl text-2xl font-medium"
         v-if="$route.params.category == 'cvman'"
@@ -62,7 +74,7 @@
         money on rare shoes
       </p>
     </div>
-    <div class="  mx-auto  w-full">
+    <div class=" max-w-6xl mx-auto px-4  w-full">
       <div class="grid lg:grid-cols-3 grid-cols-1 md:grid-cols-2 gap-8">
         <VaultItem
          :url="{
@@ -118,22 +130,29 @@
         </VaultItem>
       </div>
     </div>
-  </account-layout>
+  </div>
 </template>
 
 <script>
 // import Navbar from "@/components/Layouts/Navbar.vue";
 import VaultItem from "@/components/Shared/VaultItem.vue";
-import AccountLayout from '../../components/Layouts/AccountLayout.vue';
-
 // @ is an alias to /src
 export default {
   components: {
     // GalleryClient,
-   AccountLayout,
     // Navbar,
     VaultItem,
   },
+
+    
+          
+            
+    
+
+          
+    
+    
+  
   data() {
     return {
       vaults: [
@@ -194,7 +213,6 @@ export default {
             },
           ],
         },
-
         {
           id: "5",
           name: "Basket Name",

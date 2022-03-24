@@ -1,7 +1,7 @@
 <template>
   <div class="w-full rounded-md shadow-md overflow-hidden bg-white">
     <div class="border-b border-gray-300 h-80">
-      <img :src=" Vault.img " class="w-full h-80 object-cover" alt="" />
+      <img :src="Vault.image" class="w-full h-80 object-cover" alt="" />
     </div>
     <div class="w-full h-px bg-gray-300"></div>
     <div class="bg-white flex-col flex items-start space-y-2 p-5">

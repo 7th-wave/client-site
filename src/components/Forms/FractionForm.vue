@@ -368,7 +368,7 @@
             <div class="flex w-full py-4">
               <div
                 class="m-auto"
-                :class="{ 'grid 2xl:grid-cols-1 lg:grid-cols-1  sm:grid-cols-3  gap-2': selectedVaults.length > 1 }"
+                :class="{ 'grid 2xl:grid-cols-1 lg:grid-cols-1 md:grid-cols-1  sm:grid-cols-3  gap-2': selectedVaults.length > 1 }"
               >
                 <div
                   class="relative w-28 h-28"
@@ -376,7 +376,7 @@
                   :key="key"
                 >
                   <div class="border rounded-md overflow-hidden w-full h-full">
-                    <img :src="item.img" alt="" class="w-full h-full" />
+                    <img :src="item.image" alt="" class="w-full h-full" />
                   </div>
                   <div
                     @click="RemoveItem(item)"

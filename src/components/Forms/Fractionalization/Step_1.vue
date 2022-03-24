@@ -5,11 +5,11 @@
       <p class="text-center mb-8 rounded-lg px-4 py-8 bg-white shadow-lg">Choose the NFT(s) to send to a new vault, select your desired fraction type, set your vault’s details, then continue to fractionalize. Once complete, all fractions will appear in your wallet. Be aware, you cannot add to the NFTs in a vault once created. Read our guides for more information.</p>
     </div>
     <div class="flex md:flex-row flex-col space-y-4 md:space-y-0 ">
-        <div class="md:w-2/3 w-full md:pr-4">
-          <nfts :data="nfts"></nfts>
+        <div class="md:w-2/3 w-full md:pr-4 grid grid-cols-2 gap-2">
+          <nfts v-for="(item,index,key) in nfts" :key="key" :vault="item"></nfts>
         </div>
         <div class="md:w-1/3 w-full">
-          <fraction-form></fraction-form>
+          <fraction-form :vaults="nfts"></fraction-form>
         </div>
     </div>
     <ConfirmDelete ref="deleteModal" @deleteItem="DeleteImage" />
@@ -21,7 +21,7 @@
 <script>
 import Steps from "../../Drawers/Steps.vue";
 import ConfirmDelete from "../../Modals/ConfirmDelete.vue";
-import Nfts from '../../Shared/Nfts.vue';
+import Nfts from '../../cards/VaultCard.vue';
 import FractionForm from '../FractionForm.vue';
 const steps = [
   {
@@ -49,28 +49,40 @@ const steps = [
 
 const nfts = [
         {
-            name: "Nft1",
-            image: "01.png"
+            name: "Nike Waffle Sneakers",
+            collection:'Sneakers Collection',
+            image: "/images/sneakers/01.png",
+            selected:false,
         },
         {
-            name: "Nft2",
-            image: "02.png"
+           name: "Nike Waffle Sneakers",
+            collection:'Sneakers Collection',
+            image: "/images/sneakers/02.png",
+             selected:false,
         },
         {
-            name: "Nft3",
-            image: "03.png"
+           name: "Nike Waffle Sneakers",
+            collection:'Sneakers Collection',
+            image: "/images/sneakers/03.png",
+             selected:false,
         },
         {
-            name: "Nft4",
-            image: "04.png"
+           name: "Nike Waffle Sneakers",
+            collection:'Sneakers Collection',
+            image: "/images/sneakers/04.png",
+             selected:false,
         },
         {
-            name: "Nft5",
-            image: "05.png"
+           name: "Nike Waffle Sneakers",
+            collection:'Sneakers Collection',
+            image: "/images/sneakers/05.png",
+             selected:false,
         },
         {
-            name: "Nft6",
-            image: "06.png"
+           name: "Nike Waffle Sneakers",
+            collection:'Sneakers Collection',
+            image: "/images/sneakers/06.png",
+             selected:false,
         }
 ];
 export default {
