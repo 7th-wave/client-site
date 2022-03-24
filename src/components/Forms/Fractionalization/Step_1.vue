@@ -4,11 +4,11 @@
     <div class="">
       <p class="text-center mb-8 rounded-lg px-4 py-8 bg-white shadow-lg">Choose the NFT(s) to send to a new vault, select your desired fraction type, set your vault’s details, then continue to fractionalize. Once complete, all fractions will appear in your wallet. Be aware, you cannot add to the NFTs in a vault once created. Read our guides for more information.</p>
     </div>
-    <div class="flex">
-        <div class="w-2/3 pr-4">
+    <div class="flex md:flex-row flex-col space-y-4 md:space-y-0 ">
+        <div class="md:w-2/3 w-full md:pr-4">
           <nfts :data="nfts"></nfts>
         </div>
-        <div class="w-1/3">
+        <div class="md:w-1/3 w-full">
           <fraction-form></fraction-form>
         </div>
     </div>

@@ -60,9 +60,10 @@
           class="
         
             w-full
-            absolute top-44
+            absolute
             z-10
           "
+          style="top: 12rem;"
         >
          <div class=" w-full relative flex
             justify-between

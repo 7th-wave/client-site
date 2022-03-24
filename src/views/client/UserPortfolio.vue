@@ -1,74 +1,44 @@
 <template>
-   <account-layout class=" space-y-8">
+  <account-layout class="space-y-8">
     <!-- <div class="lg:hidden">
       <Navbar />
     </div> -->
-    <div class="py-0 sm:py-4 md:pb-8 md:pt-4 lg:pt-0 lg:pb-8 text-center space-y-4">
-      <h1
-        class="sm:text-4xl text-2xl font-medium"
-        v-if="$route.params.category == 'cvman'"
-      >
-        Fine Art
-      </h1>
-      <h1 class="sm:text-4xl text-2xl font-medium" v-else>Sneakers Collection</h1>
-    </div>
     <div
-      v-if="$route.params.category == 'Fine Art'"
-      class="
-        w-full
-        flex flex-col
-        item-center
-        space-y-4
-        bg-white
-         px-4
-        py-5
-        text-center
-      "
+      class="py-0 sm:py-4 md:pb-8 md:pt-4 lg:pt-0 lg:pb-8 text-center space-y-4"
     >
-      <span class="text-black font-inter text-xl font-semibold max-w-6xl mx-auto"
-        >The global fine art market was valued at 50 billion U.S. dollars in
-        2020.
-      </span>
-      <p class="text-black font-inter text-xl font-normal max-w-6xl mx-auto">
-        The audience for buyers will continue to expand in 2021 as rapid
-        technological transformation and the embrace of digital channels will
-        remain ever present. The comprehensive set of digital tools clients can
-        now access has not only broken down barriers to entry but reduced the
-        need to view or physically handle works in person prior to purchasing.
-      </p>
+     
+      <h1 class="sm:text-4xl text-2xl font-medium">
+        {Client Username} Collection
+      </h1>
     </div>
     <div
-      v-else
       class="
         w-full
-        flex flex-col
-        item-center
-        space-y-4
+        flex 
         bg-white
         px-4
         py-5
         text-center
       "
     >
-      <span class="text-black font-inter text-xl font-semibold max-w-6xl mx-auto"
-        >Collecting sneakers became a
-        multi-billion-dollar industry</span
-      >
-      <p class="text-black font-inter text-xl font-normal max-w-6xl mx-auto">
-        Over the past five years, there's been an "explosion" in collectors
-        spending big money on rare shoes. Over the past five years, there's been
-        an "explosion" in collectors spending big money on rare shoes Over the
-        past five years, there's been an "explosion" in collectors spending big
-        money on rare shoes
-      </p>
+    <div class=" m-auto flex flex-col items-center">
+      <div class=" w-56 h-56 rounded-full bg-gray-200">
+        <img class=" w-full h-full object-cover" src="/images/Avatar3.png" alt="">
+      </div>
+      <div class=" flex flex-col items-start space-y-1">
+        <span class=" text-lg font-medium text-gray-900">@username</span>
+        <span class=" text-primary-500 font-medium text-sm">0xE881...4567</span>
+      </div>
     </div>
-    <div class="  mx-auto  w-full">
+    </div>
+   
+    <div class="mx-auto  w-full">
       <div class="grid lg:grid-cols-3 grid-cols-1 md:grid-cols-2 gap-8">
         <VaultItem
-         :url="{
-              name: 'Vault',
-              params: { id: item.id },
-            }"
+          :url="{
+            name: 'Vault',
+            params: { id: item.id },
+          }"
           class="cursor-pointer"
           v-for="(item, index, key) in getData"
           :key="key"
@@ -124,13 +94,13 @@
 <script>
 // import Navbar from "@/components/Layouts/Navbar.vue";
 import VaultItem from "@/components/Shared/VaultItem.vue";
-import AccountLayout from '../../components/Layouts/AccountLayout.vue';
+import AccountLayout from "../../components/Layouts/AccountLayout.vue";
 
 // @ is an alias to /src
 export default {
   components: {
     // GalleryClient,
-   AccountLayout,
+    AccountLayout,
     // Navbar,
     VaultItem,
   },
@@ -141,7 +111,7 @@ export default {
           id: "1",
           name: "Nike Collection",
           token: "SNEAKER",
-        
+
           fractions: 58,
           available: "49%",
           valuation: "$2M",
@@ -217,7 +187,7 @@ export default {
             },
           ],
         },
-         {
+        {
           id: "2",
           name: "Air Mags",
           token: "SNEAKER",
@@ -283,65 +253,12 @@ export default {
             },
           ],
         },
-       
-      ],
-      FineArt: [
-        {
-          id: "cvman",
-          name: "The caveman, ca. 2008",
-          token: "SNEAKER",
-          fractions: 58,
-          available: "49%",
-          valuation: "$2M",
-          nfts: [
-            {
-              name: "Nft1",
-              image: "caveman.png",
-            },
-          ],
-        },
-        {
-          id: "cvman",
-          name: "Damien Hirst",
-          token: "SNEAKER",
-          fractions: 58,
-          available: "49%",
-          valuation: "$2M",
-          nfts: [
-            {
-              name: "Nft4",
-              image: "art.png",
-            },
-          ],
-        },
-        {
-          id: "cvman",
-          name: "Basket Name",
-          token: "SNEAKER",
-          fractions: 58,
-          available: "49%",
-          valuation: "$2M",
-          nfts: [
-            {
-              name: "Nft2",
-              image: "face.jpg",
-            },
-            {
-              name: "Nft3",
-              image: "03.png",
-            },
-          ],
-        },
       ],
     };
   },
   computed: {
     getData() {
-      if (this.$route.params.category == "cvman") {
-        return this.FineArt;
-      } else {
-        return this.vaults;
-      }
+      return this.vaults;
     },
   },
   methods: {

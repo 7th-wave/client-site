@@ -212,6 +212,12 @@ const routes = [
     component: () => import("../views/client/Mybids.vue"),
     beforeEnter: clientGuard,
   },
+  {
+    path: "/user-portfolio/:id",
+    name: "UserPortfolio",
+    component: () => import("../views/client/UserPortfolio.vue"),
+    beforeEnter: clientGuard,
+  },
 ];
 
 const router = createRouter({

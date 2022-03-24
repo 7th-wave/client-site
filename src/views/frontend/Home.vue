@@ -151,15 +151,15 @@
 
               <div
                 class="
-                  w-full
+                   w-11/12
                   flex
                   justify-between
                   items-center
                   absolute
                   bottom-0
                   transform
-                  -translate-y-1/2
-                  -right-2.5
+                  -translate-y-1/2 right-24
+                  
                   z-10
                 "
               >
