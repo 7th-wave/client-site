@@ -1,6 +1,6 @@
  
 <template>
-<AccountLayout>
+<AccountLayout class=" space-y-4">
  
     <div class="xl:hidden">
       <Navbar />

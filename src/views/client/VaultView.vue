@@ -163,7 +163,8 @@
 <script>
 import MintsInfosCards from "@/components/cards/MintsInfosCards.vue";
 import FractionCard from "@/components/cards/FractionCard.vue";
-import AccountLayout from '../../components/Layouts/AccountLayout.vue';
+import AccountLayout from '@/components/Layouts/AccountLayout.vue';
+
 
 export default {
   setup() {
