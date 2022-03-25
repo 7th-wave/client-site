@@ -167,16 +167,16 @@ const routes = [
     beforeEnter: clientGuard,
   },
   {
-    path: "/my-collections",
+    path: "/my-nfts",
     name: "My_collections",
     component: () => import("../views/client/Mycollections.vue"),
     beforeEnter: clientGuard,
   },
  
   {
-    path: "/collection/:id/details",
+    path: "/my-nft/:id/details",
     name: "CollectionDetails",
-    component: () => import("../views/client/Artistdetail.vue"),
+    component: () => import("../views/client/myNftPending.vue"),
   },
    {
     path: "/my-fractions",

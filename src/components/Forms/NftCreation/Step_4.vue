@@ -603,18 +603,18 @@ const steps = [
     href: "#",
     status: "complete",
   },
-  {
+    {
     id: "2",
-    name: "Mint Asset",
+    name: "Mint your NFT",
     description: "Penatibus eu quis ante.",
     href: "#",
     status: "current",
   },
   {
     id: "3",
-    name: "Create a Vault",
+    name: "Fractionalize",
     description: "Penatibus eu quis ante.",
-    href: "/fractionalize",
+    href: "#",
     status: "upcoming",
   },
 ];

@@ -665,7 +665,7 @@
                   >{{ asset.errors.Images }}</span
                 >
               </div>
-              <div class="sm:col-span-4 grid grid-cols-1 sm:grid-cols-3 gap-4">
+              <div class="sm:col-span-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                 <div
                   class="relative w-full sm:w-32 h-36 bg-gray-300 rounded-md"
                   v-for="(image, imageIndex, imagekey) in asset.Images"
@@ -762,14 +762,14 @@ const steps = [
   },
   {
     id: "2",
-    name: "Mint Asset",
+    name: "Mint your NFT",
     description: "Penatibus eu quis ante.",
     href: "#",
     status: "upcoming",
   },
   {
     id: "3",
-    name: "Create a Vault",
+    name: "Fractionalize",
     description: "Penatibus eu quis ante.",
     href: "#",
     status: "upcoming",
