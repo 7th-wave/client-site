@@ -1,37 +1,18 @@
 <template>
-  <div class="artist bg-gray-100 font-inter px-4">
-    <div class="relative font-inter py-8 sm:py-8 lg:py-8">
-      <div class="relative">
-        <Navbar class=" lg:hidden" />
-        <div
-          class="
-            text-center
-            mx-auto
-            max-w-md
-            px-4
-            sm:max-w-3xl sm:px-6
-            lg:px-8 lg:max-w-7xl
-          "
-        >
-          <p
-            class="
-             sm:text-4xl text-2xl
-              font-semibold
-              text-gray-900
-              tracking-tight
-              
-            "
-          >
-            Nike Waffle Sneaker
-          </p>
-        </div>
-        <div></div>
-      </div>
+<account-layout>   
+    <div class="xl:hidden">
+      <Navbar />
     </div>
-    <div class="flex lg:items-start lg:space-x-4 w-full rounded-lg sm:px-10 lg:flex-row flex-col items-start space-y-4 lg:space-y-0">
-      <div class="lg:col-span-2 lg:block flex flex-col items-start space-y-8 lg:w-m-1xl w-full">
-        <Menu class=" hidden lg:block" />
-        <div class=" w-full">
+    <div class="py-0 sm:py-4 md:pb-8 md:pt-4 lg:pt-0 lg:pb-8 text-center">
+      <h1 class="sm:text-4xl text-2xl font-medium"> Nike Waffle Sneaker</h1>
+    </div>
+       
+       
+     
+    <div class="xl:grid xl:grid-cols-7 xl:gap-8 sm:m-auto">
+      <div class="lg:col-span-2 space-y-4">
+        <Menu class=" sm:col-span-2 hidden xl:block"  />
+        <div class=" w-full pb-4">
           <NftCard>
             <template #image>
               <img
@@ -1651,7 +1632,7 @@
         </Dialog>
       </TransitionRoot>
     </div>
-  </div>
+ </account-layout>
 </template>
 
 <style scoped>
@@ -1689,6 +1670,7 @@ import QRCode from "qrcode";
 import Datepicker from "vue3-datepicker";
 import Menu from "@/components/Layouts/Menu";
 import NftCard from "@/components/cards/NftCard.vue";
+import AccountLayout from '../../components/Layouts/AccountLayout.vue';
 
 import {
   Dialog,
@@ -1731,6 +1713,7 @@ const cards = [
 
 export default {
   components: {
+    AccountLayout,
     Navbar,
     LinkIcon,
     Disclosure,

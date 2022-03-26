@@ -1,18 +1,16 @@
  
 <template>
   <account-layout>
-    <div class="lg:hidden">
+    <div class="xl:hidden">
       <Navbar />
     </div>
-    <div class="py-0 pb-2 sm:py-4 lg:pt-0 lg:pb-8 text-center">
+    <div class="py-0 sm:py-4 md:pb-8 md:pt-4 lg:pt-0 lg:pb-8 text-center">
       <h1 class="sm:text-4xl text-2xl font-medium">My Account</h1>
     </div>
     <div>
-      <div class="flex items-start space-x-4 w-full">
-        <div class="lg:col-span-2">
-          <div class="hidden lg:block">
+      <div class=" xl:grid xl:grid-cols-7 xl:gap-8 sm:m-auto">
+        <div class="sm:col-span-2 hidden xl:block">
             <Menu />
-          </div>
         </div>
         <div class="mt-5 lg:mt-0 lg:col-span-5 w-full">
           <Account :is-admin="false" :is-edit="true" v-if="isLoaded" />

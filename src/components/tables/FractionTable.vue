@@ -51,15 +51,16 @@
                   alt=""
                 />
               </div>
-              <div class="flex flex-col items-start -space-y-8">
+              <div class="flex flex-col items-start -space-y-8 cursor-pointer"  @click="UserDetails(n)">
                 <span
+                 
                   class="
                     px-6
                     py-4
                     whitespace-nowrap
                     text-sm
                     font-medium
-                    text-gray-900
+                    text-gray-900 
                   "
                   >0xb7BC...eA21</span
                 >
@@ -245,6 +246,16 @@ export default {
       },
     };
   },
+  methods:{
+    UserDetails(id){
+      this.$router.push({
+        name: "UserPortfolio",
+        params: {
+          id: id
+        }
+      });
+    }
+  }
 };
 </script>
 

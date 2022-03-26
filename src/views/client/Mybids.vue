@@ -1,19 +1,17 @@
  
 <template>
 <div class="account sm:px-2 px-2 py-4 lg:py-16 relative bg-gray-100 2xl:max-w-8xl w-full mx-auto font-inter">
-    <div class="lg:hidden">
+    <div class="xl:hidden">
       <Navbar :type="'customer'" />
     </div>
-    <div class="py-0 pb-6 sm:pt-2 sm:pb-6 lg:pt-0 lg:pb-8 text-center">
+    <div class="py-0 sm:py-4 md:pb-8 md:pt-4 lg:pt-0 lg:pb-8 text-center">
       <h1 class="sm:text-4xl text-2xl font-medium">My Bids</h1>
     </div>
     <div>
-      <div class="lg:grid lg:grid-cols-7 lg:gap-6 rounded-lg ">
-        <div class="lg:col-span-2">
-          
-          <div class="hidden lg:block">
+      <div class=" xl:grid xl:grid-cols-7 xl:gap-8 sm:m-auto">
+        <div class="sm:col-span-2 hidden xl:block">
             <Menubar />
-          </div>
+         
         
         </div>
         <div class="lg:col-span-5">

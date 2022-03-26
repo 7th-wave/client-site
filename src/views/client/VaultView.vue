@@ -1,9 +1,8 @@
 <template>
-  <div class="space-y-4 w-full font-inter py-14 px-6">
-    <div class="w-full text-center pb-4">
-      <span class="sm:text-4xl text-2xl font-medium text-gray-900"
-        >The caveman, ca. 2008</span
-      >
+  <account-layout>
+   
+    <div class="py-0 sm:py-4 md:pb-8 md:pt-4 lg:pt-0 lg:pb-8 text-center">
+      <h1 class="sm:text-4xl text-2xl font-medium">The caveman, ca. 2008</h1>
     </div>
     <div class="w-full font-inter grid lg:grid-cols-5 gap-5">
       <div
@@ -153,15 +152,20 @@
       </div>
     </div>
 
-    <MintsInfosCards  />
-    <FractionCard :goBack="true" :goDown="false"/>
-  </div>
+   <div class=" py-4 space-y-4">
+      <MintsInfosCards  />
+      <FractionCard :goBack="true" :goDown="false"/>
+   </div>
+  </account-layout>
 </template>
 
 
 <script>
 import MintsInfosCards from "@/components/cards/MintsInfosCards.vue";
 import FractionCard from "@/components/cards/FractionCard.vue";
+import AccountLayout from '@/components/Layouts/AccountLayout.vue';
+
+
 export default {
   setup() {
     return {};
@@ -169,6 +173,7 @@ export default {
   components: {
     MintsInfosCards,
     FractionCard,
+    AccountLayout
   },
 };
 </script>

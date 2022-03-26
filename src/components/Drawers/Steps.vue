@@ -19,7 +19,7 @@
                 </span>
               </span>
             </a>
-            <a v-else-if="step.status === 'current'" :href="step.href" aria-current="step">
+            <router-link v-else-if="step.status === 'current'" :to="step.href" aria-current="step">
               <span class="absolute top-0 left-0 w-1 h-full bg-secondary-500 lg:w-full lg:h-1 lg:bottom-0 lg:top-auto" aria-hidden="true" />
               <span :class="[stepIdx !== 0 ? 'lg:pl-9' : '', 'px-6 py-5 flex items-start text-sm font-medium']">
                 <span class="flex-shrink-0">
@@ -32,7 +32,7 @@
                   <!-- <span class="text-sm font-medium text-gray-500">{{ step.description }}</span> -->
                 </span>
               </span>
-            </a>
+            </router-link>
             <a v-else :href="step.href" class="group">
               <span class="absolute top-0 left-0 w-1 h-full bg-transparent group-hover:bg-gray-200 lg:w-full lg:h-1 lg:bottom-0 lg:top-auto" aria-hidden="true" />
               <span :class="[stepIdx !== 0 ? 'lg:pl-9' : '', 'px-6 py-5 flex items-start text-sm font-medium']">

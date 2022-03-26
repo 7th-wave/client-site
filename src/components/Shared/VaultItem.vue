@@ -75,7 +75,7 @@
           {{ vault.name }}
         </h2>
         <div class="h-6" />
-        <stats />
+        <stats :stats="vault"  />
       </div>
     </div>
   </div>

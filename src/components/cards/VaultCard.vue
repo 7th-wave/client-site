@@ -1,16 +1,16 @@
 <template>
-  <div class="w-full rounded-md shadow-md overflow-hidden bg-white">
+  <div class="rounded-md shadow-md overflow-hidden bg-white" :class="Cardwidth">
     <div class="border-b border-gray-300 h-80">
-      <img :src=" Vault.img " class="w-full h-80 object-cover" alt="" />
+      <img :src="Vault.image" class="w-full h-80 object-cover" alt="" />
     </div>
     <div class="w-full h-px bg-gray-300"></div>
     <div class="bg-white flex-col flex items-start space-y-2 p-5">
-      <span class=" text-primary-500 text-sm font-inter font-normal"
-        >{{Vault.collection}}</span
-      >
-      <span class="text-gray-900 font-inter font-semibold text-xl"
-        >{{Vault.name}}</span
-      >
+      <span class="text-primary-500 text-sm font-inter font-normal">{{
+        Vault.collection
+      }}</span>
+      <span class="text-gray-900 font-inter font-semibold text-xl">{{
+        Vault.name
+      }}</span>
     </div>
     <div class="w-full h-px bg-gray-300"></div>
     <div class="py-2 px-4">
@@ -28,7 +28,7 @@
           flex
         "
       >
-        <div  class="m-auto flex items-baseline space-x-3">
+        <div class="m-auto flex items-center space-x-3">
           <span>SELECTED</span>
           <div class="cursor-auto" @click="UnselectItem">
             <IconClose />
@@ -61,29 +61,31 @@
 import IconClose from "../Icons/IconClose.vue";
 
 export default {
-  
   components: {
     IconClose,
   },
   props: {
-      vault:{
-        type: Object,
-        required: true
-      },
+    vault: {
+      type: Object,
+      required: true,
+    },
+    Cardwidth: {
+      type: String,
+      default: "w-full",
+    },
   },
-  data(){
-      return {
-          Vault: this.vault,
-      }
+  data() {
+    return {
+      Vault: this.vault,
+    };
   },
-  methods:{
-      UnselectItem(){
-         this.Vault.selected = false;
-      },
-      SelectItem(){
-         this.Vault.selected = true;
-      },
+  methods: {
+    UnselectItem() {
+      this.Vault.selected = false;
+    },
+    SelectItem() {
+      this.Vault.selected = true;
+    },
   },
-
 };
 </script>

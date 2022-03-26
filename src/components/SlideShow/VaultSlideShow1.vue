@@ -1,7 +1,7 @@
 <template>
   <div class="w-full flex items-center">
     <div class="xl:w-2/3 w-full xl:m-auto xl:px-0 px-4">
-      <div v-if="slides.length > 1" class="relative w-full xl:left-24">
+      <div v-if="slides.length > 1" class="relative w-full">
         <CarouselCard class=" hidden lg:block"
           ref="carouselCardRef"
           :interval="7000"
@@ -60,10 +60,10 @@
           class="
         
             w-full
-            absolute
+            absolute 
             z-10
           "
-          style="top: 12rem;"
+          style="top:12rem;"
         >
          <div class=" w-full relative flex
             justify-between
@@ -100,7 +100,7 @@
           <button
             @click="next"
             class="
-             absolute lg:right-40 -right-4
+             absolute lg:-right-6 -right-4
               bg-white
               shadow-md
               rounded-full

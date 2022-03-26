@@ -4,9 +4,11 @@
       <div class="relative">
         <div class="w-full bg-gray-100">
           <div
-            class=" pt-10
+            class="
+              pt-10
               m-auto
-              xl:grid grid-cols-1
+              xl:grid
+              grid-cols-1
               xl:grid-cols-6
               gap-12
               sm:px-8
@@ -14,7 +16,16 @@
               2xl:max-w-8xl 2xl:mx-auto
             "
           >
-            <div class="col-span-1 lg:col-span-2 flex flex-col justify-center mt-10 lg:mt-0">
+            <div
+              class="
+                col-span-1
+                lg:col-span-2
+                flex flex-col
+                justify-center
+                mt-10
+                lg:mt-0
+              "
+            >
               <h1
                 class="
                   md:text-5xl
@@ -43,7 +54,7 @@
               </p>
 
               <div class="flex lg:mt-16 mt-6 w-full">
-                <div class=" w-full">
+                <div class="w-full">
                   <Button
                     :btn-style="'secondary'"
                     :size="'large'"
@@ -85,19 +96,70 @@
                     badgecolor="green"
                     :show-arrows="false"
                     :vault="vault"
-                  />
+                  >
+                    <template #badge>
+                      <div
+                        class="
+                         z-10
+                          bg-white
+                          py-1
+                          px-2
+                          rounded-3xl
+                          absolute
+                          top-3
+                          right-3
+                          flex
+                          items-center
+                          space-x-1.5
+                        "
+                      >
+                        <div>
+                          <svg
+                            width="21"
+                            height="21"
+                            viewBox="0 0 21 21"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <circle
+                              cx="10.4258"
+                              cy="10.5"
+                              r="10"
+                              fill="#1ACE99"
+                            />
+                            <path
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M4.23802 6.54959C6.61428 6.51735 8.77936 5.61072 10.4261 4.13684C12.0728 5.61072 14.2379 6.51735 16.6142 6.54959C16.7005 7.06364 16.7454 7.59172 16.7454 8.1303C16.7454 12.2575 14.1077 15.7686 10.4261 17.0698C6.74451 15.7686 4.10681 12.2575 4.10681 8.1303C4.10681 7.59172 4.15173 7.06364 4.23802 6.54959ZM13.5029 9.62729C13.8935 9.23677 13.8935 8.6036 13.5029 8.21308C13.1124 7.82255 12.4793 7.82255 12.0887 8.21308L9.63619 10.6656L8.76347 9.7929C8.37295 9.40238 7.73979 9.40238 7.34926 9.7929C6.95874 10.1834 6.95874 10.8166 7.34926 11.2071L8.92908 12.7869C9.11662 12.9745 9.37097 13.0798 9.63619 13.0798C9.90141 13.0798 10.1558 12.9745 10.3433 12.7869L13.5029 9.62729Z"
+                              fill="white"
+                            />
+                          </svg>
+                        </div>
+                        <span
+                          class="
+                            text-sm
+                            font-medium font-inter
+                            text-gray-900 text-center
+                          "
+                          >{{ vault.token }}</span
+                        >
+                      </div>
+                    </template>
+                  </vault-item>
                 </CarouselCardItem>
               </CarouselCard>
 
               <div
                 class="
-                  w-full
+                   w-11/12
                   flex
                   justify-between
                   items-center
                   absolute
-                  bottom-0 transform -translate-y-1/2
-                  -right-2.5
+                  bottom-0
+                  transform
+                  -translate-y-1/2 right-24
+                  
                   z-10
                 "
               >
@@ -161,23 +223,14 @@
                 </button>
               </div>
             </div>
-            <div
-              class="
-                col-span-1
-                lg:col-span-4 
-                pb-6
-                pt-6
-                relative
-                xl:hidden
-              "
-            >
+            <div class="col-span-1 lg:col-span-4 pb-6 pt-6 relative xl:hidden">
               <CarouselCard
                 ref="carouselCardRef1"
                 :interval="7000"
                 :autoplay="false"
                 height="500px"
                 arrow="always"
-                 type="card"
+                type="card"
                 @change="changeHandle"
               >
                 <CarouselCardItem
@@ -191,14 +244,71 @@
                     :show-arrows="false"
                     :vault="vault"
                   >
-                    <template #badge>
-                      {{vault.token}}
+                     <template #badge>
+                      <div
+                        class="
+                         z-10
+                          bg-white
+                          py-1
+                          px-2
+                          rounded-3xl
+                          absolute
+                          top-3
+                          right-3
+                          flex
+                          items-center
+                          space-x-1.5
+                        "
+                      >
+                        <div>
+                          <svg
+                            width="21"
+                            height="21"
+                            viewBox="0 0 21 21"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <circle
+                              cx="10.4258"
+                              cy="10.5"
+                              r="10"
+                              fill="#1ACE99"
+                            />
+                            <path
+                              fill-rule="evenodd"
+                              clip-rule="evenodd"
+                              d="M4.23802 6.54959C6.61428 6.51735 8.77936 5.61072 10.4261 4.13684C12.0728 5.61072 14.2379 6.51735 16.6142 6.54959C16.7005 7.06364 16.7454 7.59172 16.7454 8.1303C16.7454 12.2575 14.1077 15.7686 10.4261 17.0698C6.74451 15.7686 4.10681 12.2575 4.10681 8.1303C4.10681 7.59172 4.15173 7.06364 4.23802 6.54959ZM13.5029 9.62729C13.8935 9.23677 13.8935 8.6036 13.5029 8.21308C13.1124 7.82255 12.4793 7.82255 12.0887 8.21308L9.63619 10.6656L8.76347 9.7929C8.37295 9.40238 7.73979 9.40238 7.34926 9.7929C6.95874 10.1834 6.95874 10.8166 7.34926 11.2071L8.92908 12.7869C9.11662 12.9745 9.37097 13.0798 9.63619 13.0798C9.90141 13.0798 10.1558 12.9745 10.3433 12.7869L13.5029 9.62729Z"
+                              fill="white"
+                            />
+                          </svg>
+                        </div>
+                        <span
+                          class="
+                            text-sm
+                            font-medium font-inter
+                            text-gray-900 text-center
+                          "
+                          >{{ vault.token }}</span
+                        >
+                      </div>
                     </template>
                   </vault-item>
                 </CarouselCardItem>
               </CarouselCard>
 
-              <div class="w-full absolute bottom-0 z-10 pb-6  left-1/2 transform -translate-x-1/2 -translate-y-1/2" style=" top: 32rem/*;">
+              <div
+                class="
+                  w-full
+                  absolute
+                  bottom-0
+                  z-10
+                  pb-6
+                  left-1/2
+                  transform
+                  -translate-x-1/2 -translate-y-1/2
+                "
+                style=" top: 32rem/*;"
+              >
                 <div class="w-full relative flex justify-between items-center">
                   <button
                     @click="prev"
@@ -381,9 +491,9 @@ const vaults = [
     name: "The caveman, ca. 2008",
     token: "CVMAN",
     creator: "Fine Art",
-    fractions: "yo",
+    fractions: "100M",
     available: "49%",
-    valuation: "$2M",
+    valuation: "$10M",
     nfts: [
       {
         name: "caveman",
@@ -396,9 +506,9 @@ const vaults = [
     name: "Rare Sneakers",
     token: "SNKR",
     creator: "Sneakers",
-    fractions: 58,
+    fractions: "1M",
     available: "49%",
-    valuation: "$2M",
+    valuation: "$5M",
     nfts: [
       {
         name: "Nft1",
@@ -408,7 +518,6 @@ const vaults = [
         name: "Nft2",
         image: "01.png",
       },
-      
     ],
   },
   {
@@ -416,9 +525,9 @@ const vaults = [
     name: "Patek",
     token: "PATEK",
     creator: "Watches",
-    fractions: 58,
+    fractions: "1M",
     available: "49%",
-    valuation: "$500K",
+    valuation: "$300K",
     nfts: [
       {
         name: "Nft2",
@@ -577,25 +686,24 @@ export default {
   width: 56px;
   height: 56px;
   background-color: transparent;
-  background-size: 100%
+  background-size: 100%;
 }
 
 .carousel-card-arrow-right i {
-  background-image: url('/images/arrow_next.svg')!important;
+  background-image: url("/images/arrow_next.svg") !important;
   background-repeat: no-repeat;
 }
 
 .carousel-card-arrow-left i {
-  background-image: url('/images/arrow_left.svg')!important;
+  background-image: url("/images/arrow_left.svg") !important;
   background-repeat: no-repeat;
 }
-.swiper-slide  {
-       width: 529.429px !important;
+.swiper-slide {
+  width: 529.429px !important;
 }
 
 .swiper-slide {
   width: 329.429px !important;
- 
 }
 @media (min-width: 768px) {
   .swiper-slide {
@@ -603,46 +711,35 @@ export default {
     /* 329.429px !important */
   }
 }
-
-
 </style>
 <style >
-.carousel-card-arrow, .carousel-card-indicators {
+.carousel-card-arrow,
+.carousel-card-indicators {
   display: none;
 }
 
 .carousel-card-item-card {
-       left: -69px !important;
-    width: 309px !important;
-  }
+  left: -69px !important;
+  width: 309px !important;
+}
 
+/* 
+.carousel-card-item.is-active, .carousel-card-item-card.is-active {
+    width:323px !important;
+} */
 
 @media only screen and (min-width: 768px) {
- 
-.carousel-card-item-card {
+  .carousel-card-item-card {
     left: -49px !important;
     width: 418px !important;
   }
 }
 
 @media only screen and (min-width: 1024px) {
-
-.carousel-card-item-card {
-  left: 17px !important;
-   width: 410px !important;
+  .carousel-card-item-card {
+    left: 17px !important;
+    width: 410px !important;
+  }
 }
-
-}
-
-  
- 
-
-
-
-
-
-
-
-
 </style>
 

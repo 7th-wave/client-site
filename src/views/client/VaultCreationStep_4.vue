@@ -1,5 +1,5 @@
 <template>
- <account-layout>
+  <account-layout>
     <div class="xl:hidden">
       <Navbar />
     </div>
@@ -7,8 +7,8 @@
       <h1 class="sm:text-4xl text-2xl font-normal">Vault Creation</h1>
     </div>
 
-  <div class=" xl:grid xl:grid-cols-7 xl:gap-8 sm:m-auto">
-        <div class="sm:col-span-2 hidden xl:block">
+    <div class="xl:grid xl:grid-cols-7 xl:gap-8 sm:m-auto">
+      <div class="sm:col-span-2 hidden xl:block">
         <Menu />
       </div>
       <div
@@ -25,8 +25,15 @@
         <div class="w-full font-inter space-y-4">
           <Steps :step="steps" />
           <div
-            class="w-full bg-blue-link bg-opacity-20 flex py-8 cursor-pointer rounded-md"
-            @click="nextStep"
+            class="
+              w-full
+              bg-blue-link bg-opacity-20
+              flex
+              py-8
+              cursor-pointer
+              rounded-md
+            "
+            style="height: 333px"
           >
             <div class="m-auto flex items-center space-x-1">
               <div>
@@ -157,29 +164,131 @@
                   font-inter
                 "
               >
-                <span>We are analysing </span>
-                <span>your Vault application</span>
+                <span>Vault Instructions</span>
               </div>
             </div>
-          </div>
-
-          <div class="">
-            <Feed />
           </div>
         </div>
       </div>
     </div>
-    </account-layout>
+    <div class="w-full py-8 space-y-16">
+      <MintCard cardtype="mint" @isminted="MintVault" @nextStep="Edit" />
+      <div class="w-full space-y-4">
+        <div
+          class="flex md:pb-14 py-0 sm:py-4 md:pt-4 lg:pt-0 lg:pb-8 text-center"
+        >
+          <span
+            class="
+              m-auto
+              sm:text-4xl
+              text-2xl text-center
+              font-normal font-inter
+              text-black
+            "
+          >
+            Nike Collection</span
+          >
+        </div>
+        <div class="w-full md:pb-24">
+          <VaultSlideShow :slides="slides" />
+        </div>
+        <div class="w-full px-4 py-4 grid lg:grid-cols-4 gap-4">
+          <!-- left -->
+          <div
+            class="
+              lg:col-span-3
+              col-span-4
+              w-full
+              flex flex-col
+              items-start
+              space-y-5
+            "
+          >
+            <span class="text-2xl text-black font-inter font-medium"
+              >Own Legends</span
+            >
+            <FractionCard :goDown="true" :goBack="false" />
+            <p
+              class="
+                text-lg
+                font-normal font-inter
+                text-black
+                bg-white
+                py-2
+                px-4
+                shadow-md
+                rounded-md
+              "
+            >
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam, quis nostrud exercitation ullamco laboris
+              nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cillum dolore eu fugiat.
+            </p>
+          </div>
+          <!-- right -->
+          <div class="w-full col-span-4 lg:col-span-1">
+            <BuyFractionCard />
+          </div>
+        </div>
+        <div class="w-full space-y-4 px-4 pt-8">
+          <div>
+            <span class="text-2xl text-black font-inter font-medium"
+              >All NIKE Assets</span
+            >
+          </div>
+          <div class="grid lg:grid-cols-3 gap-8" id="CategoryCards">
+            <CategoryCard
+              v-for="(category, index, key) in categories"
+              :key="key"
+              :category="category"
+            >
+              <template #image>
+                <img
+                  class="w-full h-full object-cover border-b"
+                  :src="category.image"
+                  alt=""
+                />
+              </template>
+
+              <template #subtitle>
+                <span
+                  class="
+                    text-sm
+                    font-inter font-medium
+                    text-primary-500
+                    cursor-pointer
+                  "
+                  >{{ category.title }}</span
+                >
+              </template>
+              <template #title>
+                <span class="text-gray-900 text-xl font-semibold font-inter">{{
+                  category.name
+                }}</span>
+              </template>
+            </CategoryCard>
+          </div>
+        </div>
+      </div>
+      <VaultMintSteps ref="VaultMintSteps" />
+    </div>
+  </account-layout>
 </template>
 
 
 <script>
-import Feed from "@/components/Drawers/Feed.vue";
 import Steps from "@/components/Drawers/Steps.vue";
 import Menu from "@/components/Layouts/Menu.vue";
-import AccountLayout from '../../components/Layouts/AccountLayout.vue';
+import AccountLayout from "../../components/Layouts/AccountLayout.vue";
 import Navbar from "@/components/Layouts/Navbar.vue";
-
+import MintCard from "@/components/cards/MintCard.vue";
+import VaultSlideShow from "@/components/SlideShow/VaultSlideShow1.vue";
+import FractionCard from "@/components/cards/FractionCard.vue";
+import BuyFractionCard from "../../components/cards/BuyFractionCard.vue";
+import CategoryCard from "../../components/cards/CategoryCard.vue";
+import VaultMintSteps from "@/components/Modals/VaultMintSteps.vue";
 const steps = [
   {
     id: "1",
@@ -190,7 +299,7 @@ const steps = [
   },
   {
     id: "2",
-    name: "Approve Vault",
+    name: "Approve Reviewed Vault",
     description: "Cursus semper viverra.",
     href: "#",
     status: "current",
@@ -202,27 +311,82 @@ const steps = [
     href: "#",
     status: "upcoming",
   },
- 
+];
+const slides = [
+  {
+    image: "/images/sneakers/01.png",
+    name: "Books",
+  },
+  {
+    image: "/images/sneakers/01.png",
+    name: "Books",
+  },
+  {
+    image: "/images/sneakers/red.png",
+    name: "Books",
+  },
+];
+const categories = [
+  {
+    name: "Nike Waffle Sneakers",
+    image: "/images/sneakers/01.png",
+    title: "Sneakers Collection",
+  },
+  {
+    name: "Basket Name",
+    image: "/images/sneakers/02.png",
+    title: "Sneakers Collection",
+  },
+  {
+    name: "Basket Name",
+    image: "/images/sneakers/03.png",
+    title: "Sneakers Collection",
+  },
+  {
+    name: "Air Mags",
+    image: "/images/sneakers/04.png",
+    title: "Sneakers Collection",
+  },
+  {
+    name: "Springers",
+    image: "/images/sneakers/red.png",
+    title: "Sneakers Collection",
+  },
+  {
+    name: "Jordans",
+    image: "/images/sneakers/06.png",
+    title: "Sneakers Collection",
+  },
 ];
 export default {
   setup() {
     return {
       steps,
+      slides,
+      categories,
     };
   },
+  methods: {
+    MintVault() {
+      this.$refs.VaultMintSteps.open = true;
+    },
+    Edit(){
+        this.$router.push({name:'VaultsCreateStep3'})
+    }
+  },
   components: {
-    Feed,
     Steps,
     Menu,
     Navbar,
     AccountLayout,
+    MintCard,
+    VaultSlideShow,
+    FractionCard,
+    BuyFractionCard,
+    CategoryCard,
+    VaultMintSteps,
   },
-  methods: {
-    nextStep() {
-     // this.$emit("nextStep");
-     this.$router.push({name:'VaultsCreateStep3'});
-    },
-  },
+ 
 };
 </script>
 

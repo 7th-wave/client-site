@@ -1,21 +1,14 @@
 <template>
   <account-layout>
-    <div class="lg:hidden">
+    <div class="xl:hidden">
       <Navbar />
     </div>
     <div class="py-0 sm:py-4 md:pb-8 md:pt-4 lg:pt-0 lg:pb-8 text-center">
       <h1 class="sm:text-4xl text-2xl font-medium">NFT Mint New Asset(s)</h1>
     </div>
     <div class="space-y-2">
-      <div class=" flex
-        xl:flex-row
-        lg:items-start lg:space-x-4
-        w-full
-        lg:space-y-0
-        flex-col
-        items-start
-        space-y-4">
-        <div class="lg:col-span-2 hidden xl:block">
+      <div class=" xl:grid xl:grid-cols-7 xl:gap-8 sm:m-auto">
+        <div class="sm:col-span-2 hidden xl:block">
           <Menu />
         </div>
         <div class="sm:col-span-5 space-y-2">
@@ -40,10 +33,10 @@
 
 
 <script>
-import Step1 from "@/components/Forms/Fractionalization/Step_1.vue";
-import Step2 from "@/components/Forms/Fractionalization/Step_2.vue";
-import Step3 from "@/components/Forms/Fractionalization/Step_3.vue";
-import Step4 from "@/components/Forms/Fractionalization/Step_4.vue";
+import Step1 from "@/components/Forms/NftCreation/Step_1.vue";
+import Step2 from "@/components/Forms/NftCreation/Step_2.vue";
+import Step3 from "@/components/Forms/NftCreation/Step_3.vue";
+import Step4 from "@/components/Forms/NftCreation/Step_4.vue";
 
 import MintsInfosCards from "@/components/cards/MintsInfosCards.vue";
 import MintCard from "@/components/cards/MintCard.vue";

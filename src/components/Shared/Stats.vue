@@ -14,7 +14,7 @@
         <p class="text-sm leading-tight text-gray-500">Fractions</p>
         <div class="inline-flex items-end justify-start">
           <div class="flex space-x-2 items-end justify-start">
-            <p class="text-lg font-semibold leading-normal">{{getParams == 'cvman' ? '100M' : '5B'}}</p>
+            <p class="text-lg font-semibold leading-normal">{{stats.fractions }}</p>
           </div>
         </div>
       </div>
@@ -25,7 +25,7 @@
         <p class="text-sm leading-tight text-gray-500">Available</p>
         <div class="inline-flex space-x-4 items-end justify-start">
           <div class="flex space-x-2 items-end justify-start">
-            <p class="text-lg font-semibold leading-normal">49%</p>
+            <p class="text-lg font-semibold leading-normal">{{stats.available}}</p>
           </div>
         </div>
       </div>
@@ -36,7 +36,7 @@
         <p class="text-sm leading-tight text-gray-500">Valuation</p>
         <div class="inline-flex items-end justify-start">
           <div class="flex space-x-2 items-end justify-start">
-            <p class="text-lg font-semibold leading-normal">{{getParams == 'cvman' ? '10M' : '$2M'}}</p>
+            <p class="text-lg font-semibold leading-normal">{{stats.valuation}}</p>
           </div>
         </div>
       </div>
@@ -47,7 +47,17 @@
 import { computed } from "vue";
 import { useRoute } from "vue-router";
 export default {
-  props: ["stats"],
+  props: {
+    stats:{
+      type: Object,
+      default: () => ({
+        fractions: "100M",
+        available: "49%",
+        valuation: "10M",
+      }),
+    },
+    
+  },
   setup() {
     const route = useRoute();
     const getParams = computed(() => route.params.id);

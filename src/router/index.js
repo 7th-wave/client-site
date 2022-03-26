@@ -29,6 +29,11 @@ const routes = [
     component: () => import("../views/client/VaultCreationStep_3.vue"),
   },
   {
+    path: "/vault/create/step/4",
+    name: "VaultsCreateStep4",
+    component: () => import("../views/client/VaultCreationStep_4.vue"),
+  },
+  {
     path: "/nft-create",
     name: "CreateNftadmin",
 
@@ -162,16 +167,16 @@ const routes = [
     beforeEnter: clientGuard,
   },
   {
-    path: "/my-collections",
+    path: "/my-nfts",
     name: "My_collections",
     component: () => import("../views/client/Mycollections.vue"),
     beforeEnter: clientGuard,
   },
  
   {
-    path: "/collection/:id/details",
+    path: "/my-nft/:id/details",
     name: "CollectionDetails",
-    component: () => import("../views/client/Artistdetail.vue"),
+    component: () => import("../views/client/myNftPending.vue"),
   },
    {
     path: "/my-fractions",
@@ -205,6 +210,12 @@ const routes = [
     path: "/my-bids",
     name: "My_bids",
     component: () => import("../views/client/Mybids.vue"),
+    beforeEnter: clientGuard,
+  },
+  {
+    path: "/user-portfolio/:id",
+    name: "UserPortfolio",
+    component: () => import("../views/client/UserPortfolio.vue"),
     beforeEnter: clientGuard,
   },
 ];

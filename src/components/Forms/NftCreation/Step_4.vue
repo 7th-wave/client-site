@@ -584,6 +584,7 @@
         </button>
       </div>
     </div>
+        <ConfirmDelete ref="deleteModal" @deleteItem="DeleteAttr" />
   </div>
 </template>
 
@@ -592,6 +593,7 @@
 // import Feed from '../../Drawers/Feed.vue'
 import Steps from "../../Drawers/Steps.vue";
 import IconClose from "../../Icons/IconCloseBlack.vue";
+import ConfirmDelete from "../../Modals/ConfirmDelete.vue";
 
 const steps = [
   {
@@ -601,16 +603,16 @@ const steps = [
     href: "#",
     status: "complete",
   },
-  {
+    {
     id: "2",
-    name: "Mint Asset",
+    name: "Mint your NFT",
     description: "Penatibus eu quis ante.",
     href: "#",
     status: "current",
   },
   {
     id: "3",
-    name: "Create a Vault",
+    name: "Fractionalize",
     description: "Penatibus eu quis ante.",
     href: "#",
     status: "upcoming",
@@ -644,6 +646,7 @@ export default {
         url: "",
         assets: [],
       },
+      AttrIndex:null,
     };
   },
   methods: {
@@ -658,7 +661,13 @@ export default {
       });
     },
     RemoveAsset(index) {
-      this.form.assets.splice(index, 1);
+       this.AttrIndex = index;
+       this.$refs.deleteModal.open = true;
+    },
+    DeleteAttr(){
+        this.form.assets.splice(this.AttrIndex, 1);
+        this.AttrIndex = null;
+        this.$refs.deleteModal.open = false;
     },
     AddAsset() {
       if (this.validateForm()) {
@@ -728,6 +737,7 @@ export default {
   components: {
     Steps,
     IconClose,
+    ConfirmDelete,
     // Feed
   },
 };
