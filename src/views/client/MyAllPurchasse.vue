@@ -17,7 +17,7 @@
             class="w-full p-4 rounded-md shadow-md bg-white grid sm:grid-cols-6 gap-2"
           >
             <div
-              class="mt-1 relative rounded-md shadow-sm lg:col-span-4 col-span-6"
+              class="relative rounded-md shadow-sm lg:col-span-4 col-span-6"
             >
               <div
                 class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none"
