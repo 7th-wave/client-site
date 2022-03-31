@@ -4,49 +4,20 @@
       <div class="relative">
         <div class="w-full bg-gray-100">
           <div
-            class="
-              pt-10
-              m-auto
-              xl:grid
-              grid-cols-1
-              xl:grid-cols-6
-              gap-12
-              sm:px-8
-              px-4
-              2xl:max-w-8xl 2xl:mx-auto
-            "
+            class="pt-10 m-auto xl:grid grid-cols-1 xl:grid-cols-6 gap-12 sm:px-8 px-4 2xl:max-w-7xl 2xl:mx-auto"
           >
             <div
-              class="
-                col-span-1
-                lg:col-span-2
-                flex flex-col
-                justify-center
-                mt-10
-                lg:mt-0
-              "
+              class="col-span-1 lg:col-span-2 flex flex-col justify-center mt-10 lg:mt-0"
             >
               <h1
-                class="
-                  md:text-5xl
-                  text-3xl
-                  leading-none
-                  font-inter font-semibold
-                "
+                class="md:text-5xl text-3xl leading-none font-inter font-semibold"
               >
                 <span class="text-primary-500">Mint</span> and
                 <span class="text-secondary-500">Trade</span> <br />NFT
                 Fractions of <br />Tangible Assets
               </h1>
               <p
-                class="
-                  text-gray-500
-                  mt-4
-                  md:text-xl
-                  text-lg
-                  leading-7
-                  font-normal
-                "
+                class="text-gray-500 mt-4 md:text-xl text-lg leading-7 font-normal"
               >
                 Fractional ownership of the world’s most sought after NFTs.
                 Fractional reduces entry costs, increases access, and enables
@@ -66,15 +37,7 @@
               </div>
             </div>
             <div
-              class="
-                col-span-1
-                lg:col-span-4 lg:pl-12
-                pb-6
-                pt-6
-                relative
-                hidden
-                xl:block
-              "
+              class="col-span-1 lg:col-span-4 pb-6 pt-6 relative hidden xl:block"
             >
               <CarouselCard
                 ref="carouselCardRef"
@@ -99,19 +62,7 @@
                   >
                     <template #badge>
                       <div
-                        class="
-                         z-10
-                          bg-white
-                          py-1
-                          px-2
-                          rounded-3xl
-                          absolute
-                          top-3
-                          right-3
-                          flex
-                          items-center
-                          space-x-1.5
-                        "
+                        class="z-10 bg-white py-1 px-2 rounded-3xl absolute top-3 right-3 flex items-center space-x-1.5"
                       >
                         <div>
                           <svg
@@ -136,11 +87,7 @@
                           </svg>
                         </div>
                         <span
-                          class="
-                            text-sm
-                            font-medium font-inter
-                            text-gray-900 text-center
-                          "
+                          class="text-sm font-medium font-inter text-gray-900 text-center"
                           >{{ vault.token }}</span
                         >
                       </div>
@@ -150,30 +97,11 @@
               </CarouselCard>
 
               <div
-                class="
-                   w-11/12
-                  flex
-                  justify-between
-                  items-center
-                  absolute
-                  bottom-0
-                  transform
-                  -translate-y-1/2 right-24
-                  
-                  z-10
-                "
+                class="flex justify-between items-center absolute bottom-0 transform -translate-y-1/2 right-2 left-2 z-10"
               >
                 <button
                   @click="prev"
-                  class="
-                    bg-white
-                    shadow-md
-                    rounded-full
-                    flex
-                    w-10
-                    h-10
-                    hover:bg-gray-100
-                  "
+                  class="bg-white shadow-md rounded-full flex w-10 h-10 hover:bg-gray-100"
                 >
                   <svg
                     class="m-auto"
@@ -194,15 +122,7 @@
                 </button>
                 <button
                   @click="next"
-                  class="
-                    bg-white
-                    shadow-md
-                    rounded-full
-                    flex
-                    w-10
-                    h-10
-                    hover:bg-gray-100
-                  "
+                  class="bg-white shadow-md rounded-full flex w-10 h-10 hover:bg-gray-100"
                 >
                   <svg
                     class="m-auto"
@@ -244,21 +164,9 @@
                     :show-arrows="false"
                     :vault="vault"
                   >
-                     <template #badge>
+                    <template #badge>
                       <div
-                        class="
-                         z-10
-                          bg-white
-                          py-1
-                          px-2
-                          rounded-3xl
-                          absolute
-                          top-3
-                          right-3
-                          flex
-                          items-center
-                          space-x-1.5
-                        "
+                        class="z-10 bg-white py-1 px-2 rounded-3xl absolute top-3 right-3 flex items-center space-x-1.5"
                       >
                         <div>
                           <svg
@@ -283,11 +191,7 @@
                           </svg>
                         </div>
                         <span
-                          class="
-                            text-sm
-                            font-medium font-inter
-                            text-gray-900 text-center
-                          "
+                          class="text-sm font-medium font-inter text-gray-900 text-center"
                           >{{ vault.token }}</span
                         >
                       </div>
@@ -297,33 +201,13 @@
               </CarouselCard>
 
               <div
-                class="
-                  w-full
-                  absolute
-                  bottom-0
-                  z-10
-                  pb-6
-                  left-1/2
-                  transform
-                  -translate-x-1/2 -translate-y-1/2
-                "
+                class="w-full absolute bottom-0 z-10 pb-6 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
                 style=" top: 32rem/*;"
               >
                 <div class="w-full relative flex justify-between items-center">
                   <button
                     @click="prev"
-                    class="
-                      bg-white
-                      shadow-md
-                      rounded-full
-                      flex
-                      w-10
-                      h-10
-                      hover:bg-gray-100
-                      absolute
-                      top-0
-                      -left-4
-                    "
+                    class="bg-white shadow-md rounded-full flex w-10 h-10 hover:bg-gray-100 absolute top-0 -left-4"
                   >
                     <svg
                       class="m-auto"
@@ -344,19 +228,7 @@
                   </button>
                   <button
                     @click="next"
-                    class="
-                      absolute
-                      -right-4
-                      lg:right-0
-                      top-0
-                      bg-white
-                      shadow-md
-                      rounded-full
-                      flex
-                      w-10
-                      h-10
-                      hover:bg-gray-100
-                    "
+                    class="absolute -right-4 lg:right-0 top-0 bg-white shadow-md rounded-full flex w-10 h-10 hover:bg-gray-100"
                   >
                     <svg
                       class="m-auto"
@@ -410,12 +282,7 @@
 
                   <template #subtitle>
                     <span
-                      class="
-                        text-sm
-                        font-inter font-medium
-                        text-primary-500
-                        cursor-pointer
-                      "
+                      class="text-sm font-inter font-medium text-primary-500 cursor-pointer"
                       >{{ category.items }} items</span
                     >
                   </template>
@@ -712,7 +579,7 @@ export default {
   }
 }
 </style>
-<style >
+<style>
 .carousel-card-arrow,
 .carousel-card-indicators {
   display: none;
@@ -742,4 +609,3 @@ export default {
   }
 }
 </style>
-
