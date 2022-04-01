@@ -78,7 +78,7 @@
         <router-link :to="{name:'My_collections'}" class="text-gray-900 font-medium text-base font-inter"
           >My Assets</router-link
         >
-        <a href="#" class="text-gray-600 font-medium text-base font-inter"
+        <a href="#" @click.prevent="logout" class="text-gray-600 font-medium text-base font-inter"
           >Disconect</a
         >
       </div>
@@ -155,9 +155,14 @@ export default {
 
     }
 
+    const logout = () => {
+      emit('on:logout');
+    }
+
     return {
       navigation,
-      login
+      login,
+      logout
     };
   },
   methods: {

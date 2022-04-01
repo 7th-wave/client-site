@@ -112,6 +112,7 @@
       <MainMenu
         @closeMenu="closeMenu"
         @on:login="login"
+        @on:logout="logout"
         :animate_menu="showMenu"
         ref="MainMenu"
       />
@@ -155,6 +156,8 @@ export default {
 
     }
 
+    
+
     const hovered = ref(null);
     const route = useRoute();
     const store = useStore();
@@ -172,8 +175,13 @@ export default {
       router.push({ path: "/fractionalize" });
     };
 
+    const logout = () => {
+      store.dispatch('user/logoutUser');
+    }
+
     return {
       login,
+      logout,
       key: 0,
       goFractionalize,
       hovered, // access a state in computed function
