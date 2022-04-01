@@ -3,6 +3,7 @@ import { firebase } from '@firebase/app'
 import '@firebase/auth'
 import '@firebase/firestore'
 import '@firebase/storage'
+import axios from 'axios';
 import env from './config'
 
 
@@ -83,6 +84,11 @@ const getLastBid = async (auction) => {
     return bidsNew[0];
 }
 
+const saveUser = async(data) => {
+    const result = axios.post('https://us-central1-numbusfrac.cloudfunctions.net/create_client', data);
+    return result.data;
+}
+
 
 export {
     db,
@@ -91,5 +97,6 @@ export {
     storage,
     getCurrentUser,
     getClientByBlockChain,
-    getLastBid
+    getLastBid,
+    saveUser
 };

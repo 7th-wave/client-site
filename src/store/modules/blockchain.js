@@ -1,5 +1,10 @@
 import Fortmatic from "fortmatic";
 import Portis from "@portis/web3";
+import detectEthereumProvider from '@metamask/detect-provider';
+import WalletConnect from "@walletconnect/client";
+
+import QRCodeModal from "@walletconnect/qrcode-modal";
+
 import { get, set, del } from "idb-keyval";
 
 // Works for web3 1.0 and pre-1.0 versions
@@ -12,6 +17,7 @@ const state = {
   connected: false,
   portis: null,
   fortmatic: null,
+  walletconnect: null
 };
 
 // getters
@@ -21,6 +27,9 @@ const getters = {
   },
   getCurrentAddress: (state) => {
     return state.currentAddress;
+  },
+  getWalletConnectInstance: (state) => {
+    return state.walletconnect;
   },
   getInstance: (state) => {
     return {
@@ -45,6 +54,9 @@ const mutations = {
   },
   setConnected(state, payload) {
     state.connected = payload;
+  },
+  setWalletConnect(state, payload) {
+    state.walletconnect = payload;
   },
   setWallets(state, payload) {
     (state.fortmatic = payload.fortmatic), (state.portis = payload.portis);
@@ -152,6 +164,7 @@ const actions = {
   },
   async new({ commit, dispatch, state }, payload) {
     let address = "";
+    let mutate = false;
 
     if (payload.type == "fortmatic") {
       window.web3 = new Web3(state.fortmatic.getProvider());
@@ -163,6 +176,7 @@ const actions = {
       }
 
       address = await window.web3.eth.getAccounts();
+      mutate = true;
     } else if (payload.type == "portis") {
       const portis = new Portis(
         process.env.VUE_APP_PORTIS_KEY,
@@ -170,25 +184,45 @@ const actions = {
       );
       window.web3 = new Web3(portis.provider);
       address = await window.web3.eth.getAccounts();
-    } else {
-      address = await window.ethereum.request({
-        method: "eth_requestAccounts",
+      mutate = true;
+    } else if (payload.type == 'walletconnect') {
+      const connector = new WalletConnect({
+        bridge: "https://bridge.walletconnect.org", // Required
+        qrcodeModal: QRCodeModal,
       });
+
+      // Check if connection is already established
+      if (!connector.connected) {
+        // create new session
+        connector.createSession();
+      }
+
+      commit("setWalletConnect", connector);
+      
+    } else {
+      const provider = await detectEthereumProvider();
+      if (provider) {
+        address = await window.ethereum.request({
+          method: "eth_requestAccounts",
+        });
+        mutate = true;
+      }
     }
 
     //debugger;
+    if ( mutate ) {
+      commit("setCurrentAddress", address[0]);
+      commit("setProvider", payload.type);
 
-    commit("setCurrentAddress", address[0]);
-    commit("setProvider", payload.type);
+      const data = {
+        provider: payload.type,
+        address: address[0],
+      };
 
-    const data = {
-      provider: payload.type,
-      address: address[0],
-    };
+      await set("blockchain", JSON.stringify(data));
 
-    await set("blockchain", JSON.stringify(data));
-
-    dispatch("user/getUser", data, { root: true });
+      dispatch("user/getUser", data, { root: true });
+    }
   },
   async delete({ commit, state }) {
     await del("blockchain");
