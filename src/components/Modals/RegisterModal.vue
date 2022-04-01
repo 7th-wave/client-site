@@ -226,7 +226,8 @@ export default {
         lastName: inputs.value[2].value,
         email: inputs.value[3].value,
         phone: inputs.value[4].value,
-        [provider.value]: address.value,
+        blockchainAddress: address.value,
+        provider: provider.value,
         avatar: ''
       }
 
