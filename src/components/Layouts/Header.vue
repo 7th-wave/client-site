@@ -101,7 +101,7 @@
               </button>
             </div>
             <button
-              @click="showMenu = true"
+              @click="openMenu"
               class="outline-none hover:text-black"
             >
               <MenuIcon />
@@ -136,22 +136,14 @@ export default {
     MainMenu,
     Logo,
   },
-  methods: {
-    closeMenu() {
-      this.showMenu = false;
-    },
-  },
-  data() {
-    return {
-      showMenu: false,
-    };
-  },
-
   emits: ['on:login'],    
   setup(props, {emit}) {
 
+    const showMenu = ref(false);
+
     const login = () => {
       
+      showMenu.value = false;
       emit('on:login');
 
     }
@@ -179,9 +171,20 @@ export default {
       store.dispatch('user/logoutUser');
     }
 
+    const closeMenu = () => {
+      showMenu.value = false;
+    }
+
+    const openMenu = () => {
+      showMenu.value = true;
+    }
+
     return {
       login,
       logout,
+      closeMenu,
+      openMenu,
+      showMenu,
       key: 0,
       goFractionalize,
       hovered, // access a state in computed function
