@@ -1,10 +1,10 @@
 <!-- This example requires Tailwind CSS v2.0+ -->
 <template>
-  <TransitionRoot as="template" :show="open">
+  <TransitionRoot as="template" :show="loginmodal">
     <Dialog
       as="div"
       class="fixed z-10 inset-0 overflow-y-auto"
-      @close="open = false"
+      @close="loginmodal = false; $emit('on:close')"
     >
       <div
         class="
@@ -85,6 +85,16 @@
             <div class="w-full flex flex-col items-start py-10 px-10 space-y-4">
               <div class=" mx-auto cursor-pointer " style="width:200px;" @click="Connect">
                 <div class="border-2 border-b-0 rounded-t-md flex py-4 w-full">
+                  <div class="m-auto rounded-full border-2 w-16 h-16 flex overflow-hidden flex items-center">
+                    <div class="m-auto">
+                      <a href="#" @click.prevent="doMetaMaskLogin()">
+                          <img src="/images/wallet1.jpg" class="mb-8" alt="">
+                      </a>
+                      
+                    </div>
+                  </div>
+                </div>
+                <div class="border-2 border-b-0 rounded-t-md flex py-4 w-full">
                   <div class="m-auto rounded-full border-2 w-16 h-16 flex">
                     <div class="m-auto">
                       <svg
@@ -103,10 +113,14 @@
                   </div>
                 </div>
                 <div class="border-2 rounded-b-md flex py-4 w-full">
-                  <span
-                    class="m-auto text-sm font-inter text-gray-900 font-medium"
-                    >Wallet Connect</span
-                  >
+                  <a
+                        class="py-3 px-5 border border-primary-400 hover:bg-primary-400 hover:text-white rounded-md" 
+                        href="https://metamask.io/download.html" 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                      >
+                        donwload
+                      </a>
                 </div>
               </div>
               <div  class=" mx-auto cursor-pointer " style="width:200px;" @click="Connect">
@@ -259,42 +273,133 @@
       </div>
     </Dialog>
   </TransitionRoot>
+
+  <RegisterModal :open_modal="open" @on:close="closeModal" />
+
 </template>
 
 <script>
-import { ref } from "vue";
-import {
-  Dialog,
-  DialogOverlay,
-  TransitionChild,
-  TransitionRoot,
-} from "@headlessui/vue";
+import { computed, ref, toRefs, watch } from 'vue'
+import { Dialog, DialogOverlay, TransitionChild, TransitionRoot } from '@headlessui/vue'
 import { XIcon } from "@heroicons/vue/solid";
+
+import { useRouter } from 'vue-router'
+import { useStore } from 'vuex'
+import RegisterModal from './RegisterModal.vue'
+  
 export default {
-   
   components: {
     Dialog,
     DialogOverlay,
     TransitionChild,
     TransitionRoot,
-    XIcon,
+    RegisterModal,
+    XIcon
   },
-  methods:{
-      Connect(){
-          //connect
 
-            
-          //open Confitm Order
-          this.$emit('ConfirmOrder');
-      }
-  },
-  setup() {
+  props: ['login_modal'],
+  setup(props, {emit}) {
+    let { login_modal } = toRefs(props)
+    const publicPath =  ref(process.env.BASE_URL);
+    const loginmodal =  ref(false);
+    const login = ref(false);
+    const router = useRouter();
+    const store = useStore();
+    const currentAddress = computed(() => store.getters['blockchain/getCurrentAddress']);
+    const user = computed(() => store.getters['user/getUser']);
+
     const open = ref(false);
-    
+    const showInstallMetamask = ref(false);
+
+    watch(login_modal, (val) => {
+      console.log(val);
+      loginmodal.value = val
+    })
+    const closeModal = () => {
+      open.value = false;
+      loginmodal.value = false;
+      emit('on:close')
+    }
+
+    const goToMyAccount = () => {
+      loginmodal.value = false;
+      emit('on:close')
+      setTimeout(() => {
+        if(user.value.dbRef == "") {
+          open.value = true;
+        } else {
+          router.push({
+            name: 'MyAccount',
+            params: {
+              address: currentAddress.value
+            }
+          });
+        }
+      }, 600);
+      
+    }
+
+    watch(user, (value) => {
+      console.log(value)
+    })
+
+    const doFortmaticLogin = async () => {
+      login.value = true;
+      try {
+        await store.dispatch('blockchain/new', {type: 'fortmatic'});
+        goToMyAccount();
+      } catch(error) {
+        console.log(error)
+      }
+    }
+
+    const doWalletConnectLogin = async () => {
+      login.value = true;
+      try {
+        await store.dispatch('blockchain/new', {type: 'walletconnect'});
+        emit('on:walletconnect');
+        goToMyAccount();
+      } catch(error) {
+        console.log(error)
+      }
+    }
+
+    const doPortisLogin = async () => {
+      try {
+        await store.dispatch('blockchain/new', {type: 'portis'});
+        goToMyAccount();
+      } catch(error) {
+        console.log(error)
+      }
+    }
+
+    const doMetaMaskLogin = async () => {
+      await store.dispatch('blockchain/new', {type: 'metamask'});
+      if (currentAddress.value) {
+        goToMyAccount();
+      } else {
+        showInstallMetamask.value = true;
+      }
+    }
+
+    const showWallets = () => {
+      showInstallMetamask.value = false;
+    }
+
     return {
+      loginmodal,
+      publicPath,
+      doFortmaticLogin,
+      doPortisLogin,
+      doMetaMaskLogin,
+      doWalletConnectLogin,
+      closeModal,
+      login,
+      currentAddress,
       open,
-    };
+      showInstallMetamask,
+      showWallets
+    }
   },
- 
-};
+}
 </script>
