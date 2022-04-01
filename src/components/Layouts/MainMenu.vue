@@ -78,7 +78,7 @@
         <router-link :to="{name:'My_collections'}" class="text-gray-900 font-medium text-base font-inter"
           >My Assets</router-link
         >
-        <a href="#" class="text-gray-600 font-medium text-base font-inter"
+        <a href="#" @click.prevent="logout" class="text-gray-600 font-medium text-base font-inter"
           >Disconect</a
         >
       </div>
@@ -86,7 +86,7 @@
         
            <UserIcon  class=" w-6 h-5  userIcon"/>
        
-        <a href="javascript:void(0)" class="text-gray-900 font-medium text-base font-inter"
+        <a href="javascript:void(0)" @click.prevent="login" class="text-gray-900 font-medium text-base font-inter"
           >Login</a
         >
       </div>
@@ -146,10 +146,23 @@ export default {
     BookOpenIcon
   },
 
+  emits: ['on:login'],    
+  setup(props, {emit}) {
+
+    const login = () => {
       
-  setup() {
+      emit('on:login');
+
+    }
+
+    const logout = () => {
+      emit('on:logout');
+    }
+
     return {
       navigation,
+      login,
+      logout
     };
   },
   methods: {

@@ -104,7 +104,7 @@
                 </div>
 
                 <div class="px-4 pt-3 pb-3 flex flex-wrap justify-end border-t">
-                  <Button typeButton="submit" name="Register" @on:submit="onSubmit" customClass="uppercase w-full"  />
+                  <Button typeButton="submit" @on:submit="onSubmit" customClass="uppercase w-full" >Register</Button>
                 </div>
               </form>
             </div>

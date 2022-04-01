@@ -1,5 +1,5 @@
 import { get, set, del } from "idb-keyval";
-import { db, getClientByBlockChain } from "../../firebase/firebase";
+import { db, getClientByBlockChain, saveUser } from "../../firebase/firebase";
 
 // initial state
 const state = () => ({
@@ -122,8 +122,9 @@ const actions = {
     }
   },
   async saveUser({ commit }, payload) {
-    const clientRef = payload.username + "_" + payload.email;
-    await db.collection("clients").doc(clientRef).set(payload);
+    const clientRef = payload.username;
+    //await db.collection("clients").doc(clientRef).set(payload);
+    await saveUser(payload);
 
     let user = payload;
     user.dbRef = clientRef;
