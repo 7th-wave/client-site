@@ -86,7 +86,7 @@
         
            <UserIcon  class=" w-6 h-5  userIcon"/>
        
-        <a href="javascript:void(0)" class="text-gray-900 font-medium text-base font-inter"
+        <a href="javascript:void(0)" @click.prevent="login" class="text-gray-900 font-medium text-base font-inter"
           >Login</a
         >
       </div>
@@ -146,10 +146,18 @@ export default {
     BookOpenIcon
   },
 
+  emits: ['on:login'],    
+  setup(props, {emit}) {
+
+    const login = () => {
       
-  setup() {
+      emit('on:login');
+
+    }
+
     return {
       navigation,
+      login
     };
   },
   methods: {

@@ -111,6 +111,7 @@
       </Popover>
       <MainMenu
         @closeMenu="closeMenu"
+        @on:login="login"
         :animate_menu="showMenu"
         ref="MainMenu"
       />
@@ -145,7 +146,15 @@ export default {
     };
   },
 
-  setup() {
+  emits: ['on:login'],    
+  setup(props, {emit}) {
+
+    const login = () => {
+      
+      emit('on:login');
+
+    }
+
     const hovered = ref(null);
     const route = useRoute();
     const store = useStore();
@@ -164,6 +173,7 @@ export default {
     };
 
     return {
+      login,
       key: 0,
       goFractionalize,
       hovered, // access a state in computed function
