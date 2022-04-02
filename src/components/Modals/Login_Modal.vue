@@ -70,7 +70,7 @@
 
 
 <script>
- import { computed, ref, toRefs, watch } from 'vue'
+import { computed, ref, toRefs, watch } from 'vue'
 import { Dialog, DialogOverlay, TransitionChild, TransitionRoot } from '@headlessui/vue'
 import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'

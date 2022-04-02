@@ -11,7 +11,7 @@
   </div>
   <Footer />
   <loading />
-  <LoginModal
+  <ConnectWallet
 		
 		:login_modal="showLogin"
 		@on:close="closeLoginModal"
@@ -30,7 +30,7 @@ import { useRouter } from 'vue-router';
 import Modal from './components/Modals/Modal.vue';
 import Loading from './components/Shared/Loading.vue';
 
-import LoginModal from './components/Modals/Login_Modal.vue';
+import ConnectWallet from './components/Modals/ConnectWallet.vue';
 
 
 
@@ -46,7 +46,7 @@ export default {
     Toast,
     Modal,
     Loading,
-    LoginModal,
+    ConnectWallet,
   },
   setup() {
 

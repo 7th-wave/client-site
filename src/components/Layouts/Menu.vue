@@ -262,7 +262,7 @@ export default {
       } else if (this.$store.state.user.user.type === "Buyer") {
         return Buyer;
       }
-      return Admin;
+      return Client;
     },
   },
   setup(props) {
