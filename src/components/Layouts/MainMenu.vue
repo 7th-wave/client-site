@@ -52,21 +52,21 @@
           </router-link>
         </nav>
       </div>
-      <div class="flex-shrink-0 flex bg-gray-100 p-4" v-if="currentRouteName != 'Home'">
-        <router-link :to="{name:'MyAccount',params:{address:'dfdf'}}"  class="flex-shrink-0 w-full group block">
+      <div class="flex-shrink-0 flex bg-gray-100 p-4" v-if="blockchainAddress">
+        <router-link :to="{name:'MyAccount',params:{address:blockchainAddress}}"  class="flex-shrink-0 w-full group block">
           <div class="flex items-center">
             <div>
               <img
                 class="inline-block h-9 w-9 rounded-full"
-                src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                :src="avatar"
                 alt=""
               />
             </div>
             <div class="ml-3">
-              <p class="text-sm font-medium text-gray-700">User Name</p>
+              <p class="text-sm font-medium text-gray-700">{{ user.username }}</p>
               <div class="flex items-center space-x-1">
                 <p class="text-xs font-medium text-primary-500 hover:underline">
-                  0xE881...4567
+                  {{blockchainAddress ? blockchainAddress.replace(blockchainAddress.substring(8,blockchainAddress.length - 3), "....") : 'N/A'}}
                 </p>
                 <DocumentDuplicateIcon class="h-4 w-4" />
               </div>
@@ -74,7 +74,7 @@
           </div>
         </router-link>
       </div>
-      <div class="flex flex-col items-start space-y-2 p-4" v-if="currentRouteName != 'Home'">
+      <div class="flex flex-col items-start space-y-2 p-4" v-if="blockchainAddress">
         <router-link :to="{name:'My_collections'}" class="text-gray-900 font-medium text-base font-inter"
           >My Assets</router-link
         >
@@ -116,6 +116,10 @@ import {
   MailIcon,
 } from "@heroicons/vue/outline";
   import LogoSmall from './LogoSmall.vue';
+import { computed, ref } from '@vue/reactivity';
+import { useStore } from 'vuex';
+import { storage } from "../../firebase/firebase";
+
 const navigation = [
   { name: "Buy Fractions", icon: ChartSquareBarIcon, href: "Explore" },
   { name: "Fractionalize", icon: ViewGridIcon, href: "Fractionalize" },
@@ -149,6 +153,12 @@ export default {
   emits: ['on:login'],    
   setup(props, {emit}) {
 
+    const store = useStore();
+
+    const blockchainAddress = computed(() => store.getters['user/getBlockchainAddress']);
+    const user = computed(() => store.getters['user/getUser']);
+    const avatar = ref();
+
     const login = () => {
       
       emit('on:login');
@@ -159,10 +169,25 @@ export default {
       emit('on:logout');
     }
 
+    const getAvatar = async () => 
+    {
+        const image = store.getters['user/getAvatar'];
+
+        if (image) {
+            var storageRef = storage.ref();
+            const url = await storageRef.child(image).getDownloadURL();
+            avatar.value = url;
+        }
+    };
+
     return {
       navigation,
       login,
-      logout
+      logout,
+      blockchainAddress,
+      getAvatar,
+      avatar,
+      user
     };
   },
   methods: {
