@@ -90,7 +90,10 @@ const getters = {
   },
   geOffers: (state) => {
     return state.user.offers
-  }
+  },
+  getBlockchainAddress: (state) => {
+    return state.user.blockchainAddress;
+  },
 };
 
 // actions

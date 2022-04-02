@@ -169,6 +169,7 @@ export default {
 
     const logout = () => {
       store.dispatch('user/logoutUser');
+      router.push({path: "/home"})
     }
 
     const closeMenu = () => {
