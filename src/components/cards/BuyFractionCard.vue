@@ -168,7 +168,7 @@ export default {
        const request = await axios.get(
           "https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=USDC&api_key=0aec04c83ee62053aac51c4c380d7ac28faf2224a683e948de42f3b10182b9b6"
         );
-        ethUsd.value = request.data.USD;
+        ethUsd.value = request.data.USDC;
     }
 
     const changeModel = (event) => {
@@ -193,7 +193,8 @@ export default {
       receive,
       currency,
       calculate,
-      Items
+      Items,
+      ethUsd
     }
   },
   computed: {
