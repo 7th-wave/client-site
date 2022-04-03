@@ -21,24 +21,10 @@
       </div>
 
       <div
-        class="
-          mt-6
-          sm:mt-5
-          space-y-6
-          sm:space-y-5
-          divide-solid divide-y-1 divide-gray-300
-        "
+        class="mt-6 sm:mt-5 space-y-6 sm:space-y-5 divide-solid divide-y-1 divide-gray-300"
       >
         <div
-          class="
-            sm:grid
-            sm:grid-cols-3
-            sm:gap-4
-            sm:items-start
-            sm:border-t
-            sm:border-gray-200
-            sm:pt-5
-          "
+          class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5"
         >
           <label
             for="username"
@@ -62,16 +48,7 @@
               />
               <div
                 v-if="validations.username"
-                class="
-                  absolute
-                  inset-y-0
-                  pr-3
-                  right-0
-                  sm:mt-px sm:pt-2
-                  items-center
-                  sm:max-w-xs sm:mt-0 sm:col-span-2
-                  pointer-events-none
-                "
+                class="absolute inset-y-0 pr-3 right-0 sm:mt-px sm:pt-2 items-center sm:max-w-xs sm:mt-0 sm:col-span-2 pointer-events-none"
               >
                 <ExclamationCircleIcon
                   class="h-5 w-5 text-red-500"
@@ -89,15 +66,7 @@
           </div>
         </div>
         <div
-          class="
-            sm:grid
-            sm:grid-cols-3
-            sm:gap-4
-            sm:items-start
-            sm:border-t
-            sm:border-gray-200
-            sm:pt-5
-          "
+          class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5"
         >
           <label
             for="first_name"
@@ -107,28 +76,11 @@
           </label>
           <div class="col-span-2">
             <div
-              class="
-                mt-1
-                w-full
-                relative
-                rounded-md
-                shadow-s
-                sm:mt-0
-                col-span-2
-              "
+              class="mt-1 w-full relative rounded-md shadow-s sm:mt-0 col-span-2"
             >
               <div class="w-full flex rounded-md shadow-sm">
                 <span
-                  class="
-                    inline-flex
-                    items-center
-                    px-3
-                    rounded-l-md
-                    border border-r-0 border-gray-300
-                    bg-gray-50
-                    text-gray-500
-                    sm:text-sm
-                  "
+                  class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 sm:text-sm"
                 >
                   @
                 </span>
@@ -146,16 +98,7 @@
                 />
                 <div
                   v-if="validations.email"
-                  class="
-                    absolute
-                    inset-y-0
-                    pr-3
-                    right-0
-                    sm:mt-px sm:pt-2
-                    items-center
-                    sm:max-w-xs sm:mt-0 sm:col-span-2
-                    pointer-events-none
-                  "
+                  class="absolute inset-y-0 pr-3 right-0 sm:mt-px sm:pt-2 items-center sm:max-w-xs sm:mt-0 sm:col-span-2 pointer-events-none"
                 >
                   <ExclamationCircleIcon
                     class="h-5 w-5 text-red-500"
@@ -174,15 +117,7 @@
           </div>
         </div>
         <div
-          class="
-            sm:grid
-            sm:grid-cols-3
-            sm:gap-4
-            sm:items-start
-            sm:border-t
-            sm:border-gray-200
-            sm:pt-5
-          "
+          class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5"
         >
           <label
             for="about"
@@ -196,16 +131,7 @@
               v-model="user.about"
               name="about"
               rows="3"
-              class="
-                max-w-lg
-                shadow-sm
-                block
-                w-full
-                focus:ring-primary-500 focus:border-primary-500
-                sm:text-sm
-                border-gray-300
-                rounded-md
-              "
+              class="max-w-lg shadow-sm block w-full focus:ring-primary-500 focus:border-primary-500 sm:text-sm border-gray-300 rounded-md"
             />
             <p class="mt-2 text-sm text-gray-500">
               Write a few sentences about yourself.
@@ -214,15 +140,7 @@
         </div>
 
         <div
-          class="
-            sm:grid
-            sm:grid-cols-3
-            sm:gap-4
-            sm:items-center
-            sm:border-t
-            sm:border-gray-200
-            sm:pt-5
-          "
+          class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-center sm:border-t sm:border-gray-200 sm:pt-5"
         >
           <label for="photo" class="block text-sm font-medium text-gray-700">
             Photo
@@ -251,21 +169,7 @@
               />
               <button
                 type="button"
-                class="
-                  ml-5
-                  bg-white
-                  py-2
-                  px-3
-                  border border-gray-300
-                  rounded-md
-                  shadow-sm
-                  text-sm
-                  leading-4
-                  font-medium
-                  text-gray-700
-                  hover:bg-gray-50
-                  focus:outline-none
-                "
+                class="ml-5 bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none"
                 @click="selectFile"
               >
                 Change
@@ -277,28 +181,13 @@
       <!-- Security -->
       <div>
         <div
-          class="
-            text-base
-            font-medium
-            text-gray-900
-            sm:text-sm sm:text-gray-700
-            py-4
-          "
+          class="text-base font-medium text-gray-900 sm:text-sm sm:text-gray-700 py-4"
           id="label-email"
         >
           <h3 class="text-lg leading-6 font-medium text-gray-900">Security</h3>
         </div>
         <div
-          class="
-            sm:grid
-            sm:grid-cols-3
-            sm:gap-4
-            sm:items-start
-            sm:border-t
-            sm:border-gray-200
-            sm:pt-5
-            space-y-4
-          "
+          class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5 space-y-4"
         >
           <label
             for="last_name"
@@ -308,29 +197,14 @@
           </label>
           <div class="col-span-2">
             <div
-              class="
-                mt-1
-                relative
-                w-full
-                rounded-md
-                shadow-sm
-                sm:mt-0 sm:col-span-2
-              "
+              class="mt-1 relative w-full rounded-md shadow-sm sm:mt-0 sm:col-span-2"
             >
               <input
                 type="password"
                 name="last_name"
                 id="last_name"
                 autocomplete="family-name"
-                class="
-                  block
-                  w-full
-                  shadow-sm
-                  focus:ring-primary-500 focus:border-primary-500
-                  sm:text-sm
-                  border-gray-300
-                  rounded-md
-                "
+                class="block w-full shadow-sm focus:ring-primary-500 focus:border-primary-500 sm:text-sm border-gray-300 rounded-md"
               />
             </div>
           </div>
@@ -342,29 +216,14 @@
           </label>
           <div class="col-span-2">
             <div
-              class="
-                mt-1
-                relative
-                w-full
-                rounded-md
-                shadow-sm
-                sm:mt-0 sm:col-span-2
-              "
+              class="mt-1 relative w-full rounded-md shadow-sm sm:mt-0 sm:col-span-2"
             >
               <input
                 type="password"
                 name="last_name"
                 id="last_name"
                 autocomplete="family-name"
-                class="
-                  block
-                  w-full
-                  shadow-sm
-                  focus:ring-primary-500 focus:border-primary-500
-                  sm:text-sm
-                  border-gray-300
-                  rounded-md
-                "
+                class="block w-full shadow-sm focus:ring-primary-500 focus:border-primary-500 sm:text-sm border-gray-300 rounded-md"
               />
             </div>
           </div>
@@ -380,14 +239,7 @@
                   id="newsletter"
                   name="newsletter"
                   type="checkbox"
-                  class="
-                    focus:ring-primary-500
-                    h-4
-                    w-4
-                    text-primary-600
-                    border-gray-300
-                    rounded
-                  "
+                  class="focus:ring-primary-500 h-4 w-4 text-primary-600 border-gray-300 rounded"
                 />
               </div>
               <div class="ml-3 text-sm flex flex-col items-start">
@@ -405,14 +257,7 @@
                   id="newsletter"
                   name="newsletter"
                   type="checkbox"
-                  class="
-                    focus:ring-primary-500
-                    h-4
-                    w-4
-                    text-primary-600
-                    border-gray-300
-                    rounded
-                  "
+                  class="focus:ring-primary-500 h-4 w-4 text-primary-600 border-gray-300 rounded"
                 />
               </div>
               <div class="ml-3 text-sm flex flex-col items-start">
@@ -434,29 +279,14 @@
           </label>
           <div class="col-span-2">
             <div
-              class="
-                mt-1
-                relative
-                w-full
-                rounded-md
-                shadow-sm
-                sm:mt-0 sm:col-span-2
-              "
+              class="mt-1 relative w-full rounded-md shadow-sm sm:mt-0 sm:col-span-2"
             >
               <input
                 type="text"
                 name="phonesms"
                 id="phonesms"
                 autocomplete="phonesms"
-                class="
-                  block
-                  w-full
-                  shadow-sm
-                  focus:ring-primary-500 focus:border-primary-500
-                  sm:text-sm
-                  border-gray-300
-                  rounded-md
-                "
+                class="block w-full shadow-sm focus:ring-primary-500 focus:border-primary-500 sm:text-sm border-gray-300 rounded-md"
               />
             </div>
           </div>
@@ -471,15 +301,7 @@
           class="space-y-6 sm:space-y-5 divide-solid divide-y-1 divide-gray-300"
         >
           <div
-            class="
-              sm:grid
-              sm:grid-cols-3
-              sm:gap-4
-              sm:items-start
-              sm:border-t
-              sm:border-gray-200
-              sm:pt-5
-            "
+            class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5"
           >
             <label
               for="first_name"
@@ -489,14 +311,7 @@
             </label>
             <div class="col-span-2">
               <div
-                class="
-                  mt-1
-                  w-full
-                  relative
-                  rounded-md
-                  shadow-sm
-                  sm:mt-0 sm:col-span-2
-                "
+                class="mt-1 w-full relative rounded-md shadow-sm sm:mt-0 sm:col-span-2"
               >
                 <input
                   type="text"
@@ -512,16 +327,7 @@
                 />
                 <div
                   v-if="validations.firstName"
-                  class="
-                    absolute
-                    inset-y-0
-                    pr-3
-                    right-0
-                    sm:mt-px sm:pt-2
-                    items-center
-                    sm:max-w-xs sm:mt-0 sm:col-span-2
-                    pointer-events-none
-                  "
+                  class="absolute inset-y-0 pr-3 right-0 sm:mt-px sm:pt-2 items-center sm:max-w-xs sm:mt-0 sm:col-span-2 pointer-events-none"
                 >
                   <ExclamationCircleIcon
                     class="h-5 w-5 text-red-500"
@@ -540,15 +346,7 @@
           </div>
 
           <div
-            class="
-              sm:grid
-              sm:grid-cols-3
-              sm:gap-4
-              sm:items-start
-              sm:border-t
-              sm:border-gray-200
-              sm:pt-5
-            "
+            class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5"
           >
             <label
               for="last_name"
@@ -558,14 +356,7 @@
             </label>
             <div class="col-span-2">
               <div
-                class="
-                  mt-1
-                  relative
-                  w-full
-                  rounded-md
-                  shadow-sm
-                  sm:mt-0 sm:col-span-2
-                "
+                class="mt-1 relative w-full rounded-md shadow-sm sm:mt-0 sm:col-span-2"
               >
                 <input
                   type="text"
@@ -577,28 +368,11 @@
                     validations.firstName &&
                       'focus:outline-none focus:ring-red-500 focus:border-red-500 border-red-300',
                   ]"
-                  class="
-                    block
-                    w-full
-                    shadow-sm
-                    focus:ring-primary-500 focus:border-primary-500
-                    sm:text-sm
-                    border-gray-300
-                    rounded-md
-                  "
+                  class="block w-full shadow-sm focus:ring-primary-500 focus:border-primary-500 sm:text-sm border-gray-300 rounded-md"
                 />
                 <div
                   v-if="validations.lastName"
-                  class="
-                    absolute
-                    inset-y-0
-                    pr-3
-                    right-0
-                    sm:mt-px sm:pt-2
-                    items-center
-                    sm:max-w-xs sm:mt-0 sm:col-span-2
-                    pointer-events-none
-                  "
+                  class="absolute inset-y-0 pr-3 right-0 sm:mt-px sm:pt-2 items-center sm:max-w-xs sm:mt-0 sm:col-span-2 pointer-events-none"
                 >
                   <ExclamationCircleIcon
                     class="h-5 w-5 text-red-500"
@@ -619,15 +393,7 @@
 
           <div
             v-if="isAdmin && !isEdit"
-            class="
-              sm:grid
-              sm:grid-cols-3
-              sm:gap-4
-              sm:items-start
-              sm:border-t
-              sm:border-gray-200
-              sm:pt-5
-            "
+            class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5"
           >
             <label
               for="password"
@@ -646,28 +412,11 @@
                     validations.password &&
                       'focus:outline-none focus:ring-red-500 focus:border-red-500 border-red-300',
                   ]"
-                  class="
-                    block
-                    w-full
-                    shadow-sm
-                    focus:ring-primary-500 focus:border-primary-500
-                    sm:text-sm
-                    border-gray-300
-                    rounded-md
-                  "
+                  class="block w-full shadow-sm focus:ring-primary-500 focus:border-primary-500 sm:text-sm border-gray-300 rounded-md"
                 />
                 <div
                   v-if="validations.password"
-                  class="
-                    absolute
-                    inset-y-0
-                    right-0
-                    pr-3
-                    sm:mt-px sm:pt-2
-                    items-center
-                    sm:mt-0
-                    pointer-events-none
-                  "
+                  class="absolute inset-y-0 right-0 pr-3 sm:mt-px sm:pt-2 items-center sm:mt-0 pointer-events-none"
                 >
                   <ExclamationCircleIcon
                     class="h-5 w-5 text-red-500"
@@ -686,15 +435,7 @@
           </div>
 
           <div
-            class="
-              sm:grid
-              sm:grid-cols-3
-              sm:gap-4
-              sm:items-start
-              sm:border-t
-              sm:border-gray-200
-              sm:pt-5
-            "
+            class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5"
           >
             <label
               for="phone"
@@ -716,28 +457,11 @@
                     validations.phone &&
                       'focus:outline-none focus:ring-red-500 focus:border-red-500 border-red-300',
                   ]"
-                  class="
-                    block
-                    w-full
-                    shadow-sm
-                    focus:ring-primary-500 focus:border-primary-500
-                    sm:text-sm
-                    border-gray-300
-                    rounded-md
-                  "
+                  class="block w-full shadow-sm focus:ring-primary-500 focus:border-primary-500 sm:text-sm border-gray-300 rounded-md"
                 />
                 <div
                   v-if="validations.phone"
-                  class="
-                    absolute
-                    inset-y-0
-                    pr-3
-                    right-0
-                    sm:mt-px sm:pt-2
-                    items-center
-                    sm:mt-0 sm:col-span-2
-                    pointer-events-none
-                  "
+                  class="absolute inset-y-0 pr-3 right-0 sm:mt-px sm:pt-2 items-center sm:mt-0 sm:col-span-2 pointer-events-none"
                 >
                   <ExclamationCircleIcon
                     class="h-5 w-5 text-red-500"
@@ -756,15 +480,7 @@
           </div>
 
           <div
-            class="
-              sm:grid
-              sm:grid-cols-3
-              sm:gap-4
-              sm:items-start
-              sm:border-t
-              sm:border-gray-200
-              sm:pt-5
-            "
+            class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5"
           >
             <label
               for="country"
@@ -778,15 +494,7 @@
                 name="country"
                 v-model="user.country"
                 autocomplete="country"
-                class="
-                  block
-                  focus:ring-primary-500 focus:border-primary-500
-                  w-full
-                  shadow-sm
-                  sm:text-sm
-                  border-gray-300
-                  rounded-md
-                "
+                class="block focus:ring-primary-500 focus:border-primary-500 w-full shadow-sm sm:text-sm border-gray-300 rounded-md"
               >
                 <option>United States</option>
                 <option>Canada</option>
@@ -795,15 +503,7 @@
             </div>
           </div>
           <div
-            class="
-              sm:grid
-              sm:grid-cols-3
-              sm:gap-4
-              sm:items-start
-              sm:border-t
-              sm:border-gray-200
-              sm:pt-5
-            "
+            class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5"
           >
             <label
               for="street_address"
@@ -818,29 +518,12 @@
                 name="street_address"
                 id="street_address"
                 autocomplete="street-address"
-                class="
-                  block
-                  max-w-full
-                  w-full
-                  shadow-sm
-                  focus:ring-primary-500 focus:border-primary-500
-                  sm:text-sm
-                  border-gray-300
-                  rounded-md
-                "
+                class="block max-w-full w-full shadow-sm focus:ring-primary-500 focus:border-primary-500 sm:text-sm border-gray-300 rounded-md"
               />
             </div>
           </div>
           <div
-            class="
-              sm:grid
-              sm:grid-cols-3
-              sm:gap-4
-              sm:items-start
-              sm:border-t
-              sm:border-gray-200
-              sm:pt-5
-            "
+            class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5"
           >
             <label
               for="city"
@@ -854,28 +537,12 @@
                 name="city"
                 v-model="user.city"
                 id="city"
-                class="
-                  block
-                  w-full
-                  shadow-sm
-                  focus:ring-primary-500 focus:border-primary-500
-                  sm:text-sm
-                  border-gray-300
-                  rounded-md
-                "
+                class="block w-full shadow-sm focus:ring-primary-500 focus:border-primary-500 sm:text-sm border-gray-300 rounded-md"
               />
             </div>
           </div>
           <div
-            class="
-              sm:grid
-              sm:grid-cols-3
-              sm:gap-4
-              sm:items-start
-              sm:border-t
-              sm:border-gray-200
-              sm:pt-5
-            "
+            class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5"
           >
             <label
               for="state"
@@ -889,28 +556,12 @@
                 v-model="user.state"
                 name="state"
                 id="state"
-                class="
-                  block
-                  w-full
-                  shadow-sm
-                  focus:ring-primary-500 focus:border-primary-500
-                  sm:text-sm
-                  border-gray-300
-                  rounded-md
-                "
+                class="block w-full shadow-sm focus:ring-primary-500 focus:border-primary-500 sm:text-sm border-gray-300 rounded-md"
               />
             </div>
           </div>
           <div
-            class="
-              sm:grid
-              sm:grid-cols-3
-              sm:gap-4
-              sm:items-start
-              sm:border-t
-              sm:border-gray-200
-              sm:pt-5
-            "
+            class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5"
           >
             <label
               for="zip"
@@ -925,29 +576,13 @@
                 v-model="user.zipCode"
                 id="zip"
                 autocomplete="postal-code"
-                class="
-                  block
-                  w-full
-                  shadow-sm
-                  focus:ring-primary-500 focus:border-primary-500
-                  sm:text-sm
-                  border-gray-300
-                  rounded-md
-                "
+                class="block w-full shadow-sm focus:ring-primary-500 focus:border-primary-500 sm:text-sm border-gray-300 rounded-md"
               />
             </div>
           </div>
 
           <div
-            class="
-              sm:grid
-              sm:grid-cols-3
-              sm:gap-4
-              sm:items-start
-              sm:border-t
-              sm:border-gray-200
-              sm:pt-5
-            "
+            class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5"
             v-if="isAdmin"
           >
             <label
@@ -960,25 +595,7 @@
               <button
                 v-if="!currentAdminAddress"
                 type="button"
-                class="
-                  lg:ml-3
-                  mt-3
-                  lg:mt-0 lg:w-auto
-                  w-full
-                  inline-flex
-                  justify-center
-                  py-2
-                  px-4
-                  border border-transparent
-                  shadow-sm
-                  text-sm
-                  font-medium
-                  rounded-md
-                  text-white
-                  bg-primary-400
-                  hover:bg-primary-500
-                  focus:outline-none
-                "
+                class="lg:ml-3 mt-3 lg:mt-0 lg:w-auto w-full inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-primary-400 hover:bg-primary-500 focus:outline-none"
                 @click="connectToBlockChain"
               >
                 Connect
@@ -997,13 +614,7 @@
 
       <div>
         <div
-          class="
-            text-base
-            font-medium
-            text-gray-900
-            sm:text-sm sm:text-gray-700
-            py-4
-          "
+          class="text-base font-medium text-gray-900 sm:text-sm sm:text-gray-700 py-4"
           id="label-email"
         >
           <h3 class="text-lg leading-6 font-medium text-gray-900">
@@ -1026,14 +637,7 @@
                   id="Promotions"
                   name="newsletter"
                   type="checkbox"
-                  class="
-                    focus:ring-primary-500
-                    h-4
-                    w-4
-                    text-primary-600
-                    border-gray-300
-                    rounded
-                  "
+                  class="focus:ring-primary-500 h-4 w-4 text-primary-600 border-gray-300 rounded"
                 />
               </div>
               <div class="ml-3 text-sm flex flex-col items-start">
@@ -1051,14 +655,7 @@
                   id="Security"
                   name="newsletter"
                   type="checkbox"
-                  class="
-                    focus:ring-primary-500
-                    h-4
-                    w-4
-                    text-primary-600
-                    border-gray-300
-                    rounded
-                  "
+                  class="focus:ring-primary-500 h-4 w-4 text-primary-600 border-gray-300 rounded"
                 />
               </div>
               <div class="ml-3 text-sm flex flex-col items-start">
@@ -1074,7 +671,7 @@
           </div>
         </div>
       </div>
-        <div class="w-full py-8">
+      <div class="w-full py-8">
         <div
           class="pt-6 sm:pt-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-baseline"
         >
@@ -1087,22 +684,7 @@
           <div class="w-full">
             <button
               type="button"
-              class="
-                bg-black
-                py-2
-                px-4
-                border border-gray-300
-                rounded-md
-                shadow-sm
-                text-sm
-                font-medium
-                text-white
-                hover:bg-gray-900
-                focus:outline-none
-                focus:ring-2
-                focus:ring-offset-2
-                focus:ring-gray-900
-              "
+              class="bg-black py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-white hover:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
               @click="deleteAccount"
             >
               REQUEST ACCOUNT DELETION
@@ -1136,24 +718,7 @@
 
         <button
           type="submit"
-          class="
-            lg:ml-3
-            mt-3
-            lg:mt-0 lg:w-auto
-            w-full
-            inline-flex
-            justify-center
-            py-2
-            px-14
-            border border-transparent
-            shadow-sm
-            text-sm
-            font-medium
-            rounded-md
-            text-white
-            hover:bg-primary-500
-            focus:outline-none uppercase
-          "
+          class="lg:ml-3 mt-3 lg:mt-0 lg:w-auto w-full inline-flex justify-center py-2 px-14 border border-transparent shadow-sm text-sm font-medium rounded-md text-white hover:bg-primary-500 focus:outline-none uppercase"
           style="background-color: #049aff"
         >
           SAVE
@@ -1174,10 +739,10 @@ var reEmail =
   /^([a-zA-Z0-9_\-/.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9/-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})$/;
 
 export default {
-  methods:{
-  deleteAccount(){
-  this.$refs.deleteAccountRef.open = true
-  }
+  methods: {
+    deleteAccount() {
+      this.$refs.deleteAccountRef.open = true;
+    },
   },
   components: {
     ExclamationCircleIcon,
@@ -1371,7 +936,7 @@ export default {
         }
       }
     };
-    
+
     const onSave = async () => {
       isValid.value = false;
       let pass = true;
