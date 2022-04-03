@@ -33,10 +33,10 @@
         >
         <div class="flex items-center space-x-2 w-full">
           <input
-            type="text"
+            type="number"
             name="pay"
-            value="10,000.00"
-            id="email"
+            v-model="pay"
+            id="pay"
             class="
               shadow-sm
               focus:ring-primary-500 focus:border-primary-500
@@ -46,17 +46,16 @@
               border-gray-300
               rounded-md
             "
-            placeholder="you@example.com"
+            @keyup="calculate"
+            placeholder="10,000"
           />
 
           <div class="flex items-center space-x-2">
-            <DropDown :Myitems="Items" Myplaceholder="USDC" />
-            <div class="w-9 h-9 rounded-full flex bg-gray-200" style="background: #26A17B;">
-              <svg class=" m-auto" width="25" height="23" viewBox="0 0 25 23" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path fill-rule="evenodd" clip-rule="evenodd" d="M14.842 12.0468V12.0443C14.708 12.0541 14.017 12.0955 12.4752 12.0955C11.2443 12.0955 10.3778 12.0589 10.0731 12.0443V12.048C5.33458 11.8396 1.79777 11.0145 1.79777 10.0273C1.79777 9.04131 5.33458 8.21622 10.0731 8.00416V11.2265C10.3826 11.2485 11.2699 11.3009 12.496 11.3009C13.967 11.3009 14.7043 11.2399 14.842 11.2278V8.00659C19.5708 8.21744 23.0991 9.04253 23.0991 10.0273C23.0991 11.0145 19.5708 11.8371 14.842 12.0468V12.0468ZM14.842 7.67144V4.78788H21.4404V0.390625H3.47477V4.78788H10.0731V7.67022C4.71058 7.91641 0.677734 8.97916 0.677734 10.2515C0.677734 11.5239 4.71058 12.5854 10.0731 12.8328V22.0734H14.842V12.8304C20.196 12.5842 24.2191 11.5227 24.2191 10.2515C24.2191 8.98038 20.196 7.91885 14.842 7.67144" fill="white"/>
-</svg>
+            <DropDown :Myitems="Items" Myplaceholder="USDC" @on:selected="changeModel" />
+              <USDC v-if="currency == 'USDC'" />
+              <ETH v-if="currency == 'ETH'" />
+              <Tether v-if="currency == 'USDT'" />
 
-            </div>
           </div>
         </div>
       </div>
@@ -68,10 +67,10 @@
           >
           <div class="flex items-center space-x-2 w-full">
             <input
-              type="text"
+              type="number"
               name="receive"
-              value="10,000.00"
-              id="text"
+              v-model="receive"
+              id="receive"
               class="
                 shadow-sm
                 focus:ring-primary-500 focus:border-primary-500
@@ -81,7 +80,7 @@
                 border-gray-300
                 rounded-md
               "
-              placeholder="you@example.com"
+              placeholder="10,000"
             />
           </div>
         </div>
@@ -132,6 +131,13 @@ import { EyeIcon, RefreshIcon, ShareIcon } from "@heroicons/vue/solid";
 import ConnectWallet from "../../components/Modals/ConnectWallet";
 import ConfirmOrder from "../../components/Modals/ConfirmOrder";
 import DropDown from "@/components/Drawers/DropDown.vue";
+import USDC from '../Shared/USDC.vue';
+import ETH from '../Shared/ETH.vue';
+import Tether from '../Shared/Tether.vue';
+import { ref } from '@vue/reactivity';
+import axios from 'axios';
+import { onMounted } from '@vue/runtime-core';
+
 
 export default {
   components: {
@@ -141,16 +147,54 @@ export default {
     ConnectWallet,
     ConfirmOrder,
     DropDown,
+    USDC,
+    ETH,
+    Tether
   },
-  data() {
-    return {
-      Items: [
+  setup() {
+
+    const pay = ref(0);
+    const receive = ref(0);
+    const currency = ref('USDC');
+    const ethUsd = ref(0);
+    const Items = ref([
         { id: 1, name: "ETH" },
         { id: 2, name: "BTC" },
         { id: 3, name: "USDC" },
         { id: 3, name: "USDT" },
-      ],
-    };
+      ]);
+
+    const getEthUsdValue = async () => {
+       const request = await axios.get(
+          "https://min-api.cryptocompare.com/data/price?fsym=ETH&tsyms=USDC&api_key=0aec04c83ee62053aac51c4c380d7ac28faf2224a683e948de42f3b10182b9b6"
+        );
+        ethUsd.value = request.data.USD;
+    }
+
+    const changeModel = (event) => {
+        currency.value = event.data.name;
+    }
+
+    const calculate = () => {
+      let factor = 1;
+      if (currency.value == 'ETH') {
+        factor = ethUsd.value; 
+      }
+      receive.value = pay.value * factor;
+    }
+
+    onMounted(() => {
+      getEthUsdValue();
+    })
+
+    return {
+      changeModel,
+      pay,
+      receive,
+      currency,
+      calculate,
+      Items
+    }
   },
   computed: {
     getParams() {

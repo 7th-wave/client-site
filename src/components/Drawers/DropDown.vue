@@ -1,41 +1,14 @@
-
-
 <template>
   <Listbox as="div" v-model="selected">
     <div class="relative">
       <ListboxButton
-        class="
-          relative
-          w-full
-          bg-white
-          border border-gray-300
-          rounded-md
-          shadow-sm
-          pl-3
-          pr-10
-          py-2
-          text-left
-          cursor-default
-          focus:outline-none
-          focus:ring-1
-          focus:ring-primary-500
-          focus:border-primary-500
-          sm:text-sm
-        "
+        class="relative w-full bg-white border border-gray-300 rounded-md shadow-sm pl-3 pr-10 py-2 text-left cursor-default focus:outline-none focus:ring-1 focus:ring-primary-500 focus:border-primary-500 sm:text-sm"
       >
         <span class="block truncate">{{
           selected.name ? selected.name : placeholder
         }}</span>
         <span
-          class="
-            absolute
-            inset-y-0
-            right-0
-            flex
-            items-center
-            pr-2
-            pointer-events-none
-          "
+          class="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none"
         >
           <SelectorIcon class="h-5 w-5 text-gray-400" aria-hidden="true" />
         </span>
@@ -47,22 +20,7 @@
         leave-to-class="opacity-0"
       >
         <ListboxOptions
-          class="
-            absolute
-            z-10
-            mt-1
-            w-full
-            bg-white
-            shadow-lg
-            max-h-60
-            rounded-md
-            py-1
-            text-base
-            ring-1 ring-black ring-opacity-5
-            overflow-auto
-            focus:outline-none
-            sm:text-sm
-          "
+          class="absolute z-10 mt-1 w-full bg-white shadow-lg max-h-60 rounded-md py-1 text-base ring-1 ring-black ring-opacity-5 overflow-auto focus:outline-none sm:text-sm"
         >
           <ListboxOption
             as="template"
@@ -104,7 +62,7 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref, watch } from "vue";
 import {
   Listbox,
   ListboxButton,
@@ -132,8 +90,14 @@ export default {
     CheckIcon,
     SelectorIcon,
   },
-  setup(props) {
+  emits: ['on:selected'],
+  setup(props, {emit}) {
     const selected = ref("");
+    watch(selected, (data) => {
+      console.log('asdads');
+      emit('on:selected', {data: data});
+    })
+
     return {
       selected,
       items: props.Myitems,

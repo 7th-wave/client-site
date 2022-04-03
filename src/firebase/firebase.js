@@ -89,6 +89,11 @@ const saveUser = async(data) => {
     return result.data;
 }
 
+const getUserByAddress = async(address) => {
+    const result = axios.get('https://us-central1-numbusfrac.cloudfunctions.net/get_client?address='+address);
+    return result.data;
+}
+
 
 export {
     db,
@@ -98,5 +103,6 @@ export {
     getCurrentUser,
     getClientByBlockChain,
     getLastBid,
-    saveUser
+    saveUser,
+    getUserByAddress
 };
