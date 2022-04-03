@@ -56,11 +56,8 @@
         <router-link :to="{name:'MyAccount',params:{address:blockchainAddress}}"  class="flex-shrink-0 w-full group block">
           <div class="flex items-center">
             <div>
-              <img
-                class="inline-block h-9 w-9 rounded-full"
-                :src="avatar"
-                alt=""
-              />
+              <UserImage :src="avatar" :custom_height="8" />
+              
             </div>
             <div class="ml-3">
               <p class="text-sm font-medium text-gray-700">{{ user.username }}</p>
@@ -119,6 +116,7 @@ import {
 import { computed, ref } from '@vue/reactivity';
 import { useStore } from 'vuex';
 import { storage } from "../../firebase/firebase";
+import UserImage from './UserImage.vue';
 
 const navigation = [
   { name: "Buy Fractions", icon: ChartSquareBarIcon, href: "Explore" },
@@ -147,7 +145,8 @@ export default {
     UserIcon,
     ChartSquareBarIcon,
     LogoSmall,
-    BookOpenIcon
+    BookOpenIcon,
+    UserImage
   },
 
   emits: ['on:login'],    

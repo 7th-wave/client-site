@@ -14,13 +14,13 @@
         <div
           class="mt-5 md:mt-0 lg:col-span-5 grid md:grid-cols-2 grid-cols-1 gap-4 w-full"
         >
-          <div v-for="(Nft, index, key) in Nfts"
+          <div v-for="(Nft, index, key) in nfts"
             :key="key" >
             <create-nft-button v-if="!index" @click="addNft">
               <template #subtitle>
                 <span
                   class="text-sm font-inter font-medium text-primary-500 cursor-pointer"
-                  >{{ Nfts.length }} NFTs</span
+                  >{{ nfts.length }} NFTs</span
                 >
               </template>
               <template #title>
@@ -28,7 +28,7 @@
             </template>
             </create-nft-button>
           <NftCard
-            v-if="index"
+            v-if="index && Nft"
             @click="goDetails(Nft.id)"
           >
             <template #image>
@@ -86,7 +86,11 @@ import Navbar from "@/components/Layouts/Navbar.vue";
 import NftCard from "@/components/cards/NftCard.vue";
 import AccountLayout from '@/components/Layouts/AccountLayout.vue';
 import CreateNftButton from '@/components/cards/CreateNftButton.vue';
+import MoralisFactory from '../../moralis';
 import { useRouter } from 'vue-router';
+import { useStore } from 'vuex';
+import { computed, ref } from '@vue/reactivity';
+import { onMounted } from '@vue/runtime-core';
 // import GalleryClient from "@/components/Gallery/GalleryClient.vue";
 // import { ref, computed } from "vue";
 // import { useStore } from "vuex";
@@ -101,9 +105,10 @@ export default {
     AccountLayout,
     CreateNftButton,
   },
-  data() {
-    return {
-      Nfts: [
+  setup() {
+    const artworks = ref([]);
+
+    const nfts = ref([
         {
          id: 0
         },
@@ -128,65 +133,82 @@ export default {
           title: "Sneakers Collection",
           badge: "NIKE",
         },
-      ],
-    };
-  },
-  methods: {
-    goDetails(id) {
-      this.$router.push({
-        name: "CollectionDetails",
-        params: {
-          id: id,
-        },
-      });
-    },
-  },
-  setup() {
+      ]);
+    
 
+    const store = useStore();
     const router = useRouter();
+    const moralisInstance = MoralisFactory.getInstance();
 
     const addNft = () => {
       router.push('/nft-create');
     }
 
-    return {
-      addNft
+    const currentAddress = computed(
+  		() => store.getters["blockchain/getCurrentAddress"]
+  	);
+
+    const getData = async () => {
+
+      //const client = await getClientByBlockChain(currentAddress.value);
+      //console.log(client)
+
+      //artworks.value = client.data.nfts;
+      // await db
+      //   .collection("clients")
+      //   .where("metamask", "==", store.state.blockchain.currentAddress)
+      //   .get()
+      //   .then((querySnapshot) => {
+      //     querySnapshot.forEach((doc) => {
+      //       // doc.data() is never undefined for query doc snapshots
+
+      //       artworks.value = doc.data().nfts;
+      //     });
+      //   });
+
+      const bc = store.getters['blockchain/getCurrentAddress'];
+
+      const testnetNFTs = await moralisInstance.Web3API.account.getNFTs({ chain: "rinkeby", address: bc });
+      const results = testnetNFTs.result;
+
+
+      nfts.value = results.map(item => {
+          const metadata = JSON.parse(item.metadata);
+          if (metadata) {
+            const nft = {
+              block_number: item.token_id,
+              name: metadata.name,
+              image: metadata.image,
+              title: metadata.name,
+              badge: "NIKE",
+            }
+
+            return nft;
+          }
+      })  
+    };
+
+    const goDetails = (id) => {
+      router.push({
+        name: "CollectionDetails",
+        params: {
+          id: id,
+        },
+      });
     }
-  }
-  // setup() {
-  //   const artworks = ref([]);
 
-  //   const store = useStore();
+    onMounted(async () => {
+      //await getData();
+    });
 
-  //   const currentAddress = computed(
-  // 		() => store.getters["blockchain/getCurrentAddress"]
-  // 	);
-
-  //   // const getData = async () => {
-
-  //   //   const client = await getClientByBlockChain(currentAddress.value);
-  //   //   console.log(client)
-
-  //   //   artworks.value = client.data.nfts;
-  //   //   // await db
-  //   //   //   .collection("clients")
-  //   //   //   .where("metamask", "==", store.state.blockchain.currentAddress)
-  //   //   //   .get()
-  //   //   //   .then((querySnapshot) => {
-  //   //   //     querySnapshot.forEach((doc) => {
-  //   //   //       // doc.data() is never undefined for query doc snapshots
-
-  //   //   //       artworks.value = doc.data().nfts;
-  //   //   //     });
-  //   //   //   });
-  //   // };
-  //   // onMounted(async () => {
-  //   //   //await getData();
-  //   // });
-  //   return {
-  //     artworks,
-  //     currentAddress
-  //   };
-  // },
+    return {
+      artworks,
+      currentAddress,
+      addNft,
+      goDetails,
+      getData,
+      nfts
+    };
+  },
 };
 </script>

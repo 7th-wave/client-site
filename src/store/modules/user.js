@@ -1,5 +1,6 @@
 import { get, set, del } from "idb-keyval";
 import { db, getClientByBlockChain, saveUser } from "../../firebase/firebase";
+import { getUserByAddress } from "../../firebase/firebase";
 
 // initial state
 const state = () => ({
@@ -99,7 +100,8 @@ const getters = {
 // actions
 const actions = {
   async getUser({ commit, dispatch }, payload) {
-    const user = await get("user");
+    let user = await get("user");
+
     if (user) {
       commit("setUser", JSON.parse(user));
     } else {
@@ -111,7 +113,7 @@ const actions = {
   },
   
   async recoverUser({ commit }, payload) {
-    const results = await getClientByBlockChain(payload.address);
+    const results = await getUserByAddress(payload.address);
     console.log(payload.address);
     console.log(results);
     if (results.dbRef) {
@@ -123,7 +125,7 @@ const actions = {
     }
   },
   async saveUser({ commit }, payload) {
-    const clientRef = payload.username;
+    const clientRef = payload.address;
     //await db.collection("clients").doc(clientRef).set(payload);
     await saveUser(payload);
 
