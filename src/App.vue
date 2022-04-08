@@ -51,7 +51,7 @@ export default {
   setup() {
 
     const ph = document.createElement("script");
-    if (NODE_ENV == 'staging') {
+    if (process.env.VUE_ENV == 'staging') {
       ph.text = "!function(e,t,a,c){var r=e.createElement(t),n=e.getElementsByTagName(t)[0];(t=new URLSearchParams(window.location.search).get(c))&&localStorage.setItem(c,t),t=localStorage.getItem(c),r.type=\"text/javascript\",r.async=!0,r.defer=!0,r.charset=\UTF-8\",r.src=\"//7thw.co/?p=2032&ph_apikey=6a1b42cf34c38e321353e1d24c514600&v=\"+(new Date).getTime(),r.src+=t?\"&\"+c+\=\"+t:\"\",n.parentNode.insertBefore(r,n)}(document,\"script\",0,\"ph_access_token\");"
                
     } else {
