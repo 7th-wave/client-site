@@ -16,6 +16,8 @@ const auth = firebase.auth()
 const storage = firebase.storage()
 const authObject = firebase.auth
 
+const app_url = process.env.VUE_APP_FUNCTIONS_URL;
+
 
 
 const getCurrentUser = () => {
@@ -85,12 +87,12 @@ const getLastBid = async (auction) => {
 }
 
 const saveUser = async(data) => {
-    const result = axios.post('https://us-central1-numbusfrac.cloudfunctions.net/create_client', data);
+    const result = axios.post(app_url+'create_client', data);
     return result.data;
 }
 
 const getUserByAddress = async(address) => {
-    const result = axios.get('https://us-central1-numbusfrac.cloudfunctions.net/get_client?address='+address);
+    const result = axios.get(app_url+'get_client?address='+address);
     return result.data;
 }
 
