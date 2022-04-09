@@ -1,17 +1,6 @@
 <template>
   <div
-    class="
-      py-8
-      2xl:max-w-8xl
-      w-full
-      2xl:mx-auto
-      account
-      sm:py-4
-      lg:py-16
-      relative
-      font-inter
-      space-y-4
-    "
+    class="py-8 2xl:max-w-8xl w-full 2xl:mx-auto account sm:py-4 lg:py-16 relative font-inter space-y-4"
   >
     <div class="flex md:pb-14 py-0 sm:py-4 md:pt-4 lg:pt-0 lg:pb-8 text-center">
       <span
@@ -29,30 +18,14 @@
     <div class="w-full px-4 py-4 grid lg:grid-cols-4 gap-4">
       <!-- left -->
       <div
-        class="
-          lg:col-span-3
-          col-span-4
-          w-full
-          flex flex-col
-          items-start
-          space-y-5
-        "
+        class="lg:col-span-3 col-span-4 w-full flex flex-col items-start space-y-5"
       >
         <span class="text-2xl text-black font-inter font-medium"
           >{Vault Sub-Title}</span
         >
         <FractionCard :goDown="true" :goBack="false" />
         <p
-          class="
-            text-lg
-            font-normal font-inter
-            text-black
-            bg-white
-            py-3
-            px-4
-            shadow-md
-            rounded-md
-          "
+          class="text-lg font-normal font-inter text-black bg-white py-3 px-4 shadow-md rounded-md"
         >
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
@@ -134,12 +107,7 @@
 
           <template #subtitle>
             <span
-              class="
-                text-sm
-                font-inter font-medium
-                text-primary-500
-                cursor-pointer
-              "
+              class="text-sm font-inter font-medium text-primary-500 cursor-pointer"
               >{{ category.title }}</span
             >
           </template>
@@ -153,7 +121,6 @@
     </div>
   </div>
 </template>
-
 
 <script>
 // import InteriorPage from "../../components/Layouts/InteriorPage.vue";
