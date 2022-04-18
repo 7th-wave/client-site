@@ -88,7 +88,7 @@
                   <div class="m-auto rounded-full border-2 w-16 h-16 flex overflow-hidden flex items-center">
                     <div class="m-auto">
                       <a href="#" >
-                          <img src="/images/wallet1.jpg" class="mb-8" alt="">
+                        <metamask />
                       </a>
                       
                     </div>
@@ -273,6 +273,7 @@ import { XIcon } from "@heroicons/vue/solid";
 import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 import RegisterModal from './RegisterModal.vue'
+import Metamask from '../Icons/Metamask.vue';
   
 export default {
   components: {
@@ -281,7 +282,8 @@ export default {
     TransitionChild,
     TransitionRoot,
     RegisterModal,
-    XIcon
+    XIcon,
+    Metamask
   },
 
   props: ['login_modal'],

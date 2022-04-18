@@ -2,7 +2,8 @@
   <div class="w-full flex items-center">
     <div class="xl:w-2/3 w-full xl:m-auto xl:px-0 px-4">
       <div v-if="slides.length > 1" class="relative w-full xl:left-24">
-        <CarouselCard class=" hidden lg:block"
+        <CarouselCard
+          class="hidden lg:block"
           ref="carouselCardRef"
           :interval="7000"
           :autoplay="false"
@@ -28,13 +29,12 @@
             </div>
           </CarouselCardItem>
         </CarouselCard>
-           <CarouselCard
-          class=" lg:hidden"
+        <CarouselCard
+          class="lg:hidden"
           ref="carouselCardRef1"
           :interval="7000"
           :autoplay="false"
           height="400px"
-         
           arrow="never"
           @change="changeHandle"
         >
@@ -55,79 +55,51 @@
             </div>
           </CarouselCardItem>
         </CarouselCard>
-        <div
-        
-          class="
-        
-            w-full
-            absolute
-            z-10
-          "
-          style="top: 12rem;"
-        >
-         <div class=" w-full relative flex
-            justify-between
-            items-center">
+        <div class="w-full absolute z-10" style="top: 12rem">
+          <div class="w-full relative flex justify-between items-center">
             <button
-            @click="prev"
-            class="
-              bg-white
-              shadow-md
-              rounded-full
-              flex
-              w-10
-              h-10
-              hover:bg-gray-100 absolute -left-4
-            "
-          >
-            <svg
-              class="m-auto"
-              width="15"
-              height="12"
-              viewBox="0 0 15 12"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
+              @click="prev"
+              class="bg-white shadow-md rounded-full flex w-10 h-10 hover:bg-gray-100 absolute -left-4"
             >
-              <path
-                d="M6.13346 10.9835L1.4668 6.31687M1.4668 6.31687L6.13346 1.65021M1.4668 6.31687L13.4668 6.31687"
-                stroke="#9CA3AF"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-          </button>
-          <button
-            @click="next"
-            class="
-             absolute lg:right-40 -right-4
-              bg-white
-              shadow-md
-              rounded-full
-              flex
-              w-10
-              h-10
-              hover:bg-gray-100
-            "
-          >
-            <svg
-              class="m-auto"
-              width="15"
-              height="12"
-              viewBox="0 0 15 12"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
+              <svg
+                class="m-auto"
+                width="15"
+                height="12"
+                viewBox="0 0 15 12"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M6.13346 10.9835L1.4668 6.31687M1.4668 6.31687L6.13346 1.65021M1.4668 6.31687L13.4668 6.31687"
+                  stroke="#9CA3AF"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+            <button
+              @click="next"
+              class="absolute lg:right-40 -right-4 bg-white shadow-md rounded-full flex w-10 h-10 hover:bg-gray-100"
             >
-              <path
-                d="M8.80013 1.65021L13.4668 6.31687M13.4668 6.31687L8.80013 10.9835M13.4668 6.31687L1.4668 6.31687"
-                stroke="#9CA3AF"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-          </button>
-         </div>
+              <svg
+                class="m-auto"
+                width="15"
+                height="12"
+                viewBox="0 0 15 12"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M8.80013 1.65021L13.4668 6.31687M13.4668 6.31687L8.80013 10.9835M13.4668 6.31687L1.4668 6.31687"
+                  stroke="#9CA3AF"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
 
@@ -136,15 +108,21 @@
         class="lg:w-96 w-full m-auto bg-blue-400 bg-opacity-30 relative"
         style="height: 660px"
       >
-        <img class="w-full h-full object-cover" :src="slides[0].image" alt="" />
+        <LightBox
+          :images="slides[0].image"
+          :visible="visibleLightBox"
+          @on:close="visibleLightBox = false"
+          v-if="slides.length"
+        />
+        <img class="w-full h-full object-cover" @click="showModal" :src="slides[0].image" alt="" />
       </div>
     </div>
   </div>
 </template>
 
-
 <script>
 import { ref } from "@vue/reactivity";
+import LightBox from "../../components/Layouts/LightBox.vue";
 
 export default {
   data() {
@@ -161,8 +139,12 @@ export default {
   components: {
     // ArrowLeftIcon,
     // ArrowRightIcon,
+    LightBox
   },
   setup() {
+
+    const visibleLightBox = ref(false);
+
     const carouselCardRef = ref();
     const carouselCardRef1 = ref();
     const changeHandle = (index) => {
@@ -180,6 +162,11 @@ export default {
       carouselCardRef.value.setActiveItem(0);
     };
 
+    const showModal = () => {
+      visibleLightBox.value = true;
+    };
+
+
     return {
       carouselCardRef,
       carouselCardRef1,
@@ -187,6 +174,8 @@ export default {
       next,
       prev,
       setToFirst,
+      visibleLightBox,
+      showModal
     };
   },
   methods: {
@@ -200,17 +189,12 @@ export default {
 };
 </script>
 
-
-<style >
-
+<style>
 @media (min-width: 1024px) {
-    .MyButton {
-       width: 69rem
-    }
+  .MyButton {
+    width: 69rem;
   }
-
-
-
+}
 
 .opImage {
   opacity: 0.3;

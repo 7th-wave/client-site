@@ -104,7 +104,7 @@
       <div class="w-full h-px bg-gray-200"></div>
       <div class="w-full py-3">
         <button
-          @click="Buy"
+          @click="buy"
           class="
             w-full
             py-2
@@ -120,7 +120,7 @@
     </div>
 
     <ConnectWallet ref="ConnectWallet" @ConfirmOrder="ConfirmOrder" />
-    <ConfirmOrder ref="ConfirmOrder" />
+    <ConfirmOrder ref="ConfirmOrder" :show="showConfirmation" />
   </div>
 </template>
 
@@ -134,9 +134,10 @@ import DropDown from "@/components/Drawers/DropDown.vue";
 import USDC from '../Shared/USDC.vue';
 import ETH from '../Shared/ETH.vue';
 import Tether from '../Shared/Tether.vue';
-import { ref } from '@vue/reactivity';
+import { computed, ref } from '@vue/reactivity';
 import axios from 'axios';
 import { onMounted } from '@vue/runtime-core';
+import { useStore } from 'vuex';
 
 
 export default {
@@ -151,8 +152,12 @@ export default {
     ETH,
     Tether
   },
-  setup() {
+  emits: ['on:login'],
+  setup(props, {emit}) {
 
+    const store = useStore();
+
+    const showConfirmation = ref(false);
     const pay = ref(0);
     const receive = ref(0);
     const currency = ref('USDC');
@@ -163,6 +168,8 @@ export default {
         { id: 3, name: "USDC" },
         { id: 3, name: "USDT" },
       ]);
+
+    const user = computed(() => store.getters['user/getUser']);
 
     const getEthUsdValue = async () => {
        const request = await axios.get(
@@ -183,6 +190,15 @@ export default {
       receive.value = pay.value * factor;
     }
 
+    const buy = () => {
+      console.log(user.value);
+      if (!user.value.dbRef) {
+        emit('on:login');
+      } else {
+        showConfirmation.value = true;
+      }
+    }
+
     onMounted(() => {
       getEthUsdValue();
     })
@@ -194,7 +210,9 @@ export default {
       currency,
       calculate,
       Items,
-      ethUsd
+      ethUsd,
+      buy,
+      showConfirmation
     }
   },
   computed: {
@@ -206,13 +224,6 @@ export default {
     ConfirmOrder() {
       this.$refs.ConnectWallet.open = false;
       this.$refs.ConfirmOrder.open = true;
-    },
-    Buy() {
-      this.$refs.ConnectWallet.open = true;
-      setTimeout(() => {
-        document.getElementsByTagName("html")[0].style.overflow = "auto";
-        document.getElementsByTagName("html")[0].style.padding = "0";
-      }, 100);
     },
   },
 };

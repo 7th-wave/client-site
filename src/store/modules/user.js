@@ -6,7 +6,7 @@ import { getUserByAddress } from "../../firebase/firebase";
 const state = () => ({
   user: {
     type:'Client',
-    dbRef: "",
+    dbRef: null,
     username: "",
     about: "",
     firstName: "",
@@ -34,7 +34,7 @@ const state = () => ({
 const getDefaultState = () => {
   return {
     user: {
-      dbRef: "",
+      dbRef: null,
       username: "",
       about: "",
       firstName: "",
