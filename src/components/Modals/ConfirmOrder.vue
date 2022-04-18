@@ -164,7 +164,7 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref, toRefs, watch } from "vue";
 import {
   Dialog,
   DialogOverlay,
@@ -180,8 +180,16 @@ export default {
     TransitionRoot,
     XIcon,
   },
-  setup() {
+  props: ['show'],
+  setup(props) {
+    const {show} = toRefs(props);
     const open = ref(false);
+    
+    watch(show, (value) => {
+
+      open.value = value
+
+    });
 
     return {
       open,

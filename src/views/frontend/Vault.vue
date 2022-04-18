@@ -36,7 +36,7 @@
       </div>
       <!-- right -->
       <div class="w-full col-span-4 lg:col-span-1">
-        <BuyFractionCard />
+        <BuyFractionCard @on:login="doLogin" />
       </div>
     </div>
     <div class="px-4 md:hidden">
@@ -165,6 +165,9 @@ export default {
         this.$router.push({ name: "VaultView", params: { id: "cvman" } });
       }
     },
+    doLogin() {
+      this.$emit('on:login');
+    }
   },
   data() {
     return {

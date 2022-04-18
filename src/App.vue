@@ -5,7 +5,7 @@
   </metainfo>
   <Header @on:login="showLoginPopUp" />
   <div class="body " :class="{'bg-white':getRouteName == 'Home' || getRouteName == 'LearnMore','bg-gray-100':getRouteName != 'Home' && getRouteName != 'LearnMore'}">
-    <router-view />
+    <router-view @on:login="showLoginPopUp" />
     <Modal />
     <toast />
   </div>
