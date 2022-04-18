@@ -1,3 +1,4 @@
+VUE_APP_FUNCTIONS_URL=https://us-central1-numbusfrac.cloudfunctions.net/
 VUE_APP_API_KEY=AIzaSyBDFWqfWHYm6xa9LxbIGNQ7862mJuHGOto
 VUE_APP_AUTH_DOMAIN=gallery-on-greene.firebaseapp.com
 VUE_APP_PROJECT_ID=gallery-on-greene
