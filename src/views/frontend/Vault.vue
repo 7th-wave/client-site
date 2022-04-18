@@ -14,8 +14,8 @@
     <div class="w-full md:pb-24">
       <VaultSlideShow :slides="getSlides" />
     </div>
-
-    <div class="w-full px-4 py-4 grid lg:grid-cols-4 gap-4">
+    
+    <div class="max-w-7xl mx-auto px-4 py-4 grid lg:grid-cols-4 gap-4">
       <!-- left -->
       <div
         class="lg:col-span-3 col-span-4 w-full flex flex-col items-start space-y-5"
@@ -44,7 +44,7 @@
         >Top 10 Vault Owner</span
       >
     </div>
-    <div class="w-full px-4 py-4 grid lg:grid-cols-4 gap-4">
+    <div class="max-w-7xl mx-auto px-4 py-4 grid lg:grid-cols-4 gap-4">
       <!-- left -->
       <FractionTable />
       <!-- right -->
@@ -58,7 +58,7 @@
         </div>
       </div>
     </div>
-    <div class="w-full px-4 pt-2">
+    <div class="max-w-7xl mx-auto px-4 pt-2">
       <div class="w-full py-3 bg-white border-2 rounded-md flex">
         <div class="flex items-center space-x-2 m-auto">
           <span class="text-base text-gray-700 font-medium font-inter"
@@ -84,7 +84,7 @@
         </div>
       </div>
     </div>
-    <div class="w-full space-y-4 px-4 pt-8">
+    <div class="max-w-7xl mx-auto space-y-4 px-4 pt-8">
       <div>
         <span class="text-2xl text-black font-inter font-medium"
           >All {{ getParams == "cvman" ? "CVMAN" : "NIKE" }} Vault Assets</span
