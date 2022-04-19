@@ -99,12 +99,12 @@
                     class="m-auto text-sm font-inter text-gray-900 font-medium"
                     >
                   <a
-                        class="py-3 px-5 border border-primary-400 hover:bg-primary-400 hover:text-white rounded-md" 
+                        class="text-black" 
                         href="https://metamask.io/download.html" 
                         target="_blank" 
                         rel="noopener noreferrer"
                       >
-                        donwload
+                        Metamask
                       </a>
                   </span>
                 </div>

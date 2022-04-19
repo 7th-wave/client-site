@@ -55,6 +55,7 @@
               <USDC v-if="currency == 'USDC'" />
               <ETH v-if="currency == 'ETH'" />
               <Tether v-if="currency == 'USDT'" />
+              <BTC v-if="currency == 'BTC'" />
 
           </div>
         </div>
@@ -133,6 +134,8 @@ import ConfirmOrder from "../../components/Modals/ConfirmOrder";
 import DropDown from "@/components/Drawers/DropDown.vue";
 import USDC from '../Shared/USDC.vue';
 import ETH from '../Shared/ETH.vue';
+import BTC from '../Shared/BTC.vue';
+
 import Tether from '../Shared/Tether.vue';
 import { computed, ref } from '@vue/reactivity';
 import axios from 'axios';
@@ -150,7 +153,8 @@ export default {
     DropDown,
     USDC,
     ETH,
-    Tether
+    Tether,
+    BTC
   },
   emits: ['on:login'],
   setup(props, {emit}) {
@@ -192,7 +196,7 @@ export default {
 
     const buy = () => {
       console.log(user.value);
-      if (!user.value.dbRef) {
+      if (user.value.dbRef) {
         emit('on:login');
       } else {
         showConfirmation.value = true;

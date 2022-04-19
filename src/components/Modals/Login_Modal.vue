@@ -17,12 +17,12 @@
                         <img src="/images/wallet1.jpg" class="mb-8" alt="">
                     </a>
                     <a
-                      class="py-3 px-5 border border-primary-400 hover:bg-primary-400 hover:text-white rounded-md" 
+                      class="text-black" 
                       href="https://metamask.io/download.html" 
                       target="_blank" 
                       rel="noopener noreferrer"
                     >
-                      donwload
+                      Metamask
                     </a>
                   </div>
                   <a href="#" class="w-1/3 mx-2" @click.prevent="doWalletConnectLogin()">
