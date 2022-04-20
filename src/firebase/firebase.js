@@ -87,12 +87,12 @@ const getLastBid = async (auction) => {
 }
 
 const saveUser = async(data) => {
-    const result = axios.post(app_url+'create_client', data);
+    const result = await axios.post(app_url+'create_client', data);
     return result.data;
 }
 
 const getUserByAddress = async(address) => {
-    const result = axios.get(app_url+'get_client?address='+address);
+    const result = await axios.get(app_url+'find_client?ref='+address);
     return result.data;
 }
 
