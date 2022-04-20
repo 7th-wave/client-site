@@ -4,7 +4,7 @@
     <Dialog
       as="div"
       class="fixed z-10 inset-0 overflow-y-auto"
-      @close="open = false"
+      @close="open = false; $emit('on:close')"
     >
       <div
         class="
@@ -79,7 +79,7 @@
                 >
                 <div
                   class="p-1 bg-white rounded-md shadow-sm cursor-pointer"
-                  @click="open = false"
+                  @click="open = false; $emit('on:close');"
                 >
                   <XIcon class="w-5 h-5 text-primary-500" />
                 </div>
@@ -90,17 +90,17 @@
                 >YOU PAY</span
               >
               <span class="text-sm font-inter text-black font-normal"
-                >10,000.00 <span class="font-semibold">USDT</span></span
+                >{{ pay }} <span class="font-semibold">USDT</span></span
               >
               <span class="text-xs text-gray-500 font-normal font-inter"
-                >≈ $10,000.00</span
+                >≈ ${{ payDollar }}</span
               >
               <div class="w-full h-px bg-gray-300"></div>
               <span class="text-xs text-gray-500 font-normal font-inter"
                 >YOU RECEIVE</span
               >
               <span class="text-sm font-inter text-black font-normal"
-                >10,000.00 <span class="font-semibold">{{this.getParams == 'cvman' ? 'CVMAN' : 'NIKE'}}</span></span
+                > {{ receive }} <span class="font-semibold">{{this.getParams == 'cvman' ? 'CVMAN' : 'NIKE'}}</span></span
               >
               <div class="w-full flex flex-col items-start space-y-3">
                 <div class="flex items-center space-x-2 w-full">
@@ -164,7 +164,7 @@
 </template>
 
 <script>
-import { ref, toRefs, watch } from "vue";
+import { onMounted, ref, toRefs, watch } from "vue";
 import {
   Dialog,
   DialogOverlay,
@@ -172,6 +172,7 @@ import {
   TransitionRoot,
 } from "@headlessui/vue";
 import { XIcon } from "@heroicons/vue/solid";
+import axios from 'axios';
 export default {
   components: {
     Dialog,
@@ -180,19 +181,30 @@ export default {
     TransitionRoot,
     XIcon,
   },
-  props: ['show'],
+  props: ['show', 'pay', 'payDollar', 'receive'],
   setup(props) {
     const {show} = toRefs(props);
     const open = ref(false);
-    
+    const gasPrice = ref(0)
+
     watch(show, (value) => {
 
       open.value = value
 
     });
 
+    const getGasFees = async () => {
+      let result = await axios.get('https://api.etherscan.io/api?module=gastracker&action=gasoracle&apikey=YourApiKeyToken');
+      gasPrice.value = result.data.result;
+    }
+
+    onMounted(async() => {
+      await getGasFees()
+    })
+
     return {
       open,
+      gasPrice
     };
   },
   computed:{

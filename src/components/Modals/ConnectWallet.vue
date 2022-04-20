@@ -77,7 +77,7 @@
                 <span class="text-lg text-gray-900 font-inter"
                   >Connect or create your wallet</span
                 >
-                <div class="p-1 bg-white rounded-md shadow-sm cursor-pointer" @click="open = false">
+                <div class="p-1 bg-white rounded-md shadow-sm cursor-pointer" @click="loginmodal = false; $emit('on:close')">
                   <XIcon class="w-5 h-5 text-primary-500" />
                 </div>
               </div>
@@ -87,9 +87,7 @@
               <div class="border-2 border-b-0 rounded-t-md flex py-4 w-full">
                   <div class="m-auto rounded-full border-2 w-16 h-16 flex overflow-hidden flex items-center">
                     <div class="m-auto">
-                      <a href="#" >
                         <metamask />
-                      </a>
                       
                     </div>
                   </div>
@@ -270,7 +268,7 @@ import { computed, ref, toRefs, watch } from 'vue'
 import { Dialog, DialogOverlay, TransitionChild, TransitionRoot } from '@headlessui/vue'
 import { XIcon } from "@heroicons/vue/solid";
 
-import { useRouter } from 'vue-router'
+//import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
 import RegisterModal from './RegisterModal.vue'
 import Metamask from '../Icons/Metamask.vue';
@@ -292,7 +290,7 @@ export default {
     const publicPath =  ref(process.env.BASE_URL);
     const loginmodal =  ref(false);
     const login = ref(false);
-    const router = useRouter();
+    //const router = useRouter();
     const store = useStore();
     const currentAddress = computed(() => store.getters['blockchain/getCurrentAddress']);
     const user = computed(() => store.getters['user/getUser']);
@@ -304,6 +302,9 @@ export default {
       console.log(val);
       loginmodal.value = val
     })
+
+   
+
     const closeModal = () => {
       open.value = false;
       loginmodal.value = false;
@@ -314,15 +315,8 @@ export default {
       loginmodal.value = false;
       emit('on:close')
       setTimeout(() => {
-        if(user.value.dbRef == "") {
+        if(!user.value.dbRef) {
           open.value = true;
-        } else {
-          router.push({
-            name: 'MyAccount',
-            params: {
-              address: currentAddress.value
-            }
-          });
         }
       }, 600);
       
@@ -364,6 +358,7 @@ export default {
 
     const doMetaMaskLogin = async () => {
       await store.dispatch('blockchain/new', {type: 'metamask'});
+      emit('on:metamask');
       if (currentAddress.value) {
         goToMyAccount();
       } else {

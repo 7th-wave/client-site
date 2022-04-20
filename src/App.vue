@@ -15,7 +15,7 @@
 		
 		:login_modal="showLogin"
 		@on:close="closeLoginModal"
-    @on:walletconnect="walletConnectSetup"
+    @on:connect="setEvents"
 	/>
 </div> 
 </template>
@@ -66,15 +66,15 @@ export default {
     const router = useRouter();
 
     const showLoginPopUp = () => {
+      console.log('here');
       showLogin.value = true;
     }
 
     const closeLoginModal = () => {
       showLogin.value = false;
     }
- 
-    onMounted(async () => {
 
+    const setEvents = async () => {
       await store.dispatch('blockchain/initWallets');
       await store.dispatch('blockchain/getBlockChain');
       //const address = store.getters['blockchain/getCurrentAddress'];
@@ -88,12 +88,13 @@ export default {
           router.push("/");
         });
 
+      } else if (provider == 'walletconnect') {
+        walletConnectSetup();
       }
-
-      
-
-      
-      
+    }
+ 
+    onMounted(async () => {
+      setEvents();
     });
 
     const walletConnectSetup = () => {

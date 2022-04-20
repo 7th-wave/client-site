@@ -53,11 +53,19 @@
           <div class="flex items-center space-x-2">
             <DropDown :Myitems="Items" Myplaceholder="USDC" @on:selected="changeModel" />
               <USDC v-if="currency == 'USDC'" />
-              <ETH v-if="currency == 'ETH'" />
+              <DAI v-if="currency == 'DAI'" />
               <Tether v-if="currency == 'USDT'" />
-              <BTC v-if="currency == 'BTC'" />
 
           </div>
+        </div>
+        <!-- validation -->
+        <div class="w-full" v-if="validations['pay']">
+          <p
+            class="mt-2 text-sm text-red-600"
+            id="email-error"
+          >
+            {{ validations['pay'] }}
+          </p>
         </div>
       </div>
       <div class="w-full h-px bg-gray-200"></div>
@@ -121,7 +129,7 @@
     </div>
 
     <ConnectWallet ref="ConnectWallet" @ConfirmOrder="ConfirmOrder" />
-    <ConfirmOrder ref="ConfirmOrder" :show="showConfirmation" />
+    <ConfirmOrder ref="ConfirmOrder" :show="showConfirmation" :pay="pay" :receive="receive" :payDollar="payDolar" @on:close="closeModals" />
   </div>
 </template>
 
@@ -133,14 +141,13 @@ import ConnectWallet from "../../components/Modals/ConnectWallet";
 import ConfirmOrder from "../../components/Modals/ConfirmOrder";
 import DropDown from "@/components/Drawers/DropDown.vue";
 import USDC from '../Shared/USDC.vue';
-import ETH from '../Shared/ETH.vue';
-import BTC from '../Shared/BTC.vue';
 
 import Tether from '../Shared/Tether.vue';
 import { computed, ref } from '@vue/reactivity';
 import axios from 'axios';
-import { onMounted } from '@vue/runtime-core';
+import { onMounted, watch } from '@vue/runtime-core';
 import { useStore } from 'vuex';
+import DAI from '../Shared/DAI.vue';
 
 
 export default {
@@ -152,28 +159,44 @@ export default {
     ConfirmOrder,
     DropDown,
     USDC,
-    ETH,
     Tether,
-    BTC
+    DAI
   },
+  props: ['registered', 'vault'],
   emits: ['on:login'],
   setup(props, {emit}) {
 
     const store = useStore();
 
+    //const { registered } = toRefs(props);
+
     const showConfirmation = ref(false);
     const pay = ref(0);
+    const payDolar = ref(0);
     const receive = ref(0);
     const currency = ref('USDC');
     const ethUsd = ref(0);
     const Items = ref([
-        { id: 1, name: "ETH" },
-        { id: 2, name: "BTC" },
-        { id: 3, name: "USDC" },
+        { id: 1, name: "DAI" },
+        { id: 2, name: "USDC" },
         { id: 3, name: "USDT" },
       ]);
 
+    const isValid = ref(true);
+    const validations = ref({
+      pay: computed(() => {
+        if(!isValid.value && !pay.value > 0)
+          return 'This amount is required.'
+        return ""
+      }),
+    });
+
     const user = computed(() => store.getters['user/getUser']);
+
+
+    watch(user, (val) => {
+      console.log(val)
+    })
 
     const getEthUsdValue = async () => {
        const request = await axios.get(
@@ -187,20 +210,36 @@ export default {
     }
 
     const calculate = () => {
+
+      //reserve price / supply 
+
       let factor = 1;
       if (currency.value == 'ETH') {
-        factor = ethUsd.value; 
+        factor = ethUsd.value;
       }
+      payDolar.value = pay.value * factor;
       receive.value = pay.value * factor;
     }
 
     const buy = () => {
+       isValid.value = false;
       console.log(user.value);
-      if (user.value.dbRef) {
+      if (!user.value.dbRef) {
         emit('on:login');
       } else {
-        showConfirmation.value = true;
+        const arrValidations = Object.keys(validations.value)
+        const validationFail = arrValidations.find(ref => validations.value[ref]);
+
+        if(!validationFail) {
+          isValid.value = true
+          showConfirmation.value = true;
+        }
+        
       }
+    }
+
+    const closeModals = () => {
+      showConfirmation.value = false;
     }
 
     onMounted(() => {
@@ -210,13 +249,16 @@ export default {
     return {
       changeModel,
       pay,
+      payDolar,
       receive,
       currency,
       calculate,
       Items,
       ethUsd,
       buy,
-      showConfirmation
+      showConfirmation,
+      closeModals,
+      validations
     }
   },
   computed: {
