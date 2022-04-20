@@ -66,7 +66,7 @@
                       for="username"
                       class="block text-sm w-full font-medium text-gray-700 capitalize"
                     >
-                      {{input.label}} <span class="text-red-700 text-lg">*</span>
+                      {{input.label}}
                     </label>
                     <span
                       :class="[
@@ -85,8 +85,9 @@
                       :name="input.name"
                       :id="input.name"
                       autocomplete="off"
+                      :disabled="input.readOnly"
                       :class="[
-                        'flex-1 block w-full focus:ring-primary-500 focus:border-primary-500 min-w-0 rounded-none sm:text-sm  border-gray-300',
+                        'flex-1 block w-full focus:ring-primary-500 focus:border-primary-500 min-w-0 rounded-none sm:text-sm  border-gray-300 disabled:bg-gray-100',
                         validations[input.name] && 'focus:outline-none focus:ring-red-500 focus:border-red-500 border-red-300',
                         input.name == 'username' ? 'rounded-r-md' : 'rounded-md'
                       ]"
@@ -132,7 +133,7 @@ export default {
     XIcon,
     Button,
   },
-  emits: [ 'on:close'],
+  emits: [ 'on:close', 'on:registrationSuccess'],
   props: ['open_modal'],
   setup(props, {emit}) {
     const reEmail =
@@ -150,34 +151,46 @@ export default {
 
     const inputs = ref([
       { 
+        label: 'address',
+        name: 'address',
+        type: 'text',
+        value: store.getters["blockchain/getCurrentAddress"],
+        readOnly: true
+      },
+      { 
         label: 'username',
         name: 'username',
         type: 'text',
         value: '',
+        readOnly: false
       },
       {
         label: 'first name',
         name: 'first-name',
         type: 'text',
         value: '',
+        readOnly: false
       },
       {
         label: 'last name',
         name: 'last-name',
         type: 'text',
         value: '',
+        readOnly: false
       },
       {
         label: 'email',
         name: 'email',
         type: 'email',
         value: '',
+        readOnly: false
       },
       {
         label: 'phone',
         name: 'phone',
         type: 'tel',
         value: '',
+        readOnly: false
       },
     ])
     
@@ -213,11 +226,11 @@ export default {
     })
 
     const onSubmit = async () => {
-      isValid.value = false
-      const arrValidations = Object.keys(validations.value)
-      const validationFail = arrValidations.find(ref => validations.value[ref]);
+      //isValid.value = false
+      //const arrValidations = Object.keys(validations.value)
+      //const validationFail = arrValidations.find(ref => validations.value[ref]);
 
-      if(validationFail) return
+      //if(validationFail) return
       isValid.value = true
       store.dispatch('NotificationStore/TOGGLE_LOADING');
       const newUser = {
@@ -238,7 +251,8 @@ export default {
           message: "Your account is ready!",
           type: "success",
         });
-        closeModal()
+        emit('on:registrationSuccess');
+        closeModal();
       } catch (error) {
         store.dispatch('NotificationStore/TOGGLE_LOADING');
         console.log(error)

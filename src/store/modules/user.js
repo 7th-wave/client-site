@@ -114,11 +114,9 @@ const actions = {
   
   async recoverUser({ commit }, payload) {
     const results = await getUserByAddress(payload.address);
-    console.log(payload.address);
-    console.log(results);
-    if (results.dbRef) {
-      const user = results.data;
-      user.dbRef = results.dbRef;
+    if (results.success) {
+      const user = results.doc;
+      user.dbRef = results.doc.blockchainAddress;
       console.log('recover user->', user);
       await set("user", JSON.stringify(user));
       commit("setUser", user);
