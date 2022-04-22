@@ -216,11 +216,7 @@ export default {
       Confirm(){
          this.open = false;
          this.$store.commit('user/changeType', 'Buyer')
-        if(this.getParams == 'cvman'){
-          this.$router.push({name:'My_fractions_details',params:{id:'cvman'}});
-        }else{
-          this.$router.push({name:'MyAccount',params:{address:'sdf'}});
-        }
+        this.$router.push({name:'My_fractions_details',params:{id:'cvman'}});
         
       }
   }

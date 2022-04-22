@@ -225,8 +225,6 @@ export default {
        isValid.value = false;
       console.log(user.value);
       if (!user.value.dbRef) {
-        emit('on:login');
-      } else {
         const arrValidations = Object.keys(validations.value)
         const validationFail = arrValidations.find(ref => validations.value[ref]);
 
@@ -234,6 +232,8 @@ export default {
           isValid.value = true
           showConfirmation.value = true;
         }
+      } else {
+        emit('on:login');
         
       }
     }

@@ -1,7 +1,7 @@
 <template>
   <div class="w-full flex items-center">
     <div class="xl:w-2/3 w-full xl:m-auto xl:px-0 px-4">
-      <div v-if="slides.length > 1" class="relative w-full xl:left-24">
+      <div v-if="slides.length > 1" class="relative m-auto">
         <CarouselCard
           class="hidden lg:block"
           ref="carouselCardRef"
@@ -80,7 +80,7 @@
             </button>
             <button
               @click="next"
-              class="absolute lg:right-40 -right-4 bg-white shadow-md rounded-full flex w-10 h-10 hover:bg-gray-100"
+              class="absolute -right-4 bg-white shadow-md rounded-full flex w-10 h-10 hover:bg-gray-100"
             >
               <svg
                 class="m-auto"

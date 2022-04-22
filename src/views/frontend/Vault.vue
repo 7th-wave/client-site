@@ -6,7 +6,7 @@
       <span
         class="m-auto sm:text-4xl text-2xl text-center font-normal font-inter text-black"
         >{{
-          getParams == "cvman" ? "The caveman, ca. 2008" : "Nike Collection"
+          getParams == "cvman" ? "The caveman, ca. 2008" : "Rare Sneakers"
         }}</span
       >
     </div>
@@ -21,7 +21,9 @@
         class="lg:col-span-3 col-span-4 w-full flex flex-col items-start space-y-5"
       >
         <span class="text-2xl text-black font-inter font-medium"
-          >{Vault Sub-Title}</span
+          >{{
+          getParams == "cvman" ? "Own a piece of history" : "Get you Nike on"
+        }}</span
         >
         <FractionCard :goDown="true" :goBack="false" />
         <p
@@ -216,11 +218,11 @@ export default {
           name: "Books",
         },
         {
-          image: "/images/sneakers/01.png",
+          image: "/images/sneakers/02.png",
           name: "Books",
         },
         {
-          image: "/images/sneakers/red.png",
+          image: "/images/sneakers/03.png",
           name: "Books",
         },
       ],
