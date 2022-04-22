@@ -425,17 +425,18 @@ const categories = [
     items: 1,
   },
   {
-    id: "Gems",
-    name: "Rare Gems & Jewellery",
-    image: "gems.png",
+    id: "automotives",
+    name: "Automotives",
+    image: "car.png",
     items: 1,
   },
   {
-    id: "Gems",
-    name: "Rare Gems & Jewellery",
-    image: "gems.png",
+    id: "real-estate",
+    name: "Real Estate",
+    image: "Estate.jpg",
     items: 1,
   },
+  
 ];
 
 export default {
