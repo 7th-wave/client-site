@@ -313,12 +313,8 @@ export default {
 
     const goToMyAccount = () => {
       loginmodal.value = false;
-      emit('on:close')
-      setTimeout(() => {
-        if(!user.value.dbRef) {
-          open.value = true;
-        }
-      }, 600);
+      emit('on:close');
+      
       
     }
 
@@ -340,7 +336,7 @@ export default {
       login.value = true;
       try {
         await store.dispatch('blockchain/new', {type: 'walletconnect'});
-        emit('on:walletconnect');
+        emit('on:connect', {provider: 'walletconnect'});
         goToMyAccount();
       } catch(error) {
         console.log(error)
@@ -358,12 +354,8 @@ export default {
 
     const doMetaMaskLogin = async () => {
       await store.dispatch('blockchain/new', {type: 'metamask'});
-      emit('on:metamask');
-      if (currentAddress.value) {
-        goToMyAccount();
-      } else {
-        showInstallMetamask.value = true;
-      }
+      emit('on:connect', {provider: 'metamask'});
+      goToMyAccount();
     }
 
     const showWallets = () => {

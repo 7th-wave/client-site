@@ -60,7 +60,7 @@
             </div>
             <div v-if="buttons" class="mt-5 sm:mt-6 flex flex-wrap justify-center">
               <div v-for="btn in buttons" :key="btn.name" class="px-2">
-                <Button :name="btn.name" @on:submit="btn.action" :btnStyle="btn.btnStyle"  />
+                <Button :name="btn.name" @on:submit="btn.action" :btnStyle="btn.btnStyle">{{btn.name}}</Button>
               </div>
             </div>
           </div>
