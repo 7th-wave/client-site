@@ -336,7 +336,7 @@ export default {
       login.value = true;
       try {
         await store.dispatch('blockchain/new', {type: 'walletconnect'});
-        emit('on:connect', {provider: 'walletconnect'});
+        emit('on:connect', {provider: 'walletconnect', registered: true});
         goToMyAccount();
       } catch(error) {
         console.log(error)
@@ -354,7 +354,7 @@ export default {
 
     const doMetaMaskLogin = async () => {
       await store.dispatch('blockchain/new', {type: 'metamask'});
-      emit('on:connect', {provider: 'metamask'});
+      emit('on:connect', {provider: 'metamask', registered: true});
       goToMyAccount();
     }
 

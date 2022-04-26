@@ -143,7 +143,7 @@ import DropDown from "@/components/Drawers/DropDown.vue";
 import USDC from '../Shared/USDC.vue';
 
 import Tether from '../Shared/Tether.vue';
-import { computed, ref } from '@vue/reactivity';
+import { computed, ref, toRefs } from '@vue/reactivity';
 import axios from 'axios';
 import { onMounted, watch } from '@vue/runtime-core';
 import { useStore } from 'vuex';
@@ -168,7 +168,7 @@ export default {
 
     const store = useStore();
 
-    //const { registered } = toRefs(props);
+    const { registered } = toRefs(props);
 
     const showConfirmation = ref(false);
     const pay = ref(0);
@@ -193,6 +193,15 @@ export default {
 
     const user = computed(() => store.getters['user/getUser']);
 
+
+    watch(registered, (val) => {
+      console.log(val);
+
+      if (val) {
+       validateAndBuy();
+       }
+
+    })
 
     watch(user, (val) => {
       console.log(val)
@@ -223,19 +232,23 @@ export default {
 
     const buy = () => {
        isValid.value = false;
-       console.log(user.value);
-      if (!user.value.dbRef) {
+       console.log('usr registered? ', registered.value);
+      if (!registered.value) {
         emit('on:login');
       } else {
-        const arrValidations = Object.keys(validations.value)
+        validateAndBuy();
+      }
+    }
+
+    const validateAndBuy = () => {
+        isValid.value = false;
+       const arrValidations = Object.keys(validations.value)
         const validationFail = arrValidations.find(ref => validations.value[ref]);
 
         if(!validationFail) {
           isValid.value = true
           showConfirmation.value = true;
         }
-        
-      }
     }
 
     const closeModals = () => {

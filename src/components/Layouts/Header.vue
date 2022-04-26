@@ -169,6 +169,7 @@ export default {
 
     const logout = () => {
       store.dispatch('user/logoutUser');
+      emit('on:logout');
       router.push({path: "/"})
     }
 
