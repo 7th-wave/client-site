@@ -5,7 +5,7 @@
         content ? `${content} | SITE_NAME` : `SITE_NAME`
       }}</template>
     </metainfo>
-    <Header @on:login="showLoginPopUp" />
+    <Header @on:login="showLoginPopUp" @on:logout="logout" />
     <div
       class="body"
       :class="{
@@ -13,7 +13,7 @@
         'bg-gray-100': getRouteName != 'Home' && getRouteName != 'LearnMore',
       }"
     >
-      <router-view @on:login="showLoginPopUp" :register="registrationDone" />
+      <router-view @on:login="showLoginPopUp" :registered="registrationDone" />
       <Modal />
       <toast />
     </div>
@@ -86,9 +86,15 @@ export default {
       
     };
 
+    const logout = () => {
+       registrationDone.value = false;
+    }
+
     const setEvents = async (event) => {
 
-      registrationDone.value = true;
+
+      registrationDone.value = event.registered;
+      
 
       if (event.provider == "metamask") {
         const chainId = await window.ethereum.request({
@@ -156,7 +162,7 @@ export default {
       await store.dispatch('blockchain/getBlockChain');
       //const address = store.getters['blockchain/getCurrentAddress'];
       const provider = store.getters['blockchain/getCurrentProvider'];
-      setEvents({provider});
+      setEvents({provider: provider, registered: false});
     })
 
     return {
@@ -164,6 +170,8 @@ export default {
       closeLoginModal,
       showLogin,
       setEvents,
+      registrationDone,
+      logout,
     };
   },
 };

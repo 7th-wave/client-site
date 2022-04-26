@@ -38,7 +38,7 @@
       </div>
       <!-- right -->
       <div class="w-full col-span-4 lg:col-span-1">
-        <BuyFractionCard @on:login="doLogin" />
+        <BuyFractionCard @on:login="doLogin" :registered="registered" />
       </div>
     </div>
     <div class="px-4 md:hidden">
@@ -144,6 +144,7 @@ export default {
     LineChart,
     FractionTable,
   },
+  props: ['registered'],
   computed: {
     getParams() {
       return this.$route.params.id;
