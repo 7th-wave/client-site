@@ -112,22 +112,28 @@ const actions = {
     }
   },
   
-  async recoverUser({ commit }, payload) {
-    const results = await getUserByAddress(payload.address);
-    if (results.success) {
+  async recoverUser({ commit, dispatch }, payload) {
+    try {
+      const results = await getUserByAddress(payload.address);
       const user = results.doc;
       user.dbRef = results.doc.blockchainAddress;
       console.log('recover user->', user);
       await set("user", JSON.stringify(user));
       commit("setUser", user);
+    } catch(error) {
+      dispatch("saveUser", payload);
     }
   },
   async saveUser({ commit }, payload) {
     const clientRef = payload.address;
     //await db.collection("clients").doc(clientRef).set(payload);
-    await saveUser(payload);
+   
 
-    let user = payload;
+    let user = {
+      blockchainAddress: payload.address,
+      provider: payload.provider
+    };
+    await saveUser(user);
     user.dbRef = clientRef;
     await set("user", JSON.stringify(user));
     commit("setUser", user);
