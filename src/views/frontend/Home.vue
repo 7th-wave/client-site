@@ -355,51 +355,48 @@ import { ref } from "@vue/reactivity";
 const vaults = [
   {
     id: "cvman",
-    name: "The caveman, ca. 2008",
-    token: "CVMAN",
-    creator: "Fine Art",
-    fractions: "100M",
-    available: "49%",
-    valuation: "$10M",
+    name: "The MJ's Shattered Backboard",
+    token: "MJS",
+    creator: "Sneakers",
+    fractions: "1M",
+    available: "30%",
+    valuation: "$1.5M",
     nfts: [
       {
-        name: "caveman",
-        image: "caveman.png",
+        name: "Nft1",
+        image: "03.png",
       },
     ],
   },
   {
     id: "sneakers",
     name: "Rare Sneakers",
-    token: "SNKR",
+    token: "MOON",
     creator: "Sneakers",
     fractions: "1M",
-    available: "49%",
-    valuation: "$5M",
+    available: "30%",
+    valuation: "$2.5M",
     nfts: [
       {
         name: "Nft1",
-        image: "03.png",
+        image: "Waffle_Racing_Flats_1.jpg",
       },
-      {
-        name: "Nft2",
-        image: "01.png",
-      },
+    
     ],
   },
   {
     id: "sneakers",
-    name: "Patek",
-    token: "PATEK",
-    creator: "Watches",
+    name: "The caveman, ca. 2008",
+    token: "CVMAN",
+    creator: "Fine Art",
     fractions: "1M",
     available: "49%",
-    valuation: "$300K",
+    valuation: "$10M",
     nfts: [
       {
         name: "Nft2",
-        image: "patek.jpg",
-      },
+        image: "caveman.png",
+      }
     ],
   },
 ];
