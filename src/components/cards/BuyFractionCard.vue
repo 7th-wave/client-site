@@ -94,9 +94,7 @@
           </div>
         </div>
         <div class="space-y-2 pt-5 flex flex-col items-center">
-          <label for="email" class="block text-sm font-medium text-gray-700">{{
-            getParams == "cvman" ? "CVMAN" : "NIKE"
-          }}</label>
+          <label for="email" class="block text-sm font-medium text-gray-700">{{ ticker }}</label>
           <div class="w-9 h-9 rounded-full overflow-hidden bg-gray-500">
             <img
               class="w-full h-full object-cover"
@@ -129,7 +127,7 @@
     </div>
 
     <ConnectWallet ref="ConnectWallet" @ConfirmOrder="ConfirmOrder" />
-    <ConfirmOrder ref="ConfirmOrder" :show="showConfirmation" :pay="pay" :receive="receive" :payDollar="payDolar" @on:close="closeModals" />
+    <ConfirmOrder ref="ConfirmOrder" :show="showConfirmation" :pay="pay" :receive="receive" :payDollar="payDolar" @on:close="closeModals" :ticker="ticker" />
   </div>
 </template>
 
@@ -162,7 +160,7 @@ export default {
     Tether,
     DAI
   },
-  props: ['registered', 'vault'],
+  props: ['registered', 'vault', 'ticker'],
   emits: ['on:login'],
   setup(props, {emit}) {
 

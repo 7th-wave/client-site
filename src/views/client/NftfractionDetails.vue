@@ -126,43 +126,65 @@ export default {
     },
     getData() {
       if (this.getParams == "cvman") {
-        return this.vaults;
+        return this.vaults[2];
+      } else if (this.getParams == "mjs") {
+         return this.vaults[0];
+      } else {
+         return this.vaults[1];
       }
-      return this.vaults1;
+      
     },
   },
   data() {
     return {
-      vaults: {
-        id: "cvman",
-        name: "The caveman, ca. 2008",
-        token: "SNEAKER",
-        creator: "CVMAN",
-        fractions: "100M",
-        available: "49%",
-        valuation: "$10M",
-        nfts: [
-          {
-            name: "caveman.png",
-            image: "caveman.png",
-          },
-        ],
-      },
-      vaults1: {
-        id: "nike",
-        name: "Nike Waffle Sneakers",
-        token: "NIKE",
-        creator: "NIKE",
-        fractions: "1M",
-        available: "49%",
-        valuation: "$5M",
-        nfts: [
-          {
-            name: "01.png",
-            image: "01.png",
-          },
-        ],
-      },
+      vaults: [
+        {
+          id: "mjs",
+          name: "The MJ's Shattered Backboard",
+          token: "MJS",
+          creator: "Sneakers",
+          fractions: "1M",
+          available: "30%",
+          valuation: "$1.5M",
+          nfts: [
+            {
+              name: "Nft1",
+              image: "03.png",
+            },
+          ],
+        },
+        {
+          id: "moon",
+          name: "Rare Sneakers",
+          token: "MOON",
+          creator: "Sneakers",
+          fractions: "1M",
+          available: "30%",
+          valuation: "$2.5M",
+          nfts: [
+            {
+              name: "Nike Waffle Racing Flat Moon Shoe",
+              image: "Waffle_Racing_Flats_1.jpg",
+            },
+          
+          ],
+        },
+        {
+          id: "cvman",
+          name: "The caveman, ca. 2008",
+          token: "CVMAN",
+          creator: "Fine Art",
+          fractions: "1M",
+          available: "49%",
+          valuation: "$10M",
+          nfts: [
+            {
+              name: "Nft2",
+              image: "caveman.png",
+            }
+          ],
+        },
+      ],
     };
   },
 };
