@@ -16,6 +16,7 @@
     <div class="py-2 px-4">
       <button
         v-if="Vault.selected"
+        @click="toggleItem"
         class="
           text-base
           font-medium font-inter
@@ -30,14 +31,12 @@
       >
         <div class="m-auto flex items-center space-x-3">
           <span>SELECTED</span>
-          <div class="cursor-auto" @click="UnselectItem">
-            <IconClose />
-          </div>
+          
         </div>
       </button>
       <button
         v-else
-        @click="SelectItem"
+        @click="toggleItem"
         class="
           text-base
           font-medium font-inter
@@ -58,12 +57,9 @@
 
 
 <script>
-import IconClose from "../Icons/IconClose.vue";
 
 export default {
-  components: {
-    IconClose,
-  },
+
   props: {
     vault: {
       type: Object,
@@ -80,11 +76,8 @@ export default {
     };
   },
   methods: {
-    UnselectItem() {
-      this.Vault.selected = false;
-    },
-    SelectItem() {
-      this.Vault.selected = true;
+    toggleItem() {
+      this.Vault.selected = !this.Vault.selected;
     },
   },
 };

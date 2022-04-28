@@ -33,7 +33,7 @@
                 </span>
               </span>
             </router-link>
-            <a v-else :href="step.href" class="group">
+            <a v-else :href="step.id == 4 ? step.href : '#'" class="group">
               <span class="absolute top-0 left-0 w-1 h-full bg-transparent group-hover:bg-gray-200 lg:w-full lg:h-1 lg:bottom-0 lg:top-auto" aria-hidden="true" />
               <span :class="[stepIdx !== 0 ? 'lg:pl-9' : '', 'px-6 py-5 flex items-start text-sm font-medium']">
                 <span class="flex-shrink-0">
