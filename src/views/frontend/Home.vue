@@ -354,7 +354,7 @@ import { ref } from "@vue/reactivity";
 
 const vaults = [
   {
-    id: "cvman",
+    id: "mjs",
     name: "The MJ's Shattered Backboard",
     token: "MJS",
     creator: "Sneakers",
@@ -369,7 +369,7 @@ const vaults = [
     ],
   },
   {
-    id: "sneakers",
+    id: "moon",
     name: "Rare Sneakers",
     token: "MOON",
     creator: "Sneakers",
@@ -378,14 +378,14 @@ const vaults = [
     valuation: "$2.5M",
     nfts: [
       {
-        name: "Nft1",
+        name: "Nike Waffle Racing Flat Moon Shoe",
         image: "Waffle_Racing_Flats_1.jpg",
       },
     
     ],
   },
   {
-    id: "sneakers",
+    id: "cvman",
     name: "The caveman, ca. 2008",
     token: "CVMAN",
     creator: "Fine Art",

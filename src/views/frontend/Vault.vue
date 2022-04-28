@@ -5,9 +5,7 @@
     <div class="flex md:pb-14 py-0 sm:py-4 md:pt-4 lg:pt-0 lg:pb-8 text-center">
       <span
         class="m-auto sm:text-4xl text-2xl text-center font-normal font-inter text-black"
-        >{{
-          getParams == "cvman" ? "The caveman, ca. 2008" : "Rare Sneakers"
-        }}</span
+        >{{ vaultName }}</span
       >
     </div>
 
@@ -21,11 +19,9 @@
         class="lg:col-span-3 col-span-4 w-full flex flex-col items-start space-y-5"
       >
         <span class="text-2xl text-black font-inter font-medium"
-          >{{
-          getParams == "cvman" ? "Own a piece of history" : "Get you Nike on"
-        }}</span
+          >{{ slogan }}</span
         >
-        <FractionCard :goDown="true" :goBack="false" />
+        <FractionCard :goDown="true" :goBack="false" :ticker="ticker" />
         <p
           class="text-lg font-normal font-inter text-black bg-white py-3 px-4 shadow-md rounded-md"
         >
@@ -38,7 +34,7 @@
       </div>
       <!-- right -->
       <div class="w-full col-span-4 lg:col-span-1">
-        <BuyFractionCard @on:login="doLogin" :registered="registered" />
+        <BuyFractionCard @on:login="doLogin" :registered="registered" :ticker="ticker" />
       </div>
     </div>
     <div class="px-4 md:hidden">
@@ -89,7 +85,7 @@
     <div class="max-w-7xl mx-auto space-y-4 px-4 pt-8">
       <div>
         <span class="text-2xl text-black font-inter font-medium"
-          >All {{ getParams == "cvman" ? "CVMAN" : "NIKE" }} Vault Assets</span
+          >All {{ ticker }} Vault Assets</span
         >
       </div>
       <div class="grid lg:grid-cols-3 gap-8" id="CategoryCards">
@@ -157,10 +153,41 @@ export default {
     },
     getSlides() {
       if (this.getParams == "cvman") {
-        return this.slide;
+        return this.cvman;
+      } else if (this.getParams == "mjs") {
+        return this.mjs;
+      } else {
+        return this.moon;
       }
-      return this.slides;
+        
     },
+    vaultName() {
+      if (this.getParams == "cvman") {
+        return "The caveman, ca. 2008"
+      } else if (this.getParams == "mjs") {
+        return "MJ's Shattered Backboard";
+      } else {
+        return "Nike Waffle Racing Flat Moon Shoe";
+      }
+    },
+    slogan() {
+      if (this.getParams == "cvman") {
+        return ""
+      } else if (this.getParams == "mjs") {
+        return "The Last Dance";
+      } else {
+        return "A Mad Scientist";
+      }
+    },
+    ticker() {
+      if (this.getParams == "cvman") {
+        return "CVMAN"
+      } else if (this.getParams == "mjs") {
+        return "MJS";
+      } else {
+        return "MOON";
+      }
+    }
   },
   methods: {
     GoToCategory() {
@@ -213,23 +240,22 @@ export default {
           title: "Fine Art ",
         },
       ],
-      slides: [
-        {
-          image: "/images/sneakers/01.png",
-          name: "Books",
-        },
-        {
-          image: "/images/sneakers/02.png",
-          name: "Books",
-        },
+      mjs: [
+      
         {
           image: "/images/sneakers/03.png",
           name: "Books",
         },
       ],
-      slide: [
+      cvman: [
         {
           image: "/images/sneakers/Cave_Man_Banksy.jpg",
+          name: "Books",
+        },
+      ],
+      moon: [
+        {
+          image: "/images/sneakers/Waffle_Racing_Flats_1.jpg",
           name: "Books",
         },
       ],
