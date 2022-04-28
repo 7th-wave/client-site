@@ -614,15 +614,21 @@ const steps = [
     id: "3",
     name: "Fractionalize",
     description: "Penatibus eu quis ante.",
-    href: "#",
+    href: "/fractionalize",
     status: "upcoming",
   },
 ];
 
 export default {
-  setup() {
+  setup(props, {emit}) {
+
+    const fractionalize = () => {
+      //router.push("/fractionalize");
+      emit('fractionalize');
+    }
     return {
       steps,
+      fractionalize
     };
   },
   data() {

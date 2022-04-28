@@ -16,7 +16,7 @@
         >
           <div  v-for="(item, index, key) in FineArt"
             :key="key">
-            <create-nft-button v-if="!index" @click="newVault">
+            <create-nft-button :type="'vault'" v-if="!index" @click="newVault">
               <template #subtitle>
                 <span
                   class="text-sm font-inter font-medium text-primary-500 cursor-pointer"

@@ -209,7 +209,7 @@ export default {
       this.$emit("nextStep");
     },
     Revision() {
-      if (this.url != "") this.$router.push(this.url);
+      this.$router.push('/nft-create/2');
     },
   },
 };
