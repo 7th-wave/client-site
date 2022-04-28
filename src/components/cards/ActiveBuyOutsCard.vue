@@ -3,18 +3,7 @@
     <span class="text-base font-medium text-gray-900">Active Buyouts</span>
     <div class="flex flex-col items-start space-y-1">
       <span class="text-sm text-black font-normal"
-        >As a fraction owner you can set a reserve price to allow an auction to
-        take place</span
-      >
-      <span class="text-sm text-black font-normal"
-        >An auction for this vault is only possible if reserve prices have been
-        set by owners who collectively hold more than 50% of the total fraction
-        supply.</span
-      >
-      <span class="text-sm text-black font-normal"
-        >A reserve price is the minimum price needed for a complete vault
-        buyout. Set a price you'd be willing to sell all the contents of this
-        vault for through an auction.</span
+        >As a fraction owner you can vote to approve buyouts. A 51% approval is needed.</span
       >
     </div>
     <div
@@ -41,16 +30,16 @@
           >Unique Owners</span
         >
         <span class="text-black font-inter text-2xl whitespace-nowrap"
-          >2530
+          >1000
         </span>
       </div>
       <div class="lg:w-40 w-full flex flex-col items-start lg:border-r-2 lg:border-b-0 border-b-2 p-4">
         <span class="text-base text-gray-500 font-inter whitespace-nowrap"
-          >Collectable Supply</span
+          >Buyout Offer</span
         >
         <span class="text-black font-inter text-2xl">49% </span>
         <span class="text-sm text-gray-500 font-inter whitespace-nowrap"
-          >980,000 {{ getParams == "cvman" ? "CVMAN" : "NIKE" }}</span
+          >$2M {{ getParams == "cvman" ? "CVMAN" : "NIKE" }}</span
         >
       </div>
       <div class="w-full flex flex-col items-start lg:border-r-2 p-4">

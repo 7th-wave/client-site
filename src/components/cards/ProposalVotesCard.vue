@@ -3,19 +3,9 @@
     <span class="text-base font-medium text-gray-900">Propoasal Votes</span>
     <div class="flex flex-col items-start space-y-1">
       <span class="text-sm text-black font-normal"
-        >As a fraction owner you can set a reserve price to allow an auction to
-        take place</span
+        >As a fraction owner you can vote to approve buyouts. A 51% approval is needed.</span
       >
-      <span class="text-sm text-black font-normal"
-        >An auction for this vault is only possible if reserve prices have been
-        set by owners who collectively hold more than 50% of the total fraction
-        supply.</span
-      >
-      <span class="text-sm text-black font-normal"
-        >A reserve price is the minimum price needed for a complete vault
-        buyout. Set a price you'd be willing to sell all the contents of this
-        vault for through an auction.</span
-      >
+      
     </div>
     <div
       class="w-full border-2 rounded-md flex lg:flex-row flex-col lg:border-r-0"
