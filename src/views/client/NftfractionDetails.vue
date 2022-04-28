@@ -79,6 +79,8 @@
           "
         >
           <CardTrade />
+          <active-buy-outs-card />
+          <proposal-votes-card />
           <CardVaultDao />
           <FractionCard
             :goDown="false"
@@ -103,6 +105,8 @@ import CardTrade from "@/components/cards/CardTrade.vue";
 import CardVaultDao from "@/components/cards/CardVaultDao.vue";
 import VaultItem from "@/components/Shared/VaultItem.vue";
 import AccountLayout from "../../components/Layouts/AccountLayout.vue";
+import ProposalVotesCard from '../../components/cards/ProposalVotesCard.vue';
+import ActiveBuyOutsCard from '../../components/cards/ActiveBuyOutsCard.vue';
 // @ is an alias to /src
 export default {
   components: {
@@ -113,6 +117,8 @@ export default {
     CardTrade,
     CardVaultDao,
     AccountLayout,
+    ProposalVotesCard,
+    ActiveBuyOutsCard,
   },
   computed: {
     getParams() {
