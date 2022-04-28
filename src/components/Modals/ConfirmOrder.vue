@@ -100,7 +100,7 @@
                 >YOU RECEIVE</span
               >
               <span class="text-sm font-inter text-black font-normal"
-                > {{ receive }} <span class="font-semibold">{{this.getParams == 'cvman' ? 'CVMAN' : 'NIKE'}}</span></span
+                > {{ receive }} <span class="font-semibold">{{ ticker }}</span></span
               >
               <div class="w-full flex flex-col items-start space-y-3">
                 <div class="flex items-center space-x-2 w-full">
@@ -181,7 +181,7 @@ export default {
     TransitionRoot,
     XIcon,
   },
-  props: ['show', 'pay', 'payDollar', 'receive'],
+  props: ['show', 'pay', 'payDollar', 'receive', 'ticker'],
   setup(props) {
     const {show} = toRefs(props);
     const open = ref(false);
@@ -216,7 +216,7 @@ export default {
       Confirm(){
          this.open = false;
          this.$store.commit('user/changeType', 'Buyer')
-        this.$router.push({name:'My_fractions_details',params:{id:'cvman'}});
+        this.$router.push({name:'My_fractions_details',params:{id: this.ticker.toLowerCase()}});
         
       }
   }

@@ -20,7 +20,7 @@
               name: 'My_fractions_details',
               params: { id: item.id },
             }"
-            v-for="(item, index, key) in FineArt"
+            v-for="(item, index, key) in vaults"
             :key="key"
             :vault="item"
             bg="bg-white"
@@ -98,35 +98,51 @@ export default {
   },
   data() {
     return {
-      FineArt: [
+      vaults: [
         {
-          id: "cvman",
-          name: "The caveman, ca. 2008",
-          token: "SNEAKER",
-          creator: "caveman",
-          fractions: "100M",
-          available: "49%",
-          valuation: "$10M",
+          id: "mjs",
+          name: "The MJ's Shattered Backboard",
+          token: "MJS",
+          creator: "Sneakers",
+          fractions: "1M",
+          available: "30%",
+          valuation: "$1.5M",
           nfts: [
             {
               name: "Nft1",
-              image: "caveman.png",
+              image: "03.png",
             },
           ],
         },
         {
-          id: "Nike",
-          name: "Nike Waffle Sneakers",
-          token: "Sneakers Collection",
-          creator: "Sneakers Collection",
+          id: "moon",
+          name: "Rare Sneakers",
+          token: "MOON",
+          creator: "Sneakers",
           fractions: "1M",
-          available: "49%",
-          valuation: "$5M",
+          available: "30%",
+          valuation: "$2.5M",
           nfts: [
             {
-              name: "Nft1",
-              image: "01.png",
+              name: "Nike Waffle Racing Flat Moon Shoe",
+              image: "Waffle_Racing_Flats_1.jpg",
             },
+          
+          ],
+        },
+        {
+          id: "cvman",
+          name: "The caveman, ca. 2008",
+          token: "CVMAN",
+          creator: "Fine Art",
+          fractions: "1M",
+          available: "49%",
+          valuation: "$10M",
+          nfts: [
+            {
+              name: "Nft2",
+              image: "caveman.png",
+            }
           ],
         },
       ],
