@@ -10,7 +10,6 @@
           <div class="mt-1">
             <input
               v-model="form.title"
-              placeholder="Cuco"
               type="text"
               name="Title"
               id="Title"
