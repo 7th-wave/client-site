@@ -33,7 +33,7 @@
             </svg>
           </div>
           <span class="text-sm font-medium font-inter text-gray-900 text-center"
-            >CVMAN</span
+            >{{ticker}}</span
           >
         </div>
 
@@ -232,6 +232,10 @@ export default {
       default:"text-primary-500"
     },
     url:{
+      type:String,
+      default:""
+    },
+    ticker: {
       type:String,
       default:""
     }

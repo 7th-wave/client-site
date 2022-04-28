@@ -105,8 +105,8 @@
 
       <div
         v-else
-        class="lg:w-96 w-full m-auto bg-blue-400 bg-opacity-30 relative"
-        style="height: 660px"
+        class="w-1/2 m-auto bg-blue-400 bg-opacity-30 relative"
+        style="max-height: 660px"
       >
         <LightBox
           :images="slides[0].image"
@@ -114,7 +114,7 @@
           @on:close="visibleLightBox = false"
           v-if="slides.length"
         />
-        <img class="w-full h-full object-cover" @click="showModal" :src="slides[0].image" alt="" />
+        <img class="w-full " @click="showModal" :src="slides[0].image" alt="" />
       </div>
     </div>
   </div>
