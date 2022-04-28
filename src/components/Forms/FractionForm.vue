@@ -25,7 +25,7 @@
                       border-gray-300
                       rounded-md
                     "
-                    placeholder="Banksy’s Caveman"
+                    
                   />
                 </div>
                 <div class="pt-1">
@@ -93,7 +93,6 @@
                       border-gray-300
                       rounded-md
                     "
-                    placeholder="100,000,000"
                   />
                 </div>
                 <span
@@ -141,7 +140,6 @@
                       sm:text-sm
                       border-gray-300
                     "
-                    placeholder="10,000,000"
                   />
                 </div>
                 <span
@@ -171,7 +169,6 @@
                       border-gray-300
                       rounded-md
                     "
-                    placeholder="NIKE"
                   />
                 </div>
                 <span
@@ -218,7 +215,6 @@
                       sm:text-sm
                       border-gray-300
                     "
-                    placeholder="5"
                   />
                 </div>
                 <span
@@ -301,7 +297,6 @@
                       sm:text-sm
                       border-gray-300
                     "
-                    placeholder="51"
                   />
                 </div>
                 <div class="text-sm font-normal text-gray-500">
@@ -351,7 +346,6 @@
                       sm:text-sm
                       border-gray-300
                     "
-                    placeholder="3"
                   />
                 </div>
                 <div class="text-sm font-normal text-gray-500">
@@ -365,10 +359,10 @@
               </div>
             </div>
             <div class="w-full bg-gray-300 h-px"></div>
-            <div class="flex w-full py-4">
+            <div class="w-full py-4">
               <div
                 class="m-auto"
-                :class="{ 'grid 2xl:grid-cols-1 lg:grid-cols-1 md:grid-cols-1  sm:grid-cols-3  gap-2': selectedVaults.length > 1 }"
+                :class="{ 'grid  sm:grid-cols-2  gap-4': selectedVaults.length > 1 }"
               >
                 <div
                   class="relative w-28 h-28"

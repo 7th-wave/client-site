@@ -16,7 +16,7 @@
           <Step1 v-if="step == 1" @nextStep="nextStep" />
           <Step2 v-if="step == 2" @nextStep="nextStep" />
           <Step3 v-if="step == 3" :isminted="minted" />
-          <Step4   v-if="step == 4" />
+          <Step4 v-if="step == 4" @fractionalize="fractionalize" />
         </div>
       </div>
       <div class="space-y-2" v-if="step != 1 & step != 2">
@@ -70,6 +70,11 @@ export default {
     },
     nextStep(){
       this.step++
+    }
+  },
+  mounted() {
+    if (this.$route.params.step) {
+      this.step = this.$route.params.step;
     }
   },
   created() {
