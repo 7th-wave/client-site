@@ -41,10 +41,13 @@ export default {
 
     function defineSizeClass(size) {
       switch (size) {
-        case 'medium':
-          return 'px-4 py-2 text-sm leading-6 font-medium';
+
+        case 'xlarge':
+          return 'text-xl leading-8 font-bold px-8 py-6';
         case 'large':
           return 'text-lg leading-7 font-bold px-6 py-4';
+        case 'medium':
+          return 'px-5 py-3 text-md leading-6 font-medium';
         case 'small':
           return 'px-3 py-2 text-sm leading-4 font-medium';
         case 'tiny':
