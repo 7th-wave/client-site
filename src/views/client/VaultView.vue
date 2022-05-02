@@ -2,7 +2,7 @@
   <account-layout>
    
     <div class="py-0 sm:py-4 md:pb-8 md:pt-4 lg:pt-0 lg:pb-8 text-center">
-      <h1 class="sm:text-4xl text-2xl font-medium">The caveman, ca. 2008</h1>
+      <h1 class="sm:text-4xl text-2xl font-medium">{{ vault.name }}</h1>
     </div>
     <div class="w-full font-inter grid lg:grid-cols-5 gap-5">
       <div
@@ -167,6 +167,7 @@ import AccountLayout from '@/components/Layouts/AccountLayout.vue';
 
 
 export default {
+  props: ['vault'],
   setup() {
     return {};
   },
