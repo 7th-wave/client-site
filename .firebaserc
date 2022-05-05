@@ -6,7 +6,7 @@
     "numbusfrac": {
       "hosting": {
         "prod": [
-          "fractional"
+          "jupiter-exchange"
         ],
         "dev": [
           "numbusfrac"
