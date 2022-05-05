@@ -5,7 +5,7 @@
     </div>
     <div class="py-0 sm:py-4 md:pb-8 md:pt-4 lg:pt-0 lg:pb-8 text-center">
       <h1 class="sm:text-4xl text-2xl font-medium">
-        Your {{ getParams == "cvman" ? "CVMAN" : "NIKE" }} Fractions
+        Your {{ ticker }} Fractions
       </h1>
     </div>
     <div>
@@ -78,7 +78,7 @@
             w-full
           "
         >
-          <CardTrade />
+          <CardTrade :ticker="ticker" />
           <active-buy-outs-card />
           <proposal-votes-card />
           <CardVaultDao />
@@ -131,6 +131,16 @@ export default {
          return this.vaults[0];
       } else {
          return this.vaults[1];
+      }
+      
+    },
+    ticker() {
+      if (this.getParams == "cvman") {
+        return 'CVMAN';
+      } else if (this.getParams == "mjs") {
+         return 'MJS';
+      } else {
+         return 'MOON';
       }
       
     },
