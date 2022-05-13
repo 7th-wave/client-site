@@ -364,7 +364,7 @@
                 <div class="mt-1 flex items-center space-x-2">
                   <div class="flex items-center">
                     <input
-                      v-model="form.Crypto_wallet"
+                      v-model="form.hasWallet"
                       id="walletYes"
                       name="wallet"
                       type="radio"
@@ -386,7 +386,7 @@
                   </div>
                   <div class="flex items-center">
                     <input
-                      v-model="form.Crypto_wallet"
+                      v-model="form.hasWallet"
                       id="walletNO"
                       name="wallet"
                       type="radio"
@@ -409,7 +409,7 @@
                 </div>
                 <div class="pt-1">
                   <span
-                    v-if="errors.Crypto_wallet"
+                    v-if="errors.hasWallet"
                     class="text-red-600 font-inter text-sm font-normal"
                     >{{ errors.Phone }}</span
                   >
@@ -425,7 +425,7 @@
                 <div class="mt-1 flex items-center space-x-2">
                   <div class="flex items-center">
                     <input
-                      v-model="form.Trading"
+                      v-model="form.knowsTrading"
                       id="tradingYes"
                       name="trading"
                       type="radio"
@@ -447,7 +447,7 @@
                   </div>
                   <div class="flex items-center">
                     <input
-                      v-model="form.Trading"
+                      v-model="form.knowsTrading"
                       id="tradingNO"
                       name="trading"
                       type="radio"
@@ -470,9 +470,9 @@
                 </div>
                 <div class="pt-1">
                   <span
-                    v-if="errors.Trading"
+                    v-if="errors.knowsTrading"
                     class="text-red-600 font-inter text-sm font-normal"
-                    >{{ errors.Trading }}</span
+                    >{{ errors.knowsTrading }}</span
                   >
                 </div>
               </div>
@@ -802,8 +802,8 @@ export default {
         Country: "",
         City: "",
         State: "",
-        Crypto_wallet: "",
-        Trading: "",
+        hasWallet: "",
+        knowsTrading: "",
       },
       form: {
         First_name: "",
@@ -814,8 +814,8 @@ export default {
         Country: "",
         City: "",
         State: "",
-        Crypto_wallet: "",
-        Trading: "",
+        hasWallet: "",
+        knowsTrading: "",
         assets: [],
       },
     };
@@ -846,8 +846,8 @@ export default {
         Country: "",
         City: "",
         State: "",
-        Crypto_wallet: "",
-        Trading: "",
+        hasWallet: "",
+        knowsTrading: "",
       };
     },
 
@@ -886,12 +886,12 @@ export default {
         this.errors.State = "State is required";
         formIsValid = false;
       }
-      if (this.form.Crypto_wallet == "") {
-        this.errors.Crypto_wallet = "Crypto wallet is required";
+      if (this.form.hasWallet == "") {
+        this.errors.hasWallet = "Crypto wallet is required";
         formIsValid = false;
       }
-      if (this.form.Trading == "") {
-        this.errors.Trading = "Trading is required";
+      if (this.form.knowsTrading == "") {
+        this.errors.knowsTrading = "knowsTrading is required";
         formIsValid = false;
       }
 

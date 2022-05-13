@@ -20,7 +20,7 @@
               <template #subtitle>
                 <span
                   class="text-sm font-inter font-medium text-primary-500 cursor-pointer"
-                  >{{ nfts.length }} NFTs</span
+                  >{{ nfts.length - 1 }} NFTs</span
                 >
               </template>
               <template #title>
@@ -91,6 +91,7 @@ import { useRouter } from 'vue-router';
 import { useStore } from 'vuex';
 import { computed, ref } from '@vue/reactivity';
 import { onMounted } from '@vue/runtime-core';
+import { getUserNfts } from '../../firebase/nfts';
 // import GalleryClient from "@/components/Gallery/GalleryClient.vue";
 // import { ref, computed } from "vue";
 // import { useStore } from "vuex";
@@ -111,28 +112,7 @@ export default {
     const nfts = ref([
         {
          id: 0
-        },
-        {
-          id: "1",
-          name: "The caveman, ca. 2008",
-          image: "/images/sneakers/caveman.png",
-          title: "Fine Art Collection",
-          badge: "NIKE",
-        },
-        {
-          id: "2",
-          name: "SneakRs",
-          image: "/images/sneakers/01.png",
-          title: "Sneakers Collection",
-          badge: "NIKE",
-        },
-        {
-          id: "3",
-          name: "Nike Waffle Sneakers",
-          image: "/images/sneakers/06.png",
-          title: "Sneakers Collection",
-          badge: "NIKE",
-        },
+        }
       ]);
     
 
@@ -150,23 +130,12 @@ export default {
 
     const getData = async () => {
 
-      //const client = await getClientByBlockChain(currentAddress.value);
-      //console.log(client)
-
-      //artworks.value = client.data.nfts;
-      // await db
-      //   .collection("clients")
-      //   .where("metamask", "==", store.state.blockchain.currentAddress)
-      //   .get()
-      //   .then((querySnapshot) => {
-      //     querySnapshot.forEach((doc) => {
-      //       // doc.data() is never undefined for query doc snapshots
-
-      //       artworks.value = doc.data().nfts;
-      //     });
-      //   });
-
       const bc = store.getters['blockchain/getCurrentAddress'];
+
+
+      const localnfts = await getUserNfts(bc);
+      nfts.value = [...nfts.value, ...localnfts];
+
 
       const testnetNFTs = await moralisInstance.Web3API.account.getNFTs({ chain: "rinkeby", address: bc });
       const results = testnetNFTs.result;
@@ -185,7 +154,7 @@ export default {
 
             return nft;
           }
-      })  
+      }) 
     };
 
     const goDetails = (id) => {
@@ -198,7 +167,7 @@ export default {
     }
 
     onMounted(async () => {
-      //await getData();
+      await getData();
     });
 
     return {
