@@ -14,13 +14,13 @@
         <div
           class="mt-5 md:mt-0 lg:col-span-5 grid md:grid-cols-2 grid-cols-1 gap-4 w-full"
         >
-          <div  v-for="(item, index, key) in FineArt"
+          <div  v-for="(item, index, key) in vaults"
             :key="key">
             <create-nft-button :type="'vault'" v-if="!index" @click="newVault">
               <template #subtitle>
                 <span
                   class="text-sm font-inter font-medium text-primary-500 cursor-pointer"
-                  >{{ FineArt.length }} Vaults</span
+                  >{{ vaults.length }} Vaults</span
                 >
               </template>
               <template #title>
@@ -110,7 +110,7 @@ export default {
   },
   data() {
     return {
-      FineArt: [
+      vaults: [
         {
          id: 0
         },

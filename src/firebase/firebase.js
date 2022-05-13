@@ -96,6 +96,11 @@ const getUserByAddress = async(address) => {
     return result.data;
 }
 
+const getVaults = async(address) => {
+    const result = await axios.get(app_url+'find_client?ref='+address);
+    return result.data;
+}
+
 
 export {
     db,
@@ -106,5 +111,6 @@ export {
     getClientByBlockChain,
     getLastBid,
     saveUser,
-    getUserByAddress
+    getUserByAddress,
+    getVaults
 };
