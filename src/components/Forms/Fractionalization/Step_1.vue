@@ -10,7 +10,7 @@
         </div> -->
         <div class=" flex  w-full  max-w-full overflow-x-auto space-x-4 md:space-x-0 md:max-w-none md:overflow-x-hidden md:w-2/3 md:pr-4 md:grid md:grid-cols-2 md:gap-2">
           <div v-for="(item,index,key) in nfts" :key="key" class="w-full">
-            <nfts   :Cardwidth="'w-72 md:w-full'"  :vault="item"></nfts>
+            <nfts :Cardwidth="'w-72 md:w-full'"  :vault="item"></nfts>
           </div>
         </div>
         <div class="md:w-1/3 w-full">
