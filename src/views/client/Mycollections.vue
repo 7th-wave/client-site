@@ -86,7 +86,7 @@ import Navbar from "@/components/Layouts/Navbar.vue";
 import NftCard from "@/components/cards/NftCard.vue";
 import AccountLayout from '@/components/Layouts/AccountLayout.vue';
 import CreateNftButton from '@/components/cards/CreateNftButton.vue';
-//import MoralisFactory from '../../moralis';
+import MoralisFactory from '../../moralis';
 import { useRouter } from 'vue-router';
 import { useStore } from 'vuex';
 import { computed, ref } from '@vue/reactivity';
@@ -118,7 +118,7 @@ export default {
 
     const store = useStore();
     const router = useRouter();
-    //const moralisInstance = MoralisFactory.getInstance();
+    const moralisInstance = MoralisFactory.getInstance();
 
     const addNft = () => {
       router.push('/nft-create');
@@ -137,11 +137,11 @@ export default {
       nfts.value = [...nfts.value, ...localnfts];
 
 
-      //const testnetNFTs = await moralisInstance.Web3API.account.getNFTs({ chain: "rinkeby", address: bc });
-      //const results = testnetNFTs.result;
+      const testnetNFTs = await moralisInstance.Web3API.account.getNFTs({ chain: "rinkeby", address: bc });
+      const results = testnetNFTs.result;
 
 
-      /* nfts.value = results.map(item => {
+      nfts.value = results.map(item => {
           const metadata = JSON.parse(item.metadata);
           if (metadata) {
             const nft = {
@@ -154,7 +154,7 @@ export default {
 
             return nft;
           }
-      })   */
+      }) 
     };
 
     const goDetails = (id) => {
