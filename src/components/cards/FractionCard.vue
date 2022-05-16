@@ -1,5 +1,5 @@
 <template>
-  <div class="w-full bg-white p-4 shadow-md rounded-md space-y-4">
+  <div class="w-full bg-white p-4 shadow-md rounded-md space-y-4" v-if="localVault">
     <div class="w-full flex sm:flex-row flex-col space-y-2 sm:space-y-0 justify-between items-start sm:items-center">
       <div class="flex sm:items-center items-start sm:flex-row sm:space-y-0 flex-col space-y-2 sm:space-x-2">
         <div
@@ -33,16 +33,12 @@
             </svg>
           </div>
           <span class="text-sm font-medium font-inter text-gray-900 text-center"
-            >{{ticker}}</span
+            >{{ localVault.ticker }}</span
           >
         </div>
 
         <span class="text-xl font-inter font-medium text-gray-900">
-          {{
-            getParams == "cvman"
-              ? "The caveman, ca. 2008 Collection CVMAN Fraction Data"
-              : "Nike Collection NIKE Fraction Data"
-          }}</span
+          {{ localVault.name }} Fraction Data</span
         >
       </div>
       <div
@@ -91,10 +87,10 @@
     >
       <div class="lg:w-28 w-full flex flex-col items-start lg:border-r-2 lg:border-b-0 border-b-2 p-4">
         <span class="text-base text-gray-500 font-inter whitespace-nowrap">{{
-          getParams == "cvman" ? "NFT" : "NFTs"
+          localVault.nfts.length == 1 ? "NFT" : "NFTs"
         }}</span>
         <span class="text-black font-inter text-2xl">
-          {{ getParams == "cvman" ? "1" : "6" }}
+          {{ localVault.nfts.length }}
         </span>
       </div>
       <div class="lg:w-28 w-full flex flex-col items-start lg:border-r-2 lg:border-b-0 border-b-2  p-4">
@@ -102,7 +98,7 @@
           >Fractions</span
         >
         <span class="text-black font-inter text-2xl"
-          >{{ getParams == "cvman" ? "100M" : "2M" }}
+          >{{ localVault.supply }}
         </span>
       </div>
       <div class="lg:w-40 w-full flex flex-col items-start lg:border-r-2 lg:border-b-0 border-b-2 p-4">
@@ -110,16 +106,16 @@
           >Unique Owners</span
         >
         <span class="text-black font-inter text-2xl whitespace-nowrap"
-          >2530
+          >{{ localVault.owners ? localVault.owners.length : 0 }}
         </span>
       </div>
       <div class="lg:w-40 w-full flex flex-col items-start lg:border-r-2 lg:border-b-0 border-b-2 p-4">
         <span class="text-base text-gray-500 font-inter whitespace-nowrap"
           >Collectable Supply</span
         >
-        <span class="text-black font-inter text-2xl">49% </span>
+        <span class="text-black font-inter text-2xl">{{ collectableSupply.precentage }} </span>
         <span class="text-sm text-gray-500 font-inter whitespace-nowrap"
-          >980,000 {{ getParams == "cvman" ? "CVMAN" : "NIKE" }}</span
+          >{{ collectableSupply.tokens }} {{ vault.ticker }}</span
         >
       </div>
       <div class="w-full flex flex-col items-start lg:border-r-2 p-4">
@@ -127,10 +123,10 @@
           >Implied Vault Valuation</span
         >
         <span class="text-black font-inter text-2xl whitespace-nowrap">
-          {{ getParams == "cvman" ? "≈ $ 10,000,000.00" : "≈ $ 2,000,000.00" }}
+          ≈ {{ impliedValuation }}
         </span>
         <span class="text-sm text-gray-500 font-inter whitespace-nowrap"
-          >≈ $1 / {{ getParams == "cvman" ? "CVMAN" : "NIKE" }}</span
+          >≈ {{ tokenValue }} / {{ vault.ticker }}</span
         >
       </div>
     </div>
@@ -183,7 +179,7 @@
 
 <script>
 import { ArrowDownIcon } from "@heroicons/vue/solid";
-import { computed } from "vue";
+import { computed, toRefs, watch, ref } from "vue";
 import { useRoute, useRouter } from "vue-router";
 export default {
  
@@ -191,19 +187,59 @@ export default {
     const route = useRoute();
     const getParams = computed(() => route.params.id);
     const router = useRouter();
+    
+    const { vault } = toRefs(props);
+    
+    const localVault = ref(vault);
+
+    const collectableSupply = computed(() => {
+      const remainder = 100 -(parseInt(localVault.value.jx_fractions) + parseInt(localVault.value.asset_owner_fractions));
+      const cs = localVault.value ? (localVault.value.supply * remainder)/100 : 0;
+      return {tokens: cs, precentage: remainder+'%'};
+    })
+
+    const impliedValuation = computed(() => {
+      const iv = localVault.value ? localVault.value.supply * localVault.value.max_fractions : 0;
+      const formatter = new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+
+      // These options are needed to round to whole numbers if that's what you want.
+      //minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
+      //maximumFractionDigits: 0, // (causes 2500.99 to be printed as $2,501)
+    });
+
+      return formatter.format(iv);
+    });
+
+    const tokenValue = computed(() => {
+      const iv = localVault.value ? localVault.value.max_fractions : 0;
+      const formatter = new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+
+      // These options are needed to round to whole numbers if that's what you want.
+      //minimumFractionDigits: 0, // (this suffices for whole numbers, but will print 2500.10 as $2,500.1)
+      //maximumFractionDigits: 0, // (causes 2500.99 to be printed as $2,501)
+    });
+
+      return formatter.format(iv);
+    })
+
+
     function gotoVaults() {
     //scroll down to element with id #vaults
       window.scrollTo({
         top: document.getElementById("CategoryCards").offsetTop,
         behavior: "smooth"
       }); 
-
-      
-
-
-
-     
     }
+
+    watch(vault, (value) => {
+      console.log(vault)
+      localVault.value = value;
+    })
+
     function Back(){
       if(props.url != ""){
         router.push(props.url);
@@ -216,6 +252,10 @@ export default {
       gotoVaults,
       getParams,
       Back,
+      localVault,
+      collectableSupply,
+      impliedValuation,
+      tokenValue
     };
   },
   props: {
@@ -238,6 +278,9 @@ export default {
     ticker: {
       type:String,
       default:""
+    },
+    vault: {
+      type: Object
     }
   },
   components: { ArrowDownIcon },

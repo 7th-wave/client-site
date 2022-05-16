@@ -1,5 +1,7 @@
 import axios from "axios";
 
-export default axios.create({
-  baseURL: "https://us-central1-gallery-on-greene.cloudfunctions.net/api",
+const api = axios.create({
+  baseURL: process.env.VUE_APP_FUNCTIONS_URL,
 });
+
+export default api;

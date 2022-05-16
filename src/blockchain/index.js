@@ -2,9 +2,12 @@
 import axios from "axios";
 import Web3 from "web3";
 //import { ethers } from "ethers";
-import GOGAuctionV2 from "../contracts/GOGAuctionV2.json";
-import GOGERC721 from "../contracts/GOGERC721.json";
+import JERC721 from "../contracts/JERC721.json";
 import USDCAbi from "../contracts/USDCAbi.json";
+//import Vault from "../contracts/Vault.json";
+//import VaultFactory from "../contracts/VaultFactory.json";
+import BasketFactory from "../contracts/JERC72BasketFactory.json";
+
 
 const addresses = {
   ropsten: {
@@ -21,6 +24,9 @@ const addresses = {
     auction: "0xE1133Ff991392Af52025eD60a99f258A71054F47",
     ERC721: "0x2Ed3125f1832BeEDEE38adE6541F93217bbdC29f",
     USDC: "0x4dbcdf9b62e891a7cec5a2568c3f4faf9e8abe2b",
+    vaultFactory: "0x458556c097251f52ca89cB81316B4113aC734BD1",
+    settings: "0x1C0857f8642D704ecB213A752A3f68E51913A779",
+    basketFactory: "0xee727b734aC43fc391b67caFd18e5DD4Dc939668"
   },
   mainnet: {
     auction: "0xE1133Ff991392Af52025eD60a99f258A71054F47",
@@ -93,25 +99,10 @@ const addOperatorERC721 = async (account) => {
   window.web3 = new Web3(window.ethereum);
   // Create contract object
   const tokenContractERC721 = new window.web3.eth.Contract(
-    GOGERC721.abi,
+    JERC721,
     addresses[currNetwork].ERC721
   );
   const receipt = await tokenContractERC721.methods
-    .addOperator(account)
-    .send({ from: accounts.result[0] });
-
-  return receipt;
-};
-
-const addOperatorGOGAuction = async (account) => {
-  const accounts = await window.ethereum.send("eth_requestAccounts");
-  window.web3 = new Web3(window.ethereum);
-  // Create contract object
-  const auctionContract = new window.web3.eth.Contract(
-    GOGAuctionV2.abi,
-    addresses[currNetwork].auction
-  );
-  const receipt = await auctionContract.methods
     .addOperator(account)
     .send({ from: accounts.result[0] });
 
@@ -124,7 +115,7 @@ const mintNft = async (metadataUri) => {
   console.log(metadataUri);
   // Create contract object
   const tokenContractERC721 = new window.web3.eth.Contract(
-    GOGERC721.abi,
+    JERC721,
     addresses[currNetwork].ERC721
   );
   const receipt = await tokenContractERC721.methods
@@ -134,172 +125,37 @@ const mintNft = async (metadataUri) => {
   return receipt;
 };
 
-const cancelAuction = async (id) => {
-  try {
-    const accounts = await window.ethereum.send("eth_requestAccounts");
-    window.web3 = new Web3(window.ethereum);
-    // Create contract object
-    const auctionContract = new window.web3.eth.Contract(
-      GOGAuctionV2.abi,
-      addresses[currNetwork].auction
-    );
-
-    const receipt = await auctionContract.methods
-      .auctionCancel(id)
-      .send({ from: accounts.result[0] });
-
-    return receipt;
-  } catch (error) {
-    return error.message;
-  }
-};
-
-const toggleAuction = async (id) => {
+const mintBasket = async () => {
   const accounts = await window.ethereum.send("eth_requestAccounts");
   window.web3 = new Web3(window.ethereum);
   // Create contract object
-  const auctionContract = new window.web3.eth.Contract(
-    GOGAuctionV2.abi,
-    addresses[currNetwork].auction
+  const basketFactoryContract = new window.web3.eth.Contract(
+    BasketFactory,
+    addresses[currNetwork].basketFactory
   );
-  let receipt;
-  receipt = await auctionContract.methods
-      .toggleAuction(id)
-      .send({ from: accounts.result[0] });
+  const receipt = await basketFactoryContract.methods
+    .createBasket()
+    .send({ from: accounts.result[0] });
 
   return receipt;
 };
 
-const endAuction = async (id) => {
+const approveBasket = async (basketaddress) => {
   const accounts = await window.ethereum.send("eth_requestAccounts");
   window.web3 = new Web3(window.ethereum);
-  const auctionContract = new window.web3.eth.Contract(
-    GOGAuctionV2.abi,
-    addresses[currNetwork].auction
+  // Create contract object
+  const basketContract = new window.web3.eth.Contract(
+    JERC721,
+    basketaddress
   );
-  let receipt;
-  receipt = await auctionContract.methods
-      .auctionEnd(id)
-      .send({ from: accounts.result[0] });
+  const receipt = await basketContract.methods
+    .setApprovalForAll(addresses[currNetwork].vaultFactory)
+    .send({ from: accounts.result[0] });
 
   return receipt;
 };
 
-const withdraw = async (id) => {
-  const accounts = await window.ethereum.send("eth_requestAccounts");
-  window.web3 = new Web3(window.ethereum);
-  const auctionContract = new window.web3.eth.Contract(
-    GOGAuctionV2.abi,
-    addresses[currNetwork].auction
-  );
-  let receipt;
-  receipt = await auctionContract.methods
-      .withdraw(id)
-      .send({ from: accounts.result[0] });
 
-  return receipt;
-};
-
-const createAuction = async (auctionId, time, artwork_id, minimumBid, artist_address, isEth) => {
-  try {
-    const accounts = await window.ethereum.send("eth_requestAccounts");
-    window.web3 = new Web3(window.ethereum);
-    // Create contract object
-    const auctionContract = new window.web3.eth.Contract(
-      GOGAuctionV2.abi,
-      addresses[currNetwork].auction
-    );
-
-    let receipt;
-
-    if (!isEth) {
-      receipt = await auctionContract.methods
-        .createAuction(
-          auctionId,
-          time,
-          artwork_id,
-          minimumBid * decimals,
-          0,
-          addresses[currNetwork].ERC721,
-          addresses[currNetwork].USDC,
-          artist_address
-        )
-        .send({ from: accounts.result[0] });
-
-      return receipt;
-    } else {
-
-      receipt = await auctionContract.methods
-        .createAuctionEth(
-          auctionId,
-          time,
-          artwork_id,
-          minimumBid * decimals,
-          addresses[currNetwork].ERC721,
-          addresses[currNetwork].USDC,
-          artist_address
-        )
-        .send({ from: accounts.result[0] });
-
-    }
-  } catch (error) {
-    throw error.message;
-  } 
-};
-
-const bid = async (auctionId, value, address, instance, provider) => {
-  window.web3 = setWeb3(instance, provider);
-
-  console.log(auctionId);
-  // Create contract object
-  const tokenContractERCAuction = new window.web3.eth.Contract(
-    GOGAuctionV2.abi,
-    addresses[currNetwork].auction
-  );
-  //var block = await window.web3.eth.getBlock("latest");
-
-  return new Promise((resolve, reject) => {
-    tokenContractERCAuction.methods
-    .bid(auctionId, value * decimals)
-    .send({ from: address })
-    .once("transactionHash", (hash) => {
-      resolve({ transactionHash: hash, status: "pending" });
-    })
-    .once("error", (error, receipt) => {
-      reject({ error: error, receipt: receipt })
-    });
-  })
-  
-
-  // return receipt;
-};
-
-const offer = async (auctionId, value, address, instance, provider) => {
-  window.web3 = setWeb3(instance, provider);
-
-  console.log(auctionId);
-  // Create contract object
-  const tokenContractERCAuction = new window.web3.eth.Contract(
-    GOGAuctionV2.abi,
-    addresses[currNetwork].auction
-  );
-  //var block = await window.web3.eth.getBlock("latest");
-
-  return new Promise((resolve, reject) => {
-    tokenContractERCAuction.methods
-    .bid(auctionId, value * decimals)
-    .send({ from: address })
-    .once("transactionHash", (hash) => {
-      resolve({ transactionHash: hash, status: "pending" });
-    })
-    .once("error", (error, receipt) => {
-      reject({ error: error, receipt: receipt })
-    });
-  })
-  
-
-  // return receipt;
-};
 
 const tokenAllowance = async (amount, address, instance, provider) => {
   // const accounts = await window.ethereum.send("eth_requestAccounts");
@@ -355,17 +211,11 @@ export {
   pinFile,
   pinJson,
   addOperatorERC721,
-  addOperatorGOGAuction,
   mintNft,
   getTxReceipt,
-  createAuction,
-  cancelAuction,
-  endAuction,
-  bid,
-  toggleAuction,
   tokenAllowance,
   getDecimal,
   checkBalance,
-  withdraw,
-  offer
+  mintBasket,
+  approveBasket
 };

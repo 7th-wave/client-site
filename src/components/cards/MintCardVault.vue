@@ -179,6 +179,7 @@
 
 
 <script>
+import { useRouter } from "vue-router";
 import ItrIcon from "../Icons/ItrIcon.vue";
 // import IconChevron from "../Icons/IconChevron .vue";
 
@@ -200,16 +201,26 @@ export default {
     ItrIcon,
     // IconChevron,
   },
-  methods: {
-    MintIt() {
-      this.$emit("isminted");
-    },
-    nextStep() {
-      this.$emit("nextStep");
-    },
-    Revision() {
-      this.$router.push('/vault/create/step/2');
-    },
+  emits: ['nextStep', 'isMinted'],
+  setup(props, {emit}) {
+
+    const router = useRouter();
+
+    const MintIt = () => {
+      emit("isminted");
+    }
+    const nextStep = () => {
+      emit("nextStep");
+    }
+    const Revision = () => {
+      router.push('/vault/create/step/2');
+    }
+
+    return {
+      MintIt,
+      nextStep,
+      Revision
+    }
   },
 };
 </script>

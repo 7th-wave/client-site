@@ -72,22 +72,6 @@ export default {
     nextStep(){
       this.step++
     }
-  },
-  created() {
-    
-    document.addEventListener("keydown", (e) => {
-      if (e.keyCode == 78) {
-        if (this.step < 4) {
-          this.step++;
-          console.log(this.step);
-        }
-      }
-      if (e.keyCode == 66) {
-        if (this.step > 1) {
-          this.step--;
-        }
-      }
-    });
-  },
+  }
 };
 </script>

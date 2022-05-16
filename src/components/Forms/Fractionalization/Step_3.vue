@@ -134,6 +134,10 @@
 
 <script>
 // import Feed from '../../Drawers/Feed.vue'
+import { onMounted, ref } from "vue";
+import { useRoute } from "vue-router";
+import { useStore } from "vuex";
+import { getVault } from "../../../firebase/vaults";
 import Steps from "../../Drawers/Steps.vue";
 const steps = [
   {
@@ -191,6 +195,22 @@ export default {
     },
   },
   setup() {
+
+    const route = useRoute();
+    const store = useStore();
+
+    const vault = ref();
+
+    const getVaultData = async () => {
+      store.dispatch("NotificationStore/TOGGLE_LOADING");
+      vault.value = await getVault(route.params.dbref);
+      //await loadNfts(vault.value.nfts);
+      store.dispatch("NotificationStore/TOGGLE_LOADING");
+    };
+
+    onMounted(async () => {
+      await getVaultData();
+    });
     return {
       steps,
       steps_1,

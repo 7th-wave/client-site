@@ -7,17 +7,7 @@
       @close="open = false"
     >
       <div
-        class="
-          flex
-          items-end
-          justify-center
-          min-h-screen
-          pt-4
-          px-4
-          pb-20
-          text-center
-          sm:block sm:p-0
-        "
+        class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0"
       >
         <TransitionChild
           as="template"
@@ -49,30 +39,11 @@
           leave-to="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
         >
           <div
-            class="
-              inline-block
-              align-bottom
-              bg-white
-              rounded-lg
-              text-left
-              overflow-hidden
-              shadow-xl
-              transform
-              transition-all
-              sm:my-8 sm:align-middle sm:max-w-xs sm:w-full
-            "
+            class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-xs sm:w-full"
           >
             <div class="bg-white w-full">
               <div
-                class="
-                  w-full
-                  bg-gray-50
-                  flex
-                  items-center
-                  justify-between
-                  py-4
-                  px-4
-                "
+                class="w-full bg-gray-50 flex items-center justify-between py-4 px-4"
               >
                 <span class="text-lg text-gray-900 font-inter"
                   >Follow Steps</span
@@ -170,20 +141,14 @@
                 </p>
                 <button
                   @click="nextStep"
-                  class="
-                    text-center text-white text-sm
-                    font-medium font-inter
-                    rounded-md
-                    py-2.5
-                    w-full
-                    outline-none
-                  "
+                  class="text-center text-white text-sm font-medium font-inter rounded-md py-2.5 w-full outline-none"
                   :class="{
                     'bg-primary-link': step === 1,
-                    'bg-gray-300': step !== 1,
+                    'bg-gray-300': step > 1,
                   }"
                 >
-                  MINTED
+                  <span v-if="step == 1">MINT</span>
+                  <span v-if="step !== 1">MINTED</span>
                 </button>
               </div>
               <!-- step 2 -->
@@ -269,20 +234,14 @@
                 </p>
                 <button
                   @click="nextStep"
-                  class="
-                    text-center text-white text-sm
-                    font-medium font-inter
-                    rounded-md
-                    py-2.5
-                    w-full
-                    outline-none
-                  "
+                  class="text-center text-white text-sm font-medium font-inter rounded-md py-2.5 w-full outline-none"
                   :class="{
-                    'bg-primary-link': step === 1,
-                    'bg-gray-300': step !== 1,
+                    'bg-primary-link': step === 2,
+                    'bg-gray-300': step !== 2,
                   }"
                 >
-                  APPROVED
+                  <span v-if="step <= 2">APPROVE</span>
+                  <span v-if="step > 2">APPROVED</span>
                 </button>
               </div>
               <!-- step 3 -->
@@ -368,14 +327,7 @@
                 </p>
                 <button
                   @click="nextStep"
-                  class="
-                    text-center text-white text-sm
-                    font-medium font-inter
-                    rounded-md
-                    py-2.5
-                    w-full
-                    outline-none
-                  "
+                  class="text-center text-white text-sm font-medium font-inter rounded-md py-2.5 w-full outline-none"
                   :class="{
                     'bg-primary-link': step === 1,
                     'bg-gray-300': step !== 1,
@@ -455,14 +407,7 @@
                 </p>
                 <button
                   @click="Finish"
-                  class="
-                    text-center text-white text-sm
-                    font-medium font-inter
-                    rounded-md
-                    py-2.5
-                    w-full
-                    outline-none
-                  "
+                  class="text-center text-white text-sm font-medium font-inter rounded-md py-2.5 w-full outline-none"
                   :class="{
                     'bg-primary-link': step === 4,
                     'bg-gray-300': step != 4,
@@ -488,6 +433,8 @@ import {
   TransitionRoot,
 } from "@headlessui/vue";
 import { XIcon } from "@heroicons/vue/solid";
+import { useRouter } from "vue-router";
+import { mintBasket, approveBasket } from "../../blockchain";
 export default {
   components: {
     Dialog,
@@ -496,32 +443,46 @@ export default {
     TransitionRoot,
     XIcon,
   },
-  data() {
-    return {
-      step: 4,
-    };
-  },
   setup() {
+    const router = useRouter();
     const open = ref(false);
+    const step = ref(1);
+
+    const Confirm = () => {
+      open.value = false;
+    };
+
+    const bucketAddress = ref();
+
+    const nextStep = async () => {
+      if (step.value == 1) {
+        const result = await mintBasket();
+        //Record Transaction hash for the bucket 
+        const events = result.events.NewBasket;
+        bucketAddress.value = events.returnedValues[0];
+      }
+
+      if (step.value == 2) {
+        await approveBasket(bucketAddress.value);
+      }
+      step.value++;
+    };
+
+    const Finish = () => {
+      //code
+      router.push({ name: "My_fractions_details", params: { id: "cvman" } });
+      //close modal
+      open.value = false;
+    };
 
     return {
       open,
+      Confirm,
+      nextStep,
+      Finish,
+      step
+
     };
-  },
-  methods: {
-    Confirm() {
-      this.open = false;
-    },
-    nextStep() {
-     // this.step++;
-    },
-    Finish() {
-      //code
- this.$router.push({name:'My_fractions_details',params:{id:'cvman'}})
-      //close modal
-      this.open = false;
-     
-    },
   },
 };
 </script>

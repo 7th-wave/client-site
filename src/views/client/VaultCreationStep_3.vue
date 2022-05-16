@@ -12,27 +12,12 @@
         <Menu />
       </div>
       <div
-        class="
-          mt-5
-          md:mt-0
-          flex flex-col
-          items-start
-          space-y-4
-          lg:col-span-5
-          w-full
-        "
+        class="mt-5 md:mt-0 flex flex-col items-start space-y-4 lg:col-span-5 w-full"
       >
         <div class="w-full font-inter space-y-4">
           <Steps :step="steps" />
           <div
-            class="
-              w-full
-              bg-blue-link bg-opacity-20
-              flex
-              py-8
-              cursor-pointer
-              rounded-md
-            "
+            class="w-full bg-blue-link bg-opacity-20 flex py-8 cursor-pointer rounded-md"
             style="height: 333px"
           >
             <div class="m-auto flex items-center space-x-1">
@@ -154,15 +139,7 @@
                 </svg>
               </div>
               <div
-                class="
-                  flex flex-col
-                  items-start
-                  space-y-2
-                  text-gray-700
-                  font-bold
-                  text-2xl
-                  font-inter
-                "
+                class="flex flex-col items-start space-y-2 text-gray-700 font-bold text-2xl font-inter"
               >
                 <span>Vault Instructions</span>
               </div>
@@ -171,54 +148,33 @@
         </div>
       </div>
     </div>
-    <div class="w-full py-8 space-y-16">
+    <div class="w-full py-8 space-y-16" v-if="vault">
       <MintCardVault cardtype="mint" @isminted="MintVault" @nextStep="Edit" />
       <div class="w-full space-y-4">
         <div
           class="flex md:pb-14 py-0 sm:py-4 md:pt-4 lg:pt-0 lg:pb-8 text-center"
         >
           <span
-            class="
-              m-auto
-              sm:text-4xl
-              text-2xl text-center
-              font-normal font-inter
-              text-black
-            "
+            class="m-auto sm:text-4xl text-2xl text-center font-normal font-inter text-black"
+            v-if="vault"
           >
-            Nike Collection</span
+            {{ vault.name }}</span
           >
         </div>
         <div class="w-full md:pb-24">
-          <VaultSlideShow :slides="slides" />
+          <VaultSlideShow :slides="localNfts" />
         </div>
         <div class="w-full px-4 py-4 grid lg:grid-cols-4 gap-4">
           <!-- left -->
           <div
-            class="
-              lg:col-span-3
-              col-span-4
-              w-full
-              flex flex-col
-              items-start
-              space-y-5
-            "
+            class="lg:col-span-3 col-span-4 w-full flex flex-col items-start space-y-5"
           >
             <span class="text-2xl text-black font-inter font-medium"
               >Own Legends</span
             >
-            <FractionCard :goDown="true" :goBack="false" />
+            <FractionCard :goDown="true" :goBack="false" :vault="vault" />
             <p
-              class="
-                text-lg
-                font-normal font-inter
-                text-black
-                bg-white
-                py-2
-                px-4
-                shadow-md
-                rounded-md
-              "
+              class="text-lg font-normal font-inter text-black bg-white py-2 px-4 shadow-md rounded-md"
             >
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
@@ -235,48 +191,42 @@
         <div class="w-full space-y-4 px-4 pt-8">
           <div>
             <span class="text-2xl text-black font-inter font-medium"
-              >All NIKE Assets</span
+              >All {{ vault.name }} Assets</span
             >
           </div>
           <div class="grid lg:grid-cols-3 gap-8" id="CategoryCards">
             <CategoryCard
-              v-for="(category, index, key) in categories"
+              v-for="(nfts, index, key) in localNfts"
               :key="key"
-              :category="category"
+              :category="nfts"
             >
               <template #image>
                 <img
                   class="w-full h-full object-cover border-b"
-                  :src="category.image"
+                  :src="nfts.img"
                   alt=""
                 />
               </template>
 
               <template #subtitle>
                 <span
-                  class="
-                    text-sm
-                    font-inter font-medium
-                    text-primary-500
-                    cursor-pointer
-                  "
-                  >{{ category.title }}</span
+                  class="text-sm font-inter font-medium text-primary-500 cursor-pointer"
+                  >{{ nfts.sub_title }}</span
                 >
               </template>
               <template #title>
                 <span class="text-gray-900 text-xl font-semibold font-inter">{{
-                  category.name
+                  nfts.title
                 }}</span>
               </template>
             </CategoryCard>
           </div>
         </div>
       </div>
-      <VaultMintSteps ref="VaultMintSteps" />
+      <VaultMintSteps :show="showMintSteps" />
     </div>
   </account-layout>
 </template>
-
 
 <script>
 import Steps from "@/components/Drawers/Steps.vue";
@@ -289,6 +239,12 @@ import FractionCard from "@/components/cards/FractionCard.vue";
 import BuyFractionCard from "../../components/cards/BuyFractionCard.vue";
 import CategoryCard from "../../components/cards/CategoryCard.vue";
 import VaultMintSteps from "@/components/Modals/VaultMintSteps.vue";
+import { useRoute, useRouter } from "vue-router";
+import { useStore } from "vuex";
+import { onMounted, ref } from "vue";
+import { getVault } from "../../firebase/vaults";
+import MoralisFactory from "../../moralis";
+
 const steps = [
   {
     id: "1",
@@ -360,19 +316,80 @@ const categories = [
 ];
 export default {
   setup() {
+    const route = useRoute();
+    const router = useRouter();
+    const store = useStore();
+    const moralisInstance = MoralisFactory.getInstance();
+
+    const vault = ref();
+
+    const localNfts = ref([]);
+    const showMintSteps = ref(false);
+
+    const MintVault = () => {
+      showMintSteps.value = true;
+    };
+
+    const Edit = () => {
+      router.push({ name: "VaultsCreateStep4" });
+    };
+
+    const loadNfts = async (nfts) => {
+      localNfts.value = await Promise.all(
+        nfts.map(async (item) => {
+          try {
+            const token =
+              await moralisInstance.Web3API.token.getTokenIdMetadata({
+                chain: "rinkeby",
+                address: item.address,
+                token_id: item.id,
+              });
+
+            const metadata = JSON.parse(token.metadata);
+            if (metadata) {
+              const nft = {
+                block_number: item.id,
+                name: metadata.name,
+                img: metadata.image,
+                title: metadata.name,
+                badge: vault.value.ticker,
+              };
+
+              return nft;
+            }
+          } catch (error) {
+            console.log(error);
+            return null;
+          }
+        })
+      );
+    };
+
+    const getVaultData = async () => {
+      console.log("HERE");
+
+      store.dispatch("NotificationStore/TOGGLE_LOADING");
+      vault.value = await getVault(route.params.dbref);
+      await loadNfts(vault.value.nfts);
+      store.dispatch("NotificationStore/TOGGLE_LOADING");
+    };
+
+    onMounted(async () => {
+      console.log("HERE");
+      await getVaultData();
+    });
+
     return {
       steps,
       slides,
       categories,
+      MintVault,
+      Edit,
+      vault,
+      showMintSteps,
+      getVaultData,
+      localNfts,
     };
-  },
-  methods: {
-    MintVault() {
-      this.$refs.VaultMintSteps.open = true;
-    },
-    Edit(){
-        this.$router.push({name:'VaultsCreateStep4'})
-    }
   },
   components: {
     Steps,
@@ -386,9 +403,7 @@ export default {
     CategoryCard,
     VaultMintSteps,
   },
- 
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

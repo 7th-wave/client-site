@@ -147,7 +147,7 @@ export default {
             const nft = {
               block_number: item.token_id,
               name: metadata.name,
-              image: metadata.image,
+              img: metadata.image,
               title: metadata.name,
               badge: "NIKE",
             }

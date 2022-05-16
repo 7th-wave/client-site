@@ -1,7 +1,7 @@
 <template>
   <div class="w-full flex items-center">
     <div class="xl:w-2/3 w-full xl:m-auto xl:px-0 px-4">
-      <div v-if="slides.length > 1" class="relative w-full">
+      <div v-if="localSlides.length > 1" class="relative w-full">
         <CarouselCard class=" hidden lg:block"
           ref="carouselCardRef"
           :interval="7000"
@@ -12,7 +12,7 @@
           @change="changeHandle"
         >
           <CarouselCardItem
-            v-for="(item, index, key) in slides"
+            v-for="(item, index, key) in localSlides"
             :key="key"
             :name="`cc_${key}`"
           >
@@ -22,7 +22,7 @@
             >
               <img
                 class="w-full h-full object-cover"
-                :src="item.image"
+                :src="item.img"
                 alt=""
               />
             </div>
@@ -39,7 +39,7 @@
           @change="changeHandle"
         >
           <CarouselCardItem
-            v-for="(item, index, key) in slides"
+            v-for="(item, index, key) in localSlides"
             :key="key"
             :name="`cc_${key}`"
           >
@@ -49,7 +49,7 @@
             >
               <img
                 class="w-full h-full object-cover"
-                :src="item.image"
+                :src="item.img"
                 alt=""
               />
             </div>
@@ -136,7 +136,7 @@
         class="lg:w-96 w-full m-auto bg-blue-400 bg-opacity-30 relative"
         style="height: 660px"
       >
-        <img class="w-full h-full object-cover" :src="slides[0].image" alt="" />
+        <img class="w-full h-full object-cover" :src="localSlides[0].img" alt="" v-if="localSlides.length" />
       </div>
     </div>
   </div>
@@ -144,7 +144,7 @@
 
 
 <script>
-import { ref } from "@vue/reactivity";
+import { ref, watch, toRefs } from "vue";
 
 export default {
   data() {
@@ -152,17 +152,19 @@ export default {
       index: 0,
     };
   },
-  props: {
-    slides: {
-      type: Object,
-      required: true,
-    },
-  },
+  props: [
+    'slides'
+  ],
   components: {
     // ArrowLeftIcon,
     // ArrowRightIcon,
   },
-  setup() {
+  setup(props) {
+
+    const { slides } = toRefs(props);
+
+    const localSlides = ref([]);
+
     const carouselCardRef = ref();
     const carouselCardRef1 = ref();
     const changeHandle = (index) => {
@@ -180,6 +182,10 @@ export default {
       carouselCardRef.value.setActiveItem(0);
     };
 
+     watch(slides, (value) => {
+      localSlides.value = value;
+    })
+
     return {
       carouselCardRef,
       carouselCardRef1,
@@ -187,6 +193,7 @@ export default {
       next,
       prev,
       setToFirst,
+      localSlides
     };
   },
   methods: {
@@ -232,12 +239,12 @@ export default {
 }
 
 .carousel-card-arrow-right i {
-  background-image: url("/images/arrow_next.svg") !important;
+  background-img: url("/images/arrow_next.svg") !important;
   background-repeat: no-repeat;
 }
 
 .carousel-card-arrow-left i {
-  background-image: url("/images/arrow_left.svg") !important;
+  background-img: url("/images/arrow_left.svg") !important;
   background-repeat: no-repeat;
 }
 </style>

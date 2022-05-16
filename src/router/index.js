@@ -19,17 +19,17 @@ const routes = [
     component: () => import("../views/client/VaultCreation.vue"),
   },
   {
-    path: "/vault/create/step/2",
+    path: "/vault/create/step/2/:dbref",
     name: "VaultsCreateStep2",
     component: () => import("../views/client/VaultCreationStep_2.vue"),
   },
   {
-    path: "/vault/create/step/3",
+    path: "/vault/create/step/3/:dbref",
     name: "VaultsCreateStep3",
     component: () => import("../views/client/VaultCreationStep_3.vue"),
   },
   {
-    path: "/vault/create/step/4",
+    path: "/vault/create/step/4/:dbref",
     name: "VaultsCreateStep4",
     component: () => import("../views/client/VaultCreationStep_4.vue"),
   },
