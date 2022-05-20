@@ -93,7 +93,7 @@
           {{ localVault.nfts.length }}
         </span>
       </div>
-      <div class="lg:w-28 w-full flex flex-col items-start lg:border-r-2 lg:border-b-0 border-b-2  p-4">
+      <div class="w-full flex flex-col items-start lg:border-r-2 lg:border-b-0 border-b-2  p-4">
         <span class="text-base text-gray-500 font-inter whitespace-nowrap"
           >Fractions</span
         >
@@ -101,9 +101,9 @@
           >{{ localVault.supply }}
         </span>
       </div>
-      <div class="lg:w-40 w-full flex flex-col items-start lg:border-r-2 lg:border-b-0 border-b-2 p-4">
+      <div class="lg:w-28 w-full flex flex-col items-start lg:border-r-2 lg:border-b-0 border-b-2 p-4">
         <span class="text-base text-gray-500 font-inter whitespace-nowrap"
-          >Unique Owners</span
+          >Owners</span
         >
         <span class="text-black font-inter text-2xl whitespace-nowrap"
           >{{ localVault.owners ? localVault.owners.length : 0 }}

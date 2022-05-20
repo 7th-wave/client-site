@@ -385,7 +385,8 @@ export default {
         const nft = selectedVaults.value.map(item => {
           return {
             address: item.address,
-            id: item.block_number
+            id: item.block_number,
+            img: item.image
           }
         });
 
@@ -393,12 +394,12 @@ export default {
             name: form.value.Name,
             category: form.value.Category,
             supply: parseInt(form.value.Supply),
-            reserved_price: parseInt(form.value.Price),
+            reserved_price: parseFloat(form.value.Price),
             ticker: form.value.Ticker,
             max_fractions: parseInt(form.value.Fractions),
-            asset_owner: parseInt(form.value.Owner),
-            asset_owner_fractions: parseInt(form.value.Fractions_owner),
-            jx_fractions: parseInt(form.value.Jx),
+            asset_owner: form.value.Owner,
+            asset_owner_fractions: parseFloat(form.value.Fractions_owner),
+            jx_fractions: parseFloat(form.value.Jx),
             nfts: nft,
             status: form.value.status
         }
@@ -406,7 +407,7 @@ export default {
         try {
           const result = await create(data);
           store.dispatch("NotificationStore/TOGGLE_LOADING");
-          router.push('/vault/create/step/2/'+result.data.dbRef);
+          router.push('/vault/create/step/2/'+result.dbRef);
         } catch(error) {
           store.dispatch("NotificationStore/TOGGLE_LOADING");
           console.log(error);
@@ -429,21 +430,25 @@ export default {
       });
       const results = testnetNFTs.result;
 
-      const nfts = results.map((item) => {
-        const metadata = JSON.parse(item.metadata);
-        console.log(item);
-        if (metadata) {
-          const nft = {
-            address: item.token_address,
-            block_number: item.token_id,
-            name: metadata.name,
-            image: metadata.image,
-            title: metadata.name,
-            badge: "NIKE",
-          };
-
-          return nft;
+      const nfts = results.filter((item) => {
+        if (item.symbol !== "NFTB") {
+          const metadata = JSON.parse(item.metadata);
+          if (metadata) {
+            return item;
+          }
         }
+      }).map(item => {
+        const metadata = JSON.parse(item.metadata);
+        const nft = {
+              address: item.token_address,
+              block_number: item.token_id,
+              name: metadata.name,
+              image: metadata.image,
+              title: metadata.name,
+              badge: "",
+            };
+
+            return nft;
       });
       store.dispatch("NotificationStore/TOGGLE_LOADING");
 

@@ -223,7 +223,7 @@
           </div>
         </div>
       </div>
-      <VaultMintSteps :show="showMintSteps" />
+      <VaultMintSteps :show="showMintSteps" :vault="vault" />
     </div>
   </account-layout>
 </template>

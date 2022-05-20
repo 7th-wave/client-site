@@ -124,7 +124,7 @@
                       width="136.04"
                       height="2"
                       transform="rotate(-90 0.679688 136.04)"
-                      fill="#049AFF"
+                      :fill="fillLine(1)"
                     />
                   </svg>
                 </div>
@@ -141,6 +141,7 @@
                 </p>
                 <button
                   @click="nextStep"
+                  :disabled="step !== 1 ? true : false"
                   class="text-center text-white text-sm font-medium font-inter rounded-md py-2.5 w-full outline-none"
                   :class="{
                     'bg-primary-link': step === 1,
@@ -155,7 +156,7 @@
               <div class="w-full col-span-1 flex items-center flex-col">
                 <div>
                   <svg
-                    v-if="step === 1"
+                    v-if="step <= 2"
                     width="33"
                     height="32"
                     viewBox="0 0 33 32"
@@ -218,7 +219,7 @@
                       width="136.04"
                       height="2"
                       transform="rotate(-90 0.679688 136.04)"
-                      fill="#049AFF"
+                      :fill="fillLine(2)"
                     />
                   </svg>
                 </div>
@@ -234,6 +235,7 @@
                 </p>
                 <button
                   @click="nextStep"
+                  :disabled="step !== 2 ? true : false"
                   class="text-center text-white text-sm font-medium font-inter rounded-md py-2.5 w-full outline-none"
                   :class="{
                     'bg-primary-link': step === 2,
@@ -248,7 +250,7 @@
               <div class="w-full col-span-1 flex items-center flex-col">
                 <div>
                   <svg
-                    v-if="step === 1"
+                    v-if="step <= 3"
                     width="33"
                     height="32"
                     viewBox="0 0 33 32"
@@ -311,7 +313,7 @@
                       width="136.04"
                       height="2"
                       transform="rotate(-90 0.679688 136.04)"
-                      fill="#049AFF"
+                      :fill="fillLine(3)"
                     />
                   </svg>
                 </div>
@@ -320,20 +322,22 @@
                 class="w-full col-span-4 flex flex-col items-start space-y-3"
               >
                 <span class="text-sm text-gray-900 font-inter font-semibold"
-                  >transfer nft(s)</span
+                  >Transfer nft(s)</span
                 >
                 <p class="text-left text-gray-500 font-inter text-sm">
                   In order to transfer the NFT(s) approval is needed.
                 </p>
                 <button
                   @click="nextStep"
+                  :disabled="step !== 3 ? true : false"
                   class="text-center text-white text-sm font-medium font-inter rounded-md py-2.5 w-full outline-none"
                   :class="{
-                    'bg-primary-link': step === 1,
-                    'bg-gray-300': step !== 1,
+                    'bg-primary-link': step === 3,
+                    'bg-gray-300': step !== 3,
                   }"
                 >
-                  TRANSFERED
+                  <span v-if="step <= 3">TRANSFER</span>
+                  <span v-if="step > 3">TRANSFERED</span>
                 </button>
               </div>
 
@@ -341,7 +345,7 @@
               <div class="w-full col-span-1 flex items-center flex-col">
                 <div>
                   <svg
-                    v-if="step === 1"
+                    v-if="step <= 4"
                     width="33"
                     height="32"
                     viewBox="0 0 33 32"
@@ -413,7 +417,7 @@
                     'bg-gray-300': step != 4,
                   }"
                 >
-                  FRACTIONALIZE
+                  <span v-if="step <= 4">FRACTIONALIZE</span>
                 </button>
               </div>
             </div>
@@ -425,7 +429,7 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref, toRefs, watch } from "vue";
 import {
   Dialog,
   DialogOverlay,
@@ -434,7 +438,7 @@ import {
 } from "@headlessui/vue";
 import { XIcon } from "@heroicons/vue/solid";
 import { useRouter } from "vue-router";
-import { mintBasket, approveBasket } from "../../blockchain";
+import { mintBasket, approveBasket, approveNFT, transferNFT } from "../../blockchain";
 export default {
   components: {
     Dialog,
@@ -443,10 +447,18 @@ export default {
     TransitionRoot,
     XIcon,
   },
-  setup() {
+  props:['vault'],
+  setup(props) {
     const router = useRouter();
     const open = ref(false);
     const step = ref(1);
+
+    const { vault } = toRefs(props);
+    const localVault = ref();
+
+    watch(vault, (value) => {
+      localVault.value = value;
+    });
 
     const Confirm = () => {
       open.value = false;
@@ -459,14 +471,35 @@ export default {
         const result = await mintBasket();
         //Record Transaction hash for the bucket 
         const events = result.events.NewBasket;
-        bucketAddress.value = events.returnedValues[0];
+        bucketAddress.value = events.returnValues[0];
       }
 
       if (step.value == 2) {
         await approveBasket(bucketAddress.value);
       }
+
+      if (step.value == 3) {
+        for(const {address, id} of props.vault.nfts) {
+          await approveNFT(address, id, bucketAddress.value);
+          await transferNFT(address, id, bucketAddress.value);
+        }
+      }
+
+      if (step.value == 4) {
+        await approveNFT(address, id, bucketAddress.value);
+      }
       step.value++;
     };
+
+    const fillLine = (current) => {
+      
+      if (step.value > current) {
+        return '#049AFF'
+      } else { 
+        return '#D1D5DB'
+      }
+
+    }
 
     const Finish = () => {
       //code
@@ -480,7 +513,8 @@ export default {
       Confirm,
       nextStep,
       Finish,
-      step
+      step,
+      fillLine
 
     };
   },

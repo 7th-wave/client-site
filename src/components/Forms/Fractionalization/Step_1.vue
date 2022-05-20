@@ -71,6 +71,7 @@ export default {
     const nfts = ref([]);
 
     const loadNfts = (event) => {
+      console.log(event);
       nfts.value = event.nfts;
     };
 

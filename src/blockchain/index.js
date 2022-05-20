@@ -5,7 +5,7 @@ import Web3 from "web3";
 import JERC721 from "../contracts/JERC721.json";
 import USDCAbi from "../contracts/USDCAbi.json";
 //import Vault from "../contracts/Vault.json";
-//import VaultFactory from "../contracts/VaultFactory.json";
+import VaultFactory from "../contracts/VaultFactory.json";
 import BasketFactory from "../contracts/JERC72BasketFactory.json";
 
 
@@ -149,13 +149,56 @@ const approveBasket = async (basketaddress) => {
     basketaddress
   );
   const receipt = await basketContract.methods
-    .setApprovalForAll(addresses[currNetwork].vaultFactory)
+    .setApprovalForAll(addresses[currNetwork].vaultFactory, true)
     .send({ from: accounts.result[0] });
 
   return receipt;
 };
 
+const mintVault = async (name, ticker, basketaddress, id, supply, listPrice, fee) => {
+  const accounts = await window.ethereum.send("eth_requestAccounts");
+  window.web3 = new Web3(window.ethereum);
+  // Create contract object
+  const vaultFactoryContract = new window.web3.eth.Contract(
+    VaultFactory,
+    addresses[currNetwork].vaultFactory
+  );
+  const receipt = await vaultFactoryContract.methods
+    .mint(name, ticker, basketaddress, 0, supply, listPrice, fee)
+    .send({ from: accounts.result[0] });
 
+  return receipt;
+};
+
+const approveNFT = async (nftAddress, id, basketaddress) => {
+  const accounts = await window.ethereum.send("eth_requestAccounts");
+  window.web3 = new Web3(window.ethereum);
+  // Create contract object
+  const nftContract = new window.web3.eth.Contract(
+    JERC721,
+    nftAddress
+  );
+  const receipt = await nftContract.methods
+    .approve(basketaddress, id)
+    .send({ from: accounts.result[0] });
+
+  return receipt;
+};
+
+const transferNFT = async (nftAddress, id, basketaddress) => {
+  const accounts = await window.ethereum.send("eth_requestAccounts");
+  window.web3 = new Web3(window.ethereum);
+  // Create contract object
+  const nftContract = new window.web3.eth.Contract(
+    JERC721,
+    nftAddress
+  );
+  const receipt = await nftContract.methods
+    .safeTransferFrom(accounts.result[0], basketaddress, id)
+    .send({ from: accounts.result[0] });
+
+  return receipt;
+};
 
 const tokenAllowance = async (amount, address, instance, provider) => {
   // const accounts = await window.ethereum.send("eth_requestAccounts");
@@ -217,5 +260,8 @@ export {
   getDecimal,
   checkBalance,
   mintBasket,
-  approveBasket
+  approveBasket,
+  approveNFT,
+  transferNFT,
+  mintVault
 };
