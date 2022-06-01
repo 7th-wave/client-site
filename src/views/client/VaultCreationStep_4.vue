@@ -35,7 +35,7 @@
                 </label>
                 <div class="mt-1">
                   <input
-                    v-model="form.name"
+                    v-model="form.Name"
                     type="text"
                     name="vaultname"
                     id="vaultname"
@@ -53,9 +53,9 @@
                 </div>
                 <div class="pt-1">
                   <span
-                    v-if="errors.name"
+                    v-if="errors.Name"
                     class="text-red-600 font-inter text-sm font-normal"
-                    >{{ errors.name }}</span
+                    >{{ errors.Name }}</span
                   >
                 </div>
               </div>
@@ -80,21 +80,22 @@
                       border-gray-300
                       rounded-md
                     "
-                    v-model="form.category"
+                    v-model="form.Category"
                   >
-                    <option value="">Select One</option>
-                    <option value="">Automotives</option>
-                    <option value="">Fine Art</option>
-                    <option value="">Rare Gems & Jewellery</option>
-                    <option value="">Real State</option>
-                    <option value="">Sneakers</option>
+                     <option
+                      v-for="(category, index) in categories"
+                      :key="index"
+                      :value="category.dbRef"
+                    >
+                      {{ category.name }}
+                    </option>
                   </select>
                 </div>
                 <div class="pt-1">
                   <span
-                    v-if="errors.category"
+                    v-if="errors.Category"
                     class="text-red-600 font-inter text-sm font-normal"
-                    >{{ errors.category }}</span
+                    >{{ errors.Category }}</span
                   >
                 </div>
               </div>
@@ -106,7 +107,7 @@
                 >
                 <div class="mt-1">
                   <textarea
-                    v-model="form.description"
+                    v-model="form.Description"
                     rows="4"
                     name="comment"
                     id="comment"
@@ -123,9 +124,9 @@
                 </div>
                 <div class="pt-1">
                   <span
-                    v-if="errors.description"
+                    v-if="errors.Description"
                     class="text-red-600 font-inter text-sm font-normal"
-                    >{{ errors.description }}</span
+                    >{{ errors.Description }}</span
                   >
                 </div>
               </div>
@@ -140,7 +141,7 @@
                 </label>
                 <div class="mt-1">
                   <input
-                    v-model="form.supply"
+                    v-model="form.Supply"
                     type="text"
                     name="Supply"
                     id="Supply"
@@ -158,9 +159,9 @@
                 </div>
                 <div class="pt-1">
                   <span
-                    v-if="errors.supply"
+                    v-if="errors.Supply"
                     class="text-red-600 font-inter text-sm font-normal"
-                    >{{ errors.supply }}</span
+                    >{{ errors.Supply }}</span
                   >
                 </div>
               </div>
@@ -187,7 +188,7 @@
                     USDC
                   </span>
                   <input
-                    v-model="form.price"
+                    v-model="form.Price"
                     type="text"
                     name="Price"
                     id="Price"
@@ -206,9 +207,9 @@
                 </div>
                 <div class="pt-1">
                   <span
-                    v-if="errors.price"
+                    v-if="errors.Price"
                     class="text-red-600 font-inter text-sm font-normal"
-                    >{{ errors.price }}</span
+                    >{{ errors.Price }}</span
                   >
                 </div>
               </div>
@@ -236,7 +237,7 @@
                     %
                   </span>
                   <input
-                    v-model="form.asset_owner"
+                    v-model="form.Fractions_owner"
                     type="text"
                     name="asset_owner"
                     id="asset_owner"
@@ -255,9 +256,9 @@
                 </div>
                 <div class="pt-1">
                   <span
-                    v-if="errors.asset_owner"
+                    v-if="errors.Fractions_owner"
                     class="text-red-600 font-inter text-sm font-normal"
-                    >{{ errors.asset_owner }}</span
+                    >{{ errors.Fractions_owner }}</span
                   >
                 </div>
               </div>
@@ -284,7 +285,7 @@
                     %
                   </span>
                   <input
-                    v-model="form.asset_launch"
+                    v-model="form.Fractions"
                     type="text"
                     name="asset_launch"
                     id="asset_launch"
@@ -303,9 +304,9 @@
                 </div>
                 <div class="pt-1">
                   <span
-                    v-if="errors.asset_launch"
+                    v-if="errors.Fractions"
                     class="text-red-600 font-inter text-sm font-normal"
-                    >{{ errors.asset_launch }}</span
+                    >{{ errors.Fractions }}</span
                   >
                 </div>
               </div>
@@ -332,7 +333,7 @@
                     %
                   </span>
                   <input
-                    v-model="form.jx_fractions"
+                    v-model="form.Jx"
                     type="text"
                     name="jx_fractions"
                     id="jx_fractions"
@@ -351,9 +352,9 @@
                 </div>
                 <div class="pt-1">
                   <span
-                    v-if="errors.jx_fractions"
+                    v-if="errors.Jx"
                     class="text-red-600 font-inter text-sm font-normal"
-                    >{{ errors.jx_fractions }}</span
+                    >{{ errors.Jx }}</span
                   >
                 </div>
               </div>
@@ -380,13 +381,13 @@
                 >
                   <div
                     class="relative w-28 h-28"
-                    v-for="(item, index, key) in form.assets"
+                    v-for="(item, index, key) in form.Nfts"
                     :key="key"
                   >
                     <div
                       class="border rounded-md overflow-hidden w-full h-full"
                     >
-                      <img :src="item" alt="" class="w-full h-full" />
+                      <img :src="item.img" alt="" class="w-full h-full" />
                     </div>
                     <div
                       @click="RemoveItem(index)"
@@ -694,11 +695,11 @@
       </div>
     </div>
     <div class="pt-6 space-y-4">
-      <MintCardVault cardtype="edit" :url="{name:'VaultsCreateStep4'}" />
+      <MintCardVault cardtype="edit" :url="''" />
       <Feed />
     </div>
-    <AddAssetsModal ref="AddAssetsModal" />
-      <ConfirmDelete ref="deleteModal" @deleteItem="DeleteAssets" />
+    <AddAssetsModal :open="showAddAssetModal" :selected="form.nfts" :owner="form.Owner" />
+      <ConfirmDelete :show="showDeleteModal" @deleteItem="deleteAssets" />
   </account-layout>
 </template>
 
@@ -712,6 +713,13 @@ import AddAssetsModal from  "@/components/Modals/AddAssetsModal.vue";
 import AccountLayout from '../../components/Layouts/AccountLayout.vue';
 import Navbar from "@/components/Layouts/Navbar.vue";
 import ConfirmDelete from "@/components/Modals/ConfirmDelete.vue";
+import { getCategories } from "../../firebase/firebase";
+import MoralisFactory from "../../moralis";
+import { useStore } from "vuex";
+import { useRoute, useRouter } from "vue-router";
+import { getVault, updateVault } from "../../firebase/vaults";
+import { computed, onMounted, ref } from "vue";
+
 
 const steps = [
   {
@@ -737,63 +745,268 @@ const steps = [
   },
 ];
 export default {
+
   setup() {
-    return {
-      steps,
-      AssetIndex:null,
+    const moralisInstance = MoralisFactory.getInstance();
+
+    const store = useStore();
+    const router = useRouter();
+    const route = useRoute();
+    const openAssetsModal = ref(false);
+    const AssetIndex = ref();
+
+
+    const selectedVaults = ref([]);
+
+    const currentAddress = computed(
+      () => store.getters["blockchain/getCurrentAddress"]
+    );
+
+    const showDeleteModal = ref(false);
+    const showAddAssetModal = ref(false);
+
+    const owner = computed(() => store.getters["user/getUser"]);
+    const categories = ref("[]");
+    const errors = ref({
+      Name: "",
+      Category: "",
+      Supply: "",
+      Price: "",
+      Ticker: "",
+      Fractions: "",
+      Jx: "",
+      Owner: "",
+      Fractions_owner: "",
+      nfts: "",
+      
+    });
+
+    const form = ref({
+      Name: "",
+      Category: "",
+      Supply: null,
+      Price: null,
+      Ticker: "",
+      Fractions: null,
+      Jx: 3.5,
+      Owner: currentAddress,
+      Fractions_owner: null,
+      status: 'applied',
+      nfts: [],
+      Description: ""
+    });
+
+    const localNfts = ref([]);
+
+    const calculations = computed(() => {
+      const ownerFractions = (form.value.Supply * form.value.Fractions_owner) / 100;
+      const jxFractions = (form.value.Supply * form.value.Jx) / 100;
+      const salesFractions = ((form.value.Supply - (ownerFractions + jxFractions)) * form.value.Fractions) / 100;
+      const totalVault = form.value.Price * form.value.Supply;
+
+      return {ownerFractions, jxFractions, salesFractions, totalVault};
+    });
+
+    const validate = () => {
+      var isValid = true;
+      errors.value = {
+        Name: "",
+        Category: "",
+        Supply: "",
+        Price: "",
+        Ticker: "",
+        Fractions: "",
+        Jx: "",
+        Owner: "",
+        Fractions_owner: "",
+      };
+      if (form.value.Name == "") {
+        errors.value.Name = "Vault Name is required";
+        isValid = false;
+      }
+      if (form.value.Category == "") {
+        errors.value.Category = "Vault Category is required";
+        isValid = false;
+      }
+      if (form.value.Supply == "") {
+        errors.value.Supply = "Supply is required";
+        isValid = false;
+      }
+      if (form.value.Price == "") {
+        errors.value.Price = "Reserve Price is required";
+        isValid = false;
+      }
+      if (form.value.Ticker == "") {
+        errors.value.Ticker = "Ticker is required";
+        isValid = false;
+      }
+      if (form.value.Fractions == "") {
+        errors.value.Fractions = "Max Fractions is required";
+        isValid = false;
+      }
+      if (form.value.Jx == "") {
+        errors.value.Jx = "JX Fractions is required";
+        isValid = false;
+      }
+
+      if (form.value.Fractions_owner == "") {
+        errors.value.Fractions_owner = "Fractions owner is required";
+        isValid = false;
+      }
+      return isValid;
     };
-  },
-  data() {
-    return {
-      errors: {
-        title: "",
-        subtitle: "",
-        description: "",
-        image: "",
-        collection: "",
-        access: "",
-        url: "",
-      },
-      form: {
-        name: "",
-        category: "",
-        description: "",
-        supply: "",
-        price: "",
-        ticker: "",
-        max_fractions: "",
-        asset_owner: "",
-        asset_launch: "",
-        jx_fractions: "",
-        url: "https://fractional.web.app/vault/8099-5665-45454-3433",
-        assets: [
-          "/images/sneakers/01.png",
-          "/images/sneakers/03.png",
-          "/images/sneakers/06.png",
-          "/images/sneakers/02.png",
-        ],
-      },
-    };
-  },
-  methods: {
-    RemoveItem(item) {
+
+    const RemoveItem = (item) => {
       this.AssetIndex = item;
-      this.$refs.deleteModal.open = true;
-    },
-    DeleteAssets(){
+      showDeleteModal.value = true;
+    };
+    const Continue = async () => {
+      store.dispatch("NotificationStore/TOGGLE_LOADING");
+
+      if (validate()) {
+        //   // this.$refs.steps.open = true;
+        //   // this.$refs.steps.step = 1;
+        // }
+        //  this.$router.push({
+        //     name: "VaultsCreateStep2",
+        const nft = selectedVaults.value.map(item => {
+          return {
+            address: item.address,
+            id: item.block_number,
+            img: item.image
+          }
+        });
+
+        const data = {
+            name: form.value.Name,
+            category: form.value.Category,
+            supply: parseInt(form.value.Supply),
+            reserved_price: parseFloat(form.value.Price),
+            ticker: form.value.Ticker,
+            max_fractions: parseInt(form.value.Fractions),
+            asset_owner: form.value.Owner,
+            asset_owner_fractions: parseFloat(form.value.Fractions_owner),
+            jx_fractions: parseFloat(form.value.Jx),
+            nfts: nft,
+            status: form.value.status,
+            description: form.value.Description
+        }
+        
+        try {
+          const result = await updateVault(data);
+          store.dispatch("NotificationStore/TOGGLE_LOADING");
+          router.push('/vault/create/step/2/'+result.dbRef);
+        } catch(error) {
+          store.dispatch("NotificationStore/TOGGLE_LOADING");
+          console.log(error);
+        }
+      } else {
+        store.dispatch("NotificationStore/TOGGLE_LOADING");
+      }
+    };
+
+    const categoriesLoad = async () => {
+      categories.value = await getCategories();
+    };
+
+    const loadNfts = async (nfts) => {
+      localNfts.value = await Promise.all(
+        nfts.map(async (item) => {
+          try {
+            const token =
+              await moralisInstance.Web3API.token.getTokenIdMetadata({
+                chain: "rinkeby",
+                address: item.address,
+                token_id: item.id,
+              });
+
+            const metadata = JSON.parse(token.metadata);
+            if (metadata) {
+              const nft = {
+                block_number: item.id,
+                name: metadata.name,
+                img: metadata.image,
+                title: metadata.name,
+                badge: form.value.Ticker,
+              };
+
+              return nft;
+            }
+          } catch (error) {
+            console.log(error);
+            return null;
+          }
+        })
+      );
+    };
+
+    const deleteAssets = () => {
        this.form.assets.splice(this.AssetIndex, 1);
        this.AssetIndex = null;
-       this.$refs.deleteModal.open = false;
-    },
-    AddAssets() {
-      this.$refs.AddAssetsModal.open = true;
-    },
-    AddAsset() {
+       showDeleteModal.value = false;
+    };
+
+    const AddAssets = () => {
+      showAddAssetModal.value = true;
+    };
+
+    const AddAsset = () => {
       if (this.validateForm()) {
         //save data
       }
-    },
-   
+    };
+
+    const getVaultData = async () => {
+      console.log("HERE");
+
+      store.dispatch("NotificationStore/TOGGLE_LOADING");
+      const vault = await getVault(route.params.dbref);
+      form.value = {
+        Name: vault.name,
+        Category: vault.category,
+        Supply: vault.supply,
+        Price: vault.reserved_price,
+        Ticker: vault.ticker,
+        Fractions: vault.max_fractions,
+        Jx: 3.5,
+        Owner: vault.asset_owner,
+        Fractions_owner: vault.asset_owner_fractions,
+        status: vault.status,
+        nfts: vault.nfts
+      }
+      await loadNfts(form.value.nfts);
+      store.dispatch("NotificationStore/TOGGLE_LOADING");
+    };
+
+    onMounted(async () => {
+      await categoriesLoad();
+
+      await getVaultData();
+
+    });
+
+    return {
+      owner,
+      form,
+      errors,
+      validate,
+      Continue,
+      RemoveItem,
+      selectedVaults,
+      loadNfts,
+      calculations,
+      categories,
+      steps,
+      AssetIndex,
+      openAssetsModal,
+      AddAsset,
+      AddAssets,
+      showAddAssetModal,
+      showDeleteModal,
+      deleteAssets,
+      localNfts
+
+    };
   },
   components: {
     Steps,

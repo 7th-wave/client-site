@@ -16,7 +16,7 @@
         <swiper-slide v-for="(item, index) of vault.nfts" :key="index" >
           <img @click="goToDetails"
             class="w-full h-80 object-cover"
-            :src="'/images/sneakers/' + item.image"
+            :src="item.img"
           />
         </swiper-slide>
         <div
@@ -75,7 +75,7 @@
           {{ vault.name }}
         </h2>
         <div class="h-6" />
-        <stats :stats="vault"  />
+        <stats :vault="vault"  />
       </div>
     </div>
   </div>
@@ -90,6 +90,7 @@ import "swiper/swiper-bundle.min.css";
 import Badge from "./Badge.vue";
 import Stats from "./Stats.vue";
 import { onMounted } from "@vue/runtime-core";
+import { useRouter } from "vue-router";
 // import { useRouter } from 'vue-router'
 
 export default {
@@ -101,24 +102,33 @@ export default {
     Badge,
     Stats,
   },
-  methods:{
-    goToDetails(){
-     this.$router.push(this.url)
-    }
-  },
 
   setup(props) {
+
+    const router = useRouter();
 
     const swiper = useSwiper();
     // const router = useRouter()
     onMounted(() => {
       console.log(props.value);
     });
-   
+
+
+    const goToDetails = () => {
+      debugger;
+      if (props.vault.status == 'minted') {
+        router.push(props.url);
+      } else if (props.vault.status == 'applied' || props.vault.status == 'pending') {
+        router.push('/vault/create/step/2/'+props.vault.dbRef);
+      } else if (props.vault.status == 'approved') {
+        router.push('/vault/create/step/3/'+props.vault.dbRef);
+      }
+    }
 
     return {
       modules: [Navigation, Pagination, Scrollbar, A11y],
-      swiper
+      swiper,
+      goToDetails
     };
   },
 };

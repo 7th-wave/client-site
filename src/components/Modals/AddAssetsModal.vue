@@ -1,10 +1,10 @@
 <!-- This example requires Tailwind CSS v2.0+ -->
 <template>
-  <TransitionRoot as="template" :show="open">
+  <TransitionRoot as="template" :show="openModal">
     <Dialog
       as="div"
       class="fixed z-10 inset-0 overflow-y-auto"
-      @close="open = false"
+      @close="openModal = false"
     >
       <div
         class="
@@ -79,7 +79,7 @@
                 >
                 <div
                   class="p-1 bg-white rounded-md shadow-sm cursor-pointer"
-                  @click="open = false"
+                  @click="openModal = false"
                 >
                   <XIcon class="w-5 h-5 text-primary-500" />
                 </div>
@@ -87,7 +87,7 @@
             </div>
             <div class="w-full grid lg:grid-cols-3 py-2 px-4 gap-4">
               <VaultCard
-                v-for="(item, index, key) in Vaults"
+                v-for="(item, index, key) in vaults"
                 :key="key"
                 :vault="item"
               />
@@ -102,7 +102,7 @@
 <script>
 import VaultCard from "@/components/cards/VaultCard.vue";
 
-import { ref } from "vue";
+import { onMounted, ref, toRefs, watch } from "vue";
 import {
   Dialog,
   DialogOverlay,
@@ -110,6 +110,9 @@ import {
   TransitionRoot,
 } from "@headlessui/vue";
 import { XIcon } from "@heroicons/vue/solid";
+import MoralisFactory from "../../moralis";
+import { useStore } from 'vuex';
+
 export default {
   components: {
     Dialog,
@@ -119,55 +122,69 @@ export default {
     XIcon,
     VaultCard,
   },
-  data() {
-    return {
-      Vaults: [
-        {
-          selected: false,
-          img: "/images/sneakers/01.png",
-          collection: "Sneakers Collection",
-          name: "Nike Waffle Sneakers",
-        },
-        {
-          selected: false,
-          img: "/images/sneakers/02.png",
-          collection: "Sneakers Collection",
-          name: "Nike Waffle Sneakers",
-        },
-        {
-          selected: false,
-          img: "/images/sneakers/03.png",
-          collection: "Sneakers Collection",
-          name: "Nike Waffle Sneakers",
-        },
-        {
-          selected: false,
-          img: "/images/sneakers/04.png",
-          collection: "Sneakers Collection",
-          name: "Nike Waffle Sneakers",
-        },
-        {
-          selected: false,
-          img: "/images/sneakers/05.png",
-          collection: "Sneakers Collection",
-          name: "Nike Waffle Sneakers",
-        },
-        {
-          selected: false,
-          img: "/images/sneakers/06.png",
-          collection: "Sneakers Collection",
-          name: "Nike Waffle Sneakers",
-        },
-      ],
+  props: ['selected', 'open', 'owner'],
+  emits: ["on:clientSelected"],
+  setup(props, {emit}) {
+    const moralisInstance = MoralisFactory.getInstance();
+    const store = useStore();
+    const { selected, open, owner} = toRefs(props);
+
+    const vaults = ref([])
+    const openModal = ref(false);
+
+    watch(open, (value) => {
+      openModal.value = value;
+    });
+
+    watch(owner, (value) => {
+      loadNfts(value, selected.value);
+    })
+
+    const loadNfts = async (owner, selected) => {
+      store.dispatch("NotificationStore/TOGGLE_LOADING");
+
+      const testnetNFTs = await moralisInstance.Web3API.account.getNFTs({
+        chain: "rinkeby",
+        address: owner,
+      });
+      const results = testnetNFTs.result;
+
+      const nfts = results.filter((item) => {
+        if (item.symbol !== "NFTB") {
+          const metadata = JSON.parse(item.metadata);
+          if (metadata) {
+            return item;
+          }
+        }
+      }).map(item => {
+        const metadata = JSON.parse(item.metadata);
+        const nft = {
+              address: item.token_address,
+              block_number: item.token_id,
+              name: metadata.name,
+              image: metadata.image,
+              title: metadata.name,
+              selected: selected.some(selectedItem => item.id == selectedItem.id),
+              badge: "",
+            };
+
+            return nft;
+      });
+      store.dispatch("NotificationStore/TOGGLE_LOADING");
+
+      emit("on:clientSelected", { nfts: nfts });
     };
-  },
-  setup() {
-    const open = ref(false);
+
+    
+    onMounted(async() => {
+      await loadNfts(owner.value, selected.value);
+    })
 
     return {
-      open,
+     vaults,
+     openModal
     };
-  },
+  }
 
  
 };

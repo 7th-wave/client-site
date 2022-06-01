@@ -19,9 +19,26 @@ const create = async(data) => {
     return result.data;
 }
 
+const updateVault = async(dbRef, data) => {
+    const results = await axios.post(app_url+'edit_vault?ref='+dbRef, data);
+    return results.data;
+}
+
+const saveBucketAddress = async(dbRef, data) => {
+    const results = await axios.post(app_url+'bucket_address?ref='+dbRef, data);
+    return results.data;
+}
+
+const saveVaultMintStatus = async(dbRef, data) => {
+    const results = await axios.post(app_url+'mint_status?ref='+dbRef, data);
+    return results.data;
+}
 
 export {
     getUserVaults,
     create,
-    getVault
+    getVault,
+    updateVault,
+    saveBucketAddress,
+    saveVaultMintStatus
 };

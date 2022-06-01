@@ -16,7 +16,7 @@
           <Step1 v-if="step == 1" @nextStep="nextStep" />
           <Step2 v-if="step == 2" @nextStep="nextStep" />
           <Step3 v-if="step == 3" :isminted="minted" />
-          <Step4   v-if="step == 4" />
+          <Step4 v-if="step == 4" />
         </div>
       </div>
       <div class="space-y-2" v-if="step != 1 & step != 2">
@@ -72,22 +72,6 @@ export default {
     nextStep(){
       this.step++
     }
-  },
-  created() {
-    
-    document.addEventListener("keydown", (e) => {
-      if (e.keyCode == 78) {
-        if (this.step < 4) {
-          this.step++;
-          console.log(this.step);
-        }
-      }
-      if (e.keyCode == 66) {
-        if (this.step > 1) {
-          this.step--;
-        }
-      }
-    });
-  },
+  }
 };
 </script>
