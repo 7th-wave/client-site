@@ -50,7 +50,7 @@
                 >
                 <div
                   class="p-1 bg-white rounded-md shadow-sm cursor-pointer"
-                  @click="open = false"
+                  @click="closeIt"
                 >
                   <XIcon class="w-5 h-5 text-teal-500" />
                 </div>
@@ -133,7 +133,7 @@
                 class="w-full col-span-4 flex flex-col items-start space-y-3"
               >
                 <span class="text-sm text-gray-900 font-inter font-semibold"
-                  >Mint the nft vault</span
+                  >Mint the NFT vault</span
                 >
                 <p class="text-left text-gray-500 font-inter text-sm">
                   In order to fractionalize multiple NFTs you need to mint the
@@ -429,7 +429,7 @@
 </template>
 
 <script>
-import { ref, toRefs, watch } from "vue";
+import { ref, toRefs, watch, onMounted } from "vue";
 import {
   Dialog,
   DialogOverlay,
@@ -438,7 +438,15 @@ import {
 } from "@headlessui/vue";
 import { XIcon } from "@heroicons/vue/solid";
 import { useRouter } from "vue-router";
-import { mintBasket, approveBasket, approveNFT, transferNFT } from "../../blockchain";
+import {
+  mintBasket,
+  approveBasket,
+  /*approveNFT,*/
+  transferNFT,
+} from "../../blockchain";
+import { saveBucketAddress, saveVaultMintStatus } from "../../firebase/vaults";
+import { useStore } from "vuex";
+
 export default {
   components: {
     Dialog,
@@ -447,59 +455,92 @@ export default {
     TransitionRoot,
     XIcon,
   },
-  props:['vault'],
-  setup(props) {
+  emits: ['on:close'],
+  props: ["vault", "show"],
+  setup(props, {emit}) {
     const router = useRouter();
+    const store = useStore();
     const open = ref(false);
     const step = ref(1);
 
-    const { vault } = toRefs(props);
+    const { vault, show } = toRefs(props);
     const localVault = ref();
 
     watch(vault, (value) => {
       localVault.value = value;
     });
 
+    watch(show, (value) => {
+      open.value = value;
+    });
+
     const Confirm = () => {
       open.value = false;
     };
+
+    const closeIt = () => {
+      open.value = false;
+      emit("on:close");
+    }
 
     const bucketAddress = ref();
 
     const nextStep = async () => {
       if (step.value == 1) {
+        store.dispatch("NotificationStore/TOGGLE_LOADING");
         const result = await mintBasket();
-        //Record Transaction hash for the bucket 
+        //Record Transaction hash for the bucket
         const events = result.events.NewBasket;
         bucketAddress.value = events.returnValues[0];
+
+        await saveBucketAddress(vault.value.dbRef, {
+          bucketAddress: bucketAddress.value,
+        });
+        store.dispatch("NotificationStore/TOGGLE_LOADING");
       }
 
       if (step.value == 2) {
+        store.dispatch("NotificationStore/TOGGLE_LOADING");
         await approveBasket(bucketAddress.value);
+        await saveVaultMintStatus(vault.value.dbRef, {
+          mint_status: "bucket_approved",
+        });
+        store.dispatch("NotificationStore/TOGGLE_LOADING");
       }
 
       if (step.value == 3) {
-        for(const {address, id} of props.vault.nfts) {
-          await approveNFT(address, id, bucketAddress.value);
-          await transferNFT(address, id, bucketAddress.value);
+        store.dispatch("NotificationStore/TOGGLE_LOADING");
+
+        for (let { address, id } of vault.value.nfts) {
+          try {
+            console.log(id);
+            await transferNFT(address, id, bucketAddress.value);
+            //await approveNFT(address, id, bucketAddress.value);
+          } catch (error) {
+            store.dispatch("NotificationStore/TOGGLE_LOADING");
+          }
         }
+
+       /*  await saveVaultMintStatus(vault.value.dbRef, {
+          mint_status: "nft_transfered",
+        }); */
+        store.dispatch("NotificationStore/TOGGLE_LOADING");
       }
 
       if (step.value == 4) {
-        await approveNFT(address, id, bucketAddress.value);
+        //await approveNFT(address, id, bucketAddress.value);
       }
+
       step.value++;
     };
 
     const fillLine = (current) => {
-      
       if (step.value > current) {
-        return '#049AFF'
-      } else { 
-        return '#D1D5DB'
+        return "#049AFF";
+      } else {
+        return "#D1D5DB";
       }
-
-    }
+    };
 
     const Finish = () => {
       //code
@@ -508,14 +549,29 @@ export default {
       open.value = false;
     };
 
+    onMounted(() => {
+      bucketAddress.value = vault.value.bucketAddress;
+      if (vault.value.mint_status == "bucket_minted") {
+        step.value = 2;
+      }
+
+      if (vault.value.mint_status == "bucket_approved") {
+        step.value = 3;
+      }
+
+      if (vault.value.mint_status == "nft_transfered") {
+        step.value = 4;
+      }
+    });
+
     return {
       open,
       Confirm,
       nextStep,
       Finish,
       step,
-      fillLine
-
+      fillLine,
+      closeIt
     };
   },
 };

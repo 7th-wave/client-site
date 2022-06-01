@@ -165,7 +165,7 @@ const mintVault = async (name, ticker, basketaddress, id, supply, listPrice, fee
   );
   const receipt = await vaultFactoryContract.methods
     .mint(name, ticker, basketaddress, 0, supply, listPrice, fee)
-    .send({ from: accounts.result[0] });
+    .sendAsync({ from: accounts.result[0] });
 
   return receipt;
 };
@@ -186,6 +186,8 @@ const approveNFT = async (nftAddress, id, basketaddress) => {
 };
 
 const transferNFT = async (nftAddress, id, basketaddress) => {
+  console.log('Here');
+
   const accounts = await window.ethereum.send("eth_requestAccounts");
   window.web3 = new Web3(window.ethereum);
   // Create contract object
@@ -193,11 +195,17 @@ const transferNFT = async (nftAddress, id, basketaddress) => {
     JERC721,
     nftAddress
   );
-  const receipt = await nftContract.methods
-    .safeTransferFrom(accounts.result[0], basketaddress, id)
-    .send({ from: accounts.result[0] });
+  
+  try {
+   
+    const receipt = await nftContract.methods
+      .safeTransferFrom(accounts.result[0], basketaddress, id)
+      .send({ from: accounts.result[0] });
 
-  return receipt;
+    return receipt;
+  } catch(error) {
+    console.log(error);
+  }
 };
 
 const tokenAllowance = async (amount, address, instance, provider) => {

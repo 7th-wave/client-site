@@ -138,6 +138,7 @@ import { onMounted, ref } from "vue";
 import { useRoute } from "vue-router";
 import { useStore } from "vuex";
 import { getVault } from "../../../firebase/vaults";
+
 import Steps from "../../Drawers/Steps.vue";
 const steps = [
   {
