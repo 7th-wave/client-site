@@ -11,7 +11,8 @@
       top-0
       shadow
       bg-white
-      h-full
+      h-auto
+      rounded-bl-xl
     "
     style="max-height: 636px"
   >
@@ -20,15 +21,15 @@
         col-span-4
         flex-1 flex flex-col
         min-h-0
-        bg-white
+        bg-gray-700
         font-inter font-medium
       "
     >
-      <div class="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
+      <div class="flex-1 flex flex-col pt-10 pb-10 overflow-y-auto">
         <div class="flex items-center flex-shrink-0 px-4">
           <logo-small />
         </div>
-        <nav class="mt-5 flex-1 px-2 space-y-1" aria-label="Sidebar">
+        <nav class="mt-10 flex-1 px-2 space-y-1" aria-label="Sidebar">
           <router-link
             :to="{name: item.href}"
             @click="closeMenu"
@@ -37,8 +38,8 @@
             :class="[
             currentRouteName === item.href 
                 ? 'bg-gray-100 text-gray-900'
-                : 'text-gray-600 hover:bg-gray-100',
-              'group flex items-center px-2 py-2 text-sm font-medium rounded-md',
+                : 'text-white hover:bg-white hover:text-black',
+              'group flex items-center px-2 py-2 text-lg font-medium rounded-md',
             ]"
           >
             <component
@@ -52,7 +53,7 @@
           </router-link>
         </nav>
       </div>
-      <div class="flex-shrink-0 flex bg-gray-100 p-4" v-if="blockchainAddress">
+      <div class="flex-shrink-0 flex bg-gray-800 p-4" v-if="blockchainAddress">
         <router-link :to="{name:'MyAccount',params:{address:blockchainAddress}}"  class="flex-shrink-0 w-full group block">
           <div class="flex items-center">
             <div>
@@ -60,46 +61,57 @@
               
             </div>
             <div class="ml-3">
-              <p class="text-sm font-medium text-gray-700">{{ user.username }}</p>
+              <p class="text-lg font-medium text-gray-700">{{ user.username }}</p>
               <div class="flex items-center space-x-1">
-                <p class="text-xs font-medium text-primary-500 hover:underline">
-                  {{blockchainAddress ? blockchainAddress.replace(blockchainAddress.substring(8,blockchainAddress.length - 3), "....") : 'N/A'}}
+                <p class="text-lg font-medium text-primary-500 hover:text-white">
+                  {{blockchainAddress ? blockchainAddress.replace(blockchainAddress.substring(8,blockchainAddress.length - 4), "....") : 'N/A'}}
                 </p>
-                <DocumentDuplicateIcon class="h-4 w-4" />
+                
+            
+               
               </div>
             </div>
           </div>
         </router-link>
       </div>
-      <div class="flex flex-col items-start space-y-2 p-4" v-if="blockchainAddress">
-        <router-link :to="{name:'My_collections'}" class="text-gray-900 font-medium text-base font-inter"
-          >My Assets</router-link
-        >
-        <a href="#" @click.prevent="logout" class="text-gray-600 font-medium text-base font-inter"
-          >Disconect</a
-        >
+      <div class="flex flex-col items-start space-y-6 p-4 pt-6 pb-6 bg-gray-900" v-if="blockchainAddress">
+        <div class="group flex items-center"><box-icon name="diamond" color="white" class="mr-3" />
+          <router-link :to="{name:'My_collections'}" class=" font-medium text-lg font-inter cursor-pointer text-primary-500 hover:text-white"
+            >My Assets</router-link
+          >
+        </div>
+        <div class="group flex items-center"><box-icon name="wallet" color="white" class="mr-3" />  
+          <a href="#" @click.prevent="logout" class="font-medium text-lg font-inter cursor-pointer text-primary-500 hover:text-white"
+            >Disconnect</a
+          >
+        </div>  
       </div>
-       <div class="flex  items-center space-x-2 p-4 border-t bg-gray-50" v-else >
+       <div class="flex  items-center space-x-2 p-4  bg-gray-800" v-else >
         
-           <UserIcon  class=" w-6 h-5  userIcon"/>
+           <box-icon name="wallet" color="white" />
        
-        <a href="javascript:void(0)" @click.prevent="login" class="text-gray-900 font-medium text-base font-inter"
-          >Login</a
+        <a href="javascript:void(0)" @click.prevent="login" class="cursor-pointer text-primary-500 hover:text-white font-medium text-lg font-inter"
+          >Connect Wallet</a
         >
       </div>
     </div>
-    <div class="bg-secondary-500">
+    <div class="cursor-pointer bg-white hover:bg-primary-500 text-primary-500 hover:text-white" @click="closeMenu" >
+      
       <div
-        class="flex cursor-pointer p-4 text-white hover:text-black"
-        @click="closeMenu"
+        class="flex p-4"
+        
       >
-        <div class="m-auto"><XIcon class="w-6 h-6" /></div>
+        <div class="m-auto mt-5"><XIcon class="w-8 h-8" /></div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+
+
+import { FontAwesomeIcon, FontAwesomeLayers, FontAwesomeLayersText } from '@fortawesome/vue-fontawesome';
+
 import {
   // LightBulbIcon,
   ViewGridIcon,
@@ -111,6 +123,7 @@ import {
   UserIcon,
   BookOpenIcon,
   MailIcon,
+
 } from "@heroicons/vue/outline";
   import LogoSmall from './LogoSmall.vue';
 import { computed, ref } from '@vue/reactivity';
@@ -146,7 +159,11 @@ export default {
     ChartSquareBarIcon,
     LogoSmall,
     BookOpenIcon,
-    UserImage
+    UserImage,
+    FontAwesomeIcon,
+    FontAwesomeLayers,
+    FontAwesomeLayersText,
+
   },
 
   emits: ['on:login'],    
