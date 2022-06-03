@@ -1,5 +1,5 @@
 <template>
-  <div class="home font-inter py-4 w-full">
+  <div class="home font-inter w-full">
     <div class="relative">
       <div class="relative">
         <div class="w-full bg-gray-100">
@@ -13,7 +13,7 @@
                 class="md:text-5xl text-3xl leading-none font-inter font-semibold"
               >
                 <span class="text-primary-500">Mint</span> and
-                <span class="text-secondary-500">Trade</span> <br />NFT
+                <span class="text-primary-500">Trade</span> <br />NFT
                 Fractions of <br />Tangible Assets
               </h1>
               <p
@@ -27,7 +27,7 @@
               <div class="flex lg:mt-16 mt-6 w-full">
                 <div class="w-full">
                   <Button
-                    :btn-style="'secondary'"
+                    :btn-style="'primary'"
                     :size="'large'"
                     class="w-full"
                     @click="goCollections"

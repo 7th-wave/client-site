@@ -7,17 +7,7 @@
       @close="open = false"
     >
       <div
-        class="
-          flex
-          items-end
-          justify-center
-          min-h-screen
-          pt-4
-          px-4
-          pb-20
-          text-center
-          sm:block sm:p-0
-        "
+        class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0"
       >
         <TransitionChild
           as="template"
@@ -49,37 +39,18 @@
           leave-to="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
         >
           <div
-            class="
-              inline-block
-              align-bottom
-              bg-white
-              rounded-lg
-              text-left
-              overflow-hidden
-              shadow-xl
-              transform
-              transition-all
-              sm:my-8 sm:align-middle sm:max-w-xs sm:w-full
-            "
+            class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-xs sm:w-full"
           >
             <div class="bg-white w-full">
               <div
-                class="
-                  w-full
-                  bg-gray-50
-                  flex
-                  items-center
-                  justify-between
-                  py-4
-                  px-4
-                "
+                class="w-full bg-gray-50 flex items-center justify-between py-4 px-4"
               >
                 <span class="text-lg text-gray-900 font-inter"
                   >Follow Steps</span
                 >
                 <div
                   class="p-1 bg-white rounded-md shadow-sm cursor-pointer"
-                  @click="open = false"
+                  @click="closeIt"
                 >
                   <XIcon class="w-5 h-5 text-teal-500" />
                 </div>
@@ -153,7 +124,7 @@
                       width="136.04"
                       height="2"
                       transform="rotate(-90 0.679688 136.04)"
-                      fill="#049AFF"
+                      :fill="fillLine(1)"
                     />
                   </svg>
                 </div>
@@ -162,7 +133,7 @@
                 class="w-full col-span-4 flex flex-col items-start space-y-3"
               >
                 <span class="text-sm text-gray-900 font-inter font-semibold"
-                  >Mint the nft vault</span
+                  >Mint the NFT vault</span
                 >
                 <p class="text-left text-gray-500 font-inter text-sm">
                   In order to fractionalize multiple NFTs you need to mint the
@@ -170,27 +141,22 @@
                 </p>
                 <button
                   @click="nextStep"
-                  class="
-                    text-center text-white text-sm
-                    font-medium font-inter
-                    rounded-md
-                    py-2.5
-                    w-full
-                    outline-none
-                  "
+                  :disabled="step !== 1 ? true : false"
+                  class="text-center text-white text-sm font-medium font-inter rounded-md py-2.5 w-full outline-none"
                   :class="{
                     'bg-primary-link': step === 1,
-                    'bg-gray-300': step !== 1,
+                    'bg-gray-300': step > 1,
                   }"
                 >
-                  MINTED
+                  <span v-if="step == 1">MINT</span>
+                  <span v-if="step !== 1">MINTED</span>
                 </button>
               </div>
               <!-- step 2 -->
               <div class="w-full col-span-1 flex items-center flex-col">
                 <div>
                   <svg
-                    v-if="step === 1"
+                    v-if="step <= 2"
                     width="33"
                     height="32"
                     viewBox="0 0 33 32"
@@ -253,7 +219,7 @@
                       width="136.04"
                       height="2"
                       transform="rotate(-90 0.679688 136.04)"
-                      fill="#049AFF"
+                      :fill="fillLine(2)"
                     />
                   </svg>
                 </div>
@@ -269,27 +235,22 @@
                 </p>
                 <button
                   @click="nextStep"
-                  class="
-                    text-center text-white text-sm
-                    font-medium font-inter
-                    rounded-md
-                    py-2.5
-                    w-full
-                    outline-none
-                  "
+                  :disabled="step !== 2 ? true : false"
+                  class="text-center text-white text-sm font-medium font-inter rounded-md py-2.5 w-full outline-none"
                   :class="{
-                    'bg-primary-link': step === 1,
-                    'bg-gray-300': step !== 1,
+                    'bg-primary-link': step === 2,
+                    'bg-gray-300': step !== 2,
                   }"
                 >
-                  APPROVED
+                  <span v-if="step <= 2">APPROVE</span>
+                  <span v-if="step > 2">APPROVED</span>
                 </button>
               </div>
               <!-- step 3 -->
               <div class="w-full col-span-1 flex items-center flex-col">
                 <div>
                   <svg
-                    v-if="step === 1"
+                    v-if="step <= 3"
                     width="33"
                     height="32"
                     viewBox="0 0 33 32"
@@ -352,7 +313,7 @@
                       width="136.04"
                       height="2"
                       transform="rotate(-90 0.679688 136.04)"
-                      fill="#049AFF"
+                      :fill="fillLine(3)"
                     />
                   </svg>
                 </div>
@@ -361,27 +322,22 @@
                 class="w-full col-span-4 flex flex-col items-start space-y-3"
               >
                 <span class="text-sm text-gray-900 font-inter font-semibold"
-                  >transfer nft(s)</span
+                  >Transfer nft(s)</span
                 >
                 <p class="text-left text-gray-500 font-inter text-sm">
                   In order to transfer the NFT(s) approval is needed.
                 </p>
                 <button
                   @click="nextStep"
-                  class="
-                    text-center text-white text-sm
-                    font-medium font-inter
-                    rounded-md
-                    py-2.5
-                    w-full
-                    outline-none
-                  "
+                  :disabled="step !== 3 ? true : false"
+                  class="text-center text-white text-sm font-medium font-inter rounded-md py-2.5 w-full outline-none"
                   :class="{
-                    'bg-primary-link': step === 1,
-                    'bg-gray-300': step !== 1,
+                    'bg-primary-link': step === 3,
+                    'bg-gray-300': step !== 3,
                   }"
                 >
-                  TRANSFERED
+                  <span v-if="step <= 3">TRANSFER</span>
+                  <span v-if="step > 3">TRANSFERED</span>
                 </button>
               </div>
 
@@ -389,7 +345,7 @@
               <div class="w-full col-span-1 flex items-center flex-col">
                 <div>
                   <svg
-                    v-if="step === 1"
+                    v-if="step <= 4"
                     width="33"
                     height="32"
                     viewBox="0 0 33 32"
@@ -455,20 +411,13 @@
                 </p>
                 <button
                   @click="Finish"
-                  class="
-                    text-center text-white text-sm
-                    font-medium font-inter
-                    rounded-md
-                    py-2.5
-                    w-full
-                    outline-none
-                  "
+                  class="text-center text-white text-sm font-medium font-inter rounded-md py-2.5 w-full outline-none"
                   :class="{
                     'bg-primary-link': step === 4,
                     'bg-gray-300': step != 4,
                   }"
                 >
-                  FRACTIONALIZE
+                  <span v-if="step <= 4">FRACTIONALIZE</span>
                 </button>
               </div>
             </div>
@@ -480,7 +429,7 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref, toRefs, watch, onMounted } from "vue";
 import {
   Dialog,
   DialogOverlay,
@@ -488,6 +437,16 @@ import {
   TransitionRoot,
 } from "@headlessui/vue";
 import { XIcon } from "@heroicons/vue/solid";
+import { useRouter } from "vue-router";
+import {
+  mintBasket,
+  approveBasket,
+  /*approveNFT,*/
+  transferNFT,
+} from "../../blockchain";
+import { saveBucketAddress, saveVaultMintStatus } from "../../firebase/vaults";
+import { useStore } from "vuex";
+
 export default {
   components: {
     Dialog,
@@ -496,32 +455,124 @@ export default {
     TransitionRoot,
     XIcon,
   },
-  data() {
-    return {
-      step: 4,
-    };
-  },
-  setup() {
+  emits: ['on:close'],
+  props: ["vault", "show"],
+  setup(props, {emit}) {
+    const router = useRouter();
+    const store = useStore();
     const open = ref(false);
+    const step = ref(1);
+
+    const { vault, show } = toRefs(props);
+    const localVault = ref();
+
+    watch(vault, (value) => {
+      localVault.value = value;
+    });
+
+    watch(show, (value) => {
+      open.value = value;
+    });
+
+    const Confirm = () => {
+      open.value = false;
+    };
+
+    const closeIt = () => {
+      open.value = false;
+      emit("on:close");
+    }
+
+    const bucketAddress = ref();
+
+    const nextStep = async () => {
+      if (step.value == 1) {
+        store.dispatch("NotificationStore/TOGGLE_LOADING");
+        const result = await mintBasket();
+        //Record Transaction hash for the bucket
+        const events = result.events.NewBasket;
+        bucketAddress.value = events.returnValues[0];
+
+        await saveBucketAddress(vault.value.dbRef, {
+          bucketAddress: bucketAddress.value,
+        });
+        store.dispatch("NotificationStore/TOGGLE_LOADING");
+      }
+
+      if (step.value == 2) {
+        store.dispatch("NotificationStore/TOGGLE_LOADING");
+        await approveBasket(bucketAddress.value);
+        await saveVaultMintStatus(vault.value.dbRef, {
+          mint_status: "bucket_approved",
+        });
+        store.dispatch("NotificationStore/TOGGLE_LOADING");
+      }
+
+      if (step.value == 3) {
+        store.dispatch("NotificationStore/TOGGLE_LOADING");
+
+        for (let { address, id } of vault.value.nfts) {
+          try {
+            console.log(id);
+            await transferNFT(address, id, bucketAddress.value);
+            //await approveNFT(address, id, bucketAddress.value);
+          } catch (error) {
+            store.dispatch("NotificationStore/TOGGLE_LOADING");
+          }
+        }
+
+       /*  await saveVaultMintStatus(vault.value.dbRef, {
+          mint_status: "nft_transfered",
+        }); */
+        store.dispatch("NotificationStore/TOGGLE_LOADING");
+      }
+
+      if (step.value == 4) {
+        //await approveNFT(address, id, bucketAddress.value);
+      }
+
+      step.value++;
+    };
+
+    const fillLine = (current) => {
+      if (step.value > current) {
+        return "#049AFF";
+      } else {
+        return "#D1D5DB";
+      }
+    };
+
+    const Finish = () => {
+      //code
+      router.push({ name: "My_fractions_details", params: { id: "cvman" } });
+      //close modal
+      open.value = false;
+    };
+
+    onMounted(() => {
+      bucketAddress.value = vault.value.bucketAddress;
+      if (vault.value.mint_status == "bucket_minted") {
+        step.value = 2;
+      }
+
+      if (vault.value.mint_status == "bucket_approved") {
+        step.value = 3;
+      }
+
+      if (vault.value.mint_status == "nft_transfered") {
+        step.value = 4;
+      }
+    });
 
     return {
       open,
+      Confirm,
+      nextStep,
+      Finish,
+      step,
+      fillLine,
+      closeIt
     };
-  },
-  methods: {
-    Confirm() {
-      this.open = false;
-    },
-    nextStep() {
-     // this.step++;
-    },
-    Finish() {
-      //code
- this.$router.push({name:'My_fractions_details',params:{id:'cvman'}})
-      //close modal
-      this.open = false;
-     
-    },
   },
 };
 </script>

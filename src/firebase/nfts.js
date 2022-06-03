@@ -19,9 +19,16 @@ const createNft = async(data) => {
     return result.data;
 }
 
+const updateNft = async(ref, data) => {
+    const result = await axios.post(app_url+'edit_nft?ref='+ref, data);
+    return result.data;
+}
+
+
 
 export {
     getUserNfts,
     createNft,
-    getNft
+    getNft,
+    updateNft
 };

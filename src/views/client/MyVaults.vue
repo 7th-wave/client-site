@@ -20,7 +20,7 @@
               <template #subtitle>
                 <span
                   class="text-sm font-inter font-medium text-primary-500 cursor-pointer"
-                  >{{ vaults.length }} Vaults</span
+                  >{{ vaults.length - 1 }} Vaults</span
                 >
               </template>
               <template #title>
@@ -32,7 +32,7 @@
             class="cursor-pointer"
             :url="{
               name: 'Vault',
-              params: { id: item.id },
+              params: { id: item.dbRef }
             }"
            
             :vault="item"
@@ -62,7 +62,7 @@
                 </div>
                 <span
                   class="text-sm font-medium font-inter text-gray-900 text-center"
-                  >{{ item.creator }}</span
+                  >{{ item.ticker }}</span
                 >
               </div>
             </template>
@@ -81,6 +81,9 @@ import VaultItem from "@/components/Shared/VaultItem.vue";
 import AccountLayout from '../../components/Layouts/AccountLayout.vue';
 import CreateNftButton from '../../components/cards/CreateNftButton.vue';
 import { useRouter } from 'vue-router';
+import { computed, onMounted, ref } from "vue";
+import { getUserVaults } from '../../firebase/vaults';
+import { useStore } from "vuex";
 
 // import GalleryClient from "@/components/Gallery/GalleryClient.vue";
 // import { ref, computed } from "vue";
@@ -97,65 +100,46 @@ export default {
     CreateNftButton,
   },
   setup() {
-
     const router = useRouter();
+    const store = useStore();
+
+    const currentAddress = computed(() => store.getters['blockchain/getCurrentAddress']);
 
     const newVault = () => {
       router.push('/fractionalize');
     }
 
-    return {
-      newVault
-    }
-  },
-  data() {
-    return {
-      vaults: [
+    const vaults = ref([
         {
          id: 0
         },
-        {
-          id: "cvman",
-          name: "The caveman, ca. 2008",
-          token: "SNEAKER",
-          creator: "caveman",
-          fractions: 58,
-          available: "49%",
-          valuation: "$2M",
-          nfts: [
-            {
-              name: "Nft1",
-              image: "caveman.png",
-            },
-          ],
-        },
-        {
-          id: "nike",
-          name: "Damien Hirst",
-          token: "SNEAKER",
-          creator: "HIRST",
-          fractions: 58,
-          available: "49%",
-          valuation: "$2M",
-          nfts: [
-            {
-              name: "Nft4",
-              image: "01.png",
-            },
-          ],
-        },
-      ],
-    };
-  },
-  methods: {
-    goDetails(id) {
+        
+      ]);
+
+    const goDetails = (id) => {
       this.$router.push({
         name: "CollectionDetails",
         params: {
           id: id,
         },
       });
-    },
+    }
+
+    onMounted(async () => {
+      store.dispatch("NotificationStore/TOGGLE_LOADING");
+      const result = await getUserVaults(currentAddress.value);
+      vaults.value.push(...result);
+      store.dispatch("NotificationStore/TOGGLE_LOADING");
+    })
+
+    return {
+      goDetails,
+      vaults,
+      newVault
+    };
+  },
+  methods: {
+    
   },
   // setup() {
   //   const artworks = ref([]);

@@ -1,7 +1,7 @@
 <template>
   <div class="w-full flex items-center">
     <div class="xl:w-2/3 w-full xl:m-auto xl:px-0 px-4">
-      <div v-if="slides.length > 1" class="relative m-auto">
+      <div v-if="localSlides.length > 1" class="relative m-auto">
         <CarouselCard
           class="hidden lg:block"
           ref="carouselCardRef"
@@ -13,7 +13,7 @@
           @change="changeHandle"
         >
           <CarouselCardItem
-            v-for="(item, index, key) in slides"
+            v-for="(item, index, key) in localSlides"
             :key="key"
             :name="`cc_${key}`"
           >
@@ -23,7 +23,7 @@
             >
               <img
                 class="w-full h-full object-cover"
-                :src="item.image"
+                :src="item.img"
                 alt=""
               />
             </div>
@@ -39,7 +39,7 @@
           @change="changeHandle"
         >
           <CarouselCardItem
-            v-for="(item, index, key) in slides"
+            v-for="(item, index, key) in localSlides"
             :key="key"
             :name="`cc_${key}`"
           >
@@ -49,7 +49,7 @@
             >
               <img
                 class="w-full h-full object-cover"
-                :src="item.image"
+                :src="item.img"
                 alt=""
               />
             </div>
@@ -109,19 +109,19 @@
         style="max-height: 660px"
       >
         <LightBox
-          :images="slides[0].image"
+          :images="localSlides[0].img"
           :visible="visibleLightBox"
           @on:close="visibleLightBox = false"
-          v-if="slides.length"
+          v-if="localSlides.length"
         />
-        <img class="w-full " @click="showModal" :src="slides[0].image" alt="" />
+        <img class="w-full " @click="showModal" :src="localSlides[0].img" alt="" v-if="localSlides.length" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { ref } from "@vue/reactivity";
+import { watch, toRefs, ref } from "vue";
 import LightBox from "../../components/Layouts/LightBox.vue";
 
 export default {
@@ -130,18 +130,19 @@ export default {
       index: 0,
     };
   },
-  props: {
-    slides: {
-      type: Object,
-      required: true,
-    },
-  },
+  props: [
+    'slides'
+  ],
   components: {
     // ArrowLeftIcon,
     // ArrowRightIcon,
     LightBox
   },
-  setup() {
+  setup(props) {
+
+    const { slides } = toRefs(props);
+
+    const localSlides = ref([]);
 
     const visibleLightBox = ref(false);
 
@@ -166,6 +167,10 @@ export default {
       visibleLightBox.value = true;
     };
 
+    watch(slides, (value) => {
+      localSlides.value = value;
+    })
+
 
     return {
       carouselCardRef,
@@ -175,7 +180,8 @@ export default {
       prev,
       setToFirst,
       visibleLightBox,
-      showModal
+      showModal,
+      localSlides
     };
   },
   methods: {

@@ -4,7 +4,9 @@ import '@firebase/auth'
 import '@firebase/firestore'
 import '@firebase/storage'
 import axios from 'axios';
-import env from './config'
+import env from './config';
+import api from '../axios/api'
+
 
 
 
@@ -101,6 +103,12 @@ const getVaults = async(address) => {
     return result.data;
 }
 
+const getCategories = async (data) => {
+    const results = await api.get('find_categories', data);
+
+    return results.data;
+}
+
 
 export {
     db,
@@ -112,5 +120,6 @@ export {
     getLastBid,
     saveUser,
     getUserByAddress,
-    getVaults
+    getVaults,
+    getCategories
 };

@@ -1,7 +1,9 @@
 <template>
   <div class="w-full font-inter space-y-4">
     <Steps :step="steps" />
-    <div class="w-full bg-blue-link bg-opacity-20 flex py-8 cursor-pointer" @click="nextStep">
+    <div
+      class="w-full bg-blue-link bg-opacity-20 flex py-8 cursor-pointer"
+    >
       <div class="m-auto flex items-center space-x-1">
         <div>
           <svg
@@ -121,34 +123,27 @@
           </svg>
         </div>
         <div
-          class="
-            flex flex-col
-            items-start
-            space-y-2
-            text-gray-700
-            font-bold
-            text-2xl
-            font-inter
-          "
+          class="flex flex-col items-start space-y-2 text-gray-700 font-bold text-2xl font-inter"
         >
           <span>We are analysing </span>
           <span>your asset application</span>
         </div>
       </div>
     </div>
-    
-    <div class="">
-    <Feed />
 
+    <div class="">
+      <Feed :comments="comments" @on:comment="addComment" />
     </div>
   </div>
 </template>
 
-
 <script>
-import Feed from '../../Drawers/Feed.vue'
+import Feed from "../../Drawers/Feed.vue";
 import Steps from "../../Drawers/Steps.vue";
-
+import { getVault } from "../../../firebase/vaults";
+import { onMounted, ref } from "vue";
+import { useRoute } from "vue-router";
+import { useStore } from "vuex";
 
 const steps = [
   {
@@ -174,22 +169,38 @@ const steps = [
   },
 ];
 export default {
-   setup() {
+  emits: ["nextStep"],
+  setup(props, { emit }) {
+    const route = useRoute();
+    const store = useStore();
+
+    const vault = ref();
+
+    const comments = ref([]);
+
+    const getVaultData = async () => {
+      store.dispatch("NotificationStore/TOGGLE_LOADING");
+      vault.value = await getVault(route.params.dbref);
+      if (vault.value.status == 'approved') {
+        emit("nextStep");
+      }
+      store.dispatch("NotificationStore/TOGGLE_LOADING");
+    };
+
+    onMounted(async () => {
+      await getVaultData();
+    });
     return {
       steps,
-    }
+      vault,
+      comments
+    };
   },
-    components: {
-        Feed,
-        Steps
-    },
-    methods:{
-      nextStep(){
-        this.$emit('nextStep')
-      }
-    }
+  components: {
+    Feed,
+    Steps,
+  },
 };
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>
