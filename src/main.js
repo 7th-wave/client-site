@@ -16,6 +16,25 @@ import "firebaseui/dist/firebaseui.css";
 import store from "./store";
 
 
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faCoffee, faChild, faCircle, faArchive, faEnvelope,faWallet } from '@fortawesome/free-solid-svg-icons';
+import { faTwitter } from '@fortawesome/free-brands-svg-icons';
+
+library.add(
+  faCoffee,
+  faChild,
+  faCircle,
+  faArchive,
+  faEnvelope,
+  faTwitter,
+  faWallet,
+)
+
+import 'boxicons';
+
+
+
+
 createApp(App).use(router).use(VueEasyLightbox).use(store).use(DatePicker).use(TimePicker).use(VueClipboard).use(CarouselCard).mount("#app");
 
 // auth.onAuthStateChanged((user) => {
