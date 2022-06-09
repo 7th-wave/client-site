@@ -8,7 +8,7 @@
     </router-link>
 </template>
 <script>
-import {db, storage} from '../../firebase/firebase';
+//import {storage} from '../../firebase/firebase';
 import { onMounted, ref, toRefs } from '@vue/runtime-core';
 export default {
     props: ['nft'],
@@ -22,7 +22,15 @@ export default {
         const lastSale = ref(null);
 
         const getData = async() => {
-            const nftDoc = await db.collection("nfts").doc(nft.value.id).get();
+            nftData.value = {
+                id: nft.value.id,
+                title: nft.value.title,
+                href: nft.value.href,
+                size: nft.value.size,
+                category: nft.value.category,
+                imageUrl: nft.value.imageUrl,
+            };
+            /* const nftDoc = await db.collection("nfts").doc(nft.value.id).get();
 
             console.log(nft.value);
 
@@ -61,12 +69,12 @@ export default {
                 const saleData = await db.collection("sales").doc(lastSaleRef).get();
                 lastSale.value = saleData.data();
 
-            }
+            } */
             
 
         }
 
-        const getFullImageURL = async (item) => {
+       /*  const getFullImageURL = async (item) => {
             console.log(item);
             if (item) {
                 var storageRef = storage.ref();
@@ -74,7 +82,7 @@ export default {
 
                 return imageUrl;
             }
-        };
+        }; */
 
         onMounted(async () => {
             await getData();

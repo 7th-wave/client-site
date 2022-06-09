@@ -50,10 +50,10 @@
 <script>
 // @ is an alias to /src
 import Gallery from '@/components/Gallery/Gallery';
-import { useRoute } from 'vue-router';
+//import { useRoute } from 'vue-router';
 import { ref } from '@vue/reactivity';
 import { onMounted } from '@vue/runtime-core';
-import { useStore } from 'vuex';
+//import { useStore } from 'vuex';
 
  /* const data = {
     artist: 'Mario Sanchez',
@@ -73,23 +73,23 @@ export default {
 
   },
   setup() {
-    const route = useRoute();
-    const store = useStore();
-    const collectionRef = route.params.ref;
+    //const route = useRoute();
+    //const store = useStore();
+    //const collectionRef = route.params.ref;
 
     //const storage = firebase.storage();
     const data = ref({
-      title: '',
-      artist: '',
-      artist_name: '',
-      bio_title: '',
-      bio: '',
-      img: '',
+      title: 'Collection Name',
+      artist: 'Manfred',
+      artist_name: 'Manfred',
+      bio_title: 'This is the bio',
+      bio: 'This is the bio',
+      img: './images/mocks/nfts/img_01.jpg',
       gallery: []
     })
 
     const getData = async () => {      
-      await store.dispatch('collection/loadCollection', collectionRef);
+      /* await store.dispatch('collection/loadCollection', collectionRef);
       console.log(store.getters['collection/getName']);
 
       // doc.data() is never undefined for query doc snapshots
@@ -98,7 +98,7 @@ export default {
       data.value.bio_title = store.state.collection.artistBioTitle;
       data.value.lastName = store.state.collection.lastName;
       data.value.bio = store.state.collection.artistBio;
-      data.value.gallery = store.state.collection.gallery;
+      data.value.gallery = store.state.collection.gallery; */
         
     }
 
