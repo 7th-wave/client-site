@@ -149,9 +149,9 @@ export default {
     ]);
     const { gallery } = toRefs(props);
 
-    let nftRef = "";
+    //let nftRef = "";
 
-    const getNftDetail = async (values) => {
+    const getNftDetail = async () => {
       /* if (props.src == "admin") {
         artwork.value.push(newArtwork);
       }
@@ -181,14 +181,14 @@ export default {
       getNftDetail(value);
     });
 
-    const newArtwork = {
+    /* const newArtwork = {
       id: 1,
       title: "add",
       href: "/admin/artwork/" + collectionRef + "/" + nftRef,
       size: "",
       category: "",
       imageUrl: "/images/plus_circle.svg",
-    };
+    }; */
 
     /* const getFullImageURL = async (item) => {
       console.log(item);

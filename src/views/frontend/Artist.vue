@@ -50,10 +50,10 @@
 <script>
 // @ is an alias to /src
 import Gallery from '@/components/Gallery/Gallery';
-import { useRoute } from 'vue-router';
+//import { useRoute } from 'vue-router';
 import { ref } from '@vue/reactivity';
 import { onMounted } from '@vue/runtime-core';
-import { useStore } from 'vuex';
+//import { useStore } from 'vuex';
 
  /* const data = {
     artist: 'Mario Sanchez',
@@ -73,9 +73,9 @@ export default {
 
   },
   setup() {
-    const route = useRoute();
-    const store = useStore();
-    const collectionRef = route.params.ref;
+    //const route = useRoute();
+    //const store = useStore();
+    //const collectionRef = route.params.ref;
 
     //const storage = firebase.storage();
     const data = ref({
@@ -84,7 +84,7 @@ export default {
       artist_name: 'Manfred',
       bio_title: 'This is the bio',
       bio: 'This is the bio',
-      img: './images/mocks/nfts',
+      img: './images/mocks/nfts/img_01.jpg',
       gallery: []
     })
 
