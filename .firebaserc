@@ -1,15 +1,16 @@
 {
   "projects": {
-    "default": "prod"
+    "default": "cirkol",
+    "cirkol": "cirkol"
   },
   "targets": {
-    "numbusfrac": {
+    "cirkol": {
       "hosting": {
         "prod": [
-          "nft-frac"
+          "cirkol"
         ],
         "dev": [
-          "nft-frac-dev"
+          "cirkol-dev"
         ]
       }
     }
