@@ -66,13 +66,93 @@ export default {
     const route = useRoute();
     const collectionRef = route.params.ref;
 
-    const artwork = ref([]);
+    const artwork = ref([
+      {
+        id: '001',
+        title: 'title 01',
+        href: "/admin/artwork/00A/001",
+        size: 12,
+        category: "",
+        imageUrl: "./images/mocks/nfts/img_01.jpg",
+      },
+      {
+        id: '002',
+        title: 'title 02',
+        href: "/admin/artwork/00A/001",
+        size: 12,
+        category: "",
+        imageUrl: "./images/mocks/nfts/img_02.jpg",
+      },{
+        id: '003',
+        title: 'title 03',
+        href: "/admin/artwork/00A/003",
+        size: 12,
+        category: "",
+        imageUrl: "./images/mocks/nfts/img_03.jpg",
+      },{
+        id: '004',
+        title: 'title 04',
+        href: "/admin/artwork/00A/004",
+        size: 12,
+        category: "",
+        imageUrl: "./images/mocks/nfts/img_04.jpg",
+      },{
+        id: '005',
+        title: 'title 05',
+        href: "/admin/artwork/00A/005",
+        size: 12,
+        category: "",
+        imageUrl: "./images/mocks/nfts/img_05.jpg",
+      },{
+        id: '006',
+        title: 'title 06',
+        href: "/admin/artwork/00A/006",
+        size: 12,
+        category: "",
+        imageUrl: "./images/mocks/nfts/img_06.jpg",
+      },{
+        id: '007',
+        title: 'title 07',
+        href: "/admin/artwork/00A/007",
+        size: 12,
+        category: "",
+        imageUrl: "./images/mocks/nfts/img_07.jpg",
+      },{
+        id: '007',
+        title: 'title 07',
+        href: "/admin/artwork/00A/007",
+        size: 12,
+        category: "",
+        imageUrl: "./images/mocks/nfts/img_07.jpg",
+      },{
+        id: '008',
+        title: 'title 08',
+        href: "/admin/artwork/00A/008",
+        size: 12,
+        category: "",
+        imageUrl: "./images/mocks/nfts/img_08.jpg",
+      },{
+        id: '009',
+        title: 'title 09',
+        href: "/admin/artwork/00A/009",
+        size: 12,
+        category: "",
+        imageUrl: "./images/mocks/nfts/img_09.jpg",
+      },{
+        id: '010',
+        title: 'title 10',
+        href: "/admin/artwork/00A/010",
+        size: 12,
+        category: "",
+        imageUrl: "./images/mocks/nfts/img_10.jpg",
+      }
+    ]);
     const { gallery } = toRefs(props);
 
     let nftRef = "";
 
     const getNftDetail = async (values) => {
-      if (props.src == "admin") {
+      /* if (props.src == "admin") {
         artwork.value.push(newArtwork);
       }
 
@@ -94,7 +174,7 @@ export default {
         } else {
           console.log(nftRef);
         }
-      }
+      } */
     };
 
     watch(gallery, (value) => {
@@ -110,7 +190,7 @@ export default {
       imageUrl: "/images/plus_circle.svg",
     };
 
-    const getFullImageURL = async (item) => {
+    /* const getFullImageURL = async (item) => {
       console.log(item);
       if (item) {
         var storageRef = storage.ref();
@@ -118,7 +198,7 @@ export default {
 
         return imageUrl;
       }
-    };
+    }; */
 
     const artLink = (artwork) => {
       if (props.src == "admin") {
