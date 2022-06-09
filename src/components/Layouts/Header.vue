@@ -53,7 +53,7 @@
                   py-2.5
                   px-4
                   rounded-md
-
+                  w-auto
                   border-primary-500
                 "
               >
@@ -97,7 +97,7 @@
                   </svg>
                 </div>
                 <span class="text-base font-medium font-inter black">
-                  FRACTIONALIZE</span
+                  JOIN THE CLUB</span
                 >
               </button>
             </div>
