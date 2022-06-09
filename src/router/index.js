@@ -82,8 +82,8 @@ const routes = [
     component: () => import("../views/frontend/Contact.vue"),
   },
   {
-    path: "/artist/:ref",
-    name: "Artist",
+    path: "/nfts",
+    name: "nft",
     component: () =>
       import(/* webpackChunkName: "artist" */ "../views/frontend/Artist.vue"),
   },
