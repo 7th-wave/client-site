@@ -58,45 +58,15 @@
                 "
               >
                 <div>
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                    class="text-primary-500"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path
-                      d="M1.3335 2.70378C1.3335 1.7833 2.07969 1.03711 3.00016 1.03711H4.66683C5.5873 1.03711 6.3335 1.7833 6.3335 2.70378V4.37044C6.3335 5.29092 5.5873 6.03711 4.66683 6.03711H3.00016C2.07969 6.03711 1.3335 5.29092 1.3335 4.37044V2.70378Z"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                    <path
-                      d="M9.66683 2.70378C9.66683 1.7833 10.413 1.03711 11.3335 1.03711H13.0002C13.9206 1.03711 14.6668 1.7833 14.6668 2.70378V4.37044C14.6668 5.29092 13.9206 6.03711 13.0002 6.03711H11.3335C10.413 6.03711 9.66683 5.29092 9.66683 4.37044V2.70378Z"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                    <path
-                      d="M1.3335 11.0371C1.3335 10.1166 2.07969 9.37044 3.00016 9.37044H4.66683C5.5873 9.37044 6.3335 10.1166 6.3335 11.0371V12.7038C6.3335 13.6242 5.5873 14.3704 4.66683 14.3704H3.00016C2.07969 14.3704 1.3335 13.6242 1.3335 12.7038V11.0371Z"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
-                    <path
-                      d="M9.66683 11.0371C9.66683 10.1166 10.413 9.37044 11.3335 9.37044H13.0002C13.9206 9.37044 14.6668 10.1166 14.6668 11.0371V12.7038C14.6668 13.6242 13.9206 14.3704 13.0002 14.3704H11.3335C10.413 14.3704 9.66683 13.6242 9.66683 12.7038V11.0371Z"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                    />
+                  <svg width="16" height="16" viewBox="0 0 170.79 170.79" fill="none" class="text-gray-900
+                    " version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+                    y="0px" enable-background="new 0 0 170.79 170.79" xml:space="preserve">
+                    <path fill="#999897" d="M85.395,16.813c37.816,0,68.582,30.765,68.582,68.582s-30.766,68.582-68.582,68.582
+	                  c-37.816,0-68.582-30.765-68.582-68.582S47.579,16.813,85.395,16.813 M85.395,0C38.233,0,0,38.233,0,85.395
+	                  s38.233,85.395,85.395,85.395s85.395-38.233,85.395-85.395S132.558,0,85.395,0L85.395,0z" />
                   </svg>
                 </div>
-                <span class="text-base font-medium font-inter black">
+                <span class="text-base font-medium font-inter black w-max">
                   JOIN THE CLUB</span
                 >
               </button>

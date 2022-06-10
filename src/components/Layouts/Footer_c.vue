@@ -60,11 +60,11 @@
           </div>
            <div class="flex space-x-6 md:order-2">
             <p class="mt-8 text-base text-gray-400 md:mt-0 md:order-1">
-            NFT DAPP by 7thw
+            NFT DAPP by 7thw.com
             </p>
           </div>
           <p class="mt-8 md:mt-0 md:order-1">
-            <a href="/admin/collections" class="text-base text-gray-400">&copy; 2021 Gallery On Greene, Inc. All rights reserved.</a>
+            <a href="/admin/collections" class="text-base text-gray-400">&copy; 2022 CIRKOL COLLECTIVE All rights reserved.</a>
           </p>
         </div>
       </div>
