@@ -89,13 +89,13 @@
               <component :is="item.icon" class="h-6 w-6" aria-hidden="true" />
             </a>
           </div>
-           <div class="flex space-x-6 md:order-2">
+           <!--<div class="flex space-x-6 md:order-2">
             <a class="mt-8 text-base text-gray-400 md:mt-0 md:order-1" href="http://7thw.com" target="_blank" rel="noopener noreferrer">
             NFT DAPP by 7thw
             </a>
-          </div>
+          </div>-->
           <p class="mt-8 md:mt-0 md:order-1">
-            <a href="/" class="text-base text-gray-400">&copy; 2021 Nimbus, Inc. All rights reserved.</a>
+            <a href="/" class="text-base text-gray-400">&copy; 2022 / &copy; CIRKOL COLLECTIVE </a>
           </p>
         </div>
       </div>
