@@ -41,6 +41,7 @@
     "firebase": "^8.6.8",
     "firebaseui": "^4.8.0",
     "fortmatic": "^2.2.1",
+    "gsap": "^3.10.4",
     "idb-keyval": "^5.0.6",
     "moment-timezone": "^0.5.33",
     "moralis": "^1.5.8",
