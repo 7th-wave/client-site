@@ -3,6 +3,10 @@ import axios from 'axios';
 
 const app_url = process.env.VUE_APP_FUNCTIONS_URL;
 
+const getNfts = async() => {
+    const result = await axios.get(app_url+'find_nfts');
+    return result.data;
+}
 
 const getUserNfts = async(address) => {
     const result = await axios.get(app_url+'find_nft_by_owner?owner='+address);
@@ -30,5 +34,6 @@ export {
     getUserNfts,
     createNft,
     getNft,
-    updateNft
+    updateNft,
+    getNfts
 };
