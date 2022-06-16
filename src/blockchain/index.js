@@ -2,7 +2,7 @@
 import axios from "axios";
 import Web3 from "web3";
 //import { ethers } from "ethers";
-import JERC721 from "../contracts/JERC721.json";
+import JERC721 from "../contracts/FERC721.json";
 import USDCAbi from "../contracts/USDCAbi.json";
 //import Vault from "../contracts/Vault.json";
 import VaultFactory from "../contracts/VaultFactory.json";
@@ -22,7 +22,7 @@ const addresses = {
   // },
   rinkeby: {
     auction: "0xE1133Ff991392Af52025eD60a99f258A71054F47",
-    ERC721: "0x2Ed3125f1832BeEDEE38adE6541F93217bbdC29f",
+    ERC721: "0x89F20Fc2F0cEAd9d8e4a59d2fe3cD7C7e46a10CE",
     USDC: "0x4dbcdf9b62e891a7cec5a2568c3f4faf9e8abe2b",
     vaultFactory: "0x458556c097251f52ca89cB81316B4113aC734BD1",
     settings: "0x1C0857f8642D704ecB213A752A3f68E51913A779",
