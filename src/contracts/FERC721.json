@@ -686,6 +686,16 @@
         "internalType": "string",
         "name": "_ticker",
         "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_signDomain",
+        "type": "string"
+      },
+      {
+        "internalType": "address",
+        "name": "_treasuryAddress",
+        "type": "address"
       }
     ],
     "name": "initialize",
@@ -699,6 +709,11 @@
         "internalType": "string",
         "name": "uri",
         "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_tokenId",
+        "type": "uint256"
       }
     ],
     "name": "adminMint",
@@ -714,15 +729,15 @@
         "type": "address"
       },
       {
-        "internalType": "string",
-        "name": "uri",
-        "type": "string"
-      },
-      {
         "components": [
           {
             "internalType": "uint256",
             "name": "tokenId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "minPrice",
             "type": "uint256"
           },
           {
@@ -743,8 +758,9 @@
     ],
     "name": "authorizeAndMint",
     "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
+    "stateMutability": "payable",
+    "type": "function",
+    "payable": true
   },
   {
     "inputs": [
