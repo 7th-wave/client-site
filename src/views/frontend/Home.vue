@@ -2,62 +2,40 @@
   <div class="home font-inter w-full flex flex-col items-center">
     <div class="bg-white flex flex-col items-center">
 
-      <parallax id="ONE" class="w-full h-full">
-        <section class="bg-red-500 h-full w-full flex items-center mx-auto">
-
-              <div id="circle"> <svg width="62" height="62" viewBox="0 0 170.79 170.79" fill="none" class="text-primary-900
-    " version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
-                  y="0px" enable-background="new 0 0 170.79 170.79" xml:space="preserve">
-                  <path fill="black" d="M85.395,16.813c37.816,0,68.582,30.765,68.582,68.582s-30.766,68.582-68.582,68.582
-      c-37.816,0-68.582-30.765-68.582-68.582S47.579,16.813,85.395,16.813 M85.395,0C38.233,0,0,38.233,0,85.395
-      s38.233,85.395,85.395,85.395s85.395-38.233,85.395-85.395S132.558,0,85.395,0L85.395,0z" />
-                </svg></div>
 
 
-
-        </section>
-        <section class="panel bg-orange-500">
-          TWO
-        </section>
-        <section class="panel bgpurple">
-          THREE
-        </section>
-        <section class="panel green">
-          FOUR
-        </section>
-
-
-        <h1 class="header-section">Scroll to construct a shoe</h1>
-
-        <section class="shoe">
-          <img src="https://uploads-ssl.webflow.com/5d3ee7c0c89f6a2d122c0695/5d84da29b46cb1403688b139_outsole.png"
-            class="outsole piece" alt="outsole">
-          <img src="https://uploads-ssl.webflow.com/5d3ee7c0c89f6a2d122c0695/5d84d9ecb32e46bc5f1f8a8a_component.png?"
-            class="heel piece" alt="heel">
-          <img src="https://uploads-ssl.webflow.com/5d3ee7c0c89f6a2d122c0695/5d84da293b7f75e5a42bcacd_midsole.png?"
-            class="midsole piece" alt="midsole">
-        </section>
-
-        <h1 class="header-section">Cool, right?</h1>
+      <div id="circle">
+        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+          x="0px" y="0px" viewBox="0 0 275.887 250.26" enable-background="new 0 0 275.887 250.26" xml:space="preserve">
+          <path fill="#999897" d="M137.68,21.278c37.816,0,68.582,30.765,68.582,68.582s-30.766,68.582-68.582,68.582
+              c-37.816,0-68.582-30.765-68.582-68.582S99.863,21.278,137.68,21.278 M137.68,4.465c-47.163,0-85.395,38.233-85.395,85.395
+              s38.233,85.395,85.395,85.395s85.395-38.233,85.395-85.395S184.842,4.465,137.68,4.465L137.68,4.465z" />
+          <g>
+            <path fill="#676063" d="M60.947,193.902h5.275v49.903h-5.275V193.902z" />
+            <path fill="#676063" d="M116.551,243.805l-11.406-16.04c-1.283,0.143-2.614,0.214-3.992,0.214H87.75v15.826h-5.275v-49.903h18.678
+                c6.368,0,11.358,1.521,14.971,4.562c3.611,3.042,5.418,7.225,5.418,12.547c0,3.898-0.987,7.189-2.958,9.874
+                c-1.973,2.686-4.789,4.623-8.448,5.81l12.19,17.109H116.551z M112.345,220.208c2.613-2.186,3.921-5.251,3.921-9.197
+                c0-4.039-1.308-7.14-3.921-9.303c-2.614-2.162-6.393-3.244-11.335-3.244H87.75v25.023h13.26
+                C105.952,223.487,109.731,222.395,112.345,220.208z" />
+            <path fill="#676063" d="M149.486,220.351l-10.193,10.337v13.117h-5.275v-49.903h5.275v30.156l29.299-30.156h6.061l-21.602,22.599
+                l23.099,27.304h-6.274L149.486,220.351z" />
+            <path fill="#676063" d="M237.26,193.902h5.275v45.34h27.945v4.562H237.26V193.902z" />
+            <path fill="#676063"
+              d="M203.67,198.116c11.246,0,20.395,9.149,20.395,20.395s-9.149,20.395-20.395,20.395
+                c-11.246,0-20.395-9.149-20.395-20.395S192.424,198.116,203.67,198.116 M203.67,193.116c-14.025,0-25.395,11.37-25.395,25.395
+                s11.37,25.395,25.395,25.395s25.395-11.37,25.395-25.395S217.695,193.116,203.67,193.116L203.67,193.116z" />
+            <path fill="#676063"
+              d="M48.128,235.43l-3.053-2.789c-3.72,3.934-8.972,6.405-14.8,6.405c-11.246,0-20.395-9.149-20.395-20.396
+                s9.149-20.395,20.395-20.395c5.829,0,11.08,2.471,14.8,6.404l3.053-2.788l0.656-0.599c-4.633-4.932-11.209-8.017-18.509-8.017
+                c-14.025,0-25.395,11.37-25.395,25.395s11.37,25.396,25.395,25.396c7.301,0,13.877-3.085,18.509-8.017L48.128,235.43z" />
+          </g>
+        </svg>
 
 
 
-
-        <header>
-          <a href="https://greensock.com/scrolltrigger">
-            <img class="greensock-icon"
-              src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/16327/scroll-trigger-logo-light.svg" width="200"
-              height="64" />
-          </a>
-        </header>
-
-
-
-
-      </parallax>
-
+      </div>
     </div>
-  </div>
+  </div>  
 </template>
 <script>
   //import Button from "@/components/Layouts/Button.vue";
@@ -171,12 +149,4 @@
       };
     },
   };
-
- gsap.set("#home", {scale:0.7});
- gsap.timeline()
-     .from("home", {duration: 1, opacity:0}) 
-
-
-
-
 </script>
