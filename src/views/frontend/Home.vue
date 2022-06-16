@@ -1,13 +1,13 @@
 <template>
   <div class="home font-inter w-full flex flex-col items-center">
-    <div class="bg-white flex flex-col items-center">
+    
 
 
 
-      <div id="circle">
-        <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-          x="0px" y="0px" viewBox="0 0 275.887 250.26" enable-background="new 0 0 275.887 250.26" xml:space="preserve">
-          <path fill="#999897" d="M137.68,21.278c37.816,0,68.582,30.765,68.582,68.582s-30.766,68.582-68.582,68.582
+      <div id="circle" class="flex items-center m-auto h-full z-10 top-2">
+        <svg width="62" height="62" viewBox="0 0 170.79 170.79" fill="none" class="text-primary-900"
+        enable-background="new 0 0 275.887 250.26" xml:space="preserve">
+          <path fill="#000000" d="M137.68,21.278c37.816,0,68.582,30.765,68.582,68.582s-30.766,68.582-68.582,68.582
               c-37.816,0-68.582-30.765-68.582-68.582S99.863,21.278,137.68,21.278 M137.68,4.465c-47.163,0-85.395,38.233-85.395,85.395
               s38.233,85.395,85.395,85.395s85.395-38.233,85.395-85.395S184.842,4.465,137.68,4.465L137.68,4.465z" />
           <g>
@@ -30,12 +30,9 @@
                 c-14.025,0-25.395,11.37-25.395,25.395s11.37,25.396,25.395,25.396c7.301,0,13.877-3.085,18.509-8.017L48.128,235.43z" />
           </g>
         </svg>
-
-
-
       </div>
     </div>
-  </div>  
+   
 </template>
 <script>
   //import Button from "@/components/Layouts/Button.vue";
