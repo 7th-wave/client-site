@@ -1,5 +1,5 @@
 <template>
-  <div class="home font-inter w-full flex flex-col items-center"></div>
+  <div class="home font-inter w-full flex flex-col items-center">
     
 
 
