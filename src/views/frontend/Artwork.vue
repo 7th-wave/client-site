@@ -5,6 +5,34 @@
     @on:close="visibleLightBox = false"
     v-if="imageUrl"
   />
+  <div class="w-full font-inter grid lg:grid-cols-2 gap-5">
+      <div class="w-full rounded-md shadow-md overflow-hidden img-container" v-if="isLoaded">
+        <img 
+          :src="nft.ipfs"
+          class="w-full h-full object-cover"
+          alt=""
+        />
+      </div>
+      <div class="w-full flex items-start flex-col space-y-2" v-if="isLoaded">
+        <div
+          class="w-full rounded-md bg-white shadow-md py-4 px-2 flex flex-col items-start space-y-4"
+        >
+          <span class="text-xl font-semibold text-gray-900">{{ nft.title }}</span>
+          <p class="text-left text-lg font-normal text-black">
+            {{ nft.description }}
+          </p>
+          <p class="text-left text-lg font-normal text-black">
+            {{ nft.description }}
+          </p>
+        </div>
+        <div
+          class="w-full bg-white rounded-md shadow-md flex items-center space-x-2 px-2 py-2" v-for="(item, index) of nft.attributes" :key="index"
+        >
+          <span class="text-lg text-gray-500 font-semibold">{{item.name}}:</span>
+          <span class="text-lg text-gray-900 font-normal">{{item.value}}</span>
+        </div>
+      </div>
+    </div>
   <div class="detail bg-gray-100 font-inter">
     <div class="relative lg:py-12 py-4 lg:pt-12 lg:pb-4">
       <div class="relative">
@@ -341,8 +369,9 @@ import LightBox from "../../components/Layouts/LightBox.vue";
 import { useRoute } from "vue-router";
 import { useStore } from "vuex";
 
-import { db, storage } from "../../firebase/firebase";
+import { storage } from "../../firebase/firebase";
 import Share from "../../components/Modals/Share.vue";
+import { getNft } from '../../firebase/nfts';
 
 export default {
   components: {
@@ -370,7 +399,7 @@ export default {
 
     const route = useRoute();
     const store = useStore();
-    const collectionRef = route.params.collection;
+    //const collectionRef = route.params.collection;
     const nftRef = ref(route.params.ref);
 
     const cards = ref([
@@ -404,6 +433,7 @@ export default {
       isMinted: false,
       blockchainId: 0,
       blockChainOwner: "",
+      attributes: [],
       auctions: [],
     });
     const auction = computed(() => store.state.auctionStore.auction);
@@ -426,11 +456,10 @@ export default {
     };
 
     const getData = async () => {
-      await store.dispatch("collection/loadCollection", collectionRef);
-      artistName.value = store.getters["collection/getName"];
+      //await store.dispatch("collection/loadCollection", collectionRef);
+      artistName.value = 'GB MIAMI' //store.getters["collection/getName"];
 
-      const collection = await db.collection("nfts").doc(nftRef.value).get();
-      nft.value = collection.data();
+      nft.value = await getNft(nftRef.value);
 
       if (nft.value.auctions.length > 0) {
         const lastAuction = nft.value.auctions[nft.value.auctions.length - 1];

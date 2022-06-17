@@ -202,7 +202,7 @@
 
               <div
                 class="w-full absolute bottom-0 z-10 pb-6 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
-                style=" top: 32rem/*;"
+                style=" top: 32rem"
               >
                 <div class="w-full relative flex justify-between items-center">
                   <button
