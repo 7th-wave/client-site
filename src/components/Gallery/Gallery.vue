@@ -35,8 +35,7 @@
           {{ art.category }}
         </p>
       </router-link>
-      <img :src="art.imageUrl" class="mx-auto" alt="" />
-      <gallery-item :nft="art" />
+      <nft-item :nft="art" />
     </div>
   </section>
 </template>
@@ -46,10 +45,11 @@ import { ref, toRefs } from "@vue/reactivity";
 import { db, storage } from "../../firebase/firebase";
 import { onMounted, watch } from "@vue/runtime-core";
 //import { useRoute } from "vue-router";
-import GalleryItem from './GalleryItem.vue';
+//import GalleryItem from './GalleryItem.vue';
+import NftItem from "../Shared/NftItem.vue";
 
 export default {
-  components: { GalleryItem },
+  components: { NftItem },
   /* {
     id: 6,
     title: 'Tub of Yellowtails',
