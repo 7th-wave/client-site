@@ -2,7 +2,7 @@
 import axios from "axios";
 import Web3 from "web3";
 //import { ethers } from "ethers";
-import JERC721 from "../contracts/JERC721.json";
+import FERC721 from "../contracts/FERC721.json";
 import USDCAbi from "../contracts/USDCAbi.json";
 //import Vault from "../contracts/Vault.json";
 import VaultFactory from "../contracts/VaultFactory.json";
@@ -22,7 +22,7 @@ const addresses = {
   // },
   rinkeby: {
     auction: "0xE1133Ff991392Af52025eD60a99f258A71054F47",
-    ERC721: "0x2Ed3125f1832BeEDEE38adE6541F93217bbdC29f",
+    ERC721: "0x8a824328a5A93435F92cc48E1579B6acA262E9f4",
     USDC: "0x4dbcdf9b62e891a7cec5a2568c3f4faf9e8abe2b",
     vaultFactory: "0x458556c097251f52ca89cB81316B4113aC734BD1",
     settings: "0x1C0857f8642D704ecB213A752A3f68E51913A779",
@@ -99,7 +99,7 @@ const addOperatorERC721 = async (account) => {
   window.web3 = new Web3(window.ethereum);
   // Create contract object
   const tokenContractERC721 = new window.web3.eth.Contract(
-    JERC721,
+    FERC721,
     addresses[currNetwork].ERC721
   );
   const receipt = await tokenContractERC721.methods
@@ -115,7 +115,7 @@ const mintNft = async (metadataUri) => {
   console.log(metadataUri);
   // Create contract object
   const tokenContractERC721 = new window.web3.eth.Contract(
-    JERC721,
+    FERC721,
     addresses[currNetwork].ERC721
   );
   const receipt = await tokenContractERC721.methods
@@ -145,7 +145,7 @@ const approveBasket = async (basketaddress) => {
   window.web3 = new Web3(window.ethereum);
   // Create contract object
   const basketContract = new window.web3.eth.Contract(
-    JERC721,
+    FERC721,
     basketaddress
   );
   const receipt = await basketContract.methods
@@ -175,7 +175,7 @@ const approveNFT = async (nftAddress, id, basketaddress) => {
   window.web3 = new Web3(window.ethereum);
   // Create contract object
   const nftContract = new window.web3.eth.Contract(
-    JERC721,
+    FERC721,
     nftAddress
   );
   const receipt = await nftContract.methods
@@ -192,7 +192,7 @@ const transferNFT = async (nftAddress, id, basketaddress) => {
   window.web3 = new Web3(window.ethereum);
   // Create contract object
   const nftContract = new window.web3.eth.Contract(
-    JERC721,
+    FERC721,
     nftAddress
   );
   

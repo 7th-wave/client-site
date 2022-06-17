@@ -4,7 +4,7 @@
       <div class="relative">
         <div class="text-center mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-8 lg:max-w-7xl">
           <p class="mt-8 text-4xl font-inter leading-10 font-medium text-black tracking-tight sm:text-4xl">
-            {{data.title}} Collection
+            GB Miami
           </p>             
         </div>
         
@@ -53,6 +53,7 @@ import Gallery from '@/components/Gallery/Gallery';
 //import { useRoute } from 'vue-router';
 import { ref } from '@vue/reactivity';
 import { onMounted } from '@vue/runtime-core';
+import { getNftsByCollection } from '../../firebase/nfts'
 //import { useStore } from 'vuex';
 
  /* const data = {
@@ -89,16 +90,15 @@ export default {
     })
 
     const getData = async () => {      
-      /* await store.dispatch('collection/loadCollection', collectionRef);
-      console.log(store.getters['collection/getName']);
+      
+      data.value.gallery = await getNftsByCollection('3c7AiXpTK9Rs1nnhKOAI');
 
       // doc.data() is never undefined for query doc snapshots
-      data.value.artist_name = store.state.collection.artistName;
-      data.value.title =  store.state.collection.title;
-      data.value.bio_title = store.state.collection.artistBioTitle;
-      data.value.lastName = store.state.collection.lastName;
-      data.value.bio = store.state.collection.artistBio;
-      data.value.gallery = store.state.collection.gallery; */
+      data.value.artist_name = 'GB-MIAMI';
+      data.value.title =  'GB-MIAMI';
+      data.value.bio_title = 'GB-MIAMI';
+      data.value.lastName = 'GB-MIAMI';
+      data.value.bio = 'GB-MIAMI';
         
     }
 
