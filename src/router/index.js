@@ -119,6 +119,11 @@ const routes = [
     component: () => import("../views/frontend/LearnMore.vue"),
   },
   {
+    path: "/team",
+    name: "Team",
+    component: () => import("../views/frontend/Team.vue"),
+  },
+  {
     path: "/Under-Construction",
     name: "UnderConstruction",
     component: () => import("../views/frontend/UnderConstruction.vue"),

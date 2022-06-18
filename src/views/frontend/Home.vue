@@ -168,7 +168,7 @@
   };
 </script>
 
-<style scoped>
+<style>
   header {
     display: none !important;
   }
