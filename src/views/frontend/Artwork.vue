@@ -5,7 +5,7 @@
     @on:close="visibleLightBox = false"
     v-if="imageUrl"
   />
-  <div class="w-full font-inter grid lg:grid-cols-2 gap-5">
+  <div class="w-full lg:max-w-5xl mx-auto mt-8 font-inter grid lg:grid-cols-2 gap-5">
       <div class="w-full rounded-md shadow-md overflow-hidden img-container" v-if="isLoaded">
         <img 
           :src="nft.ipfs"
@@ -34,38 +34,7 @@
       </div>
     </div>
   <div class="detail bg-gray-100 font-inter">
-    <div class="relative lg:py-12 py-4 lg:pt-12 lg:pb-4">
-      <div class="relative">
-        <div
-          class="text-center mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-8 lg:max-w-7xl"
-        >
-          <p
-            class="mt-2 text-4xl font-medium font-inter leading-10 text-black tracking-tight sm:text-4xl"
-          >
-            {{ nft.title }}
-          </p>
-        </div>
-        <div
-          :class="[
-            'lg:mt-12 mt-6 mx-auto px-2 sm:px-6 lg:px-10',
-            'flex justify-center lg:max-w-5xl',
-          ]"
-        >
-          <div
-            class="flex flex-col items-center justify-center h-max object-contain shadow-lg overflow-hidden"
-          >
-            <div class="flex-shrink-0">
-              <img
-                class="h-full w-full object-contain img-max-height"
-                :src="imageUrl"
-                alt=""
-                @click="showModal"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    
 
     <div
       class="flex md:flex-nowrap flex-wrap md:px-6 lg:px-12 px-2 pb-3 mt-10 justify-between items-center"
@@ -165,7 +134,7 @@
 
       <div class="md:col-span-1 w-full pb-2 px-0">
         <Spec
-          @on:login="login_modal = true"
+          @on:login="emitsLogin"
           :nft="{ ...nft, artistName }"
           @on:info="placebid_note = true"
           :auctionref="auctionref"
@@ -389,13 +358,15 @@ export default {
     LightBox,
     Share,
   },
-  setup() {
+  emits: ['on:login'],
+  setup(props, {emit}) {
     const open = ref(false);
     const placebid_note = ref(false);
     const nft_modal = ref(false);
     const login_modal = ref(false);
     const place_bid = ref(false);
     const visibleLightBox = ref(false);
+    const isLoaded = ref(false);
 
     const route = useRoute();
     const store = useStore();
@@ -460,6 +431,7 @@ export default {
       artistName.value = 'GB MIAMI' //store.getters["collection/getName"];
 
       nft.value = await getNft(nftRef.value);
+      isLoaded.value = true;
 
       if (nft.value.auctions.length > 0) {
         const lastAuction = nft.value.auctions[nft.value.auctions.length - 1];
@@ -509,6 +481,10 @@ export default {
       setTimeout(() => (updateData.value = false), 1000);
     };
 
+    const emitsLogin = () => {
+      emit('on:login');
+    }
+
     return {
       nft,
       cards,
@@ -529,6 +505,8 @@ export default {
       updateData,
       nftRef,
       isOwner,
+      isLoaded,
+      emitsLogin
     };
   },
 };

@@ -6,7 +6,7 @@
   >
     <div
       class="content-center"
-      :class="{ 'flex h-48': art.id == 1 }"
+      :class="{ 'flex flex-nowrap h-48': art.id == 1 }"
     >
       <router-link :to="artLink(art)"
         class="

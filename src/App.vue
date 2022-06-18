@@ -1,5 +1,5 @@
 <template>
-  <div class="gog-app bg-gray-100">
+  <div class="gog-app bg-white">
     <metainfo>
       <template v-slot:title="{ content }">{{
         content ? `${content} | SITE_NAME` : `SITE_NAME`
