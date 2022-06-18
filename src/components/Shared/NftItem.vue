@@ -4,7 +4,7 @@
     <div class="slider relative">
       
           <img @click="goToDetails"
-            class="w-full h-80 object-cover"
+            class="w-full"
             :src="nft.imageUrl"
           />
       
