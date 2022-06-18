@@ -123,14 +123,6 @@
 
 <style>
 
-header{
-  display:none !important;
-}
-
-footer{
-  display:none !important;
-}
-
 .main-content {
   scroll-behavior: smooth;
 }
