@@ -1,6 +1,5 @@
-import firebase from "firebase";
+import { getCategory } from "firebase";
 
-const db = firebase.firestore();
 
 // initial state
 const state = () => ({
@@ -23,7 +22,7 @@ const getters = {
 // actions
 const actions = {
   async loadCollection({ commit }, payload) {
-    const data = await db.collection("collections").doc(payload).get();
+    const data = await getCategory(payload);
 
     commit("setState", data.data());
   },

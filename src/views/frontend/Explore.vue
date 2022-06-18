@@ -4,7 +4,7 @@
       <div class="flex pb-10">
         <span
           class="m-auto sm:text-4xl text-2xl text-center font-normal font-inter text-black"
-          >Vault Categories</span
+          >MNFT</span
         >
       </div>
 

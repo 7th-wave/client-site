@@ -3,42 +3,6 @@
 		<div class="min-w-7xl mx-auto py-4 px-4 sm:py-2">
 			<div class="mx-auto divide-y-2 divide-gray-200">
 				<dl class="mt-6">
-					<span class="font-medium text-black text-lg uppercase"> Specs </span>
-					<div class="mt-1 flex items-baseline md:block lg:flex">
-						<div
-							class="flex items-baseline text-md font-semibold text-gray-500"
-						>
-							Artist:
-							<router-link
-								:to="'/artist/' + slugify(nft.artistName, { lower: true })"
-								class="mx-2 text-md font-normal text-primary-400"
-							>
-								{{ nft.artistName }}
-							</router-link>
-						</div>
-					</div>
-					<div class="mt-1 flex items-baseline md:block lg:flex">
-						<div
-							class="flex items-baseline text-md font-semibold text-gray-500"
-							v-if="nft && nft.dimension"
-						>
-							Dimensions:
-							<span class="mx-2 text-md font-normal text-gray-500">
-								{{ nft.dimension }}</span
-							>
-						</div>
-					</div>
-					<div class="mt-1 flex items-baseline md:block lg:flex">
-						<div
-							class="flex items-baseline text-md font-semibold text-gray-500"
-							v-if="nft && nft.medium"
-						>
-							Medium:
-							<span class="mx-2 text-md font-normal text-gray-500">{{
-								nft.medium
-							}}</span>
-						</div>
-					</div>
 					<div class="mt-1 flex items-baseline md:block lg:flex">
 						<div
 							class="flex items-baseline text-md font-semibold text-gray-500"
@@ -62,11 +26,18 @@
 					</div>
 
           			<div v-if="!currentAddress && !user.dbRef">
-						<Button @click="openLoginModal" customClass="w-full" name="LOGIN"  />
+						<Button @click="openLoginModal" customClass="w-full">CONNECT WALLET</Button>
 					</div>
 					
+					<div v-else-if="nft.blockChainOwner !== currentAddress && !nft.isMinted">
+						<div class="flex flex-col">
+							
+							<div><Mint :user="user.dbRef" :current-Address="currentAddress" :nft="nft" /></div>
 
-					<div v-else-if="nft.blockChainOwner !== currentAddress">
+						</div>
+					</div>
+
+					<div v-else-if="nft.blockChainOwner !== currentAddress && nft.isMinted">
 						<div class="flex flex-col">
 							
 							<div v-if="hasActiveSale"><buy-now :sale-ref="saleRef" :sale="sale" :user="user.dbRef" :current-Address="currentAddress" :nft="nft" @on:buyNow="hideButton" /></div>
@@ -225,11 +196,7 @@
 			</div>
 		</div>
 	</div>
-	<LoginModal
-		
-		:login_modal="open"
-		@on:close="closeLoginModal"
-	/>
+	
 
 	<PlaceBid
 		v-if="currentAddress && user.dbRef"
@@ -253,7 +220,6 @@
 <script>
 // @ is an alias to /src
 import CountDown from "@/components/Shared/CountDown";
-import LoginModal from "./Modals/Login_Modal.vue";
 import { ref, toRefs } from "@vue/reactivity";
 import PlaceBid from "./Modals/PlaceBid.vue";
 import { useStore } from "vuex";
@@ -265,6 +231,7 @@ import ETH from "./Shared/ETH.vue";
 import slugify from "slugify";
 import RegisterModal from "./Modals/RegisterModal.vue";
 import Offer from "./Shared/Offer.vue";
+import Mint from "./Shared/Mint.vue";
 import Button from './Layouts/Button.vue';
 import BuyNow from './Shared/BuyNow.vue';
 import { db } from "../firebase/firebase";
@@ -273,7 +240,6 @@ import { db } from "../firebase/firebase";
 export default {
 	components: {
 		CountDown,
-		LoginModal,
 		PlaceBid,
 		USDC,
 		ETH,
@@ -281,6 +247,7 @@ export default {
 		Offer,
 		Button,
 		BuyNow,
+		Mint
 	},
 	props: {
 		nftRef: String,
@@ -354,7 +321,7 @@ export default {
 		};
 
 		const openLoginModal = () => {
-			open.value = true;
+			emit('on:login');
 		};
 
 		const closeLoginModal = () => {

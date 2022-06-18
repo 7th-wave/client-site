@@ -5,39 +5,36 @@
     @on:close="visibleLightBox = false"
     v-if="imageUrl"
   />
-  <div class="detail bg-gray-100 font-inter">
-    <div class="relative lg:py-12 py-4 lg:pt-12 lg:pb-4">
-      <div class="relative">
+  <div class="w-full lg:max-w-5xl mx-auto mt-8 font-inter grid lg:grid-cols-2 gap-5">
+      <div class="w-full rounded-md shadow-md overflow-hidden img-container" v-if="isLoaded">
+        <img 
+          :src="nft.ipfs"
+          class="w-full h-full object-cover"
+          alt=""
+        />
+      </div>
+      <div class="w-full flex items-start flex-col space-y-2" v-if="isLoaded">
         <div
-          class="text-center mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-8 lg:max-w-7xl"
+          class="w-full rounded-md bg-white shadow-md py-4 px-2 flex flex-col items-start space-y-4"
         >
-          <p
-            class="mt-2 text-4xl font-medium font-inter leading-10 text-black tracking-tight sm:text-4xl"
-          >
-            {{ nft.title }}
+          <span class="text-xl font-semibold text-gray-900">{{ nft.title }}</span>
+          <p class="text-left text-lg font-normal text-black">
+            {{ nft.description }}
+          </p>
+          <p class="text-left text-lg font-normal text-black">
+            {{ nft.description }}
           </p>
         </div>
         <div
-          :class="[
-            'lg:mt-12 mt-6 mx-auto px-2 sm:px-6 lg:px-10',
-            'flex justify-center lg:max-w-5xl',
-          ]"
+          class="w-full bg-white rounded-md shadow-md flex items-center space-x-2 px-2 py-2" v-for="(item, index) of nft.attributes" :key="index"
         >
-          <div
-            class="flex flex-col items-center justify-center h-max object-contain shadow-lg overflow-hidden"
-          >
-            <div class="flex-shrink-0">
-              <img
-                class="h-full w-full object-contain img-max-height"
-                :src="imageUrl"
-                alt=""
-                @click="showModal"
-              />
-            </div>
-          </div>
+          <span class="text-lg text-gray-500 font-semibold">{{item.name}}:</span>
+          <span class="text-lg text-gray-900 font-normal">{{item.value}}</span>
         </div>
       </div>
     </div>
+  <div class="detail bg-gray-100 font-inter">
+    
 
     <div
       class="flex md:flex-nowrap flex-wrap md:px-6 lg:px-12 px-2 pb-3 mt-10 justify-between items-center"
@@ -137,7 +134,7 @@
 
       <div class="md:col-span-1 w-full pb-2 px-0">
         <Spec
-          @on:login="login_modal = true"
+          @on:login="emitsLogin"
           :nft="{ ...nft, artistName }"
           @on:info="placebid_note = true"
           :auctionref="auctionref"
@@ -341,8 +338,9 @@ import LightBox from "../../components/Layouts/LightBox.vue";
 import { useRoute } from "vue-router";
 import { useStore } from "vuex";
 
-import { db, storage } from "../../firebase/firebase";
+import { storage } from "../../firebase/firebase";
 import Share from "../../components/Modals/Share.vue";
+import { getNft } from '../../firebase/nfts';
 
 export default {
   components: {
@@ -360,17 +358,19 @@ export default {
     LightBox,
     Share,
   },
-  setup() {
+  emits: ['on:login'],
+  setup(props, {emit}) {
     const open = ref(false);
     const placebid_note = ref(false);
     const nft_modal = ref(false);
     const login_modal = ref(false);
     const place_bid = ref(false);
     const visibleLightBox = ref(false);
+    const isLoaded = ref(false);
 
     const route = useRoute();
     const store = useStore();
-    const collectionRef = route.params.collection;
+    //const collectionRef = route.params.collection;
     const nftRef = ref(route.params.ref);
 
     const cards = ref([
@@ -404,6 +404,7 @@ export default {
       isMinted: false,
       blockchainId: 0,
       blockChainOwner: "",
+      attributes: [],
       auctions: [],
     });
     const auction = computed(() => store.state.auctionStore.auction);
@@ -426,11 +427,11 @@ export default {
     };
 
     const getData = async () => {
-      await store.dispatch("collection/loadCollection", collectionRef);
-      artistName.value = store.getters["collection/getName"];
+      //await store.dispatch("collection/loadCollection", collectionRef);
+      artistName.value = 'GB MIAMI' //store.getters["collection/getName"];
 
-      const collection = await db.collection("nfts").doc(nftRef.value).get();
-      nft.value = collection.data();
+      nft.value = await getNft(nftRef.value);
+      isLoaded.value = true;
 
       if (nft.value.auctions.length > 0) {
         const lastAuction = nft.value.auctions[nft.value.auctions.length - 1];
@@ -480,6 +481,10 @@ export default {
       setTimeout(() => (updateData.value = false), 1000);
     };
 
+    const emitsLogin = () => {
+      emit('on:login');
+    }
+
     return {
       nft,
       cards,
@@ -500,6 +505,8 @@ export default {
       updateData,
       nftRef,
       isOwner,
+      isLoaded,
+      emitsLogin
     };
   },
 };

@@ -132,8 +132,8 @@ import { storage } from "../../firebase/firebase";
 import UserImage from './UserImage.vue';
 
 const navigation = [
-  { name: "Buy Fractions", icon: ChartSquareBarIcon, href: "Explore" },
-  { name: "Fractionalize", icon: ViewGridIcon, href: "Fractionalize" },
+  { name: "Membership", icon: ChartSquareBarIcon, href: "nft" },
+  { name: "Reservation", icon: ViewGridIcon, href: "Fractionalize" },
   { name: "Learn More", icon: BookOpenIcon, href: "LearnMore" },
   { name: "Contact Us", icon: MailIcon, href: "Contact" },
 ];

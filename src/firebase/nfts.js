@@ -8,6 +8,11 @@ const getNfts = async() => {
     return result.data;
 }
 
+const getNftsByCollection = async(collection) => {
+    const result = await axios.get(app_url+'find_nfts_by_collection?collection='+collection);
+    return result.data;
+}
+
 const getUserNfts = async(address) => {
     const result = await axios.get(app_url+'find_nft_by_owner?owner='+address);
     return result.data;
@@ -35,5 +40,6 @@ export {
     createNft,
     getNft,
     updateNft,
-    getNfts
+    getNfts,
+    getNftsByCollection
 };

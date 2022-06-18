@@ -6,9 +6,9 @@
   >
     <div
       class="content-center"
-      :class="{ 'flex h-48': art.id == 1 }"
+      :class="{ 'flex flex-nowrap h-48': art.id == 1 }"
     >
-      <!-- <router-link :to="artLink(art)"
+      <router-link :to="artLink(art)"
         class="
           absolute
           inset-0
@@ -35,8 +35,7 @@
           {{ art.category }}
         </p>
       </router-link>
-      <img :src="art.imageUrl" class="mx-auto" alt="" /> -->
-      <gallery-item :nft="art" />
+      <nft-item :nft="art" />
     </div>
   </section>
 </template>
@@ -45,12 +44,12 @@
 import { ref, toRefs } from "@vue/reactivity";
 import { db, storage } from "../../firebase/firebase";
 import { onMounted, watch } from "@vue/runtime-core";
-import { getNfts } from '../../firebase/nfts';
-import { useRoute } from "vue-router";
-import GalleryItem from './GalleryItem.vue';
+//import { useRoute } from "vue-router";
+//import GalleryItem from './GalleryItem.vue';
+import NftItem from "../Shared/NftItem.vue";
 
 export default {
-  components: { GalleryItem },
+  components: { NftItem },
   /* {
     id: 6,
     title: 'Tub of Yellowtails',
@@ -64,8 +63,8 @@ export default {
 
   props: ["src", "gallery"],
   setup(props) {
-    const route = useRoute();
-    const collectionRef = route.params.ref;
+    //const route = useRoute();
+    const collectionRef = 'gb-miami';
 
     const artwork = ref([]);
     const { gallery } = toRefs(props);
@@ -77,24 +76,19 @@ export default {
         artwork.value.push(newArtwork);
       }
 
-      for (nftRef of values) {
-        const currentData = await getNfts();
-        if (currentData.data()) {
+      for (let nft of values) {
+        
           const data = {
-            id: nftRef,
-            title: currentData.data().title,
-            href: "/admin/artwork/" + collectionRef + "/" + nftRef,
-            size: currentData.data().size,
-            category: currentData.data().category
-              ? currentData.data().category.join(", ")
-              : "",
-            imageUrl: await getFullImageURL(currentData.data().imageUrl),
+            id: nft.dbRef,
+            title: nft.title,
+            href: "/admin/artwork/" + collectionRef + "/" + nft.dbRef,
+            size: nft.size,
+            category: 'gb-miami',
+            imageUrl: await getFullImageURL(nft.imageUrl),
           };
 
           artwork.value.push(data);
-        } else {
-          console.log(nftRef);
-        }
+        
       }
     };
 
