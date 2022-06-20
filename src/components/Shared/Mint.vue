@@ -26,33 +26,24 @@
       <div class="w-5/6">
         <Button @click="mint()" customClass="w-full">MINT</Button>
       </div>
-	  <div class="mt-2 text-primary-400">
-      <button @click="openModal" class="focus:outline-none">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="h-6 w-6"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-          />
-        </svg>
-      </button>
-    </div>
-
-      <offer-modal
-        :open_modal="showOfferDialog"
-        @on:close="closeModal"
-        @on:offer="saveOffer"
-        :client-ref="user"
-        :nft="nft"
-        :address="currentAddress"
-      ></offer-modal>
+      <div class="mt-2 text-primary-400">
+        <button @click="openModal" class="focus:outline-none">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+          </svg>
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -62,6 +53,7 @@ import { useStore } from "vuex";
 import Button from "../Layouts/Button.vue";
 import OfferModal from "../Modals/OfferModal.vue";
 import ETH from "./ETH.vue";
+import { mintNft, pinJson } from "../../blockchain";
 
 export default {
   components: { Button, OfferModal, ETH },
@@ -101,10 +93,31 @@ export default {
       showOfferDialog.value = false;
     };
 
-    const saveOffer = (e) => {
-      store.dispatch("offerStore/createOffer", e);
-      showOfferDialog.value = false;
-      emit("on:placeOffer");
+    const mint = async () => {
+      const description = nft.description;
+
+      const attrs = form.value.attributes.map((item) => {
+        return { trait_type: item.name, value: item.value };
+      });
+
+      const metadata = {
+        pinataMetadata: {
+          name: form.value.title,
+        },
+        pinataContent: {
+          name: form.value.title,
+          description: description,
+          image: form.value.ipfs,
+          attributes: attrs,
+        },
+      };
+
+      const metadataIpfs = await pinJson(metadata);
+      const NFTVoucher = [
+        { name: "minPrice", type: 20 },
+        { name: "uri", type: "string" },
+      ];
+      const result = await mintNft();
     };
 
     return {
@@ -112,7 +125,7 @@ export default {
       makeOffer,
       showOfferDialog,
       closeModal,
-      saveOffer,
+	  mint
     };
   },
 };

@@ -109,7 +109,7 @@ const addOperatorERC721 = async (account) => {
   return receipt;
 };
 
-const mintNft = async (metadataUri) => {
+const mintNft = async (signature) => {
   const accounts = await window.ethereum.send("eth_requestAccounts");
   window.web3 = new Web3(window.ethereum);
   console.log(metadataUri);
@@ -119,7 +119,7 @@ const mintNft = async (metadataUri) => {
     addresses[currNetwork].ERC721
   );
   const receipt = await tokenContractERC721.methods
-    .authorizeAndMintMainArtwork(accounts.result[0], metadataUri)
+    .authorizeAndMint(accounts.result[0], signature)
     .send({ from: accounts.result[0] });
 
   return receipt;
