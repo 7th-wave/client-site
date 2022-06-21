@@ -168,13 +168,13 @@
   };
 </script>
 
-<style>
+<style scoped>
   header {
-    display: none !important;
+    display:none !important;
   }
 
   footer {
-    display: none !important;
+    display:none !important;
   }
 
   .main-content {
