@@ -48,18 +48,20 @@
   </div>
 </template>
 <script>
-import { ref } from "@vue/reactivity";
+import { ref, toRefs } from "@vue/reactivity";
 import { useStore } from "vuex";
 import Button from "../Layouts/Button.vue";
-import OfferModal from "../Modals/OfferModal.vue";
 import ETH from "./ETH.vue";
 import { mintNft, pinJson } from "../../blockchain";
+import { findNewxtIdPerContract, updateNft } from "../../firebase/nfts";
 
 export default {
-  components: { Button, OfferModal, ETH },
+  components: { Button, ETH },
   props: ["user", "currentAddress", "nft"],
-  setup(props, { emit }) {
+  setup(props) {
     const store = useStore();
+
+    const { nft, currentAddress} = toRefs(props);
 
     const showOfferDialog = ref(false);
 
@@ -94,30 +96,48 @@ export default {
     };
 
     const mint = async () => {
-      const description = nft.description;
+      const nextId = await findNewxtIdPerContract(
+        process.env.VUE_APP_ERC721_ADDRESS
+      );
+      console.log(nextId);
+      const description = nft.value.description;
 
-      const attrs = form.value.attributes.map((item) => {
+      const attrs = nft.value.attributes.map((item) => {
         return { trait_type: item.name, value: item.value };
       });
 
       const metadata = {
         pinataMetadata: {
-          name: form.value.title,
+          name: nft.value.title + " #" + nextId,
         },
         pinataContent: {
-          name: form.value.title,
+          name: nft.value.title + " #" + nextId,
           description: description,
-          image: form.value.ipfs,
+          image: nft.value.ipfs,
           attributes: attrs,
         },
       };
 
       const metadataIpfs = await pinJson(metadata);
-      const NFTVoucher = [
-        { name: "minPrice", type: 20 },
-        { name: "uri", type: "string" },
-      ];
-      const result = await mintNft();
+      const signature = {
+        minPrice: 20,
+        uri: nft.value.ipfs,
+        signature: nft.value.signature,
+      };
+      try {
+        const result = await mintNft(nextId.nextId, metadataIpfs, signature);
+		console.log('mint -> ', result);
+        const newNft = Object.assign({}, nft.value);
+        newNft.metadataIpfs = metadataIpfs;
+        newNft.blockchainId = nextId;
+        newNft.status = "minted";
+        newNft.titlte = nft.value.title + " #" + nextId;
+        newNft.isMinted = true;
+		newNft.blockchainOwner = currentAddress.value;
+        await updateNft(newNft);
+      } catch (err) {
+        console.log(err);
+      }
     };
 
     return {
@@ -125,7 +145,7 @@ export default {
       makeOffer,
       showOfferDialog,
       closeModal,
-	  mint
+      mint,
     };
   },
 };
