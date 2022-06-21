@@ -38,6 +38,15 @@ h6 {
     @apply mt-2;
 }
 
+ul, ol {
+    @apply list-disc;
+    @apply pl-8;
+  }
+
+ol, ol {
+    @apply list-decimal;
+    @apply pl-8;
+}
 
 
 

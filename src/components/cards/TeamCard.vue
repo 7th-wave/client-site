@@ -13,7 +13,7 @@
       <p class="text-lg font-normal text-gray-500">
         {{info.discription}}
       </p>
-      <div class="flex items-center space-x-2 text-gray-900">
+      <div class="flex items-center space-x-4 text-gray-900">
         <a target="_blank"  :href="info.linkedin" v-if="info.linkedin"> <IconLinkedin /></a>
         <a target="_blank"  :href="info.twitter" v-if="info.twitter"> <IconTwitter /></a>
         <a target="_blank"  :href="info.instagram" v-if="info.instagram"> <IconInstagram /></a>
