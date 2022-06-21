@@ -19,6 +19,7 @@ import store from "./store";
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faCoffee, faChild, faCircle, faArchive, faEnvelope,faWallet } from '@fortawesome/free-solid-svg-icons';
 import { faTwitter } from '@fortawesome/free-brands-svg-icons';
+import { faInstagram } from '@fortawesome/free-brands-svg-icons';
 
 library.add(
   faCoffee,
@@ -28,6 +29,7 @@ library.add(
   faEnvelope,
   faTwitter,
   faWallet,
+  faInstagram,
 )
 
 import 'boxicons';
