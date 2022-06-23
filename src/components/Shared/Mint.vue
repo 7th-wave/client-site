@@ -164,7 +164,7 @@ export default {
         newNft.metadataIpfs = "https://gateway.pinata.cloud/ipfs/" + metadataIpfs.IpfsHash;
         newNft.blockchainId = nextId.nextId;
         newNft.status = "minted";
-        newNft.titlte = nft.value.title + nextId;
+        newNft.titlte = nft.value.title + nextId.nextId;
         newNft.isMinted = true;
 		newNft.blockchainOwner = currentAddress.value;
         await updateNft(nftRef.value, newNft);
