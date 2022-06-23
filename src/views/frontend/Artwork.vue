@@ -5,7 +5,7 @@
     @on:close="visibleLightBox = false"
     v-if="imageUrl"
   />
-  <div class="w-full lg:max-w-5xl grid grid-cols-1 lg:grid-cols-4 gap-4 pt-8 mx-auto font-inter flex space-x-5">
+  <div class="w-full lg:max-w-5xl pt-8 mx-auto font-inter flex space-x-5">
       <div class="w-full  " v-if="isLoaded">
         <img 
           :src="imageUrl"

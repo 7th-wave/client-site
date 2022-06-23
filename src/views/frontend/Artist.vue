@@ -11,7 +11,7 @@
       </div>
     </div>
     <div class="pb-20 pt-6 white bg-gray-100">
-       <div class="box-border max-w-7xl mx-auto before:box-inherit after:box-inherit">
+       <div class="box-border max-w-7xl grid grid-cols-1 lg:grid-cols-4 gap-4 mx-auto before:box-inherit after:box-inherit">
           <Gallery :gallery="data.gallery" :src="'front'" />
         </div>
     </div>
