@@ -91,7 +91,7 @@ export default {
 
     const getData = async () => {      
       
-      data.value.gallery = await getNftsByCollection('3c7AiXpTK9Rs1nnhKOAI');
+      data.value.gallery = await getNftsByCollection('8TWVCWQm9Y4IbuJRHggD');
 
       // doc.data() is never undefined for query doc snapshots
       data.value.artist_name = 'GB-MIAMI';
