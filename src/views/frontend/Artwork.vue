@@ -8,7 +8,7 @@
   <div class="w-full lg:max-w-5xl mx-auto mt-8 font-inter grid lg:grid-cols-2 gap-5">
       <div class="w-full rounded-md shadow-md overflow-hidden img-container" v-if="isLoaded">
         <img 
-          :src="nft.imageUrl"
+          :src="imageUrl"
           class="w-full h-full object-cover"
           alt=""
         />
