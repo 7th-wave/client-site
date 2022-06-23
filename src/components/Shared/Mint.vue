@@ -103,7 +103,40 @@ export default {
       const description = nft.value.description;
 
       const attrs = nft.value.attributes.map((item) => {
-        return { trait_type: item.name, value: item.value };
+		  let value = item.value;
+		  if (item.name == 'CIRKOL CLASS') {
+			  if (nextId <= 250 ) {
+				  value = 'C'
+			  } else if (nextId >= 251 && nextId <=750) {
+				  value = 'I'
+			  } else if (nextId >= 751 && nextId <=1500) {
+				  value = 'R'
+			  } else if (nextId >= 1501 && nextId <=2500) {
+				  value = 'K'
+			  } else if (nextId >= 2501 && nextId <=3750) {
+				  value = 'O'
+			  } else {
+				  value = 'L'
+			  }
+			  
+		  }
+
+		  if (item.name == 'Member Stars') {
+			 if (nextId <= 250 ) {
+				  value = 5
+			  } else if (nextId >= 251 && nextId <=750) {
+				  value = 4
+			  } else if (nextId >= 751 && nextId <=1500) {
+				  value = 3
+			  } else if (nextId >= 1501 && nextId <=2500) {
+				  value = 2
+			  } else if (nextId >= 2501 && nextId <=3750) {
+				  value = 1
+			  } else {
+				  value = 0
+			  }
+		  }
+        return { trait_type: item.name, value: value };
       });
 
       const metadata = {
@@ -131,7 +164,7 @@ export default {
         newNft.metadataIpfs = "https://gateway.pinata.cloud/ipfs/" + metadataIpfs.IpfsHash;
         newNft.blockchainId = nextId;
         newNft.status = "minted";
-        newNft.titlte = nft.value.title + " #" + nextId;
+        newNft.titlte = nft.value.title + nextId;
         newNft.isMinted = true;
 		newNft.blockchainOwner = currentAddress.value;
         await updateNft(nftRef.value, newNft);
