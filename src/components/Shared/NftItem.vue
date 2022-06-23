@@ -10,9 +10,9 @@
         <h2 class="w-full text-xl font-semibold leading-8 text-gray-900 px-6">
           {{ nft.title }}
         </h2>
-        <h2 class="w-full text-xl font-semibold leading-8 text-gray-900 text-right px-6">
-          <ETH /> 20
-        </h2>
+        <div class="flex items-center justify-end pr-6" >
+          <ETH /> <h1 class="ml-2 my-0 text-xl font-semibold text-gray-900 text-right">20</h1>
+        </div>
       </div>
     </div>
   </div>
