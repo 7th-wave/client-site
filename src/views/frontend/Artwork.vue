@@ -5,11 +5,11 @@
     @on:close="visibleLightBox = false"
     v-if="imageUrl"
   />
-  <div class="w-full lg:max-w-5xl mx-auto mt-8 font-inter grid lg:grid-cols-2 gap-5">
+  <div class="w-full lg:max-w-5xl mx-auto mt-8 font-inter flex space-x-5">
       <div class="w-full rounded-md shadow-md overflow-hidden img-container" v-if="isLoaded">
         <img 
           :src="imageUrl"
-          class="w-full h-full object-cover"
+          class="w-full object-cover"
           alt=""
         />
       </div>
@@ -18,9 +18,6 @@
           class="w-full rounded-md bg-white shadow-md py-4 px-2 flex flex-col items-start space-y-4"
         >
           <span class="text-xl font-semibold text-gray-900">{{ nft.title }}</span>
-          <p class="text-left text-lg font-normal text-black">
-            {{ nft.description }}
-          </p>
           <p class="text-left text-lg font-normal text-black">
             {{ nft.description }}
           </p>
