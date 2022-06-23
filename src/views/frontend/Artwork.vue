@@ -9,8 +9,17 @@
       <div class="w-full  " v-if="isLoaded">
         <img 
           :src="imageUrl"
-          class="w-full object-cover rounded-md shadow-md overflow-hidden"
+          class="w-full object-cover rounded-md shadow-md overflow-hidden mb-3"
           alt=""
+        />
+        <Spec
+          @on:login="emitsLogin"
+          :nft="{ ...nft, artistName }"
+          @on:info="placebid_note = true"
+          :auctionref="auctionref"
+          :auction="auction"
+          @on:placedBid="placedBid"
+          :nftRef="nftRef"
         />
       </div>
       <div class="w-full flex items-start flex-col space-y-2" v-if="isLoaded">
@@ -19,7 +28,7 @@
         >
           <span class="text-xl font-semibold text-gray-900">{{ nft.title }}</span>
           <p class="text-left text-lg font-normal text-black">
-            {{ nft.description }}
+            <Markdown :source="nft.description" :linkify="true" />
           </p>
          
         </div>
@@ -29,6 +38,8 @@
           <span class="text-lg text-gray-500 font-semibold">{{item.name}}:</span>
           <span class="text-lg text-gray-900 font-normal">{{item.value}}</span>
         </div>
+
+        
       </div>
     </div>
   <div class="detail bg-gray-100 font-inter">
@@ -39,9 +50,7 @@
     >
       <div class="w-full md:pl-2">
         <div class="flex justify-between">
-          <h2 class="pl-0 text-2xl font-medium m-0 text-black sm:text-2xl">
-            {{ nft.sub_title }}
-          </h2>
+          
           <div
             class="flex flex-nowrap md:px-2 px-0 justify-between md:w-1/4 lg:w-1/4 w-full"
           >
@@ -73,31 +82,10 @@
               >
             </a>
             <div class="w-full justify-end flex">
-              <a class="text-primary-400 mr-2 cursor-pointer" @click="refresh">
-                <span class="sr-only">Refresh</span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-6 w-6"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
-                  />
-                </svg>
-              </a>
-              <Share />
             </div>
           </div>
         </div>
-        <p
-          class="text-sm text-gray-500"
-          v-html="nft.description.replace(/\n/g, '<br>\n')"
-        ></p>
+        
       </div>
     </div>
 
@@ -130,17 +118,7 @@
         </div>
       </div>
 
-      <div class="md:col-span-1 w-full pb-2 px-0">
-        <Spec
-          @on:login="emitsLogin"
-          :nft="{ ...nft, artistName }"
-          @on:info="placebid_note = true"
-          :auctionref="auctionref"
-          :auction="auction"
-          @on:placedBid="placedBid"
-          :nftRef="nftRef"
-        />
-      </div>
+      
     </div>
 
     <!-- stats -->
@@ -337,8 +315,10 @@ import { useRoute } from "vue-router";
 import { useStore } from "vuex";
 
 import { storage } from "../../firebase/firebase";
-import Share from "../../components/Modals/Share.vue";
+//import Share from "../../components/Modals/Share.vue";
 import { getNft } from '../../firebase/nfts';
+
+import Markdown from 'vue3-markdown-it';
 
 export default {
   components: {
@@ -354,7 +334,8 @@ export default {
     Bids,
     NFTBox,
     LightBox,
-    Share,
+    //Share,
+    Markdown
   },
   emits: ['on:login'],
   setup(props, {emit}) {
@@ -372,17 +353,6 @@ export default {
     const nftRef = ref(route.params.ref);
 
     const cards = ref([
-      {
-        id: 1,
-        component: <Blockchain />,
-        class:
-          "xl:w-full lg:w-6/12 w-full pb-2 self-start xl:order-1 lg:order-2 order-3",
-      },
-      {
-        id: 2,
-        component: <Trading />,
-        class: "xl:w-full lg:w-6/12 w-full pb-2 self-start order-2",
-      },
     ]);
 
     const bid = ref(0);

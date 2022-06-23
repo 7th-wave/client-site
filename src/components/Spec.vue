@@ -37,7 +37,7 @@
 						</div>
 					</div>
 
-					<div v-else-if="nft.blockChainOwner !== currentAddress && nft.isMinted">
+					<div v-else-if="false">
 						<div class="flex flex-col">
 							
 							<div v-if="hasActiveSale"><buy-now :sale-ref="saleRef" :sale="sale" :user="user.dbRef" :current-Address="currentAddress" :nft="nft" @on:buyNow="hideButton" /></div>
