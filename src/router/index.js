@@ -82,7 +82,7 @@ const routes = [
     component: () => import("../views/frontend/Contact.vue"),
   },
   {
-    path: "/mnft/gb-miami",
+    path: "/mnft/miami",
     name: "nft",
     component: () =>
       import(/* webpackChunkName: "artist" */ "../views/frontend/Artist.vue"),

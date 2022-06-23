@@ -60,7 +60,10 @@ export default {
     };
 
     const ph = document.createElement("script");
+    console.log('------');
     console.log(process.env.VUE_APP_ENV);
+    console.log(process.env.VUE_APP_NETWORK);
+    console.log('------');
     if (process.env.VUE_APP_ENV == "staging") {
       ph.text =
         "(function(d,t,g,k){var ph=d.createElement(t),s=d.getElementsByTagName(t)[0],t=(new URLSearchParams(window.location.search)).get(k);t&&localStorage.setItem(k,t);t=localStorage.getItem(k);ph.type='text/javascript';ph.async=true;ph.defer=true;ph.charset='UTF-8';ph.src=g+'&v='+(new Date()).getTime();ph.src+=t?'&'+k+'='+t:'';s.parentNode.insertBefore(ph,s)})(document,'script','//7thw.co/?p=2173&ph_apikey=e73a582e7c6d9638bf49527e02b1af7d', 'ph_access_token');;";

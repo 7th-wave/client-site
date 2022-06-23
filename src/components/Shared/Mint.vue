@@ -26,24 +26,7 @@
       <div class="w-5/6">
         <Button @click="mint()" customClass="w-full">MINT</Button>
       </div>
-      <div class="mt-2 text-primary-400">
-        <button @click="openModal" class="focus:outline-none">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-            />
-          </svg>
-        </button>
-      </div>
+      
     </div>
   </div>
 </template>
@@ -96,8 +79,9 @@ export default {
     };
 
     const mint = async () => {
+	  const contractAddress = process.env.VUE_APP_NETWORK == 'mainnet' ? process.env.VUE_APP_ERC721_ADDRESS_MAINNET : process.env.VUE_APP_ERC721_ADDRESS_RINKEBY;
       const nextId = await findNewxtIdPerContract(
-        process.env.VUE_APP_ERC721_ADDRESS
+        contractAddress
       );
       console.log(nextId);
 	  const token_id = nextId.nextId;
@@ -170,7 +154,7 @@ export default {
         newNft.metadataIpfs = "https://gateway.pinata.cloud/ipfs/" + metadataIpfs.IpfsHash;
         newNft.blockchainId = token_id;
         newNft.status = "minted";
-        newNft.titlte = nft.value.title + token_id;
+        newNft.title = nft.value.title + token_id;
         newNft.isMinted = true;
 		newNft.blockchainOwner = currentAddress.value;
 		newNft.attributes = attrs;

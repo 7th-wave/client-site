@@ -68,6 +68,7 @@
     "vue3-date-time-picker": "^2.4.4",
     "vue3-datepicker": "^0.2.5",
     "vue3-dropzone": "^0.0.7",
+    "vue3-markdown-it": "^1.0.10",
     "vue3-timepicker": "^1.0.0-beta.2",
     "vuex": "^4.0.2",
     "web3": "^1.7.1"

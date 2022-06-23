@@ -22,7 +22,7 @@ const addresses = {
   // },
   rinkeby: {
     auction: "0xE1133Ff991392Af52025eD60a99f258A71054F47",
-    ERC721: "0xaB0e20f3d25Fa0E8F5F0895f9f919378466B2063",
+    ERC721: process.env.VUE_APP_ERC721_ADDRESS_RINKEBY,
     USDC: "0x4dbcdf9b62e891a7cec5a2568c3f4faf9e8abe2b",
     vaultFactory: "0x458556c097251f52ca89cB81316B4113aC734BD1",
     settings: "0x1C0857f8642D704ecB213A752A3f68E51913A779",
@@ -30,7 +30,7 @@ const addresses = {
   },
   mainnet: {
     auction: "0xE1133Ff991392Af52025eD60a99f258A71054F47",
-    ERC721: "0x2Ed3125f1832BeEDEE38adE6541F93217bbdC29f",
+    ERC721: process.env.VUE_APP_ERC721_ADDRESS_MAINNET,
     USDC: "0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48",
   },
 };
