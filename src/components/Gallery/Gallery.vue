@@ -2,7 +2,7 @@
   <section
     v-for="art in artwork"
     :key="art.id"
-    class="relative rounded-lg grid grid-cols-4 gap-4 mx-3 mb-8 md:mx-0 md:mb-5 md:mt-0"
+    class="relative rounded-lg mx-3 mb-8 md:mx-0 md:mb-5 md:mt-0"
   >
     <div
       class="content-center"
