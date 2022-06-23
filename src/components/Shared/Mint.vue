@@ -162,7 +162,7 @@ export default {
 		console.log('mint -> ', result);
         const newNft = Object.assign({}, nft.value);
         newNft.metadataIpfs = "https://gateway.pinata.cloud/ipfs/" + metadataIpfs.IpfsHash;
-        newNft.blockchainId = nextId;
+        newNft.blockchainId = nextId.nextId;
         newNft.status = "minted";
         newNft.titlte = nft.value.title + nextId;
         newNft.isMinted = true;
