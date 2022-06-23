@@ -138,8 +138,12 @@ export default {
 				  value = 0
 			  }
 		  }
-        return { trait_type: item.name, value: value };
+        return { name: item.name, value: value };
       });
+
+	  const properties = attrs.map(item => {
+		  return { trait_type: item.name, value: item.value };
+	  });
 
       const metadata = {
         pinataMetadata: {
@@ -149,7 +153,7 @@ export default {
           name: nft.value.title + token_id,
           description: description,
           image: nft.value.ipfs,
-          attributes: attrs,
+          attributes: properties,
         },
       };
 
@@ -169,6 +173,7 @@ export default {
         newNft.titlte = nft.value.title + token_id;
         newNft.isMinted = true;
 		newNft.blockchainOwner = currentAddress.value;
+		newNft.attributes = attrs;
         await updateNft(nftRef.value, newNft);
       } catch (err) {
         console.log(err);
