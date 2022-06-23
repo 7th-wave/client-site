@@ -100,20 +100,22 @@ export default {
         process.env.VUE_APP_ERC721_ADDRESS
       );
       console.log(nextId);
+	  const token_id = nextId.nextId;
       const description = nft.value.description;
 
       const attrs = nft.value.attributes.map((item) => {
 		  let value = item.value;
+		  const token_id = nextId.nextId;
 		  if (item.name == 'CIRKOL CLASS') {
-			  if (nextId <= 250 ) {
+			  if (token_id <= 250 ) {
 				  value = 'C'
-			  } else if (nextId >= 251 && nextId <=750) {
+			  } else if (token_id >= 251 && token_id <=750) {
 				  value = 'I'
-			  } else if (nextId >= 751 && nextId <=1500) {
+			  } else if (token_id >= 751 && token_id <=1500) {
 				  value = 'R'
-			  } else if (nextId >= 1501 && nextId <=2500) {
+			  } else if (token_id >= 1501 && token_id <=2500) {
 				  value = 'K'
-			  } else if (nextId >= 2501 && nextId <=3750) {
+			  } else if (token_id >= 2501 && token_id <=3750) {
 				  value = 'O'
 			  } else {
 				  value = 'L'
@@ -122,32 +124,36 @@ export default {
 		  }
 
 		  if (item.name == 'Member Stars') {
-			 if (nextId <= 250 ) {
+			 if (token_id <= 250 ) {
 				  value = 5
-			  } else if (nextId >= 251 && nextId <=750) {
+			  } else if (token_id >= 251 && token_id <=750) {
 				  value = 4
-			  } else if (nextId >= 751 && nextId <=1500) {
+			  } else if (token_id >= 751 && token_id <=1500) {
 				  value = 3
-			  } else if (nextId >= 1501 && nextId <=2500) {
+			  } else if (token_id >= 1501 && token_id <=2500) {
 				  value = 2
-			  } else if (nextId >= 2501 && nextId <=3750) {
+			  } else if (token_id >= 2501 && token_id <=3750) {
 				  value = 1
 			  } else {
 				  value = 0
 			  }
 		  }
-        return { trait_type: item.name, value: value };
+        return { name: item.name, value: value };
       });
+
+	  const properties = attrs.map(item => {
+		  return { trait_type: item.name, value: item.value };
+	  });
 
       const metadata = {
         pinataMetadata: {
-          name: nft.value.title + " #" + nextId,
+          name: nft.value.title + token_id,
         },
         pinataContent: {
-          name: nft.value.title + " #" + nextId,
+          name: nft.value.title + token_id,
           description: description,
           image: nft.value.ipfs,
-          attributes: attrs,
+          attributes: properties,
         },
       };
 
@@ -158,15 +164,16 @@ export default {
         signature: nft.value.signature,
       }; */
       try {
-        const result = await mintNft( "0xB889eDEFBF7fC1f8Ae11ac1D69462be8C863004D", nextId.nextId, "https://gateway.pinata.cloud/ipfs/" + metadataIpfs.IpfsHash, process.env.VUE_APP_MINTING_TOKEN, nft.value.mintinPrice);
+        const result = await mintNft( "0xB889eDEFBF7fC1f8Ae11ac1D69462be8C863004D", token_id, "https://gateway.pinata.cloud/ipfs/" + metadataIpfs.IpfsHash, process.env.VUE_APP_MINTING_TOKEN, nft.value.mintinPrice);
 		console.log('mint -> ', result);
         const newNft = Object.assign({}, nft.value);
         newNft.metadataIpfs = "https://gateway.pinata.cloud/ipfs/" + metadataIpfs.IpfsHash;
-        newNft.blockchainId = nextId.nextId;
+        newNft.blockchainId = token_id;
         newNft.status = "minted";
-        newNft.titlte = nft.value.title + nextId;
+        newNft.titlte = nft.value.title + token_id;
         newNft.isMinted = true;
 		newNft.blockchainOwner = currentAddress.value;
+		newNft.attributes = attrs;
         await updateNft(nftRef.value, newNft);
       } catch (err) {
         console.log(err);
