@@ -5,11 +5,11 @@
     @on:close="visibleLightBox = false"
     v-if="imageUrl"
   />
-  <div class="w-full lg:max-w-5xl mx-auto mt-8 font-inter grid lg:grid-cols-2 gap-5">
-      <div class="w-full rounded-md shadow-md overflow-hidden img-container" v-if="isLoaded">
+  <div class="w-full lg:max-w-5xl pt-8 mx-auto font-inter flex space-x-5">
+      <div class="w-full  " v-if="isLoaded">
         <img 
           :src="imageUrl"
-          class="w-full object-cover"
+          class="w-full object-cover rounded-md shadow-md overflow-hidden"
           alt=""
         />
       </div>
