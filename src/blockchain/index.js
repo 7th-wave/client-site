@@ -22,7 +22,7 @@ const addresses = {
   // },
   rinkeby: {
     auction: "0xE1133Ff991392Af52025eD60a99f258A71054F47",
-    ERC721: "0xB7708Be324a97d1cCF43033A10319B187F20Da90",
+    ERC721: "0x98FFC975356a946888E5a8F4d06f70f7AED029C5",
     USDC: "0x4dbcdf9b62e891a7cec5a2568c3f4faf9e8abe2b",
     vaultFactory: "0x458556c097251f52ca89cB81316B4113aC734BD1",
     settings: "0x1C0857f8642D704ecB213A752A3f68E51913A779",
@@ -109,7 +109,9 @@ const addOperatorERC721 = async (account) => {
   return receipt;
 };
 
-const mintNft = async (id, metadataUri, signature) => {
+const mintNft = async (minter, id, metadataUri, token, value) => {
+  //console.log(signature)
+  //BN = window.web3.utils.BN;
   const accounts = await window.ethereum.send("eth_requestAccounts");
   window.web3 = new Web3(window.ethereum);
   console.log(metadataUri);
@@ -119,8 +121,8 @@ const mintNft = async (id, metadataUri, signature) => {
     addresses[currNetwork].ERC721
   );
   const receipt = await tokenContractERC721.methods
-    .authorizeAndMint(accounts.result[0], id, metadataUri, signature)
-    .send({ from: accounts.result[0] });
+    .mintWithToken(minter, id, metadataUri, window.web3.utils.keccak256(token))
+    .send({ from: accounts.result[0], value: window.web3.utils.toWei(value.toString(), "ether")});
 
   return receipt;
 };

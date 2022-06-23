@@ -57,11 +57,11 @@ import { findNewxtIdPerContract, updateNft } from "../../firebase/nfts";
 
 export default {
   components: { Button, ETH },
-  props: ["user", "currentAddress", "nft"],
+  props: ["user", "currentAddress", "nft", "nftRef"],
   setup(props) {
     const store = useStore();
 
-    const { nft, currentAddress} = toRefs(props);
+    const { nft, currentAddress, nftRef} = toRefs(props);
 
     const showOfferDialog = ref(false);
 
@@ -119,22 +119,22 @@ export default {
       };
 
       const metadataIpfs = await pinJson(metadata);
-      const signature = {
+      /* const signature = {
         minPrice: 20,
         uri: nft.value.ipfs,
         signature: nft.value.signature,
-      };
+      }; */
       try {
-        const result = await mintNft(nextId.nextId, metadataIpfs, signature);
+        const result = await mintNft( "0xB889eDEFBF7fC1f8Ae11ac1D69462be8C863004D", nextId.nextId, "https://gateway.pinata.cloud/ipfs/" + metadataIpfs.IpfsHash, process.env.VUE_APP_MINTING_TOKEN, nft.value.mintinPrice);
 		console.log('mint -> ', result);
         const newNft = Object.assign({}, nft.value);
-        newNft.metadataIpfs = metadataIpfs;
+        newNft.metadataIpfs = "https://gateway.pinata.cloud/ipfs/" + metadataIpfs.IpfsHash;
         newNft.blockchainId = nextId;
         newNft.status = "minted";
         newNft.titlte = nft.value.title + " #" + nextId;
         newNft.isMinted = true;
 		newNft.blockchainOwner = currentAddress.value;
-        await updateNft(newNft);
+        await updateNft(nftRef.value, newNft);
       } catch (err) {
         console.log(err);
       }
