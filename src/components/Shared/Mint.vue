@@ -26,48 +26,42 @@
       <div class="w-5/6">
         <Button @click="mint()" customClass="w-full">MINT</Button>
       </div>
-	  <div class="mt-2 text-primary-400">
-      <button @click="openModal" class="focus:outline-none">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="h-6 w-6"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-          />
-        </svg>
-      </button>
-    </div>
-
-      <offer-modal
-        :open_modal="showOfferDialog"
-        @on:close="closeModal"
-        @on:offer="saveOffer"
-        :client-ref="user"
-        :nft="nft"
-        :address="currentAddress"
-      ></offer-modal>
+      <div class="mt-2 text-primary-400">
+        <button @click="openModal" class="focus:outline-none">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+          </svg>
+        </button>
+      </div>
     </div>
   </div>
 </template>
 <script>
-import { ref } from "@vue/reactivity";
+import { ref, toRefs } from "@vue/reactivity";
 import { useStore } from "vuex";
 import Button from "../Layouts/Button.vue";
-import OfferModal from "../Modals/OfferModal.vue";
 import ETH from "./ETH.vue";
+import { mintNft, pinJson } from "../../blockchain";
+import { findNewxtIdPerContract, updateNft } from "../../firebase/nfts";
 
 export default {
-  components: { Button, OfferModal, ETH },
-  props: ["user", "currentAddress", "nft"],
-  setup(props, { emit }) {
+  components: { Button, ETH },
+  props: ["user", "currentAddress", "nft", "nftRef"],
+  setup(props) {
     const store = useStore();
+
+    const { nft, currentAddress, nftRef} = toRefs(props);
 
     const showOfferDialog = ref(false);
 
@@ -101,10 +95,49 @@ export default {
       showOfferDialog.value = false;
     };
 
-    const saveOffer = (e) => {
-      store.dispatch("offerStore/createOffer", e);
-      showOfferDialog.value = false;
-      emit("on:placeOffer");
+    const mint = async () => {
+      const nextId = await findNewxtIdPerContract(
+        process.env.VUE_APP_ERC721_ADDRESS
+      );
+      console.log(nextId);
+      const description = nft.value.description;
+
+      const attrs = nft.value.attributes.map((item) => {
+        return { trait_type: item.name, value: item.value };
+      });
+
+      const metadata = {
+        pinataMetadata: {
+          name: nft.value.title + " #" + nextId,
+        },
+        pinataContent: {
+          name: nft.value.title + " #" + nextId,
+          description: description,
+          image: nft.value.ipfs,
+          attributes: attrs,
+        },
+      };
+
+      const metadataIpfs = await pinJson(metadata);
+      /* const signature = {
+        minPrice: 20,
+        uri: nft.value.ipfs,
+        signature: nft.value.signature,
+      }; */
+      try {
+        const result = await mintNft( "0xB889eDEFBF7fC1f8Ae11ac1D69462be8C863004D", nextId.nextId, "https://gateway.pinata.cloud/ipfs/" + metadataIpfs.IpfsHash, process.env.VUE_APP_MINTING_TOKEN, nft.value.mintinPrice);
+		console.log('mint -> ', result);
+        const newNft = Object.assign({}, nft.value);
+        newNft.metadataIpfs = "https://gateway.pinata.cloud/ipfs/" + metadataIpfs.IpfsHash;
+        newNft.blockchainId = nextId;
+        newNft.status = "minted";
+        newNft.titlte = nft.value.title + " #" + nextId;
+        newNft.isMinted = true;
+		newNft.blockchainOwner = currentAddress.value;
+        await updateNft(nftRef.value, newNft);
+      } catch (err) {
+        console.log(err);
+      }
     };
 
     return {
@@ -112,7 +145,7 @@ export default {
       makeOffer,
       showOfferDialog,
       closeModal,
-      saveOffer,
+      mint,
     };
   },
 };

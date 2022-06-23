@@ -32,7 +32,7 @@
 					<div v-else-if="nft.blockChainOwner !== currentAddress && !nft.isMinted">
 						<div class="flex flex-col">
 							
-							<div><Mint :user="user.dbRef" :current-Address="currentAddress" :nft="nft" /></div>
+							<div><Mint :user="user.dbRef" :current-Address="currentAddress" :nft="nft" :nft-ref="nftRef" /></div>
 
 						</div>
 					</div>

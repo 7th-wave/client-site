@@ -13,6 +13,11 @@ const getNftsByCollection = async(collection) => {
     return result.data;
 }
 
+const findNewxtIdPerContract = async() => {
+    const result = await axios.get(app_url+'find_next_id?address='+process.env.VUE_APP_ERC721_ADDRESS);
+    return result.data;
+}
+
 const getUserNfts = async(address) => {
     const result = await axios.get(app_url+'find_nft_by_owner?owner='+address);
     return result.data;
@@ -41,5 +46,6 @@ export {
     getNft,
     updateNft,
     getNfts,
-    getNftsByCollection
+    getNftsByCollection,
+    findNewxtIdPerContract
 };
