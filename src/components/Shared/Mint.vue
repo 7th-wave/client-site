@@ -26,7 +26,6 @@
       <div class="w-5/6">
         <Button @click="mint()" customClass="w-full">MINT</Button>
       </div>
-      
     </div>
   </div>
 </template>
@@ -37,14 +36,16 @@ import Button from "../Layouts/Button.vue";
 import ETH from "./ETH.vue";
 import { mintNft, pinJson } from "../../blockchain";
 import { findNewxtIdPerContract, updateNft } from "../../firebase/nfts";
+import { useRouter } from "vue-router";
 
 export default {
   components: { Button, ETH },
   props: ["user", "currentAddress", "nft", "nftRef"],
   setup(props) {
     const store = useStore();
+    const router = useRouter();
 
-    const { nft, currentAddress, nftRef} = toRefs(props);
+    const { nft, currentAddress, nftRef } = toRefs(props);
 
     const showOfferDialog = ref(false);
 
@@ -79,55 +80,56 @@ export default {
     };
 
     const mint = async () => {
-	  const contractAddress = process.env.VUE_APP_NETWORK == 'mainnet' ? process.env.VUE_APP_ERC721_ADDRESS_MAINNET : process.env.VUE_APP_ERC721_ADDRESS_RINKEBY;
-      const nextId = await findNewxtIdPerContract(
-        contractAddress
-      );
+      store.dispatch("NotificationStore/TOGGLE_LOADING");
+      const contractAddress =
+        process.env.VUE_APP_NETWORK == "mainnet"
+          ? process.env.VUE_APP_ERC721_ADDRESS_MAINNET
+          : process.env.VUE_APP_ERC721_ADDRESS_RINKEBY;
+      const nextId = await findNewxtIdPerContract(contractAddress);
       console.log(nextId);
-	  const token_id = nextId.nextId;
-      const description = nft.value.description;
+      const token_id = nextId.nextId;
+      const description = nft.value.description.replace(/\\n/g, '<br />');
 
       const attrs = nft.value.attributes.map((item) => {
-		  let value = item.value;
-		  const token_id = nextId.nextId;
-		  if (item.name == 'CIRKOL CLASS') {
-			  if (token_id <= 250 ) {
-				  value = 'C'
-			  } else if (token_id >= 251 && token_id <=750) {
-				  value = 'I'
-			  } else if (token_id >= 751 && token_id <=1500) {
-				  value = 'R'
-			  } else if (token_id >= 1501 && token_id <=2500) {
-				  value = 'K'
-			  } else if (token_id >= 2501 && token_id <=3750) {
-				  value = 'O'
-			  } else {
-				  value = 'L'
-			  }
-			  
-		  }
+        let value = item.value;
+        const token_id = nextId.nextId;
+        if (item.name == "CIRKOL CLASS") {
+          if (token_id <= 250) {
+            value = "C";
+          } else if (token_id >= 251 && token_id <= 750) {
+            value = "I";
+          } else if (token_id >= 751 && token_id <= 1500) {
+            value = "R";
+          } else if (token_id >= 1501 && token_id <= 2500) {
+            value = "K";
+          } else if (token_id >= 2501 && token_id <= 3750) {
+            value = "O";
+          } else {
+            value = "L";
+          }
+        }
 
-		  if (item.name == 'Member Stars') {
-			 if (token_id <= 250 ) {
-				  value = 5
-			  } else if (token_id >= 251 && token_id <=750) {
-				  value = 4
-			  } else if (token_id >= 751 && token_id <=1500) {
-				  value = 3
-			  } else if (token_id >= 1501 && token_id <=2500) {
-				  value = 2
-			  } else if (token_id >= 2501 && token_id <=3750) {
-				  value = 1
-			  } else {
-				  value = 0
-			  }
-		  }
+        if (item.name == "Member Stars") {
+          if (token_id <= 250) {
+            value = 5;
+          } else if (token_id >= 251 && token_id <= 750) {
+            value = 4;
+          } else if (token_id >= 751 && token_id <= 1500) {
+            value = 3;
+          } else if (token_id >= 1501 && token_id <= 2500) {
+            value = 2;
+          } else if (token_id >= 2501 && token_id <= 3750) {
+            value = 1;
+          } else {
+            value = 0;
+          }
+        }
         return { name: item.name, value: value };
       });
 
-	  const properties = attrs.map(item => {
-		  return { trait_type: item.name, value: item.value };
-	  });
+      const properties = attrs.map((item) => {
+        return { trait_type: item.name, value: item.value };
+      });
 
       const metadata = {
         pinataMetadata: {
@@ -148,17 +150,26 @@ export default {
         signature: nft.value.signature,
       }; */
       try {
-        const result = await mintNft( "0xB889eDEFBF7fC1f8Ae11ac1D69462be8C863004D", token_id, "https://gateway.pinata.cloud/ipfs/" + metadataIpfs.IpfsHash, process.env.VUE_APP_MINTING_TOKEN, nft.value.mintinPrice);
-		console.log('mint -> ', result);
+        const result = await mintNft(
+          "0xB889eDEFBF7fC1f8Ae11ac1D69462be8C863004D",
+          token_id,
+          "https://gateway.pinata.cloud/ipfs/" + metadataIpfs.IpfsHash,
+          process.env.VUE_APP_MINTING_TOKEN,
+          nft.value.mintinPrice
+        );
+        console.log("mint -> ", result);
         const newNft = Object.assign({}, nft.value);
-        newNft.metadataIpfs = "https://gateway.pinata.cloud/ipfs/" + metadataIpfs.IpfsHash;
+        newNft.metadataIpfs =
+          "https://gateway.pinata.cloud/ipfs/" + metadataIpfs.IpfsHash;
         newNft.blockchainId = token_id;
         newNft.status = "minted";
         newNft.title = nft.value.title + token_id;
         newNft.isMinted = true;
-		newNft.blockchainOwner = currentAddress.value;
-		newNft.attributes = attrs;
+        newNft.blockchainOwner = currentAddress.value;
+        newNft.attributes = attrs;
         await updateNft(nftRef.value, newNft);
+        router.push("/my-nfts");
+        store.dispatch("NotificationStore/TOGGLE_LOADING");
       } catch (err) {
         console.log(err);
       }
