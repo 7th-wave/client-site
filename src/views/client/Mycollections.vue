@@ -15,22 +15,10 @@
           class="mt-5 md:mt-0 lg:col-span-5 grid md:grid-cols-2 grid-cols-1 gap-4 w-full"
         >
           <div v-for="(Nft, index, key) in nfts" :key="key">
-            <create-nft-button v-if="!index" @click="addNft">
-              <template #subtitle>
-                <span
-                  class="text-sm font-inter font-medium text-primary-500 cursor-pointer"
-                  >{{ nfts.length - 1 }} NFTs</span
-                >
-              </template>
-              <template #title>
-                <span class="text-gray-900 text-xl font-semibold font-inter"
-                  >Mint an NFT</span
-                >
-              </template>
-            </create-nft-button>
-            <NftCard v-if="index && Nft" @click="goDetails(Nft.id)">
+            
+            <NftCard v-if="Nft" @click="goDetails(Nft.id)">
               <template #image>
-                <img class="w-full h-full object-cover" :src="Nft.img" alt="" />
+                <img class="w-full h-full object-cover" :src="Nft.imageUrl" alt="" />
               </template>
               <template #badge>
                 <div
@@ -68,7 +56,7 @@
               </template>
               <template #title>
                 <span class="text-gray-900 text-xl font-semibold font-inter">{{
-                  Nft.name
+                  Nft.title
                 }}</span>
               </template>
             </NftCard>
@@ -84,12 +72,12 @@ import Menu from "@/components/Layouts/Menu.vue";
 import Navbar from "@/components/Layouts/Navbar.vue";
 import NftCard from "@/components/cards/NftCard.vue";
 import AccountLayout from "@/components/Layouts/AccountLayout.vue";
-import CreateNftButton from "@/components/cards/CreateNftButton.vue";
-import MoralisFactory from "../../moralis";
+//import CreateNftButton from "@/components/cards/CreateNftButton.vue";
 import { useRouter } from "vue-router";
 import { useStore } from "vuex";
 import { computed, ref } from "@vue/reactivity";
 import { onMounted } from "@vue/runtime-core";
+import { storage } from "../../firebase/firebase";
 import { getUserNfts } from "../../firebase/nfts";
 // import GalleryClient from "@/components/Gallery/GalleryClient.vue";
 // import { ref, computed } from "vue";
@@ -103,7 +91,7 @@ export default {
     Navbar,
     NftCard,
     AccountLayout,
-    CreateNftButton,
+    //CreateNftButton,
   },
   setup() {
     const artworks = ref([]);
@@ -116,7 +104,6 @@ export default {
 
     const store = useStore();
     const router = useRouter();
-    const moralisInstance = MoralisFactory.getInstance();
 
     const addNft = () => {
       router.push("/nft-create");
@@ -128,40 +115,17 @@ export default {
 
     const getData = async () => {
       const bc = store.getters["blockchain/getCurrentAddress"];
-
       try {
         const localnfts = await getUserNfts(bc);
-        nfts.value = [...nfts.value, ...localnfts];
+        nfts.value = await Promise.all(localnfts.map(async (item) => {
+          const nft = {
+            title: item.title,
+            imageUrl: await getFullImageURL(item.imageUrl),
+            collection: 'Miami'
+          }
 
-        const testnetNFTs = await moralisInstance.Web3API.account.getNFTs({
-          chain: "rinkeby",
-          address: bc,
-        });
-        const results = testnetNFTs.result;
-
-        nfts.value = results
-          .filter((item) => {
-            if (item.symbol !== "NFTB") {
-              const metadata = JSON.parse(item.metadata);
-              if (metadata) {
-                return item;
-              }
-            }
-          })
-          .map((item) => {
-            const metadata = JSON.parse(item.metadata);
-            if (metadata) {
-              const nft = {
-                block_number: item.token_id,
-                name: metadata.name,
-                img: metadata.image,
-                title: metadata.name,
-                badge: "NIKE",
-              };
-
-              return nft;
-            }
-          });
+          return nft;
+        }));
 
         store.dispatch("NotificationStore/TOGGLE_LOADING");
       } catch (error) {
@@ -170,6 +134,16 @@ export default {
           type: "error",
         });
         store.dispatch("NotificationStore/TOGGLE_LOADING");
+      }
+    };
+
+    const getFullImageURL = async (item) => {
+      console.log(item);
+      if (item) {
+        var storageRef = storage.ref();
+        const imageUrl = await storageRef.child(item).getDownloadURL();
+
+        return imageUrl;
       }
     };
 
@@ -194,6 +168,7 @@ export default {
       goDetails,
       getData,
       nfts,
+      getFullImageURL
     };
   },
 };
