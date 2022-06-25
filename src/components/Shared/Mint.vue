@@ -88,7 +88,7 @@ export default {
       const nextId = await findNewxtIdPerContract(contractAddress);
       console.log(nextId);
       const token_id = nextId.nextId;
-      const description = nft.value.description.replace(/\\n/g, '<br />');
+      const description = nft.value.description;
 
       const attrs = nft.value.attributes.map((item) => {
         let value = item.value;
