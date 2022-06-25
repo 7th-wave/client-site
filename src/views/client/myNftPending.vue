@@ -13,24 +13,31 @@
         </div>
         <div class="sm:col-span-5 space-y-2">
           <div class="space-y-4 w-full">
-            <Steps :step="steps" />
             <div class="w-full font-inter grid lg:grid-cols-2 gap-5">
               <div
                 class="
                   w-full
-                  rounded-md
-                  shadow-md
-                  overflow-hidden
+                  
                   img-container
                 "
               >
                 <img
-                  src="/images/categories/caveman.png"
-                  class="w-full h-full object-cover"
+                  :src="imageUrl"
+                  class="
+                    w-full
+                    object-cover
+                    rounded-md
+                    shadow-md
+                    overflow-hidden
+                    mb-3
+                  "
                   alt=""
                 />
               </div>
-              <div class="w-full flex items-start flex-col space-y-2">
+              <div
+                class="w-full flex items-start flex-col space-y-2"
+                v-if="isLoaded"
+              >
                 <div
                   class="
                     w-full
@@ -44,26 +51,15 @@
                     space-y-4
                   "
                 >
-                  <span class="text-xl font-semibold text-gray-900"
-                    >NFT Subtitle</span
-                  >
+                  <span class="text-xl font-semibold text-gray-900">{{
+                    nft.title
+                  }}</span>
                   <p class="text-left text-lg font-normal text-black">
-                    Perhaps the most famous figure in street art working today,
-                    Banksy is known for urban interventions that demonstrate
-                    irreverent wit and a biting political edge. Enhancing his
-                    mystique by maintaining an anonymous identity, the artist
-                    has modified street signs, illegally printed his own
-                    currency, and illicitly hung his own work in the Louvre and
-                    the Museum of Modern Art.
-                  </p>
-                  <p class="text-left text-lg font-normal text-black">
-                    He often uses spray paint and stencils in his critiques of
-                    consumerism, political authority, terrorism, and the status
-                    of art and its display. His street art, installations, and
-                    studio-produced works have been shown in Los Angeles, New
-                    York, London, Bethlehem, and beyond. His art has been
-                    subject to widespread interest on the secondary market and
-                    has fetched eight figures at auction.
+                    <Markdown
+                      :source="description"
+                      :linkify="true"
+                      :html="true"
+                    />
                   </p>
                 </div>
                 <div
@@ -78,89 +74,15 @@
                     px-2
                     py-2
                   "
+                  v-for="(item, index) of nft.attributes"
+                  :key="index"
                 >
                   <span class="text-lg text-gray-500 font-semibold"
-                    >Artist:</span
+                    >{{ item.name }}:</span
                   >
-                  <span class="text-lg text-gray-900 font-normal">Banksy</span>
-                </div>
-                <div
-                  class="
-                    w-full
-                    bg-white
-                    rounded-md
-                    shadow-md
-                    flex
-                    items-center
-                    space-x-2
-                    px-2
-                    py-2
-                  "
-                >
-                  <span class="text-lg text-gray-500 font-semibold"
-                    >Dimensions:</span
-                  >
-                  <span class="text-lg text-gray-900 font-normal"
-                    >7 × 50 × 12 in</span
-                  >
-                </div>
-                <div class="grid lg:grid-cols-2 gap-2 w-full">
-                  <div
-                    class="
-                      w-full
-                      bg-white
-                      rounded-md
-                      shadow-md
-                      flex
-                      items-center
-                      space-x-2
-                      px-2
-                      py-2
-                    "
-                  >
-                    <span class="text-lg text-gray-500 font-semibold"
-                      >Creation Date:</span
-                    >
-                    <span class="text-lg text-gray-900 font-normal">2008</span>
-                  </div>
-                  <div
-                    class="
-                      w-full
-                      bg-white
-                      rounded-md
-                      shadow-md
-                      flex
-                      items-center
-                      space-x-2
-                      px-2
-                      py-2
-                    "
-                  >
-                    <span class="text-lg text-gray-500 font-semibold"
-                      >Medium:</span
-                    >
-                    <span class="text-lg text-gray-900 font-normal"
-                      >Graffiti</span
-                    >
-                  </div>
-                </div>
-                <div
-                  class="
-                    w-full
-                    bg-white
-                    rounded-md
-                    shadow-md
-                    flex
-                    items-center
-                    space-x-2
-                    px-2
-                    py-2
-                  "
-                >
-                  <span class="text-lg text-gray-500 font-semibold"
-                    >Location:</span
-                  >
-                  <span class="text-lg text-gray-900 font-normal">Miami</span>
+                  <span class="text-lg text-gray-900 font-normal">{{
+                    item.value
+                  }}</span>
                 </div>
               </div>
             </div>
@@ -175,53 +97,174 @@
 
 
 <script>
-import Steps from "@/components/Drawers/Steps.vue";
+//import Steps from "@/components/Drawers/Steps.vue";
 
 import MintsInfosCards from "@/components/cards/MintsInfosCards.vue";
 import Menu from "@/components/Layouts/Menu.vue";
 import Navbar from "@/components/Layouts/Navbar.vue";
 import AccountLayout from "../../components/Layouts/AccountLayout.vue";
-const steps = [
-  {
-    id: "1",
-    name: "Propose New Asset",
-    description: "Vitae sed mi luctus laoreet.",
-    href: "#",
-    status: "complete",
-  },
-  {
-    id: "2",
-    name: "Mint your NFT",
-    description: "Penatibus eu quis ante.",
-    href: "#",
-    status: "current",
-  },
-  {
-    id: "3",
-    name: "Mint Asset",
-    description: "Penatibus eu quis ante.",
-    href: "#",
-    status: "upcoming",
-  },
-  {
-    id: "4",
-    name: "Create a Vault",
-    description: "Penatibus eu quis ante.",
-    href: "#",
-    status: "upcoming",
-  },
-];
+
+import { useRoute } from "vue-router";
+import { useStore } from "vuex";
+
+import { storage } from "../../firebase/firebase";
+//import Share from "../../components/Modals/Share.vue";
+import { getNft } from '../../firebase/nfts';
+
+import Markdown from 'vue3-markdown-it';
+import { computed, onMounted, ref } from "vue";
+
 export default {
   components: {
     Menu,
     Navbar,
-    Steps,
+    //Steps,
     MintsInfosCards,
     AccountLayout,
+    Markdown
   },
-  setup() {
+  setup(props, {emit}) {
+    const open = ref(false);
+    const placebid_note = ref(false);
+    const nft_modal = ref(false);
+    const login_modal = ref(false);
+    const place_bid = ref(false);
+    const visibleLightBox = ref(false);
+    const isLoaded = ref(false);
+
+    const route = useRoute();
+    const store = useStore();
+    //const collectionRef = route.params.collection;
+    const nftRef = ref(route.params.id);
+
+    const cards = ref([
+    ]);
+
+    const bid = ref(0);
+
+    const description = ref('');
+
+    const nft = ref({
+      title: "",
+      collection: "",
+      sub_title: "",
+      dimension: "",
+      medium: "",
+      description: "",
+      imageUrl: "",
+      link: "",
+      qrCodeImage: "",
+      ipfs: "",
+      metadataIpfs: "",
+      isMinted: false,
+      blockchainId: 0,
+      blockChainOwner: "",
+      attributes: [],
+      auctions: [],
+    });
+    const auction = computed(() => store.state.auctionStore.auction);
+    const currentAddress = computed(
+      () => store.getters["blockchain/getCurrentAddress"]
+    );
+    const isOwner = computed(
+      () => nft.value.blockChainOwner == currentAddress.value
+    );
+    const auctionref = ref();
+
+    const artistName = ref("");
+
+    const imageUrl = ref("");
+    const updateData = ref(false);
+
+    const getFullImageURL = async (item) => {
+      var storageRef = storage.ref();
+      imageUrl.value = await storageRef.child(item).getDownloadURL();
+    };
+
+    const getData = async () => {
+      //await store.dispatch("collection/loadCollection", collectionRef);
+      artistName.value = 'GB MIAMI' //store.getters["collection/getName"];
+
+      nft.value = await getNft(nftRef.value);
+      isLoaded.value = true;
+
+      description.value = nft.value.description.replace(/\\n/g, '<br />');
+
+      if (nft.value.auctions.length > 0) {
+        const lastAuction = nft.value.auctions[nft.value.auctions.length - 1];
+        if (lastAuction.status == "active") {
+          auctionref.value = nft.value.auctions[nft.value.auctions.length - 1];
+          await store.dispatch("auctionStore/getAuction", auctionref.value);
+
+          cards.value.push({
+            id: 3,
+            component: <Bids />,
+            class:
+              "xl:w-full lg:w-6/12 w-full pb-2 xl:order-3 lg:order-1 order-1",
+          });
+        }
+      }
+
+      if (
+        nft.value.offers &&
+        nft.value.offers.length > 0 &&
+        currentAddress.value
+      ) {
+        cards.value.push({
+          id: 4,
+          component: <OffersCard />,
+          class:
+            "xl:w-full lg:w-6/12 w-full pb-2 xl:order-3 lg:order-1 order-1",
+        });
+      }
+
+      getFullImageURL(nft.value.imageUrl);
+    };
+
+    onMounted(async () => {
+      await getData();
+    });
+
+    const showModal = () => {
+      visibleLightBox.value = true;
+    };
+
+    const refresh = () => {
+      return location.reload();
+    };
+
+    const placedBid = () => {
+      updateData.value = true;
+      setTimeout(() => (updateData.value = false), 1000);
+    };
+
+    const emitsLogin = () => {
+      emit('on:login');
+    }
+
     return {
-      steps,
+      nft,
+      cards,
+      artistName,
+      auction,
+      auctionref,
+      open,
+      placebid_note,
+      nft_modal,
+      login_modal,
+      place_bid,
+      showModal,
+      visibleLightBox,
+      refresh,
+      imageUrl,
+      bid,
+      placedBid,
+      updateData,
+      nftRef,
+      isOwner,
+      isLoaded,
+      emitsLogin,
+      description
     };
   },
 };

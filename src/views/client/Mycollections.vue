@@ -20,7 +20,7 @@
               <template #image>
                 <img class="w-full h-full object-cover" :src="Nft.imageUrl" alt="" />
               </template>
-              <template #badge>
+              <template #badge v-if="false">
                 <div
                   class="bg-white py-1 px-2 rounded-3xl absolute top-3 right-3 flex items-center space-x-1.5"
                   v-if="Nft.collection"
@@ -51,7 +51,7 @@
               <template #subtitle>
                 <span
                   class="text-sm font-inter font-medium text-primary-500 cursor-pointer"
-                  >{{ Nft.title }}</span
+                  >{{ Nft.collection }}</span
                 >
               </template>
               <template #title>
@@ -119,9 +119,10 @@ export default {
         const localnfts = await getUserNfts(bc);
         nfts.value = await Promise.all(localnfts.map(async (item) => {
           const nft = {
+            id: item.dbRef,
             title: item.title,
             imageUrl: await getFullImageURL(item.imageUrl),
-            collection: 'Miami'
+            collection: 'MNFT Miami'
           }
 
           return nft;

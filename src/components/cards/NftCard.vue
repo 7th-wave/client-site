@@ -1,6 +1,6 @@
 <template>
-    <div class=" w-full max-h-96 h-full bg-white rounded-md overflow-hidden shadow-lg">
-        <div class=" w-full h-72 cursor-pointer relative">
+    <div class=" w-full bg-white rounded-md overflow-hidden shadow-lg">
+        <div class=" w-full cursor-pointer relative">
             <slot name="image"/>
             <slot name="badge"/>
         </div>
