@@ -28,7 +28,7 @@
         >
           <span class="text-xl font-semibold text-gray-900">{{ nft.title }}</span>
           <p class="text-left text-lg font-normal text-black">
-            <Markdown :source="nft.description" :linkify="true" />
+            <Markdown :source="description" :linkify="true" :html="true" />
           </p>
          
         </div>
@@ -357,6 +357,8 @@ export default {
 
     const bid = ref(0);
 
+    const description = ref('');
+
     const nft = ref({
       title: "",
       collection: "",
@@ -400,6 +402,8 @@ export default {
 
       nft.value = await getNft(nftRef.value);
       isLoaded.value = true;
+
+      description.value = nft.value.description.replace(/\\n/g, '<br />');
 
       if (nft.value.auctions.length > 0) {
         const lastAuction = nft.value.auctions[nft.value.auctions.length - 1];
@@ -474,7 +478,8 @@ export default {
       nftRef,
       isOwner,
       isLoaded,
-      emitsLogin
+      emitsLogin,
+      description
     };
   },
 };
