@@ -166,7 +166,7 @@ export default {
         newNft.status = "minted";
         newNft.title = nft.value.title + token_id;
         newNft.isMinted = true;
-        newNft.blockchainOwner = currentAddress.value;
+        newNft.blockChainOwner = currentAddress.value;
         newNft.attributes = attrs;
         await updateNft(nftRef.value, newNft);
         router.push("/my-nfts");
