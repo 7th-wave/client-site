@@ -37,6 +37,7 @@ import ETH from "./ETH.vue";
 import { mintNft, pinJson } from "../../blockchain";
 import { findNewxtIdPerContract, updateNft } from "../../firebase/nfts";
 import { useRouter } from "vue-router";
+import { onMounted } from '@vue/runtime-core';
 
 export default {
   components: { Button, ETH },
@@ -174,6 +175,12 @@ export default {
         console.log(err);
       }
     };
+
+    onMounted(() => {
+      console.log('--');
+      console.log(currentAddress.value);
+      console.log('--');
+    })
 
     return {
       openModal,
