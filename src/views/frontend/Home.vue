@@ -1,5 +1,5 @@
 <template>
-  <div class="artist font-inter">
+  <div class="artist font-inter h-screen">
     <div class="relative bg-gray-100 py-8 sm:py-24 lg:py-8">
       <div class="relative">
         <div class="text-center mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-8 lg:max-w-7xl">
@@ -11,7 +11,7 @@
       </div>
     </div>
     <div class="pb-20 pt-6 white bg-gray-100">
-       <div class="box-border max-w-7xl grid grid-cols-1 lg:grid-cols-4 gap-4 mx-auto before:box-inherit after:box-inherit">
+       <div class="box-border max-w-7xl grid grid-cols-1 lg:grid-cols-4 gap-4 mx-auto before:box-inherit after:box-inherit" ref="scrollComponent">
           <Gallery :gallery="data.gallery" :src="'front'" />
         </div>
     </div>
@@ -25,7 +25,7 @@
 import Gallery from '@/components/Gallery/Gallery';
 //import { useRoute } from 'vue-router';
 import { ref } from '@vue/reactivity';
-import { onMounted } from '@vue/runtime-core';
+import { onMounted, onUnmounted } from '@vue/runtime-core';
 import { getNftsByCollection } from '../../firebase/nfts'
 //import { useStore } from 'vuex';
 
@@ -52,6 +52,8 @@ export default {
     //const collectionRef = route.params.ref;
 
     //const storage = firebase.storage();
+    const currentPage = ref(1);
+    const scrollComponent = ref();
     const data = ref({
       title: 'Collection Name',
       artist: 'Manfred',
@@ -64,7 +66,7 @@ export default {
 
     const getData = async () => {      
       
-      data.value.gallery = await getNftsByCollection(process.env.VUE_APP_CATEGORY);
+      data.value.gallery = await getNftsByCollection(process.env.VUE_APP_CATEGORY, currentPage.value);
 
       // doc.data() is never undefined for query doc snapshots
       data.value.artist_name = 'GB-MIAMI';
@@ -75,8 +77,31 @@ export default {
         
     }
 
+    const getMore = async () => {
+      currentPage.value++;
+      const moreData = await getNftsByCollection(process.env.VUE_APP_CATEGORY, currentPage.value);
+      const gallery = data.value.gallery;
+      gallery.push(...moreData);
+      data.value.gallery = [];
+      setTimeout(() => {
+        data.value.gallery = gallery;
+      }, 500);
+    }
+
+    const handleScroll = async() => {
+      let element = scrollComponent.value
+      if (element.getBoundingClientRect().bottom < window.innerHeight) {
+        await getMore();
+      }
+    } 
+
     onMounted(async() => {
       await getData();
+      window.addEventListener("scroll", handleScroll)
+    });
+
+    onUnmounted(async() => {
+       window.removeEventListener("scroll", handleScroll)
     });
 
     return {
@@ -84,6 +109,7 @@ export default {
       // features,
      
       data,
+      getMore
       // footerNavigation,
       
     }
