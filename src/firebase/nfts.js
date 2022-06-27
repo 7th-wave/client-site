@@ -3,13 +3,13 @@ import axios from 'axios';
 
 const app_url = process.env.VUE_APP_FUNCTIONS_URL;
 
-const getNfts = async() => {
-    const result = await axios.get(app_url+'find_nfts');
+const getNfts = async(page) => {
+    const result = await axios.get(app_url+'find_nfts?page='+page);
     return result.data;
 }
 
-const getNftsByCollection = async(collection) => {
-    const result = await axios.get(app_url+'find_nfts_by_collection?collection='+collection);
+const getNftsByCollection = async(collection, page) => {
+    const result = await axios.get(app_url+'find_nfts_by_collection?page='+page+'&collection='+collection);
     return result.data;
 }
 

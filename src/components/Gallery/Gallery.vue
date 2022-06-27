@@ -43,11 +43,12 @@ export default {
     const collectionRef = 'gb-miami';
 
     const artwork = ref([]);
-    const { gallery } = toRefs(props);
+    const { gallery } = toRefs(props); 
 
     let nftRef = "";
 
     const getNftDetail = async (values) => {
+
       if (props.src == "admin") {
         artwork.value.push(newArtwork);
       }
@@ -69,6 +70,7 @@ export default {
     };
 
     watch(gallery, (value) => {
+      artwork.value = [];
       getNftDetail(value);
     });
 
@@ -82,7 +84,6 @@ export default {
     };
 
     const getFullImageURL = async (item) => {
-      console.log(item);
       if (item) {
         var storageRef = storage.ref();
         const imageUrl = await storageRef.child(item).getDownloadURL();
