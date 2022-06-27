@@ -1,6 +1,6 @@
 <template>
     <div class="z-10 top-2">
-        <a href="/">
+        <a href="https://cirkol.com">
     
 <svg width="62" height="62" viewBox="0 0 170.79 170.79" fill="none" class="text-primary-900
 " version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"

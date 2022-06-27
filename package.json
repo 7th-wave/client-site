@@ -31,6 +31,7 @@
     "@walletconnect/web3-provider": "^1.7.4",
     "@web3auth/web3auth": "^0.7.0",
     "ant-design-vue": "^2.2.6",
+    "aos": "^2.3.4",
     "autoprefixer": "9",
     "axios": "^0.21.1",
     "boxicons": "^2.1.2",
@@ -67,6 +68,7 @@
     "vue3-date-time-picker": "^2.4.4",
     "vue3-datepicker": "^0.2.5",
     "vue3-dropzone": "^0.0.7",
+    "vue3-markdown-it": "^1.0.10",
     "vue3-timepicker": "^1.0.0-beta.2",
     "vuex": "^4.0.2",
     "web3": "^1.7.1"

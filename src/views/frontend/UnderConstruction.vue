@@ -1,182 +1,295 @@
 <template>
-  <div class="bg-white">
-    <div class="max-w-7xl mx-auto py-16 px-4 sm:py-24 sm:px-6 lg:px-8">
-      <div class="text-center">
-        
-        <div class="w-1/3 m-auto">
-          <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-            x="0px" y="0px" viewBox="0 0 275.887 250.26" enable-background="new 0 0 275.887 250.26"
-            xml:space="preserve">
-            <path fill="#999897" d="M137.68,21.278c37.816,0,68.582,30.765,68.582,68.582s-30.766,68.582-68.582,68.582
-            c-37.816,0-68.582-30.765-68.582-68.582S99.863,21.278,137.68,21.278 M137.68,4.465c-47.163,0-85.395,38.233-85.395,85.395
-            s38.233,85.395,85.395,85.395s85.395-38.233,85.395-85.395S184.842,4.465,137.68,4.465L137.68,4.465z" />
-            <g>
-              <path fill="#676063" d="M60.947,193.902h5.275v49.903h-5.275V193.902z" />
-              <path fill="#676063" d="M116.551,243.805l-11.406-16.04c-1.283,0.143-2.614,0.214-3.992,0.214H87.75v15.826h-5.275v-49.903h18.678
-              c6.368,0,11.358,1.521,14.971,4.562c3.611,3.042,5.418,7.225,5.418,12.547c0,3.898-0.987,7.189-2.958,9.874
-              c-1.973,2.686-4.789,4.623-8.448,5.81l12.19,17.109H116.551z M112.345,220.208c2.613-2.186,3.921-5.251,3.921-9.197
-              c0-4.039-1.308-7.14-3.921-9.303c-2.614-2.162-6.393-3.244-11.335-3.244H87.75v25.023h13.26
-              C105.952,223.487,109.731,222.395,112.345,220.208z" />
-              <path fill="#676063" d="M149.486,220.351l-10.193,10.337v13.117h-5.275v-49.903h5.275v30.156l29.299-30.156h6.061l-21.602,22.599
-              l23.099,27.304h-6.274L149.486,220.351z" />
-              <path fill="#676063" d="M237.26,193.902h5.275v45.34h27.945v4.562H237.26V193.902z" />
-              <path fill="#676063" d="M203.67,198.116c11.246,0,20.395,9.149,20.395,20.395s-9.149,20.395-20.395,20.395
-              c-11.246,0-20.395-9.149-20.395-20.395S192.424,198.116,203.67,198.116 M203.67,193.116c-14.025,0-25.395,11.37-25.395,25.395
-              s11.37,25.395,25.395,25.395s25.395-11.37,25.395-25.395S217.695,193.116,203.67,193.116L203.67,193.116z" />
-              <path fill="#676063"
-                d="M48.128,235.43l-3.053-2.789c-3.72,3.934-8.972,6.405-14.8,6.405c-11.246,0-20.395-9.149-20.395-20.396
-              s9.149-20.395,20.395-20.395c5.829,0,11.08,2.471,14.8,6.404l3.053-2.788l0.656-0.599c-4.633-4.932-11.209-8.017-18.509-8.017
-              c-14.025,0-25.395,11.37-25.395,25.395s11.37,25.396,25.395,25.396c7.301,0,13.877-3.085,18.509-8.017L48.128,235.43z" />
-            </g>
-          </svg>
-        </div>
-
-
-
-        <p class="mt-10 text-2xl font-Normal text-primary-600 sm:text-2xl sm:tracking-tight lg:text-2xl">CIRKOL is the
-          first membership club of its kind.</p>
-        <p class="text-justify max-w-5xl mt-5 mx-auto text-primary-400 font-normal text-base">CIRKOL blends decentralized technology with our innate
-          desire to connect with people in the physical world. Our experienced team has prepared a proprietary pro forma
+  <div class="w-full font-inter h-full main-content">
+    <!-- Hero -->
+    <div class="lg:h-full py-20 px-5 w-full bg-gradient-to-r from-primary-500/40 to-secondary-500/40 mix-blend-lighten">
+      <div class="h-full">
+        <main class="flex flex-col items-center text-center space-y-6">
+          <h1 class="text-5xl font-semibold text-white">
+            first membership club of its kind
+          </h1>
+          <div class="sm:hidden md:flex max-w-md mx-auto sm:flex sm:justify-center  md:mt-8">
+            <Button
+              btn-style="outlined"
+              type="full"
+              size="xlarge"
+              @click="goToLP"
+              ><span>JOIN</span></Button
+            >
+          </div>
+        </main>
+      </div>
+    </div>
+    <!-- Intro -->
+    <div class="w-full py-20 flex items-center bg-primary-900">
+      <div class="w-full px-5">
+        <div class="m-auto flex flex-col text-center max-w-5xl space-y-6">
+          <span class="text-white font-extrabold text-2xl md:text-3xl">
+            Hotel &amp; Club Membership
+          </span>
+          <p class="text-black text-2xl font-medium">
+            CIRKOL blends decentralized technology with our innate desire to connect with people in the physical world. Our experienced team has prepared a proprietary pro forma
           for the purposes of acquisition and redevelopment of a hotel and beach club in Miami, Florida. Once the
           project treasury goal is achieved, we will begin to act on these development goals and ultimately offer prime
-          access to utilize incredible on-property amenities to our mNFT (membership Non Fungible Token) holders. mNFT
-          holders will also have the opportunity to buy and resell rNFTs (reservation Non Fungible Tokens) that operate
+          access to utilize incredible on-property amenities to our mNFT (membership Non Fungible Token holders). mNFT
+          holders will also have the opportunity to buy and resell rNFTs reservation Non Fungible Tokens that operate
           as a decentralized booking platform for the hotel and beach club.
-        </p>
-        <p class="text-justify max-w-5xl mt-5 mx-auto text-primary-400 font-normal text-base">CIRKOL blends decentralized technology with our innate
-        Our first collection features artwork from Miami artist, Manfred Delgado, and is limited to an exclusive 5500
-        mNFTs minted using our proprietary marketplace.
-        </p>
+          </p>
+        </div>
+      </div>
+    </div>
+    <!-- Vision Cascade -->
+    <div class="w-full bg-black" id="vision">
+      <!-- Section ONE -->
+      <div id="one">
+        <div class="2xl:h-screen md:px-10 py-20 flex items-center w-full" data-aos="slide-up">
+          <div
+            class=" flex flex-col-reverse items-start space-y-10 lg:flex-row lg:space-y-0 lg:items-center lg:space-x-10 lg:justify-end w-full max-w-7xl mx-auto">
+            <div class=" w-full lg:max-w-md flex flex-col items-start px-5 py-10 lg:py-0 space-y-8 ">
+              <div class="w-full flex flex-col items-start space-y-2">
+                <span class="text-primary-800 font-inter font-extrabold text-3xl mb-4">Membership Benefits</span>
+                <div class="flex flex-col items-start space-y-10">
+                  <p class="text-white font-inter font-normal text-lg text-left">
+                    Lifetime Membership
+                  </p>
+                  <p class="text-white font-inter font-normal text-lg text-left">
+                    Multiple Hoteln Club Locations
+                  </p>
+                  <p class="text-white font-inter font-normal text-lg text-left">
+                    VIP Curated Perks 
+
+                  </p>
+                  <p class="text-white font-inter font-normal text-lg text-left">
+                    We incentivize developers with a No-Code DeFi engine that makes it easier, cheaper, and faster for them to build DeFi and NFT projects, without any code. Instead builders use templates to create contracts.
+                    This will be a game-changer in how DeFi products will be launched similar to how Shopify changed
+                    e-commerce.
+                  </p>
+                </div>
+              </div>
+              <!-- <div class=" w-full sm:flex-row flex-col space-y-2 sm:space-y-0 items-start flex sm:items-center sm:space-x-2 " >
+                <Button btn-style="outlined" type="full" @click="goToLPA"
+                  ><span>Learn More</span></Button
+                >
+              </div> -->
+            </div>
+            <div class="max-w-4xl w-full relative overflow-hidden col-span-2 px-5">
+              <div class="w-full overflow-hidden right-0">
+                <img src="/images/collectiverse_layer_3.png" class="w-auto lg:w-2/3 mx-auto" alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Section TWO -->
+      <div id="two">
+        <div class="lg:h-screen md:px-10 py-20 flex items-center bg-primary-900 w-full" data-aos="slide-up">
+          <div
+            class=" flex flex-col-reverse items-start space-y-10 lg:flex-row-reverse lg:space-y-0 lg:items-center lg:space-x-10 lg:justify-end w-full max-w-7xl mx-auto">
+            <div class=" w-full lg:max-w-md flex flex-col items-start px-5 py-10 lg:py-0 space-y-8 ">
+              <div class="w-full flex flex-col items-start space-y-2">
+                <span class="text-primary-800 font-inter font-extrabold text-3xl mb-4">More Assured Returns</span>
+                <div class="flex flex-col items-start space-y-10">
+                  <p class="text-white font-inter font-normal text-lg text-left">
+                    CollectiVerse provides investors with more assured returns by combining our secure Layer 3 platform
+                    with stablecoin-backed rewards.
+                  </p>
+                  <p class="text-white font-inter font-normal text-lg text-left">
+                    In phase 1, fractional utility NFTs for 15 decentralized projects operating on our platform will be
+                    sold at $25 each on Avalanche. 67% of the NFT proceeds will be stored in a reserve, initially paying
+                    up to 91% APR in USDC stablecoin-backed rewards over 9 months. NFT holders control how these funds
+                    get allocated for their project through voting to ensure decentralization.
+                  </p>
+                  <p class="text-white font-inter font-normal text-lg text-left">
+                    Thus our fractional NFTs let you vote on key decisions, plus earn consistent rewards as you wait for
+                    the currently unstable markets to pass through the turbulence.
+                  </p>
+                </div>
+              </div>
+              <!-- <div class=" w-full sm:flex-row flex-col space-y-2 sm:space-y-0 items-start flex sm:items-center sm:space-x-2 " >
+                  <Button btn-style="outlined" type="full" @click="goToLPB"
+                    ><span>Learn More</span></Button
+                  >
+                </div> -->
+            </div>
+            <div class="max-w-4xl w-full relative overflow-hidden col-span-2 px-5">
+              <div class="w-full overflow-hidden right-0">
+                <img src="/images/dual_tokens.png" class="w-auto lg:w-2/3 mx-auto" alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Section THREE -->
+      <div id="three">
+        <div class="lg:h-screen md:px-10 py-20 flex items-center w-full" data-aos="slide-up">
+          <div
+            class=" flex flex-col-reverse items-start space-y-10 lg:flex-row lg:space-y-0 lg:items-center lg:space-x-10 lg:justify-end w-full max-w-7xl mx-auto">
+            <div class=" w-full lg:max-w-md flex flex-col items-start px-5 py-10 lg:py-0 space-y-8 ">
+              <div class="w-full flex flex-col items-start space-y-2">
+                <span class="text-primary-800 font-inter font-extrabold text-3xl mb-4">Building Community</span>
+                <div class="flex flex-col items-start space-y-10">
+                  <p class="text-white font-inter font-normal text-lg text-left">
+                    To enhance the community of each project, we wrapped our ecosystem into a space metaverse. This
+                    aligns with our deep passion for space and space travel.
+                  </p>
+                  <p class="text-white font-inter font-normal text-lg text-left">
+                    The result is a DeFi ecosystem in a Decentraland-like metaverse where each project is either a
+                    planet or moon. The metaverse lets you build a virtual society with other NFT holders in your
+                    project.
+                  </p>
+                  <p class="text-white font-inter font-normal text-lg text-left">
+                    To obtain virtual land in our metaverse, NFT holders have the option to compound, or virtually
+                    terraform, each fractional NFT into an additional land NFT that pays 20% APR over 6 months. We plan
+                    to gamify and build exciting utility for these land NFTs in the future.
+                  </p>
+
+                </div>
+              </div>
+              <!-- <div class=" w-full sm:flex-row flex-col space-y-2 sm:space-y-0 items-start flex sm:items-center sm:space-x-2 " >
+                <Button btn-style="outlined" type="full" @click="goToLPC"
+                  ><span>Learn More</span></Button
+                >
+              </div> -->
+            </div>
+            <div class="max-w-4xl w-full relative overflow-hidden col-span-2 px-5">
+              <div class="w-full overflow-hidden right-0">
+                <img src="/images/collectiverse-hands-raising.jpg" class="w-auto lg:w-full mx-auto" alt="" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- Roadmap -->
+    <div id="four">
+      <div class="separator m-auto" id="roadmap">
+        <img src="/images/collectiverse_planet.jpg" class="w-full" />
+      </div>
+    </div>
+
+    <road-map />
+
+    
+
+      <div id="team">
+
+      <!-- Intro -->
+      <div class="w-full py-20 flex items-center bg-white">
+        <div class="w-full px-5">
+          <div class="m-auto flex flex-col text-center max-w-6xl space-y-8">
+            <span class="text-primary-900 font-extrabold text-2xl md:text-3xl">
+              Team
+            </span>
+            <h3 class="text-gray-500 text-2xl font-medium">
+              Our founding team is doxxed, and with our developers, KYC’d by Obsidian Council. The team has significant
+              experience across numerous fields: finance, crypto, NFTs, startups, development, design, and marketing.
+              Our proven ability to execute plus personal relationships with leaders in the industry make us
+              well-positioned to deliver on our vision.
+            </h3>
+          </div>
+        </div>
+      </div>
 
 
+      <div class="mx-auto px-4 sm:w-full lg:w-3/4 bg-white py-8">
+        <div class="max-w-7xl m-auto">
+          <div class="grid lg:grid-cols-3 grid-cols-1 md:grid-cols-2 gap-8">
+            <team-card v-for="(team, index, key) in teams" :key="key" :info="team" />
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </template>
-
 <script>
-  //import Button from "@/components/Layouts/Button.vue";
+  import AOS from "aos";
   import {
-    useRouter
-  } from "vue-router";
-  //import Title from "@/components/Shared/Title.vue";
+    onMounted
+  } from "@vue/runtime-core";
+  // import Button from "../../components/Layouts/Button.vue";
+  import RoadMap from "../../components/Layouts/RoadMap.vue";
+  import TeamCard from "../../components/cards/TeamCard.vue";
+  const teams = [{
+      name: "Allen Meizlish",
+      title: "Real Estate & Developments",
+      discription: "Allen is a time-tested Commercial Real Estate (CRE) entrepreneur who has been involved with 200+ multifamily, restaurant, retail, and hospitality projects in all stages of development planning, site selection, design, and construction.  Throughout his career, Allen’s projects have ranged from single retail location build-outs up to $800MM multi-phase, multi-year development projects. In addition to working on the acquisition and re-development planning for CIRKOL, Allen is the founder and partner in a number of real estate related ventures.  He is a the co-founder of the Washington, DC based real estate and concept development firm HELM Ventures which is currently working on millions of dollars of expansion and development projects in the region.  He also co-founded prop/tech company Jet micro-mobility which services some of the most coveted rental apartment buildings D.C. and is expanding into the Northeast and Southeast United States this year.   Allen has also grown and run the marketing firm conceptLAB for 7 years, which primarily services financial firms, funds commercial real estate firms, law firms and other mid sized businesses.",
+      image: "/images/team/allen.jpg",
+      linkedin: "https://www.linkedin.com/in/allenmeizlish/",
+      twitter: "https://twitter.com/AllenMeizlish",
+      instagram: "https://www.instagram.com/allen.meizlish/",
+      
+    },
+    {
+      name: "Hami Gendron",
+      title: "Web3 Design & Development",
+      discription: "Hami Gendron has been a premier innovator in the NFT and crypto space since 2017. Hami launched one of the first NFT marketplaces in existence and co-founded the first NFT the very first NFT charity on the blockchain and in the world: CryptOtitties in January of 2018.  Revolutionary, CryptoTitties entered as the 19th NFT project on the blockchain.  CryptoTitties charity fund for Breasties.org, donated 100 Eth, as well as a now retired prize fund for winners of their Motorboat Race. Hami's proprietary blockchain technology has laid the foundation for many successful projects in the Web 3 space.  Gendron has been involved in Augmented reality blockchain projects and space projects including Cosmic Paws’ Muttnick NFTs Project.",
+      image: "/images/team/hami.jpg",
+      linkedin: "https://www.linkedin.com/in/hamigendron/",
+    },
+    {
+      name: "Manfred Delgado",
+      title: "Graphic Design",
+      discription: "Manfred Delgado is a multidisciplinary contemporary artist. Primarily self taught, Manfred moved from Costa Rica to Miami at a young age and has been producing artworks ever since. Delgado s work spans a variety of mediums and scales. He has worked on human scale works such as sculpture and canvas pieces, as well as Wynwood Murals in excess of 100 feet wide. His avant-garde murals throughout the United States have helped to distinguish himself as one of the preeminent artists of his generation. Manfred’s work takes inspiration from both urban environments and nature alike. He is known for his vibrant color choices and bold, yet perfectly balanced compositions. 'I find inspiration from everything around me, from conversations with friends and family, a visual incentive from nature, or simply a past moment or feeling I want to re-live thru my art' Manfred Delgado",
+      image: "/images/team/manfred.jpg",
+      instagram: "https://www.linkedin.com/in/mann_createz/",
+      twitter: "https://twitter.com/mann_createz/",
+      website: "https://manncreatez.com/",
+    },
 
-  import {
-    ref
-  } from "@vue/reactivity";
-  import {
-    gsap
-  } from "gsap";
-  import {
-    Flip
-  } from "gsap/Flip";
-  import {
-    ScrollTrigger
-  } from "gsap/ScrollTrigger";
-  import {
-    Observer
-  } from "gsap/Observer";
-  import {
-    ScrollToPlugin
-  } from "gsap/ScrollToPlugin";
-  import {
-    Draggable
-  } from "gsap/Draggable";
-  import {
-    EaselPlugin
-  } from "gsap/EaselPlugin";
-  import {
-    MotionPathPlugin
-  } from "gsap/MotionPathPlugin";
-  import {
-    PixiPlugin
-  } from "gsap/PixiPlugin";
-  import {
-    TextPlugin
-  } from "gsap/TextPlugin";
-
-  gsap.registerPlugin(Flip, ScrollTrigger, Observer, ScrollToPlugin, Draggable, EaselPlugin, MotionPathPlugin,
-    PixiPlugin, TextPlugin);
-
-
-
-
+    {
+      name: "Shreyas Naik",
+      title: "Commercial Developer",
+      discription: "Shreyas began his professional career building and developing hotels in the Northeast. He later transitioned into the Plastics Recycling business and for many years ran a medium sized plastic recycling company out of Alabama, Indiana, and Illinois. He is still a part of the plastics world as Vice President and board member of Niche Polymers, a company that manufacturers recycled based plastic resins. Currently Shreyas resides in Miami Florida and is the owner of Dorado Development Group LLC. Dorado Development focuses on residential and commercial construction in Florida, Alabama, Maryland and West Virginia.",
+      image: "/images/team/shreyas.jpg",
+      linkedin: "https://www.linkedin.com/in/ssnaik/",
+    },
+    {
+      name: "Stephen Gamson",
+      title: "Marketing & PR",
+      discription: "Stephen Gamson is a renowned multimedia American Pop Artist. He has a unique style easily recognized for bold colors, iconic symbols and mass appeal. His art has been featured at Art Basel Miami Beach, the Scope Art Fair, the Red Dot Art Show, Art Miami, and in many solo and group exhibitions internationally. He is collected by 'A' list celebrities and corporations. The Gamson mark has enhanced brands such as Bacardi, Cafe Bustelo, Lamborghini, Brera Orologi, Fisker Automotive and UGG Australia. Stephen Gamson has been honored as an official Artist for the Monaco Grand Prix, the Sony Open, Miami Beach Polo, ING Miami Marathon, the Necker Cup, Sarasota Polo, the Bacardi Cup, and the City of Miami's 114th & 115th Birthday celebrations. He was also awarded a key to Miami-Dade County and has a day in his name in Miami Beach. In addition his artwork has made a positive impact through charitable causes. Gamson works from his Wynwood-Miami Studio and gets much of his influence from its multi cultural and vibrant surroundings.",
+      image: "/images/team/stephen.jpg",
+      instagram:"https://www.instagram.com/gamsonart/",
+      linkedin: "https://www.linkedin.com/in/stephen-gamson-21113682/",
+      website:"https://www.gamsonart.com/"
+    },
+  ];
   export default {
-    data() {
-      return {
-        width: window.innerWidth,
-      };
-    },
-    created() {
-      setTimeout(() => {
-        this.width = window.innerWidth;
-      }, 100);
-      //534
-    },
-
     components: {
       // Button,
-      //Title,
-    },
-    methods: {
-      goToDetails(id) {
-        this.$router.push({
-          name: "vault_category",
-          params: {
-            category: id
-          }
-        });
-      },
-      goVault(id) {
-        this.$router.push({
-          name: "Vault",
-          params: {
-            id: id
-          }
-        });
-      },
+      RoadMap,
+      TeamCard
     },
     setup() {
-      const router = useRouter();
-      const carouselCardRef = ref();
-      const carouselCardRef1 = ref();
+      onMounted(() => {
+        AOS.init();
+      });
+      // const goToLP = () => {
 
+      //   window.location = "#one";
+      // };
+      // const goToLPA = () => {
 
+      //   window.location = "#two";
+      // };
+      // const goToLPB = () => {
 
-      const goCollections = () => {
-        router.push({
-          name: "Explore"
-        });
-      };
-      const changeHandle = (index) => {
-        console.log(index);
-      };
+      //   window.location = "#three";
+      // };
+      // const goToLPC = () => {
 
-      const setToFirst = () => {
-        carouselCardRef.value.setActiveItem(0);
-        carouselCardRef1.value.setActiveItem(0);
-      };
-
+      //   window.location = "#four";
+      // };
       return {
-        goCollections,
-        carouselCardRef,
-        carouselCardRef1,
-        changeHandle,
-        setToFirst,
+        // goToLP,
+        // goToLPA,
+        // goToLPB,
+        // goToLPC,
+        teams,
       };
     },
   };
 </script>
-
 <style>
-  header {
-    display: none !important;
-  }
-
-  footer {
-    display: none !important;
-  }
-
   .main-content {
     scroll-behavior: smooth;
   }

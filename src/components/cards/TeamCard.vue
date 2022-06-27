@@ -13,10 +13,14 @@
       <p class="text-lg font-normal text-gray-500">
         {{info.discription}}
       </p>
-      <div class="flex items-center space-x-2">
-        <a  target="_blank"   :href="info.linkedin" v-if="info.linkedin"> <IconLinkedin /></a>
+      <div class="flex items-center space-x-4 text-gray-900">
+        <a target="_blank"  :href="info.linkedin" v-if="info.linkedin"> <IconLinkedin /></a>
         <a target="_blank"  :href="info.twitter" v-if="info.twitter"> <IconTwitter /></a>
+        <a target="_blank"  :href="info.instagram" v-if="info.instagram"> <IconInstagram /></a>
+        <a target="_blank"  :href="info.website" v-if="info.website"> <IconWebsite /></a>
       </div>
+
+
     </div>
   </div>
 </template>
@@ -26,10 +30,14 @@
 <script>
 import IconLinkedin from "../Icons/IconLinkedin.vue";
 import IconTwitter from "../Icons/IconTwitter.vue";
+import IconInstagram from "../Icons/IconInstagram.vue";
+import IconWebsite from "../Icons/IconWebsite.vue";
 export default {
   components: {
     IconLinkedin,
     IconTwitter,
+    IconInstagram,
+    IconWebsite,
   },
   props: {
     info: {

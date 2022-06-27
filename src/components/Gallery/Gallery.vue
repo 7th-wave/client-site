@@ -2,40 +2,16 @@
   <section
     v-for="art in artwork"
     :key="art.id"
-    class="relative rounded-lg break-inside mx-3 mb-8 md:mx-0 md:mb-5 md:mt-0"
+    class="relative rounded-lg mx-3 mb-8 md:mx-0 md:mb-5 md:mt-0"
   >
     <div
       class="content-center"
       :class="{ 'flex flex-nowrap h-48': art.id == 1 }"
     >
-      <router-link :to="artLink(art)"
-        class="
-          absolute
-          inset-0
-          px-4
-          z-10
-          bg-white
-          text-center
-          flex flex-col
-          items-center
-          justify-center
-          opacity-0
-          hover:opacity-100
-          bg-opacity-90
-          duration-100
-        "
-      >
-        <h1
-          class="text-2xl font-semibold tracking-wider uppercase text-primary-400"
-        >
-          {{ art.title }}
-        </h1>
-        <p class="mt-1 uppercase font-medium text-lg">{{ art.size }}</p>
-        <p class="uppercase font-medium text-lg mt-5" v-if="art.id !== 1">
-          {{ art.category }}
-        </p>
+      <router-link :to="artLink(art)" class="cursor-pointer">
+       <nft-item :nft="art" />
       </router-link>
-      <nft-item :nft="art" />
+      
     </div>
   </section>
 </template>
@@ -67,11 +43,12 @@ export default {
     const collectionRef = 'gb-miami';
 
     const artwork = ref([]);
-    const { gallery } = toRefs(props);
+    const { gallery } = toRefs(props); 
 
     let nftRef = "";
 
     const getNftDetail = async (values) => {
+
       if (props.src == "admin") {
         artwork.value.push(newArtwork);
       }
@@ -93,6 +70,7 @@ export default {
     };
 
     watch(gallery, (value) => {
+      artwork.value = [];
       getNftDetail(value);
     });
 
@@ -106,7 +84,6 @@ export default {
     };
 
     const getFullImageURL = async (item) => {
-      console.log(item);
       if (item) {
         var storageRef = storage.ref();
         const imageUrl = await storageRef.child(item).getDownloadURL();

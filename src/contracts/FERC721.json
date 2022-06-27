@@ -696,6 +696,11 @@
         "internalType": "address",
         "name": "_treasuryAddress",
         "type": "address"
+      },
+      {
+        "internalType": "string",
+        "name": "_token",
+        "type": "string"
       }
     ],
     "name": "initialize",
@@ -707,7 +712,7 @@
     "inputs": [
       {
         "internalType": "string",
-        "name": "uri",
+        "name": "_metadataUri",
         "type": "string"
       },
       {
@@ -725,16 +730,45 @@
     "inputs": [
       {
         "internalType": "address",
-        "name": "_owner",
+        "name": "_sender",
         "type": "address"
       },
       {
+        "internalType": "uint256",
+        "name": "_tokenId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "_metadataUri",
+        "type": "string"
+      },
+      {
+        "internalType": "bytes32",
+        "name": "_token",
+        "type": "bytes32"
+      }
+    ],
+    "name": "mintWithToken",
+    "outputs": [],
+    "stateMutability": "payable",
+    "type": "function",
+    "payable": true
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_tokenId",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "_metadataUri",
+        "type": "string"
+      },
+      {
         "components": [
-          {
-            "internalType": "uint256",
-            "name": "tokenId",
-            "type": "uint256"
-          },
           {
             "internalType": "uint256",
             "name": "minPrice",

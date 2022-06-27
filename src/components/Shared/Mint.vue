@@ -26,48 +26,27 @@
       <div class="w-5/6">
         <Button @click="mint()" customClass="w-full">MINT</Button>
       </div>
-	  <div class="mt-2 text-primary-400">
-      <button @click="openModal" class="focus:outline-none">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="h-6 w-6"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-          />
-        </svg>
-      </button>
-    </div>
-
-      <offer-modal
-        :open_modal="showOfferDialog"
-        @on:close="closeModal"
-        @on:offer="saveOffer"
-        :client-ref="user"
-        :nft="nft"
-        :address="currentAddress"
-      ></offer-modal>
     </div>
   </div>
 </template>
 <script>
-import { ref } from "@vue/reactivity";
+import { ref, toRefs } from "@vue/reactivity";
 import { useStore } from "vuex";
 import Button from "../Layouts/Button.vue";
-import OfferModal from "../Modals/OfferModal.vue";
 import ETH from "./ETH.vue";
+import { mintNft, pinJson } from "../../blockchain";
+import { findNewxtIdPerContract, updateNft } from "../../firebase/nfts";
+import { useRouter } from "vue-router";
+import { onMounted } from '@vue/runtime-core';
 
 export default {
-  components: { Button, OfferModal, ETH },
-  props: ["user", "currentAddress", "nft"],
-  setup(props, { emit }) {
+  components: { Button, ETH },
+  props: ["user", "currentAddress", "nft", "nftRef"],
+  setup(props) {
     const store = useStore();
+    const router = useRouter();
+
+    const { nft, currentAddress, nftRef } = toRefs(props);
 
     const showOfferDialog = ref(false);
 
@@ -101,18 +80,114 @@ export default {
       showOfferDialog.value = false;
     };
 
-    const saveOffer = (e) => {
-      store.dispatch("offerStore/createOffer", e);
-      showOfferDialog.value = false;
-      emit("on:placeOffer");
+    const mint = async () => {
+      store.dispatch("NotificationStore/TOGGLE_LOADING");
+      const contractAddress =
+        process.env.VUE_APP_NETWORK == "mainnet"
+          ? process.env.VUE_APP_ERC721_ADDRESS_MAINNET
+          : process.env.VUE_APP_ERC721_ADDRESS_RINKEBY;
+      const nextId = await findNewxtIdPerContract(contractAddress);
+      console.log(nextId);
+      const token_id = nextId.nextId;
+      const description = nft.value.description.replace(/\\n/g, '');
+
+      const attrs = nft.value.attributes.map((item) => {
+        let value = item.value;
+        const token_id = nextId.nextId;
+        if (item.name == "CIRKOL CLASS") {
+          if (token_id <= 250) {
+            value = "C";
+          } else if (token_id >= 251 && token_id <= 750) {
+            value = "I";
+          } else if (token_id >= 751 && token_id <= 1500) {
+            value = "R";
+          } else if (token_id >= 1501 && token_id <= 2500) {
+            value = "K";
+          } else if (token_id >= 2501 && token_id <= 3750) {
+            value = "O";
+          } else {
+            value = "L";
+          }
+        }
+
+        if (item.name == "Member Stars") {
+          if (token_id <= 250) {
+            value = 5;
+          } else if (token_id >= 251 && token_id <= 750) {
+            value = 4;
+          } else if (token_id >= 751 && token_id <= 1500) {
+            value = 3;
+          } else if (token_id >= 1501 && token_id <= 2500) {
+            value = 2;
+          } else if (token_id >= 2501 && token_id <= 3750) {
+            value = 1;
+          } else {
+            value = 0;
+          }
+        }
+        return { name: item.name, value: value };
+      });
+
+      const properties = attrs.map((item) => {
+        return { trait_type: item.name, value: item.value };
+      });
+
+      const metadata = {
+        pinataMetadata: {
+          name: nft.value.title + token_id,
+        },
+        pinataContent: {
+          name: nft.value.title + token_id,
+          description: description,
+          image: nft.value.ipfs,
+          attributes: properties,
+        },
+      };
+
+      const metadataIpfs = await pinJson(metadata);
+      /* const signature = {
+        minPrice: 20,
+        uri: nft.value.ipfs,
+        signature: nft.value.signature,
+      }; */
+      try {
+        const result = await mintNft(
+          "0xB889eDEFBF7fC1f8Ae11ac1D69462be8C863004D",
+          token_id,
+          "https://gateway.pinata.cloud/ipfs/" + metadataIpfs.IpfsHash,
+          process.env.VUE_APP_MINTING_TOKEN,
+          nft.value.mintinPrice
+        );
+        console.log("mint -> ", result);
+        const newNft = Object.assign({}, nft.value);
+        newNft.metadataIpfs =
+          "https://gateway.pinata.cloud/ipfs/" + metadataIpfs.IpfsHash;
+        newNft.blockchainId = token_id;
+        newNft.status = "minted";
+        newNft.title = nft.value.title + token_id;
+        newNft.isMinted = true;
+        newNft.blockChainOwner = currentAddress.value;
+        newNft.attributes = attrs;
+        await updateNft(nftRef.value, newNft);
+        router.push("/my-nfts");
+        store.dispatch("NotificationStore/TOGGLE_LOADING");
+      } catch (err) {
+        console.log(err);
+      }
     };
+
+    onMounted(() => {
+      console.log('--');
+      console.log(currentAddress.value);
+      console.log('--');
+    })
 
     return {
       openModal,
       makeOffer,
       showOfferDialog,
       closeModal,
-      saveOffer,
+      mint,
     };
   },
 };
