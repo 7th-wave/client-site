@@ -104,7 +104,8 @@ export default {
       // features,
      
       data,
-      getMore
+      getMore,
+      scrollComponent
       // footerNavigation,
       
     }
