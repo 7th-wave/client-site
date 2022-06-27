@@ -84,7 +84,7 @@ export default {
     }
 
     const handleScroll = async() => {
-      let element = scrollComponent.value
+      let element = scrollComponent.value;
       if (element.getBoundingClientRect().bottom < window.innerHeight) {
         await getMore();
       }

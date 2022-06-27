@@ -12,7 +12,21 @@
     </div>
     <div class="pb-20 pt-6 white bg-gray-100">
        <div class="box-border max-w-7xl grid grid-cols-1 lg:grid-cols-4 gap-4 mx-auto before:box-inherit after:box-inherit" ref="scrollComponent">
-          <Gallery :gallery="data.gallery" :src="'front'" />
+          <section
+            v-for="art in data.gallery"
+            :key="art.id"
+            class="relative rounded-lg mx-3 mb-8 md:mx-0 md:mb-5 md:mt-0"
+          >
+            <div
+              class="content-center"
+              :class="{ 'flex flex-nowrap h-48': art.id == 1 }"
+            >
+              <router-link :to="artLink(art)" class="cursor-pointer">
+              <nft-item :nft="art" />
+              </router-link>
+              
+            </div>
+          </section>
         </div>
     </div>
     
@@ -22,11 +36,14 @@
 
 <script>
 // @ is an alias to /src
-import Gallery from '@/components/Gallery/Gallery';
+//import Gallery from '@/components/Gallery/Gallery';
+import NftItem from '@/components/Shared/NftItem.vue';
 //import { useRoute } from 'vue-router';
 import { ref } from '@vue/reactivity';
 import { onMounted, onUnmounted } from '@vue/runtime-core';
-import { getNftsByCollection } from '../../firebase/nfts'
+import { getNftsByCollection } from '../../firebase/nfts';
+import { storage } from "../../firebase/firebase";
+
 //import { useStore } from 'vuex';
 
  /* const data = {
@@ -42,8 +59,8 @@ import { getNftsByCollection } from '../../firebase/nfts'
  
 export default {
   components: {
-    Gallery
-   
+    //Gallery
+   NftItem
 
   },
   setup() {
@@ -66,7 +83,23 @@ export default {
 
     const getData = async () => {      
       
-      data.value.gallery = await getNftsByCollection(process.env.VUE_APP_CATEGORY, currentPage.value);
+      const gallery = await getNftsByCollection(process.env.VUE_APP_CATEGORY, currentPage.value);
+
+      data.value.gallery = await Promise.all(gallery.map(async (item) => {
+        
+          const data = {
+            id: item.dbRef,
+            title: item.title,
+            href: "/admin/artwork/" + item.collection + "/" + item.dbRef,
+            size: item.size,
+            category: 'gb-miami',
+            collection: item.collection,
+            imageUrl: await getFullImageURL(item.imageUrl),
+          };
+
+         return data;
+        
+      }))
 
       // doc.data() is never undefined for query doc snapshots
       data.value.artist_name = 'GB-MIAMI';
@@ -77,15 +110,34 @@ export default {
         
     }
 
+    const getFullImageURL = async (item) => {
+      if (item) {
+        var storageRef = storage.ref();
+        const imageUrl = await storageRef.child(item).getDownloadURL();
+
+        return imageUrl;
+      }
+    };
+
     const getMore = async () => {
       currentPage.value++;
-      const moreData = await getNftsByCollection(process.env.VUE_APP_CATEGORY, currentPage.value);
-      const gallery = data.value.gallery;
-      gallery.push(...moreData);
-      data.value.gallery = [];
-      setTimeout(() => {
-        data.value.gallery = gallery;
-      }, 500);
+      const gallery = await getNftsByCollection(process.env.VUE_APP_CATEGORY, currentPage.value);
+      const newItems = await Promise.all(gallery.map(async (item) => {
+        
+          const data = {
+            id: item.dbRef,
+            title: item.title,
+            href: "/admin/artwork/" + item.collection + "/" + item.dbRef,
+            size: item.size,
+            category: 'gb-miami',
+            collection: item.collection,
+            imageUrl: await getFullImageURL(item.imageUrl),
+          };
+
+         return data;
+        
+      }))
+      data.value.gallery.push(...newItems)
     }
 
     const handleScroll = async() => {
@@ -94,6 +146,10 @@ export default {
         await getMore();
       }
     } 
+
+    const artLink = (artwork) => {
+      return "/artwork/" + artwork.collection + "/" + artwork.id;
+    };
 
     onMounted(async() => {
       await getData();
@@ -109,7 +165,9 @@ export default {
       // features,
      
       data,
-      getMore
+      getMore,
+      scrollComponent,
+      artLink
       // footerNavigation,
       
     }
