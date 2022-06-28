@@ -4,7 +4,7 @@
       <div class="relative">
         <div class="text-center mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-8 lg:max-w-7xl">
           <p class="mt-8 text-4xl font-inter leading-10 font-medium text-black tracking-tight sm:text-4xl">
-            GB Miami
+            MNFT MIAMI
           </p>             
         </div>
         
