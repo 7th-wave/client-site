@@ -8,7 +8,7 @@
           <ETH size="6" />
         </div>
 
-        <h3 class="mt-0">20</h3>
+        <h3 class="mt-0">{{ nft.mintinPrice }}</h3>
       </div>
     </div>
     <div
