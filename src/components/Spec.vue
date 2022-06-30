@@ -2,7 +2,7 @@
 	<div class="bg-white rounded-lg md:mx-0 mx-2">
 		<div class="min-w-7xl mx-auto py-4 px-4 sm:py-2">
 			<div class="mx-auto divide-y-2 divide-gray-200">
-				<dl class="mt-6">
+				<dl class="">
 					<div class="mt-1 flex items-baseline md:block lg:flex">
 						<div
 							class="flex items-baseline text-md font-semibold text-gray-500"

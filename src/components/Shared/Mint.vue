@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div class="mt-1 flex items-center md:block lg:flex">
+  <div class="w-full space-x-2 flex items-center md:block lg:flex">
+    <div class="mt-1 ">
       <div
         class="flex items-center text-xl font-opensans font-semibold text-black"
       >
@@ -8,11 +8,12 @@
           <ETH size="6" />
         </div>
 
-        <h3 class="mt-0">20</h3>
+        <h3 class="mt-0">{{ nft.mintinPrice }}</h3>
       </div>
     </div>
     <div
       class="
+      w-full
         flex
         justify-between
         pr-2
