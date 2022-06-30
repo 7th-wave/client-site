@@ -60,7 +60,7 @@ export default {
     function defineStyleClass(style) {
       switch (style) {
         case 'primary':
-          return 'bg-primary-500 text-white hover:bg-primary-600';
+          return 'bg-primary-900 text-white hover:bg-primary-600';
         case 'outlined':
           return 'border border-primary-500 text-primary-500 hover:bg-primary-600 hover:text-white';
         case 'secondary':
