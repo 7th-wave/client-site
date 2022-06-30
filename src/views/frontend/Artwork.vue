@@ -5,54 +5,104 @@
     @on:close="visibleLightBox = false"
     v-if="imageUrl"
   />
-  <div class="w-full lg:max-w-5xl pt-8 mx-auto font-inter flex flex-col lg:flex-row lg:space-x-5">
-      <div class="w-full  " v-if="isLoaded">
-        <img 
-          :src="imageUrl"
-          class="w-full object-cover rounded-md shadow-md overflow-hidden mb-3"
-          alt=""
-        />
-        <Spec
-          @on:login="emitsLogin"
-          :nft="{ ...nft, artistName }"
-          @on:info="placebid_note = true"
-          :auctionref="auctionref"
-          :auction="auction"
-          @on:placedBid="placedBid"
-          :nftRef="nftRef"
-        />
+  <div
+    class="
+      w-full
+      lg:max-w-5xl
+      pt-8
+      mx-auto
+      font-inter
+      flex flex-col
+      lg:flex-row lg:space-x-5
+    "
+  >
+    <div class="w-full" v-if="isLoaded">
+      <img
+        :src="imageUrl"
+        class="w-full object-cover rounded-md shadow-md overflow-hidden mb-3"
+        alt=""
+      />
+      <Spec
+        @on:login="emitsLogin"
+        :nft="{ ...nft, artistName }"
+        @on:info="placebid_note = true"
+        :auctionref="auctionref"
+        :auction="auction"
+        @on:placedBid="placedBid"
+        :nftRef="nftRef"
+      />
+    </div>
+    <div class="w-full flex items-start flex-col space-y-2" v-if="isLoaded">
+      <div
+        class="
+          w-full
+          rounded-md
+          bg-white
+          shadow-md
+          p-4
+          flex flex-col
+          items-start
+          space-y-4
+        "
+      >
+        <span class="text-xl font-semibold text-gray-900">{{ nft.title }}</span>
+        <p class="text-left text-lg font-normal text-black">
+          <Markdown :source="description" :linkify="true" :html="true" />
+        </p>
       </div>
-      <div class="w-full flex items-start flex-col space-y-2" v-if="isLoaded">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-2">
         <div
-          class="w-full rounded-md bg-white shadow-md py-4 px-2 flex flex-col items-start space-y-4"
+          class="
+            col-span-1
+            w-full
+            bg-white
+            rounded-md
+            shadow-md
+            flex
+            items-center
+            space-x-2
+            p-4
+          "
+          v-for="(item, index) of nft.attributes"
+          :key="index"
         >
-          <span class="text-xl font-semibold text-gray-900">{{ nft.title }}</span>
-          <p class="text-left text-lg font-normal text-black">
-            <Markdown :source="description" :linkify="true" :html="true" />
-          </p>
-         
+          <span class="text-lg text-gray-500 font-semibold uppercase"
+            >{{ item.name }}:</span
+          >
+          <span class="text-lg text-gray-900 font-normal">{{
+            item.value
+          }}</span>
         </div>
-        <div
-          class="w-full bg-white rounded-md shadow-md flex items-center space-x-2 px-2 py-2" v-for="(item, index) of nft.attributes" :key="index"
-        >
-          <span class="text-lg text-gray-500 font-semibold">{{item.name}}:</span>
-          <span class="text-lg text-gray-900 font-normal">{{item.value}}</span>
-        </div>
-
-        
       </div>
     </div>
+  </div>
   <div class="detail bg-gray-100 font-inter">
-    
-
     <div
-      class="flex md:flex-nowrap flex-wrap md:px-6 lg:px-12 px-2 pb-3 mt-10 justify-between items-center"
+      class="
+        flex
+        md:flex-nowrap
+        flex-wrap
+        md:px-6
+        lg:px-12
+        px-2
+        pb-3
+        mt-10
+        justify-between
+        items-center
+      "
     >
       <div class="w-full md:pl-2">
         <div class="flex justify-between">
-          
           <div
-            class="flex flex-nowrap md:px-2 px-0 justify-between md:w-1/4 lg:w-1/4 w-full"
+            class="
+              flex flex-nowrap
+              md:px-2
+              px-0
+              justify-between
+              md:w-1/4
+              lg:w-1/4
+              w-full
+            "
           >
             <a class="w-full flex" v-if="nft.qrViews">
               <span class="sr-only">Views</span>
@@ -77,23 +127,48 @@
                 />
               </svg>
               <span
-                class="w-max text-base leading-6 font-normal font-inter text-black"
+                class="
+                  w-max
+                  text-base
+                  leading-6
+                  font-normal font-inter
+                  text-black
+                "
                 >{{ nft.qrViews }} QR views</span
               >
             </a>
-            <div class="w-full justify-end flex">
-            </div>
+            <div class="w-full justify-end flex"></div>
           </div>
         </div>
-        
       </div>
     </div>
 
     <div
-      class="lg:pb-4 lg:pt-2 sm:py-0 sm:px-6 lg:px-12 md:grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 min-w-full flex flex-col-reverse justify-start items-start"
+      class="
+        lg:pb-4 lg:pt-2
+        sm:py-0 sm:px-6
+        lg:px-12
+        md:grid
+        grid-cols-1
+        gap-2
+        sm:grid-cols-2
+        lg:grid-cols-3
+        xl:grid-cols-4
+        min-w-full
+        flex flex-col-reverse
+        justify-start
+        items-start
+      "
     >
       <div
-        class="flex flex-wrap justify-end items-start xl:grid xl:grid-cols-3 xl:gap-1 xl:col-span-3 lg:col-span-2 lg:row-span-1 gap-2"
+        class="
+          flex flex-wrap
+          justify-end
+          items-start
+          xl:grid xl:grid-cols-3 xl:gap-1 xl:col-span-3
+          lg:col-span-2 lg:row-span-1
+          gap-2
+        "
       >
         <div v-for="card in cards" :key="card.id" :class="card.class">
           <div class="bg-white rounded-lg">
@@ -117,8 +192,6 @@
           </div>
         </div>
       </div>
-
-      
     </div>
 
     <!-- stats -->
@@ -135,7 +208,17 @@
       :open="nft_modal"
     >
       <div
-        class="flex items-end justify-center min-h-screen pt-4 px-2 pb-20 text-center sm:block sm:p-0"
+        class="
+          flex
+          items-end
+          justify-center
+          min-h-screen
+          pt-4
+          px-2
+          pb-20
+          text-center
+          sm:block sm:p-0
+        "
       >
         <TransitionChild
           as="template"
@@ -165,7 +248,24 @@
           leave-to="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
         >
           <div
-            class="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle lg:max-w-sm w-full sm:p-6"
+            class="
+              inline-block
+              align-bottom
+              bg-white
+              rounded-lg
+              px-4
+              pt-5
+              pb-4
+              text-left
+              overflow-hidden
+              shadow-xl
+              transform
+              transition-all
+              sm:my-8 sm:align-middle
+              lg:max-w-sm
+              w-full
+              sm:p-6
+            "
           >
             <div class="sm:flex sm:items-start justify-center">
               <div class="mt-3 text-center sm:mt-0 sm:text-center">
@@ -182,7 +282,24 @@
             <div class="mt-5 sm:mt-4">
               <button
                 type="button"
-                class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-200 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900 focus:outline-none sm:mt-0 sm:w-full sm:text-sm"
+                class="
+                  mt-3
+                  w-full
+                  inline-flex
+                  justify-center
+                  rounded-md
+                  border border-gray-200
+                  shadow-sm
+                  px-4
+                  py-2
+                  bg-white
+                  text-base
+                  font-medium
+                  text-gray-700
+                  hover:bg-gray-50 hover:text-gray-900
+                  focus:outline-none
+                  sm:mt-0 sm:w-full sm:text-sm
+                "
                 @click="nft_modal = false"
               >
                 Ok
@@ -204,7 +321,17 @@
       :open="placebid_note"
     >
       <div
-        class="flex items-end justify-center min-h-screen pt-4 px-2 pb-20 text-center sm:block sm:p-0"
+        class="
+          flex
+          items-end
+          justify-center
+          min-h-screen
+          pt-4
+          px-2
+          pb-20
+          text-center
+          sm:block sm:p-0
+        "
       >
         <TransitionChild
           as="template"
@@ -236,7 +363,24 @@
           leave-to="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
         >
           <div
-            class="inline-block align-bottom bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle lg:max-w-sm w-full sm:p-6"
+            class="
+              inline-block
+              align-bottom
+              bg-white
+              rounded-lg
+              px-4
+              pt-5
+              pb-4
+              text-left
+              overflow-hidden
+              shadow-xl
+              transform
+              transition-all
+              sm:my-8 sm:align-middle
+              lg:max-w-sm
+              w-full
+              sm:p-6
+            "
           >
             <div class="sm:flex sm:items-start justify-center">
               <div class="mt-3 text-center sm:mt-0 sm:text-center">
@@ -261,7 +405,24 @@
             <div class="mt-5 sm:mt-4">
               <button
                 type="button"
-                class="mt-3 w-full inline-flex justify-center rounded-md border border-gray-200 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900 focus:outline-none sm:mt-0 sm:w-full sm:text-sm"
+                class="
+                  mt-3
+                  w-full
+                  inline-flex
+                  justify-center
+                  rounded-md
+                  border border-gray-200
+                  shadow-sm
+                  px-4
+                  py-2
+                  bg-white
+                  text-base
+                  font-medium
+                  text-gray-700
+                  hover:bg-gray-50 hover:text-gray-900
+                  focus:outline-none
+                  sm:mt-0 sm:w-full sm:text-sm
+                "
                 @click="placebid_note = false"
               >
                 Ok
@@ -316,9 +477,9 @@ import { useStore } from "vuex";
 
 import { storage } from "../../firebase/firebase";
 //import Share from "../../components/Modals/Share.vue";
-import { getNft } from '../../firebase/nfts';
+import { getNft } from "../../firebase/nfts";
 
-import Markdown from 'vue3-markdown-it';
+import Markdown from "vue3-markdown-it";
 
 export default {
   components: {
@@ -335,10 +496,10 @@ export default {
     NFTBox,
     LightBox,
     //Share,
-    Markdown
+    Markdown,
   },
-  emits: ['on:login'],
-  setup(props, {emit}) {
+  emits: ["on:login"],
+  setup(props, { emit }) {
     const open = ref(false);
     const placebid_note = ref(false);
     const nft_modal = ref(false);
@@ -352,12 +513,11 @@ export default {
     //const collectionRef = route.params.collection;
     const nftRef = ref(route.params.ref);
 
-    const cards = ref([
-    ]);
+    const cards = ref([]);
 
     const bid = ref(0);
 
-    const description = ref('');
+    const description = ref("");
 
     const nft = ref({
       title: "",
@@ -398,12 +558,12 @@ export default {
 
     const getData = async () => {
       //await store.dispatch("collection/loadCollection", collectionRef);
-      artistName.value = 'GB MIAMI' //store.getters["collection/getName"];
+      artistName.value = "GB MIAMI"; //store.getters["collection/getName"];
 
       nft.value = await getNft(nftRef.value);
       isLoaded.value = true;
 
-      description.value = nft.value.description.replace(/\\n/g, '<br />');
+      description.value = nft.value.description.replace(/\\n/g, "<br />");
 
       if (nft.value.auctions.length > 0) {
         const lastAuction = nft.value.auctions[nft.value.auctions.length - 1];
@@ -454,8 +614,8 @@ export default {
     };
 
     const emitsLogin = () => {
-      emit('on:login');
-    }
+      emit("on:login");
+    };
 
     return {
       nft,
@@ -479,7 +639,7 @@ export default {
       isOwner,
       isLoaded,
       emitsLogin,
-      description
+      description,
     };
   },
 };
