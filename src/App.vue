@@ -1,5 +1,5 @@
 <template>
-  <div class="gog-app bg-white">
+  <div class="gog-app bg-white h-full">
     <metainfo>
       <template v-slot:title="{ content }">{{
         content ? `${content} | SITE_NAME` : `SITE_NAME`
@@ -10,7 +10,7 @@
       class="body"
       :class="{
         'bg-white': getRouteName == 'Home' || getRouteName == 'LearnMore',
-        'bg-gray-100': getRouteName != 'Home' && getRouteName != 'LearnMore',
+        'bg-white': getRouteName != 'Home' && getRouteName != 'LearnMore',
       }"
     >
       <router-view @on:login="showLoginPopUp" :registered="registrationDone" />

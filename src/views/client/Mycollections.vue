@@ -4,7 +4,7 @@
       <Navbar />
     </div>
     <div class="py-0 sm:py-4 md:pb-8 md:pt-4 lg:pt-0 lg:pb-8 text-center">
-      <h1 class="sm:text-4xl text-2xl font-medium">My NFTS</h1>
+      <h1 class="sm:text-4xl text-2xl font-medium">My Membership NFTs</h1>
     </div>
     <div>
       <div class="xl:grid xl:grid-cols-7 xl:gap-8 sm:m-auto">

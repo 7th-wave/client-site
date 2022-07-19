@@ -1,6 +1,6 @@
 <template>
   <div class="artist font-inter h-screen">
-    <div class="relative bg-gray-100 py-8 sm:py-24 lg:py-8">
+    <div class="relative bg-white py-8 sm:py-24 lg:py-8">
       <div class="relative">
         <div class="text-center mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-8 lg:max-w-7xl">
           <p class="mt-8 text-4xl font-inter leading-10 font-medium text-black tracking-tight sm:text-4xl">
@@ -10,7 +10,7 @@
         
       </div>
     </div>
-    <div class="pb-20 pt-6 white bg-gray-100">
+    <div class="pb-20 pt-6 white bg-white">
        <div class="box-border max-w-7xl grid grid-cols-1 lg:grid-cols-4 gap-4 mx-auto before:box-inherit after:box-inherit" ref="scrollComponent">
           <section
             v-for="art in data.gallery"
