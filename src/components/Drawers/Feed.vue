@@ -22,7 +22,7 @@
           />
         </div>
       </div>
-      <div class="bg-gray-100 w-full h-px"></div>
+      <div class="bg-white w-full h-px"></div>
 
       <div>
         <button

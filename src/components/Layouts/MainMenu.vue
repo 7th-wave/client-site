@@ -11,17 +11,17 @@
       top-0
       shadow
       bg-white
-      h-auto
+      h-screen
       rounded-bl-xl
     "
-    style="max-height: 636px"
+   
   >
     <div
       class="
         col-span-4
         flex-1 flex flex-col
         min-h-0
-        bg-gray-700
+        bg-white
         font-inter font-medium
       "
     >
@@ -38,7 +38,7 @@
             :class="[
             currentRouteName === item.href 
                 ? 'bg-gray-100 text-gray-900'
-                : 'text-white hover:bg-white hover:text-black',
+                : 'text-primary-500 hover:bg-white hover:text-black',
               'group flex items-center px-2 py-2 text-lg font-medium rounded-md',
             ]"
           >
@@ -74,10 +74,16 @@
           </div>
         </router-link>
       </div>
+
+     
+
+    
+        
+
       <div class="flex flex-col items-start space-y-6 p-4 pt-6 pb-6 bg-gray-900" v-if="blockchainAddress">
         <div class="group flex items-center"><box-icon name="diamond" color="white" class="mr-3" />
           <router-link :to="{name:'My_collections'}" class=" font-medium text-lg font-inter cursor-pointer text-primary-500 hover:text-white"
-            >My Assets</router-link
+            >My Membership</router-link
           >
         </div>
         <div class="group flex items-center"><box-icon name="wallet" color="white" class="mr-3" />  
@@ -119,10 +125,10 @@ import {
   // CubeIcon,
   DocumentDuplicateIcon,
   XIcon,
-  ChartSquareBarIcon,
+  //ChartSquareBarIcon,
   UserIcon,
   BookOpenIcon,
-  MailIcon,
+  //MailIcon,
 
 } from "@heroicons/vue/outline";
   import LogoSmall from './LogoSmall.vue';
@@ -132,10 +138,10 @@ import { storage } from "../../firebase/firebase";
 import UserImage from './UserImage.vue';
 
 const navigation = [
-  { name: "Membership", icon: ChartSquareBarIcon, href: "nft" },
-  { name: "Reservation", icon: ViewGridIcon, href: "Fractionalize" },
-  { name: "Learn More", icon: BookOpenIcon, href: "LearnMore" },
-  { name: "Contact Us", icon: MailIcon, href: "Contact" },
+  { name: "Join Club", icon: ViewGridIcon, href: "nft" },
+  // { name: "Reservation", icon: ViewGridIcon, href: "Fractionalize" },
+  // { name: "Learn More", icon: BookOpenIcon, href: "LearnMore" },
+  // { name: "Contact Us", icon: MailIcon, href: "Contact" },
 ];
 
 export default {
@@ -156,7 +162,7 @@ export default {
     DocumentDuplicateIcon,
     XIcon,
     UserIcon,
-    ChartSquareBarIcon,
+    //ChartSquareBarIcon,
     LogoSmall,
     BookOpenIcon,
     UserImage,
