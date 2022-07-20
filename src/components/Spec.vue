@@ -71,7 +71,7 @@
 									flex
 									items-center
 									text-xl
-									font-opensans font-semibold
+									 font-semibold
 									text-black
 								"
 							>
@@ -92,7 +92,7 @@
                     mx-2
                     xl:text-base
                     text-sm
-                    font-normal font-opensans
+                    font-normal 
                     text-gray-500
                   "
                 >

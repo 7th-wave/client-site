@@ -7,11 +7,11 @@
 
     <div class="content w-full py-6 bg-white" @click="goToDetails">
       <div class="data w-full flex items-center justify-between">
-        <h2 class="w-full text-xl leading-8 text-primary-900 px-6">
+        <h2 class="w-full text-xl font-inter leading-8 text-primary-900 px-6">
           {{ nft.title }}
         </h2>
         <div class="flex items-center justify-end pr-6" >
-          <ETHalt /> <h1 class="ml-2 my-0 text-xl  text-gray-900 text-right">20</h1>
+          <ETHalt /> <h1 class="ml-2 my-0 text-xl font-inter  text-gray-900 text-right">20</h1>
         </div>
       </div>
     </div>

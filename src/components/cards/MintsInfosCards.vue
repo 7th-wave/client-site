@@ -35,7 +35,7 @@
     >
       <div class="flex items-center space-x-2 px-2 py-2">
         <span class="text-lg text-gray-500 font-semibold">Smart Contract:</span>
-        <span class="text-lg text-primary-500 font-normal">0xE881...4567</span>
+        <span class="text-lg text-primary-500 font-normal">{{ nft.contractAddress }}</span>
       </div>
       <div class="cursor-pointer">
         <DocumentDuplicateIcon />
@@ -73,7 +73,7 @@
     >
       <div class="flex items-center space-x-2 px-2 py-2">
         <span class="text-lg text-gray-500 font-semibold">Owner:</span>
-        <span class="text-lg text-primary-500 font-normal">0xE881...4567</span>
+        <span class="text-lg text-primary-500 font-normal">{{nft.blockChainOwner ? nft.blockChainOwner.replace(nft.blockChainOwner.substring(8,nft.blockChainOwner.length - 4), "....") : 'N/A'}}</span>
       </div>
       <div class="cursor-pointer">
         <DocumentDuplicateIcon />
