@@ -1,16 +1,6 @@
 <template>
   <div class="w-full space-x-2 flex items-center md:block lg:flex">
-    <div class="mt-1 ">
-      <div
-        class="flex items-center text-xl font-opensans font-semibold text-black"
-      >
-        <div class="mx-1 text-sm font-medium text-gray-500">
-          <ETH size="6" />
-        </div>
-
-        <h3 class="mt-0">{{ nft.mintinPrice }}</h3>
-      </div>
-    </div>
+   
     <div
       class="
       w-full
@@ -28,20 +18,31 @@
         <Button @click="mint()" customClass="w-full">MINT</Button>
       </div>
     </div>
+     <div class="mt-1 ">
+      <div
+        class="flex items-center text-xl font-opensans font-semibold text-black"
+      >
+        <div class="mx-1 text-sm font-medium text-gray-500">
+          <ETHalt size="6" />
+        </div>
+
+        <h3 class="mt-0">{{ nft.mintinPrice }}</h3>
+      </div>
+    </div>
   </div>
 </template>
 <script>
 import { ref, toRefs } from "@vue/reactivity";
 import { useStore } from "vuex";
 import Button from "../Layouts/Button.vue";
-import ETH from "./ETH.vue";
+import ETHalt from "./ETHalt.vue";
 import { mintNft, pinJson } from "../../blockchain";
 import { findNewxtIdPerContract, updateNft } from "../../firebase/nfts";
 import { useRouter } from "vue-router";
 import { onMounted } from '@vue/runtime-core';
 
 export default {
-  components: { Button, ETH },
+  components: { Button, ETHalt },
   props: ["user", "currentAddress", "nft", "nftRef"],
   setup(props) {
     const store = useStore();

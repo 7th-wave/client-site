@@ -50,7 +50,7 @@
           <Markdown :source="description" :linkify="true" :html="true" />
         </p>
       </div>
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-2">
+      <div class="w-full grid grid-cols-1 lg:grid-cols-2 gap-2">
         <div
           class="
             col-span-1
@@ -66,136 +66,19 @@
           v-for="(item, index) of nft.attributes"
           :key="index"
         >
-          <span class="text-lg text-gray-500 font-semibold uppercase"
+          <span class="text-base text-gray-500 font-semibold uppercase"
             >{{ item.name }}:</span
           >
-          <span class="text-lg text-gray-900 font-normal">{{
+          <span class="text-base text-gray-900 font-normal">{{
             item.value
           }}</span>
         </div>
       </div>
     </div>
   </div>
-  <div class="detail bg-gray-100 font-inter">
-    <div
-      class="
-        flex
-        md:flex-nowrap
-        flex-wrap
-        md:px-6
-        lg:px-12
-        px-2
-        pb-3
-        mt-10
-        justify-between
-        items-center
-      "
-    >
-      <div class="w-full md:pl-2">
-        <div class="flex justify-between">
-          <div
-            class="
-              flex flex-nowrap
-              md:px-2
-              px-0
-              justify-between
-              md:w-1/4
-              lg:w-1/4
-              w-full
-            "
-          >
-            <a class="w-full flex" v-if="nft.qrViews">
-              <span class="sr-only">Views</span>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-6 w-6 text-primary-400 mr-2"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                />
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-                />
-              </svg>
-              <span
-                class="
-                  w-max
-                  text-base
-                  leading-6
-                  font-normal font-inter
-                  text-black
-                "
-                >{{ nft.qrViews }} QR views</span
-              >
-            </a>
-            <div class="w-full justify-end flex"></div>
-          </div>
-        </div>
-      </div>
-    </div>
+  <div class="detail max-w-7xl mt-12 mx-auto bg-gray-100 font-inter" v-if="nft.isMinted">
+    <mints-infos-cards :nft="nft"  />
 
-    <div
-      class="
-        lg:pb-4 lg:pt-2
-        sm:py-0 sm:px-6
-        lg:px-12
-        md:grid
-        grid-cols-1
-        gap-2
-        sm:grid-cols-2
-        lg:grid-cols-3
-        xl:grid-cols-4
-        min-w-full
-        flex flex-col-reverse
-        justify-start
-        items-start
-      "
-    >
-      <div
-        class="
-          flex flex-wrap
-          justify-end
-          items-start
-          xl:grid xl:grid-cols-3 xl:gap-1 xl:col-span-3
-          lg:col-span-2 lg:row-span-1
-          gap-2
-        "
-      >
-        <div v-for="card in cards" :key="card.id" :class="card.class">
-          <div class="bg-white rounded-lg">
-            <div class="min-w-7xl mx-auto py-4 px-4 sm:py-2 sm:px-6 lg:px-4">
-              <div class="min-w-3xl mx-auto divide-y-2 divide-gray-200">
-                <dl class="space-y-6 divide-y divide-gray-200">
-                  <component
-                    v-bind:is="card.component"
-                    :token_id="nft.blockchainId"
-                    :ipfs="nft.ipfs"
-                    :auction="auctionref"
-                    :auctions="nft.auctions"
-                    :update="updateData"
-                    :offers="nft.offers"
-                    :nft-ref="nftRef"
-                    :nft="nft"
-                  ></component>
-                </dl>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- stats -->
-    <NFTBox @on:open="nft_modal = true" />
   </div>
 
   <!-- Place Bid note -->
@@ -457,7 +340,6 @@
 <script>
 // @ is an alias to /src
 import { computed, onMounted, ref } from "vue";
-import { XIcon } from "@heroicons/vue/outline";
 import {
   Dialog,
   DialogOverlay,
@@ -465,12 +347,8 @@ import {
   TransitionChild,
   TransitionRoot,
 } from "@headlessui/vue";
-import Blockchain from "@/components/Drawers/Blockchain_data";
-import Trading from "@/components/Drawers/Trading_view";
 import Spec from "@/components/Spec";
-import Bids from "@/components/Drawers/Bids";
 import OffersCard from "@/components/Drawers/OffersCard";
-import NFTBox from "@/components/NFTBox";
 import LightBox from "../../components/Layouts/LightBox.vue";
 import { useRoute } from "vue-router";
 import { useStore } from "vuex";
@@ -480,6 +358,7 @@ import { storage } from "../../firebase/firebase";
 import { getNft } from "../../firebase/nfts";
 
 import Markdown from "vue3-markdown-it";
+import MintsInfosCards from '../../components/cards/MintsInfosCards.vue';
 
 export default {
   components: {
@@ -488,15 +367,11 @@ export default {
     DialogTitle,
     TransitionChild,
     TransitionRoot,
-    XIcon,
     Spec,
-    Blockchain,
-    Trading,
-    Bids,
-    NFTBox,
     LightBox,
     //Share,
     Markdown,
+    MintsInfosCards,
   },
   emits: ["on:login"],
   setup(props, { emit }) {
