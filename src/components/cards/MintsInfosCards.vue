@@ -35,13 +35,23 @@
     >
       <div class="flex items-center space-x-2 px-2 py-2">
         <span class="text-lg text-gray-500 font-semibold">Smart Contract:</span>
-        <span class="text-lg text-primary-500 font-normal">{{ nft.contractAddress }}</span>
+        <span class="text-lg text-primary-500 font-normal">{{
+          nft.contractAddress
+            ? nft.contractAddress.replace(
+                nft.contractAddress.substring(
+                  8,
+                  nft.contractAddress.length - 4
+                ),
+                "...."
+              )
+            : "N/A"
+        }}</span>
       </div>
       <div class="cursor-pointer">
         <DocumentDuplicateIcon />
       </div>
     </div>
- <div
+    <div
       class="
         flex
         justify-between
@@ -55,9 +65,8 @@
     >
       <div class="flex items-center space-x-2 px-2 py-2">
         <span class="text-lg text-gray-500 font-semibold">Mint Date:</span>
-        <span class="text-lg text-gray-900 font-normal">02/04/2022</span>
+        <span class="text-lg text-gray-900 font-normal">{{nft.mintDate ? new Date(nft.mintDate._seconds*1000) : 0 }}</span>
       </div>
-     
     </div>
     <div
       class="
@@ -73,7 +82,17 @@
     >
       <div class="flex items-center space-x-2 px-2 py-2">
         <span class="text-lg text-gray-500 font-semibold">Owner:</span>
-        <span class="text-lg text-primary-500 font-normal">{{nft.blockChainOwner ? nft.blockChainOwner.replace(nft.blockChainOwner.substring(8,nft.blockChainOwner.length - 4), "....") : 'N/A'}}</span>
+        <span class="text-lg text-primary-500 font-normal">{{
+          nft.blockChainOwner
+            ? nft.blockChainOwner.replace(
+                nft.blockChainOwner.substring(
+                  8,
+                  nft.blockChainOwner.length - 4
+                ),
+                "...."
+              )
+            : "N/A"
+        }}</span>
       </div>
       <div class="cursor-pointer">
         <DocumentDuplicateIcon />
@@ -92,6 +111,8 @@ export default {
     ItrIcon,
     DocumentDuplicateIcon,
   },
+  props: ["nft"],
+  setup() {},
 };
 </script>
 

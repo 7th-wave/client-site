@@ -76,8 +76,8 @@
       </div>
     </div>
   </div>
-  <div class="detail max-w-7xl mt-12 mx-auto bg-gray-100 font-inter" v-if="nft.isMinted">
-    <mints-infos-cards :nft="nft"  />
+  <div class="detail max-w-7xl mt-12 mx-auto font-inter" v-if="nft.isMinted">
+    <MintsInfosCards :nft="nft"  />
 
   </div>
 
@@ -358,7 +358,7 @@ import { storage } from "../../firebase/firebase";
 import { getNft } from "../../firebase/nfts";
 
 import Markdown from "vue3-markdown-it";
-import MintsInfosCards from '../../components/cards/MintsInfosCards.vue';
+import MintsInfosCards from '@/components/cards/MintsInfosCards.vue';
 
 export default {
   components: {
