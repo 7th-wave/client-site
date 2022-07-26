@@ -9,7 +9,7 @@
             text-center
             items-center
             
-            px-4
+            px-12
             py-6
             
           "
@@ -43,7 +43,7 @@
             </div>
             <div class="px-8 py-2">
               <span class="sr-only">Workflow </span>
-              <button
+              <!-- <button
                 @click="goFractionalize()"
                 class="
                   flex
@@ -69,33 +69,33 @@
                 <span class="text-base font-medium font-inter black w-max">
                   JOIN THE CLUB</span
                 >
-              </button>
+              </button> -->
             </div>
-            <!-- <button
+            <button
               @click="openMenu"
               class="outline-none hover:text-black"
             >
               <MenuIcon />
-            </button>-->
+            </button>
           </div>
         </div>
       </Popover>
-      <!--<MainMenu
+      <MainMenu
         @closeMenu="closeMenu"
         @on:login="login"
         @on:logout="logout"
         :animate_menu="showMenu"
         ref="MainMenu"
-      />-->
+      />
     </header>
   </div>
 </template>
 <script>
 import { ref, computed } from "vue";
 import { Popover } from "@headlessui/vue";
-//import MainMenu from "./MainMenu.vue";
+import MainMenu from "./MainMenu.vue";
 import slugify from "slugify";
-//import MenuIcon from "../Icons/MenuIcon.vue";
+import MenuIcon from "../Icons/MenuIcon.vue";
 
 import { useStore } from "vuex";
 import { useRoute, useRouter } from "vue-router";
@@ -103,8 +103,8 @@ import Logo from "./Logo.vue";
 export default {
   components: {
     Popover,
-    //MenuIcon,
-    //MainMenu,
+    MenuIcon,
+    MainMenu,
     Logo,
   },
   emits: ['on:login'],    

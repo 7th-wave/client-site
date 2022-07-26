@@ -1,6 +1,6 @@
 <template>
 	<div class="bg-white rounded-lg md:mx-0 mx-2">
-		<div class="min-w-7xl mx-auto py-4 px-4 sm:py-2">
+		<div class="min-w-7xl mx-auto py-0 px-0 sm:py-2">
 			<div class="mx-auto divide-y-2 divide-gray-200">
 				<dl class="">
 					<div class="mt-1 flex items-baseline md:block lg:flex">
@@ -71,7 +71,7 @@
 									flex
 									items-center
 									text-xl
-									font-opensans font-semibold
+									 font-semibold
 									text-black
 								"
 							>
@@ -92,7 +92,7 @@
                     mx-2
                     xl:text-base
                     text-sm
-                    font-normal font-opensans
+                    font-normal 
                     text-gray-500
                   "
                 >

@@ -1,5 +1,5 @@
 <template>
-  <div class="rounded-lg overflow-hidden shadow-lg w-full relative" :class="bg">
+  <div class="rounded-lg overflow-hidden w-full relative" :class="bg">
     <slot name="badge" />
     <div class="slider relative">
       <img @click="goToDetails" class="w-full" :src="nft.imageUrl" />
@@ -7,11 +7,11 @@
 
     <div class="content w-full py-6 bg-white" @click="goToDetails">
       <div class="data w-full flex items-center justify-between">
-        <h2 class="w-full text-xl font-semibold leading-8 text-gray-900 px-6">
+        <h2 class="w-full text-xl font-inter leading-8 text-primary-900 px-6">
           {{ nft.title }}
         </h2>
         <div class="flex items-center justify-end pr-6" >
-          <ETH /> <h1 class="ml-2 my-0 text-xl font-semibold text-gray-900 text-right">20</h1>
+          <ETHalt /> <h1 class="ml-2 my-0 text-xl font-inter  text-gray-900 text-right">20</h1>
         </div>
       </div>
     </div>
@@ -21,7 +21,7 @@
 //import Stats from "./NftStats.vue";
 import { onMounted } from "@vue/runtime-core";
 import { useRouter } from "vue-router";
-import ETH from "./ETH.vue";
+import ETHalt from "./ETHalt.vue";
 
 // import { useRouter } from 'vue-router'
 
@@ -30,7 +30,7 @@ export default {
 
   components: {
     //Stats,
-    ETH
+    ETHalt
   },
 
   setup(props) {

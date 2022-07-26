@@ -147,7 +147,7 @@
           </label>
           <div class="mt-1 sm:mt-0 sm:col-span-2">
             <div class="flex items-center">
-              <span class="h-12 w-12 rounded-full overflow-hidden bg-gray-100">
+              <span class="h-full w-12 rounded-full overflow-hidden bg-white">
                 <svg
                   v-if="!user.avatar"
                   class="h-full w-full text-gray-300"
