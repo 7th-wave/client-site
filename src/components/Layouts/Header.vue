@@ -93,7 +93,7 @@
 <script>
 import { ref, computed } from "vue";
 import { Popover } from "@headlessui/vue";
-import MainMenu from "./MainMenu.vue";
+import MainMenu from "./MainMenuCirkol.vue";
 import slugify from "slugify";
 import MenuIcon from "../Icons/MenuIcon.vue";
 
