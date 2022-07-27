@@ -15,7 +15,7 @@
           <div class="h-6" />
           <Button @click="makeOffer()" name="Normal Button" custom-class="mr-2" >Default Button</Button>
           <Button @click="makeOffer()" name="Normal Button" btn-style="primary" custom-class="mr-2" >Primary Button</Button>
-          <Button @click="makeOffer()" name="Normal Button" btn-style="secondary" custom-class="mr-2">Secondary Button</Button>
+          <Button @click="makeOffer()" name="Outline Button" btn-style="outlined" custom-class="mr-2">Outline Button</Button>                <Button @click="makeOffer()" name="Normal Button" btn-style="secondary" custom-class="mr-2">Secondary Button</Button>
 
           <div class="h-6" />
           <Button @click="makeOffer()" name="Normal Button" custom-class="mr-2" size="tiny">Button Tiny</Button>
