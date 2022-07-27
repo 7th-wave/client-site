@@ -3,9 +3,8 @@
   :class="{' w-full':animate_menu,' w-0':!animate_menu}"
     class="
       ease-in-out duration-300
-      grid grid-cols-5
       max-w-sm overflow-hidden
-      absolute
+      fixed
       z-50
       right-0
       top-0
@@ -17,7 +16,7 @@
    
   >
     <div
-      class="
+      class="h-full
         col-span-4
         flex-1 flex flex-col
         min-h-0
@@ -46,7 +45,7 @@
           </router-link>
         </nav>
       </div>
-      <div class="flex-shrink-0 flex bg-gray-800 p-4" v-if="blockchainAddress">
+      <div class="flex-shrink-0 flex p-4" v-if="blockchainAddress">
         <router-link :to="{name:'MyAccount',params:{address:blockchainAddress}}"  class="flex-shrink-0 w-full group block">
           <div class="flex items-center">
             <div>
@@ -54,9 +53,9 @@
               
             </div>
             <div class="ml-3">
-              <p class="text-lg font-medium text-gray-700">{{ user.username }}</p>
+              <p class="text-xl font-normal font-inter text-gray-700">{{ user.username }}</p>
               <div class="flex items-center space-x-1">
-                <p class="text-lg font-medium text-primary-500 hover:text-white">
+                <p class="text-xl font-normal text-primary-500 hover:text-primary-800">
                   {{blockchainAddress ? blockchainAddress.replace(blockchainAddress.substring(8,blockchainAddress.length - 4), "....") : 'N/A'}}
                 </p>
                 
@@ -74,34 +73,31 @@
         
 
       
-       <div class="flex  items-center space-x-2 p-4  bg-gray-800" v-else >
+       <div class="flex  items-center space-x-2 p-4 " v-else >
                
         <a href="javascript:void(0)" @click.prevent="login" class="cursor-pointer text-primary-500 hover:text-white font-medium text-lg font-inter"
           >Connect</a
         >
       </div>
     </div>
-    <div class="cursor-pointer bg-white hover:bg-primary-500 text-primary-500 hover:text-white" @click="closeMenu" >
+    <div class="cursor-pointer absolute right-0 top-0 bg-white hover:bg-primary-500 text-primary-500 hover:text-white" @click="closeMenu" >
       
       <div
         class="flex p-4"
         
       >
-        <div class="m-auto mt-5"><XIcon class="w-8 h-8" /></div>
+        <div class="m-auto"><cirkol-menu-close /></div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import {
-  XIcon,
-
-} from "@heroicons/vue/outline";
 import { computed, ref } from '@vue/reactivity';
 import { useStore } from 'vuex';
 import { storage } from "../../firebase/firebase";
 import UserImage from './UserImage.vue';
+import CirkolMenuClose from '../Icons/CirkolMenuClose.vue';
 
 const navigation = [
   { name: "Join", icon: '', href: "nft" },
@@ -127,11 +123,12 @@ export default {
   components: {
     //ChartSquareBarIcon,
     UserImage,
-    XIcon
+    CirkolMenuClose
 
   },
 
-  emits: ['on:login'],    
+  emits: ['on:login'],
+    CirkolMenuClose,    
   setup(props, {emit}) {
 
     const store = useStore();
