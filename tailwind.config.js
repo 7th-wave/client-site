@@ -69,6 +69,9 @@ module.exports = {
         },
         blue:{
           link:'#84f4ee',
+        },
+        pink: {
+          'DEFAULT': '#D937BA'
         }
       },
     },

@@ -1,9 +1,11 @@
 <template>
   <div
-  :class="{' w-full':animate_menu,' w-0':!animate_menu}"
+    :class="{ ' w-full': animate_menu, ' w-0': !animate_menu }"
     class="
-      ease-in-out duration-300
-      max-w-sm overflow-hidden
+      ease-in-out
+      duration-300
+      max-w-sm
+      overflow-hidden
       fixed
       z-50
       right-0
@@ -13,10 +15,10 @@
       h-screen
       rounded-bl-xl
     "
-   
   >
     <div
-      class="h-full
+      class="
+        h-full
         col-span-4
         flex-1 flex flex-col
         min-h-0
@@ -25,17 +27,16 @@
       "
     >
       <div class="flex-1 flex flex-col pt-10 pb-10 overflow-y-auto">
-        
         <nav class="mt-10 flex-1 px-2 space-y-1" aria-label="Sidebar">
           <router-link
-            :to="{name: item.href}"
+            :to="{ name: item.href }"
             @click="closeMenu"
             v-for="item in navigation"
             :key="item.name"
             :class="[
-            currentRouteName === item.href 
-                ? 'bg-gray-100 text-gray-900'
-                : 'text-primary-500 hover:bg-white hover:text-black',
+              currentRouteName === item.href
+                ? 'bg-gray-100 text-gray-600'
+                : 'text-gray-700 hover:bg-white hover:text-black',
               'group flex items-center px-2 py-8 text-lg font-light text-5xl rounded-md uppercase',
             ]"
           >
@@ -45,47 +46,87 @@
           </router-link>
         </nav>
       </div>
-      <div class="flex-shrink-0 flex p-4" v-if="blockchainAddress">
-        <router-link :to="{name:'MyAccount',params:{address:blockchainAddress}}"  class="flex-shrink-0 w-full group block">
+      <div class="flex-shrink-0 p-4 space-y-4 border-t border-gray-300" v-if="blockchainAddress">
+        <router-link
+          :to="{ name: 'MyAccount', params: { address: blockchainAddress } }"
+          class="flex-shrink-0 w-full group block"
+        >
+          <span class="font-light text-5xl text-gray-600">ACCOUNT</span>
           <div class="flex items-center">
             <div>
-              <UserImage :src="avatar" :custom_height="8" />
-              
-            </div>
-            <div class="ml-3">
-              <p class="text-xl font-normal font-inter text-gray-700">{{ user.username }}</p>
               <div class="flex items-center space-x-1">
-                <p class="text-xl font-normal text-primary-500 hover:text-primary-800">
-                  {{blockchainAddress ? blockchainAddress.replace(blockchainAddress.substring(8,blockchainAddress.length - 4), "....") : 'N/A'}}
+                <p
+                  class="
+                    text-3xl
+                    font-light
+                    text-pink
+                    hover:underline
+                  "
+                >
+                  {{
+                    blockchainAddress
+                      ? blockchainAddress.replace(
+                          blockchainAddress.substring(
+                            8,
+                            blockchainAddress.length - 4
+                          ),
+                          "...."
+                        )
+                      : "N/A"
+                  }}
                 </p>
-                
-            
-               
               </div>
             </div>
           </div>
         </router-link>
+        <div class="group flex items-center">
+          <a
+            href="#"
+            @click.prevent="logout"
+            class="
+              text-5xl
+              uppercase
+              font-light
+              font-inter
+              cursor-pointer
+              text-gray-600
+              hover:text-gray-700
+            "
+            >Disconnect</a
+          >
+        </div>
       </div>
 
-     
-
-    
-        
-
-      
-       <div class="flex  items-center space-x-2 p-4 " v-else >
-               
-        <a href="javascript:void(0)" @click.prevent="login" class="cursor-pointer text-primary-500 hover:text-white font-medium text-lg font-inter"
+      <div class="flex items-center space-x-2 p-4" v-else>
+        <a
+          href="javascript:void(0)"
+          @click.prevent="login"
+          class="
+            cursor-pointer
+            text-primary-500
+            hover:text-white
+            font-medium
+            text-lg
+            font-inter
+          "
           >Connect</a
         >
       </div>
     </div>
-    <div class="cursor-pointer absolute right-0 top-0 bg-white hover:bg-primary-500 text-primary-500 hover:text-white" @click="closeMenu" >
-      
-      <div
-        class="flex p-4"
-        
-      >
+    <div
+      class="
+        cursor-pointer
+        absolute
+        right-0
+        top-0
+        bg-white
+        hover:bg-primary-500
+        text-primary-500
+        hover:text-white
+      "
+      @click="closeMenu"
+    >
+      <div class="flex p-4">
         <div class="m-auto"><cirkol-menu-close /></div>
       </div>
     </div>
@@ -93,17 +134,16 @@
 </template>
 
 <script>
-import { computed, ref } from '@vue/reactivity';
-import { useStore } from 'vuex';
+import { computed, ref } from "@vue/reactivity";
+import { useStore } from "vuex";
 import { storage } from "../../firebase/firebase";
-import UserImage from './UserImage.vue';
-import CirkolMenuClose from '../Icons/CirkolMenuClose.vue';
+import CirkolMenuClose from "../Icons/CirkolMenuClose.vue";
 
 const navigation = [
-  { name: "Join", icon: '', href: "nft" },
-  { name: "Lightpaper", icon: '', href: "Fractionalize" },
-  { name: "Roadmap", icon: '', href: "LearnMore" },
-  { name: "Team", icon: '', href: "Team" },
+  { name: "Join", icon: "", href: "nft" },
+  { name: "Lightpaper", icon: "", href: "Fractionalize" },
+  { name: "Roadmap", icon: "", href: "LearnMore" },
+  { name: "Team", icon: "", href: "Team" },
 ];
 
 export default {
@@ -112,50 +152,44 @@ export default {
       type: Boolean,
       default: false,
     },
-    
-   
   },
-  computed:{
+  computed: {
     currentRouteName() {
-        return this.$route.name;
-    }
+      return this.$route.name;
+    },
   },
   components: {
     //ChartSquareBarIcon,
-    UserImage,
-    CirkolMenuClose
-
+    CirkolMenuClose,
   },
 
-  emits: ['on:login'],
-    CirkolMenuClose,    
-  setup(props, {emit}) {
-
+  emits: ["on:login"],
+  CirkolMenuClose,
+  setup(props, { emit }) {
     const store = useStore();
 
-    const blockchainAddress = computed(() => store.getters['user/getBlockchainAddress']);
-    const user = computed(() => store.getters['user/getUser']);
+    const blockchainAddress = computed(
+      () => store.getters["user/getBlockchainAddress"]
+    );
+    const user = computed(() => store.getters["user/getUser"]);
     const avatar = ref();
 
     const login = () => {
-      
-      emit('on:login');
-
-    }
+      emit("on:login");
+    };
 
     const logout = () => {
-      emit('on:logout');
-    }
+      emit("on:logout");
+    };
 
-    const getAvatar = async () => 
-    {
-        const image = store.getters['user/getAvatar'];
+    const getAvatar = async () => {
+      const image = store.getters["user/getAvatar"];
 
-        if (image) {
-            var storageRef = storage.ref();
-            const url = await storageRef.child(image).getDownloadURL();
-            avatar.value = url;
-        }
+      if (image) {
+        var storageRef = storage.ref();
+        const url = await storageRef.child(image).getDownloadURL();
+        avatar.value = url;
+      }
     };
 
     return {
@@ -165,7 +199,7 @@ export default {
       blockchainAddress,
       getAvatar,
       avatar,
-      user
+      user,
     };
   },
   methods: {
@@ -177,8 +211,8 @@ export default {
 </script>
 
 <style scoped>
-  .userIcon {
-    color:#9CA3AF;
-  }
+.userIcon {
+  color: #9ca3af;
+}
 </style>
 
