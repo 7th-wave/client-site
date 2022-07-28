@@ -140,10 +140,10 @@ import { storage } from "../../firebase/firebase";
 import CirkolMenuClose from "../Icons/CirkolMenuClose.vue";
 
 const navigation = [
-  { name: "Join", icon: "", href: "nft" },
-  { name: "Lightpaper", icon: "", href: "Fractionalize" },
+  { name: "Join", icon: "", href: "/" },
+  { name: "Lightpaper", icon: "", href: "https://lightpaper.com" },
   { name: "Roadmap", icon: "", href: "LearnMore" },
-  { name: "Team", icon: "", href: "Team" },
+  { name: "Team", icon: "", href: "https://www.cirkol.com/#team" },
 ];
 
 export default {
