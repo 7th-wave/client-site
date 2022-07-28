@@ -5,6 +5,9 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      rotate: {
+        '225': '225deg',
+       },
       fontSize: {
         '5xl': '45px'
       },

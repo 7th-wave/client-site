@@ -1,14 +1,32 @@
 <template>
+<div>
   <div
-    :class="{ ' w-full': animate_menu, ' w-0': !animate_menu }"
+      class="
+        cursor-pointer
+        fixed
+        right-0
+        top-0
+        bg-white
+        hover:text-pink
+        rounded-lg
+        z-50
+      "
+      @click="toggleMenu"
+    >
+      <div class="flex p-4">
+        <div class="m-auto"><cirkol-menu-close :state="animate_menu" /></div>
+      </div>
+    </div>
+  <div
+    :class="{ '-right-96': animate_menu, 'right-0': !animate_menu }"
     class="
-      ease-in-out
-      duration-300
-      max-w-sm
+      transition-all
+      ease
+      duration-500
+      max-w-lg
       overflow-hidden
       fixed
-      z-50
-      right-0
+      z-40
       top-0
       shadow
       bg-white
@@ -27,7 +45,7 @@
       "
     >
       <div class="flex-1 flex flex-col pt-10 pb-10 overflow-y-auto">
-        <nav class="mt-10 flex-1 px-2 space-y-1" aria-label="Sidebar">
+        <nav class="mt-10 flex-1 px- space-y-1" aria-label="Sidebar">
           <span v-for="item in navigation"
             :key="item.name">
           <router-link
@@ -38,8 +56,8 @@
             :class="[
               currentRouteName === item.href
                 ? 'bg-gray-100 text-gray-600'
-                : 'text-gray-700 hover:bg-white hover:text-black',
-              'group flex items-center px-2 py-8 text-lg font-light text-5xl rounded-md uppercase',
+                : 'text-gray-700 hover:bg-white hover:text-pink',
+              'group flex items-center pl-10 py-8 text-lg font-light text-5xl rounded-md uppercase',
             ]"
           >
             <span class="flex-1">
@@ -49,20 +67,20 @@
           <a :href="item.href" :class="[
               currentRouteName === item.href
                 ? 'bg-gray-100 text-gray-600'
-                : 'text-gray-700 hover:bg-white hover:text-black',
-              'group flex items-center px-2 py-8 text-lg font-light text-5xl rounded-md uppercase',
+                : 'text-gray-700 hover:bg-white hover:text-pink',
+              'group flex items-center pl-10 py-8 text-lg font-light text-5xl rounded-md uppercase',
             ]" v-else> <span class="flex-1">
               {{ item.name }}
             </span></a>
           </span>
         </nav>
       </div>
-      <div class="flex-shrink-0 p-4 space-y-4 border-t border-gray-300" v-if="blockchainAddress">
+      <div class="flex-shrink-0 p-10 space-y-4 border-t border-gray-300" v-if="blockchainAddress">
         <router-link
           :to="{ name: 'MyAccount', params: { address: blockchainAddress } }"
           class="flex-shrink-0 w-full group block"
         >
-          <span class="font-light text-5xl text-gray-600">ACCOUNT</span>
+          <span class="font-light text-5xl leading-4 text-gray-600">ACCOUNT</span>
           <div class="flex items-center">
             <div>
               <div class="flex items-center space-x-1">
@@ -124,24 +142,9 @@
         >
       </div>
     </div>
-    <div
-      class="
-        cursor-pointer
-        absolute
-        right-0
-        top-0
-        bg-white
-        hover:bg-primary-500
-        text-primary-500
-        hover:text-white
-      "
-      @click="closeMenu"
-    >
-      <div class="flex p-4">
-        <div class="m-auto"><cirkol-menu-close /></div>
-      </div>
-    </div>
+    
   </div>
+</div>
 </template>
 
 <script>
@@ -214,8 +217,8 @@ export default {
     };
   },
   methods: {
-    closeMenu() {
-      this.$emit("closeMenu");
+    toggleMenu() {
+      this.$emit("toggleMenu");
     },
   },
 };
