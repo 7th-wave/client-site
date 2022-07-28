@@ -71,17 +71,12 @@
                 >
               </button> -->
             </div>
-            <button
-              @click="openMenu"
-              class="outline-none hover:text-black"
-            >
-              <MenuIcon />
-            </button>
+            
           </div>
         </div>
       </Popover>
       <MainMenu
-        @closeMenu="closeMenu"
+        @toggleMenu="toggleMenu"
         @on:login="login"
         @on:logout="logout"
         :animate_menu="showMenu"
@@ -95,7 +90,6 @@ import { ref, computed } from "vue";
 import { Popover } from "@headlessui/vue";
 import MainMenu from "./MainMenuCirkol.vue";
 import slugify from "slugify";
-import MenuIcon from "../Icons/MenuIcon.vue";
 
 import { useStore } from "vuex";
 import { useRoute, useRouter } from "vue-router";
@@ -103,7 +97,6 @@ import Logo from "./Logo.vue";
 export default {
   components: {
     Popover,
-    MenuIcon,
     MainMenu,
     Logo,
   },
@@ -144,19 +137,14 @@ export default {
       router.push({path: "/"})
     }
 
-    const closeMenu = () => {
-      showMenu.value = false;
-    }
-
-    const openMenu = () => {
-      showMenu.value = true;
+    const toggleMenu = () => {
+      showMenu.value = !showMenu.value;
     }
 
     return {
       login,
       logout,
-      closeMenu,
-      openMenu,
+      toggleMenu,
       showMenu,
       key: 0,
       goFractionalize,
