@@ -153,7 +153,9 @@ export default {
         });
         store.dispatch("NotificationStore/SET_MODAL_BUTTONS", {
           buttons: [
-            { name: "OK", btnStyle: "primary", action: function () {} },
+            { name: "OK", btnStyle: "primary", action: function () {
+              store.dispatch("NotificationStore/SET_OPEN_MODAL");
+            } },
             
           ],
         });

@@ -28,11 +28,13 @@
     >
       <div class="flex-1 flex flex-col pt-10 pb-10 overflow-y-auto">
         <nav class="mt-10 flex-1 px-2 space-y-1" aria-label="Sidebar">
+          <span v-for="item in navigation"
+            :key="item.name">
           <router-link
+            v-if="item.local"
             :to="{ name: item.href }"
             @click="closeMenu"
-            v-for="item in navigation"
-            :key="item.name"
+            
             :class="[
               currentRouteName === item.href
                 ? 'bg-gray-100 text-gray-600'
@@ -44,6 +46,15 @@
               {{ item.name }}
             </span>
           </router-link>
+          <a :href="item.href" :class="[
+              currentRouteName === item.href
+                ? 'bg-gray-100 text-gray-600'
+                : 'text-gray-700 hover:bg-white hover:text-black',
+              'group flex items-center px-2 py-8 text-lg font-light text-5xl rounded-md uppercase',
+            ]" v-else> <span class="flex-1">
+              {{ item.name }}
+            </span></a>
+          </span>
         </nav>
       </div>
       <div class="flex-shrink-0 p-4 space-y-4 border-t border-gray-300" v-if="blockchainAddress">
