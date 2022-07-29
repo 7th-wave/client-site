@@ -4,6 +4,7 @@ module.exports = {
   purge: { content: ["./public/**/*.html", "./src/**/*.vue"] },
   darkMode: false, // or 'media' or 'class'
   theme: {
+    
     extend: {
       rotate: {
         '225': '225deg',
@@ -22,6 +23,7 @@ module.exports = {
        },
        width: {
         'm-1xl':'376px',
+        'm-2xl':'487px',
        },
       colors: {
         primary: {

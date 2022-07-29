@@ -24,6 +24,8 @@
       ease
       duration-500
       max-w-lg
+      lg:max-w-2xl
+      lg:w-m-2xl
       overflow-hidden
       fixed
       z-40
@@ -45,7 +47,7 @@
       "
     >
       <div class="flex-1 flex flex-col pt-10 pb-10 overflow-y-auto">
-        <nav class="mt-10 flex-1 px- space-y-1" aria-label="Sidebar">
+        <nav class="mt-10 flex-1 flex flex-col justify-center space-y-1" aria-label="Sidebar">
           <span v-for="item in navigation"
             :key="item.name">
           <router-link
