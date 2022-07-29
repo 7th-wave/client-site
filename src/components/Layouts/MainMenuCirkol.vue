@@ -18,7 +18,7 @@
       </div>
     </div>
   <div
-    :class="{ 'right-0': animate_menu, '-right-96': !animate_menu }"
+    :class="{ 'right-0': animate_menu, '-right-full': !animate_menu }"
     class="
       transition-all
       ease
