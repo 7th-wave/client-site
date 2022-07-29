@@ -24,6 +24,8 @@
       ease
       duration-500
       max-w-lg
+      lg:max-w-2xl
+      lg:w-m-2xl
       overflow-hidden
       fixed
       z-40
