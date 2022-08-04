@@ -13,8 +13,8 @@ const getNftsByCollection = async(collection, page) => {
     return result.data;
 }
 
-const findNewxtIdPerContract = async() => {
-    const result = await axios.get(app_url+'find_next_id?address='+process.env.VUE_APP_ERC721_ADDRESS);
+const findNewxtIdPerContract = async(contract) => {
+    const result = await axios.get(app_url+'find_next_id?address='+contract);
     return result.data;
 }
 
