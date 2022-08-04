@@ -84,10 +84,7 @@ export default {
 
     const mint = async () => {
       store.dispatch("NotificationStore/TOGGLE_LOADING");
-      const contractAddress =
-        process.env.VUE_APP_NETWORK == "mainnet"
-          ? process.env.VUE_APP_ERC721_ADDRESS_MAINNET
-          : process.env.VUE_APP_ERC721_ADDRESS_RINKEBY;
+      const contractAddress = process.env.VUE_APP_ERC721;
       const nextId = await findNewxtIdPerContract(contractAddress);
       console.log(nextId);
       const token_id = nextId.nextId;
