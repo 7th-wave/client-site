@@ -121,7 +121,7 @@
               font-inter
               cursor-pointer
               text-gray-600
-              hover:text-gray-700
+              hover:text-pink
             "
             >Disconnect</a
           >
@@ -133,9 +133,12 @@
           href="javascript:void(0)"
           @click.prevent="login"
           class="
+            text-5xl
+            uppercase
+            font-light
             cursor-pointer
             text-primary-500
-            hover:text-white
+            hover:text-pink
             font-medium
             text-lg
             font-inter
