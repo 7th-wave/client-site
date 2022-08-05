@@ -2,16 +2,19 @@
   <div class="rounded-lg overflow-hidden w-full relative" :class="bg">
     <slot name="badge" />
     <div class="slider relative">
-      <img @click="goToDetails" class="w-full" :src="nft.imageUrl" />
+      <img v-lazy="nft.imageUrl" @click="goToDetails" class="w-full" />
     </div>
 
     <div class="content w-full py-6 bg-white" @click="goToDetails">
       <div class="data w-full flex items-center justify-between">
-        <h2 class="w-full text-xl font-inter leading-8 text-primary-900 px-6">
+        <h2 class="w-full text-xl my-0 font-inter leading-8 text-primary-900">
           {{ nft.title }}
         </h2>
-        <div class="flex items-center justify-end pr-6" >
+        <div class="flex items-center justify-end " v-if="!nft.isMinted">
           <ETHalt /> <h1 class="ml-2 my-0 text-xl font-inter  text-gray-900 text-right">20</h1>
+        </div>
+        <div class="flex items-center my-0 leading-8 justify-end font-inter text-xl" v-if="nft.isMinted">
+          Minted
         </div>
       </div>
     </div>
