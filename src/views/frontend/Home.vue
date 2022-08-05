@@ -11,7 +11,21 @@
       </div>
     </div>
     <div class="pb-20 pt-6 white bg-white">
-       <div class="box-border max-w-7xl grid grid-cols-1 lg:grid-cols-4 gap-4 mx-auto before:box-inherit after:box-inherit" ref="scrollComponent">
+      <div v-if="isLoading" class="box-border max-w-7xl grid grid-cols-1 lg:grid-cols-4 gap-4 mx-auto before:box-inherit after:box-inherit">
+          <section
+            v-for="index in 8"
+            :key="index"
+            class="relative rounded-lg mx-3 mb-8 md:mx-0 md:mb-5 md:mt-0"
+          >
+            <div
+              class="content-center"
+            >
+              <nft-skeleton />
+              
+            </div>
+          </section>
+        </div>
+       <div class="box-border max-w-7xl grid grid-cols-1 lg:grid-cols-4 gap-4 mx-auto before:box-inherit after:box-inherit" ref="scrollComponent" v-else>
           <section
             v-for="art in data.gallery"
             :key="art.id"
@@ -22,12 +36,13 @@
               :class="{ 'flex flex-nowrap h-48': art.id == 1 }"
             >
               <router-link :to="artLink(art)" class="cursor-pointer">
-              <nft-item :nft="art" />
+              <nft-item :nft="art"  />
               </router-link>
               
             </div>
           </section>
         </div>
+        
     </div>
     
   </div>
@@ -43,6 +58,7 @@ import { ref } from '@vue/reactivity';
 import { onMounted, onUnmounted } from '@vue/runtime-core';
 import { getNftsByCollection } from '../../firebase/nfts';
 import { storage } from "../../firebase/firebase";
+import NftSkeleton from '@/components/Shared/NftSkeleton.vue';
 
 //import { useStore } from 'vuex';
 
@@ -60,7 +76,8 @@ import { storage } from "../../firebase/firebase";
 export default {
   components: {
     //Gallery
-   NftItem
+   NftItem,
+    NftSkeleton
 
   },
   setup() {
@@ -79,7 +96,8 @@ export default {
       bio: 'This is the bio',
       img: './images/mocks/nfts/img_01.jpg',
       gallery: []
-    })
+    });
+    const isLoading = ref(true);
 
     const getData = async () => {      
       
@@ -95,7 +113,9 @@ export default {
             category: 'mnft-miami',
             collection: item.collection,
             imageUrl: await getFullImageURL(item.imageUrl),
+            isMinted: item.isMinted
           };
+
 
          return data;
         
@@ -107,6 +127,9 @@ export default {
       data.value.bio_title = 'MNFT-MIAMI';
       data.value.lastName = 'MNFT-MIAMI';
       data.value.bio = 'MNFT-MIAMI';
+
+      isLoading.value = false;
+
         
     }
 
@@ -167,7 +190,8 @@ export default {
       data,
       getMore,
       scrollComponent,
-      artLink
+      artLink,
+      isLoading
       // footerNavigation,
       
     }

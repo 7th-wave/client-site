@@ -2114,6 +2114,11 @@
   resolved "https://registry.yarnpkg.com/@j-t-mcc/vue3-chartjs/-/vue3-chartjs-1.2.0.tgz#80c92d226473ccfa0c6b716500913bf6be397147"
   integrity sha512-YFf5XpIXt+qPqW0S/RetEV/Dic7DvPoz+2BMrswDvXe4n0q83aanf6Lo0ae5wvwBwBzDXRQ2FSs8x9oecxQkeA==
 
+"@jambonn/vue-lazyload@^1.0.9":
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/@jambonn/vue-lazyload/-/vue-lazyload-1.0.9.tgz#3b2271e41860a8d9728d1898d9c997b749052d95"
+  integrity sha512-V9AnxDTAS1+q5LpTWtvyEN2bo1skvSzPRbFfP7Z1qhfEQRQouSwReEkbEb5B5M4MDEM1UIE0kxlsvOcCkon8DQ==
+
 "@marker.io/browser@^0.12.0":
   version "0.12.0"
   resolved "https://registry.yarnpkg.com/@marker.io/browser/-/browser-0.12.0.tgz#0fafe8be124c3d20d0154bc7f914ff3b53ddfa4e"
@@ -13483,6 +13488,11 @@ vue-demi@^0.12.0:
   resolved "https://registry.yarnpkg.com/vue-demi/-/vue-demi-0.12.1.tgz#f7e18efbecffd11ab069d1472d7a06e319b4174c"
   integrity sha512-QL3ny+wX8c6Xm1/EZylbgzdoDolye+VpCXRhI2hug9dJTP3OUJ3lmiKN3CsVV3mOJKwFi0nsstbgob0vG7aoIw==
 
+vue-demi@^0.12.5:
+  version "0.12.5"
+  resolved "https://registry.yarnpkg.com/vue-demi/-/vue-demi-0.12.5.tgz#8eeed566a7d86eb090209a11723f887d28aeb2d1"
+  integrity sha512-BREuTgTYlUr0zw0EZn3hnhC3I6gPWv+Kwh4MCih6QcAeaTlaIX0DwOVN0wHej7hSvDPecz4jygy/idsgKfW58Q==
+
 vue-easy-lightbox@^1.2.1:
   version "1.2.4"
   resolved "https://registry.yarnpkg.com/vue-easy-lightbox/-/vue-easy-lightbox-1.2.4.tgz#1215300a0b4df8c2a2541ac1706bcf4be055c206"
@@ -13545,6 +13555,11 @@ vue-router@^4.0.0-0:
   dependencies:
     "@vue/devtools-api" "^6.0.0-beta.18"
 
+vue-skeletor@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/vue-skeletor/-/vue-skeletor-1.0.6.tgz#ec218ee84335cf5cc069ed0c966de2a7e9cbe704"
+  integrity sha512-ER4vHlFSXCW3ixK2DlczUE6CZliHsn4d2TvZ9/26C6Oq8zoyEY23BsqweMPtF8QULSz1+G5m2New1BwKNVOZhQ==
+
 vue-style-loader@^4.1.0, vue-style-loader@^4.1.2:
   version "4.1.3"
   resolved "https://registry.yarnpkg.com/vue-style-loader/-/vue-style-loader-4.1.3.tgz#6d55863a51fa757ab24e89d9371465072aa7bc35"
@@ -13604,6 +13619,13 @@ vue3-dropzone@^0.0.7:
   dependencies:
     attr-accept "^2.2.2"
     file-selector "^0.2.4"
+
+vue3-lazyload@^0.3.6:
+  version "0.3.6"
+  resolved "https://registry.yarnpkg.com/vue3-lazyload/-/vue3-lazyload-0.3.6.tgz#87c509e7f0139ea5e00eb76c368519905ad19678"
+  integrity sha512-UcVnEN9JzxeFBa7nNAPWKXHTtvVAzWYhBSvRU+Gmx9MdTGLWKwjZiNSyB1Os25jr9HaFHWY0DaU8uugXkGu9Gw==
+  dependencies:
+    vue-demi "^0.12.5"
 
 vue3-markdown-it@^1.0.10:
   version "1.0.10"

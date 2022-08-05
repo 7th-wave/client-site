@@ -4,6 +4,8 @@ import router from "./router";
 import "./assets/tailwind.css";
 import VueEasyLightbox from "vue-easy-lightbox";
 import VueClipboard from 'vue3-clipboard';
+import VueLazyload from '@jambonn/vue-lazyload'
+
 // import { auth } from "../src/firebase/firebase";
 import CarouselCard from 'vue-carousel-card'
 import 'vue-carousel-card/styles/index.css'
@@ -35,8 +37,15 @@ library.add(
   faDiscord
 )
 
+const loadimage = require('./assets/images/loading_image.png')
+const errorimage = require('./assets/images/loading_image.png')
 
-createApp(App).use(router).use(VueEasyLightbox).use(store).use(DatePicker).use(TimePicker).use(VueClipboard).use(CarouselCard).component('font-awesome-icon', FontAwesomeIcon).mount("#app");
+createApp(App).use(router).use(VueEasyLightbox).use(store).use(DatePicker).use(TimePicker).use(VueClipboard).use(CarouselCard).component('font-awesome-icon', FontAwesomeIcon).use(VueLazyload, {
+  preLoad: 1.3,
+  error: errorimage,
+  loading: loadimage,
+  attempt: 1
+}).mount("#app");
 
 // auth.onAuthStateChanged((user) => {
 //   if (user) {

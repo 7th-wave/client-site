@@ -18,10 +18,12 @@
   >
     <div class="w-full" v-if="isLoaded">
       <img
-        :src="imageUrl"
+        v-lazy="imgObj"
         class="w-full object-cover rounded-md shadow-md overflow-hidden mb-3"
         alt=""
+        v-if="imageUrl"
       />
+      <Skeletor v-else height="502" />
       <Spec
         @on:login="emitsLogin"
         :nft="{ ...nft, artistName }"
@@ -339,7 +341,7 @@
 
 <script>
 // @ is an alias to /src
-import { computed, onMounted, ref } from "vue";
+import { computed, onMounted, reactive, ref } from "vue";
 import {
   Dialog,
   DialogOverlay,
@@ -359,6 +361,8 @@ import { getNft } from "../../firebase/nfts";
 
 import Markdown from "vue3-markdown-it";
 import MintsInfosCards from '@/components/cards/MintsInfosCards.vue';
+  import { Skeletor } from 'vue-skeletor';
+
 
 export default {
   components: {
@@ -372,6 +376,7 @@ export default {
     //Share,
     Markdown,
     MintsInfosCards,
+    Skeletor
   },
   emits: ["on:login"],
   setup(props, { emit }) {
@@ -412,6 +417,13 @@ export default {
       attributes: [],
       auctions: [],
     });
+    
+    const imgObj = reactive({
+        src: '',
+        error: './images/loaging_image_big.png',
+        loading: './images/loaging_image_big.png'
+      });
+
     const auction = computed(() => store.state.auctionStore.auction);
     const currentAddress = computed(
       () => store.getters["blockchain/getCurrentAddress"]
@@ -429,9 +441,12 @@ export default {
     const getFullImageURL = async (item) => {
       var storageRef = storage.ref();
       imageUrl.value = await storageRef.child(item).getDownloadURL();
+      imgObj.value.src = imageUrl.value;
     };
 
     const getData = async () => {
+      store.dispatch("NotificationStore/TOGGLE_LOADING");
+
       //await store.dispatch("collection/loadCollection", collectionRef);
       artistName.value = "GB MIAMI"; //store.getters["collection/getName"];
 
@@ -469,6 +484,7 @@ export default {
       }
 
       getFullImageURL(nft.value.imageUrl);
+      store.dispatch("NotificationStore/TOGGLE_LOADING");
     };
 
     onMounted(async () => {
@@ -515,6 +531,7 @@ export default {
       isLoaded,
       emitsLogin,
       description,
+      imgObj
     };
   },
 };
