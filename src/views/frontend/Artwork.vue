@@ -24,33 +24,19 @@
         v-if="imageUrl"
       />
       <Skeletor v-else height="502" />
-      <Spec
-        @on:login="emitsLogin"
-        :nft="{ ...nft, artistName }"
-        @on:info="placebid_note = true"
-        :auctionref="auctionref"
-        :auction="auction"
-        @on:placedBid="placedBid"
-        :nftRef="nftRef"
-      />
+      
     </div>
-    <div class="w-full flex items-start flex-col space-y-2" v-if="isLoaded">
+    <div class="w-full flex items-start flex-col justify-between space-y-2" v-if="isLoaded">
       <div
         class="
           w-full
-          rounded-md
-          bg-white
-          shadow-md
-          p-4
           flex flex-col
           items-start
           space-y-4
         "
       >
-        <span class="text-xl font-semibold text-gray-900">{{ nft.title }}</span>
-        <p class="text-left text-lg font-normal text-black">
-          <Markdown :source="description" :linkify="true" :html="true" />
-        </p>
+        <span class="text-4xl font-normal text-gray-900">{{ nft.title }}</span>
+        
       </div>
       <div class="w-full grid grid-cols-1 lg:grid-cols-2 gap-2">
         <div
@@ -67,14 +53,26 @@
           "
           v-for="(item, index) of nft.attributes"
           :key="index"
+          :class="{'col-span-2': index+1 == nft.attributes.length}"
         >
-          <span class="text-base text-gray-500 font-semibold uppercase"
+          <span class="text-base text-gray-500 font-semibold uppercase" 
             >{{ item.name }}:</span
           >
           <span class="text-base text-gray-900 font-normal">{{
             item.value
           }}</span>
         </div>
+      </div>
+      <div class="w-full">
+      <Spec
+        @on:login="emitsLogin"
+        :nft="{ ...nft, artistName }"
+        @on:info="placebid_note = true"
+        :auctionref="auctionref"
+        :auction="auction"
+        @on:placedBid="placedBid"
+        :nftRef="nftRef"
+      />
       </div>
     </div>
   </div>
@@ -359,7 +357,6 @@ import { storage } from "../../firebase/firebase";
 //import Share from "../../components/Modals/Share.vue";
 import { getNft } from "../../firebase/nfts";
 
-import Markdown from "vue3-markdown-it";
 import MintsInfosCards from '@/components/cards/MintsInfosCards.vue';
   import { Skeletor } from 'vue-skeletor';
 
@@ -374,7 +371,6 @@ export default {
     Spec,
     LightBox,
     //Share,
-    Markdown,
     MintsInfosCards,
     Skeletor
   },
