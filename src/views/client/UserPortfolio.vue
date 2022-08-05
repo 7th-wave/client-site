@@ -173,9 +173,10 @@ export default {
 
     const goDetails = (id) => {
       router.push({
-        name: "CollectionDetails",
+        name: "Artwork",
         params: {
-          id: id,
+          collection: process.env.VUE_APP_CATEGORY,
+          ref: id
         },
       });
     };

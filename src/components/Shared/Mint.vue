@@ -6,27 +6,26 @@
       w-full
         flex
         justify-between
-        pr-2
-        py-4
+        pr-0
         rounded-bl-2xl rounded-br-2xl
         px-0
         flex
         items-center
       "
     >
-      <div class="w-5/6">
-        <Button @click="mint()" customClass="w-full">MINT</Button>
+      <div class="w-full">
+        <Button @click="mint()" customClass="w-full" :btnStyle="'outlined'" :size="'xlarge'">MINT</Button>
       </div>
     </div>
      <div class="mt-1 ">
       <div
-        class="flex items-center text-xl font-opensans font-semibold text-black"
+        class="flex items-center text-xl font-opensans font-semibold text-black px-4"
       >
-        <div class="mx-1 text-sm font-medium text-gray-500">
-          <ETHalt size="6" />
+        <div class="text-sm font-medium text-gray-700">
+          <ETHalt size="10" />
         </div>
 
-        <h3 class="mt-0">{{ nft.mintinPrice }}</h3>
+        <h3 class="mt-0 text-4xl">{{ nft.mintinPrice }}</h3>
       </div>
     </div>
   </div>

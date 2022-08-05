@@ -43,17 +43,17 @@ export default {
       switch (size) {
 
         case 'xlarge':
-          return 'text-xl leading-8 font-bold px-8 py-6';
+          return 'text-3xl leading-8 font-normal px-8 py-6';
         case 'large':
-          return 'text-lg leading-7 font-bold px-6 py-4';
+          return 'text-2xl leading-7 font-normal px-6 py-4';
         case 'medium':
-          return 'px-5 py-3 text-md leading-6 font-medium';
+          return 'px-5 py-3 text-md leading-6 font-normal';
         case 'small':
-          return 'px-3 py-2 text-sm leading-4 font-medium';
+          return 'px-3 py-2 text-sm leading-4 font-normal';
         case 'tiny':
-          return 'px-3 py-2 text-xs leading-4 font-medium';
+          return 'px-3 py-2 text-xs leading-4 font-normal';
         default:
-          return 'px-4 py-2 text-sm text-base leading-6 font-medium';
+          return 'px-4 py-2 text-sm text-base leading-6 font-normal';
       }
     }
 
@@ -62,7 +62,7 @@ export default {
         case 'primary':
           return 'bg-primary-900 text-white hover:bg-primary-600';
         case 'outlined':
-          return 'border border-primary-500 text-primary-500 hover:bg-primary-600 hover:text-white';
+          return 'border-4 border-gray-700 text-gray-700 hover:border-pink hover:text-pink';
         case 'secondary':
           return 'bg-secondary-500 text-white hover:bg-secondary-600';
         case 'black':
