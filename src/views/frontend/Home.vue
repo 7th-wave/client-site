@@ -13,7 +13,7 @@
     <div class="pb-20 pt-6 white bg-white">
       <div v-if="isLoading" class="box-border max-w-7xl grid grid-cols-1 lg:grid-cols-4 gap-4 mx-auto before:box-inherit after:box-inherit">
           <section
-            v-for="index in 8"
+            v-for="index in 12"
             :key="index"
             class="relative rounded-lg mx-3 mb-8 md:mx-0 md:mb-5 md:mt-0"
           >
