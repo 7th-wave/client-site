@@ -4,7 +4,14 @@ module.exports = {
   purge: { content: ["./public/**/*.html", "./src/**/*.vue"] },
   darkMode: false, // or 'media' or 'class'
   theme: {
+    
     extend: {
+      rotate: {
+        '225': '225deg',
+       },
+      fontSize: {
+        '5xl': '45px'
+      },
       fontFamily: {
         inter: ["Inter", "sans-serif"],
         montserrat: ["Montserrat", "sans-serif"],
@@ -16,6 +23,7 @@ module.exports = {
        },
        width: {
         'm-1xl':'376px',
+        'm-2xl':'487px',
        },
       colors: {
         primary: {
@@ -66,6 +74,9 @@ module.exports = {
         },
         blue:{
           link:'#84f4ee',
+        },
+        pink: {
+          'DEFAULT': '#D937BA'
         }
       },
     },
