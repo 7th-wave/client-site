@@ -128,7 +128,7 @@
         </div>
       </div>
 
-      <div class="flex items-center space-x-2 p-4" v-else>
+      <div class="flex items-center p-10 space-y-4 border-t border-gray-300" v-else>
         <a
           href="javascript:void(0)"
           @click.prevent="login"
@@ -139,7 +139,7 @@
             cursor-pointer
             text-primary-500
             hover:text-pink
-            font-medium
+            font-light
             text-lg
             font-inter
           "
@@ -160,8 +160,8 @@ import CirkolMenuClose from "../Icons/CirkolMenuClose.vue";
 
 const navigation = [
   { name: "Join", icon: "", href: "/" },
-  { name: "Lightpaper", icon: "", href: "https://lightpaper.com" },
-  { name: "Roadmap", icon: "", href: "LearnMore" },
+  //{ name: "Lightpaper", icon: "", href: "https://lightpaper.com" },
+  { name: "Roadmap", icon: "", href: "https://www.cirkol.com/#roadmap" },
   { name: "Team", icon: "", href: "https://www.cirkol.com/#team" },
 ];
 
