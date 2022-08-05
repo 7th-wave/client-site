@@ -18,7 +18,7 @@
   >
     <div class="w-full" v-if="isLoaded">
       <img
-        v-lazy="imgObj"
+        :src="imageUrl"
         class="w-full object-cover rounded-md shadow-md overflow-hidden mb-3"
         alt=""
         v-if="imageUrl"
