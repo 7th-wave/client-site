@@ -139,7 +139,7 @@ export default {
           name: nft.value.title + token_id,
           description: description,
           image: nft.value.ipfs,
-          attributes: properties,
+          attributes: properties
         },
       };
 
@@ -166,6 +166,7 @@ export default {
         newNft.title = nft.value.title + token_id;
         newNft.isMinted = true;
         newNft.blockChainOwner = currentAddress.value;
+        newNft.mintDate = new Date().getTime();
         newNft.attributes = attrs;
         await updateNft(nftRef.value, newNft);
         router.push("/my-nfts");

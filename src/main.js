@@ -22,7 +22,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
-import { faCoffee, faChild, faCircle, faArchive, faEnvelope,faWallet } from '@fortawesome/free-solid-svg-icons';
+import { faCoffee, faChild, faCircle, faArchive, faEnvelope, faWallet, faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 import { faTwitter, faInstagram, faDiscord } from '@fortawesome/free-brands-svg-icons';
 
 library.add(
@@ -34,7 +34,8 @@ library.add(
   faTwitter,
   faWallet,
   faInstagram,
-  faDiscord
+  faDiscord,
+  faArrowUpRightFromSquare
 )
 
 const loadimage = require('./assets/images/loading_image.png')
