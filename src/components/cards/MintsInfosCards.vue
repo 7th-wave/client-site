@@ -91,7 +91,7 @@
             : "N/A"
         }}</span>
       </div>
-      <div class="cursor-pointer" @click="goToEtherscan(nft.blockChainOwner)">
+      <div class="cursor-pointer" @click="goToPortfolio(nft.blockChainOwner)">
         <font-awesome-icon icon="fa-solid fa-arrow-up-right-from-square" />
       </div>
     </div>
@@ -100,11 +100,13 @@
 
 
 <script>
+import { useRouter } from 'vue-router';
 
 export default {
   
   props: ["nft"],
   setup() {
+    const router = useRouter();
     const goToEtherscan = (address) => {
       let url = 'https://rinkeby.etherscan.io/address/'+address;
       if (process.env.VUE_APP_NETWORK == 'mainnet') {
@@ -113,8 +115,13 @@ export default {
       window.open(url);
     } 
 
+    const goToPortfolio = (address) => {
+      router.push('/user-portfolio/'+address);
+    }
+
     return {
-      goToEtherscan
+      goToEtherscan,
+      goToPortfolio
     }
   },
 };
