@@ -77,12 +77,12 @@
           </span>
         </nav>
       </div>
-      <div class="flex-shrink-0 p-10 space-y-4 border-t border-gray-300" v-if="blockchainAddress">
+      <div class="flex-shrink-0 p-10 space-y-8 border-t border-gray-300" v-if="blockchainAddress">
         <router-link
           :to="{ name: 'MyAccount' }"
           class="flex-shrink-0 w-full group block"
         >
-          <span class="font-light text-5xl leading-4 text-gray-600">ACCOUNT</span>
+          <span class="font-light text-5xl text-gray-600">ACCOUNT</span>
           <div class="flex items-center">
             <div>
               <div class="flex items-center space-x-1">
@@ -160,7 +160,7 @@ import CirkolMenuClose from "../Icons/CirkolMenuClose.vue";
 
 const navigation = [
   { name: "Join", icon: "", href: "/" },
-  //{ name: "Lightpaper", icon: "", href: "https://lightpaper.com" },
+  { name: "Lightpaper", icon: "", href: "https://www.cirkol.com/#lightpaper" },
   { name: "Roadmap", icon: "", href: "https://www.cirkol.com/#roadmap" },
   { name: "Team", icon: "", href: "https://www.cirkol.com/#team" },
 ];
