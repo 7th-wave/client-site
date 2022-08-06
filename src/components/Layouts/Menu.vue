@@ -30,7 +30,7 @@
             <UserImage :src="avatar" :custom_height="8" />
           </div>
           <div class="ml-3">
-            <p class="text-sm font-medium text-gray-700">User Name</p>
+            <p class="text-sm font-medium text-gray-700">{{ fullName }}</p>
             <div class="flex items-center space-x-1">
               <p
                 class="text-xs font-medium text-primary-500 hover:underline flex items-center space-x-2"
@@ -54,7 +54,6 @@
                   </svg>
                 </span>
               </p>
-              <DocumentDuplicateIcon class="h-4 w-4" />
             </div>
           </div>
         </div>
@@ -90,102 +89,13 @@
 </template>
 <script>
 // import {  LockClosedIcon  } from '@heroicons/vue/solid'
-import { computed, onMounted, ref } from "@vue/runtime-core";
+import { computed, onMounted } from "@vue/runtime-core";
 import { useStore } from "vuex";
 import { useRoute, useRouter } from "vue-router";
-import { auth, storage } from "../../firebase/firebase";
+import { auth } from "../../firebase/firebase";
 import UserImage from "./UserImage.vue";
 
-const Client = [
-  {
-    name: "My Account",
-    href: { name: "MyAccount", params: { address: "gfdg" } },
-    subname: "",
-    subname1: "",
-    subname2: "",
-  },
-  {
-    name: "My NFT",
-    href: { name: "My_collections" },
-    subname: "CollectionDetails",
-    subname2: "CreateNftadmin",
-  },
-  
-];
-const Buyer = [
-  {
-    name: "My Account",
-    href: { name: "MyAccount", params: { address: "gfdg" } },
-    subname: "",
-    subname1: "",
-    subname2: "",
-  },
-  {
-    name: "My Fractions",
-    href: { name: "My_fractions" },
-    subname: "My_fractions",
-    subname1: "My_fractions_details",
-    subname2: "PurchasseHistoryDetails",
-  },
-  {
-    name: "My Purchase History",
-    href: { name: "PurchasseHistory" },
-    subname: "",
-    subname1: "",
-    subname2: "",
-  },
-];
-const Admin = [
-  {
-    name: "My Account",
-    href: { name: "MyAccount", params: { address: "gfdg" }, subname2: "" },
-    subname: "",
-    subname1: "",
-    subname2: "",
-  },
-  {
-    name: "Vault Categories",
-    href: { name: "My_collections" },
-    subname: "CollectionDetails",
-    subname1: "Fractionalize",
-    subname2: "",
-  },
-  {
-    name: "Vaults",
-    href: { name: "MyVault" },
-    subname: "",
-    subname1: "",
-    subname2: "",
-  },
-  {
-    name: "NFTs",
-    href: { name: "My_fractions" },
-    subname: "My_fractions",
-    subname1: "My_fractions_details",
-    subname2: "PurchasseHistoryDetails",
-  },
-  {
-    name: "Clients",
-    href: { name: "PurchasseHistory" },
-    subname: "",
-    subname1: "",
-    subname2: "",
-  },
-  {
-    name: "Emails",
-    href: { name: "PurchasseHistory" },
-    subname: "",
-    subname1: "",
-    subname2: "",
-  },
-  {
-    name: "Team",
-    href: { name: "PurchasseHistory" },
-    subname: "",
-    subname1: "",
-    subname2: "",
-  },
-];
+
 export default {
   created() {
     //  this.$store.commit('user/changeType', "Admin")
@@ -205,27 +115,115 @@ export default {
     currentRouteName() {
       return this.$route.name;
     },
-    getData() {
-      if (this.$store.state.user.user.type === "Client") {
-        return Client;
-      } else if (this.$store.state.user.user.type === "Buyer") {
-        return Buyer;
-      }
-      return Client;
-    },
+    
   },
   setup(props) {
     const store = useStore();
     const route = useRoute();
     const router = useRouter();
 
-    const fullName = computed(() => store.getters["user/getFullName"]);
+    const fullName = computed(() => store.getters["user/getUsername"]);
 
     const email = computed(() => store.getters["user/getEmail"]);
     const blockchainAddress = computed(() => store.getters['user/getBlockchainAddress']);
 
 
-    const avatar = ref("");
+    const avatar = computed(() => store.getters['user/getAvatar']);
+
+    const Client = [
+      {
+        name: "My Account",
+        href: { name: "MyAccount", params: { address: computed(() => store.getters['blockchain/getCurrentAddress']) } },
+        subname: "",
+        subname1: "",
+        subname2: "",
+      },
+      {
+        name: "My NFT",
+        href: { name: "My_collections" },
+        subname: "CollectionDetails",
+        subname2: "CreateNftadmin",
+      },
+      
+    ];
+  const Buyer = [
+    {
+      name: "My Account",
+      href: { name: "MyAccount", params: { address: computed(() => store.getters['blockchain/getCurrentAddress']) } },
+      subname: "",
+      subname1: "",
+      subname2: "",
+    },
+    {
+      name: "My Fractions",
+      href: { name: "My_fractions" },
+      subname: "My_fractions",
+      subname1: "My_fractions_details",
+      subname2: "PurchasseHistoryDetails",
+    },
+    {
+      name: "My Purchase History",
+      href: { name: "PurchasseHistory" },
+      subname: "",
+      subname1: "",
+      subname2: "",
+    },
+  ];
+  const Admin = [
+    {
+      name: "My Account",
+      href: { name: "MyAccount", params: { address: computed(() => store.getters['blockchain/getCurrentAddress']) }, subname2: "" },
+      subname: "",
+      subname1: "",
+      subname2: "",
+    },
+    {
+      name: "Vault Categories",
+      href: { name: "My_collections" },
+      subname: "CollectionDetails",
+      subname1: "Fractionalize",
+      subname2: "",
+    },
+    {
+      name: "Vaults",
+      href: { name: "MyVault" },
+      subname: "",
+      subname1: "",
+      subname2: "",
+    },
+    {
+      name: "NFTs",
+      href: { name: "My_fractions" },
+      subname: "My_fractions",
+      subname1: "My_fractions_details",
+      subname2: "PurchasseHistoryDetails",
+    },
+    {
+      name: "Clients",
+      href: { name: "PurchasseHistory" },
+      subname: "",
+      subname1: "",
+      subname2: "",
+    },
+    {
+      name: "Emails",
+      href: { name: "PurchasseHistory" },
+      subname: "",
+      subname1: "",
+      subname2: "",
+    },
+    {
+      name: "Team",
+      href: { name: "PurchasseHistory" },
+      subname: "",
+      subname1: "",
+      subname2: "",
+    },
+  ];
+
+  const getData = computed(() => {
+      return Client;
+    });
 
     const openModal = async () => {
       await store.dispatch("NotificationStore/SET_MODAL_TITLE", {
@@ -265,18 +263,8 @@ export default {
       }
     };
 
-    const getAvatar = async () => {
-      const image = store.getters["user/getAvatar"];
-
-      if (image) {
-        var storageRef = storage.ref();
-        const url = await storageRef.child(image).getDownloadURL();
-        avatar.value = url;
-      }
-    };
-
     onMounted(async () => {
-      await getAvatar();
+      //await getAvatar();
     });
 
     return {
@@ -290,6 +278,7 @@ export default {
       email,
       avatar,
       openModal,
+      getData
     };
   },
 };

@@ -79,11 +79,7 @@
               class="mt-1 w-full relative rounded-md shadow-s sm:mt-0 col-span-2"
             >
               <div class="w-full flex rounded-md shadow-sm">
-                <span
-                  class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 sm:text-sm"
-                >
-                  @
-                </span>
+                
                 <input
                   type="email"
                   v-model="user.email"
@@ -112,7 +108,7 @@
               class="mt-2 text-sm text-red-600"
               id="email-error"
             >
-              {{ validations.email }}
+              {{validations.email}}
             </p>
           </div>
         </div>
@@ -178,120 +174,7 @@
           </div>
         </div>
       </div>
-      <!-- Security -->
-      <div>
-        <div
-          class="text-base font-medium text-gray-900 sm:text-sm sm:text-gray-700 py-4"
-          id="label-email"
-        >
-          <h3 class="text-lg leading-6 font-medium text-gray-900">Security</h3>
-        </div>
-        <div
-          class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5 space-y-4"
-        >
-          <label
-            for="last_name"
-            class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
-          >
-            New Password <span class="text-red-700 text-lg"></span>
-          </label>
-          <div class="col-span-2">
-            <div
-              class="mt-1 relative w-full rounded-md shadow-sm sm:mt-0 sm:col-span-2"
-            >
-              <input
-                type="password"
-                name="last_name"
-                id="last_name"
-                autocomplete="family-name"
-                class="block w-full shadow-sm focus:ring-primary-500 focus:border-primary-500 sm:text-sm border-gray-300 rounded-md"
-              />
-            </div>
-          </div>
-          <label
-            for="last_name"
-            class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
-          >
-            Confirm New Password <span class="text-red-700 text-lg"></span>
-          </label>
-          <div class="col-span-2">
-            <div
-              class="mt-1 relative w-full rounded-md shadow-sm sm:mt-0 sm:col-span-2"
-            >
-              <input
-                type="password"
-                name="last_name"
-                id="last_name"
-                autocomplete="family-name"
-                class="block w-full shadow-sm focus:ring-primary-500 focus:border-primary-500 sm:text-sm border-gray-300 rounded-md"
-              />
-            </div>
-          </div>
-          <div class="">
-            <span class="text-gray-700 font-medium font-inter text-sm"
-              >Two Way Authenticator</span
-            >
-          </div>
-          <div class="max-w-lg space-y-4 col-span-2">
-            <div class="flex items-start">
-              <div class="flex items-center h-5">
-                <input
-                  id="newsletter"
-                  name="newsletter"
-                  type="checkbox"
-                  class="focus:ring-primary-500 h-4 w-4 text-primary-600 border-gray-300 rounded"
-                />
-              </div>
-              <div class="ml-3 text-sm flex flex-col items-start">
-                <label for="offers" class="font-medium text-gray-700"
-                  >Google Authenticator</label
-                >
-                <span class="text-sm font-inter text-gray-500"
-                  >Provide stronger security Download APP</span
-                >
-              </div>
-            </div>
-            <div class="flex items-start">
-              <div class="flex items-center h-5">
-                <input
-                  id="newsletter"
-                  name="newsletter"
-                  type="checkbox"
-                  class="focus:ring-primary-500 h-4 w-4 text-primary-600 border-gray-300 rounded"
-                />
-              </div>
-              <div class="ml-3 text-sm flex flex-col items-start">
-                <label for="offers" class="font-medium text-gray-700"
-                  >SMS Authenticator
-                </label>
-                <span class="text-sm font-inter text-gray-500"
-                  >Get a code on your phone.</span
-                >
-              </div>
-            </div>
-          </div>
-          <label
-            for="phonesms"
-            class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
-          >
-            Phone SMS
-            <span class="text-red-700 text-lg"></span>
-          </label>
-          <div class="col-span-2">
-            <div
-              class="mt-1 relative w-full rounded-md shadow-sm sm:mt-0 sm:col-span-2"
-            >
-              <input
-                type="text"
-                name="phonesms"
-                id="phonesms"
-                autocomplete="phonesms"
-                class="block w-full shadow-sm focus:ring-primary-500 focus:border-primary-500 sm:text-sm border-gray-300 rounded-md"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
+      
       <!-- Personal Information -->
       <div class="pt-8 space-y-6 sm:pt-10 sm:space-y-5">
         <h3 class="text-lg leading-6 font-medium text-gray-900">
@@ -581,32 +464,7 @@
             </div>
           </div>
 
-          <div
-            class="sm:grid sm:grid-cols-3 sm:gap-4 sm:items-start sm:border-t sm:border-gray-200 sm:pt-5"
-            v-if="isAdmin"
-          >
-            <label
-              for="zip"
-              class="block text-sm font-medium text-gray-700 sm:mt-px sm:pt-2"
-            >
-              Connect Metamask
-            </label>
-            <div class="mt-1 sm:mt-0 sm:col-span-2">
-              <button
-                v-if="!currentAdminAddress"
-                type="button"
-                class="lg:ml-3 mt-3 lg:mt-0 lg:w-auto w-full inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-primary-400 hover:bg-primary-500 focus:outline-none"
-                @click="connectToBlockChain"
-              >
-                Connect
-              </button>
-
-              <div v-if="currentAdminAddress">
-                <h5 class="font-bold text-primary-500">Current Address</h5>
-                <p>{{ user.defaultOperatorAddress ?? currentAdminAddress }}</p>
-              </div>
-            </div>
-          </div>
+          
         </div>
       </div>
 
@@ -730,12 +588,11 @@
 </template>
 <script>
 import { onMounted, ref, computed } from "vue";
-import { storage, auth } from "../../firebase/firebase";
+import { storage } from "../../firebase/firebase";
 import { useStore } from "vuex";
 import { ExclamationCircleIcon } from "@heroicons/vue/solid";
-import { useRouter } from "vue-router";
 import DeleteAccountModal from "@/components/Modals/DeleteAccountModal.vue";
-var reEmail =
+const reEmail =
   /^([a-zA-Z0-9_\-/.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9/-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})$/;
 
 export default {
@@ -752,70 +609,37 @@ export default {
     isAdmin: { type: Boolean, default: false },
     isEdit: { type: Boolean, default: false },
   },
-  setup(props) {
+  setup() {
     const passwordAdmin = ref("");
     const user = ref();
     const isInitied = ref(false);
-    const currentAdminAddress = computed(
-      () => store.getters["admin/hasCurrentAddress"]
-    );
-    const client = computed(() => store.getters["user/getUser"]);
-    const admin = computed(() => store.getters["admin/getAdmin"]);
+
 
     const validations = ref({
       username: computed(
         () =>
           !isValid.value &&
-          user.value.username.trim() == "" &&
+          user.value.username == "" &&
           "Username required."
       ),
-      // firstName: computed(
-      //   () =>
-      //     !isValid.value &&
-      //     user.value.firstName.trim() == "" &&
-      //     "First name required."
-      // ),
-      // lastName: computed(
-      //   () =>
-      //     !isValid.value &&
-      //     user.value.lastName.trim() == "" &&
-      //     "Last name required."
-      // ),
+      
       email: computed(
         () =>
           (!isValid.value &&
-            user.value.email.trim() == "" &&
+            user.value.email == "" &&
             "Email required.") ||
           (!isValid.value &&
-            !reEmail.test(user.value.email.trim()) &&
+            !reEmail.test(user.value.email) &&
             "Valid email required.")
-      ),
-      password: computed(
-        () =>
-          (!isValid.value &&
-            passwordAdmin.value.trim() == "" &&
-            "Password required.") ||
-          (!isValid.value &&
-            passwordAdmin.value.trim().length < 6 &&
-            "Password must be greater than 6 digits")
-      ),
-      // phone: computed(
-      //   () =>
-      //     !isValid.value && user.value.phone.trim() == "" && "Phone required."
-      // ),
+      ), 
+      
+      
     });
 
     const isValid = ref(true);
     const photo = ref(null);
     const currentAvatar = ref(null);
-    const router = useRouter();
     const store = useStore();
-    const provider = computed(
-      () => store.getters["blockchain/getCurrentProvider"]
-    );
-    const address = computed(
-      () => store.getters["blockchain/getCurrentAddress"]
-    );
 
     const selectFile = () => {
       photo.value.click();
@@ -833,18 +657,13 @@ export default {
     };
 
     const initUser = async () => {
-      let userObject;
-
-      if (props.isAdmin) {
-        userObject = admin.value;
-      } else {
-        userObject = client.value;
-      }
+      await store.dispatch('user/getUser', {address: computed(() => store.getters['blockchain/getCurrentAddress'])});
+      let userObject = store.getters["user/getUser"];
 
       user.value = Object.assign({}, userObject);
 
       if (user.value.avatar) {
-        var storageRef = storage.ref();
+        const storageRef = storage.ref();
         currentAvatar.value = await storageRef
           .child(user.value.avatar)
           .getDownloadURL();
@@ -857,14 +676,11 @@ export default {
       initUser();
     });
 
-    const connectToBlockChain = async () => {
-      await store.dispatch("admin/connectToBlockChain");
-    };
 
     const uploadFile = async () => {
       if (photo.value.files.length) {
-        var storageRef = storage.ref();
-        var imageRef = storageRef.child("avatars/" + photo.value.files[0].name);
+        const storageRef = storage.ref();
+        const imageRef = storageRef.child("avatars/" + photo.value.files[0].name);
 
         await imageRef.put(photo.value.files[0]);
         return imageRef.fullPath;
@@ -879,61 +695,21 @@ export default {
         avatar != "" && avatar != user.value.avatar
           ? avatar
           : user.value.avatar;
-      user.value[provider.value] = address.value;
+
       try {
-        await store.dispatch("user/saveUser", user.value);
+        await store.dispatch("user/updateUser", user.value );
         store.dispatch("NotificationStore/TOGGLE_LOADING");
         store.dispatch("NotificationStore/setMessage", {
           message: "Your account is ready!",
           type: "success",
         });
-
-        router.push("/my-account/" + address.value);
         //router.pop()
       } catch (error) {
+        store.dispatch("NotificationStore/TOGGLE_LOADING");
         store.dispatch("NotificationStore/setMessage", {
-          message: "Error on invalid fields!",
+          message: "Error Saving account!",
           type: "error",
         });
-      }
-    };
-
-    const saveAdmin = async (avatar) => {
-      if (!currentAdminAddress.value) {
-        store.dispatch("NotificationStore/setMessage", {
-          message: "You need to connect metamask!",
-          type: "error",
-        });
-      } else {
-        user.value.defaultOperatorAddress = currentAdminAddress.value;
-        user.value.avatar =
-          avatar != "" && avatar != user.value.avatar
-            ? avatar
-            : user.value.avatar;
-        user.value[provider.value] = address.value;
-        try {
-          if (!props.isEdit) {
-            const userCredential = await auth.createUserWithEmailAndPassword(
-              user.value.email,
-              passwordAdmin.value
-            );
-
-            user.value.firebaseUser = userCredential.user.uid;
-          }
-          await store.dispatch("admin/saveAdmin", { admin: user.value });
-          store.dispatch("NotificationStore/setMessage", {
-            message: "Your account is ready!",
-            type: "success",
-          });
-
-          // router.push('/admin/my-account');
-          router.pop();
-        } catch (error) {
-          store.dispatch("NotificationStore/setMessage", {
-            message: error.message,
-            type: "error",
-          });
-        }
       }
     };
 
@@ -945,30 +721,22 @@ export default {
 
       let obj = validations.value;
 
-      for (var property in obj) {
-        if (props.isAdmin && !props.isEdit && property == "password") {
-          if (obj[property]) {
-            pass = false;
-            break;
-          }
-        } else if (property !== "password") {
-          if (obj[property]) {
-            pass = false;
-            break;
-          }
+      for (let property in obj) {
+        
+        if (obj[property]) {
+          pass = false;
+          break;
         }
       }
 
+      console.log(pass);
+
       if (pass) {
+
         isValid.value = true;
-
-        if (props.isAdmin) {
-          await saveAdmin(imageUrl);
-        } else {
-          console.log(imageUrl);
-
-          await saveCustomer(imageUrl);
-        }
+        console.log(imageUrl);
+        await saveCustomer(imageUrl);
+        
       } else {
         store.dispatch("NotificationStore/setMessage", {
           message: "Error on invalid fields!",
@@ -987,9 +755,7 @@ export default {
       validations,
       isValid,
       isInitied,
-      currentAvatar,
-      currentAdminAddress,
-      connectToBlockChain,
+      currentAvatar
     };
   },
 };

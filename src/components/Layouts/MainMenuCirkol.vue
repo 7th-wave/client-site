@@ -79,7 +79,7 @@
       </div>
       <div class="flex-shrink-0 p-10 space-y-4 border-t border-gray-300" v-if="blockchainAddress">
         <router-link
-          :to="{ name: 'MyAccount', params: { address: blockchainAddress } }"
+          :to="{ name: 'MyAccount' }"
           class="flex-shrink-0 w-full group block"
         >
           <span class="font-light text-5xl leading-4 text-gray-600">ACCOUNT</span>
