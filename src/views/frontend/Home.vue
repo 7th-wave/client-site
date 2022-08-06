@@ -5,7 +5,9 @@
         <div class="text-center mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-8 lg:max-w-7xl">
           <h1 class="mt-8 text-4xl leading-10 font-medium text-black tracking-tight sm:text-4xl">
             MNFT MIAMI
-          </h1>             
+          </h1>  
+
+          <p class="mt-6">CIRKOL is the first membership club of its kind.<br /><br /> CIRKOL blends decentralized technology with our innate desire to connect with people in the physical world.<br /><br /> Our experienced team has prepared a proprietary pro forma for the purposes of acquisition and redevelopment of a hotel and beach club in Miami, Florida. Once the project treasury goal is achieved, we will begin to act on these development goals and ultimately offer prime access to utilize incredible on - property amenities to our mNFT(membership Non Fungible Token) holders.mNFT holders will also have the opportunity to buy and resell rNFTs(reservation Non Fungible Tokens) that operate as a decentralized booking platform for the hotel and beach club.<br /> Our first collection features artwork from Miami artist, Manfred Delgado, and is limited to an exclusive 5500 mNFTs minted using our proprietary marketplace.</p>           
         </div>
         
       </div>
