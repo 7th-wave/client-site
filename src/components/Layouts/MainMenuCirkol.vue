@@ -52,7 +52,7 @@
               :key="item.name" 
               :href="item.href" 
               target="_blank" 
-              class="text-gray-700 hover:text-gray-500 border border-gray-700 flex items-center justify-center w-14 h-14"
+              class="text-gray-700 hover:text-pink hover:text-pink border border-gray-700 hover:border-pink flex items-center justify-center w-14 h-14"
               rel="noopener noreferrer"
             >
               <span class="sr-only">{{ item.name }}</span>
