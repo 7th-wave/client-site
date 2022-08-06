@@ -7,7 +7,6 @@
       lg:py-16
       relative
       mx-auto
-      bg-gray-100
       font-inter
       space-y-4
     "
@@ -15,21 +14,15 @@
     <!-- <div class="lg:hidden">
       <Navbar />
     </div> -->
-    <div
-      class="py-0 sm:py-4 md:pb-8 md:pt-4 lg:pt-0 lg:pb-8 text-center space-y-4"
-    >
-      <h1 class="sm:text-4xl text-2xl font-medium" v-if="user">
-        {{ user.username ? user.username : 'User' }} Collection
-      </h1>
-    </div>
+    
     <div class="w-full flex bg-white px-4 py-5 text-center" v-if="user">
       <div class="m-auto flex flex-col items-center">
-        <div class="w-56 h-56 rounded-full bg-gray-200">
-          <user-image :src="user.avatar ? user.avatar : null" />
+        <div class="w-56 h-56 rounded-full bg-gray-200 mb-2">
+          <user-image :src="user.avatar ? user.avatar : null" :custom_height="56" />
         </div>
-        <div class="flex flex-col items-start space-y-1">
-          <span class="text-lg font-medium text-gray-900">{{ user.username }}</span>
-          <span class="text-primary-500 font-medium text-sm"
+        <div class="flex flex-col items-center space-y-1">
+          <span class="text-4xl font-light text-gray-900">{{ user.username }}</span>
+          <span class="text-primary-500 font-light text-xl"
             >{{ user.blockchainAddress }}</span
           >
         </div>
