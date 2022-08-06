@@ -88,11 +88,6 @@ const getLastBid = async (auction) => {
     return bidsNew[0];
 }
 
-const saveUser = async(data) => {
-    const result = await axios.post(app_url+'create_client', data);
-    return result.data;
-}
-
 const getUserByAddress = async(address) => {
     const result = await axios.get(app_url+'find_client?ref='+address);
     return result.data;
@@ -118,7 +113,6 @@ export {
     getCurrentUser,
     getClientByBlockChain,
     getLastBid,
-    saveUser,
     getUserByAddress,
     getVaults,
     getCategories

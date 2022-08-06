@@ -14,8 +14,20 @@ const getClient = async(address) => {
     return result.data;
 }
 
+const saveUser = async(data) => {
+    const result = await axios.post(app_url+'create_client', data);
+    return result.data;
+}
+
+const updateUser = async(data, address) => {
+    const result = await axios.post(app_url+'edit_client?ref='+address, data);
+    return result.data;
+}
+
 
 export {
     getClients,
-    getClient
+    getClient,
+    saveUser,
+    updateUser
 };

@@ -129,7 +129,7 @@
 
 
 <script>
-import IconChevron from "../Icons/IconChevron .vue";
+import IconChevron from "../Icons/IconChevron.vue";
 
 export default {
   props:['type'],

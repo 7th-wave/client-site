@@ -11,8 +11,14 @@
         <div class="sm:col-span-2 hidden xl:block">
           <Menu />
         </div>
+        <div class="mt-5 md:mt-0 lg:col-span-5 grid md:grid-cols-2 grid-cols-1 gap-4 w-full" v-if="nfts.length == 0">
+        <div v-for="index in 8"
+            :key="index">
+          <nft-skeleton  />
+        </div>
+      </div>
         <div
-          class="mt-5 md:mt-0 lg:col-span-5 grid md:grid-cols-2 grid-cols-1 gap-4 w-full"
+          class="mt-5 md:mt-0 lg:col-span-5 grid md:grid-cols-2 grid-cols-1 gap-4 w-full" v-if="nfts.length > 0"
         >
           <div v-for="(Nft, index, key) in nfts" :key="key">
             
@@ -79,6 +85,7 @@ import { computed, ref } from "@vue/reactivity";
 import { onMounted } from "@vue/runtime-core";
 import { storage } from "../../firebase/firebase";
 import { getUserNfts } from "../../firebase/nfts";
+import NftSkeleton from '../../components/Shared/NftSkeleton.vue';
 // import GalleryClient from "@/components/Gallery/GalleryClient.vue";
 // import { ref, computed } from "vue";
 // import { useStore } from "vuex";
@@ -91,16 +98,13 @@ export default {
     Navbar,
     NftCard,
     AccountLayout,
+    NftSkeleton,
     //CreateNftButton,
   },
   setup() {
     const artworks = ref([]);
 
-    const nfts = ref([
-      {
-        id: 0,
-      },
-    ]);
+    const nfts = ref([]);
 
     const store = useStore();
     const router = useRouter();

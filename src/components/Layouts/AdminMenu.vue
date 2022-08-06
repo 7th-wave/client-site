@@ -133,16 +133,7 @@ import { useStore } from "vuex";
 import { useRoute, useRouter } from "vue-router";
 import { auth, storage } from "../../firebase/firebase";
 
-const navigation = [
-  { name: "My Account", href: {name:'MyAccount',params:{address:'gfdg'}},subname:'',subname1:'' },
-  { name: "Vault Categories", href:  {name:'My_collections'},subname:'CollectionDetails',subname1:'Fractionalize'  },
-  { name: "Vaults", href:  {name:'MyVault'},subname:'',subname1:''  },
-  { name: "NFTs", href:  {name:'My_fractions'},subname:'My_fractions',subname1:'My_fractions_details'  },
-  { name: "Clients", href:  {name:'PurchasseHistory'},subname:'',subname1:''  },
-  { name: "Emails", href:  {name:'PurchasseHistory'},subname:'',subname1:''  },
-  { name: "Team", href:  {name:'PurchasseHistory'},subname:'',subname1:''  },
 
-];
 export default {
   components: {
     // LockClosedIcon
@@ -162,6 +153,17 @@ export default {
     const email = computed(() => store.getters["user/getEmail"]);
 
     const avatar = ref("");
+
+    const navigation = [
+      { name: "My Account", href: {name:'MyAccount'},subname:'',subname1:'' },
+      { name: "Vault Categories", href:  {name:'My_collections'},subname:'CollectionDetails',subname1:'Fractionalize'  },
+      { name: "Vaults", href:  {name:'MyVault'},subname:'',subname1:''  },
+      { name: "NFTs", href:  {name:'My_fractions'},subname:'My_fractions',subname1:'My_fractions_details'  },
+      { name: "Clients", href:  {name:'PurchasseHistory'},subname:'',subname1:''  },
+      { name: "Emails", href:  {name:'PurchasseHistory'},subname:'',subname1:''  },
+      { name: "Team", href:  {name:'PurchasseHistory'},subname:'',subname1:''  },
+
+    ];
 
     const openModal = async () => {
       await store.dispatch("NotificationStore/SET_MODAL_TITLE", {
