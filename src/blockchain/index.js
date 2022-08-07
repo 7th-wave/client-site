@@ -246,6 +246,22 @@ const checkBalance = async (address, instance, provider) => {
   return balance;
 };
 
+const getWhiteList = async (address) => {
+  // const accounts = await window.ethereum.send("eth_requestAccounts");
+  window.web3 = new Web3(window.ethereum);
+  console.log(address)
+  //const addresses = await window.web3.eth.getAccounts();
+  //Create contract object
+  const nftContract = new window.web3.eth.Contract(
+    FERC721,
+    addresses[currNetwork].ERC721
+  );
+
+  const result = await nftContract.methods.getWhiteListForAddress(address).call();
+
+  return {price: window.web3.utils.fromWei(result[0], "ether"), amount: result[1]};
+};
+
 const getTxReceipt = async (tx) => {
   try {
     const receipt = await window.web3.eth.getTransactionReceipt(tx);
@@ -273,5 +289,6 @@ export {
   approveBasket,
   approveNFT,
   transferNFT,
-  mintVault
+  mintVault,
+  getWhiteList
 };

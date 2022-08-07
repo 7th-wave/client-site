@@ -72,6 +72,8 @@
         :auction="auction"
         @on:placedBid="placedBid"
         :nftRef="nftRef"
+        :price="currentPrice"
+        :amount="currentAmount"
       />
       </div>
     </div>
@@ -358,7 +360,8 @@ import { storage } from "../../firebase/firebase";
 import { getNft } from "../../firebase/nfts";
 
 import MintsInfosCards from '@/components/cards/MintsInfosCards.vue';
-  import { Skeletor } from 'vue-skeletor';
+import { Skeletor } from 'vue-skeletor';
+import { getWhiteList } from '../../blockchain/index';
 
 
 export default {
@@ -392,6 +395,8 @@ export default {
     const cards = ref([]);
 
     const bid = ref(0);
+    const currentPrice = ref();
+    const currentAmount = ref();
 
     const description = ref("");
 
@@ -437,7 +442,7 @@ export default {
     const getFullImageURL = async (item) => {
       var storageRef = storage.ref();
       imageUrl.value = await storageRef.child(item).getDownloadURL();
-      imgObj.value.src = imageUrl.value;
+      imgObj.src = imageUrl.value;
     };
 
     const getData = async () => {
@@ -484,6 +489,11 @@ export default {
     };
 
     onMounted(async () => {
+      //await store.dispatch('blockchain/initWallets');
+      //await store.dispatch('blockchain/getBlockChain');
+      const mintValues = await getWhiteList(currentAddress.value);
+      currentPrice.value = parseFloat(mintValues.price);
+      currentAmount.value = parseInt(mintValues.amount);
       await getData();
     });
 
@@ -527,7 +537,9 @@ export default {
       isLoaded,
       emitsLogin,
       description,
-      imgObj
+      imgObj,
+      currentPrice,
+      currentAmount
     };
   },
 };

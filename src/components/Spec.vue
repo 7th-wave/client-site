@@ -32,7 +32,7 @@
 					<div v-else-if="nft.blockChainOwner !== currentAddress && !nft.isMinted">
 						<div class="flex flex-col">
 							
-							<div><Mint :user="user.dbRef" :current-address="currentAddress" :nft="nft" :nft-ref="nftRef" /></div>
+							<div><Mint :user="user.dbRef" :current-address="currentAddress" :nft="nft" :nft-ref="nftRef" :price="price" :amount="amount" /></div>
 
 						</div>
 					</div>
@@ -254,6 +254,8 @@ export default {
 		nft: Object,
 		auction: Object,
 		auctionref: String,
+		price: Number,
+		amount: Number
 	},
 	emits: ["on:login", "on:info", "on:placedBid"],
 	setup(props, { emit }) {
