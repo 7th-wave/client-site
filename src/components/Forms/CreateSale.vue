@@ -374,7 +374,6 @@ export default {
     const onSaveSale = async () => {
 			
 			store.dispatch("NotificationStore/TOGGLE_LOADING");
-			//const instances = store.getters["blockchain/getInstance"];
 
 			let date;
 			let time;
@@ -409,7 +408,6 @@ export default {
 
 			/* if (dataSale.value.total >= minValue.value) {
 				store.dispatch("NotificationStore/TOGGLE_LOADING");
-				const instances = store.getters["blockchain/getInstance"];
 
 				try {
 					const receipt = await offer(

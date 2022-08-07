@@ -89,6 +89,7 @@ export default {
     const store = useStore();
     //const collectionRef = route.params.ref;
     const addr = computed(() => store.getters['blockchain/getCurrentAddress']);
+    const instance = computed(() => store.getters['blockchain/getInstance']);
 
     const price = ref(null);
     const amount = ref(null);
@@ -124,7 +125,8 @@ export default {
             category: 'mnft-miami',
             collection: item.collection,
             imageUrl: await getFullImageURL(item.imageUrl),
-            isMinted: item.isMinted
+            isMinted: item.isMinted,
+            mintinPrice: item.mintinPrice
           };
 
 
@@ -189,9 +191,11 @@ export default {
     onMounted(async() => {
       await store.dispatch('blockchain/initWallets');
       await store.dispatch('blockchain/getBlockChain');
-      const mintValues = await getWhiteList(addr.value);
-      price.value = mintValues.price;
-      amount.value = mintValues.amount;
+      if (addr.value) {
+        const mintValues = await getWhiteList(instance.value, addr.value);
+        price.value = mintValues.price;
+        amount.value = mintValues.amount;
+      }
       await getData();
       window.addEventListener("scroll", handleScroll)
     });

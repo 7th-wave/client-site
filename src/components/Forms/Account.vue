@@ -613,6 +613,7 @@ export default {
     const passwordAdmin = ref("");
     const user = ref();
     const isInitied = ref(false);
+    const currentAddress = computed(() => store.getters['blockchain/getCurrentAddress']);
 
 
     const validations = ref({
@@ -657,7 +658,7 @@ export default {
     };
 
     const initUser = async () => {
-      await store.dispatch('user/getUser', {address: computed(() => store.getters['blockchain/getCurrentAddress'])});
+      await store.dispatch('user/getUser', {address: currentAddress.value});
       let userObject = store.getters["user/getUser"];
 
       user.value = Object.assign({}, userObject);

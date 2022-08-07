@@ -296,6 +296,10 @@ export default {
       () => store.getters["blockchain/getCurrentProvider"]
     );
 
+    const web3Instance = computed(
+      () => store.getters["blockchain/getInstance"]
+    );
+
     watch(open_modal, function (val) {
       openModal.value = val;
     });
@@ -314,13 +318,10 @@ export default {
 
       usd.value = request.data.USD * saleObject.value.total;
       conversorVal.value = request.data.USD;
-      const instances = store.getters["blockchain/getInstance"];
-      console.log(instances[currentProvider.value]);
 
       usdcBalance.value = await checkBalance(
-        currentAddress.value,
-        instances[currentProvider.value],
-        currentProvider.value
+        web3Instance.value,
+        currentAddress.value
       );
       hasFunds.value = usdcBalance.value >= saleObject.value.total;
 
@@ -334,7 +335,7 @@ export default {
     };
 
     const checkCurrentBalance = async () => {
-      usdcBalance.value = await checkBalance();
+      usdcBalance.value = await checkBalance(web3Instance, currentAddress.value);
       console.log(usdcBalance.value);
       showConversor.value = false;
       hasFunds.value = usdcBalance.value >= minValue.value;
@@ -400,8 +401,8 @@ export default {
 
     onMounted(() => {
       console.log("clientRef =>", clientRef.value);
-	  saleObject.value = sale.value;
-	  saleObject.value.soldTo = clientRef.value;
+	    saleObject.value = sale.value;
+	    saleObject.value.soldTo = clientRef.value;
       saleObject.value.soldToAddress = address.value;
     });
 
