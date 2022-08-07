@@ -360,6 +360,10 @@ export default {
 		const currentProvider = computed(
 			() => store.getters["blockchain/getCurrentProvider"]
 		);
+		
+		const web3Instance = computed(
+			() => store.getters["blockchain/getInstance"]
+		);
 
         watch(open_modal, function (val) {
 			openModal.value = val;
@@ -376,9 +380,8 @@ export default {
 			console.log(instances[currentProvider.value]);
 
 			usdcBalance.value = await checkBalance(
+				web3Instance.value,
 				currentAddress.value,
-				instances[currentProvider.value],
-				currentProvider.value
 			);
 			hasFunds.value = usdcBalance.value >= offerObject.value.total;
 

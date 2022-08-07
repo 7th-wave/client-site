@@ -11,7 +11,7 @@
           {{ nft.title }}
         </h2>
         <div class="flex items-center justify-end " v-if="!nft.isMinted">
-          <ETHalt /> <h1 class="ml-2 my-0 text-xl font-inter  text-gray-900 text-right">{{ price }}</h1>
+          <ETHalt /> <h1 class="ml-2 my-0 text-xl font-inter  text-gray-900 text-right">{{ currentPrice }}</h1>
         </div>
         <div class="flex items-center my-0 leading-8 justify-end font-inter text-xl" v-if="nft.isMinted">
           Minted
@@ -29,7 +29,16 @@ import ETHalt from "./ETHalt.vue";
 // import { useRouter } from 'vue-router'
 
 export default {
-  props: ["nft", "bg", "badgecolor", "url", "showArrows", "create", 'price', 'amount'],
+  props: {
+    nft: Object, 
+    bg: String, 
+    badgecolor: String, 
+    url: String, 
+    showArrows: String, 
+    create: Boolean, 
+    price: Number,
+    amount: Number
+  },
 
   components: {
     //Stats,
@@ -39,14 +48,12 @@ export default {
   setup(props) {
     const router = useRouter();
 
-    const currentPrice = ref(props.nft.price);
+    const currentPrice = ref(props.nft.mintinPrice);
 
     // const router = useRouter()
     onMounted(() => {
-      console.log(props.value);
-      if (props.amount ) {
-        currentPrice.value = props.price;
-      }
+      console.log(props.amount);
+      currentPrice.value = parseInt(props.amount) ? parseFloat(props.price) : props.nft.mintinPrice;
     });
 
     const goToDetails = () => {
@@ -64,6 +71,7 @@ export default {
 
     return {
       goToDetails,
+      currentPrice
     };
   },
 };

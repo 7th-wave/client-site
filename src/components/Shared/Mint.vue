@@ -31,7 +31,7 @@
   </div>
 </template>
 <script>
-import { ref, toRefs } from "@vue/reactivity";
+import { computed, ref, toRefs } from "@vue/reactivity";
 import { useStore } from "vuex";
 import Button from "../Layouts/Button.vue";
 import ETHalt from "./ETHalt.vue";
@@ -84,6 +84,10 @@ export default {
       });
       await store.dispatch("NotificationStore/SET_OPEN_MODAL");
     };
+
+    const web3Instance = computed(
+			() => store.getters["blockchain/getInstance"]
+		);
 
     const closeModal = () => {
       showOfferDialog.value = false;
@@ -158,6 +162,7 @@ export default {
       }; */
       try {
         const result = await mintNft(
+          web3Instance.value,
           "0xB889eDEFBF7fC1f8Ae11ac1D69462be8C863004D",
           token_id,
           "https://gateway.pinata.cloud/ipfs/" + metadataIpfs.IpfsHash,

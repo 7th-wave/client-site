@@ -429,6 +429,8 @@ export default {
     const currentAddress = computed(
       () => store.getters["blockchain/getCurrentAddress"]
     );
+    const instance = computed(() => store.getters['blockchain/getInstance']);
+
     const isOwner = computed(
       () => nft.value.blockChainOwner == currentAddress.value
     );
@@ -491,9 +493,11 @@ export default {
     onMounted(async () => {
       //await store.dispatch('blockchain/initWallets');
       //await store.dispatch('blockchain/getBlockChain');
-      const mintValues = await getWhiteList(currentAddress.value);
-      currentPrice.value = parseFloat(mintValues.price);
-      currentAmount.value = parseInt(mintValues.amount);
+      if (currentAddress.value) {
+        const mintValues = await getWhiteList(instance.value, currentAddress.value);
+        currentPrice.value = parseFloat(mintValues.price);
+        currentAmount.value = parseInt(mintValues.amount);
+      }
       await getData();
     });
 

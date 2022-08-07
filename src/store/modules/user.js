@@ -98,18 +98,20 @@ const actions = {
     dispatch("recoverUser", payload);
   },
   
-  async recoverUser({ commit }, payload) {
+  async recoverUser({ commit, dispatch }, payload) {
+    try {
       const results = await getUserByAddress(payload.address);
       const user = results.doc;
       user.dbRef = results.doc.blockchainAddress;
       console.log('recover user->', user);
       commit("setUser", user);
+    } catch ($e) {
+      dispatch("saveUser", {address: payload.address, provider: payload.provider});
+    }
     
   },
   async saveUser({ commit }, payload) {
-    const clientRef = payload.address;
-    //await db.collection("clients").doc(clientRef).set(payload);
-   
+    const clientRef = payload.address;   
 
     let user = {
       blockchainAddress: payload.address,
