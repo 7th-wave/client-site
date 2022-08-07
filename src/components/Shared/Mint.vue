@@ -25,7 +25,7 @@
           <ETHalt size="10" />
         </div>
 
-        <h3 class="mt-0 text-4xl">{{ nft.mintinPrice }}</h3>
+        <h3 class="mt-0 text-4xl">{{ finalPrice }}</h3>
       </div>
     </div>
   </div>
@@ -42,12 +42,20 @@ import { onMounted } from '@vue/runtime-core';
 
 export default {
   components: { Button, ETHalt },
-  props: ["user", "currentAddress", "nft", "nftRef"],
+  props: {
+    user: String, 
+    currentAddress: String, 
+    nft: Object,
+    nftRef: String, 
+    price: Number, 
+    amount: Number
+  },
   setup(props) {
     const store = useStore();
     const router = useRouter();
+    const finalPrice = ref();
 
-    const { nft, currentAddress, nftRef } = toRefs(props);
+    const { nft, currentAddress, nftRef, price, amount } = toRefs(props);
 
     const showOfferDialog = ref(false);
 
@@ -87,7 +95,7 @@ export default {
       const nextId = await findNewxtIdPerContract(contractAddress);
       console.log(nextId);
       const token_id = nextId.nextId;
-      const description = nft.value.description.replace(/\\n/g, '');
+      const description = nft.value.description;
 
       const attrs = nft.value.attributes.map((item) => {
         let value = item.value;
@@ -132,10 +140,10 @@ export default {
 
       const metadata = {
         pinataMetadata: {
-          name: nft.value.title + token_id,
+          name: nft.value.title + ' #' + token_id,
         },
         pinataContent: {
-          name: nft.value.title + token_id,
+          name: nft.value.title + ' #' + token_id,
           description: description,
           image: nft.value.ipfs,
           attributes: properties
@@ -154,7 +162,7 @@ export default {
           token_id,
           "https://gateway.pinata.cloud/ipfs/" + metadataIpfs.IpfsHash,
           process.env.VUE_APP_MINTING_TOKEN,
-          nft.value.mintinPrice
+          finalPrice.value
         );
         console.log("mint -> ", result);
         const newNft = Object.assign({}, nft.value);
@@ -162,7 +170,7 @@ export default {
           "https://gateway.pinata.cloud/ipfs/" + metadataIpfs.IpfsHash;
         newNft.blockchainId = token_id;
         newNft.status = "minted";
-        newNft.title = nft.value.title + token_id;
+        newNft.title = nft.value.title + ' #'  + token_id;
         newNft.isMinted = true;
         newNft.blockChainOwner = currentAddress.value;
         newNft.mintDate = new Date().getTime();
@@ -171,6 +179,7 @@ export default {
         router.push("/my-nfts");
         store.dispatch("NotificationStore/TOGGLE_LOADING");
       } catch (err) {
+        store.dispatch("NotificationStore/TOGGLE_LOADING");
         console.log(err);
       }
     };
@@ -179,6 +188,7 @@ export default {
       console.log('--');
       console.log(currentAddress.value);
       console.log('--');
+      finalPrice.value = amount.value ? price.value : nft.value.mintinPrice;
     })
 
     return {
@@ -187,6 +197,7 @@ export default {
       showOfferDialog,
       closeModal,
       mint,
+      finalPrice
     };
   },
 };

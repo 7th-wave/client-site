@@ -38,7 +38,7 @@
               :class="{ 'flex flex-nowrap h-48': art.id == 1 }"
             >
               <router-link :to="artLink(art)" class="cursor-pointer">
-              <nft-item :nft="art"  />
+              <nft-item :nft="art" :price="price" :amount="amount"  />
               </router-link>
               
             </div>
@@ -56,11 +56,13 @@
 //import Gallery from '@/components/Gallery/Gallery';
 import NftItem from '@/components/Shared/NftItem.vue';
 //import { useRoute } from 'vue-router';
-import { ref } from '@vue/reactivity';
+import { computed, ref } from '@vue/reactivity';
 import { onMounted, onUnmounted } from '@vue/runtime-core';
 import { getNftsByCollection } from '../../firebase/nfts';
 import { storage } from "../../firebase/firebase";
 import NftSkeleton from '@/components/Shared/NftSkeleton.vue';
+import { getWhiteList } from '../../blockchain/index';
+import { useStore } from 'vuex';
 
 //import { useStore } from 'vuex';
 
@@ -84,8 +86,12 @@ export default {
   },
   setup() {
     //const route = useRoute();
-    //const store = useStore();
+    const store = useStore();
     //const collectionRef = route.params.ref;
+    const addr = computed(() => store.getters['blockchain/getCurrentAddress']);
+
+    const price = ref(null);
+    const amount = ref(null);
 
     //const storage = firebase.storage();
     const currentPage = ref(1);
@@ -101,7 +107,10 @@ export default {
     });
     const isLoading = ref(true);
 
-    const getData = async () => {      
+    const getData = async () => {    
+      
+      
+
       
       const gallery = await getNftsByCollection(process.env.VUE_APP_CATEGORY, currentPage.value);
 
@@ -155,6 +164,7 @@ export default {
             href: "/admin/artwork/" + item.collection + "/" + item.dbRef,
             size: item.size,
             category: 'mnft-miami',
+            price: item.mintinPrice,
             collection: item.collection,
             imageUrl: await getFullImageURL(item.imageUrl),
           };
@@ -177,6 +187,11 @@ export default {
     };
 
     onMounted(async() => {
+      await store.dispatch('blockchain/initWallets');
+      await store.dispatch('blockchain/getBlockChain');
+      const mintValues = await getWhiteList(addr.value);
+      price.value = mintValues.price;
+      amount.value = mintValues.amount;
       await getData();
       window.addEventListener("scroll", handleScroll)
     });
@@ -193,7 +208,9 @@ export default {
       getMore,
       scrollComponent,
       artLink,
-      isLoading
+      isLoading,
+      price,
+      amount
       // footerNavigation,
       
     }

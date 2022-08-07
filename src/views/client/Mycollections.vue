@@ -24,7 +24,7 @@
             
             <NftCard v-if="Nft" @click="goDetails(Nft.id)">
               <template #image>
-                <img class="w-full h-full object-cover" :src="Nft.imageUrl" alt="" />
+                <div class="w-full h-full overflow-hidden"><img class="w-full h-full object-cover transition-all duration-300 transform scale-100 hover:scale-110" :src="Nft.imageUrl" alt="" /></div>
               </template>
               <template #badge v-if="false">
                 <div
