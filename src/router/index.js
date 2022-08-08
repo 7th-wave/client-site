@@ -13,6 +13,11 @@ const routes = [
     component: Home,
   },
   {
+    path: "/connect/:connect?",
+    name: "Connect",
+    component: Home,
+  },
+  {
     path: "/vault/create",
     name: "VaultsCreate",
 

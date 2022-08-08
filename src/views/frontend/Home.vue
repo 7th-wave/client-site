@@ -63,6 +63,7 @@ import { storage } from "../../firebase/firebase";
 import NftSkeleton from '@/components/Shared/NftSkeleton.vue';
 import { getWhiteList } from '../../blockchain/index';
 import { useStore } from 'vuex';
+import { useRoute } from 'vue-router';
 
 //import { useStore } from 'vuex';
 
@@ -84,8 +85,12 @@ export default {
     NftSkeleton
 
   },
-  setup() {
-    //const route = useRoute();
+  emits: ['on:connect'],
+  setup(props, {emit}) {
+    const route = useRoute();
+    const connect = computed(() => route.params.connect);
+
+
     const store = useStore();
     //const collectionRef = route.params.ref;
     const addr = computed(() => store.getters['blockchain/getCurrentAddress']);
@@ -202,6 +207,9 @@ export default {
 
     onUnmounted(async() => {
        window.removeEventListener("scroll", handleScroll)
+       if (connect.value) {
+        emit('on:login');
+       }
     });
 
     return {
