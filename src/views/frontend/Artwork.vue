@@ -16,7 +16,7 @@
       lg:flex-row lg:space-x-5
     "
   >
-    <div class="w-full" v-if="isLoaded">
+    <div class="w-full px-4" v-if="isLoaded">
       <img
         :src="imageUrl"
         class="w-full object-cover rounded-md shadow-md overflow-hidden mb-3"
@@ -24,38 +24,25 @@
         v-if="imageUrl"
       />
       <Skeletor v-else height="502" />
-      <Spec
-        @on:login="emitsLogin"
-        :nft="{ ...nft, artistName }"
-        @on:info="placebid_note = true"
-        :auctionref="auctionref"
-        :auction="auction"
-        @on:placedBid="placedBid"
-        :nftRef="nftRef"
-      />
+      
     </div>
-    <div class="w-full flex items-start flex-col space-y-2" v-if="isLoaded">
+    <div class="w-full flex items-start flex-col justify-between space-y-2" v-if="isLoaded">
       <div
         class="
           w-full
-          rounded-md
-          bg-white
-          shadow-md
-          p-4
           flex flex-col
           items-start
           space-y-4
         "
       >
-        <span class="text-xl font-semibold text-gray-900">{{ nft.title }}</span>
-        <p class="text-left text-lg font-normal text-black">
-          <Markdown :source="description" :linkify="true" :html="true" />
-        </p>
+        <span class="text-4xl font-normal text-gray-900 mt-4 lg:mt-0 px-4">{{ nft.title }}</span>
+        
       </div>
-      <div class="w-full grid grid-cols-1 lg:grid-cols-2 gap-2">
+      <div class="w-full px-4 grid grid-cols-1 lg:grid-cols-2 gap-2">
         <div
           class="
-            col-span-1
+            col-span-2
+            lg:col-span-1
             w-full
             bg-white
             rounded-md
@@ -67,14 +54,28 @@
           "
           v-for="(item, index) of nft.attributes"
           :key="index"
+          :class="{'col-span-2': index+1 == nft.attributes.length}"
         >
-          <span class="text-base text-gray-500 font-semibold uppercase"
+          <span class="text-base text-gray-500 font-semibold uppercase" 
             >{{ item.name }}:</span
           >
           <span class="text-base text-gray-900 font-normal">{{
             item.value
           }}</span>
         </div>
+      </div>
+      <div class="w-full">
+      <Spec
+        @on:login="emitsLogin"
+        :nft="{ ...nft, artistName }"
+        @on:info="placebid_note = true"
+        :auctionref="auctionref"
+        :auction="auction"
+        @on:placedBid="placedBid"
+        :nftRef="nftRef"
+        :price="currentPrice"
+        :amount="currentAmount"
+      />
       </div>
     </div>
   </div>
@@ -359,9 +360,9 @@ import { storage } from "../../firebase/firebase";
 //import Share from "../../components/Modals/Share.vue";
 import { getNft } from "../../firebase/nfts";
 
-import Markdown from "vue3-markdown-it";
 import MintsInfosCards from '@/components/cards/MintsInfosCards.vue';
-  import { Skeletor } from 'vue-skeletor';
+import { Skeletor } from 'vue-skeletor';
+import { getWhiteList } from '../../blockchain/index';
 
 
 export default {
@@ -374,7 +375,6 @@ export default {
     Spec,
     LightBox,
     //Share,
-    Markdown,
     MintsInfosCards,
     Skeletor
   },
@@ -396,6 +396,8 @@ export default {
     const cards = ref([]);
 
     const bid = ref(0);
+    const currentPrice = ref();
+    const currentAmount = ref();
 
     const description = ref("");
 
@@ -428,6 +430,8 @@ export default {
     const currentAddress = computed(
       () => store.getters["blockchain/getCurrentAddress"]
     );
+    const instance = computed(() => store.getters['blockchain/getInstance']);
+
     const isOwner = computed(
       () => nft.value.blockChainOwner == currentAddress.value
     );
@@ -441,7 +445,7 @@ export default {
     const getFullImageURL = async (item) => {
       var storageRef = storage.ref();
       imageUrl.value = await storageRef.child(item).getDownloadURL();
-      imgObj.value.src = imageUrl.value;
+      imgObj.src = imageUrl.value;
     };
 
     const getData = async () => {
@@ -488,6 +492,13 @@ export default {
     };
 
     onMounted(async () => {
+      //await store.dispatch('blockchain/initWallets');
+      //await store.dispatch('blockchain/getBlockChain');
+      if (currentAddress.value) {
+        const mintValues = await getWhiteList(instance.value, currentAddress.value);
+        currentPrice.value = parseFloat(mintValues.price);
+        currentAmount.value = parseInt(mintValues.amount);
+      }
       await getData();
     });
 
@@ -531,7 +542,9 @@ export default {
       isLoaded,
       emitsLogin,
       description,
-      imgObj
+      imgObj,
+      currentPrice,
+      currentAmount
     };
   },
 };

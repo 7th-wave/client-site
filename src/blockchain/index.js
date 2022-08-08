@@ -39,12 +39,14 @@ let currNetwork = process.env.VUE_APP_NETWORK;
 let decimals = Math.pow(10, 6);
 
 const setWeb3 = (instance, provider) => {
-  if (provider == 'fortmatic') {
-    return new Web3(instance.getProvider());
+  if (provider == 'walletconnect') {
+    return instance;
+  } else if (provider == 'fortmatic') {
+    window.web3 = new Web3(instance.getProvider());
   } if (provider == 'portis') {
-    return new Web3(instance.provider);
+    window.web3 = new Web3(instance.provider);
   } else {
-    return new Web3(instance);
+    window.web3 = new Web3(instance);
   }
 }
 
@@ -94,42 +96,27 @@ const pinJson = async (json) => {
   return results.data;
 };
 
-const addOperatorERC721 = async (account) => {
-  const accounts = await window.ethereum.send("eth_requestAccounts");
-  window.web3 = new Web3(window.ethereum);
-  // Create contract object
-  const tokenContractERC721 = new window.web3.eth.Contract(
-    FERC721,
-    addresses[currNetwork].ERC721
-  );
-  const receipt = await tokenContractERC721.methods
-    .addOperator(account)
-    .send({ from: accounts.result[0] });
-
-  return receipt;
-};
-
-const mintNft = async (minter, id, metadataUri, token, value) => {
-  //console.log(signature)
+const mintNft = async (web3Instance, minter, id, metadataUri, token, value) => {
+  const web3 = web3Instance();
   //BN = window.web3.utils.BN;
-  const accounts = await window.ethereum.send("eth_requestAccounts");
-  window.web3 = new Web3(window.ethereum);
+  const accounts = await web3.eth.getAccounts();
+  console.log(accounts);
   console.log(metadataUri);
   // Create contract object
-  const tokenContractERC721 = new window.web3.eth.Contract(
+  const tokenContractERC721 = new web3.eth.Contract(
     FERC721,
     addresses[currNetwork].ERC721
   );
   const receipt = await tokenContractERC721.methods
-    .mintWithToken(minter, id, metadataUri, window.web3.utils.keccak256(token))
-    .send({ from: accounts.result[0], value: window.web3.utils.toWei(value.toString(), "ether")});
+    .mintWithToken(minter, id, metadataUri, web3.utils.keccak256(token))
+    .send({ from: accounts[0], value: web3.utils.toWei(value.toString(), "ether")});
 
   return receipt;
 };
 
 const mintBasket = async () => {
-  const accounts = await window.ethereum.send("eth_requestAccounts");
-  window.web3 = new Web3(window.ethereum);
+  const accounts = await window.web3.eth.getAccounts();
+  //window.web3 = new Web3(window.ethereum);
   // Create contract object
   const basketFactoryContract = new window.web3.eth.Contract(
     BasketFactory,
@@ -143,8 +130,8 @@ const mintBasket = async () => {
 };
 
 const approveBasket = async (basketaddress) => {
-  const accounts = await window.ethereum.send("eth_requestAccounts");
-  window.web3 = new Web3(window.ethereum);
+  const accounts = await window.web3.eth.getAccounts();
+  //window.web3 = new Web3(window.ethereum);
   // Create contract object
   const basketContract = new window.web3.eth.Contract(
     FERC721,
@@ -158,8 +145,8 @@ const approveBasket = async (basketaddress) => {
 };
 
 const mintVault = async (name, ticker, basketaddress, id, supply, listPrice, fee) => {
-  const accounts = await window.ethereum.send("eth_requestAccounts");
-  window.web3 = new Web3(window.ethereum);
+  const accounts = await window.web3.eth.getAccounts();
+  //window.web3 = new Web3(window.ethereum);
   // Create contract object
   const vaultFactoryContract = new window.web3.eth.Contract(
     VaultFactory,
@@ -173,8 +160,8 @@ const mintVault = async (name, ticker, basketaddress, id, supply, listPrice, fee
 };
 
 const approveNFT = async (nftAddress, id, basketaddress) => {
-  const accounts = await window.ethereum.send("eth_requestAccounts");
-  window.web3 = new Web3(window.ethereum);
+  const accounts = await window.web3.eth.getAccounts();
+  //window.web3 = new Web3(window.ethereum);
   // Create contract object
   const nftContract = new window.web3.eth.Contract(
     FERC721,
@@ -190,8 +177,8 @@ const approveNFT = async (nftAddress, id, basketaddress) => {
 const transferNFT = async (nftAddress, id, basketaddress) => {
   console.log('Here');
 
-  const accounts = await window.ethereum.send("eth_requestAccounts");
-  window.web3 = new Web3(window.ethereum);
+  const accounts = await window.web3.eth.getAccounts();
+  //window.web3 = new Web3(window.ethereum);
   // Create contract object
   const nftContract = new window.web3.eth.Contract(
     FERC721,
@@ -211,7 +198,7 @@ const transferNFT = async (nftAddress, id, basketaddress) => {
 };
 
 const tokenAllowance = async (amount, address, instance, provider) => {
-  // const accounts = await window.ethereum.send("eth_requestAccounts");
+  // const accounts = await window.web3.eth.getAccounts();
   window.web3 = setWeb3(instance, provider);
 
   // Create contract object
@@ -227,13 +214,11 @@ const tokenAllowance = async (amount, address, instance, provider) => {
   return receipt;
 };
 
-const checkBalance = async (address, instance, provider) => {
-  // const accounts = await window.ethereum.send("eth_requestAccounts");
-  window.web3 = setWeb3(instance, provider);
+const checkBalance = async (web3Instance, address) => {
+  const web3 = web3Instance();
 
-  //const addresses = await window.web3.eth.getAccounts();
   //Create contract object
-  const USDCContract = new window.web3.eth.Contract(
+  const USDCContract = new web3.eth.Contract(
     USDCAbi,
     addresses[currNetwork].USDC
   );
@@ -244,6 +229,23 @@ const checkBalance = async (address, instance, provider) => {
   console.log(balance);
 
   return balance;
+};
+
+const getWhiteList = async (web3Instance, address) => {
+  const web3 = web3Instance();
+  // const accounts = await window.web3.eth.getAccounts();
+  //window.web3 = new Web3(window.ethereum);
+  console.log(address)
+  //const addresses = await web3.eth.getAccounts();
+  //Create contract object
+  const nftContract = new web3.eth.Contract(
+    FERC721,
+    addresses[currNetwork].ERC721
+  );
+
+  const result = await nftContract.methods.getWhiteListForAddress(address).call();
+
+  return {price: web3.utils.fromWei(result[0], "ether"), amount: result[1]};
 };
 
 const getTxReceipt = async (tx) => {
@@ -263,7 +265,6 @@ export {
   testAuthentication,
   pinFile,
   pinJson,
-  addOperatorERC721,
   mintNft,
   getTxReceipt,
   tokenAllowance,
@@ -273,5 +274,6 @@ export {
   approveBasket,
   approveNFT,
   transferNFT,
-  mintVault
+  mintVault,
+  getWhiteList
 };

@@ -100,46 +100,20 @@ export default {
       registrationDone.value = event.registered;
       
 
-      if (event.provider == "metamask") {
-        const chainId = await window.ethereum.request({
-          method: "eth_chainId",
-        });
-        console.log(chains[chainId]);
+      const chainId = await window.ethereum.request({
+        method: "eth_chainId",
+      });
+      console.log(chains[chainId]);
 
+      checkChain(chains[chainId]);
+
+      window.ethereum.on("chainChanged", (chainId) => {
         checkChain(chains[chainId]);
-
-        window.ethereum.on("chainChanged", (chainId) => {
-          checkChain(chains[chainId]);
-        });
-
-        window.ethereum.on("accountsChanged", () => {
-          store.dispatch("user/logoutUser");
-          router.push("/");
-        });
-      } else if (event.provider == "walletconnect") {
-        walletConnectSetup();
-      }
-    };
-
-    const walletConnectSetup = () => {
-      const connector = store.getters["blockchain/getWalletConnectInstance"];
-      connector.on("session_update", (error, payload) => {
-        if (error) {
-          throw error;
-        }
-
-        // Get updated accounts and chainId
-        const { accounts, chainId } = payload.params[0];
-        console.log(accounts);
-        console.log(chainId);
       });
 
-      connector.on("disconnect", (error, payload) => {
-        if (error) {
-          throw error;
-        }
-
-        console.log(payload);
+      window.ethereum.on("accountsChanged", () => {
+        store.dispatch("user/logoutUser");
+        router.push("/");
       });
     };
 

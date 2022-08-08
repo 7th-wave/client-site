@@ -1,5 +1,5 @@
 <template>
-  <div class="grid lg:grid-cols-4 gap-4">
+  <div class="grid lg:grid-cols-4 gap-4 px-4 lg:px-0">
     <div
       class="
         flex
@@ -15,10 +15,7 @@
     >
       <div class="flex items-center space-x-2 px-2 py-2">
         <span class="text-lg text-gray-500 font-semibold">Artist:</span>
-        <span class="text-lg text-gray-900 font-normal">Banksy</span>
-      </div>
-      <div>
-        <ItrIcon />
+        <span class="text-lg text-gray-900 font-normal">Manfred Delgado</span>
       </div>
     </div>
     <div
@@ -34,7 +31,7 @@
       "
     >
       <div class="flex items-center space-x-2 px-2 py-2">
-        <span class="text-lg text-gray-500 font-semibold">Smart Contract:</span>
+        <span class="text-lg text-gray-500 font-semibold">Contract:</span>
         <span class="text-lg text-primary-500 font-normal">{{
           nft.contractAddress
             ? nft.contractAddress.replace(
@@ -47,8 +44,8 @@
             : "N/A"
         }}</span>
       </div>
-      <div class="cursor-pointer">
-        <DocumentDuplicateIcon />
+      <div class="cursor-pointer" @click="goToEtherscan(nft.contractAddress)">
+        <font-awesome-icon icon="fa-solid fa-arrow-up-right-from-square" />
       </div>
     </div>
     <div
@@ -65,7 +62,7 @@
     >
       <div class="flex items-center space-x-2 px-2 py-2">
         <span class="text-lg text-gray-500 font-semibold">Mint Date:</span>
-        <span class="text-lg text-gray-900 font-normal">{{nft.mintDate ? new Date(nft.mintDate._seconds*1000) : 0 }}</span>
+        <span class="text-lg text-gray-900 font-normal">{{nft.mintDate ? new Date(nft.mintDate).toLocaleDateString("en-US") : 0 }}</span>
       </div>
     </div>
     <div
@@ -94,8 +91,8 @@
             : "N/A"
         }}</span>
       </div>
-      <div class="cursor-pointer">
-        <DocumentDuplicateIcon />
+      <div class="cursor-pointer" @click="goToPortfolio(nft.blockChainOwner)">
+        <font-awesome-icon icon="fa-solid fa-arrow-up-right-from-square" />
       </div>
     </div>
   </div>
@@ -103,16 +100,30 @@
 
 
 <script>
-import ItrIcon from "../../components/Icons/ItrIcon.vue";
-import DocumentDuplicateIcon from "../../components/Icons/DocumentDuplicateIcon.vue";
+import { useRouter } from 'vue-router';
 
 export default {
-  components: {
-    ItrIcon,
-    DocumentDuplicateIcon,
-  },
+  
   props: ["nft"],
-  setup() {},
+  setup() {
+    const router = useRouter();
+    const goToEtherscan = (address) => {
+      let url = 'https://rinkeby.etherscan.io/address/'+address;
+      if (process.env.VUE_APP_NETWORK == 'mainnet') {
+        url = 'https://etherscan.io/address/'+address;
+      }
+      window.open(url);
+    } 
+
+    const goToPortfolio = (address) => {
+      router.push('/user-portfolio/'+address);
+    }
+
+    return {
+      goToEtherscan,
+      goToPortfolio
+    }
+  },
 };
 </script>
 

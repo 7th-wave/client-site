@@ -1,9 +1,8 @@
 import Fortmatic from "fortmatic";
 import Portis from "@portis/web3";
 import detectEthereumProvider from '@metamask/detect-provider';
-import WalletConnect from "@walletconnect/client";
+import WalletConnectProvider from "@walletconnect/web3-provider";
 
-import QRCodeModal from "@walletconnect/qrcode-modal";
 
 import { get, set, del } from "idb-keyval";
 
@@ -17,7 +16,10 @@ const state = {
   connected: false,
   portis: null,
   fortmatic: null,
-  walletconnect: null
+  walletconnect: null,
+  instance: () => ({
+    web3: {}
+  })
 };
 
 // getters
@@ -32,11 +34,7 @@ const getters = {
     return state.walletconnect;
   },
   getInstance: (state) => {
-    return {
-      fortmatic: state.fortmatic,
-      portis: state.portis,
-      metamask: window.ethereum,
-    };
+    return state.instance
   },
   isConnected: (state) => {
     return state.connected;
@@ -61,6 +59,9 @@ const mutations = {
   setWallets(state, payload) {
     (state.fortmatic = payload.fortmatic), (state.portis = payload.portis);
   },
+  setInstance(state, payload) {
+    state.instance = payload
+  },
 };
 
 const actions = {
@@ -81,10 +82,11 @@ const actions = {
 
   async connected({ commit }) {
     let currentAddress = null;
+    let web3;
 
     if (window.ethereum) {
       // Use MetaMask provider
-      window.web3 = new Web3(window.ethereum);
+     web3 = new Web3(window.ethereum);
       const addresses = await window.ethereum.request({
         method: "eth_requestAccounts",
       });
@@ -92,16 +94,16 @@ const actions = {
     } else {
       let isUserLoggedIn = await state.fortmatic.user.isLoggedIn();
       if (isUserLoggedIn) {
-        window.web3 = new Web3(state.fortmatic.getProvider());
+       web3 = new Web3(state.fortmatic.getProvider());
       } else {
         const portis = new Portis(
           process.env.VUE_APP_PORTIS_KEY,
           process.env.VUE_APP_NETWORK
         );
-        window.web3 = new Web3(portis.provider);
+       web3 = new Web3(portis.provider);
       }
 
-      const addresses = await window.web3.eth.getAccounts();
+      const addresses = await web3.eth.getAccounts();
       currentAddress = addresses[0];
     }
 
@@ -114,6 +116,7 @@ const actions = {
   async getBlockChain({ commit, dispatch, state }) {
     const bString = await get("blockchain");
     let currentAddress = null;
+    let web3;
 
     console.log(bString);
     let addresses = [];
@@ -123,23 +126,37 @@ const actions = {
       if (data.provider == "fortmatic") {
         let isUserLoggedIn = await state.fortmatic.user.isLoggedIn();
         if (isUserLoggedIn) {
-          window.web3 = new Web3(state.fortmatic.getProvider());
+         web3 = new Web3(state.fortmatic.getProvider());
         } else {
           await state.fortmatic.user.login();
-          window.web3 = new Web3(state.fortmatic.getProvider());
+         web3 = new Web3(state.fortmatic.getProvider());
         }
-        addresses = await window.web3.eth.getAccounts();
+        addresses = await web3.eth.getAccounts();
         currentAddress = addresses[0];
       } else if (data.provider == "portis") {
         const portis = new Portis(
           process.env.VUE_APP_PORTIS_KEY,
           process.env.VUE_APP_NETWORK
         );
-        window.web3 = new Web3(portis.provider);
+       web3 = new Web3(portis.provider);
+
+       addresses = await web3.eth.getAccounts();
+        
+      } else if (data.provider == 'walletconnect') {
+        const connector = new WalletConnectProvider({
+          infuraId: process.env.VUE_APP_INFURA_ID,
+        });
+  
+        // Check if connection is already established
+        await connector.enable();
+  
+        web3 = new Web3(connector);
+        addresses = await web3.eth.getAccounts();
+        currentAddress = addresses[0];
         
       } else if (window.ethereum) {
         // Use MetaMask provider
-        window.web3 = new Web3(window.ethereum);
+        web3 = new Web3(window.ethereum);
         addresses = await window.ethereum.request({
           method: "eth_requestAccounts",
         });
@@ -149,6 +166,7 @@ const actions = {
       if (currentAddress == data.address) {
         commit("setCurrentAddress", data.address);
         commit("setProvider", data.provider);
+        commit("setInstance", () => web3);
         dispatch(
           "user/getUser",
           { provider: data.provider, address: data.address },
@@ -165,9 +183,10 @@ const actions = {
   async new({ commit, dispatch, state }, payload) {
     let address = "";
     let mutate = false;
+    let web3;
 
     if (payload.type == "fortmatic") {
-      window.web3 = new Web3(state.fortmatic.getProvider());
+      web3 = new Web3(state.fortmatic.getProvider());
 
       await state.fortmatic.configure({ primaryLoginOption: "phone" });
       let isUserLoggedIn = await state.fortmatic.user.isLoggedIn();
@@ -175,29 +194,28 @@ const actions = {
         await state.fortmatic.user.login();
       }
 
-      address = await window.web3.eth.getAccounts();
+      address = await web3.eth.getAccounts();
       mutate = true;
     } else if (payload.type == "portis") {
       const portis = new Portis(
         process.env.VUE_APP_PORTIS_KEY,
         process.env.VUE_APP_NETWORK
       );
-      window.web3 = new Web3(portis.provider);
-      address = await window.web3.eth.getAccounts();
+     web3 = new Web3(portis.provider);
+      address = await web3.eth.getAccounts();
       mutate = true;
     } else if (payload.type == 'walletconnect') {
-      const connector = new WalletConnect({
-        bridge: "https://bridge.walletconnect.org", // Required
-        qrcodeModal: QRCodeModal,
+      const connector = new WalletConnectProvider({
+        infuraId: process.env.VUE_APP_INFURA_ID,
       });
 
       // Check if connection is already established
-      if (!connector.connected) {
-        // create new session
-        connector.createSession();
-      }
+      await connector.enable();
 
-      commit("setWalletConnect", connector);
+     web3 = new Web3(connector);
+      address = await web3.eth.getAccounts();
+
+      mutate = true;
       
     } else {
       const provider = await detectEthereumProvider();
@@ -205,6 +223,8 @@ const actions = {
         address = await window.ethereum.request({
           method: "eth_requestAccounts",
         });
+
+        web3 = new Web3(window.ethereum);
         mutate = true;
       }
     }
@@ -213,10 +233,12 @@ const actions = {
     if ( mutate ) {
       commit("setCurrentAddress", address[0]);
       commit("setProvider", payload.type);
+      commit("setInstance", () => web3);
+
 
       const data = {
         provider: payload.type,
-        address: address[0],
+        address: address[0]
       };
 
       await set("blockchain", JSON.stringify(data));

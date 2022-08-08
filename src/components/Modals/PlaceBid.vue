@@ -252,6 +252,9 @@ export default {
     const store = useStore();
     const currentAddress = computed(() => store.getters['blockchain/getCurrentAddress']);
     const currentProvider = computed(() => store.getters['blockchain/getCurrentProvider']);
+    const web3Instance = computed(
+			() => store.getters["blockchain/getInstance"]
+		);
 
 
     onMounted(async function () {
@@ -266,10 +269,8 @@ export default {
       usd.value = request.data.USD * bidTotal.value;
       conversorVal.value = request.data.USD;
       inputStep.value = step;
-      const instances = store.getters['blockchain/getInstance'];
-      console.log(instances[currentProvider.value]);
 
-      usdcBalance.value = await checkBalance(currentAddress.value, instances[currentProvider.value], currentProvider.value);
+      usdcBalance.value = await checkBalance(web3Instance.value, currentAddress.value);
       hasFunds.value = usdcBalance.value >= value.value;
 
       console.log('has allowance ->', clientRef.value)
@@ -312,7 +313,7 @@ export default {
     };
 
     const checkCurrentBalance = async () => {
-      usdcBalance.value = await checkBalance();
+      usdcBalance.value = await checkBalance(web3Instance, currentAddress);
       console.log(usdcBalance.value);
       showConversor.value = false;
       hasFunds.value = usdcBalance.value >= minValue.value;

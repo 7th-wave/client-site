@@ -181,7 +181,7 @@
 <script>
 import { useRouter } from "vue-router";
 import ItrIcon from "../Icons/ItrIcon.vue";
-// import IconChevron from "../Icons/IconChevron .vue";
+// import IconChevron from "../Icons/IconChevron.vue";
 
 export default {
   props: {

@@ -13,6 +13,11 @@ const routes = [
     component: Home,
   },
   {
+    path: "/connect/:connect?",
+    name: "Connect",
+    component: Home,
+  },
+  {
     path: "/vault/create",
     name: "VaultsCreate",
 
@@ -153,7 +158,7 @@ const routes = [
   },
 
   {
-    path: "/my-account/:address",
+    path: "/my-account",
     name: "MyAccount",
     component: () => import("../views/client/Myaccount.vue"),
     beforeEnter: clientGuard,

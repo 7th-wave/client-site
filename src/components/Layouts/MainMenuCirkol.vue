@@ -23,7 +23,7 @@
       transition-all
       ease
       duration-500
-      max-w-lg
+      w-full
       lg:max-w-2xl
       lg:w-m-2xl
       overflow-hidden
@@ -46,6 +46,19 @@
         font-inter font-medium
       "
     >
+    <div class="flex space-x-2 lg:space-x-8 absolute top-8 left-10">
+            <a 
+              v-for="item in social" 
+              :key="item.name" 
+              :href="item.href" 
+              target="_blank" 
+              class="text-gray-700 hover:text-pink hover:text-pink border border-gray-700 hover:border-pink flex items-center justify-center w-14 h-14"
+              rel="noopener noreferrer"
+            >
+              <span class="sr-only">{{ item.name }}</span>
+              <font-awesome-icon :icon="item.icon" size="xl" />
+            </a>
+          </div>
       <div class="flex-1 flex flex-col pt-10 pb-10 overflow-y-auto">
         <nav class="mt-10 flex-1 flex flex-col justify-center space-y-1" aria-label="Sidebar">
           <span v-for="item in navigation"
@@ -77,12 +90,12 @@
           </span>
         </nav>
       </div>
-      <div class="flex-shrink-0 p-10 space-y-4 border-t border-gray-300" v-if="blockchainAddress">
+      <div class="flex-shrink-0 p-10 space-y-8 border-t border-gray-300" v-if="blockchainAddress">
         <router-link
-          :to="{ name: 'MyAccount', params: { address: blockchainAddress } }"
+          :to="{ name: 'MyAccount' }"
           class="flex-shrink-0 w-full group block"
         >
-          <span class="font-light text-5xl leading-4 text-gray-600">ACCOUNT</span>
+          <span class="font-light text-5xl text-gray-600">ACCOUNT</span>
           <div class="flex items-center">
             <div>
               <div class="flex items-center space-x-1">
@@ -160,10 +173,29 @@ import CirkolMenuClose from "../Icons/CirkolMenuClose.vue";
 
 const navigation = [
   { name: "Join", icon: "", href: "/" },
-  //{ name: "Lightpaper", icon: "", href: "https://lightpaper.com" },
+  { name: "Lightpaper", icon: "", href: "https://www.cirkol.com/#lightpaper" },
   { name: "Roadmap", icon: "", href: "https://www.cirkol.com/#roadmap" },
   { name: "Team", icon: "", href: "https://www.cirkol.com/#team" },
 ];
+
+const social = [
+    {
+      name: 'Twitter',
+      href: 'https://twitter.com/cirkol_',
+      icon: "fa-brands fa-twitter fa-2xl" 
+    },
+    {
+      name: 'Instagram',
+      href: 'https://www.instagram.com/cirkol_/',
+      icon: "fa-brands fa-instagram fa-2xl"
+    },
+    {
+      name: 'Discord',
+      href: 'https://discord.com/channels/987423455521701948/987423457316851727',
+      icon: "fa-brands fa-discord fa-2xl"
+    },
+    
+  ];
 
 export default {
   props: {
@@ -219,6 +251,7 @@ export default {
       getAvatar,
       avatar,
       user,
+      social
     };
   },
   methods: {

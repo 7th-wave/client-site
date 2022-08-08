@@ -1,5 +1,6 @@
-import { get, set, del } from "idb-keyval";
-import { db, getClientByBlockChain, saveUser } from "../../firebase/firebase";
+import { set, del } from "idb-keyval";
+import { db, getClientByBlockChain } from "../../firebase/firebase";
+import { saveUser, updateUser } from "../../firebase/clients"
 import { getUserByAddress } from "../../firebase/firebase";
 
 // initial state
@@ -64,20 +65,14 @@ const getDefaultState = () => {
 
 // getters
 const getters = {
-  getMetamask: (state) => {
-    return state.user.metamask;
-  },
-  getFortmatic: (state) => {
-    return state.user.fortmatic;
-  },
-  getPortis: (state) => {
-    return state.user.portis;
-  },
+
   getUser: (state) => {
     return state.user;
   },
+  getUsername: (state) => {
+    return state.user.username;
+  },
   getFullName: (state) => {
-    console.log(state);
     return state.user.firstName + " " + state.user.lastName;
   },
   getAvatar: (state) => {
@@ -99,17 +94,8 @@ const getters = {
 
 // actions
 const actions = {
-  async getUser({ commit, dispatch }, payload) {
-    let user = await get("user");
-
-    if (user) {
-      commit("setUser", JSON.parse(user));
-    } else {
-      if (payload.provider) {
-        dispatch("recoverUser", payload);
-      }
-      
-    }
+  async getUser({ dispatch }, payload) {
+    dispatch("recoverUser", payload);
   },
   
   async recoverUser({ commit, dispatch }, payload) {
@@ -118,16 +104,14 @@ const actions = {
       const user = results.doc;
       user.dbRef = results.doc.blockchainAddress;
       console.log('recover user->', user);
-      await set("user", JSON.stringify(user));
       commit("setUser", user);
-    } catch(error) {
-      dispatch("saveUser", payload);
+    } catch ($e) {
+      dispatch("saveUser", {address: payload.address, provider: payload.provider});
     }
+    
   },
   async saveUser({ commit }, payload) {
-    const clientRef = payload.address;
-    //await db.collection("clients").doc(clientRef).set(payload);
-   
+    const clientRef = payload.address;   
 
     let user = {
       blockchainAddress: payload.address,
@@ -135,6 +119,16 @@ const actions = {
     };
     await saveUser(user);
     user.dbRef = clientRef;
+    await set("user", JSON.stringify(user));
+    commit("setUser", user);
+  },
+
+  async updateUser({ commit }, payload) {
+    console.log('---');
+    console.log(payload);
+    console.log('---');
+    const user = payload;
+    await updateUser(user, user.dbRef);
     await set("user", JSON.stringify(user));
     commit("setUser", user);
   },

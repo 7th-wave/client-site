@@ -8,8 +8,8 @@
             justify-between
             text-center
             items-center
-            
-            px-12
+            px-8
+            lg:px-12
             py-6
             
           "
