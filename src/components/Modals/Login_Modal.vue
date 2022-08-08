@@ -12,7 +12,7 @@
           <TransitionChild as="template" enter="ease-out duration-300" enter-from="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95" enter-to="opacity-100 translate-y-0 sm:scale-100" leave="ease-in duration-200" leave-from="opacity-100 translate-y-0 sm:scale-100" leave-to="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95">
             <div class="inline-block w-full max-w-4xl align-middle bg-white rounded-lg px-4 pt-5 pb-4 text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:w-max sm:w-full sm:p-6">
               <div class="w-full mt-5 sm:mt-4 flex" v-if="!showInstallMetamask">
-                  <div class="w-1/3 mx-2 text-center">
+                  <div class="w-1/3 mx-2 text-center hidden lg:block">
                     <a href="#" @click.prevent="doMetaMaskLogin()">
                         <img src="/images/wallet1.jpg" class="mb-8" alt="">
                     </a>

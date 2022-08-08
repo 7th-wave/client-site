@@ -23,7 +23,7 @@
       transition-all
       ease
       duration-500
-      max-w-lg
+      w-full
       lg:max-w-2xl
       lg:w-m-2xl
       overflow-hidden
@@ -46,7 +46,7 @@
         font-inter font-medium
       "
     >
-    <div class="flex space-x-16 absolute top-8 left-10">
+    <div class="flex space-x-2 lg:space-x-8 absolute top-8 left-10">
             <a 
               v-for="item in social" 
               :key="item.name" 
