@@ -156,7 +156,7 @@ const actions = {
         
       } else if (window.ethereum) {
         // Use MetaMask provider
-       web3 = new Web3(window.ethereum);
+        web3 = new Web3(window.ethereum);
         addresses = await window.ethereum.request({
           method: "eth_requestAccounts",
         });
@@ -223,6 +223,8 @@ const actions = {
         address = await window.ethereum.request({
           method: "eth_requestAccounts",
         });
+
+        web3 = new Web3(window.ethereum);
         mutate = true;
       }
     }
