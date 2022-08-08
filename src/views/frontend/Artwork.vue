@@ -16,7 +16,7 @@
       lg:flex-row lg:space-x-5
     "
   >
-    <div class="w-full" v-if="isLoaded">
+    <div class="w-full px-4" v-if="isLoaded">
       <img
         :src="imageUrl"
         class="w-full object-cover rounded-md shadow-md overflow-hidden mb-3"
@@ -35,13 +35,14 @@
           space-y-4
         "
       >
-        <span class="text-4xl font-normal text-gray-900">{{ nft.title }}</span>
+        <span class="text-4xl font-normal text-gray-900 mt-4 lg:mt-0 px-4">{{ nft.title }}</span>
         
       </div>
-      <div class="w-full grid grid-cols-1 lg:grid-cols-2 gap-2">
+      <div class="w-full px-4 grid grid-cols-1 lg:grid-cols-2 gap-2">
         <div
           class="
-            col-span-1
+            col-span-2
+            lg:col-span-1
             w-full
             bg-white
             rounded-md
