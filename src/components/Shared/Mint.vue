@@ -14,7 +14,8 @@
       "
     >
       <div class="w-full">
-        <Button @click="mint()" customClass="w-full" :btnStyle="'outlined'" :size="'xlarge'">MINT</Button>
+        <Button @click="mint()" customClass="w-full" :btnStyle="'outlined'" :size="'xlarge'" v-if="currentProvider !== 'walletconnect'">MINT</Button>
+        <Button @click="showWalletConnectModal()" customClass="w-full" :btnStyle="'outlined'" :size="'xlarge'" v-if="currentProvider == 'walletconnect'">MINT</Button>
       </div>
     </div>
      <div class="mt-1 ">
@@ -44,7 +45,8 @@ export default {
   components: { Button, ETHalt },
   props: {
     user: String, 
-    currentAddress: String, 
+    currentAddress: String,
+    currentProvider: String, 
     nft: Object,
     nftRef: String, 
     price: Number, 
@@ -92,6 +94,24 @@ export default {
     const closeModal = () => {
       showOfferDialog.value = false;
     };
+
+    const showWalletConnectModal = () => {
+      store.dispatch("NotificationStore/SET_MODAL_TITLE", {
+          title: "WALLETCONNECT",
+        });
+        store.dispatch("NotificationStore/SET_MODAL_MESSAGE", {
+          message: `Check your mobile wallet to approve this transaction`,
+        });
+        store.dispatch("NotificationStore/SET_MODAL_BUTTONS", {
+          buttons: [
+            { name: "OK", btnStyle: "primary", action: async () => {
+              await mint();
+            } },
+            
+          ],
+        });
+        store.dispatch("NotificationStore/SET_OPEN_MODAL");
+    }
 
     const mint = async () => {
       store.dispatch("NotificationStore/TOGGLE_LOADING");
@@ -202,7 +222,8 @@ export default {
       showOfferDialog,
       closeModal,
       mint,
-      finalPrice
+      finalPrice,
+      showWalletConnectModal
     };
   },
 };
