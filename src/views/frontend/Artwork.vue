@@ -492,8 +492,8 @@ export default {
     };
 
     onMounted(async () => {
-      //await store.dispatch('blockchain/initWallets');
-      //await store.dispatch('blockchain/getBlockChain');
+      await store.dispatch('blockchain/initWallets');
+      await store.dispatch('blockchain/getBlockChain');
       if (currentAddress.value) {
         const mintValues = await getWhiteList(instance.value, currentAddress.value);
         currentPrice.value = parseFloat(mintValues.price);
