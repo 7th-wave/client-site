@@ -1,13 +1,16 @@
 <template>
   <div class="artist font-inter h-screen">
-    <div class="relative bg-white py-8 sm:py-24 lg:py-8">
+    <div class="relative bg-white">
       <div class="relative">
-        <div class="text-center mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-8 lg:max-w-7xl">
-          <h1 class="mt-8 text-4xl leading-10 font-medium text-black tracking-tight sm:text-4xl">
+        <div class="text-center mx-auto w-full mb-4 ">
+          
+          <h1 class="mt-8 text-4xl leading-10 flex items-center justify-center font-bold text-white tracking-tight sm:text-4xl header-height" style="background:url('./images/CIRKOL_Header-market.jpg') rgba(0, 0, 0, 0.5); background-blend-mode: multiply; background-size: cover">
             MNFT MIAMI
           </h1>  
 
-          <p class="mt-6">CIRKOL is the first membership club of its kind.<br /><br /> CIRKOL blends decentralized technology with our innate desire to connect with people in the physical world.<br /><br /> Our experienced team has prepared a proprietary pro forma for the purposes of acquisition and redevelopment of a hotel and beach club in Miami, Florida. Once the project treasury goal is achieved, we will begin to act on these development goals and ultimately offer prime access to utilize incredible on - property amenities to our mNFT(membership Non Fungible Token) holders.mNFT holders will also have the opportunity to buy and resell rNFTs(reservation Non Fungible Tokens) that operate as a decentralized booking platform for the hotel and beach club.<br /> Our first collection features artwork from Miami artist, Manfred Delgado, and is limited to an exclusive 5500 mNFTs minted using our proprietary marketplace.</p>           
+          <p class="mt-6 max-w-md px-4 sm:max-w-3xl lg:max-w-6xl mx-auto text-center text-lg text-primary-700 font-bold">CIRKOL is the first membership club of its kind.</p>           
+
+          <p class="mt-6 max-w-md px-4 sm:max-w-3xl lg:max-w-6xl mx-auto text-justify text-primary-700">CIRKOL blends decentralized technology with our innate desire to connect with people in the physical world.<br /> Our experienced team has prepared a proprietary pro forma for the purposes of acquisition and redevelopment of a hotel and beach club in Miami, Florida. Once the project treasury goal is achieved, we will begin to act on these development goals and ultimately offer prime access to utilize incredible on - property amenities to our mNFT(membership Non Fungible Token) holders.mNFT holders will also have the opportunity to buy and resell rNFTs(reservation Non Fungible Tokens) that operate as a decentralized booking platform for the hotel and beach club.<br /> Our first collection features artwork from Miami artist, Manfred Delgado, and is limited to an exclusive 5500 mNFTs minted using our proprietary marketplace.</p>           
         </div>
         
       </div>
@@ -227,3 +230,8 @@ export default {
   },
 }
 </script>
+<style scoped>
+.header-height {
+  height: 442px;
+}
+</style>
