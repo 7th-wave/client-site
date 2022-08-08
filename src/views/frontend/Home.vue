@@ -115,9 +115,6 @@ export default {
 
     const getData = async () => {    
       
-      
-
-      
       const gallery = await getNftsByCollection(process.env.VUE_APP_CATEGORY, currentPage.value);
 
       data.value.gallery = await Promise.all(gallery.map(async (item) => {
@@ -194,6 +191,9 @@ export default {
     };
 
     onMounted(async() => {
+      if (connect.value == 'yes') {
+        emit('on:login');
+       }
       await store.dispatch('blockchain/initWallets');
       await store.dispatch('blockchain/getBlockChain');
       if (addr.value) {
@@ -207,9 +207,7 @@ export default {
 
     onUnmounted(async() => {
        window.removeEventListener("scroll", handleScroll)
-       if (connect.value) {
-        emit('on:login');
-       }
+       
     });
 
     return {

@@ -54,7 +54,7 @@
           "
           v-for="(item, index) of nft.attributes"
           :key="index"
-          :class="{'col-span-2': index+1 == nft.attributes.length}"
+          :class="{'col-span-2 lg:col-span-2': index+1 == nft.attributes.length}"
         >
           <span class="text-base text-gray-500 font-semibold uppercase" 
             >{{ item.name }}:</span
