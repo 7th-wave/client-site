@@ -104,8 +104,10 @@ export default {
         });
         store.dispatch("NotificationStore/SET_MODAL_BUTTONS", {
           buttons: [
-            { name: "OK", btnStyle: "primary", action: async () => {
-              await mint();
+            { name: "OK", btnStyle: "primary", action: function () {
+                store.dispatch("NotificationStore/SET_OPEN_MODAL");
+                mint();
+                
             } },
             
           ],
