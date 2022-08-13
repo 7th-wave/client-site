@@ -176,12 +176,26 @@ export default {
         },
       };
 
+      
+
       const metadataIpfs = await pinJson(metadata);
       /* const signature = {
         minPrice: 20,
         uri: nft.value.ipfs,
         signature: nft.value.signature,
       }; */
+      const newNft = Object.assign({}, nft.value);
+      newNft.metadataIpfs =
+          "https://gateway.pinata.cloud/ipfs/" + metadataIpfs.IpfsHash;
+      newNft.blockchainId = token_id;
+      newNft.status = "minted";
+      newNft.title = nft.value.title + ' #'  + token_id;
+      newNft.isMinted = true;
+      newNft.blockChainOwner = currentAddress.value;
+      newNft.mintDate = new Date().getTime();
+      newNft.attributes = attrs;
+      await updateNft(nftRef.value, newNft);
+
       try {
         const result = await mintNft(
           web3Instance.value,
@@ -192,20 +206,21 @@ export default {
           finalPrice.value
         );
         console.log("mint -> ", result);
-        const newNft = Object.assign({}, nft.value);
-        newNft.metadataIpfs =
-          "https://gateway.pinata.cloud/ipfs/" + metadataIpfs.IpfsHash;
-        newNft.blockchainId = token_id;
-        newNft.status = "minted";
-        newNft.title = nft.value.title + ' #'  + token_id;
-        newNft.isMinted = true;
-        newNft.blockChainOwner = currentAddress.value;
-        newNft.mintDate = new Date().getTime();
-        newNft.attributes = attrs;
-        await updateNft(nftRef.value, newNft);
+        
         router.push("/my-nfts");
         store.dispatch("NotificationStore/TOGGLE_LOADING");
       } catch (err) {
+        
+        //Revert in case of failure or desistence
+        newNft.metadataIpfs = ''
+        newNft.blockchainId = 0;
+        newNft.status = "created";
+        newNft.title = nft.value.title;
+        newNft.isMinted = false;
+        newNft.blockChainOwner = '';
+        newNft.mintDate = 0;
+        newNft.attributes = nft.value.attributes;
+        await updateNft(nftRef.value, newNft);
         store.dispatch("NotificationStore/TOGGLE_LOADING");
         console.log(err);
       }

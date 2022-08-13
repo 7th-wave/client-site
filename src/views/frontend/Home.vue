@@ -99,8 +99,8 @@ export default {
     const addr = computed(() => store.getters['blockchain/getCurrentAddress']);
     const instance = computed(() => store.getters['blockchain/getInstance']);
 
-    const price = ref(null);
-    const amount = ref(null);
+    const price = ref(0);
+    const amount = ref(0);
 
     //const storage = firebase.storage();
     const currentPage = ref(1);
@@ -171,7 +171,7 @@ export default {
             href: "/admin/artwork/" + item.collection + "/" + item.dbRef,
             size: item.size,
             category: 'mnft-miami',
-            price: item.mintinPrice,
+            mintinPrice: item.mintinPrice,
             collection: item.collection,
             imageUrl: await getFullImageURL(item.imageUrl),
           };
@@ -201,8 +201,8 @@ export default {
       await store.dispatch('blockchain/getBlockChain');
       if (addr.value) {
         const mintValues = await getWhiteList(instance.value, addr.value);
-        price.value = mintValues.price;
-        amount.value = mintValues.amount;
+        price.value = parseFloat(mintValues.price);
+        amount.value = parseFloat(mintValues.amount);
       }
       await getData();
       window.addEventListener("scroll", handleScroll)
