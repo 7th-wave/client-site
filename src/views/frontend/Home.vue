@@ -143,7 +143,7 @@ import NftItem from "@/components/Shared/NftItem.vue";
 //import { useRoute } from 'vue-router';
 import { computed, ref } from "@vue/reactivity";
 import { onMounted, onUnmounted } from "@vue/runtime-core";
-import { getNftsByCollection, nftFilters, getMintedNftsCount, filterNfts } from "../../firebase/nfts";
+import { getNftsByCollection, nftFilters, getMintedNftsCount, filterNftsPaged } from "../../firebase/nfts";
 import { getMembersCount } from "../../firebase/clients";
 import { storage } from "../../firebase/firebase";
 import NftSkeleton from "@/components/Shared/NftSkeleton.vue";
@@ -214,6 +214,7 @@ export default {
       gallery: [],
     });
     const isLoading = ref(true);
+    const isFiltered = ref(false);
 
     const getData = async () => {
       const gallery = await getNftsByCollection(
@@ -271,10 +272,16 @@ export default {
 
     const getMore = async () => {
       currentPage.value++;
-      const gallery = await getNftsByCollection(
-        process.env.VUE_APP_CATEGORY,
-        currentPage.value
-      );
+      let gallery;
+      if (isFiltered.value) {
+        gallery = await filterNftsPaged({filter: event.filtersSelected}, currentPage.value);
+      } else {
+         gallery = await getNftsByCollection(
+          process.env.VUE_APP_CATEGORY,
+          currentPage.value
+        );
+      }
+     
       const newItems = await Promise.all(
         gallery.map(async (item) => {
           const data = {
@@ -306,9 +313,11 @@ export default {
     };
 
     const showNfts = async (event) => {
+      isFiltered.value = true;
       isLoading.value = true;
+      currentPage.value = 1;
 
-      const gallery = await filterNfts({filter: event.filtersSelected});
+      const gallery = await filterNftsPaged({filter: event.filtersSelected}, currentPage.value);
 
       data.value.gallery = await Promise.all(
         gallery.map(async (item) => {

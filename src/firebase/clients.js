@@ -4,8 +4,8 @@ import axios from 'axios';
 const app_url = process.env.VUE_APP_FUNCTIONS_URL;
 
 const getMembersCount = async() => {
-    //const result = await axios.get(app_url+'clients_count');
-    return 1;
+    const result = await axios.get(app_url+'find_clients');
+    return result.data.length;
 }
 
 
