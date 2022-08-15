@@ -4,12 +4,17 @@ import axios from 'axios';
 const app_url = process.env.VUE_APP_FUNCTIONS_URL;
 
 const getMintedNftsCount = async() => {
-    //const result = await axios.get(app_url+'find_minted_nfts');
-    return 1;
+    const result = await axios.post(app_url+'filter_nfts', {filter: [{name: 'isMinted', value: true}]});
+    return result.data.length;
 }
 
 const filterNfts = async(data) => {
     const result = await axios.post(app_url+'filter_nfts', data);
+    return result.data;
+}
+
+const filterNftsPaged = async(data, page) => {
+    const result = await axios.post(app_url+'filter_nfts_paged?page='+page, data);
     return result.data;
 }
 
@@ -159,5 +164,6 @@ export {
     findNewxtIdPerContract,
     getMintedNftsCount,
     nftFilters,
-    filterNfts
+    filterNfts,
+    filterNftsPaged
 };
