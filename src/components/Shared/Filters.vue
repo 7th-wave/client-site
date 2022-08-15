@@ -1,7 +1,7 @@
 <template>
     <div class="grid grid-cols-1
                 gap-x-4
-                sm:gap-x-4" :class="[`grid-cols-${localFilters.length}`]">
+                sm:gap-x-4" :class="[`lg:grid-cols-${localFilters.length}`]">
         <div class="sm:items-start text-left sm:mt-0" v-for="(filter, index) of localFilters" :key="index">
             <label class="block text-sm font-medium text-gray-700 mt-6">
             {{ filter.name }}
