@@ -53,19 +53,167 @@ const updateNft = async(ref, data) => {
     return result.data;
 }
 
+
+
+
+
 const nftFilters = [
     {
         name: 'Bear Bod',
         key: 'bear_bod',
         options: [
             {
-                name: 'Time',
-                value: 'Time'
-            },
-            {
+                name: 'Baiter',
+                value: 'Baiter'
+                },
+                {
+                name: 'Bearscicle',
+                value: 'Bearscicle'
+                },
+                {
+                name: 'Ben Day',
+                value: 'Ben Day'
+                },
+                {
+                name: 'Bling',
+                value: 'Bling'
+                },
+                {
+                name: 'Bones',
+                value: 'Bones'
+                },
+                {
+                name: 'Breedrz',
+                value: 'Breedrz'
+                },
+                {
+                name: 'Centibear',
+                value: 'Centibear'
+                },
+                {
+                name: 'Cloud9',
+                value: 'Cloud9'
+                },
+                {
+                name: 'Crystal',
+                value: 'Crystal'
+                },
+                {
+                name: 'Disco',
+                value: 'Disco'
+                },
+                {
+                name: 'Drippy',
+                value: 'Drippy'
+                },
+                {
+                name: 'Fused',
+                value: 'Fused'
+                },
+                {
+                name: 'Fuzzy',
+                value: 'Fuzzy'
+                },
+                {
+                name: 'Giddy Up',
+                value: 'Giddy Up'
+                },
+                {
+                name: 'Glazed',
+                value: 'Glazed'
+                },
+                {
+                name: 'Glitchy',
+                value: 'Glitchy'
+                },
+                {
+                name: 'Halfy',
+                value: 'Halfy'
+                },
+                {
+                name: 'Happy',
+                value: 'Happy'
+                },
+                {
+                name: 'Hippy',
+                value: 'Hippy'
+                },
+                {
+                name: 'Lucie',
+                value: 'Lucie'
+                },
+                {
+                name: 'McLovin',
+                value: 'McLovin'
+                },
+                {
+                name: 'Mintr',
+                value: 'Mintr'
+                },
+                {
+                name: 'Nugget',
+                value: 'Nugget'
+                },
+                {
                 name: 'OG',
                 value: 'OG'
-            }
+                },
+                {
+                name: 'Onyx',
+                value: 'Onyx'
+                },
+                {
+                name: 'Pudge',
+                value: 'Pudge'
+                },
+                {
+                name: 'Quad',
+                value: 'Quad'
+                },
+                {
+                name: 'Radium',
+                value: 'Radium'
+                },
+                {
+                name: 'Ripped',
+                value: 'Ripped'
+                },
+                {
+                name: 'Ripped',
+                value: 'Ripped'
+                },
+                {
+                name: 'Scrambler',
+                value: 'Scrambler'
+                },
+                {
+                name: 'Sicko',
+                value: 'Sicko'
+                },
+                {
+                name: 'Sticky',
+                value: 'Sticky'
+                },
+                {
+                name: 'Stroke',
+                value: 'Stroke'
+                },
+                {
+                name: 'Time',
+                value: 'Time'
+                },
+                {
+                name: 'Up',
+                value: 'Up'
+                },
+                {
+                name: 'Voltz',
+                value: 'Voltz'
+                },
+                {
+                name: 'Zen',
+                value: 'Zen'
+                },
         ]
     },
     {
@@ -75,11 +223,64 @@ const nftFilters = [
             {
                 name: 'BlueBeary',
                 value: 'BlueBeary'
-            },
-            {
+                },{
+                name: 'BubbleFun',
+                value: 'BubbleFun'
+                },{
+                name: 'Cacao',
+                value: 'Cacao'
+                },{
+                name: 'Crime',
+                value: 'Crime'
+                },{
+                name: 'GoldRush',
+                value: 'GoldRush'
+                },{
+                name: 'Heat',
+                value: 'Heat'
+                },{
+                name: 'HoneyBee',
+                value: 'HoneyBee'
+                },{
+                name: 'IceIce',
+                value: 'IceIce'
+                },{
+                name: 'Icky',
+                value: 'Icky'
+                },{
+                name: 'Kush',
+                value: 'Kush'
+                },{
                 name: 'Moon',
                 value: 'Moon'
-            }
+                },{
+                name: 'Obsidian',
+                value: 'Obsidian'
+                },{
+                name: 'OJ',
+                value: 'OJ'
+                },{
+                name: 'PurpleRain',
+                value: 'PurpleRain'
+                },{
+                name: 'Rainbow',
+                value: 'Rainbow'
+                },{
+                name: 'SeaFoam',
+                value: 'SeaFoam'
+                },{
+                name: 'Slime',
+                value: 'Slime'
+                },{
+                name: 'SunState',
+                value: 'SunState'
+                },{
+                name: 'TieDye',
+                value: 'TieDye'
+                },{
+                name: 'ViceBlu',
+                value: 'ViceBlu'
+                }
         ]
     },
     {
@@ -87,13 +288,57 @@ const nftFilters = [
         key: 'shades',
         options: [
             {
-                name: 'PixOrange',
-                value: 'PixOrange'
-            },
-            {
+                name: '3D',
+                value: '3D'
+                },
+                {
+                name: 'Cobain',
+                value: 'Cobain'
+                },
+                {
+                name: 'Invisible',
+                value: 'Invisible'
+                },
+                {
                 name: 'PixBlue',
                 value: 'PixBlue'
-            }
+                },
+                {
+                name: 'PixGreen',
+                value: 'PixGreen'
+                },
+                {
+                name: 'PixLiLBlue',
+                value: 'PixLiLBlue'
+                },
+                {
+                name: 'PixOrange',
+                value: 'PixOrange'
+                },
+                {
+                name: 'PixPink',
+                value: 'PixPink'
+                },
+                {
+                name: 'PixPurple',
+                value: 'PixPurple'
+                },
+                {
+                name: 'PixRed',
+                value: 'PixRed'
+                },
+                {
+                name: 'PixSilver',
+                value: 'PixSilver'
+                },
+                {
+                name: 'PixYellow',
+                value: 'PixYellow'
+                },
+                {
+                name: 'Vr',
+                value: 'Vr'
+                }
         ]
     },
     {
@@ -101,13 +346,36 @@ const nftFilters = [
         key: 'canvas',
         options: [
             {
+                name: 'Bal Harbour',
+                value: 'Bal Harbour'
+                },{
+                name: 'Coconut Grove',
+                value: 'Coconut Grove'
+                },{
+                name: 'Coral Gables',
+                value: 'Coral Gables',
+                },{
+                name: 'Edgewater',
+                value: 'Edgewater'
+                },{
+                name: 'Key Biscayne',
+                value: 'Key Biscayne'
+                },{
+                name: 'Lil Haiti',
+                value: 'Lil Haiti'
+                },{
                 name: 'Lil Havana',
                 value: 'Lil Havana'
-            },
-            {
+                },{
+                name: 'Miami Beach',
+                value: 'Miami Beach'
+                },{
+                name: 'Ocean Drive',
+                value: 'Ocean Drive'
+                },{
                 name: 'Wynwood',
                 value: 'Wynwood'
-            }
+                }
         ]
     },
     {
@@ -115,13 +383,30 @@ const nftFilters = [
         key: 'cirkol_class',
         options: [
             {
-                name: 'Lil Havana',
-                value: 'Lil Havana'
+                name: 'C',
+                value: 'C'
             },
             {
-                name: 'Wynwood',
-                value: 'Wynwood'
+                name: 'I',
+                value: 'I'
+            },
+            {
+                name: 'R',
+                value: 'R'
+            },
+            {
+                name: 'K',
+                value: 'K'
+            },
+            {
+                name: 'O',
+                value: 'O'
+            },
+            {
+                name: 'L',
+                value: 'L'
             }
+            
         ]
     },
     {

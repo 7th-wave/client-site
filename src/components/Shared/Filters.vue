@@ -32,14 +32,18 @@ export default {
     setup(props, {emit}) {
         const { filters } = toRefs(props);
         const localFilters = ref(filters);
-        const selectedFilters = [];
+        let selectedFilters = [];
 
         watch(filters, (value) => {
             localFilters.value = value;
         });
 
         const filterNow = (event) => {
-            selectedFilters.push(event);
+            const filtered = selectedFilters.filter(item => {
+                return item.name !== event.name
+            });
+            filtered.push(event);
+            selectedFilters = filtered;
             emit('on:filter', {filtersSelected: selectedFilters});
 
         }
