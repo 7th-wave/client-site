@@ -17,8 +17,11 @@
         <div class="inline-flex flex-col items-center justify-start">
           <p class="text-sm leading-tight text-gray-500">{{ stat.name }}</p>
           <div class="inline-flex items-end justify-start">
-            <div class="flex space-x-2 items-end justify-start">
+            <div class="flex flex-col space-x-2 items-center justify-start">
               <p class="text-lg font-semibold leading-normal">{{ stat.value }}</p>
+              <div v-if="stat.name == 'Minted'">
+                <Toggle @on:selected="sendToParent" :label="'Show Minted'" />
+              </div>
             </div>
           </div>
         </div>
@@ -29,9 +32,12 @@
 <script>
 import { computed } from "vue";
 import { useRoute } from "vue-router";
+import Toggle from "@/components/Forms/Toggle.vue"
 export default {
   props: ['stats'],
-  setup() {
+  emits: ['on:switch'],
+  components: {Toggle},
+  setup(props, {emit}) {
     const route = useRoute();
     const getParams = computed(() => route.params.id);
 
@@ -46,8 +52,13 @@ export default {
       return {ownerFractions, jxFractions, salesFractions, totalVault};
     }); */
 
+    const sendToParent = (event) => {
+      emit('on:switch', event)
+    }
+
     return {
       getParams,
+      sendToParent
       //calculations
     };
   },
