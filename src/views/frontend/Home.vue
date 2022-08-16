@@ -54,8 +54,7 @@
             "
           >
             CIRKOL blends decentralized technology with our innate desire to
-            connect with people in the physical world.<br />
-            Our experienced team has prepared a proprietary pro forma for the
+            connect with people in the physical world. Our experienced team has prepared a proprietary pro forma for the
             purposes of acquisition and redevelopment of a hotel and beach club
             in Miami, Florida. Once the project treasury goal is achieved, we
             will begin to act on these development goals and ultimately offer
@@ -63,18 +62,17 @@
             mNFT(membership Non Fungible Token) holders.mNFT holders will also
             have the opportunity to buy and resell rNFTs(reservation Non
             Fungible Tokens) that operate as a decentralized booking platform
-            for the hotel and beach club.<br />
-            Our first collection features artwork from Miami artist, Manfred
+            for the hotel and beach club. Our first collection features artwork from Miami artist, Manfred
             Delgado, and is limited to an exclusive 5500 mNFTs minted using our
             proprietary marketplace.
           </p>
         </div>
       </div>
-      <div class="max-w-7xl mx-auto">
-        <Stats :stats="stats" />
+      <div class="max-w-7xl mx-auto px-4">
+        <Stats :stats="stats" @on:switch="showMinted" />
       </div>
-      <div class="max-w-7xl mx-auto">
-        <Filters :filters="localFilters" @on:filter="showNfts" />
+      <div class="max-w-7xl mx-auto px-4">
+        <Filters :filters="localFilters" @on:filter="showNfts"  />
       </div>
     </div>
 
@@ -341,6 +339,35 @@ export default {
 
     }
 
+    const showMinted = async () => {
+      isFiltered.value = true;
+      isLoading.value = true;
+      currentPage.value = 1;
+
+      const gallery = await filterNftsPaged({filter: [{name: 'isMinted', value: true}]}, currentPage.value);
+
+      data.value.gallery = await Promise.all(
+        gallery.map(async (item) => {
+          const data = {
+            id: item.dbRef,
+            title: item.title,
+            href: "/admin/artwork/" + item.collection + "/" + item.dbRef,
+            size: item.size,
+            category: "mnft-miami",
+            collection: item.collection,
+            imageUrl: await getFullImageURL(item.imageUrl),
+            isMinted: item.isMinted,
+            mintinPrice: item.mintinPrice,
+          };
+
+          return data;
+        })
+      );
+
+      isLoading.value = false;
+
+    }
+
     onMounted(async () => {
       if (connect.value == "yes") {
         emit("on:login");
@@ -373,7 +400,8 @@ export default {
       amount,
       stats,
       localFilters,
-      showNfts
+      showNfts,
+      showMinted
       // footerNavigation,
     };
   },
