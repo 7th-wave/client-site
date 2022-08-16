@@ -1,7 +1,7 @@
 <template>
   <div class="artist font-inter h-screen">
     <div class="relative bg-white shadow-lg pb-8">
-      <div class="relative z-20">
+      <div class="relative z-2">
         <div class="text-center mx-auto w-full mb-4">
           <h1
             class="
@@ -339,7 +339,16 @@ export default {
 
     }
 
-    const showMinted = async () => {
+    const showMinted = async (event) => {
+      
+        if (event) {
+          await loadMinted();
+        } else {
+          await getData();
+        }
+    }
+
+    const loadMinted = async () => {
       isFiltered.value = true;
       isLoading.value = true;
       currentPage.value = 1;
@@ -365,7 +374,6 @@ export default {
       );
 
       isLoading.value = false;
-
     }
 
     onMounted(async () => {
