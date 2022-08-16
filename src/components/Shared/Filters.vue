@@ -42,7 +42,9 @@ export default {
             const filtered = selectedFilters.filter(item => {
                 return item.name !== event.name
             });
-            filtered.push(event);
+            if (event.value !== 'all') {
+                filtered.push(event);
+            }
             selectedFilters = filtered;
             emit('on:filter', {filtersSelected: selectedFilters});
 
