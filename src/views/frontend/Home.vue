@@ -54,8 +54,7 @@
             "
           >
             CIRKOL blends decentralized technology with our innate desire to
-            connect with people in the physical world.<br />
-            Our experienced team has prepared a proprietary pro forma for the
+            connect with people in the physical world. Our experienced team has prepared a proprietary pro forma for the
             purposes of acquisition and redevelopment of a hotel and beach club
             in Miami, Florida. Once the project treasury goal is achieved, we
             will begin to act on these development goals and ultimately offer
@@ -63,8 +62,7 @@
             mNFT(membership Non Fungible Token) holders.mNFT holders will also
             have the opportunity to buy and resell rNFTs(reservation Non
             Fungible Tokens) that operate as a decentralized booking platform
-            for the hotel and beach club.<br />
-            Our first collection features artwork from Miami artist, Manfred
+            for the hotel and beach club. Our first collection features artwork from Miami artist, Manfred
             Delgado, and is limited to an exclusive 5500 mNFTs minted using our
             proprietary marketplace.
           </p>
