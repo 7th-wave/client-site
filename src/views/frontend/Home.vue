@@ -18,8 +18,7 @@
               header-height
             "
             style="
-              background: url('./images/CIRKOL_Header-market.jpg')
-                rgba(0, 0, 0, 0.5);
+              background: url('./images/CIRKOL_Header-market.jpg') rgba(0, 0, 0, 0.5);
               background-blend-mode: multiply;
               background-size: cover;
             "
