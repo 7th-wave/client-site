@@ -104,6 +104,7 @@ export default {
       console.log(db);
       console.log(storage);
       console.log(collectionRef);
+      await getNftDetail(value);
     });
 
     return {
