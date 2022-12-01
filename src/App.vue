@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import Header from "@/components/Layouts/Header.vue";
+import Header from "@/components/Layouts/HeaderCtt.vue";
 import Footer from "@/components/Layouts/Footer.vue";
 import Toast from "./components/Shared/Toast.vue";
 import { onMounted, ref } from "@vue/runtime-core";
@@ -156,13 +156,10 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-.body {
-  min-height: calc(100vh - 400px);
-  position: relative;
-}
-.gog-app {
-  position: relative;
-}
+<style>
+@import "@iconscout/unicons/css/line.css";
+</style>
+<style lang="sass">
+@import "@/assets/scss/icons.scss"
+@import "@/assets/scss/tailwind.scss"
 </style>

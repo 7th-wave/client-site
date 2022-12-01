@@ -4,7 +4,7 @@
         <template #header>
           ELEMENTS
         </template>
-        <template class="relative" #body>
+        <template  #body>
             
           <h1>This is a Heading H1</h1>
           <h2>This is a Heading H2</h2>

@@ -239,12 +239,12 @@ export default {
 }
 
 .carousel-card-arrow-right i {
-  background-img: url("/images/arrow_next.svg") !important;
+  background-img: url("@/assets/images/arrow_next.svg") !important;
   background-repeat: no-repeat;
 }
 
 .carousel-card-arrow-left i {
-  background-img: url("/images/arrow_left.svg") !important;
+  background-img: url("@/assets/images/arrow_left.svg") !important;
   background-repeat: no-repeat;
 }
 </style>

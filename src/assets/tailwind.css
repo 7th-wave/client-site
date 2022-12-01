@@ -1,35 +1,37 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,900;1,300;1,400;1,500;1,600;1,700;1,900&display=swap');
+
+@import url('https://fonts.googleapis.com/css?family=Inter');
+@import url('https://fonts.googleapis.com/css?family=Opensans');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 body {
-    @apply font-inter;
+    @apply bg-black;
+    scroll-behavior: smooth;
 }
+
 a {
     @apply text-primary-link;
 }
 p {
-    @apply text-base font-inter font-medium leading-5 text-primary-500 tracking-tight mb-0;
+    @apply text-base font-medium leading-5 text-white tracking-tight mb-0;
 }
 h1 {
-    @apply mt-2 text-4xl font-medium font-montserrat leading-8 text-primary-500 tracking-tight sm:text-4xl;
+    @apply mt-2 text-4xl font-medium leading-9 text-white tracking-tight sm:text-4xl;
 }
 h2 {
-    @apply mt-2 text-3xl font-medium font-montserrat leading-8 text-primary-500 tracking-tight sm:text-3xl;
+    @apply mt-2 text-3xl font-medium leading-8 text-white tracking-tight sm:text-3xl;
 }
 h3 {
-    @apply mt-2 text-2xl font-medium font-montserrat leading-8 text-primary-500 tracking-tight sm:text-2xl;
+    @apply mt-2 text-2xl font-medium leading-8 text-white tracking-tight sm:text-2xl;
 }
 h4 {
-    @apply mt-2 text-xl font-medium font-montserrat leading-8 text-primary-500 tracking-tight sm:text-xl;
+    @apply mt-2 text-xl font-medium leading-8 text-white tracking-tight sm:text-xl;
 }
 h5 {
-    @apply mt-2 text-lg font-medium font-montserrat leading-8 text-primary-500 tracking-tight sm:text-lg;
+    @apply mt-2 text-lg font-medium leading-8 text-white tracking-tight sm:text-lg;
 }
 h6 {
-    @apply mt-2 text-sm font-medium font-montserrat leading-8 text-primary-500 tracking-tight sm:text-sm;
+    @apply mt-2 text-sm font-medium leading-8 text-white tracking-tight sm:text-sm;
 }
 
 .content-txt ul{
@@ -39,6 +41,8 @@ h6 {
 .content-txt ul li{
     @apply mt-2;
 }
+
+
 
 .vue-skeletor {
     position: relative;
@@ -72,8 +76,6 @@ h6 {
     100% {
       transform: translateX(100%); } }
   
-
-
 
 
 

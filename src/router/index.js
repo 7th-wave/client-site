@@ -51,12 +51,6 @@ const routes = [
     component: () => import("../views/client/FractionCreate.vue"),
   },
   {
-    path: "/claim",
-    name: "Claim",
-
-    component: () => import("../views/frontend/Claim.vue"),
-  },
-  {
     path: "/privacy",
     name: "Privacy",
 
@@ -127,11 +121,6 @@ const routes = [
     path: "/team",
     name: "Team",
     component: () => import("../views/frontend/Team.vue"),
-  },
-  {
-    path: "/Under-Construction",
-    name: "UnderConstruction",
-    component: () => import("../views/frontend/UnderConstruction.vue"),
   },
   {
     path: "/vault/:id",

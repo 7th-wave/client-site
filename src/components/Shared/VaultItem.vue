@@ -81,12 +81,18 @@
   </div>
 </template>
 <script>
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
+// import Swiper core and required modules
+import { Navigation, Pagination, Scrollbar, A11y } from 'swiper';
 
-import { Swiper, SwiperSlide, useSwiper } from "swiper/vue/swiper-vue.js";
+// Import Swiper Vue.js components
+import { Swiper, SwiperSlide } from 'swiper/vue';
 
 // Import Swiper styles
-import "swiper/swiper-bundle.min.css";
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+import 'swiper/css/scrollbar';
+
 import Badge from "./Badge.vue";
 import Stats from "./Stats.vue";
 import { onMounted } from "@vue/runtime-core";
@@ -107,7 +113,6 @@ export default {
 
     const router = useRouter();
 
-    const swiper = useSwiper();
     // const router = useRouter()
     onMounted(() => {
       console.log(props.value);
@@ -127,7 +132,6 @@ export default {
 
     return {
       modules: [Navigation, Pagination, Scrollbar, A11y],
-      swiper,
       goToDetails
     };
   },

@@ -1,7 +1,7 @@
 <template>
   <div>
     <InteriorPage>
-      <template class="relative" #header>
+      <template  #header>
         <div class="relative">
             <div
               class="
@@ -30,7 +30,7 @@
           </div>
       </template>
 
-      <template class="relative" #body>
+      <template  #body>
         <!-- <div class="absolute inset-0">
       <div class="absolute inset-y-0 left-0 w-1/2 bg-gray-50" />
     </div> -->
